@@ -1,0 +1,40 @@
+# Engine settings (code reads these; nothing brand- or niche-specific lives here)
+drive:
+  folders: [control, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
+  music_folder_aliases: ["music", "background music", "background music (1)"]
+  never_auto_delete: [reference-reels, meme-bank, music, control]
+  dashboard_sheet_name: "iNiKKi Dashboard"
+  dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
+
+openai:
+  image_models: [gpt-image-1-mini, gpt-image-1]     # first that works is used
+  image_size: "1024x1536"                           # portrait, upscaled to 1080x1920 by code
+  image_quality: medium
+  smoke_quality: low
+  # Prices per image in US dollars for 1024x1536 (OpenAI pricing page, re-checked by the Health job).
+  price_usd_per_image:
+    gpt-image-1-mini: { low: 0.006, medium: 0.015, high: 0.05 }
+    gpt-image-1:      { low: 0.016, medium: 0.063, high: 0.25 }
+  # Token prices (USD per 1M tokens) used when the API reports usage
+  price_usd_per_m_tokens:
+    gpt-image-1-mini: { text_in: 2.0, image_in: 2.5, image_out: 8.0 }
+    gpt-image-1:      { text_in: 5.0, image_in: 10.0, image_out: 40.0 }
+  usd_to_inr: 88.0
+
+instagram:
+  base: "https://graph.instagram.com"
+  api_versions: ["v23.0", "v22.0", "v21.0"]        # first that works is used
+  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, ig_reels_skip_rate, skip_rate]
+
+voice:
+  tool: tools/voice_tool.py
+  voice: ta-IN-ValluvarNeural
+  rate: "+35%"
+  pitch: "-2Hz"
+  smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
+
+clips:
+  max_height: 720
+  smoke_query: "ytsearch1:Kaithi official trailer Karthi Lokesh Kanagaraj"
+  smoke_seconds: 8
+  contact_sheet: { cols: 5, rows: 6, width: 1800 }
