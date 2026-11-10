@@ -30,7 +30,7 @@ A self-running Instagram page. A small team of AI "roles" plans every reel, a fr
 | 4 | Watch the 3-day rehearsal in the Control Room, then say "go live" | Control Room |
 
 ### Honest limits (designed around, not hidden)
-- **Music:** Instagram's API cannot attach songs from Instagram's music library. Music is picked at planning and built into the reel from a licensed royalty-free library. Trending Instagram audio is an optional manual step.
+- **Music:** Instagram's API cannot attach songs from Instagram's in-app music library, so music is built into each reel. It comes from **your own background-music folder in Drive** (`music/`), with royalty-free tracks as a backup. Posting stays fully automatic. If Instagram mutes a reel because of a track, that track is retired automatically.
 - **Drop-off point:** the API gives average watch time and skip rate, not the second-by-second graph. The agent estimates the drop point. You can send a screenshot of the graph and the Advisor reads it.
 - **Competitors:** other pages' private numbers are not available. The agent uses public signals and reels you forward.
 - **1,000 followers:** the agent tracks pace and adapts. No one can promise a date.
@@ -226,13 +226,14 @@ Hook · Send trigger · Comment trigger · Save value · Pacing · Loop (the end
 ### 5.4 Music (picked at stage 4)
 | Item | Rule |
 | --- | --- |
-| Source | A licensed royalty-free library (for example YouTube Audio Library, Pixabay Music, Meta Sound Collection). The build checks each licence before adding a track. |
+| Source | **Your background music in Drive `music/`** (first choice), then royalty-free tracks (for example YouTube Audio Library, Pixabay Music) as a backup when nothing fits |
 | Library | `music/` in Drive with an index: mood, tempo, length, licence, times used, results |
 | Mood map | Breakdown: low tension pulse · Updates: upbeat percussive · Viral story: slow emotional build · Guess the Movie: suspense with ticks · Breaking: short stinger · Artwork: soft and warm |
 | Fit | Cuts land on the beat. Music lifts at the payoff. Under voice, music drops to about 20–30%. |
 | Variety | The same track is not reused within 7 days in the same series |
 | Learning | Tracks are scored by the watch-through of reels that used them. Weak tracks are retired. |
-| Trending audio (optional) | For a Lab pilot, the Advisor may suggest: "post this one by hand with trending audio". The reel waits in Drive `manual-post/`. |
+| Mute guard | The Engine checks each posted reel's status. If Instagram mutes or restricts a reel for its music, the track is retired, the Advisor tells you, and a backup track is used next time. |
+| Adding music | Drop new tracks into Drive `music/inbox/`. They are tagged (mood, tempo, length) automatically. |
 
 ### 5.5 Caption and hashtags (picked at stage 5)
 | Part | Rule |
@@ -498,7 +499,7 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 2. No fan-war bait. No insults to people or films. Comparisons are about craft.
 3. Respect mode for deaths and tragedies.
 4. Clips are short and always transformed with commentary and design.
-5. Licensed music only.
+5. Music only from the Drive music folder or royalty-free backups. Tracks that get a reel muted are retired.
 6. Real people in AI images are inspired-by illustrations, never photoreal fakes or false situations.
 7. Budget caps are hard stops.
 8. Nothing posts that fails inspection.
