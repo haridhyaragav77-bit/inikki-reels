@@ -1,0 +1,13 @@
+# Trusted sources for news, reviews and updates. Harish to confirm or edit.
+# tier 1 = can confirm on its own together with one other tier 1/2 source; tier 3 = signal only, never proof.
+official:
+  - { name: "Production houses and stars' verified accounts", tier: 1, note: "list handles here" }
+news:
+  - { name: "<Tamil film news site 1>", url: "", tier: 1 }
+  - { name: "<Tamil film news site 2>", url: "", tier: 2 }
+trade:
+  - { name: "<box office tracker>", url: "", tier: 2 }
+youtube_channels:     # official channels; RSS used for trailer and song drops
+  - { name: "<label or studio channel>", channel_id: "" }
+audience_signal:      # never proof, only trend signal
+  - { name: "r/kollywood", url: "https://www.reddit.com/r/kollywood/", tier: 3 }

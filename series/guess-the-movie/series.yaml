@@ -1,0 +1,24 @@
+id: guess-the-movie
+name: Guess the Tamil Movie
+status: live
+badge: { text: "GUESS THE TAMIL MOVIE", color: ticket_yellow }
+episode_counter: 4      # next episode number; #3 is pinned on the page (confirm)
+per_week: 4             # shares the story slot with viral-story (starting mix 4/3, tuned weekly)
+slots: ["15:30"]
+template: diorama
+visuals: ai_images
+voice: false
+length_s: [28, 32]
+image_cap_per_reel: 4   # one image per clue + reveal; depth layers are made by code, free
+image_style: diorama_moody
+story_shape: [title_clue1, clue2, clue3, lock_answer_countdown, reveal_title_year, comment_1_2_3]
+clue_order: easy_to_hard   # Lab may test hard_to_easy
+lead_sources: [trends, anniversaries, birthdays, re_releases, film_bank]
+meme_use: never
+success_metric: comments_and_sends
+done_well: ["NfoYvhl22twd4UIOKyIlOQ.mp4 (3D style, #1 Kaithi; #3 in this style hit 104K)", "Guess_The_Movie_Layered_Animation_30s_Tamil.mp4 (cloud-friendly layered)"]
+rules:
+  - "Clues are objects or places from the film, never actor faces or the title."
+  - "Clue 1 alone should be solvable by the biggest fans only."
+  - "Tune difficulty from the 1/2/3 answers in comments (target: most say 2)."
+  - "No text inside images; all text is added by the template."

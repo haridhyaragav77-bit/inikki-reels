@@ -1,0 +1,41 @@
+id,file,seconds,size,duplicate_of,cleanup,tag_status
+rec_001,Recording 2025-04-28 131646.mp4,27.4,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_002,Screen Recording 2025-04-17 154942 (1).mp4,10.8,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_003,Screen Recording 2025-04-17 154942.mp4,10.8,1920x1080,rec_002,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_004,Screen Recording 2025-04-18 011630.mp4,21.5,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_005,Screen Recording 2025-04-18 014522.mp4,11.8,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_006,Screen Recording 2025-04-18 014808.mp4,15.1,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_007,Screen Recording 2025-04-18 020821.mp4,17.3,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_008,Screen Recording 2025-04-18 105609.mp4,7.2,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_009,Screen Recording 2025-04-18 111950.mp4,10.5,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_010,Screen Recording 2025-04-18 112807.mp4,5.4,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_011,Screen Recording 2025-04-18 115549.mp4,11.1,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_012,Screen Recording 2025-04-18 121409.mp4,11.0,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_013,Screen Recording 2025-04-18 130737.mp4,6.5,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_014,Screen Recording 2025-04-18 131840.mp4,33.4,1908x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_015,Screen Recording 2025-04-18 133805 (1).mp4,7.8,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_016,Screen Recording 2025-04-18 133805.mp4,7.8,1920x1080,rec_015,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_017,Screen Recording 2025-04-18 140627.mp4,5.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_018,Screen Recording 2025-04-18 142457.mp4,9.9,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_019,Screen Recording 2025-04-18 143317.mp4,10.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_020,Screen Recording 2025-04-20 143139.mp4,19.8,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_021,Screen Recording 2025-04-20 144151.mp4,12.7,1918x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_022,Screen Recording 2025-04-20 144421.mp4,7.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_023,Screen Recording 2025-04-20 144623.mp4,5.7,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_024,Screen Recording 2025-04-20 151011.mp4,7.8,1910x1076,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_025,Screen Recording 2025-04-20 170057.mp4,9.0,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_026,Screen Recording 2025-04-25 190452.mp4,16.8,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_027,Screen Recording 2025-04-27 180654.mp4,9.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_028,Screen Recording 2025-04-28 094647.mp4,11.1,1910x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_029,Screen Recording 2025-04-28 094850.mp4,12.9,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_030,Screen Recording 2025-04-28 111116 (1).mp4,6.5,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_031,Screen Recording 2025-04-28 111116.mp4,6.5,1920x1080,rec_030,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_032,Screen Recording 2025-04-28 111844.mp4,7.5,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_033,Screen Recording 2025-04-28 112043.mp4,16.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_034,Screen Recording 2025-04-28 113345.mp4,14.2,1916x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_035,Screen Recording 2025-04-28 114329.mp4,5.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_036,Screen Recording 2025-04-28 132906.mp4,27.4,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_037,Screen Recording 2025-04-28 134758.mp4,13.4,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_038,Screen Recording 2025-04-28 140528.mp4,21.6,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_039,Screen Recording 2025-04-28 141704.mp4,7.0,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged
+rec_040,Screen Recording 2025-04-28 151331.mp4,15.2,1920x1080,,crop TV logo / player bar if present; cut punchline 1-4s; transcribe; tag moods,untagged

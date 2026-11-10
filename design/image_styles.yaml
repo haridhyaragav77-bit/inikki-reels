@@ -1,0 +1,14 @@
+# Image style presets for OpenAI prompts. No text in any image. Portrait 1024x1536.
+painterly_warm:      # Suriya, VJS Theatre Accountant, Bhaskar
+  look: "warm painterly illustration, visible brush texture, golden-hour light, rich teal and amber palette, cinematic composition, 1990s Tamil Nadu details"
+  people: "inspired-by likeness through hairstyle, costume and setting; illustrated, not photoreal"
+cinematic_real:      # VJS Second Tier, Petta
+  look: "cinematic film still, shallow depth of field, practical lights, festival or theatre atmosphere, film grain"
+  people: "inspired-by: back views, three-quarter views, period styling; never a photoreal copy of a real face"
+arcane_painterly:    # Vikram Sethu
+  look: "painterly animated-film look, textured brushwork, moody teal shadows, warm highlights, rain-soaked old theatre"
+  people: "stylised character inspired by era and look"
+diorama_moody:       # Guess the Movie
+  look: "miniature tabletop diorama / isometric miniature set, tilt-shift, volumetric fog, practical lamps, moody night palette, clean subject separation for depth layering"
+  people: "faceless mannequin-style figures or silhouettes only"
+  layering_hint: "strong foreground object, clear midground, simple background, so a depth model can split layers cleanly"
