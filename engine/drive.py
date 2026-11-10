@@ -45,7 +45,7 @@ def plain_error(e):
         return "The folder or file was not found. Check GDRIVE_ROOT_FOLDER_ID."
     if "invalid_grant" in s:
         return "The Drive sign-in token is no longer valid. Make a new one with tools/drive_signin.py."
-    return s[:300]
+    return s[:400]
 
 
 class Drive:
