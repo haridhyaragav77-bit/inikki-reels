@@ -1,0 +1,10 @@
+# Engine dependencies (GitHub Actions runner and local testing)
+google-api-python-client>=2.150
+google-auth>=2.35
+google-auth-oauthlib>=1.2
+openai>=1.50
+requests>=2.32
+pyyaml>=6
+yt-dlp>=2025.1.1
+edge-tts>=7
+imageio-ffmpeg
