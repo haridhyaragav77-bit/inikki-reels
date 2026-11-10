@@ -1,0 +1,16 @@
+id: artwork-quote
+name: Frame & Line (Artwork + Quote)
+status: live
+badge: { text: "FRAME & LINE", color: soft_gold }
+per_day: 0              # flex: switches on after a dull stretch of 2-3 days
+trigger: dull_streak
+slots: ["17:00"]
+template: cinematic
+visuals: ai_images
+voice: false
+length_s: [12, 20]
+image_cap_per_reel: 1
+lead_sources: [iconic_dialogues, occasions, trends]
+story_shape: [image_reveal, the_line_tamil, the_line_translation, relate_question]
+meme_use: never
+success_metric: saves_and_sends

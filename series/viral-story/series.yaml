@@ -1,0 +1,30 @@
+id: viral-story
+name: Viral Story
+status: live
+badge: { text: "UNTOLD", color: amber }
+per_week: 3             # shares the story slot with guess-the-movie
+slots: ["15:30"]
+template: cinematic
+visuals: ai_images
+voice: false
+length_s: [40, 45]
+image_cap_per_reel: 7   # each image carries 2 text beats
+image_style_options: [painterly_warm, cinematic_real, arcane_painterly]
+lead_sources: [interviews, old_articles, anniversaries, trends]
+story_shape: [hook_number_or_question, humble_start, the_struggle, the_turn, the_break, payoff, share_question]
+hook_examples:
+  - "Why did Suriya need ₹25,000?"
+  - "Vijay Sethupathi was sent back to his seat."
+  - "Anirudh called. They thought it was a prank."
+  - "Vikram's breakthrough. No buyers."
+ending_examples:
+  - "Know someone starting over?"
+  - "That clip sitting in your drafts? Post it, macha."
+  - "Send this to your cinema friend."
+meme_use: never
+success_metric: sends_per_reach
+done_well: ["Vijay_Sethupathi_The_Second_Tier_45s.mp4", "Suriya_Scene_45s_NoMusic.mp4", "Petta_The_Prank_Call_Marana_Mass_45s.mp4", "Vikram_Sethu_Arcane_Animated_45s.mp4", "Bhaskar_The_Mute_Button_45s.mp4", "Vijay_Sethupathi_Theatre_Accountant_45s_NoMusic.mp4"]
+rules:
+  - "Every fact needs a source (interview, article); keep links in the plan."
+  - "Real people as inspired-by illustrations only."
+  - "The ending question must name a person the viewer will think of."

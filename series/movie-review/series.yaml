@@ -1,0 +1,20 @@
+id: movie-review
+name: First Verdict (Movie Review)
+status: live
+badge: { text: "FIRST VERDICT", color: violet }
+per_day: 0              # flex: 1 on release days, max 2 on event days
+trigger: release_day
+slots: ["11:00", "17:00"]
+template: card
+visuals: mixed          # trailer clips + 1-2 AI hype art images
+voice: false
+length_s: [35, 45]
+image_cap_per_reel: 2
+lead_sources: [release_calendar, trusted_critics, audience_talk_24h, trends]
+story_shape: [verdict_hook, what_works_3_chips, what_doesnt, who_should_watch, comment_prompt]
+meme_use: ending_only
+success_metric: saves_and_sends
+rules:
+  - "Quote critics fairly and name them; mark audience talk as audience talk."
+  - "No spoilers after the first 20 minutes of the film."
+  - "No rating wars or star comparisons."

@@ -1,0 +1,30 @@
+id: film-breakdown
+name: Film Breakdown
+status: live
+priority: 1            # the page's main product
+badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE FILMMAKING BREAKDOWN", "THE CINEMATOGRAPHY BREAKDOWN"], color: gold }
+per_day: 2
+slots: ["12:30", "20:00"]
+template: card
+visuals: clips
+voice: true
+length_s: [40, 50]
+image_cap_per_reel: 0
+bank_target: 4          # keep 3-4 finished breakdowns ready
+lead_sources: [film_bank, news_hooks, anniversaries, comments]
+story_shape: [hook_question, frame_the_idea, numbered_points_3, the_turn, payoff, send_to_friend]
+hook_style: "A short Tanglish question about something the viewer felt but never noticed."
+hook_examples:
+  - "Phone-a thoda vidala. Yen?"
+  - "Yaaru yaarai iyakkuraanga?"
+  - "Saadhaarana satham. Bayam yen?"
+motion_presets: [card_pop, chips_in, timer_dial, tension_bar, split_compare, list_reveal, meme_end]
+meme_use: ending_only
+trend_hooks: true
+success_metric: sends_per_reach
+done_well: ["KAITHI_Premium_Reels_Aligned_VOICED.mp4", "JIGARTHANDA_Filmmaking_Tamil_VOICED.mp4", "Ratsasan breakdown (on the page)"]
+rules:
+  - "One idea per reel, explained in exactly 3 points."
+  - "Every point is shown with a real clip from the film, inside the card frame."
+  - "Never retell the plot; explain why a scene works."
+  - "Same film at most once in 21 days; same film + angle at most once in 60 days."

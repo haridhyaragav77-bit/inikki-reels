@@ -1,0 +1,25 @@
+id: movie-updates
+name: Movie Updates
+status: live
+badge: { text: "TAMIL CINEMA / {DATE} EDITION", color: teal }
+per_day: 3
+slots: ["08:30", "18:00", "21:30"]
+template: card
+visuals: mixed          # official posters, stills, trailer clips
+voice: true
+length_s: [30, 40]
+image_cap_per_reel: 0
+lead_sources: [trusted_news, official_accounts, youtube_trailers, release_calendar, trends]
+story_shape: [hook_question, the_news, 2_facts_as_chips, what_it_means, comment_prompt, send_to_friend]
+hook_examples:
+  - "Alien-aiyum kalaaippaaraa?"
+  - "Old team. New chapter."
+proof_required: 2       # trusted sources that must agree
+meme_use: ending_only
+trend_hooks: true
+success_metric: sends_per_reach
+done_well: ["TAMIZH_PADAM_3_News_07Nov2026_Tamil.mp4"]
+rules:
+  - "Unconfirmed = say 'reportedly' or skip."
+  - "Show dates and names as chips."
+  - "End with a light, no-fan-war question."
