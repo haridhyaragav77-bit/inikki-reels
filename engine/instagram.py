@@ -21,15 +21,41 @@ def plain_error(j):
     return msg
 
 
+ROUTES = {"instagram_login": "https://graph.instagram.com", "facebook_login": "https://graph.facebook.com"}
+
+
 class Instagram:
+    """Works with either kind of Meta token:
+    - Instagram Login (graph.instagram.com), the route in the design
+    - Facebook Login / System User (graph.facebook.com), which needs the account linked to a Facebook Page
+    The route is found by probing once; the same calls work on both."""
+
     def __init__(self):
         self.token = secret("IG_ACCESS_TOKEN")
         self.user_id = secret("IG_USER_ID")
         if not self.token or not self.user_id:
             raise InstagramError("Missing secret " + ", ".join(n for n in ["IG_ACCESS_TOKEN", "IG_USER_ID"] if not secret(n)))
-        self.base = ENGINE["instagram"]["base"]
         self.versions = list(ENGINE["instagram"]["api_versions"])
         self.version = self.versions[0]
+        self.route, self.base = self._probe()
+        self.note = ""
+
+    def _probe(self):
+        for route, host in ROUTES.items():
+            fields = "id,username" if route == "instagram_login" else "id,name"
+            try:
+                r = requests.get(f"{host}/{self.version}/me", params={"fields": fields, "access_token": self.token}, timeout=30).json()
+            except Exception:
+                continue
+            if "error" not in r:
+                return route, host
+        return "instagram_login", ROUTES["instagram_login"]
+
+    def resolve_user(self):
+        """Facebook route: find the Instagram professional account behind the token's Pages."""
+        j = self.get("me/accounts", fields="name,instagram_business_account{id,username,followers_count,media_count}", limit=50)
+        found = [(p["instagram_business_account"], p.get("name")) for p in j.get("data", []) if p.get("instagram_business_account")]
+        return found
 
     def get(self, path, **params):
         params["access_token"] = self.token
@@ -51,6 +77,18 @@ class Instagram:
         raise InstagramError(plain_error(last))
 
     def me(self):
+        if self.route == "facebook_login":
+            try:
+                return self.get(self.user_id, fields="id,username,name,followers_count,follows_count,media_count")
+            except InstagramError as e:
+                found = self.resolve_user()
+                if not found:
+                    raise InstagramError(f"{e} No Instagram professional account is linked to a Facebook Page this token can see. "
+                                         "Link @inikki_reels to a Facebook Page (Instagram app > Settings > Business tools), or use an Instagram-login token.")
+                acct, page = found[0]
+                self.note = f"IG_USER_ID did not match; the token sees @{acct.get('username')} (id {acct['id']}) through the Page '{page}'. Update the secret IG_USER_ID to {acct['id']}."
+                self.user_id = acct["id"]
+                return self.get(self.user_id, fields="id,username,name,followers_count,follows_count,media_count")
         return self.get(self.user_id, fields="user_id,username,name,account_type,followers_count,follows_count,media_count")
 
     def media(self, limit=10):
@@ -112,8 +150,8 @@ class Instagram:
             except Exception as e:
                 out["token_check"] = str(e)[:160]
         if out.get("facebook_login") == "ok" and out.get("instagram_login") != "ok":
-            out["verdict"] = ("This is a Facebook-login token, but the Engine uses 'Instagram API with Instagram Login'. "
-                              "Make the token from the Instagram login side of the Meta app (API setup with Instagram login > Generate token).")
+            out["verdict"] = ("This is a Facebook-side token (it works, and it never expires). The Engine now uses it through Facebook's door. "
+                              "For stats it also needs the permission instagram_manage_insights; add it when you regenerate the token.")
         elif isinstance(out.get("token_check"), dict) and out["token_check"].get("valid") is False:
             out["verdict"] = "The token has expired or was revoked. Generate a new one and update the secret IG_ACCESS_TOKEN."
         elif "Cannot parse" in str(out.get("instagram_login", "")) or "Invalid OAuth" in str(out.get("instagram_login", "")):

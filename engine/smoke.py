@@ -75,27 +75,44 @@ def t_drive_write():
         result("Drive: write", False, "Skipped because Drive read failed.")
         return
     from .drive import plain_error
+    import json
+    made = []
     try:
         made = d.ensure_tree()
+    except Exception as e:
+        print("ensure_tree:", e, file=sys.stderr)
+    # Part 1: update a status file that already exists (allowed even for the robot account)
+    can_update, upd_msg = False, ""
+    try:
+        existing = d.read_json("status", "smoke.json")
+        if existing is not None:
+            d.write_json("status", "smoke.json", {"note": "write test", "at": status.stamp()})
+            can_update = True
+        else:
+            upd_msg = "no status/smoke.json to update yet"
+    except Exception as e:
+        upd_msg = plain_error(e)
+    # Part 2: create a brand-new file (needed for reels, images, voice)
+    try:
         f = d.write_text("rehearsal", "smoke_hello.txt", f"iNiKKi Reels smoke test at {status.stamp()}\n")
         CTX["drive_writable"] = True
-        # Seed the master switch if the Control Room has not written it yet
         if not d.read_json("control", "switch.json"):
-            import json
             seed = json.load(open(os.path.join(os.path.dirname(__file__), "seed", "control", "switch.json"), encoding="utf-8"))
-            seed["at"] = status.stamp()
-            seed["set_by"] = "engine (starter value)"
+            seed["at"], seed["set_by"] = status.stamp(), "engine (starter value)"
             d.write_json("control", "switch.json", seed)
-        result("Drive: write", True, f"Wrote a test file into rehearsal/ ({d.link(f['id'])}). "
-               + (f"Created folders: {', '.join(made)}." if made else "All folders already existed."))
+        result("Drive: write", True, f"New files can be created ({d.link(f['id'])}); status files can be updated: {'yes' if can_update else upd_msg}. "
+               + (f"Created folders: {', '.join(made)}." if made else ""))
     except Exception as e:
         CTX["drive_writable"] = False
+        CTX["drive_can_update"] = can_update
         msg = plain_error(e)
+        detail = (f"Updating existing status files: {'works' if can_update else 'no (' + upd_msg + ')'}. "
+                  f"Creating new files (reels, images, voice): no. {msg}")
         nxt = ""
         if "storage limit" in msg:
-            nxt = ("Switch to your own sign-in: on your laptop run  python tools/drive_signin.py  (it prints the steps), "
+            nxt = ("Switch the Engine to your own sign-in: on your laptop run  python tools/drive_signin.py  (it prints the steps), "
                    "then add the secret GDRIVE_OAUTH_REFRESH_TOKEN and run the smoke test again.")
-        result("Drive: write", False, msg, nxt)
+        result("Drive: write", False, detail, nxt)
 
 
 def t_sheet():
@@ -195,16 +212,24 @@ def t_instagram():
         return
     media = ig.media(8)
     reels = [m for m in media if m.get("media_product_type") == "REELS" or m.get("media_type") == "VIDEO"]
+    route = "Instagram login" if ig.route == "instagram_login" else "Facebook login (Page-linked)"
     detail = (f"Account @{me.get('username')}: {me.get('followers_count')} followers, {me.get('media_count')} posts "
-              f"(API {ig.version}). Latest {len(media)} posts read.")
-    metrics_ok = []
+              f"(API {ig.version}, {route}). Latest {len(media)} posts read.")
+    if ig.note:
+        detail += " " + ig.note
+    metrics_ok, nxt, ok = [], "", True
     if reels:
-        ins, metrics_ok = ig.insights(reels[0]["id"])
-        shown = ", ".join(f"{k} {v}" for k, v in list(ins.items())[:6])
-        detail += f" Newest reel: {shown}. Metrics the API gives: {', '.join(metrics_ok)}."
+        try:
+            ins, metrics_ok = ig.insights(reels[0]["id"])
+            shown = ", ".join(f"{k} {v}" for k, v in list(ins.items())[:6])
+            detail += f" Newest reel: {shown}. Metrics the API gives: {', '.join(metrics_ok)}."
+        except InstagramError as e:
+            ok = False
+            detail += f" Reel stats could not be read: {e}"
+            nxt = "Regenerate the token with the permission instagram_manage_insights added (stats need it), then update the secret IG_ACCESS_TOKEN."
     CTX["ig"] = {"username": me.get("username"), "followers": me.get("followers_count"), "posts": me.get("media_count"),
-                 "api_version": ig.version, "reel_metrics": metrics_ok}
-    result("Instagram numbers (read only)", True, detail)
+                 "api_version": ig.version, "route": ig.route, "reel_metrics": metrics_ok, "note": ig.note}
+    result("Instagram numbers (read only)", ok, detail, nxt)
 
 
 def t_runner():
