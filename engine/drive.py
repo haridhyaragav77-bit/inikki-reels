@@ -22,7 +22,7 @@ SCOPES = ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/a
 FOLDER = "application/vnd.google-apps.folder"
 SHORTCUT = "application/vnd.google-apps.shortcut"
 SHEET = "application/vnd.google-apps.spreadsheet"
-FIELDS = "id,name,mimeType,size,modifiedTime,shortcutDetails,parents"
+FIELDS = "id,name,mimeType,size,modifiedTime,shortcutDetails,parents,owners(emailAddress)"
 
 
 class DriveError(Exception):
@@ -120,7 +120,8 @@ class Drive:
         items = self._list(q)
         if not items:
             return None
-        it = items[0]
+        # When names clash, prefer the item Harish owns over one the robot account made
+        it = sorted(items, key=lambda x: self._is_mine(x))[0]
         if it["mimeType"] == SHORTCUT and it.get("shortcutDetails"):
             it["id"] = it["shortcutDetails"]["targetId"]
             it["mimeType"] = it["shortcutDetails"].get("targetMimeType", it["mimeType"])
@@ -144,8 +145,36 @@ class Drive:
         self._folders[path] = f["id"]
         return f["id"]
 
+    def _is_mine(self, item):
+        mine = self.who() if self.mode == "service_account" else None
+        return bool(mine) and any(o.get("emailAddress") == mine for o in item.get("owners", []))
+
+    def tidy_duplicates(self):
+        """Trash empty folders the robot account made when Harish already has one with the same name."""
+        if self.mode != "service_account":
+            return []
+        seen, trashed = {}, []
+        for it in self.children(self.root, resolve_shortcuts=False):
+            if it["mimeType"] != FOLDER:
+                continue
+            seen.setdefault(it["name"], []).append(it)
+        for name, items in seen.items():
+            if len(items) < 2:
+                continue
+            for it in items:
+                if self._is_mine(it) and not self.children(it["id"]):
+                    self.trash(it["id"])
+                    trashed.append(name)
+                    self._folders.pop(name, None)
+        return trashed
+
     def ensure_tree(self):
         made = []
+        try:
+            for n in self.tidy_duplicates():
+                made.append(f"removed duplicate {n}")
+        except HttpError as e:
+            made.append(f"could not tidy: {plain_error(e)}")
         for p in ENGINE["drive"]["folders"]:
             if p == "music" and self.music_folder():
                 continue
