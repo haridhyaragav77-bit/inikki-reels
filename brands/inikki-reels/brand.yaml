@@ -1,0 +1,13 @@
+name: "iNiKKi Reels"
+handle: "@inikki_reels"
+tagline: "Tamil cinema, broken down."
+bio: "Tamil cinema, broken down. Daily breakdowns, updates and Guess the Movie."
+mascot: "ticket.png"        # yellow ticket with a smile
+voice: { is: [curious, warm, sharp], never: [gossip, fan_wars, insults], persona: "the cinema-mad friend" }
+colors: { primary: "#F8C028", gold: "#F8C868", teal: "#78E0D0", navy: "#0A0F18", violet: "#211937", alert: "#E5484D", text: "#FFFFFF", muted: "#A7AFC2" }
+fonts: { cinematic: "Anton", card: "Inter", tamil: "Noto Sans Tamil" }
+text_order: [kicker, headline, tamil_line]
+sign_off: { pill: "SEND TO THAT FRIEND", show_mascot: true }
+series_tag_prefix: "#iNiKKi"
+caption_style: { emoji_max: 2, lines: [hook_reworded, value_with_keywords, question, call], hashtags: [3, 5] }
+safe_zones: { top: 250, bottom: 380, right: 120, cover_3x4: true }
