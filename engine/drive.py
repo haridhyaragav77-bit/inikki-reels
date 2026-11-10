@@ -62,14 +62,11 @@ class Drive:
     def _credentials():
         tok = secret("GDRIVE_OAUTH_REFRESH_TOKEN")
         if tok:
-            try:
-                d = json.loads(tok)
-                c = oauth_credentials.Credentials(
-                    None, refresh_token=d["refresh_token"], token_uri="https://oauth2.googleapis.com/token",
-                    client_id=d["client_id"], client_secret=d["client_secret"], scopes=SCOPES)
-                return "harish_signin", c
-            except (ValueError, KeyError) as e:
-                raise DriveError(f"GDRIVE_OAUTH_REFRESH_TOKEN is not the one-line JSON that tools/drive_signin.py prints ({e})")
+            d = Drive._parse_signin(tok)
+            c = oauth_credentials.Credentials(
+                None, refresh_token=d["refresh_token"], token_uri="https://oauth2.googleapis.com/token",
+                client_id=d["client_id"], client_secret=d["client_secret"], scopes=SCOPES)
+            return "harish_signin", c
         sa = secret("GDRIVE_SERVICE_ACCOUNT_JSON")
         if sa:
             try:
@@ -78,6 +75,29 @@ class Drive:
                 raise DriveError(f"GDRIVE_SERVICE_ACCOUNT_JSON is not valid JSON ({e})")
             return "service_account", service_account.Credentials.from_service_account_info(info, scopes=SCOPES)
         raise DriveError("No Drive key. Add the secret GDRIVE_SERVICE_ACCOUNT_JSON.")
+
+    @staticmethod
+    def _parse_signin(tok):
+        """Accept the one line drive_signin.py prints, or the whole printout it sits in. Say what was pasted otherwise, without revealing it."""
+        import re
+        m = re.search(r"\{[^{}]*refresh_token[^{}]*\}", tok, re.S)
+        if m:
+            try:
+                d = json.loads(m.group(0))
+                if all(k in d for k in ("client_id", "client_secret", "refresh_token")):
+                    return d
+            except ValueError:
+                pass
+        shape = f"{len(tok)} characters, starts with '{tok[:4]}'"
+        if tok.startswith("1//"):
+            hint = "This looks like only the refresh token. The secret must be the whole line the script prints, which also holds client_id and client_secret."
+        elif '"installed"' in tok or '"web"' in tok:
+            hint = "This looks like the downloaded client_secret file. That file is not the secret: run  python tools/drive_signin.py  with the file next to it, sign in, and paste the single line it prints at the end."
+        elif tok.startswith("ya29"):
+            hint = "This looks like a short-lived access token. Run  python tools/drive_signin.py  and paste the single line it prints at the end."
+        else:
+            hint = "Run  python tools/drive_signin.py  on your laptop and paste the single line it prints at the end (it starts with {\"client_id\")."
+        raise DriveError(f"The secret GDRIVE_OAUTH_REFRESH_TOKEN is not in the expected shape ({shape}). {hint}")
 
     def who(self):
         """Email the Engine is signed in as."""
