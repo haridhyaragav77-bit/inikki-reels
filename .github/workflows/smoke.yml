@@ -1,6 +1,10 @@
 name: smoke
 # Phase 1 smoke tests (AGENT.md Block A). Nothing is posted publicly.
 on:
+  # A push of this file on the build branch registers the workflow and runs it (no image spent).
+  push:
+    branches: [claude/inikki-reels-agent-12snwj]
+    paths: [".github/workflows/smoke.yml"]
   workflow_dispatch:
     inputs:
       tests:
