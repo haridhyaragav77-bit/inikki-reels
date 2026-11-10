@@ -42,8 +42,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - name: Install the Engine's libraries
-        run: pip install -q -r requirements.txt
+      - name: Install ffmpeg, Tamil fonts and the Engine's libraries
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq ffmpeg fonts-noto-core >/dev/null
+          pip install -q -r requirements.txt
       - name: Run the smoke tests
         run: python -m engine.smoke --tests "${{ inputs.tests }}" --image "${{ inputs.spend_on_image }}"
       - name: Keep the results (report, voice clip, image, clip)

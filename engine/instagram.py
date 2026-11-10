@@ -82,6 +82,47 @@ class Instagram:
                 raise
         return {}, wanted
 
+    def diagnose(self):
+        """When the token is refused: say which kind of token it is and what to do, in plain words."""
+        out = {}
+        try:
+            r = requests.get(f"{self.base}/{self.version}/me", params={"fields": "id,username", "access_token": self.token}, timeout=30).json()
+            out["instagram_login"] = "ok" if "error" not in r else r["error"].get("message", "")[:160]
+        except Exception as e:
+            out["instagram_login"] = str(e)[:160]
+        try:
+            r = requests.get(f"https://graph.facebook.com/{self.version}/me", params={"fields": "id,name", "access_token": self.token}, timeout=30).json()
+            out["facebook_login"] = "ok" if "error" not in r else r["error"].get("message", "")[:160]
+        except Exception as e:
+            out["facebook_login"] = str(e)[:160]
+        app_id, app_secret = secret("META_APP_ID"), secret("META_APP_SECRET")
+        if app_id and app_secret:
+            try:
+                r = requests.get(f"https://graph.facebook.com/{self.version}/debug_token",
+                                 params={"input_token": self.token, "access_token": f"{app_id}|{app_secret}"}, timeout=30).json()
+                d = r.get("data", {})
+                if d:
+                    import datetime as dt
+                    exp = d.get("expires_at")
+                    out["token_check"] = {"valid": d.get("is_valid"), "type": d.get("type"), "app_id": str(d.get("app_id")),
+                                          "expires": dt.datetime.utcfromtimestamp(exp).strftime("%d %b %Y") if exp else "never",
+                                          "scopes": d.get("scopes", []), "error": (d.get("error") or {}).get("message")}
+                else:
+                    out["token_check"] = r.get("error", {}).get("message", str(r))[:160]
+            except Exception as e:
+                out["token_check"] = str(e)[:160]
+        if out.get("facebook_login") == "ok" and out.get("instagram_login") != "ok":
+            out["verdict"] = ("This is a Facebook-login token, but the Engine uses 'Instagram API with Instagram Login'. "
+                              "Make the token from the Instagram login side of the Meta app (API setup with Instagram login > Generate token).")
+        elif isinstance(out.get("token_check"), dict) and out["token_check"].get("valid") is False:
+            out["verdict"] = "The token has expired or was revoked. Generate a new one and update the secret IG_ACCESS_TOKEN."
+        elif "Cannot parse" in str(out.get("instagram_login", "")) or "Invalid OAuth" in str(out.get("instagram_login", "")):
+            out["verdict"] = ("Instagram cannot read this token at all. Most likely it was copied incompletely or it is not an Instagram token. "
+                              "Generate a fresh token for @inikki_reels and paste the whole thing into the secret IG_ACCESS_TOKEN.")
+        else:
+            out["verdict"] = "The token was refused. Generate a fresh one and update the secret IG_ACCESS_TOKEN."
+        return out
+
     def account_insights(self):
         j = self.get(f"{self.user_id}/insights", metric="reach,views", period="day", metric_type="total_value")
         return {d["name"]: d.get("total_value", {}).get("value") for d in j.get("data", [])}

@@ -104,7 +104,13 @@ def t_sheet():
         result("Dashboard sheet", False, "Skipped because Drive read failed.")
         return
     from .sheets import Dashboard
-    db = Dashboard(d)
+    from .drive import DriveError
+    try:
+        db = Dashboard(d)
+    except DriveError as e:
+        msg, _, fix = str(e).partition(" Quick fix: ")
+        result("Dashboard sheet", False, msg, fix or "")
+        return
     added = db.ensure_tabs()
     db.append("Home", [["Smoke test", status.stamp(), "OK: the Engine can write to this sheet"]])
     CTX["sheet"] = db.link()
@@ -149,7 +155,15 @@ def t_image(spend):
 def t_clip():
     from . import clips
     q = ENGINE["clips"]["smoke_query"]
-    meta = clips.lookup(q)
+    try:
+        meta = clips.lookup(q)
+    except RuntimeError as e:
+        if "not a bot" in str(e) or "Sign in" in str(e):
+            result("One trailer clip (YouTube)", False,
+                   "YouTube blocks downloads from GitHub's cloud computers (it asks to 'confirm you are not a bot'). This is common and was planned for.",
+                   "The Engine uses the clip library in Drive instead (clip-library/). Trailers get into it from your laptop with one click (helper comes in Phase 2) or by dropping files into clip-library/inbox/.")
+            return
+        raise
     out = str(OUTDIR / "clip_test.mp4")
     clips.fetch(meta["url"], 5, ENGINE["clips"]["smoke_seconds"], out)
     secs = clips.duration(out)
@@ -166,9 +180,19 @@ def t_clip():
 
 
 def t_instagram():
-    from .instagram import Instagram
+    from .instagram import Instagram, InstagramError
     ig = Instagram()
-    me = ig.me()
+    try:
+        me = ig.me()
+    except InstagramError as e:
+        diag = ig.diagnose()
+        CTX["ig_diagnosis"] = diag
+        chk = diag.get("token_check")
+        extra = ""
+        if isinstance(chk, dict):
+            extra = f" Token check: valid={chk.get('valid')}, type={chk.get('type')}, expires {chk.get('expires')}, permissions {', '.join(chk.get('scopes') or []) or 'none listed'}."
+        result("Instagram numbers (read only)", False, f"{e}{extra}", diag.get("verdict", ""))
+        return
     media = ig.media(8)
     reels = [m for m in media if m.get("media_product_type") == "REELS" or m.get("media_type") == "VIDEO"]
     detail = (f"Account @{me.get('username')}: {me.get('followers_count')} followers, {me.get('media_count')} posts "
