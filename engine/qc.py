@@ -99,4 +99,5 @@ def check(final_mp4, res, series, template_flags, cover_path):
     if stand_ins:
         problems.append(f"{stand_ins} picture(s) are stand-ins, not real images")
 
-    return {"pass": not problems, "problems": problems, "warnings": warnings, "checks": checks}
+    stand_in_only = bool(problems) and all("stand-in" in p for p in problems)     # a test run with stand-ins is held, but nothing is broken
+    return {"pass": not problems, "problems": problems, "warnings": warnings, "checks": checks, "stand_in_only": stand_in_only}

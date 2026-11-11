@@ -4,7 +4,7 @@ name: render
 on:
   push:                       # registers the workflow; this run uses stand-in pictures (no keys, no spend)
     branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/render.yml"]
+    paths: [".github/workflows/render.yml", "templates/**", "engine/render.py", "engine/assets.py", "engine/audio.py", "engine/depth.py"]
   workflow_dispatch:
     inputs:
       plans:
@@ -59,6 +59,9 @@ jobs:
           python -m playwright install --with-deps chromium >/dev/null
       - name: Check the plans against the rules
         run: python -m engine.plancheck --selftest $PLANS
+      - name: Same plan, same picture (only on the test run after a template change)
+        if: github.event_name == 'push'
+        run: python -m engine.golden
       - name: Make the reels
         run: |
           if [ -n "$TO_DRIVE" ] && [ -z "$STAND_INS" ]; then python -m engine.render $PLANS --to-drive "$TO_DRIVE"; else python -m engine.render $PLANS $STAND_INS; fi

@@ -8,11 +8,11 @@ A self-running Tamil cinema Instagram page (@inikki_reels).
 - `team/` — one card per role
 - `brands/inikki-reels/` — brand kit, colours, fonts, image styles
 - `niches/tamil-cinema/` — niche profile, series, lineups, film bank, sources, meme index
-- `rules/` — playbook, viral-factor list, change log
+- `rules/` — playbook, viral-factor list, motion-graphics library, change log
 - `lab/` — ideas, pitches and pilot results for new series
-- `plans/` — one small plan per reel, written by the Brain
+- `plans/` — one small plan per reel, written by the Brain (`plans/reference/` holds the three golden reels)
 - `data/` — brief, metrics and feedback (text only)
 - `engine/`, `templates/`, `.github/workflows/` — the Engine (code)
 - `.claude/skills/` — the saver skills the Brain uses
-- `tools/` — the voice tool
+- `tools/` — the voice tool, the trailer helper for your laptop, the Drive sign-in helper
 - `archive/v1/` — the earlier design, kept for reference
