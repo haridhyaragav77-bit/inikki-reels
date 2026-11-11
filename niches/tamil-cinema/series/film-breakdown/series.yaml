@@ -5,6 +5,7 @@ priority: 1            # the page's main product
 badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE FILMMAKING BREAKDOWN", "THE CINEMATOGRAPHY BREAKDOWN"], color: gold }
 per_day: 2
 slots: ["12:30", "20:00"]
+hook: clap               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
 visuals: clips
 voice: true

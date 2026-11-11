@@ -11,6 +11,8 @@ voice: false
 length_s: [28, 32]
 image_cap_per_reel: 4   # one image per clue + reveal; depth layers are made by code, free
 image_style: diorama_moody
+hook: thunder            # visual hook for the first second; a plan may pick one that fits the film
+look: 3d                 # each clue is a 3D scene the camera travels through (AGENT.md 5.8)
 story_shape: [title_clue1, clue2, clue3, lock_answer_countdown, reveal_title_year, comment_1_2_3]
 clue_order: easy_to_hard   # Lab may test hard_to_easy
 lead_sources: [trends, anniversaries, birthdays, re_releases, film_bank]

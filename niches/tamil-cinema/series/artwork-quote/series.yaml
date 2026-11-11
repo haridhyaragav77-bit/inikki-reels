@@ -5,6 +5,7 @@ badge: { text: "FRAME & LINE", color: soft_gold }
 per_day: 0              # flex: switches on after a dull stretch of 2-3 days
 trigger: dull_streak
 slots: ["17:00"]
+hook: spotlight               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: cinematic
 visuals: ai_images
 voice: false

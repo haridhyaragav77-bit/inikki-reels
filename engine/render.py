@@ -213,10 +213,11 @@ def resolve(plan, work, local, drive=None, budget=None):
                 im.update(A.image(im, counter["img"], style_default, image_cap))
                 if template in ("diorama", "cinematic"):
                     from . import depth
-                    im["layers"], im["depth_source"] = depth.layers(im["src"], os.path.join(work, f"layers_{v['image']:02d}"), local=local)
+                    im["layers"], im["depth_source"], extra = depth.layers(im["src"], os.path.join(work, f"layers_{v['image']:02d}"), local=local)
+                    im.update(extra)        # depth map + painted-over background, for the 3D scenes
                     if im["depth_source"] != "model" and not local:
                         A.notes.append(f"Scene {v['image'] + 1}: the depth model was not available, so a simpler layered look was used.")
-            out.update({k: im[k] for k in ("src", "source", "style", "layers", "focus", "move") if k in im})
+            out.update({k: im[k] for k in ("src", "source", "style", "layers", "depth", "far", "focus", "move", "weather") if k in im})
         elif kind == "image":
             counter["img"] += 1
             out.update(A.image(v, counter["img"], style_default, image_cap))

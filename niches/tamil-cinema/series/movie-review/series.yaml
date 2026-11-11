@@ -5,6 +5,7 @@ badge: { text: "FIRST VERDICT", color: violet }
 per_day: 0              # flex: 1 on release days, max 2 on event days
 trigger: release_day
 slots: ["11:00", "17:00"]
+hook: spotlight               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
 visuals: mixed          # trailer clips + 1-2 AI hype art images
 voice: false

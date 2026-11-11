@@ -4,6 +4,7 @@ status: live
 badge: { text: "BREAKING", color: red }
 per_day_max: 2
 trigger: watcher_or_brain_run
+hook: impact               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
 visuals: mixed
 voice: false

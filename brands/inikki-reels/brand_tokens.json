@@ -1,15 +1,15 @@
 {
-  "_note": "Colours sampled from Harish's sample reels and the ticket mascot (10 Nov 2026). Fonts are free Google Fonts; the build may swap to the closest match of the samples.",
+  "_note": "Colours sampled from Harish's sample reels and the ticket mascot (10 Nov 2026). Fonts are free Google Fonts; the build may swap to the closest match of the samples. 11 Nov 2026: brighter page and glow colours added at Harish's request (rules/changes.md #1).",
   "color": {
     "ticket_yellow": "#F8C028",
     "reel_gold": "#F8C868",
     "signal_teal": "#78E0D0",
     "night_navy": "#0A0F18",
     "deep_violet": "#211937",
-    "card_surface": "#10131E",
-    "card_border": "#2A2F45",
+    "card_surface": "#141A3A",
+    "card_border": "#3A4270",
     "text_primary": "#FFFFFF",
-    "text_muted": "#A7AFC2",
+    "text_muted": "#B4BCD0",
     "breaking_red": "#E5484D",
     "badge": {
       "film-breakdown": "#F8C868",
@@ -19,17 +19,24 @@
       "movie-review": "#A78BFA",
       "artwork-quote": "#E8D29A",
       "breaking-news": "#E5484D"
-    }
+    },
+    "marquee_indigo": "#1A1E4E",
+    "screen_violet": "#7B5CFF"
   },
   "gradient": {
     "card_background": [
-      "#0A0F18",
-      "#10131E",
-      "#211937"
+      "#0C1030",
+      "#1A1E4E",
+      "#3A2596"
     ],
     "cinematic_bottom_scrim": [
       "rgba(10,15,24,0)",
       "rgba(10,15,24,0.92)"
+    ],
+    "previous_card_background": [
+      "#0A0F18",
+      "#10131E",
+      "#211937"
     ]
   },
   "font": {
@@ -95,7 +102,9 @@
     "chip_pop_ms": 200,
     "beat_swap_ms": 350,
     "min_visual_change_s": 2.0,
-    "max_visual_change_s": 3.0
+    "max_visual_change_s": 3.0,
+    "hook_s": 0.9,
+    "transition_ms": 320
   },
   "sign_off": {
     "mascot": "ticket smiley (profile picture)",

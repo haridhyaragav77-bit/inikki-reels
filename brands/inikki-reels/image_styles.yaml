@@ -8,7 +8,7 @@ cinematic_real:      # VJS Second Tier, Petta
 arcane_painterly:    # Vikram Sethu
   look: "painterly animated-film look, textured brushwork, moody teal shadows, warm highlights, rain-soaked old theatre"
   people: "stylised character inspired by era and look"
-diorama_moody:       # Guess the Movie
-  look: "miniature tabletop diorama / isometric miniature set, tilt-shift, volumetric fog, practical lamps, moody night palette, clean subject separation for depth layering"
-  people: "faceless mannequin-style figures or silhouettes only"
-  layering_hint: "strong foreground object, clear midground, simple background, so a depth model can split layers cleanly"
+diorama_moody:       # Guess the Movie: must read as a 3D render, like a film set in miniature
+  look: "stylised 3D animated-film render of a miniature film set, like a high-end Blender or Unreal cinematic: clean modelled shapes, toy-like vehicles and props, soft global illumination, practical lamps and glowing lights, volumetric fog, shallow depth of field, rich saturated colour against a deep night sky, strong rim light on the main object"
+  people: "no real faces: small stylised figures seen from behind or as silhouettes only"
+  layering_hint: "one clear main object in the middle ground, a strong foreground element near the bottom edge, a simple far background, so the camera can travel through the scene"

@@ -1,7 +1,7 @@
 """Depth layers for a still picture, so near and far parts can move at different speeds
 (AGENT.md 5.7; archive 13.3). Free: a small depth model on the runner's CPU, no keys.
 
-    layers(image, outdir) → ([{"src": file, "depth": 0..1}, ...] far → near, source)
+    layers(image, outdir) → ([{"src": file, "depth": 0..1}, ...] far → near, source, {"depth": map, "far": painted-over background})
 
 source is "model" when the depth model ran, "simple" when it was not available and a simpler split was
 used (the reel still renders: fail soft)."""
@@ -149,8 +149,13 @@ def layers(image_path, outdir, local=False):
     d, source = depth_map(img, local)
     if source == "simple" and not local:
         # no depth model: do not guess a split (it would show seams); the picture moves as one piece instead
-        return [{"src": image_path, "depth": 0.5}], source
+        return [{"src": image_path, "depth": 0.5}], source, {}
     d = _blur(d, max(2.0, img.width / 300))
+    # the depth map itself, for the 3D scenes (white = near). Stretched to use the full range.
+    lo, hi = np.quantile(d, [0.01, 0.99])
+    dn = np.clip((d - lo) / max(1e-6, hi - lo), 0, 1)
+    depth_png = os.path.join(outdir, "depth.png")
+    Image.fromarray((dn * 255).astype(np.uint8)).save(depth_png)
     t1, t2 = _cuts(d)
 
     def alpha(mask):
@@ -170,4 +175,4 @@ def layers(image_path, outdir, local=False):
     p = os.path.join(outdir, "near.png")
     Image.fromarray(np.dstack([rgb, alpha(near)])).save(p, compress_level=1)
     out.append({"src": p, "depth": 1.0})
-    return out, source
+    return out, source, {"depth": depth_png, "far": os.path.join(outdir, "far.jpg")}

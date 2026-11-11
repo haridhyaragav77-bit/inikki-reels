@@ -11,7 +11,8 @@ length_s: [40, 45]
 image_cap_per_reel: 7   # each image carries 2 text beats
 image_style_options: [painterly_warm, cinematic_real, arcane_painterly]
 lead_sources: [interviews, old_articles, anniversaries, trends]
-story_shape: [hook_number_or_question, humble_start, the_struggle, the_turn, the_break, payoff, share_question]
+story_shape: [hook_without_the_name, humble_start, the_struggle, the_turn, the_break, payoff, name_reveal, share_question]
+hook: spotlight          # visual hook for the first second (rules/motion.md); a plan may pick another that fits the story
 hook_examples:
   - "Why did Suriya need ₹25,000?"
   - "Vijay Sethupathi was sent back to his seat."
@@ -25,6 +26,7 @@ meme_use: never
 success_metric: sends_per_reach
 done_well: ["Vijay_Sethupathi_The_Second_Tier_45s.mp4", "Suriya_Scene_45s_NoMusic.mp4", "Petta_The_Prank_Call_Marana_Mass_45s.mp4", "Vikram_Sethu_Arcane_Animated_45s.mp4", "Bhaskar_The_Mute_Button_45s.mp4", "Vijay_Sethupathi_Theatre_Accountant_45s_NoMusic.mp4"]
 rules:
+  - "Keep the person unnamed until the reveal near the end: 'None other than …'. Curiosity carries the reel."
   - "Every fact needs a source (interview, article); keep links in the plan."
   - "Real people as inspired-by illustrations only."
   - "The ending question must name a person the viewer will think of."
