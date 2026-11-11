@@ -56,6 +56,15 @@ def check(plan):
         if tamil and not TAMIL.search(tamil):
             E.append(f"Screen {n}: the Tamil {what} is not in Tamil script.")
 
+    hooks = set(re.findall(r"^    (\w+)\(host", (ROOT / "templates" / "common" / "hooks.js").read_text(encoding="utf-8"), re.M))
+    hook = plan.get("hook") or series.get("hook")
+    if not hook:
+        E.append("No visual hook for the first second. Give the plan a hook (rules/motion.md), or set one on the series card.")
+    elif hook not in hooks:
+        E.append(f"'{hook}' is not a visual hook. Use one of: {', '.join(sorted(hooks))}.")
+    if "name_reveal" in (series.get("story_shape") or []) and not any((s.get("motion") or {}).get("type") == "reveal" for s in screens if isinstance(s.get("motion"), dict)):
+        E.append("This story never says who it is. Add a reveal beat near the end (motion 'reveal': \"None other than …\").")
+
     if template == "card":
         names = set(F["motions"])
         for i, s in enumerate(screens):

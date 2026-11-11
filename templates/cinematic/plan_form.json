@@ -4,23 +4,87 @@
   "series": "<series id>",
   "template": "cinematic",
   "post_at": "YYYY-MM-DDTHH:MM:00+05:30",
-  "lead": {"topic": "", "score": 0, "sources": ["every fact needs one"]},
-  "music": {"mood": "emotional_build"},
+  "lead": {
+    "topic": "",
+    "score": 0,
+    "sources": [
+      "every fact needs one"
+    ]
+  },
+  "music": {
+    "mood": "emotional_build"
+  },
   "images": [
-    {"prompt": "what the picture shows. Real people as inspired-by illustrations only: describe era, clothes, setting, not a name.", "style": "painterly_warm | cinematic_real | arcane_painterly", "move": "optional: push | pull | left | right", "focus": [0.5, 0.4], "fresh": "optional true: make this picture again instead of reusing the one already made for this reel"}
+    {
+      "prompt": "what the picture shows. Real people as inspired-by illustrations only: describe era, clothes, setting, not a name.",
+      "style": "painterly_warm | cinematic_real | arcane_painterly",
+      "move": "optional: push | pull | left | right",
+      "focus": [
+        0.5,
+        0.4
+      ],
+      "fresh": "optional true: make this picture again instead of reusing the one already made for this reel"
+    }
   ],
   "screens": [
-    {"dur": 3.2, "image": 0, "kicker": "WHERE OR WHEN", "line": "The white line sets it up", "headline": "THE GOLD LINE LANDS.", "tamil": "தமிழ் வரி.", "motion": "slam"},
-    {"dur": 3.2, "image": 0, "kicker": "…", "line": "He needed only", "headline": "₹{n}.", "tamil": "…", "motion": {"type": "count", "to": 25000}},
-    {"dur": 4.0, "image": 1, "kicker": "…", "line": "The last line names a person", "headline": "KNOW SOMEONE LIKE THIS?", "tamil": "…", "motion": "question"}
+    {
+      "dur": 3.2,
+      "image": 0,
+      "kicker": "WHERE OR WHEN",
+      "line": "The white line sets it up",
+      "headline": "THE GOLD LINE LANDS.",
+      "tamil": "தமிழ் வரி.",
+      "motion": "slam"
+    },
+    {
+      "dur": 3.2,
+      "image": 0,
+      "kicker": "…",
+      "line": "He needed only",
+      "headline": "₹{n}.",
+      "tamil": "…",
+      "motion": {
+        "type": "count",
+        "to": 25000
+      }
+    },
+    {
+      "dur": 4.0,
+      "image": 1,
+      "kicker": "…",
+      "line": "The last line names a person",
+      "headline": "KNOW SOMEONE LIKE THIS?",
+      "tamil": "…",
+      "motion": "question"
+    }
   ],
-  "caption": {"text": "", "hashtags": [], "first_comment": ""},
-  "cover": {"screen": 1},
+  "caption": {
+    "text": "",
+    "hashtags": [],
+    "first_comment": ""
+  },
+  "cover": {
+    "screen": 1
+  },
   "motions": {
-    "slam": {"shows": "the gold headline lands hard (default)"},
-    "count": {"shows": "the number at {n} in the headline counts up; to, from, prefix, suffix"},
-    "stamp": {"shows": "one word stamped across the picture: stamp, at [x,y]"},
-    "underline": {"shows": "a line sweeps under the *starred* word"},
-    "question": {"shows": "the final beat, with the send pill"}
-  }
+    "slam": {
+      "shows": "the gold headline lands hard (default)"
+    },
+    "count": {
+      "shows": "the number at {n} in the headline counts up; to, from, prefix, suffix"
+    },
+    "stamp": {
+      "shows": "one word stamped across the picture: stamp, at [x,y]"
+    },
+    "underline": {
+      "shows": "a line sweeps under the *starred* word"
+    },
+    "question": {
+      "shows": "the final beat, with the send pill"
+    },
+    "reveal": {
+      "shows": "the name reveal near the end: line 'None other than', headline = the name. The picture dims, the name lands with a flash"
+    }
+  },
+  "hook": "spotlight | thunder | flare | impact | clap (default comes from the series card)"
 }

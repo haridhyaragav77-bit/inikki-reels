@@ -27,7 +27,7 @@ window.T = (() => {
     set("--c-alert", c.alert); set("--c-text", c.text); set("--c-muted", c.muted);
     set("--c-surface", tc.card_surface || c.navy); set("--c-border", tc.card_border || c.muted);
     set("--c-indigo", c.indigo || c.navy); set("--c-glow", c.glow || c.violet);
-    const g = (tk.gradient || {}).card_background || [c.navy, c.navy, c.violet]; set("--g1", g[0]); set("--g2", g[1]); set("--g3", g[2]);
+    const gr = (tk.gradient || {}).card_background || [c.navy, c.navy, c.violet]; set("--g1", gr[0]); set("--g2", gr[1]); set("--g3", gr[2]);
     set("--fs-kicker", (ts.kicker || 22) + "px"); set("--fs-card-headline", (ts.card_headline || 64) + "px"); set("--fs-cine-line", (ts.cinematic_line || 54) + "px");
     set("--fs-cine-headline", (ts.cinematic_headline || 96) + "px"); set("--fs-tamil", (ts.tamil_line || 40) + "px"); set("--fs-chip", (ts.chip || 26) + "px"); set("--fs-caption", (ts.caption_box || 38) + "px");
     set("--r-card", (lay.radius_card || 24) + "px"); set("--r-chip", (lay.radius_chip || 12) + "px");
