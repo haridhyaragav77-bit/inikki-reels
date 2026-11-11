@@ -1,0 +1,51 @@
+name: music
+# Tags every track in the Drive music folder (and anything dropped into music/inbox) by tempo, energy and mood,
+# and writes music/index.json. Reels then pick tracks by mood (AGENT.md 5.4). Free; nothing is posted.
+on:
+  push:                            # registers the job and tags the library once when this file or the tagger changes
+    branches: [claude/gallant-dijkstra-6madni]
+    paths: [".github/workflows/music.yml", "engine/music_index.py"]
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Tag every track again (not only new ones)"
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 21 * * 0"          # Sundays 02:47 IST: picks up new tracks from music/inbox
+
+permissions:
+  contents: write
+
+concurrency:
+  group: music
+  cancel-in-progress: false
+
+jobs:
+  music:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install -q -r requirements.txt
+      - run: python -m engine.music_index ${{ inputs.all && '--all' || '' }}
+      - name: Summary to the throwaway 'review-music' branch (for the build session)
+        if: always()
+        run: |
+          [ -d out/peek ] || exit 0
+          cd out/peek && git init -q && git checkout -q -b review-music && git add -A
+          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "music index $(date -u +%FT%TZ)" || exit 0
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" review-music:review-music
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

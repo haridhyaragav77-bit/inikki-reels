@@ -342,6 +342,13 @@ class Assets:
         if not tracks:
             self._synth_bed(out, mood, length_s)
             return {"path": out, "name": "synthesized bed (music folder empty)", "source": "local"}
+        picked = self._from_index(mood, series_id, length_s, track)          # the music index first (engine/music_index.py)
+        if picked:
+            try:
+                self.drive.download(picked["id"], out)
+                return {"path": out, "name": picked["name"], "source": "drive", "matched_mood": True, "score": picked.get("moods", {}).get(mood)}
+            except Exception as e:
+                self.notes.append(f"Music track '{picked['name']}' could not be fetched ({e}); another was picked.")
         words = (ENGINE.get("music", {}).get("mood_words", {}) or {}).get(mood, [])
         clean = lambda name: re.sub(r"masstamilan\s*\w*", " ", norm(name))          # site tags in file names are not mood words
         hits = [t for t in tracks if any(w in clean(t["name"]).split() or (len(w) > 5 and w in clean(t["name"])) for w in words)]
@@ -356,6 +363,40 @@ class Assets:
             self._synth_bed(out, mood, length_s)
             return {"path": out, "name": "synthesized bed", "source": "local"}
         return {"path": out, "name": pick["name"], "source": "drive", "matched_mood": bool(hits)}
+
+    def _from_index(self, mood, series_id, length_s, track=None):
+        """Best tracks for the mood from the music index; not the same track twice in a series within 7 days;
+        retired (muted) tracks never. A seeded pick among the top few keeps reels varied and repeatable."""
+        try:
+            fid = self.drive.music_folder()
+            f = self.drive.find_child(fid, "index.json") if fid else None
+            if not f:
+                return None
+            idx = json.loads(self.drive.read_bytes(f["id"]).decode("utf-8"))
+        except Exception:
+            return None
+        tracks = [t for t in idx.get("tracks", []) if t.get("moods") and not t.get("retired")]
+        if track:
+            return next((t for t in tracks if t["name"] == track), None)
+        import datetime as dt
+        week_ago = (status.now() - dt.timedelta(days=7)).strftime("%Y-%m-%d")
+        recent = lambda t: any(u.get("series") == series_id and u.get("at", "") >= week_ago and u.get("reel") != self.reel_id for u in t.get("uses", []))
+        fits = lambda t: (t.get("seconds") or 0) >= min(40.0, length_s * 0.7)
+        pool = sorted([t for t in tracks if not recent(t) and fits(t)] or tracks, key=lambda t: -t["moods"].get(mood, 0))[:6]
+        if not pool:
+            return None
+        h = int(hashlib.md5(f"{self.reel_id}:{series_id}:music".encode()).hexdigest(), 16)
+        pick = pool[h % min(3, len(pool))]
+        try:                                   # remember the use, so the same track is not repeated in this series this week
+            if not any(u.get("reel") == self.reel_id for u in pick.get("uses", [])):
+                pick.setdefault("uses", []).append({"series": series_id, "reel": self.reel_id, "at": status.now().strftime("%Y-%m-%d")})
+                pick["uses"] = pick["uses"][-30:]
+                from googleapiclient.http import MediaInMemoryUpload
+                media = MediaInMemoryUpload(json.dumps(idx, ensure_ascii=False, indent=1).encode("utf-8"), mimetype="application/json")
+                self.drive.svc.files().update(fileId=f["id"], media_body=media, supportsAllDrives=True).execute(num_retries=3)
+        except Exception:
+            pass
+        return pick
 
     def _synth_bed(self, out, mood, length_s):
         freq = {"tension_pulse": 55, "upbeat_percussive": 110, "emotional_build": 65, "suspense_ticks": 58, "stinger": 80, "soft_warm": 72, "confident_mid": 98}.get(mood, 60)
