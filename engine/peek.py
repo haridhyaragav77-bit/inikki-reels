@@ -61,13 +61,33 @@ def reference(d):
         json.dump(info, f, ensure_ascii=False, indent=1)
 
 
+def frames(d, spec):
+    """spec: "<reference file name>@t1,t2,..." → full-size frames, to measure where things sit in a reference reel."""
+    name, _, times = spec.partition("@")
+    fid = d.folder("reference-reels", create=False)
+    f = d.find_child(fid, name)
+    if not f:
+        print("not found:", name)
+        return
+    local = d.download(f["id"], str(OUT / "work" / "ref" / name))
+    os.makedirs(PEEK / "frames", exist_ok=True)
+    for t in times.split(","):
+        out = str(PEEK / "frames" / f"{os.path.splitext(name)[0][:40]}_{float(t):05.1f}.jpg")
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-ss", t, "-i", local, "-frames:v", "1", "-q:v", "3", out])
+    print("frames:", sorted(os.listdir(PEEK / "frames")))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--what", default="reference,music,memes,clips")
+    ap.add_argument("--frames", default="")
     a = ap.parse_args()
     os.makedirs(PEEK, exist_ok=True)
     d = Drive()
-    want = a.what.split(",")
+    if a.frames:
+        for spec in a.frames.split(";"):
+            frames(d, spec)
+    want = [w for w in a.what.split(",") if w]
     if "music" in want:
         list_folder(d, "music", "music")
     if "memes" in want:
