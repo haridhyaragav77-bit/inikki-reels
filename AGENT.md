@@ -285,6 +285,24 @@ People decide in the first second, with the sound off, on a small bright screen.
 
 The hooks, transitions and camera moves are listed in `rules/motion.md`, with when to use each.
 
+
+### 5.9 Pictures: where they come from
+An AI image is the last step, not the first. The Engine looks for a picture in this order and stops at the first that fits.
+
+| Step | Source | Cost | Good for |
+| --- | --- | --- | --- |
+| 1 | **Our image library** in Drive: every picture ever made or found, with tags | Free | Anything already there |
+| 2 | **A frame from an official trailer or promo** in the clip library. The Brain picks the moment from one contact sheet. | Free | Places, objects and moments from the film |
+| 3 | **Free photo libraries that need no credit line**: public-domain pictures, Pexels, Pixabay | Free | Everyday objects and places: a lorry at night, a plate of biryani, a police station |
+| 4 | **An AI image** | Paid, inside the monthly cap | Only when steps 1 to 3 find nothing, or the scene has to be invented |
+
+Rules:
+- Only sources that allow reuse, or the film's own official material. Other people's artwork is never taken, whatever its style.
+- Every picture found is saved to the library with where it came from, its licence and its tags. The library grows, so each month needs fewer new pictures.
+- Found photos get the page's look by code (crop, contrast, colour), then the same depth and camera treatment as any other picture.
+- Guess the Movie clues stay objects and places, never an actor's face, whichever step the picture comes from.
+- The dashboard shows how many pictures came from each step, and the image spend saved.
+
 ---
 
 ## 6. Series system
@@ -1131,6 +1149,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 **Later:**
 - Two more secrets (`BRAIN_FIRE_URL`, `BRAIN_FIRE_TOKEN`) are created in Phase 4 for the breaking-news trigger. The build tells you when.
 - If Google blocks the service account from uploading files (a known storage limit), the build walks you through one extra sign-in and adds `GDRIVE_OAUTH_REFRESH_TOKEN`.
+- Optional, free, 2 minutes each: `PEXELS_API_KEY` (pexels.com/api) and `PIXABAY_API_KEY` (pixabay.com/api/docs). With them the Engine finds better free photos before it makes an AI image (section 5.9). Without them it still searches public-domain pictures.
 - To replace a key: open the same page, click the secret, **Update**. The daily health check tells you by name if a key stops working.
 
 ---
@@ -1148,6 +1167,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | 1. Pipeline with music, caption, hashtags, reach tactics, gates | 5 |
 | Motion graphics that show what is said; Tanglish and Tamil subtitles on every line | 5.7, `rules/motion.md` |
 | Visual hook in the first second, transitions, brighter premium look, 3D Guess the Movie, name reveal in stories | 5.8, `rules/motion.md` |
+| Pictures from the library, trailers and free photo libraries first; AI images only when needed | 5.9 |
 | 2. Series system, lineups, swap everything, Lab | 6, 7 |
 | 3. New-series flow end to end | 7 |
 | 4. Refining series, templates, hooks, roles, rules, with undo | 8.1, 6.5, 3.3 |

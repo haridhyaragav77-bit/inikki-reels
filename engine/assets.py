@@ -73,6 +73,22 @@ class Assets:
         saved = None if spec.get("fresh") else self._made_before(n, out)
         if saved:                      # same plan, same reel: the picture made for this reel is used again, at no cost
             return {"src": saved, "source": "library", "style": style, "reused": True}
+        if spec.get("find") or spec.get("trailer"):      # the free steps first (AGENT.md 5.9); an AI image only if they find nothing
+            from . import sources
+            self.library = getattr(self, "library", None) or sources.Library(self.drive)
+            got = sources.find(spec, n, self.reel_id, self.work, drive=self.drive, library=self.library, film=spec.get("film"))
+            if got:
+                self.notes.append(f"Picture {n}: found without AI ({got['source']}).")
+                if self.drive:
+                    try:
+                        self.drive.upload(got["src"], "image-library", name=f"{self.reel_id}_{n:02d}.png")     # so a re-render uses the same picture
+                    except Exception:
+                        pass
+                return {"src": got["src"], "source": got["source"], "style": style, "credit": got.get("credit")}
+            if spec.get("ai") is False:
+                self.notes.append(f"Picture {n}: nothing free was found for '{spec.get('find')}', and this picture may not be made by AI. A card was used.")
+                self._placeholder(out, subject, style, n)
+                return {"src": out, "source": "placeholder", "style": style}
         if cap is not None and self.images_made >= cap:
             self.notes.append(f"Image {n}: the series cap of {cap} images was reached, a library image or a card was used instead.")
             lib = self._library_image(subject)
@@ -85,9 +101,16 @@ class Assets:
         if r.get("ok"):
             self.images_made += 1
             self._upscale(out)
+            try:                       # remember it in the library index, so a later reel can reuse it instead of paying again
+                from . import sources
+                self.library = getattr(self, "library", None) or sources.Library(self.drive)
+                self.library.items = [i for i in self.library.items if i.get("file") != f"{self.reel_id}_{n:02d}.png"] + [{"file": f"{self.reel_id}_{n:02d}.png", "source": "ai", "tags": sorted(sources.words(spec.get("find") or subject)), "film": spec.get("film"), "query": subject[:200], "style": style}]
+            except Exception:
+                pass
             if self.drive:
                 try:
                     self.drive.upload(out, "image-library", name=f"{self.reel_id}_{n:02d}.png")
+                    self.drive.write_json("image-library", "index.json", {"images": self.library.items})
                 except Exception as e:
                     self.notes.append(f"Image {n} could not be saved to the image library: {e}")
             return {"src": out, "source": "openai", "model": r.get("model"), "cost_inr": r.get("cost_inr"), "style": style}

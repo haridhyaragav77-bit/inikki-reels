@@ -319,7 +319,9 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
     report = qc.check(final, res, series_for(plan), flags, str(outdir / "cover.jpg"))
     with open(outdir / "qc.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
-    used = [f"{len(res.get('voice_clips', []))} voice lines" if res.get("voice_clips") else "no voice", f"{res.get('images_made', 0)} new AI images", f"music: {res['music_resolved']['name']}"]
+    used = [f"{len(res.get('voice_clips', []))} voice lines" if res.get("voice_clips") else "no voice", f"{res.get('images_made', 0)} new AI images", f"music: {res['music_resolved']['name']}", f"hook: {res.get('hook')}"]
+    if "three_d" in info:
+        used.append("3D scenes" if info["three_d"] else "3D not available on this machine (layered scenes used)")
     notes = [f"# {reel_id}", "", f"Template: {template}. Length: {total:.1f} seconds. " + ", ".join(used) + ".", "",
              "Inspection: " + ("PASSED" if report["pass"] else "HELD (would not post)") + ". " + ("; ".join(report["problems"]) if report["problems"] else "Every check passed."), ""]
     if report["warnings"]:

@@ -245,6 +245,27 @@ def t_instagram():
     result("Instagram numbers (read only)", ok, detail, nxt)
 
 
+def t_pictures():
+    """One free picture found on the web (AGENT.md 5.9), without AI. Nothing is saved to the library."""
+    from . import sources
+    out = str(OUTDIR / "found_test.jpg")
+    tried = []
+    for name, fn in (("pexels", sources.from_pexels), ("pixabay", sources.from_pixabay), ("openverse", sources.from_openverse)):
+        try:
+            rec = fn("lorry road night", out)
+        except Exception as e:
+            rec, tried = None, tried + [f"{name}: {str(e)[:80]}"]
+            continue
+        if rec:
+            sources.house_look(out)
+            result("Free pictures from the web", True, f"Found one through {rec['source']} ({rec['licence']}). Keys present: "
+                   + (", ".join(k for k in ("PEXELS_API_KEY", "PIXABAY_API_KEY") if secret(k)) or "none (public-domain search only)") + ".")
+            return
+        tried.append(f"{name}: nothing" if (name == "openverse" or secret(name.upper() + "_API_KEY")) else f"{name}: no key")
+    result("Free pictures from the web", False, "No free picture was found. " + "; ".join(tried),
+           "The Engine falls back to an AI image. Adding the free keys PEXELS_API_KEY and PIXABAY_API_KEY gives better results.", fallback=True)
+
+
 def t_runner():
     ff = shutil.which("ffmpeg")
     ver = subprocess.run([ff, "-version"], capture_output=True, text=True).stdout.split("\n")[0][:60] if ff else "missing"
@@ -303,7 +324,7 @@ def main():
              ("drive", "Drive: read", t_drive_read, ()), ("drive", "Drive: write", t_drive_write, ()),
              ("sheet", "Dashboard sheet", t_sheet, ()), ("voice", "Voice from the cloud (Microsoft)", t_voice, ()),
              ("image", "One AI image (OpenAI)", t_image, (spend,)), ("clip", "One trailer clip (YouTube)", t_clip, ()),
-             ("instagram", "Instagram numbers (read only)", t_instagram, ())]
+             ("instagram", "Instagram numbers (read only)", t_instagram, ()), ("pictures", "Free pictures from the web", t_pictures, ())]
     ran = []
     for key, name, fn, args in order:
         if want and key not in want:
