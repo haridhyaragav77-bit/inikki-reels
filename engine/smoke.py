@@ -226,7 +226,17 @@ def t_instagram():
         except InstagramError as e:
             ok = False
             detail += f" Reel stats could not be read: {e}"
-            nxt = "Regenerate the token with the permission instagram_manage_insights added (stats need it), then update the secret IG_ACCESS_TOKEN."
+            chk = ig.diagnose().get("token_check")
+            if isinstance(chk, dict):
+                scopes = chk.get("scopes") or []
+                detail += f" The token carries these permissions: {', '.join(scopes) or 'none listed'} (type {chk.get('type')}, expires {chk.get('expires')})."
+                if "instagram_manage_insights" not in scopes:
+                    nxt = "instagram_manage_insights is not on this token. Generate the token again and tick that box, then update the secret IG_ACCESS_TOKEN."
+                else:
+                    nxt = ("The permission is on the token, so the block is on the Meta app itself: in the app dashboard add the product "
+                           "'Instagram' (Instagram Graph API) and make sure @inikki_reels is connected to the Page under Business settings > Pages > Connected assets.")
+            else:
+                nxt = "Regenerate the token with the permission instagram_manage_insights added, then update the secret IG_ACCESS_TOKEN."
     CTX["ig"] = {"username": me.get("username"), "followers": me.get("followers_count"), "posts": me.get("media_count"),
                  "api_version": ig.version, "route": ig.route, "reel_metrics": metrics_ok, "note": ig.note}
     result("Instagram numbers (read only)", ok, detail, nxt)
