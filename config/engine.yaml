@@ -63,6 +63,15 @@ music:
     stinger: [intro, title, attack, hunt]
     soft_warm: [love, romance, flute, piano, lullaby, melody]
     confident_mid: [theme, hero, walk, intro, king]
+  # Words in a file name that say a track does NOT fit a mood (a love theme is not suspense, a fight is not soft)
+  avoid_words:
+    tension_pulse: [love, romance, romantic, propose, proposes, married, marriage, wedding, kadhal, baby, lullaby, comedy]
+    suspense_ticks: [love, romance, romantic, propose, proposes, married, marriage, wedding, kadhal, baby, lullaby, comedy, entry, mass]
+    stinger: [love, romance, lullaby, sad, farewell]
+    emotional_build: [fight, chase, attack, shoot, riots, entry, rap, phonk, comedy]
+    soft_warm: [fight, chase, attack, shoot, riots, entry, rap, phonk, villain]
+    upbeat_percussive: [sad, emotional, death, cry, farewell, lullaby]
+    confident_mid: [sad, cry, lullaby, farewell]
 
 images:
   # Where a picture is looked for, cheapest first (AGENT.md 5.9). An AI image is made only when these find nothing.

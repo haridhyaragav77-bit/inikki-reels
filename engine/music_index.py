@@ -80,13 +80,14 @@ def score_moods(items):
          "stinger": 0.4 * Y + 0.35 * E + 0.25 * D,
          "soft_warm": 0.4 * (1 - E) + 0.35 * (1 - D) + 0.25 * mid(B),
          "confident_mid": 0.35 * E + 0.3 * band(bpm, 85, 120) + 0.35 * mid(D)}
-    words = ENGINE.get("music", {}).get("mood_words", {})
+    words, avoid = ENGINE.get("music", {}).get("mood_words", {}), ENGINE.get("music", {}).get("avoid_words", {})
+    has = lambda name, ws: any(w in name.split() or (len(w) > 5 and w in name) for w in ws)
     for i, it in enumerate(tagged):
         name = re.sub(r"masstamilan\s*\w*", " ", re.sub(r"[^a-z0-9]+", " ", it["name"].lower()))
         moods = {}
         for m in MOODS:
-            hint = 0.15 if any(w in name.split() or (len(w) > 5 and w in name) for w in words.get(m, [])) else 0.0
-            moods[m] = round(float(min(1.0, s[m][i] + hint)), 3)
+            hint = (0.15 if has(name, words.get(m, [])) else 0.0) - (0.25 if has(name, avoid.get(m, [])) else 0.0)
+            moods[m] = round(float(min(1.0, max(0.0, s[m][i] + hint))), 3)
         it["moods"] = moods
         it["best"] = sorted(moods, key=moods.get, reverse=True)[:2]
 
