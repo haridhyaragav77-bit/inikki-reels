@@ -65,15 +65,15 @@ jobs:
       - name: Make the reels
         run: |
           if [ -n "$TO_DRIVE" ] && [ -z "$STAND_INS" ]; then python -m engine.render $PLANS --to-drive "$TO_DRIVE"; else python -m engine.render $PLANS $STAND_INS; fi
-      - name: Review pictures to the throwaway 'peek' branch (for the build session)
+      - name: Review pictures to the throwaway 'review' branch (for the build session)
         if: always()
         run: |
           mkdir -p out/peek/render
           for d in out/reels/*/; do n=$(basename "$d"); mkdir -p "out/peek/render/$n"; cp "$d"sheet.jpg "$d"cover.jpg "$d"notes.md "$d"qc.json "out/peek/render/$n/" 2>/dev/null || true; done
           cp out/status/*.json out/peek/render/ 2>/dev/null || true
-          cd out/peek && git init -q && git checkout -q -b peek && git add -A
+          cd out/peek && git init -q && git checkout -q -b review && git add -A
           git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "render review $(date -u +%FT%TZ)" || exit 0
-          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" peek:peek
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" review:review
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Keep the reels with this run
