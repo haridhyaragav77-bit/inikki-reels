@@ -7,7 +7,7 @@
   "lead": {"topic": "", "score": 0, "sources": ["every fact needs one"]},
   "music": {"mood": "emotional_build"},
   "images": [
-    {"prompt": "what the picture shows. Real people as inspired-by illustrations only: describe era, clothes, setting, not a name.", "style": "painterly_warm | cinematic_real | arcane_painterly", "move": "optional: push | pull | left | right", "focus": [0.5, 0.4]}
+    {"prompt": "what the picture shows. Real people as inspired-by illustrations only: describe era, clothes, setting, not a name.", "style": "painterly_warm | cinematic_real | arcane_painterly", "move": "optional: push | pull | left | right", "focus": [0.5, 0.4], "fresh": "optional true: make this picture again instead of reusing the one already made for this reel"}
   ],
   "screens": [
     {"dur": 3.2, "image": 0, "kicker": "WHERE OR WHEN", "line": "The white line sets it up", "headline": "THE GOLD LINE LANDS.", "tamil": "தமிழ் வரி.", "motion": "slam"},

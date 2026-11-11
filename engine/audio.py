@@ -100,6 +100,10 @@ def build(res, work, total, cues=None):
             af += (f":measured_I={d['input_i']}:measured_TP={d['input_tp']}:measured_LRA={d['input_lra']}"
                    f":measured_thresh={d['input_thresh']}:offset={d['target_offset']}:linear=true")
     subprocess.run([_ffmpeg(), "-y", "-v", "error", "-i", raw, "-af", af + ",aresample=48000", "-c:a", "aac", "-b:a", "192k", out], check=True)
+    got = loudness(out)
+    if got is not None and abs(got - TARGET_LUFS) > 0.8:     # wide-ranging music can miss the target: lift it and hold the peaks
+        fix = f"volume={TARGET_LUFS - got:.2f}dB,alimiter=limit=0.84:attack=5:release=60:level=false,aresample=48000"
+        subprocess.run([_ffmpeg(), "-y", "-v", "error", "-i", raw, "-af", af + "," + fix, "-c:a", "aac", "-b:a", "192k", out], check=True)
     os.remove(raw)
     return out
 

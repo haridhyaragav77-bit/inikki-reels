@@ -55,6 +55,7 @@ class Assets:
         self.series = series or {}
         self.notes = []       # plain-language notes about fallbacks used
         self.images_made = 0
+        self.compose = ""     # where the subject should sit so the template's words never cover it (set per template)
         os.makedirs(self.work, exist_ok=True)
 
     # ---------------------------------------------------------------- images
@@ -66,6 +67,9 @@ class Assets:
         if self.local or not secret("OPENAI_API_KEY"):
             self._placeholder(out, subject, style, n)
             return {"src": out, "source": "placeholder", "style": style}
+        saved = None if spec.get("fresh") else self._made_before(n, out)
+        if saved:                      # same plan, same reel: the picture made for this reel is used again, at no cost
+            return {"src": saved, "source": "library", "style": style, "reused": True}
         if cap is not None and self.images_made >= cap:
             self.notes.append(f"Image {n}: the series cap of {cap} images was reached, a library image or a card was used instead.")
             lib = self._library_image(subject)
@@ -74,7 +78,7 @@ class Assets:
             self._placeholder(out, subject, style, n)
             return {"src": out, "source": "placeholder", "style": style}
         from . import images
-        r = images.generate(subject, style, purpose=f"reel {self.reel_id}", reel_id=self.reel_id, out_path=out, budget=self.budget, drive=self.drive)
+        r = images.generate(subject + ". " + self.compose if self.compose else subject, style, purpose=f"reel {self.reel_id}", reel_id=self.reel_id, out_path=out, budget=self.budget, drive=self.drive)
         if r.get("ok"):
             self.images_made += 1
             self._upscale(out)
@@ -90,6 +94,16 @@ class Assets:
             return {"src": lib, "source": "library", "style": style}
         self._placeholder(out, subject, style, n)
         return {"src": out, "source": "placeholder", "style": style}
+
+    def _made_before(self, n, out):
+        if not self.drive:
+            return None
+        try:
+            fid = self.drive.folder("image-library", create=False)
+            f = self.drive.find_child(fid, f"{self.reel_id}_{n:02d}.png") if fid else None
+            return self.drive.download(f["id"], out) if f else None
+        except Exception:
+            return None
 
     def _library_image(self, subject):
         if not self.drive:

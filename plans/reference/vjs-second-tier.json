@@ -21,7 +21,7 @@
     {"dur": 3.2, "image": 1, "kicker": "HIS JOB", "line": "Sit in the crowd.", "headline": "FILL A SEAT.", "tamil": "கூட்டத்தில் ஒருவராக அமர்ந்திருக்க வேண்டும்."},
     {"dur": 3.4, "image": 2, "kicker": "THE SECOND TIER", "line": "From way up there,", "headline": "WOULD HE BE SEEN?", "tamil": "அவ்வளவு உயரத்தில் இருந்தால் கேமராவில் தெரிவாரா?"},
     {"dur": 3.4, "image": 2, "kicker": "THE SECOND TIER", "line": "So he went downstairs,", "headline": "HOPING.", "tamil": "திரையில் தெரிய வேண்டும் என்று கீழே இறங்கினார்."},
-    {"dur": 3.8, "image": 3, "kicker": "IN HIS OWN WORDS", "line": "Another actor sent him back.", "headline": "\"I FELT SMALL.\"", "tamil": "இன்னொரு நடிகர் அவரை மேலே திருப்பி அனுப்பினார்.", "motion": {"type": "stamp", "stamp": "Sent back", "at": [0.42, 0.24]}},
+    {"dur": 3.8, "image": 3, "kicker": "IN HIS OWN WORDS", "line": "Another actor sent him back.", "headline": "\"I FELT SMALL.\"", "tamil": "இன்னொரு நடிகர் அவரை மேலே திருப்பி அனுப்பினார்.", "motion": {"type": "stamp", "stamp": "Sent back"}},
     {"dur": 3.2, "image": 3, "kicker": "THAT NIGHT", "line": "He took the ₹100.", "headline": "AND STAYED.", "tamil": "நூறு ரூபாயை வாங்கினார். சினிமாவை விடவில்லை."},
     {"dur": 3.4, "image": 4, "kicker": "YEARS LATER", "line": "His 25th film brought him", "headline": "TO THE SAME HALL.", "tamil": "அவரது இருபத்தைந்தாவது படம் அதே அரங்கிற்கு அழைத்து வந்தது."},
     {"dur": 3.4, "image": 4, "kicker": "YEARS LATER", "line": "This time, the camera", "headline": "FACED THE *STAGE*.", "tamil": "இந்த முறை கேமரா மேடையை நோக்கி இருந்தது.", "motion": "underline"},
