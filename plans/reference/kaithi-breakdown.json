@@ -40,7 +40,7 @@
      "caption": "Rendu. Idam.", "voice_line": "ரெண்டு. இடம்."},
 
     {"headline": "02 / Idam maarudhu.", "tamil": "ஒரு இடத்திலிருந்து இன்னொரு இடம்.",
-     "visual": {"type": "clip", "film": "Kaithi", "label": "LORRY", "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4", "start": 17.6, "crop": [78, 498, 824, 322]},
+     "visual": {"type": "clip", "film": "Kaithi", "label": "LORRY", "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4", "start": 18.1, "crop": [78, 498, 824, 322]},
      "motion": {"type": "switch", "places": ["Lorry", "Station"], "to": 1},
      "caption": "Lorry-la aabathu.", "voice_line": "லாரியில ஆபத்து."},
 

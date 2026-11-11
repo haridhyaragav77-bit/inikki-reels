@@ -20,6 +20,10 @@ openai:
     gpt-image-1-mini: { text_in: 2.0, image_in: 2.5, image_out: 8.0 }
     gpt-image-1:      { text_in: 5.0, image_in: 10.0, image_out: 40.0 }
   usd_to_inr: 88.0
+  # Added to every image request, by template, so the words never sit on a face or on the main object
+  compose:
+    cinematic: "Composition: the main subject and any face sit in the upper half of the frame; the lower third is darker and simpler, with no important detail"
+    diorama: "Composition: the main object sits in the middle band of the frame; the top third is darker and simpler, with no important detail"
 
 instagram:
   base: "https://graph.instagram.com"

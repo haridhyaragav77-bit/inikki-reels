@@ -40,7 +40,7 @@ Each beat has a kicker, a white line, a gold headline and a Tamil line. Set `"mo
 | --- | --- | --- |
 | `slam` (default) | The gold headline lands hard, the Tamil line follows | Any beat |
 | `count` | The number in the headline counts up to its value | Money, years, counts: the hook or the turn |
-| `stamp` | One word is stamped across the picture at an angle | A rejection, a verdict, a result (`stamp`: the word) |
+| `stamp` | One word is stamped at an angle just above the words, never on a face | A rejection, a verdict, a result (`stamp`: the word) |
 | `underline` | A gold line sweeps under the key word (mark it with `*stars*`) | The one word the beat turns on |
 | `question` | The last line grows and holds, with the send pill | The final beat |
 

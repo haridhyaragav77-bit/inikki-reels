@@ -96,7 +96,7 @@ def encode_video(frames, total_s, out_mp4):
     """frames(t) → bytes; pipes JPEG frames into ffmpeg → H.264 1080x1920 30 fps."""
     n = int(round(total_s * FPS))
     cmd = [_ffmpeg(), "-y", "-v", "error", "-f", "image2pipe", "-framerate", str(FPS), "-i", "pipe:0",
-           "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS), "-movflags", "+faststart", "-an", out_mp4]
+           "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-maxrate", "7M", "-bufsize", "14M", "-pix_fmt", "yuv420p", "-r", str(FPS), "-movflags", "+faststart", "-an", out_mp4]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
     t0 = time.time()
     for i in range(n):
@@ -186,6 +186,7 @@ def resolve(plan, work, local, drive=None, budget=None):
     reel_id = plan["reel_id"]
     A = Assets(work, reel_id, drive=drive, local=local, budget=budget, series=series)
     template = plan.get("template") or series.get("template") or "card"
+    A.compose = ENGINE.get("openai", {}).get("compose", {}).get(template, "")
     image_cap = plan.get("image_cap", series.get("image_cap_per_reel"))
     style_default = plan.get("image_style") or series.get("image_style") or (series.get("image_style_options") or [None])[0]
     res = json.loads(json.dumps(plan))
@@ -296,7 +297,7 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
         # cover frame
         cs = res.get("cover", {}).get("screen", 1)
         scr = info["screens"][min(max(int(cs) - 1, 0), len(info["screens"]) - 1)]
-        ct = scr["start"] + min(1.0, (scr["end"] - scr["start"]) * 0.6)
+        ct = scr["start"] + (scr["end"] - scr["start"]) * 0.86          # late in the screen, when every part has landed
         with open(outdir / "cover.jpg", "wb") as f:
             f.write(fr.frame(ct, "jpeg"))
         _sheet(fr, info, total, outdir)
