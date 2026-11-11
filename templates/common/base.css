@@ -7,7 +7,8 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--c-navy); }
 body { font-family: "BrandCard", "BrandTamil", sans-serif; color: var(--c-text); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
-#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; transform-origin: 50% 45%; }
+#hook { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
 .tamil { font-family: "BrandTamil", "BrandCard", sans-serif; }
 .cine { font-family: "BrandCinematic", "BrandCard", sans-serif; text-transform: uppercase; }
 em { font-style: normal; color: var(--c-gold); }
