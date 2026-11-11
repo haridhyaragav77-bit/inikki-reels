@@ -33,6 +33,19 @@ The library and when to use each graphic: `rules/motion.md`. The plan check refu
 **How to re-render the golden reels:** Actions → render → Run workflow (defaults are the three golden plans, into Drive `rehearsal/phase2-golden/`).
 A push that touches `templates/` or the renderer runs a free stand-in test first (no AI images, nothing spent).
 
+**Golden reels: made on GitHub Actions, all three passed inspection (11 Nov, render run 4)**
+| Reel | Template | Length | Voice | New AI images | Size | Loudness |
+| --- | --- | --- | --- | --- | --- | --- |
+| golden-kaithi-breakdown | Card | 45.3 s | 18 lines (Microsoft, from the cloud) | 0 | 10.6 MB | -14.0 LUFS |
+| golden-second-tier | Cinematic | 42.1 s | none | 6 (first run; reused after) | 27.9 MB | -14.1 LUFS |
+| golden-kaithi-guess | Diorama | 30.0 s | none | 3 (first run; reused after) | 7.6 MB | -14.4 LUFS |
+
+They are in Drive `rehearsal/phase2-golden/`, with a plain report ("READ ME FIRST"). Image spend this month: about ₹11 of ₹500.
+A full run of the three takes about 10 minutes on the runner. The depth model downloaded and ran (no fallback notes).
+
+**Waiting on Harish:** watch and listen to the three reels ("same quality or better", or what to change); put trailers into Drive `clip-library/`.
+The build session cannot hear: loudness and timing were measured, not listened to.
+
 **Known limits, written down so nobody is surprised**
 - Word highlight timing is estimated from word length, not measured from the voice. It is close; exact timing needs the voice service's word marks (later).
 - Music is matched by words in the file name until the music index exists (Phase 3). The golden plans pin their tracks.
