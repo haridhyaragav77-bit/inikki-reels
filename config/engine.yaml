@@ -38,3 +38,12 @@ clips:
   smoke_query: "ytsearch1:Kaithi official trailer Karthi Lokesh Kanagaraj"
   smoke_seconds: 8
   contact_sheet: { cols: 5, rows: 6, width: 1800 }
+
+depth:
+  # A small free depth model (Depth Anything V2 small, ONNX). It runs on the runner's CPU: no key, no cost.
+  # If it cannot be fetched, pictures still move, with a simpler split (fail soft).
+  file: depth_anything_v2_small.onnx
+  model_urls:
+    - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx"
+    - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model_quantized.onnx"
+  threads: 2

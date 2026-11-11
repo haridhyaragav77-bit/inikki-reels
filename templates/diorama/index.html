@@ -1,0 +1,119 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Diorama</title>
+<link rel="stylesheet" href="../common/base.css">
+<style>
+  /* Diorama template: Guess the Tamil Movie. Scenes with depth, three clues, a countdown, the reveal. */
+  html, body { background: color-mix(in srgb, var(--c-navy) 45%, black); }
+  #scenes { position:absolute; inset:0; z-index:0; isolation:isolate; }
+  .scene { position:absolute; left:0; top:0; width:1080px; height:1620px; }
+  #topshade { position:absolute; left:0; right:0; top:0; height:760px; background: linear-gradient(180deg, color-mix(in srgb, var(--c-navy) 82%, transparent) 0%, color-mix(in srgb, var(--c-navy) 52%, transparent) 55%, transparent 100%); }
+  #fade { position:absolute; left:0; right:0; top:1040px; height:580px; background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--c-navy) 45%, black) 92%); }
+  #floor { position:absolute; left:0; right:0; top:1618px; bottom:0; background: color-mix(in srgb, var(--c-navy) 45%, black); }
+  #dim { position:absolute; inset:0; background: color-mix(in srgb, var(--c-navy) 60%, black); opacity:0; }
+  #flash { position:absolute; inset:0; background:#fff; opacity:0; }
+  .mid { position:absolute; left:75px; width:850px; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .mid > span { display:inline-block; }
+  #badge { top:262px; height:58px; } #badge b { display:inline-flex; align-items:center; height:58px; padding:0 34px; border-radius:12px; font-weight:900; font-size:27px; letter-spacing:0.06em; text-transform:uppercase; color: var(--c-navy); box-shadow: 0 8px 26px rgba(0,0,0,0.45); white-space:nowrap; }
+  #kicker { top:340px; height:36px; font-weight:800; font-size:25px; letter-spacing:0.06em; text-transform:uppercase; color: var(--c-teal); white-space:nowrap; }
+  #h1 { font-weight:800; line-height:1.08; text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
+  #h2 { font-weight:800; line-height:1.1; color: var(--c-gold); text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
+  #h2.ta { font-weight:700; }
+  #ring { position:absolute; left:320px; top:700px; width:360px; height:360px; }
+  #ring .num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:800; color: var(--c-gold); text-shadow: 0 0 40px color-mix(in srgb, var(--c-gold) 45%, transparent), 0 6px 26px rgba(0,0,0,0.6); transform-origin:50% 50%; }
+  #title { top:730px; height:200px; color: var(--c-gold); line-height:1.02; letter-spacing:0.02em; text-shadow: 0 0 44px color-mix(in srgb, var(--c-gold) 50%, transparent), 0 8px 30px rgba(0,0,0,0.7); transform-origin:50% 55%; }
+  #year { top:936px; height:60px; font-weight:800; font-size:48px; letter-spacing:0.14em; color: var(--c-teal); }
+  #cap { position:absolute; left:75px; top:1250px; width:850px; height:164px; border-radius:20px; background: color-mix(in srgb, var(--c-navy) 84%, transparent); border:1.5px solid color-mix(in srgb, var(--c-muted) 18%, transparent); box-shadow: 0 16px 40px rgba(0,0,0,0.4); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:0 40px; }
+  #cap div { width:100%; text-align:center; } #cap div > span { display:inline-block; }
+  #c1 { font-weight:800; line-height:1.15; } #c2 { font-weight:700; color: var(--c-gold); line-height:1.3; }
+  #dashes { position:absolute; left:75px; width:850px; top:1452px; height:6px; display:flex; justify-content:center; gap:40px; }
+  #dashes i { width:90px; height:5px; border-radius:3px; background: color-mix(in srgb, var(--c-muted) 35%, transparent); overflow:hidden; display:block; } #dashes i b { display:block; height:100%; width:0; background: var(--c-gold); }
+</style></head>
+<body><div id="stage">
+  <div id="scenes"><div id="sc0" class="scene"></div><div id="sc1" class="scene"></div></div>
+  <div id="fade"></div><div id="floor"></div><div id="topshade"></div><div id="dim"></div>
+  <div id="badge" class="mid" data-safe><b></b></div>
+  <div id="kicker" class="mid" data-safe><span></span></div>
+  <div id="h1" class="mid" data-safe data-text><span></span></div>
+  <div id="h2" class="mid" data-safe data-text><span></span></div>
+  <div id="ring"><svg width="360" height="360" viewBox="0 0 360 360"><circle cx="180" cy="180" r="150" fill="rgba(0,0,0,0.28)" stroke="rgba(255,255,255,0.16)" stroke-width="6"/><circle id="arc" cx="180" cy="180" r="150" fill="none" stroke="var(--c-gold)" stroke-width="10" stroke-linecap="round" transform="rotate(-90 180 180)" stroke-dasharray="942.5"/></svg><div class="num"><span></span></div></div>
+  <div id="title" class="mid cine" data-safe data-text><span></span></div>
+  <div id="year" class="mid" data-safe><span></span></div>
+  <div id="cap" data-safe><div id="c1"><span></span></div><div id="c2" class="tamil"><span></span></div></div>
+  <div id="dashes"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+  <div id="flash"></div>
+  <div id="safeguide"></div>
+</div>
+<script src="../common/base.js"></script>
+<script src="../common/scene.js"></script>
+<script>
+// Diorama template. Screen kinds, in order: title, clue (x3), countdown, reveal.
+// Every text beat is in both: a Tanglish line and a Tamil line (AGENT.md 5.7).
+let PLAN, BRAND, TL, TOTAL, RUNS, SC, lastIdx = -1, NCLUE = 3;
+const $ = id => document.getElementById(id), MOVES = ["push", "right", "orbit", "left"];
+const put = (id, txt) => { $(id).firstElementChild.textContent = txt || ""; $(id).style.display = txt ? "" : "none"; };
+
+window.setup = async function (plan, brand) {
+  PLAN = plan; BRAND = brand; T.applyBrand(brand);
+  TL = T.timeline(plan.screens); TOTAL = TL[TL.length - 1].end;
+  const rand = T.seed(plan.reel_id || "reel"), cues = [];
+  RUNS = []; NCLUE = TL.filter(s => s.kind === "clue").length || 3;
+  TL.forEach((s, i) => { const key = s.visual && (s.visual.image != null ? "img" + s.visual.image : s.visual.src || "v" + i), last = RUNS[RUNS.length - 1];
+    if (last && last.key === key) last.end = s.end; else RUNS.push({ key, start: s.start, end: s.end, visual: s.visual });
+    s.run = RUNS.length - 1;
+    if (s.kind === "clue") cues.push({ t: +(s.start + 0.25).toFixed(3), kind: "pop" });
+    if (s.kind === "countdown") { s.ready = Math.max(0, s.dur - 3); for (let k = 0; k < 3; k++) cues.push({ t: +(s.start + s.ready + k).toFixed(3), kind: "tock" }); }
+    if (s.kind === "reveal") { cues.push({ t: +s.start.toFixed(3), kind: "hit" }); cues.push({ t: +(s.start + 0.18).toFixed(3), kind: "ding" }); }
+  });
+  RUNS.forEach((r, i) => { r.move = (r.visual && r.visual.move) || MOVES[i % MOVES.length]; if (i) cues.push({ t: +r.start.toFixed(3), kind: "whoosh" }); });
+  const opt = { amount: 54, fogColor: T.rgba(brand.colors.teal, 0.55), dustCount: 80 };
+  SC = [new Scene($("sc0"), rand, opt), new Scene($("sc1"), rand, opt)];
+  const b = plan.badge || {}; $("badge").firstElementChild.textContent = (b.text || "") + (plan.episode ? "  #" + plan.episode : ""); $("badge").firstElementChild.style.background = T.badgeColor(b.color || "primary", brand);
+  await T.fontsReady();
+  return { total: TOTAL, cues, screens: TL.map(s => ({ i: s.i, start: s.start, end: s.end })) };
+};
+
+function prepareScreen(s) {
+  const k = s.kind || "clue", h1 = $("h1"), h2 = $("h2");
+  put("kicker", s.kicker);
+  $("ring").style.display = k === "countdown" ? "" : "none"; $("title").style.display = k === "reveal" ? "" : "none"; $("year").style.display = k === "reveal" ? "" : "none";
+  h2.classList.toggle("ta", k !== "title"); h2.classList.toggle("tamil", k !== "title");
+  if (k === "title") { h1.style.top = "404px"; h1.style.height = "124px"; h2.style.top = "528px"; h2.style.height = "100px"; put("h1", s.headline); put("h2", s.headline2); if (s.headline) T.fit(h1, 100, 60); if (s.headline2) T.fit(h2, 78, 46); }
+  else if (k === "reveal") { h1.style.top = "1040px"; h1.style.height = "70px"; h2.style.top = "1110px"; h2.style.height = "56px"; put("h1", s.headline); put("h2", s.tamil); if (s.headline) T.fit(h1, 46, 32); if (s.tamil) T.fit(h2, 34, 24);
+    put("title", s.title); put("year", s.year); T.fit($("title"), 178, 80, { wrapMin: 70, wrapMax: 96 }); }
+  else { h1.style.top = "404px"; h1.style.height = "84px"; h2.style.top = "488px"; h2.style.height = "58px"; put("h1", s.headline); put("h2", s.tamil); if (s.headline) T.fit(h1, 60, 40); if (s.tamil) T.fit(h2, 36, 24); }
+  const c1 = $("c1"), c2 = $("c2"), a = s.caption || "", b = s.caption_tamil || "";
+  c1.firstElementChild.textContent = a; c2.firstElementChild.textContent = b; c1.style.display = a ? "" : "none"; c2.style.display = b ? "" : "none"; $("cap").style.display = (a || b) ? "" : "none";
+  if (a) T.fit(c1, 42, 30, { wrapMin: 26, wrapMax: 32 }); if (b) T.fit(c2, 31, 22, { wrapMin: 22, wrapMax: 26 });
+}
+
+window.renderFrame = async function (t) {
+  const s = T.active(TL, t), lt = t - s.start, left = s.dur - lt, k = s.kind || "clue", last = s.i === TL.length - 1;
+  if (s.i !== lastIdx) { prepareScreen(s); lastIdx = s.i; }
+  const r = RUNS[s.run], prev = RUNS[s.run - 1], cur = SC[s.run % 2], old = SC[(s.run + 1) % 2];
+  await cur.set(r.visual, r.key); cur.host.style.zIndex = 2; old.host.style.zIndex = 1;
+  cur.render((t - r.start) / (r.end - r.start), t, r.move); cur.host.style.opacity = prev ? T.easeInOut((t - r.start) / 0.6).toFixed(3) : 1;
+  if (prev && t - r.start < 0.65) { await old.set(prev.visual, prev.key); old.render((t - prev.start) / (prev.end - prev.start), t, prev.move); old.host.style.opacity = 1; } else old.host.style.opacity = 0;
+  // words: in at the start of each screen, out just before the next
+  const out = last ? 1 : T.clamp(left / 0.18), e = T.easeOut(lt / 0.36), e2 = T.easeOut((lt - 0.14) / 0.36);
+  $("kicker").style.opacity = (e * out).toFixed(3);
+  $("h1").style.opacity = (e * out).toFixed(3); $("h1").style.transform = `translateY(${((1 - e) * 26).toFixed(1)}px)`;
+  $("h2").style.opacity = (e2 * out).toFixed(3); $("h2").style.transform = `translateY(${((1 - e2) * 26).toFixed(1)}px)`;
+  const ce = T.easeOut((lt - 0.2) / 0.3); $("c1").style.opacity = $("c2").style.opacity = (ce * out).toFixed(3); $("cap").style.transform = `translateY(${((1 - T.easeOut(lt / 0.3)) * 8).toFixed(1)}px)`;
+  // clue dashes: one fills as each clue plays; all full from the countdown on
+  const nClue = k === "clue" ? (s.n || 1) : (k === "title" ? 0 : NCLUE);
+  document.querySelectorAll("#dashes i b").forEach((d, i) => { d.style.width = (i < nClue - 1 || (k !== "clue" && i < nClue) ? 100 : i === nClue - 1 ? 100 * T.clamp(lt / s.dur) : 0).toFixed(1) + "%"; });
+  // countdown ring: READY?, then 3, 2, 1, each second the ring sweeps once
+  let dim = 0, flash = 0;
+  if (k === "countdown") { const ct = lt - s.ready, sec = Math.floor(ct), fr = ct - sec, num = $("ring").querySelector(".num"), sp = num.firstElementChild;
+    if (ct < 0) { sp.textContent = s.ready_text || "READY?"; num.style.fontSize = "62px"; num.style.color = "var(--c-text)"; num.style.transform = `scale(${(1 + 0.04 * Math.sin(lt * 6)).toFixed(3)})`; $("arc").style.strokeDashoffset = 942.5; }
+    else { sp.textContent = String(Math.max(1, 3 - sec)); num.style.fontSize = "190px"; num.style.color = "var(--c-gold)"; num.style.transform = `scale(${Math.max(0.01, 0.7 + 0.3 * T.back(fr / 0.28)).toFixed(3)})`; $("arc").style.strokeDashoffset = (942.5 * (1 - fr)).toFixed(1); }
+    $("ring").style.opacity = (T.easeOut(lt / 0.3) * out).toFixed(3); dim = 0.3 * T.easeOut(lt / 0.5); }
+  // reveal: a flash, the picture dims, the title lands, then the year and the question
+  if (k === "reveal") { dim = 0.3 + 0.36 * T.easeOut(lt / 0.4); flash = lt < 0.3 ? 0.55 * (1 - lt / 0.3) : 0;
+    const tk = T.clamp((lt - 0.1) / 0.3), ti = $("title"); ti.style.opacity = Math.min(1, tk * 2).toFixed(3); ti.style.transform = `scale(${(1 + 0.42 * (1 - T.easeOut(tk))).toFixed(4)})`; ti.style.filter = tk < 1 ? `blur(${(9 * (1 - tk)).toFixed(1)}px)` : "none";
+    const yk = T.clamp((lt - 0.55) / 0.35); $("year").style.opacity = yk > 0 ? 1 : 0; $("year").style.transform = `scale(${Math.max(0.01, T.back(yk)).toFixed(3)})`;
+    const qk = T.easeOut((lt - 1.0) / 0.4); $("h1").style.opacity = qk.toFixed(3); $("h2").style.opacity = T.easeOut((lt - 1.15) / 0.4).toFixed(3); $("kicker").style.opacity = T.easeOut(lt / 0.3).toFixed(3); }
+  $("dim").style.opacity = dim.toFixed(3); $("flash").style.opacity = flash.toFixed(3);
+  return true;
+};
+</script></body></html>
