@@ -3,7 +3,7 @@ name: smoke
 on:
   # A push of this file on the build branch registers the workflow and runs it (no image spent).
   push:
-    branches: [claude/inikki-reels-agent-12snwj]
+    branches: [claude/gallant-dijkstra-6madni]
     paths: [".github/workflows/smoke.yml"]
   workflow_dispatch:
     inputs:

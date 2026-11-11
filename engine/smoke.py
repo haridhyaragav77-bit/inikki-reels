@@ -22,9 +22,11 @@ RESULTS = []
 CTX = {}
 
 
-def result(name, ok, detail, next_step=""):
-    RESULTS.append({"test": name, "ok": bool(ok), "detail": detail, "next": next_step})
-    print(f"[{'OK' if ok else 'FAIL'}] {name}: {detail}" + (f"  NEXT: {next_step}" if next_step else ""), flush=True)
+def result(name, ok, detail, next_step="", fallback=False):
+    """ok=True passes. fallback=True means: this route is blocked, but the design's fallback is in place, so the day is not stopped."""
+    RESULTS.append({"test": name, "ok": bool(ok), "fallback": bool(fallback), "detail": detail, "next": next_step})
+    tag = "OK" if ok else ("FALLBACK" if fallback else "FAIL")
+    print(f"[{tag}] {name}: {detail}" + (f"  NEXT: {next_step}" if next_step else ""), flush=True)
 
 
 def run_test(name, fn, *args):
@@ -178,7 +180,8 @@ def t_clip():
         if "not a bot" in str(e) or "Sign in" in str(e):
             result("One trailer clip (YouTube)", False,
                    "YouTube blocks downloads from GitHub's cloud computers (it asks to 'confirm you are not a bot'). This is common and was planned for.",
-                   "The Engine uses the clip library in Drive instead (clip-library/). Trailers get into it from your laptop with one click (helper comes in Phase 2) or by dropping files into clip-library/inbox/.")
+                   "The Engine uses the clip library in Drive instead (clip-library/). Put trailer files there from your laptop (python tools/clip_helper.py), or drop them into clip-library/inbox/.",
+                   fallback=True)
             return
         raise
     out = str(OUTDIR / "clip_test.mp4")
@@ -254,11 +257,17 @@ def t_runner():
 # ---------------------------------------------------------------- report
 def write_report(tests_run):
     ok = sum(1 for r in RESULTS if r["ok"])
+    fb = sum(1 for r in RESULTS if not r["ok"] and r.get("fallback"))
+    failed = len(RESULTS) - ok - fb
+    head = f"**{ok} of {len(RESULTS)} passed"
+    head += f", {fb} on the planned fallback" if fb else ""
+    head += f", {failed} failed.**" if failed else ".**"
     lines = [f"# Smoke test — {status.stamp()}", "",
-             f"**{ok} of {len(RESULTS)} passed.** Nothing was posted. Tests run: {tests_run}.", "",
+             f"{head} Nothing was posted. Tests run: {tests_run}.", "",
              "| Test | Result | What happened | Next step |", "| --- | --- | --- | --- |"]
     for r in RESULTS:
-        lines.append(f"| {r['test']} | {'✅ OK' if r['ok'] else '❌ FAIL'} | {r['detail']} | {r['next'] or '—'} |")
+        mark = "✅ OK" if r["ok"] else ("🟡 Fallback" if r.get("fallback") else "❌ FAIL")
+        lines.append(f"| {r['test']} | {mark} | {r['detail']} | {r['next'] or '—'} |")
     md = "\n".join(lines) + "\n"
     os.makedirs(OUTDIR, exist_ok=True)
     with open(OUTDIR / "smoke_report.md", "w", encoding="utf-8") as f:
@@ -267,7 +276,7 @@ def write_report(tests_run):
     print("\n" + md)
 
     d = CTX.get("drive")
-    summary = {"passed": ok, "total": len(RESULTS), "results": RESULTS, "drive_mode": CTX.get("drive_mode"),
+    summary = {"passed": ok, "fallback": fb, "failed": failed, "total": len(RESULTS), "results": RESULTS, "drive_mode": CTX.get("drive_mode"),
                "drive_writable": CTX.get("drive_writable"), "sheet": CTX.get("sheet"), "instagram": CTX.get("ig"),
                "voice_cloud_ok": any(r["test"].startswith("Voice") and r["ok"] for r in RESULTS)}
     status.write(d if CTX.get("drive_writable") else None, "smoke.json", summary)
@@ -279,7 +288,7 @@ def write_report(tests_run):
             print(f"Uploaded {len(os.listdir(OUTDIR))} files to Drive {folder}/ → {d.folder_link(d.folder(folder))}")
         except Exception as e:
             print("Upload to Drive rehearsal/ failed:", e, file=sys.stderr)
-    return ok == len(RESULTS)
+    return failed == 0
 
 
 def main():
