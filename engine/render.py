@@ -372,7 +372,8 @@ def main():
                 print(f"{p}: not made. " + " ".join(errors[:3]))
                 continue
             r = render(p, local=a.local, to_drive=a.to_drive, snap=a.snap, debug_safe=a.safe, drive=drive, sheet=a.sheet)
-            results.append({"plan": p, "ok": bool(r.get("ok")), "reel_id": r.get("reel_id"), "seconds": r.get("total_s"), "link": r.get("link"),
+            test_ok = a.local and (r.get("qc") or {}).get("stand_in_only")       # a stand-in test that is otherwise clean is not a failed job
+            results.append({"plan": p, "ok": bool(r.get("ok") or test_ok), "reel_id": r.get("reel_id"), "seconds": r.get("total_s"), "link": r.get("link"),
                             "held": None if r.get("ok") else "; ".join((r.get("qc") or {}).get("problems", [])[:3])})
         except Exception as e:                                   # one broken reel never stops the others (fail soft)
             import traceback
