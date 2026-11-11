@@ -21,7 +21,14 @@ Brand kit gained Marquee Indigo and Screen Violet (rules/changes.md #1 to #3, ea
 Local template work with real pictures: `INIKKI_LOCAL_IMAGES=<folder> python -m engine.render <plan> --local` (pictures named `<reel_id>_NN.jpg`, optional `_depth.png` beside them).
 Second render of the golden reels goes to Drive `rehearsal/phase2-golden-v2/`.
 
-Still open: music index by mood (Harish: nice to have, current picks are fine); real word timing for subtitles; AI video for moving characters (a cost decision for Harish).
+**Music index** (Harish: "if you can categorise them and use them intelligently, great"): `engine/music_index.py` listens to every track once
+(tempo, energy, brightness, drums, build) and scores it for each mood; written to `index.json` in the Drive music folder.
+Reels pick by mood from it, never the same track twice in a series within 7 days. Job: `.github/workflows/music.yml` (weekly, and on demand); it also tags and files anything dropped into `music/inbox`.
+
+**Voice hiccup (12 Nov, render run 7):** Microsoft's voice service failed for the Kaithi reel, so it fell back to the silent version, as designed.
+The voice test passed again an hour later. Retries now start clean (a half-written clip is never reused) and wait 10 s, then 30 s.
+
+Still open: real word timing for subtitles; AI video for moving characters (a cost decision for Harish).
 
 ## 11 Nov 2026 — Phase 2: templates, motion graphics, golden reels
 Work continues on branch `claude/gallant-dijkstra-6madni` (the earlier branch was fast-forwarded into it).
