@@ -42,12 +42,40 @@ Each beat has a kicker, a white line, a gold headline and a Tamil line. Set `"mo
 | `count` | The number in the headline counts up to its value | Money, years, counts: the hook or the turn |
 | `stamp` | One word is stamped at an angle just above the words, never on a face | A rejection, a verdict, a result (`stamp`: the word) |
 | `underline` | A gold line sweeps under the key word (mark it with `*stars*`) | The one word the beat turns on |
+| `reveal` | The picture dims, then the name lands with a flash: line "None other than", headline = the name | The name reveal near the end of every story |
 | `question` | The last line grows and holds, with the send pill | The final beat |
 
 Pictures move too: a slow push, pull or drift, with near and far parts of the picture moving at different speeds. Set `move` on an image only when the story needs it (`push`, `pull`, `left`, `right`).
 
 ## Diorama template (Guess the Tamil Movie)
 The screens are fixed kinds, in this order: `title`, `clue` (three of them), `countdown`, `reveal`. Each clue scene has depth: near objects drift faster than far ones, with fog, dust and a moving light. The countdown ring ticks 3-2-1 with sound. The reveal lands the title and year.
+
+## Visual hooks (every template, AGENT.md 5.8)
+The first second of every reel. Set on a plan as `"hook": "<name>"`; if a plan gives none, the series card's hook is used. Pick the one that fits the film or story.
+
+| Name | What the viewer sees | Fits |
+| --- | --- | --- |
+| `thunder` | Two lightning strikes, the frame lights up cold and shakes | Thrillers, horror, night stories, Guess the Movie |
+| `flare` | A bright headlight streak crosses the frame | Road films, action, big announcements |
+| `impact` | The frame punches in hard with a shock ring | Breaking news, a strong claim |
+| `spotlight` | Darkness, then a spotlight snaps on | Stories about people, reviews, stage and theatre |
+| `clap` | A clapperboard snaps shut and flies off | Breakdowns, filmmaking topics |
+
+## Transitions (every template)
+A new picture never fades in plainly. Card: a flash cut inside the frame. Cinematic: the new picture arrives on a flash and settles. Guess the Movie: the camera whips sideways to the next clue. Each has its sound.
+
+## 3D scenes (Guess the Tamil Movie)
+Each clue picture becomes a real 3D scene. Set on an image: `move` and `weather`.
+
+| `move` | What the camera does | Use it for |
+| --- | --- | --- |
+| `push` | Travels into the scene | The title and the first clue |
+| `track` | Slides sideways past the subject | Vehicles, streets, long objects |
+| `orbit` | Circles slowly around the subject | A building, a single object |
+| `crane` | Comes down from above | An establishing view |
+| `pull` | Backs away | A reveal of the surroundings |
+
+`weather`: `rain`, `dust` or `embers`, inside the scene. Lightning from the hook and the reveal lights the scene itself.
 
 ## Timing
 - Parts of a graphic appear in the order the voice names them, spread across the spoken line.

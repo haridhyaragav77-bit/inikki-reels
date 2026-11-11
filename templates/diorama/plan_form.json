@@ -17,7 +17,12 @@
     {
       "prompt": "clue 1 as a miniature scene: the objects, the place, the light. No people's faces, no text.",
       "move": "push | track | orbit | crane | pull",
-      "weather": "rain | dust | embers"
+      "weather": "rain | dust | embers",
+      "find": "optional search words for a free picture (library, free photo libraries) tried before AI, e.g. 'orange lorry wet road night'",
+      "trailer": {
+        "film": "optional: take a frame from this film's trailer in the clip library",
+        "at": 12.5
+      }
     },
     {
       "prompt": "clue 2"
@@ -107,5 +112,6 @@
     "countdown",
     "reveal"
   ],
-  "hook": "thunder | flare | impact | spotlight | clap (default comes from the series card): pick the one that fits the film"
+  "hook": "thunder | flare | impact | spotlight | clap (default comes from the series card): pick the one that fits the film",
+  "_pictures": "Free first (AGENT.md 5.9): give 'find' and/or 'trailer' on an image when a real photo or a trailer frame would do; 'prompt' is the AI fallback. Set \"ai\": false to forbid the AI step."
 }

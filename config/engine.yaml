@@ -63,3 +63,7 @@ music:
     stinger: [intro, title, attack, hunt]
     soft_warm: [love, romance, flute, piano, lullaby, melody]
     confident_mid: [theme, hero, walk, intro, king]
+
+images:
+  # Where a picture is looked for, cheapest first (AGENT.md 5.9). An AI image is made only when these find nothing.
+  ladder: [library, trailer, pexels, pixabay, openverse]

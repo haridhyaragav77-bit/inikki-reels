@@ -23,7 +23,12 @@
         0.5,
         0.4
       ],
-      "fresh": "optional true: make this picture again instead of reusing the one already made for this reel"
+      "fresh": "optional true: make this picture again instead of reusing the one already made for this reel",
+      "find": "optional search words for a free picture (library, free photo libraries) tried before AI, e.g. 'orange lorry wet road night'",
+      "trailer": {
+        "film": "optional: take a frame from this film's trailer in the clip library",
+        "at": 12.5
+      }
     }
   ],
   "screens": [
@@ -86,5 +91,6 @@
       "shows": "the name reveal near the end: line 'None other than', headline = the name. The picture dims, the name lands with a flash"
     }
   },
-  "hook": "spotlight | thunder | flare | impact | clap (default comes from the series card)"
+  "hook": "spotlight | thunder | flare | impact | clap (default comes from the series card)",
+  "_pictures": "Free first (AGENT.md 5.9): give 'find' and/or 'trailer' on an image when a real photo or a trailer frame would do; 'prompt' is the AI fallback. Set \"ai\": false to forbid the AI step."
 }
