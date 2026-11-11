@@ -2,6 +2,27 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 11 Nov 2026 (later) — Phase 2, round two: Harish's feedback on the golden reels
+Harish watched the first three. Voice and music: fine. Asked for: Guess the Movie in real 3D, the story to name the person at the end,
+a premium and brighter look with a visual hook and transitions, and pictures from existing sources before AI.
+
+Design first (AGENT.md): **5.8** the look (visual hook, no logo intro, transitions, brighter, 3D Guess, name reveal) and **5.9** where pictures come from.
+Brand kit gained Marquee Indigo and Screen Violet (rules/changes.md #1 to #3, each with an undo).
+
+| Built | Where | Note |
+| --- | --- | --- |
+| Visual hooks | `templates/common/hooks.js` | thunder, flare, impact, spotlight, clap; each with its sound; default per series card (`hook:`) |
+| 3D scenes | `templates/common/relief.js` | picture + depth map as a real surface (WebGL2, software on the runner); camera push / track / orbit / crane / pull; focus, light, fog, rain, dust; lightning lights the scene. Falls back to layered scenes |
+| Transitions | all templates | Card flash cut, Cinematic flash and settle, Guess whip to the next clue |
+| Name reveal | Cinematic `reveal` motion | "None other than …"; the plan check refuses a Viral Story without it |
+| Picture ladder | `engine/sources.py` | library index → trailer frame → Pexels / Pixabay / public domain → AI. Plan image fields `find`, `trailer`, `ai: false` |
+| Scratch branches | `peek` (build-time looks into Drive), `review` (render review sheets) | delete both after the build |
+
+Local template work with real pictures: `INIKKI_LOCAL_IMAGES=<folder> python -m engine.render <plan> --local` (pictures named `<reel_id>_NN.jpg`, optional `_depth.png` beside them).
+Second render of the golden reels goes to Drive `rehearsal/phase2-golden-v2/`.
+
+Still open: music index by mood (Harish: nice to have, current picks are fine); real word timing for subtitles; AI video for moving characters (a cost decision for Harish).
+
 ## 11 Nov 2026 — Phase 2: templates, motion graphics, golden reels
 Work continues on branch `claude/gallant-dijkstra-6madni` (the earlier branch was fast-forwarded into it).
 
