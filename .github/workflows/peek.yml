@@ -2,14 +2,14 @@ name: peek
 # Workshop helper (build time only): contact sheets of the reference reels and folder lists from Drive,
 # pushed to the throwaway 'peek' branch so the build session can look at them. Nothing is posted.
 on:
-  push:
-    branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/peek.yml"]
   workflow_dispatch:
     inputs:
       what:
-        description: "reference,music,memes,clips"
+        description: "reference,music,memes,clips (or 'none')"
         default: reference,music,memes,clips
+      frames:
+        description: "full frames from a reference reel: <file>@t1,t2;<file>@t1"
+        default: ""
 
 permissions:
   contents: write
@@ -32,7 +32,7 @@ jobs:
           sudo apt-get update -qq >/dev/null
           sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -r requirements.txt
-      - run: python -m engine.peek --what "${{ inputs.what || 'reference,music,memes,clips' }}"
+      - run: python -m engine.peek --what "${{ inputs.what || 'reference,music,memes,clips' }}" --frames "${{ inputs.frames }}"
       - name: Push out/peek to the 'peek' branch (throwaway, deleted after the build)
         run: |
           cd out/peek
