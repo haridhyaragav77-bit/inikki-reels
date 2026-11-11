@@ -8,3 +8,8 @@ pyyaml>=6
 yt-dlp>=2025.1.1
 edge-tts>=7
 imageio-ffmpeg
+# rendering (templates are drawn by headless Chromium) and depth layers
+playwright>=1.48
+pillow>=10
+numpy>=1.26
+onnxruntime>=1.18

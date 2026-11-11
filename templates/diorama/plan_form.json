@@ -1,0 +1,26 @@
+{
+  "_how": "Guess the Tamil Movie. Six screens in a fixed order. Clues are objects or places, never faces or the title. Every caption and clue is given twice: Tanglish and Tamil. No voice.",
+  "reel_id": "YYYY-MM-DD-guess-NN",
+  "series": "guess-the-movie",
+  "template": "diorama",
+  "episode": 4,
+  "post_at": "YYYY-MM-DDTHH:MM:00+05:30",
+  "lead": {"topic": "film and why now", "score": 0, "sources": []},
+  "music": {"mood": "suspense_ticks"},
+  "images": [
+    {"prompt": "clue 1 as a miniature scene: the objects, the place, the light. No people's faces, no text.", "move": "optional"},
+    {"prompt": "clue 2"},
+    {"prompt": "clue 3"}
+  ],
+  "screens": [
+    {"kind": "title", "dur": 3.9, "image": 0, "kicker": "THREE CLUES / ONE ANSWER", "headline": "3 clues.", "headline2": "Padam enna?", "caption": "Tanglish line", "caption_tamil": "தமிழ் வரி"},
+    {"kind": "clue", "n": 1, "dur": 4.5, "image": 0, "kicker": "CLUE 01 / …", "headline": "Clue words in Tanglish.", "tamil": "துப்பு தமிழில்.", "caption": "…", "caption_tamil": "…"},
+    {"kind": "clue", "n": 2, "dur": 6.0, "image": 1, "kicker": "CLUE 02 / …", "headline": "…", "tamil": "…", "caption": "…", "caption_tamil": "…"},
+    {"kind": "clue", "n": 3, "dur": 6.0, "image": 2, "kicker": "CLUE 03 / …", "headline": "…", "tamil": "…", "caption": "…", "caption_tamil": "…"},
+    {"kind": "countdown", "dur": 4.6, "image": 2, "kicker": "LOCK YOUR ANSWER", "caption": "…", "caption_tamil": "…"},
+    {"kind": "reveal", "dur": 5.0, "image": 2, "kicker": "THE ANSWER", "title": "FILM", "year": "YYYY", "headline": "Endha clue-la kandupidicha?", "tamil": "எந்த துப்புல கண்டுபிடிச்ச?", "caption": "1, 2, illa 3? Comment pannu.", "caption_tamil": "1, 2, இல்ல 3? கமெண்ட் பண்ணு."}
+  ],
+  "caption": {"text": "", "hashtags": [], "first_comment": ""},
+  "cover": {"screen": 1},
+  "kinds_in_order": ["title", "clue", "clue", "clue", "countdown", "reveal"]
+}

@@ -15,16 +15,28 @@ def _ffmpeg():
     return shutil.which("ffmpeg") or __import__("imageio_ffmpeg").get_ffmpeg_exe()
 
 
-def _sfx(kind):
-    """Small synthesized sounds (no files needed): tick, hit."""
-    if kind == "hit":
-        return ["-f", "lavfi", "-i", "sine=frequency=62:duration=0.9"], "volume=1.6,afade=t=out:st=0.05:d=0.85"
-    if kind == "whoosh":
-        return ["-f", "lavfi", "-i", "anoisesrc=color=pink:duration=0.45:seed=3"], "highpass=f=500,afade=t=in:d=0.2,afade=t=out:st=0.2:d=0.25,volume=0.35"
-    return ["-f", "lavfi", "-i", "sine=frequency=1040:duration=0.07"], "volume=0.7,afade=t=out:st=0.02:d=0.05"
+SFX = {   # small synthesized sounds (no files, no licences): source, filter chain
+    "tick":   ("sine=frequency=1500:duration=0.035", "afade=t=out:st=0.005:d=0.03,volume=0.22"),
+    "tock":   ("sine=frequency=720:duration=0.11", "afade=t=out:st=0.01:d=0.1,volume=0.75"),
+    "pop":    ("sine=frequency=580:duration=0.09", "afade=t=out:st=0.01:d=0.08,volume=0.32"),
+    "whoosh": ("anoisesrc=color=pink:duration=0.42:seed=3", "highpass=f=700,lowpass=f=5000,afade=t=in:d=0.22,afade=t=out:st=0.22:d=0.2,volume=0.2"),
+    "thud":   ("sine=frequency=92:duration=0.24", "afade=t=out:st=0.02:d=0.22,volume=0.85"),
+    "ding":   ("sine=frequency=1320:duration=0.7", "afade=t=out:st=0.01:d=0.69,volume=0.22"),
+    "hit":    ("sine=frequency=56:duration=1.0", "afade=t=out:st=0.04:d=0.96,volume=1.3"),
+}
 
 
-def build(res, work, total):
+def _sfx_file(kind, work):
+    """Make one small sound once per reel; every cue of that kind reuses the file."""
+    kind = kind if kind in SFX else "pop"
+    path = os.path.join(work, f"sfx_{kind}.wav")
+    if not os.path.exists(path):
+        src, chain = SFX[kind]
+        subprocess.run([_ffmpeg(), "-y", "-v", "error", "-f", "lavfi", "-i", src, "-af", chain + ",aresample=48000,aformat=channel_layouts=stereo", path], check=True)
+    return path
+
+
+def build(res, work, total, cues=None):
     """Returns the path of the finished audio (AAC, 48 kHz), exactly `total` seconds long."""
     os.makedirs(work, exist_ok=True)
     starts, t = [], 0.0
@@ -54,11 +66,10 @@ def build(res, work, total):
             parts.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,atrim=0:{float(s.get('vdur', s['dur'])):.2f},volume=0.9,adelay={ms}:all=1[f{n}]")
             fg.append(f"[f{n}]")
             n += 1
-        for fx in s.get("sfx", []):
-            inp, chain = _sfx(fx.get("kind", "tick"))
-            cmd += inp
-            ms = int(round((starts[i] + float(fx.get("at", 0))) * 1000))
-            parts.append(f"[{n}:a]aresample=48000,aformat=channel_layouts=stereo,{chain},adelay={ms}:all=1[x{n}]")
+    if res.get("sfx", True):
+        for q in (cues or [])[:90]:          # the template says when each move lands; the sound lands with it
+            cmd += ["-i", _sfx_file(q.get("kind"), work)]
+            parts.append(f"[{n}:a]adelay={int(round(max(0.0, float(q['t'])) * 1000))}:all=1[x{n}]")
             extra.append(f"[x{n}]")
             n += 1
 

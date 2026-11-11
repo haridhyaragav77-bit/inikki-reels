@@ -1,0 +1,24 @@
+{
+  "_note": "Golden reel 3 of 3: Guess the Tamil Movie (Kaithi), rebuilt from a plan. Clues are objects and places, never faces or the title.",
+  "reel_id": "golden-kaithi-guess",
+  "series": "guess-the-movie",
+  "template": "diorama",
+  "episode": 4,
+  "lead": {"topic": "Kaithi (2019): biryani and handcuffs, one night and a lorry, a forest police station", "score": 78, "sources": []},
+  "music": {"mood": "suspense_ticks", "track": "16-Missing-Girl-Investigation-MassTamilan.com.mp3"},
+  "images": [
+    {"prompt": "A big steel plate heaped with steaming chicken biryani and boiled eggs on a dark wooden table in a night-time roadside eatery, a pair of old steel handcuffs lying open in the foreground beside the plate, rain and teal neon glow in the blurred background", "move": "push", "focus": [0.5, 0.42]},
+    {"prompt": "An old orange Indian lorry driving alone on a wet forest highway at night, headlights cutting through fog, tall dark trees and coconut palms on both sides, puddles reflecting the lights, deep blue night with warm headlight glow", "move": "right", "focus": [0.5, 0.5]},
+    {"prompt": "A small old colonial-era police station with a tiled roof and iron-barred gate, deep in a dark forest at night, one warm yellow lamp glowing inside the open doorway, stone steps in front, mist between the trees", "move": "orbit", "focus": [0.5, 0.5]}
+  ],
+  "screens": [
+    {"kind": "title", "dur": 3.9, "image": 0, "kicker": "THREE CLUES / ONE ANSWER", "headline": "3 clues.", "headline2": "Padam enna?", "caption": "Kandupidichaa… nee vera level.", "caption_tamil": "கண்டுபிடிச்சா நீ வேற லெவல்."},
+    {"kind": "clue", "n": 1, "dur": 4.5, "image": 0, "kicker": "CLUE 01 / FANS ONLY", "headline": "Biryani. Kaivilangu.", "tamil": "பிரியாணி. கைவிலங்கு.", "caption": "Oru plate. Oru clue.", "caption_tamil": "ஒரு தட்டு. ஒரு துப்பு."},
+    {"kind": "clue", "n": 2, "dur": 6.0, "image": 1, "kicker": "CLUE 02 / LOOK CLOSER", "headline": "Orey night. Oru lorry.", "tamil": "ஒரே இரவு. ஒரு லாரி.", "caption": "Ulla mayangina police.", "caption_tamil": "உள்ளே மயங்கிக் கிடக்கும் போலீஸ்."},
+    {"kind": "clue", "n": 3, "dur": 6.0, "image": 2, "kicker": "CLUE 03 / LAST CHANCE", "headline": "Kaadu. Police station.", "tamil": "காடு. காவல் நிலையம்.", "caption": "Kadaisi clue. Answer-a lock pannu.", "caption_tamil": "கடைசி துப்பு. பதிலை முடிவு பண்ணு."},
+    {"kind": "countdown", "dur": 4.6, "image": 2, "kicker": "LOCK YOUR ANSWER", "caption": "Guess pannitiyaa?", "caption_tamil": "பதில் ரெடியா?"},
+    {"kind": "reveal", "dur": 5.0, "image": 2, "kicker": "THE ANSWER", "title": "KAITHI", "year": "2019", "headline": "Endha clue-la kandupidicha?", "tamil": "எந்த துப்புல கண்டுபிடிச்ச?", "caption": "1, 2, illa 3? Comment pannu.", "caption_tamil": "1, 2, இல்ல 3? கமெண்ட் பண்ணு."}
+  ],
+  "caption": {"text": "3 clues. Oru Tamil padam. Kandupidikka mudiyumaa?\nBiryani, kaivilangu, oru lorry, oru raathiri.\nEndha clue-la kandupidicheenga: 1, 2, illa 3?\nUnga cinema friend-a test pannunga.", "hashtags": ["#TamilCinema", "#GuessTheMovie", "#iNiKKiGuess"], "first_comment": "Clue 1-laye kandupidichavanga yaaru?"},
+  "cover": {"screen": 1}
+}

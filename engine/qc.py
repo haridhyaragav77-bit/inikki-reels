@@ -89,8 +89,12 @@ def check(final_mp4, res, series, template_flags, cover_path):
         problems.append("cover image is missing")
 
     # stand-in pictures must never post
-    stand_ins = sum(1 for im in (res.get("images") or []) if im.get("source") == "placeholder")
-    stand_ins += sum(1 for s in res["screens"] if isinstance(s.get("visual"), dict) and s["visual"].get("source") == "placeholder" and s.get("visual_changed"))
+    if res.get("images"):
+        stand_ins = sum(1 for im in res["images"] if im.get("source") == "placeholder")
+    else:
+        stand_ins = sum(1 for s in res["screens"] if isinstance(s.get("visual"), dict) and s["visual"].get("source") == "placeholder" and s.get("visual_changed"))
+    if any(str(vc.get("file", "")).endswith(".mp3") and res.get("voice_stand_in") for vc in res.get("voice_clips", [])):
+        problems.append("the voice is a stand-in tone, not the real voice")
     checks["stand_in_pictures"] = stand_ins
     if stand_ins:
         problems.append(f"{stand_ins} picture(s) are stand-ins, not real images")
