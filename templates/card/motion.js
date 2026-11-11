@@ -111,7 +111,8 @@ window.MOTIONS = (() => {
     // a person, a goal, and barriers dropping between them: one want, delayed again and again
     goal: { tall: true, sig: m => ["goal", m.who, m.goal],
       build(el, m) { const W = 840, H = 250, y = 122, x0 = 90, x1 = W - 90, blocks = Array.isArray(m.blocks) ? m.blocks : Array.from({ length: m.blocks || 3 }, () => ""), n = blocks.length;
-        const bars = blocks.map((b, i) => { const x = x0 + (x1 - x0) * (i + 1) / (n + 1); return `<g class="bk" data-x="${x}"><rect x="${x - 9}" y="${y - 46}" width="18" height="92" rx="6" fill="var(--c-alert)"/><text x="${x}" y="${y - 58}" text-anchor="middle" fill="var(--c-alert)" font-size="23" font-weight="800" letter-spacing="1">${esc(String(b).toUpperCase())}</text></g>`; }).join("");
+        const st = clamp(m.start || 0, 0, 0.8); el._x0 = x0 + (x1 - x0) * st;
+        const bars = blocks.map((b, i) => { const x = x0 + (x1 - x0) * (st + (1 - st) * (i + 1) / (n + 1)); return `<g class="bk" data-x="${x}"><rect x="${x - 9}" y="${y - 46}" width="18" height="92" rx="6" fill="var(--c-alert)"/><text x="${x}" y="${y - 58}" text-anchor="middle" fill="var(--c-alert)" font-size="23" font-weight="800" letter-spacing="1">${esc(String(b).toUpperCase())}</text></g>`; }).join("");
         el.innerHTML = `<div style="position:relative;height:${H}px">` + svg(W, H, `<line x1="${x0}" x2="${x1}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,0.24)" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round"/><line class="reach" x1="${x0}" x2="${x0}" y1="${y}" y2="${y}" stroke="var(--c-teal)" stroke-width="6" stroke-linecap="round"/>${bars}` +
           `<circle cx="${x0}" cy="${y}" r="32" fill="var(--c-navy)" stroke="var(--c-teal)" stroke-width="4"/><circle cx="${x0}" cy="${y - 8}" r="8" fill="var(--c-teal)"/><path d="M${x0 - 14},${y + 17} a14,13 0 0 1 28,0z" fill="var(--c-teal)"/>` +
           `<g class="gl"><circle cx="${x1}" cy="${y}" r="34" fill="var(--c-navy)" stroke="var(--c-gold)" stroke-width="4"/><path transform="translate(${x1 - 16.2},${y - 17}) scale(1.35)" d="M12 21s-7.5-4.6-10-9.2C.3 8.4 2 4.5 5.6 4.5c2 0 3.4 1.1 4.4 2.5 1-1.4 2.4-2.5 4.4-2.5 3.6 0 5.3 3.9 3.6 7.3C19.5 16.4 12 21 12 21z" fill="var(--c-gold)"/></g>` +
@@ -120,7 +121,8 @@ window.MOTIONS = (() => {
         bks.forEach((b, i) => { const r = i < from ? 1 : c.raw(spread(i - from, n - from, 0.14, 0.7), 0.3), x = +b.dataset.x;
           b.style.opacity = r > 0 ? 1 : 0; b.setAttribute("transform", `translate(0 ${(-(1 - Math.min(1, back(r))) * 50).toFixed(1)})`);
           if (r > 0 && x < stop) stop = x; if (r > 0 && r < 1) shake = Math.sin(r * Math.PI * 4) * 6 * (1 - r); });
-        const free = lerp(90, 700, easeInOut(clamp(c.p * (from ? 99 : 2.4)))), me = Math.min(free, stop - 26) + (stop < 750 ? shake * 0.5 : 0);
+        const end = m.reach != null ? 90 + 660 * clamp(m.reach) : 700;                      // how far the person gets if nothing stops them
+        const free = lerp(el._x0, end, easeInOut(clamp(c.p * (from ? 99 : 2.4)))), me = Math.min(free, stop - 28) + (stop < 750 ? shake * 0.5 : 0);
         el.querySelector(".me").setAttribute("cx", me.toFixed(1)); el.querySelector(".reach").setAttribute("x2", me.toFixed(1));
         el.querySelector(".gl").setAttribute("transform", `translate(${shake.toFixed(1)} 0) scale(${(1 + 0.03 * Math.sin(c.lt * 4)).toFixed(3)})`); el.querySelector(".gl").style.transformOrigin = "750px 122px";
         fade(el, c); },

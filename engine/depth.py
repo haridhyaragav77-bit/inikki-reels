@@ -162,7 +162,7 @@ def layers(image_path, outdir, local=False):
     mid_rgb = _fill(rgb, near)                      # the nearest part is painted over in the middle layer
     out = []
     p = os.path.join(outdir, "far.jpg")
-    Image.fromarray(far_rgb).save(p, quality=92)
+    Image.fromarray(far_rgb).filter(ImageFilter.GaussianBlur(1.3)).save(p, quality=92)     # the far layer is a touch soft (depth of field)
     out.append({"src": p, "depth": 0.0})
     p = os.path.join(outdir, "mid.png")
     Image.fromarray(np.dstack([mid_rgb, alpha(mid)])).save(p, compress_level=1)

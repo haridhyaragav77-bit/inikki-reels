@@ -156,12 +156,16 @@ class Assets:
         if not src:
             self.notes.append(f"Clip {n} ({spec.get('film', '')}: {spec.get('query', '')}): no file in clip-library/, a still card was used.")
             return self.still(spec.get("film") or spec.get("query") or "", n, kind="clip")
-        start = spec.get("start")
+        start = 0 if self.local else spec.get("start")
         if start is None:
             total = media_duration(src)
             h = int(hashlib.md5(f"{self.reel_id}:{n}".encode()).hexdigest(), 16)
             start = round(5 + (h % 1000) / 1000 * max(0.0, total - length - 10), 1) if total > length + 10 else 0
-        return self._frames_from(src, float(start), length, n, label=spec.get("label"), audio=bool(spec.get("audio")), crop=crop)
+        try:
+            return self._frames_from(src, float(start), length, n, label=spec.get("label"), audio=bool(spec.get("audio")), crop=crop)
+        except RuntimeError as e:      # one bad clip never stops the reel (fail soft): a still card takes its place
+            self.notes.append(f"Clip {n} ({spec.get('film', '')}) could not be cut ({e}); a still card was used.")
+            return self.still(spec.get("film") or spec.get("query") or "", n, kind="clip")
 
     def _reference_reel(self, name):
         local = os.path.join(self.work, "ref_" + re.sub(r"[^\w.]+", "_", name))
@@ -298,10 +302,9 @@ class Assets:
         if not tracks:
             self._synth_bed(out, mood, length_s)
             return {"path": out, "name": "synthesized bed (music folder empty)", "source": "local"}
-        words = {"tension_pulse": ["tension", "suspense", "dark", "pulse", "thriller", "bgm"], "upbeat_percussive": ["upbeat", "beat", "percussion", "energy", "mass", "theme"],
-                 "emotional_build": ["emotional", "emotion", "sad", "piano", "story", "love"], "suspense_ticks": ["suspense", "mystery", "clock", "tick", "tension"],
-                 "stinger": ["stinger", "impact", "hit", "intro"], "soft_warm": ["soft", "warm", "calm", "melody", "flute"], "confident_mid": ["theme", "groove", "confident", "mass"]}.get(mood, [])
-        hits = [t for t in tracks if any(w in norm(t["name"]) for w in words)]
+        words = (ENGINE.get("music", {}).get("mood_words", {}) or {}).get(mood, [])
+        clean = lambda name: re.sub(r"masstamilan\s*\w*", " ", norm(name))          # site tags in file names are not mood words
+        hits = [t for t in tracks if any(w in clean(t["name"]).split() or (len(w) > 5 and w in clean(t["name"])) for w in words)]
         pinned = [t for t in tracks if track and t["name"] == track]
         pool = pinned or hits or tracks
         h = int(hashlib.md5(f"{self.reel_id}:{series_id}:music".encode()).hexdigest(), 16)

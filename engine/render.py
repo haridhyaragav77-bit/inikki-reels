@@ -69,6 +69,29 @@ class Frames:
             self._pw.stop()
 
 
+def _sheet(fr, info, total, outdir, spec=""):
+    """One picture with a frame from every screen (or a burst across one stretch, as start:end:count), to review a reel at a glance."""
+    from PIL import Image
+    import io
+    if spec and ":" in spec:
+        a, b, n = spec.split(":")
+        times = [float(a) + (float(b) - float(a)) * i / (int(n) - 1) for i in range(int(n))]
+    else:
+        at = float(spec) if spec else 0.78
+        times = [sc["start"] + (sc["end"] - sc["start"]) * at for sc in info["screens"]]
+    cols = 6 if len(times) > 12 else (5 if len(times) > 8 else 4)
+    tw, th = 432, 768
+    rows = (len(times) + cols - 1) // cols
+    im = Image.new("RGB", (cols * tw, rows * th), (0, 0, 0))
+    for k, t in enumerate(times):
+        tile = Image.open(io.BytesIO(fr.frame(min(t, total - 0.01), "png"))).convert("RGB").resize((tw, th), Image.LANCZOS)
+        im.paste(tile, ((k % cols) * tw, (k // cols) * th))
+    p = outdir / "sheet.jpg"
+    im.save(p, quality=86)
+    print("sheet:", p, "times:", [round(t, 2) for t in times])
+    return str(p)
+
+
 def encode_video(frames, total_s, out_mp4):
     """frames(t) → bytes; pipes JPEG frames into ffmpeg → H.264 1080x1920 30 fps."""
     n = int(round(total_s * FPS))
@@ -110,6 +133,7 @@ def _voice(res, plan, series, work, local, notes):
     clips = None
     if local:   # stand-in tones with estimated lengths, so timing and mixing can be tested without Microsoft's service
         clips = []
+        res["voice_stand_in"] = True
         for n, (_, txt) in enumerate(lines):
             secs = round(min(7.0, max(0.9, len(txt) * 0.062)), 2)
             f = os.path.join(vdir, f"line_{n:02d}.mp3")
@@ -186,12 +210,12 @@ def resolve(plan, work, local, drive=None, budget=None):
             if "src" not in im:
                 counter["img"] += 1
                 im.update(A.image(im, counter["img"], style_default, image_cap))
-                if template == "diorama":
+                if template in ("diorama", "cinematic"):
                     from . import depth
                     im["layers"], im["depth_source"] = depth.layers(im["src"], os.path.join(work, f"layers_{v['image']:02d}"), local=local)
                     if im["depth_source"] != "model" and not local:
                         A.notes.append(f"Scene {v['image'] + 1}: the depth model was not available, so a simpler layered look was used.")
-            out.update({k: im[k] for k in ("src", "source", "style", "layers", "focus", "motion") if k in im})
+            out.update({k: im[k] for k in ("src", "source", "style", "layers", "focus", "move") if k in im})
         elif kind == "image":
             counter["img"] += 1
             out.update(A.image(v, counter["img"], style_default, image_cap))
@@ -234,13 +258,8 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
     work = OUT / "work" / reel_id
     os.makedirs(outdir, exist_ok=True)
     budget = None
-    if not local and drive is None:
-        try:
-            from .drive import Drive
-            drive = Drive()
-        except Exception as e:
-            print("Drive not available, rendering with local placeholders:", e, file=sys.stderr)
-            local = True
+    if local:
+        drive = None
     if drive:
         from .budget import Budget
         budget = Budget(drive)
@@ -252,27 +271,10 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
     try:
         info = fr.setup(res, brand)
         total = float(info["total"])
-        if sheet is not None:      # one picture with a frame from every screen (or a burst across one stretch), to review a template at a glance
-            from PIL import Image
-            import io
-            if sheet and ":" in sheet:
-                a, b, n = sheet.split(":")
-                times = [float(a) + (float(b) - float(a)) * i / (int(n) - 1) for i in range(int(n))]
-            else:
-                at = float(sheet) if sheet else 0.8
-                times = [sc["start"] + (sc["end"] - sc["start"]) * at for sc in info["screens"]]
-            cols = 5 if len(times) > 8 else 4
-            tw, th = 432, 768
-            rows = (len(times) + cols - 1) // cols
-            im = Image.new("RGB", (cols * tw, rows * th), (0, 0, 0))
-            for k, t in enumerate(times):
-                fr_im = Image.open(io.BytesIO(fr.frame(min(t, total - 0.01), "png"))).convert("RGB").resize((tw, th), Image.LANCZOS)
-                im.paste(fr_im, ((k % cols) * tw, (k // cols) * th))
-            p = outdir / "sheet.jpg"
-            im.save(p, quality=88)
-            print("sheet:", p, "times:", [round(t, 2) for t in times])
+        if sheet is not None:
+            p = _sheet(fr, info, total, outdir, sheet)
             print("qc flags:", fr.qc_flags())
-            return {"ok": True, "sheet": str(p), "total_s": total}
+            return {"ok": True, "sheet": p, "total_s": total}
         if snap is not None:
             times = [float(x) for x in snap.split(",")] if snap else [0.3, total / 2, total - 0.5]
             paths = []
@@ -297,47 +299,89 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
         ct = scr["start"] + min(1.0, (scr["end"] - scr["start"]) * 0.6)
         with open(outdir / "cover.jpg", "wb") as f:
             f.write(fr.frame(ct, "jpeg"))
-        flags = fr.qc_flags() + safe
+        _sheet(fr, info, total, outdir)
+        seen, flags = set(), []
+        for f in fr.qc_flags() + safe:          # the same note can be raised more than once while frames are drawn
+            k = json.dumps(f, sort_keys=True, ensure_ascii=False)
+            if k not in seen:
+                seen.add(k)
+                flags.append(f)
     finally:
         fr.close()
     from . import audio, qc
-    mix = audio.build(res, work, total)
+    mix = audio.build(res, str(work), total, info.get("cues"))
     final = str(outdir / "reel.mp4")
     subprocess.run([_ffmpeg(), "-y", "-v", "error", "-i", silent, "-i", mix, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-shortest", final], check=True)
     os.remove(silent)
     report = qc.check(final, res, series_for(plan), flags, str(outdir / "cover.jpg"))
     with open(outdir / "qc.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
-    notes = ["# " + reel_id, "", f"Template: {template}. Length: {total:.1f} s. Music: {res['music_resolved']['name']} ({res['music_resolved']['mood']}).",
-             f"Images made: {res.get('images_made', 0)}. Voice: {'yes' if res.get('voice_clips') else 'no'}{' (failed, silent version)' if res.get('voice_failed') else ''}.", ""]
-    notes += ["QC: " + ("PASS" if report["pass"] else "HOLD") + " — " + "; ".join(report["problems"] or ["all checks passed"]), ""]
-    notes += ["Fallbacks used:"] + ["- " + n for n in res.get("notes", [])] if res.get("notes") else ["No fallbacks were needed."]
+    used = [f"{len(res.get('voice_clips', []))} voice lines" if res.get("voice_clips") else "no voice", f"{res.get('images_made', 0)} new AI images", f"music: {res['music_resolved']['name']}"]
+    notes = [f"# {reel_id}", "", f"Template: {template}. Length: {total:.1f} seconds. " + ", ".join(used) + ".", "",
+             "Inspection: " + ("PASSED" if report["pass"] else "HELD (would not post)") + ". " + ("; ".join(report["problems"]) if report["problems"] else "Every check passed."), ""]
+    if report["warnings"]:
+        notes += ["Worth a look:"] + ["- " + w for w in report["warnings"]] + [""]
+    notes += (["Fallbacks used:"] + ["- " + n for n in res.get("notes", [])]) if res.get("notes") else ["No fallbacks were needed."]
+    if plan.get("_note"):
+        notes += ["", plan["_note"]]
     with open(outdir / "notes.md", "w", encoding="utf-8") as f:
         f.write("\n".join(notes) + "\n")
     print("\n".join(notes))
+    link = None
     if to_drive and drive:
         folder = to_drive.rstrip("/") + "/" + reel_id
-        for name in ["reel.mp4", "cover.jpg", "notes.md", "qc.json", "plan_resolved.json"]:
-            drive.upload(str(outdir / name), folder)
-        print("uploaded to Drive", folder, "→", drive.folder_link(drive.folder(folder)))
+        for name, as_name in [("reel.mp4", reel_id + ".mp4"), ("cover.jpg", "cover.jpg"), ("notes.md", "notes.txt")]:
+            drive.upload(str(outdir / name), folder, name=as_name)
+        link = drive.folder_link(drive.folder(folder))
+        print("uploaded to Drive", folder, "→", link)
     shutil.rmtree(work, ignore_errors=True)
-    return {"ok": report["pass"], "reel": final, "qc": report, "total_s": total}
+    return {"ok": report["pass"], "reel": final, "qc": report, "total_s": total, "reel_id": reel_id, "link": link, "notes": res.get("notes", [])}
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("plans", nargs="+")
-    ap.add_argument("--local", action="store_true", help="placeholders instead of Drive/OpenAI (for testing templates)")
+    ap.add_argument("--local", action="store_true", help="stand-in pictures and voice instead of Drive, OpenAI and Microsoft (for testing templates anywhere)")
     ap.add_argument("--to-drive", default=None, help="Drive folder to upload the result to, e.g. rehearsal/phase2")
     ap.add_argument("--snap", nargs="?", const="", default=None, help="only PNG frames at these times, e.g. 0,2,10")
     ap.add_argument("--safe", action="store_true", help="draw the safe zones (debug)")
     ap.add_argument("--sheet", nargs="?", const="", default=None, help="one picture with a frame per screen (give 0-1 for where in each screen), or a burst as start:end:count")
     a = ap.parse_args()
-    ok = True
+    quick = a.snap is not None or a.sheet is not None
+    drive = None
+    if not a.local:
+        try:
+            from .drive import Drive
+            drive = Drive()
+            sw = drive.read_json("control", "switch.json") or {}
+            if sw.get("mode") == "sleep" and not quick:          # master switch (AGENT.md 12.1): nothing is made while asleep
+                print("The master switch says Sleep. Nothing was made.")
+                status.write(drive, "make.json", {"state": "asleep", "made": []})
+                return
+        except Exception as e:
+            print("Drive is not reachable, so stand-in pictures are used:", str(e)[:200], file=sys.stderr)
+            a.local = True
+    from . import plancheck
+    results = []
     for p in a.plans:
-        r = render(p, local=a.local, to_drive=a.to_drive, snap=a.snap, debug_safe=a.safe, sheet=a.sheet)
-        ok = ok and r.get("ok", False)
-    sys.exit(0 if ok else 1)
+        try:
+            with open(p, encoding="utf-8") as f:
+                errors, _ = plancheck.check(json.load(f))
+            if errors:                                           # a plan that breaks the rules is not made (AGENT.md 5.7)
+                results.append({"plan": p, "ok": False, "held": "plan check: " + "; ".join(errors[:3])})
+                print(f"{p}: not made. " + " ".join(errors[:3]))
+                continue
+            r = render(p, local=a.local, to_drive=a.to_drive, snap=a.snap, debug_safe=a.safe, drive=drive, sheet=a.sheet)
+            results.append({"plan": p, "ok": bool(r.get("ok")), "reel_id": r.get("reel_id"), "seconds": r.get("total_s"), "link": r.get("link"),
+                            "held": None if r.get("ok") else "; ".join((r.get("qc") or {}).get("problems", [])[:3])})
+        except Exception as e:                                   # one broken reel never stops the others (fail soft)
+            import traceback
+            traceback.print_exc()
+            results.append({"plan": p, "ok": False, "held": "could not be made: " + str(e)[:200]})
+    if not quick:
+        status.write(drive, "make.json", {"state": "done", "made": results})
+        print(json.dumps(results, ensure_ascii=False, indent=1))
+    sys.exit(0 if all(r["ok"] for r in results) else 1)
 
 
 if __name__ == "__main__":

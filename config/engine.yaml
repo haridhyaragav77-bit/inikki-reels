@@ -47,3 +47,15 @@ depth:
     - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx"
     - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model_quantized.onnx"
   threads: 2
+
+music:
+  # Words in a track's file name that suggest a mood. The weekly review replaces this guess with results
+  # (tracks are scored by the watch-through of the reels that used them, AGENT.md 5.4).
+  mood_words:
+    tension_pulse: [chase, anxious, hunt, mission, danger, escape, attack, investigates, investigation, suspense, tension, thriller]
+    upbeat_percussive: [intro, entry, rap, beat, dance, kuthu, celebration, title, swag]
+    emotional_build: [emotion, emotional, sad, amma, promise, heart, memories, farewell, piano, father, mother]
+    suspense_ticks: [investigation, investigates, mystery, secret, missing, search, suspense, pact]
+    stinger: [intro, title, attack, hunt]
+    soft_warm: [love, romance, flute, piano, lullaby, melody]
+    confident_mid: [theme, hero, walk, intro, king]
