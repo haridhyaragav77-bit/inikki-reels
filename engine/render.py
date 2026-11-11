@@ -145,9 +145,12 @@ def _voice(res, plan, series, work, local, notes):
         cfg = {k: val for k, val in (v or {}).items() if k in ("voice", "rate", "pitch")} if isinstance(v, dict) else {}
         cfg["lines"] = [{"text": spoken(txt)} for _, txt in lines]
         r = V.batch(cfg, vdir)
-        if not r.get("ok"):   # one retry, then the silent version (fail soft)
-            time.sleep(8)
-            r = V.batch(cfg, vdir)
+        for wait in (10, 30):  # two fresh retries, then the silent version (fail soft)
+            if r.get("ok"):
+                break
+            print("voice attempt failed:", r.get("error"), "| retrying in", wait, "s", file=sys.stderr)
+            time.sleep(wait)
+            r = V.batch(cfg, vdir, fresh=True)
         if r.get("ok"):
             clips = r["clips"]
         else:

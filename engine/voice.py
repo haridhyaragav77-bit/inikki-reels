@@ -37,14 +37,19 @@ def say(text, out_path, voice=None, rate=None, pitch=None):
                  f"--rate={rate or d['rate']}", f"--pitch={pitch or d['pitch']}"])
 
 
-def batch(plan, outdir):
-    """plan = {"voice":..., "rate":..., "pitch":..., "lines":[{"text":...}, ...]} → clips + full.mp3 with real lengths."""
+def batch(plan, outdir, fresh=False):
+    """plan = {"voice":..., "rate":..., "pitch":..., "lines":[{"text":...}, ...]} → clips + full.mp3 with real lengths.
+    fresh=True remakes every clip (used on a retry, so a half-written clip from a failed try is never reused)."""
     os.makedirs(outdir, exist_ok=True)
+    for name in os.listdir(outdir):          # an empty clip left by a failed try would break the tool's length reader
+        fp = os.path.join(outdir, name)
+        if name.endswith(".mp3") and os.path.getsize(fp) < 1000:
+            os.remove(fp)
     p = os.path.join(outdir, "plan.json")
     full = {**defaults(), **plan}
     with open(p, "w", encoding="utf-8") as f:
         json.dump(full, f, ensure_ascii=False)
-    return _run(["batch", "--plan", p, "--outdir", outdir])
+    return _run(["batch", "--plan", p, "--outdir", outdir] + (["--fresh"] if fresh else []))
 
 
 def voices(lang="ta"):
