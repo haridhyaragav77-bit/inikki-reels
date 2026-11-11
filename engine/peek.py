@@ -8,6 +8,7 @@ clip folders, into out/peek/. The workflow pushes that folder to the throwaway '
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 
@@ -77,8 +78,29 @@ def frames(d, spec):
     print("frames:", sorted(os.listdir(PEEK / "frames")))
 
 
+def depths(d, names):
+    """Depth maps for pictures already in Drive image-library (comma separated names)."""
+    from . import depth
+    from PIL import Image
+    fid = d.folder("image-library", create=False)
+    for name in names.split(","):
+        f = d.find_child(fid, name.strip())
+        if not f:
+            print("not in image-library:", name)
+            continue
+        base = os.path.splitext(name.strip())[0]
+        local = d.download(f["id"], str(OUT / "work" / "depth" / name.strip()))
+        layers, source, extra = depth.layers(local, str(OUT / "work" / "depth" / base))
+        os.makedirs(PEEK / "depth", exist_ok=True)
+        Image.open(local).convert("RGB").save(PEEK / "depth" / f"{base}.jpg", quality=90)
+        for k, path in extra.items():
+            shutil.copy(path, PEEK / "depth" / f"{base}_{k}{os.path.splitext(path)[1]}")
+        print("depth:", name, source, list(extra))
+
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--depth", default="")
     ap.add_argument("--what", default="reference,music,memes,clips")
     ap.add_argument("--frames", default="")
     a = ap.parse_args()
@@ -87,6 +109,8 @@ def main():
     if a.frames:
         for spec in a.frames.split(";"):
             frames(d, spec)
+    if a.depth:
+        depths(d, a.depth)
     want = [w for w in a.what.split(",") if w]
     if "music" in want:
         list_folder(d, "music", "music")

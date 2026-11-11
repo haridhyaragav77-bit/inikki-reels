@@ -222,6 +222,7 @@ Hook · Send trigger · Comment trigger · Save value · Pacing · Loop (the end
 - No text inside AI images. Templates add all text, so Tamil spelling is exact.
 - The last screen holds the send or comment prompt and echoes screen 1.
 - Every screen has one motion graphic that shows what is being said, and both subtitles (section 5.7).
+- Screen 1 opens on a visual hook; pictures change with a transition, never a plain fade (section 5.8).
 - The cover title sits inside the middle 3:4 area, because the profile grid crops to it.
 
 ### 5.4 Music (picked at stage 4)
@@ -266,6 +267,23 @@ The moving graphics are not decoration. They are how the viewer understands the 
 | A fixed library | The graphics come from a library (`rules/motion.md`) so every reel looks like the same page. Each entry says what it shows and when to use it. A new kind of graphic is a build request, tested before use. |
 | Checked by code | A plan is rejected if a spoken line has no Tanglish subtitle or no Tamil subtitle, or if a screen asks for a graphic that is not in the library. |
 | Learned | The weekly review notes which graphics appear in reels with the best watch-through, and the Content Specialist favours them. |
+
+
+### 5.8 The look: a hook you can see, bright and premium
+People decide in the first second, with the sound off, on a small bright screen. The look is built for that moment.
+
+| Rule | Detail |
+| --- | --- |
+| Visual hook | The first second of every reel has one visual event that stops the scroll: a lightning strike, a headlight flare, a hard zoom, a spotlight snapping on, a clapboard slamming shut. It is picked to fit the film or story (thunder for a thriller, a flare for a road film). It lands with its sound. The hook words arrive with it, not after it. |
+| No logo intro | The reel opens straight on the hook. The brand shows in the colours, the type and the sign-off, never in a title card that delays the hook. |
+| Transitions | Every change of picture uses one of a small set of moves: flash cut, whip, zoom-through, light sweep. A plain fade between two different pictures is not used. |
+| Brighter | A deep page with bright content. Ticket Yellow, Signal Teal and Reel Gold carry the frame, with Screen Violet light behind them. The first frame must read on a phone in daylight. |
+| Premium | Fewer, larger elements. Even spacing. Soft light, depth and grain on pictures. Every move eases in and out. Nothing blinks or jumps without a reason. |
+| Guess the Movie is 3D | Each clue is a 3D scene the camera travels through, with weather, moving light and depth of field. The pictures are made in a 3D-render style, like a film set in miniature. |
+| Stories name the person last | A Viral Story keeps the person unnamed to build curiosity, then reveals the name near the end ("None other than …"). The pictures are inspired-by paintings and are never passed off as the real face. |
+| Checked by code | A plan is refused if it has no visual hook, or if a Viral Story has no name reveal. |
+
+The hooks, transitions and camera moves are listed in `rules/motion.md`, with when to use each.
 
 ---
 
@@ -450,7 +468,7 @@ Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook t
 | Mascot | Yellow ticket with a smile. On every end card. |
 | Voice | The cinema-mad friend: curious, warm, sharp. Never gossip, never fan wars. |
 | Language | Tanglish or English headline + a Tamil line. Tamil voice. |
-| Colours | Ticket Yellow `#F8C028` · Reel Gold `#F8C868` · Signal Teal `#78E0D0` · Night Navy `#0A0F18` · Deep Violet `#211937` · Breaking Red `#E5484D` |
+| Colours | Ticket Yellow `#F8C028` · Reel Gold `#F8C868` · Signal Teal `#78E0D0` · Night Navy `#0A0F18` · Deep Violet `#211937` · Breaking Red `#E5484D` · brighter companions (added 11 Nov 2026 so reels stand out while scrolling): Marquee Indigo `#1A1E4E` for the page, Screen Violet `#7B5CFF` for light and glows |
 | Fonts | Tall condensed for cinematic headlines · clean sans for cards · a Tamil font. All free. |
 | Text order | Kicker → headline → Tamil line |
 | Sign-off | "SEND TO THAT FRIEND" pill + mascot |
@@ -942,7 +960,7 @@ tagline: "Tamil cinema, broken down."
 bio: "Tamil cinema, broken down. Daily breakdowns, updates and Guess the Movie."
 mascot: "ticket.png"        # yellow ticket with a smile
 voice: { is: [curious, warm, sharp], never: [gossip, fan_wars, insults], persona: "the cinema-mad friend" }
-colors: { primary: "#F8C028", gold: "#F8C868", teal: "#78E0D0", navy: "#0A0F18", violet: "#211937", alert: "#E5484D", text: "#FFFFFF", muted: "#A7AFC2" }
+colors: { primary: "#F8C028", gold: "#F8C868", teal: "#78E0D0", navy: "#0A0F18", violet: "#211937", indigo: "#1A1E4E", glow: "#7B5CFF", alert: "#E5484D", text: "#FFFFFF", muted: "#B4BCD0" }
 fonts: { cinematic: "Anton", card: "Inter", tamil: "Noto Sans Tamil" }
 text_order: [kicker, headline, tamil_line]
 sign_off: { pill: "SEND TO THAT FRIEND", show_mascot: true }
@@ -1129,6 +1147,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | One Advisor voice: tone, length, timing, tap-to-answer | 3.4, Block B |
 | 1. Pipeline with music, caption, hashtags, reach tactics, gates | 5 |
 | Motion graphics that show what is said; Tanglish and Tamil subtitles on every line | 5.7, `rules/motion.md` |
+| Visual hook in the first second, transitions, brighter premium look, 3D Guess the Movie, name reveal in stories | 5.8, `rules/motion.md` |
 | 2. Series system, lineups, swap everything, Lab | 6, 7 |
 | 3. New-series flow end to end | 7 |
 | 4. Refining series, templates, hooks, roles, rules, with undo | 8.1, 6.5, 3.3 |

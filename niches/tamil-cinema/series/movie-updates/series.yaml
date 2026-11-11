@@ -4,6 +4,7 @@ status: live
 badge: { text: "TAMIL CINEMA / {DATE} EDITION", color: teal }
 per_day: 3
 slots: ["08:30", "18:00", "21:30"]
+hook: flare               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
 visuals: mixed          # official posters, stills, trailer clips
 voice: true
