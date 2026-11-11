@@ -221,6 +221,7 @@ Hook · Send trigger · Comment trigger · Save value · Pacing · Loop (the end
 - Clips are 2–4 s, from official trailers and promos, always inside the card design with commentary.
 - No text inside AI images. Templates add all text, so Tamil spelling is exact.
 - The last screen holds the send or comment prompt and echoes screen 1.
+- Every screen has one motion graphic that shows what is being said, and both subtitles (section 5.7).
 - The cover title sits inside the middle 3:4 area, because the profile grid crops to it.
 
 ### 5.4 Music (picked at stage 4)
@@ -250,6 +251,21 @@ Hashtags help Instagram understand the topic. They do not make a reel go viral. 
 
 ### 5.6 Reach tactics built in
 Fixed posting times · series names and episode numbers · designed covers · a pinned first comment · replies to up to 5 top comments in the Refresh run · Trial Reels for experiments · "Part 2" follow-ups to rising reels · a tidy pinned top row (best breakdown, best Guess, best story).
+
+
+### 5.7 Motion graphics and subtitles
+The moving graphics are not decoration. They are how the viewer understands the point without sound, and why they keep watching.
+
+| Rule | Detail |
+| --- | --- |
+| Show what is being said | Every screen carries one motion graphic that shows the point the voice is making at that moment: a clock draining when time is running out, a line climbing when tension builds, a marker jumping when the film cuts between places. If a graphic could sit on any reel, it is the wrong one. |
+| One idea, one graphic | One motion graphic per screen. It starts with the voice line and lands its last move before the line ends. Parts appear in the order the voice names them. |
+| Works with the picture | The graphic sits under the clip or image, or points at the exact detail inside it. It never covers a face. The clip keeps moving while the graphic plays. |
+| Two subtitles, always | Every spoken line is on screen twice: once in English letters (Tanglish) for viewers who do not read Tamil script, and once in Tamil script. Words light up as they are spoken. Reels without voice still show every text beat in both. |
+| Sound follows motion | Small ticks and pops land with each move. Music drops under the voice. |
+| A fixed library | The graphics come from a library (`rules/motion.md`) so every reel looks like the same page. Each entry says what it shows and when to use it. A new kind of graphic is a build request, tested before use. |
+| Checked by code | A plan is rejected if a spoken line has no Tanglish subtitle or no Tamil subtitle, or if a screen asks for a graphic that is not in the library. |
+| Learned | The weekly review notes which graphics appear in reels with the best watch-through, and the Content Specialist favours them. |
 
 ---
 
@@ -556,7 +572,7 @@ GitHub: inikki-reels/
   team/                 one card per role
   brands/<brand>/       brand.yaml, tokens, image styles
   niches/<niche>/       niche.yaml, series/, lineups/, knowledge/, memes/
-  rules/                playbook.md, viral_factors.md, changes.md
+  rules/                playbook.md, viral_factors.md, motion.md, changes.md
   lab/                  backlog, pitches, results
   plans/YYYY-MM-DD/     one small plan per reel
   data/                 metrics by month, feedback, brief.md
@@ -912,7 +928,7 @@ volume: { base: 6, max: 8 }
 slots: ["08:30", "12:30", "15:30", "18:00", "20:00", "21:30"]
 flex_slots: ["11:00", "17:00"]
 timezone: Asia/Kolkata
-language: { headline: "tanglish_or_english", line2: "tamil", voice: "ta-IN-ValluvarNeural" }
+language: { headline: "tanglish_or_english", line2: "tamil", voice: "ta-IN-ValluvarNeural", subtitles: ["tanglish", "tamil"] }
 budgets: { images_inr_month: 500, lab_share: 0.20, storage_gb: 8, breaking_per_day: 2 }
 metric_priority: [skip_rate, watch_through, share_rate, follow_rate, like_rate, save_rate, comment_rate, repost_rate]
 learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series_week: 3, auto_revert_drop: 0.20 }
@@ -971,13 +987,18 @@ and mark fading ones. Never pass a rumour as fact. You own freshness and accurac
 # script-writer
 You write for the first 1.5 seconds first. Write 5 hooks, keep the one closest to past winners
 in rules/viral_factors.md. One idea per reel. Follow the series' story shape and length. Tamil
-voice lines: Tamil script, short sentences, full stops. You own skip rate. When it is red, test
-one new hook type at a time.
+voice lines: Tamil script, short sentences, full stops. Write every spoken line twice: in Tamil
+script (spoken, and the Tamil subtitle) and in Tanglish (the English-letter subtitle). One line
+makes one point, so it can be shown as one graphic. You own skip rate. When it is red, test one
+new hook type at a time.
 
 # content-specialist
 You turn a script into screens. Something must change every 2–3 seconds. Choose visuals within
 the series' cap, the music track by the mood map, and a meme only if the series allows it.
-Follow the screen rules. The last screen echoes the first. You own watch-through and save rate.
+Give every screen one motion graphic from rules/motion.md that shows what the voice says at that
+moment, never decoration. Ask of each one: with the sound off, would the viewer still get the
+point? Follow the screen rules. The last screen echoes the first. You own watch-through and
+save rate.
 
 # virality-advisor
 You score every plan on the 7 checks before it is made. Under 65: name the 2 weakest checks and
@@ -1024,8 +1045,10 @@ from it. Open another file only when the brief points to it. Do not read raw met
 
 # plan-reel
 Fill the plan form for the series' template in templates/<template>/plan_form.json. Fill every
-field once: lead, hook, screens, visuals, music, meme, voice lines, caption, hashtags, cover,
-time, fallbacks. Keep each screen to one line of headline. Validate against the schema, then save.
+field once: lead, hook, screens, visuals, motion graphic, music, meme, voice lines with both
+subtitles (Tanglish and Tamil), caption, hashtags, cover, time, fallbacks. Pick each motion
+graphic from rules/motion.md by what the line says. Keep each screen to one line of headline.
+Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
 
 # score-reel
 Score the plan on 7 lines, 0–10 each: hook, send trigger, comment trigger, save value, pacing,
@@ -1105,6 +1128,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | Handoffs; add, edit, remove a role | 3.2, 3.3 |
 | One Advisor voice: tone, length, timing, tap-to-answer | 3.4, Block B |
 | 1. Pipeline with music, caption, hashtags, reach tactics, gates | 5 |
+| Motion graphics that show what is said; Tanglish and Tamil subtitles on every line | 5.7, `rules/motion.md` |
 | 2. Series system, lineups, swap everything, Lab | 6, 7 |
 | 3. New-series flow end to end | 7 |
 | 4. Refining series, templates, hooks, roles, rules, with undo | 8.1, 6.5, 3.3 |

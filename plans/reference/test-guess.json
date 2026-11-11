@@ -1,0 +1,12 @@
+{
+  "reel_id": "test-diorama", "series": "guess-the-movie", "template": "diorama", "episode": 4,
+  "images": [{"prompt": "biryani and handcuffs"}, {"prompt": "lorry at night"}, {"prompt": "forest police station"}],
+  "screens": [
+    {"kind": "title", "dur": 3.9, "image": 0, "kicker": "THREE CLUES / ONE ANSWER", "headline": "3 clues.", "headline2": "Padam enna?", "caption": "Kandupidichaa… nee vera level.", "caption_tamil": "கண்டுபிடிச்சா நீ வேற லெவல்."},
+    {"kind": "clue", "n": 1, "dur": 4.5, "image": 0, "kicker": "CLUE 01 / START EASY", "headline": "Biryani. Kaivilangu.", "tamil": "பிரியாணி. கைவிலங்கு.", "caption": "Oru plate. Oru clue.", "caption_tamil": "ஒரு தட்டு. ஒரு துப்பு."},
+    {"kind": "clue", "n": 2, "dur": 6.0, "image": 1, "kicker": "CLUE 02 / LOOK CLOSER", "headline": "Orey night. Oru lorry.", "tamil": "ஒரே இரவு. ஒரு லாரி.", "caption": "Ulla mayangina police.", "caption_tamil": "உள்ளே மயங்கிய போலீஸ்."},
+    {"kind": "clue", "n": 3, "dur": 6.0, "image": 2, "kicker": "CLUE 03 / LAST CHANCE", "headline": "Forest. Police station.", "tamil": "காடு. காவல் நிலையம்.", "caption": "Kadaisi clue.", "caption_tamil": "கடைசி துப்பு. பதிலை முடிவு பண்ணு."},
+    {"kind": "countdown", "dur": 4.6, "image": 2, "kicker": "LOCK YOUR ANSWER", "caption": "Guess pannitiyaa?", "caption_tamil": "பதில் ரெடியா?"},
+    {"kind": "reveal", "dur": 5.0, "image": 2, "kicker": "THE ANSWER", "title": "KAITHI", "year": "2019", "headline": "Endha clue-la kandupidicha?", "tamil": "எந்த துப்புல கண்டுபிடிச்ச?", "caption": "1, 2, illa 3? Comment pannu.", "caption_tamil": "1, 2, இல்ல 3? கமெண்ட் பண்ணு."}
+  ]
+}

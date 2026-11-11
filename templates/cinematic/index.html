@@ -1,0 +1,109 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cinematic</title>
+<link rel="stylesheet" href="../common/base.css">
+<style>
+  /* Cinematic template: Viral Story, Artwork + Quote. A full picture with depth, and story beats set in type. */
+  #scenes { position:absolute; inset:0; z-index:0; isolation:isolate; }
+  .scene { position:absolute; inset:0; }
+  #scrim { position:absolute; left:0; right:0; bottom:0; height:62%; background: linear-gradient(180deg, var(--scrim-a, rgba(10,15,24,0)) 0%, color-mix(in srgb, var(--c-navy) 70%, transparent) 42%, var(--scrim-b, rgba(10,15,24,0.92)) 78%, var(--c-navy) 100%); }
+  #topshade { position:absolute; left:0; right:0; top:0; height:22%; background: linear-gradient(180deg, color-mix(in srgb, var(--c-navy) 55%, transparent), transparent); }
+  #text { position:absolute; left:82px; top:1030px; width:860px; }
+  #kicker { display:flex; align-items:center; gap:14px; height:34px; font-weight:800; font-size:24px; text-transform:uppercase; color: var(--c-teal); white-space:nowrap; }
+  #kicker i { display:block; height:3px; width:44px; border-radius:2px; background: var(--c-teal); transform-origin:0 50%; }
+  #line { margin-top:14px; min-height:60px; font-weight:900; line-height:1.14; letter-spacing:0.01em; text-shadow: 0 3px 16px rgba(0,0,0,0.65); }
+  #headline { margin-top:4px; line-height:1.02; letter-spacing:0.012em; color: var(--c-gold); transform-origin:0 60%; text-shadow: 0 0 26px color-mix(in srgb, var(--c-gold) 45%, transparent), 0 5px 20px rgba(0,0,0,0.7); }
+  #headline em { position:relative; color: var(--c-text); } #headline em i { position:absolute; left:0; bottom:-2px; height:7px; width:0; border-radius:4px; background: var(--c-teal); }
+  #tamil { margin-top:18px; font-weight:500; line-height:1.36; text-shadow: 0 2px 12px rgba(0,0,0,0.7); }
+  #line > span, #headline > span, #tamil > span { display:inline-block; }
+  #stamp { position:absolute; padding:10px 34px; border:9px solid var(--c-alert); border-radius:14px; color: var(--c-alert); font-family:"BrandCinematic"; font-size:112px; line-height:1.1; letter-spacing:0.04em; text-transform:uppercase; white-space:nowrap; transform-origin:50% 50%; mix-blend-mode:normal; text-shadow:0 4px 24px rgba(0,0,0,0.5); background: color-mix(in srgb, var(--c-navy) 30%, transparent); }
+  #signoff { position:absolute; left:82px; top:884px; display:flex; align-items:center; gap:20px; transform-origin:0 50%; }
+  #signoff .pill { height:76px; font-size:29px; padding:0 34px; }
+  #flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
+</style></head>
+<body><div id="stage">
+  <div id="scenes"><div id="sc0" class="scene"></div><div id="sc1" class="scene"></div></div>
+  <div id="topshade"></div><div id="scrim"></div><div class="vignette"></div><div id="grain" class="grain"></div>
+  <div id="stamp" data-safe></div>
+  <div id="signoff" data-safe></div>
+  <div id="text">
+    <div id="kicker" data-safe><i></i><span></span></div>
+    <div id="line" data-safe data-text><span></span></div>
+    <div id="headline" class="cine" data-safe data-text><span></span></div>
+    <div id="tamil" class="tamil" data-safe data-text><span></span></div>
+  </div>
+  <div id="flash"></div>
+  <div id="safeguide"></div>
+</div>
+<script src="../common/base.js"></script>
+<script src="../common/scene.js"></script>
+<script>
+// Cinematic template. A plan screen = one text beat on a picture: kicker, white line, gold headline, Tamil line.
+// Consecutive beats on the same picture share one camera move. Motions: slam (default), count, stamp, underline, question.
+let PLAN, BRAND, TL, TOTAL, RUNS, SC, GRAIN, lastIdx = -1;
+const $ = id => document.getElementById(id), MOVES = ["push", "right", "pull", "left"];
+const fmt = (v, m) => Number(v.toFixed(m.decimals || 0)).toLocaleString("en-IN", { useGrouping: m.grouping !== false });
+const motionOf = s => typeof s.motion === "string" ? { type: s.motion } : (s.motion || { type: "slam" });
+
+window.setup = async function (plan, brand) {
+  PLAN = plan; BRAND = brand; T.applyBrand(brand);
+  TL = T.timeline(plan.screens); TOTAL = TL[TL.length - 1].end;
+  const rand = T.seed(plan.reel_id || "reel"), cues = [];
+  RUNS = [];
+  TL.forEach((s, i) => { const key = s.visual && (s.visual.image != null ? "img" + s.visual.image : s.visual.src || "v" + i), last = RUNS[RUNS.length - 1];
+    if (last && last.key === key) { last.end = s.end; last.n++; } else RUNS.push({ key, start: s.start, end: s.end, visual: s.visual, n: 1, idx: RUNS.length });
+    s.run = RUNS.length - 1; s.MO = motionOf(s);
+    cues.push({ t: +(s.start + 0.22).toFixed(3), kind: s.MO.type === "stamp" ? "pop" : "thud" });
+    if (s.MO.type === "stamp") cues.push({ t: +(s.start + s.dur * 0.5).toFixed(3), kind: "hit" });
+    if (s.MO.type === "count") { for (let k = 0; k < 5; k++) cues.push({ t: +(s.start + 0.3 + (s.dur * 0.45) * k / 5).toFixed(3), kind: "tick" }); cues.push({ t: +(s.start + 0.3 + s.dur * 0.45).toFixed(3), kind: "ding" }); }
+  });
+  RUNS.forEach((r, i) => { r.move = (r.visual && r.visual.move) || MOVES[(i + Math.floor(rand() * 4)) % 4]; if (i) cues.push({ t: +r.start.toFixed(3), kind: "whoosh" }); });
+  const opt = { amount: 30, fog: false, dustCount: 46, lightColor: "rgba(255,236,190,0.10)" };
+  SC = [new Scene($("sc0"), rand, opt), new Scene($("sc1"), rand, opt)];
+  GRAIN = T.grainTiles(rand);
+  await T.fontsReady();
+  return { total: TOTAL, cues, screens: TL.map(s => ({ i: s.i, start: s.start, end: s.end })) };
+};
+
+function prepareScreen(s) {
+  const m = s.MO;
+  $("kicker").lastElementChild.textContent = s.kicker || ""; $("kicker").style.display = s.kicker ? "" : "none";
+  $("line").firstElementChild.innerHTML = T.mark(s.line || ""); $("line").style.display = s.line ? "" : "none";
+  const head = String(s.headline || ""), final = m.type === "count" ? head.replace("{n}", (m.prefix || "") + fmt(m.to || 0, m) + (m.suffix || "")) : head;
+  $("headline").firstElementChild.innerHTML = T.mark(final).replace(/<em>(.*?)<\/em>/g, "<em>$1<i></i></em>"); $("headline").style.display = head ? "" : "none";
+  $("tamil").firstElementChild.innerHTML = String(s.tamil || "").trim().split(/\s+/).filter(Boolean).map(w => `<span class="tw">${T.esc(w)}</span>`).join(" "); $("tamil").style.display = s.tamil ? "" : "none";
+  const big = m.type === "question";
+  if (s.line) T.fit($("line"), big ? 60 : 50, 36, { wrapMin: 34, wrapMax: 44 });
+  if (head) { const f = T.fit($("headline"), big ? 118 : 108, 66, { wrapMin: 58, wrapMax: 84 }); if (f < 64) window.QC.push({ screen: s.i, flag: "headline is long (two rows of small type)" }); }
+  if (s.tamil) T.fit($("tamil"), 40, 30, { wrapMin: 28, wrapMax: 40, maxLines: 3 });
+  const st = $("stamp"); st.textContent = m.type === "stamp" ? (m.stamp || m.text || "") : ""; st.style.display = m.type === "stamp" ? "" : "none";
+  if (m.type === "stamp") { st.style.fontSize = "112px"; const at = m.at || [0.44, 0.36]; let w = st.offsetWidth; if (w > 760) { st.style.fontSize = Math.floor(112 * 760 / w) + "px"; w = st.offsetWidth; }
+    st.style.left = Math.max(60, Math.min(940 - w, at[0] * 1080 - w / 2)) + "px"; st.style.top = Math.max(270, at[1] * 1920 - st.offsetHeight / 2) + "px"; }
+  const so = $("signoff"); so.innerHTML = (s.cta || m.type === "question") ? T.mascotHTML(BRAND, 96) + `<span class="pill">${T.esc(typeof s.cta === "string" ? s.cta : BRAND.sign_off.pill)}</span>` : ""; so.style.display = so.innerHTML ? "" : "none";
+}
+
+window.renderFrame = async function (t) {
+  const s = T.active(TL, t), lt = t - s.start, left = s.dur - lt, m = s.MO, lastScreen = s.i === TL.length - 1;
+  if (s.i !== lastIdx) { prepareScreen(s); lastIdx = s.i; }
+  // pictures: each one keeps moving for its whole run; a new one fades in over the old
+  const r = RUNS[s.run], prev = RUNS[s.run - 1], cur = SC[s.run % 2], old = SC[(s.run + 1) % 2];
+  await cur.set(r.visual, r.key); cur.host.style.zIndex = 2; old.host.style.zIndex = 1;
+  cur.render((t - r.start) / (r.end - r.start), t, r.move); cur.host.style.opacity = prev ? T.easeInOut((t - r.start) / 0.55).toFixed(3) : 1;
+  if (prev && t - r.start < 0.6) { await old.set(prev.visual, prev.key); old.render((t - prev.start) / (prev.end - prev.start), t, prev.move); old.host.style.opacity = 1; } else old.host.style.opacity = 0;
+  $("grain").style.backgroundImage = GRAIN[Math.floor(t * 30) % GRAIN.length]; $("grain").style.backgroundPosition = `${(Math.floor(t * 30) * 37) % 256}px ${(Math.floor(t * 30) * 91) % 256}px`;
+  // the text beat: kicker, white line, the gold headline lands hard, Tamil line word by word; out just before the next beat
+  const out = lastScreen ? 1 : T.clamp(left / 0.2), up = (1 - out) * -14;
+  const kk = T.easeOut(lt / 0.4); $("kicker").style.opacity = (kk * out).toFixed(3); $("kicker").style.letterSpacing = (0.12 + 0.2 * (1 - kk)).toFixed(3) + "em"; $("kicker").firstElementChild.style.transform = `scaleX(${kk.toFixed(3)})`;
+  const lk = T.easeOut((lt - 0.08) / 0.35); $("line").style.opacity = (lk * out).toFixed(3); $("line").style.transform = `translateY(${((1 - lk) * 22 + up).toFixed(1)}px)`;
+  const hk = T.clamp((lt - 0.22) / 0.26), H = $("headline"); H.style.opacity = (T.easeOut(hk * 1.6) * out).toFixed(3);
+  H.style.transform = `translateY(${up.toFixed(1)}px) scale(${(1 + 0.16 * (1 - T.easeOut(hk))).toFixed(4)})`; H.style.filter = hk < 1 ? `blur(${(7 * (1 - hk)).toFixed(1)}px)` : "none";
+  if (m.type === "count") { const ck = T.easeOut(T.clamp((lt - 0.3) / Math.max(0.4, s.dur * 0.45))), v = T.lerp(m.from || 0, m.to || 0, ck);
+    const sp = H.firstElementChild, txt = String(s.headline).replace("{n}", (m.prefix || "") + fmt(v, m) + (m.suffix || "")); if (sp.dataset.v !== txt) { sp.dataset.v = txt; sp.innerHTML = T.mark(txt); } }
+  H.querySelectorAll("em i").forEach(u => { u.style.width = (100 * T.easeOut((lt - 0.6) / 0.45)).toFixed(1) + "%"; });
+  const tws = $("tamil").querySelectorAll(".tw"), n = tws.length; $("tamil").style.transform = `translateY(${up.toFixed(1)}px)`;
+  tws.forEach((w, i) => { w.style.opacity = (T.easeOut((lt - 0.5 - Math.min(0.9, s.dur * 0.3) * i / Math.max(1, n)) / 0.25) * out).toFixed(3); });
+  if (m.type === "stamp") { const at = s.dur * 0.5, k = T.clamp((lt - at) / 0.22), st = $("stamp"); st.style.opacity = (k > 0 ? Math.min(1, k * 2) * out : 0).toFixed(3);
+    st.style.transform = `rotate(${m.angle != null ? m.angle : -8}deg) scale(${(1 + 1.5 * (1 - T.easeOut(k))).toFixed(3)})`; $("flash").style.opacity = (k > 0 && k < 1 ? 0.22 * (1 - k) : 0).toFixed(3); } else $("flash").style.opacity = 0;
+  const so = $("signoff"); if (so.innerHTML) { const k = T.clamp((lt - 0.9) / 0.45); so.style.opacity = k > 0 ? 1 : 0; so.style.transform = `scale(${Math.max(0.01, T.back(k)).toFixed(3)})`; }
+  return true;
+};
+</script></body></html>

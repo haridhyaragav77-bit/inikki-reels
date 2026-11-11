@@ -1,0 +1,11 @@
+{
+  "reel_id": "test-cinematic", "series": "viral-story", "template": "cinematic",
+  "images": [{"prompt": "a young man on theatre stairs", "style": "cinematic_real"}, {"prompt": "meal on a leaf in theatre seats", "style": "cinematic_real"}, {"prompt": "old theatre stage with film camera", "style": "painterly_warm"}],
+  "screens": [
+    {"dur": 3.2, "image": 0, "kicker": "ON A FILM SET", "line": "Vijay Sethupathi was sent", "headline": "BACK TO HIS SEAT.", "tamil": "விஜய் சேதுபதியை மீண்டும் அவருடைய இருக்கைக்கு அனுப்பினார்கள்."},
+    {"dur": 3.2, "image": 0, "kicker": "ON A FILM SET", "line": "He asked for one close-up.", "headline": "THEY SAID NO.", "tamil": "ஒரே ஒரு க்ளோஸ்-அப் கேட்டார். மறுத்தார்கள்.", "motion": {"type": "stamp", "stamp": "Sent back"}},
+    {"dur": 3.4, "image": 1, "kicker": "GOKULATHIL SEETHAI", "line": "His pay for the day:", "headline": "₹{n} AND A MEAL.", "tamil": "நூறு ரூபாயும் சாப்பாடும்.", "motion": {"type": "count", "to": 100}},
+    {"dur": 3.2, "image": 1, "kicker": "THE SECOND TIER", "line": "His job?", "headline": "FILL A *SEAT*.", "tamil": "கூட்டத்தில் ஒருவராக அமர்ந்திருந்தார்.", "motion": "underline"},
+    {"dur": 4.0, "image": 2, "kicker": "YEARS LATER", "line": "Same hall, macha.", "headline": "DIFFERENT VIEW.", "tamil": "அதே அரங்கம்தான் மச்சா. இப்போ பார்வையே வேற.", "motion": "question"}
+  ]
+}
