@@ -16,14 +16,17 @@
   <div id="subs" data-safe><i class="bar"></i><div class="sub en"><span></span></div><div class="sub ta tamil"><span></span></div></div>
   <div id="credit" class="col"></div>
   <div id="progress"><i></i></div>
+  <div id="hook"></div>
   <div id="safeguide"></div>
 </div>
 <script src="../common/base.js"></script>
+<script src="../common/hooks.js"></script>
 <script src="motion.js"></script>
 <script>
 // Card template. A plan screen = one beat: headline + Tamil line, a picture, ONE motion graphic that shows
 // what the voice says, and two subtitles (Tanglish + Tamil) whose words light up as they are spoken.
-let PLAN, BRAND, TL, TOTAL, FX, lastIdx = -1;
+let PLAN, BRAND, TL, TOTAL, FX, HOOK, lastIdx = -1;
+const STILL = { x: 0, y: 0, s: 1, flash: 0 };
 const $ = id => document.getElementById(id), { M, normalize, LEAD } = MOTIONS;
 const ZBOTTOM = 1236;
 
@@ -34,7 +37,7 @@ function cardHTML(v) {
   else if (v.type === "mascot") h = `<div class="mascot">${T.mascotHTML(BRAND, 300)}</div>`;
   else if (v.type === "none" || (!v.frames && !v.src)) h = `<div class="still"><b>${T.esc(v.title || v.label || "")}</b></div>`;
   else h = `<img class="v" data-k="self"><div class="shade"></div>` + (v.label ? `<div class="tag">${T.esc(v.label)}</div>` : "");
-  return h + `<div class="sheen"></div><div class="over"></div>`;
+  return h + `<div class="flashc"></div><div class="sheen"></div><div class="over"></div>`;
 }
 function layoutOf(s) {     // where the card(s) and the motion zone sit for this beat
   const v = s.visual || {}, main = s.MO.find(m => !M[m.type].overlay);
@@ -70,6 +73,7 @@ window.setup = async function (plan, brand) {
   const rand = T.seed(plan.reel_id || "reel"), c = brand.colors;
   FX = { stars: Array.from({ length: 70 }, () => ({ x: rand() * 1080, y: rand() * 1920, r: 0.6 + rand() * 1.2, p: rand() * 6.28, s: 0.4 + rand() })),
          squares: Array.from({ length: 34 }, () => ({ x: rand() * 1080, y: rand() * 1920, z: 6 + rand() * 6, s: 3 + rand() * 7, a: 0.05 + rand() * 0.1, col: rand() < 0.5 ? c.teal : c.muted })) };
+  HOOK = Hooks.make(plan.hook || "impact", $("hook"), rand, brand); HOOK.cues.forEach(q => cues.push(q));
   const h = $("header"); h.innerHTML = "";
   if (plan.badge && plan.badge.text && plan.badge.in_header) { const b = T.el("span", "badge", h); b.textContent = plan.badge.text; b.style.background = T.badgeColor(plan.badge.color, brand); }
   T.el("span", "", h).textContent = String(plan.header || "").replace(/\s*\/\s*/g, "  /  ");
@@ -128,6 +132,7 @@ window.renderFrame = async function (t) {
   const s = T.active(TL, t), lt = t - s.start, swap = MOTION.beat_swap_ms / 1000, left = s.dur - lt;
   if (s.i !== lastIdx) { prepareScreen(s); lastIdx = s.i; }
   drawFx(t);
+  const hk = t < HOOK.dur ? HOOK.draw(t) : STILL; $("hook").style.display = t < HOOK.dur ? "" : "none"; Hooks.apply($("stage"), hk);
   $("progress").firstElementChild.style.width = (100 * T.clamp(t / TOTAL)).toFixed(2) + "%";
   // headline + Tamil line: move only when they change (in at the start, out just before the next one)
   const hIn = s.hNew ? T.easeOut(lt / swap) : 1, hOut = s.hOut && s.i < TL.length - 1 ? T.clamp(left / 0.14) : 1;
@@ -136,6 +141,7 @@ window.renderFrame = async function (t) {
   const m = T.easeOut(lt / swap), L = s.L, P = s.P, A = $("cardA"), B = $("cardB");
   const aTop = T.lerp(P.aTop, L.aTop, m), aH = T.lerp(P.aH, L.aH, m), pop = s.vNew ? 0.955 + 0.045 * T.back(lt / 0.42) : 1;
   A.style.top = aTop + "px"; A.style.height = aH + "px"; A.style.transform = `scale(${pop.toFixed(4)})`; A.style.opacity = s.vNew ? T.easeOut(lt / 0.16).toFixed(3) : 1;
+  document.querySelectorAll(".card .flashc").forEach(f => { f.style.opacity = (s.vNew && s.i > 0 && lt < 0.2 ? 0.6 * (1 - lt / 0.2) : 0).toFixed(3); });   // flash cut on a new picture
   A.querySelectorAll(".sheen").forEach(sh => { const k = s.vNew ? T.clamp((lt - 0.08) / 0.6) : 1; sh.style.left = (-40 + 150 * k) + "%"; sh.style.opacity = k < 1 ? 1 : 0; });
   B.style.display = L.bOn ? "" : "none"; $("connector").style.display = L.bOn ? "" : "none";
   if (L.bOn) { B.style.top = "876px"; B.style.height = "250px"; const bk = s.vNew ? T.easeOut((lt - 0.14) / swap) : 1; B.style.opacity = bk.toFixed(3); B.style.transform = `translateY(${((1 - bk) * 30).toFixed(1)}px)`; $("connector").style.top = "808px"; $("connector").style.opacity = bk.toFixed(3); }

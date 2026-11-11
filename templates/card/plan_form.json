@@ -5,38 +5,164 @@
   "post_at": "YYYY-MM-DDTHH:MM:00+05:30",
   "header": "FILM / THE SCREENPLAY BREAKDOWN",
   "credit": "Film · Production house, or NEWS: date / sources",
-  "lead": {"topic": "", "score": 0, "sources": []},
-  "virality": {"hook": 0, "send_trigger": 0, "comment_trigger": 0, "save_value": 0, "pacing": 0, "loop": 0, "timely_original": 0, "total_100": 0},
-  "music": {"mood": "from the niche mood map; or track: exact file name"},
+  "lead": {
+    "topic": "",
+    "score": 0,
+    "sources": []
+  },
+  "virality": {
+    "hook": 0,
+    "send_trigger": 0,
+    "comment_trigger": 0,
+    "save_value": 0,
+    "pacing": 0,
+    "loop": 0,
+    "timely_original": 0,
+    "total_100": 0
+  },
+  "music": {
+    "mood": "from the niche mood map; or track: exact file name"
+  },
   "screens": [
     {
       "headline": "7 words or fewer. *stars* make a word gold.",
       "tamil": "தமிழ் வரி",
-      "visual": {"type": "clip | image | meme | split | stack", "film": "", "query": "what moment", "label": "NAME TAG", "prompt": "for image", "mood": "for meme"},
-      "motion": {"type": "one name from motions below", "...": "its fields"},
+      "visual": {
+        "type": "clip | image | meme | split | stack",
+        "film": "",
+        "query": "what moment",
+        "label": "NAME TAG",
+        "prompt": "for image",
+        "mood": "for meme"
+      },
+      "motion": {
+        "type": "one name from motions below",
+        "...": "its fields"
+      },
       "caption": "Tanglish subtitle, about 6 words",
       "voice_line": "பேசப்படும் தமிழ் வரி. இதுவே தமிழ் சப்டைட்டில்."
     },
-    {"headline": "same headline keeps the text still", "tamil": "…", "visual": "same", "motion": {"type": "…"}, "caption": "…", "voice_line": "…"}
+    {
+      "headline": "same headline keeps the text still",
+      "tamil": "…",
+      "visual": "same",
+      "motion": {
+        "type": "…"
+      },
+      "caption": "…",
+      "voice_line": "…"
+    }
   ],
-  "caption": {"text": "4 lines: hook reworded / value with search words / one easy question / the call", "hashtags": ["#broad", "#film", "#iNiKKiSeries"], "first_comment": ""},
-  "cover": {"screen": 1},
-  "fallbacks": {"if_clip_missing": "still_card", "if_voice_fails": "silent_with_music"},
+  "caption": {
+    "text": "4 lines: hook reworded / value with search words / one easy question / the call",
+    "hashtags": [
+      "#broad",
+      "#film",
+      "#iNiKKiSeries"
+    ],
+    "first_comment": ""
+  },
+  "cover": {
+    "screen": 1
+  },
+  "fallbacks": {
+    "if_clip_missing": "still_card",
+    "if_voice_fails": "silent_with_music"
+  },
   "motions": {
-    "punch":    {"needs": ["text"],   "shows": "one or two big words: the hook question, one key word"},
-    "points":   {"needs": ["items"],  "shows": "numbered boxes; build:true the first time, then active:N lights the one being discussed"},
-    "cast":     {"needs": ["names"],  "shows": "name chips: who is in it"},
-    "timer":    {"needs": ["time"],   "shows": "a clock draining, time [from,to] 0-1; rise [from,to] adds a climbing bar"},
-    "tension":  {"needs": ["points"], "shows": "a line climbing; peaks name moments"},
-    "switch":   {"needs": ["places", "to"], "shows": "place tabs and a cut streak from → to; pending labels the place left hanging"},
-    "goal":     {"needs": ["who", "goal"], "shows": "a person, a goal, barriers dropping between them"},
-    "list":     {"needs": ["items"],  "shows": "stacked bars: the recap"},
-    "count":    {"needs": ["to"],     "shows": "a number counting up; prefix, suffix, label"},
-    "timeline": {"needs": ["stops", "at"], "shows": "dated stops; the marker travels to stop number at"},
-    "status":   {"needs": ["rows"],   "shows": "fact rows: state yes / wait / no"},
-    "versus":   {"needs": ["left", "right"], "shows": "two craft choices and a balance; tilt -1 left, 1 right"},
-    "quote":    {"needs": ["text"],   "shows": "a quoted line and who said it"},
-    "callout":  {"needs": ["at", "label"], "shows": "a ring on a detail inside the clip; may be added to one other graphic"},
-    "cta":      {"needs": [],         "shows": "the mascot and the send pill: the last screen"}
-  }
+    "punch": {
+      "needs": [
+        "text"
+      ],
+      "shows": "one or two big words: the hook question, one key word"
+    },
+    "points": {
+      "needs": [
+        "items"
+      ],
+      "shows": "numbered boxes; build:true the first time, then active:N lights the one being discussed"
+    },
+    "cast": {
+      "needs": [
+        "names"
+      ],
+      "shows": "name chips: who is in it"
+    },
+    "timer": {
+      "needs": [
+        "time"
+      ],
+      "shows": "a clock draining, time [from,to] 0-1; rise [from,to] adds a climbing bar"
+    },
+    "tension": {
+      "needs": [
+        "points"
+      ],
+      "shows": "a line climbing; peaks name moments"
+    },
+    "switch": {
+      "needs": [
+        "places",
+        "to"
+      ],
+      "shows": "place tabs and a cut streak from → to; pending labels the place left hanging"
+    },
+    "goal": {
+      "needs": [
+        "who",
+        "goal"
+      ],
+      "shows": "a person, a goal, barriers dropping between them"
+    },
+    "list": {
+      "needs": [
+        "items"
+      ],
+      "shows": "stacked bars: the recap"
+    },
+    "count": {
+      "needs": [
+        "to"
+      ],
+      "shows": "a number counting up; prefix, suffix, label"
+    },
+    "timeline": {
+      "needs": [
+        "stops",
+        "at"
+      ],
+      "shows": "dated stops; the marker travels to stop number at"
+    },
+    "status": {
+      "needs": [
+        "rows"
+      ],
+      "shows": "fact rows: state yes / wait / no"
+    },
+    "versus": {
+      "needs": [
+        "left",
+        "right"
+      ],
+      "shows": "two craft choices and a balance; tilt -1 left, 1 right"
+    },
+    "quote": {
+      "needs": [
+        "text"
+      ],
+      "shows": "a quoted line and who said it"
+    },
+    "callout": {
+      "needs": [
+        "at",
+        "label"
+      ],
+      "shows": "a ring on a detail inside the clip; may be added to one other graphic"
+    },
+    "cta": {
+      "needs": [],
+      "shows": "the mascot and the send pill: the last screen"
+    }
+  },
+  "hook": "thunder | flare | impact | spotlight | clap (default comes from the series card): pick the one that fits the film"
 }

@@ -11,7 +11,7 @@ body { font-family: "BrandCard", "BrandTamil", sans-serif; color: var(--c-text);
 #hook { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
 .tamil { font-family: "BrandTamil", "BrandCard", sans-serif; }
 .cine { font-family: "BrandCinematic", "BrandCard", sans-serif; text-transform: uppercase; }
-em { font-style: normal; color: var(--c-gold); }
+em { font-style: normal; color: var(--c-primary); }
 .pill { display: inline-flex; align-items: center; height: 84px; padding: 0 40px; border-radius: 60px; background: var(--c-primary); color: var(--c-navy); font-weight: 900; font-size: 32px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
 .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%); }
 .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.045; background-repeat: repeat; }

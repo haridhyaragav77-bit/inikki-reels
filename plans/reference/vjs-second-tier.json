@@ -1,33 +1,193 @@
 {
-  "_note": "Golden reel 2 of 3: the 'Second Tier' story, rebuilt from a plan. The person is drawn as an inspired-by illustration: era, clothes and setting, never a copy of a real face (safety rule 6).",
-  "reel_id": "golden-second-tier",
-  "series": "viral-story",
-  "template": "cinematic",
-  "lead": {"topic": "An actor who began as a ₹100 junior artist returns to the same hall as the lead", "score": 80, "sources": ["actor's own account in interviews (to be linked before any posting)"]},
-  "music": {"mood": "emotional_build", "track": "Emotion Of Father-Son.mp3"},
-  "image_style": "painterly_warm",
-  "images": [
-    {"prompt": "Late 1990s Tamil film shoot inside a grand old theatre. Seen from behind a man's shoulder, his arm pointing up a red-carpeted staircase with brass railings. A thin young man in his twenties with curly hair and a moustache, grey half-sleeve shirt, turns back on the stairs looking small and unsure. Warm tungsten film lights above", "move": "push", "focus": [0.6, 0.35]},
-    {"prompt": "Late 1990s, upper balcony of an old Tamil cinema hall with worn red seats. A thin young man in his twenties with curly hair and a moustache, grey shirt, sits among a crowd of extras, a banana leaf with rice and lemon rice on his lap, a single hundred rupee note in his hand, looking toward the stage with hope. Warm light from below", "move": "right", "focus": [0.5, 0.35]},
-    {"prompt": "View from the high second-tier balcony of an old theatre during a 1990s film shoot. A thin young man with curly hair, grey shirt, seen from behind, leaning on the brass balcony rail, looking far down at a brightly lit stage where a film crew, a big cine camera on a dolly and dancers are working. He is tiny and far from the lights", "move": "push", "focus": [0.4, 0.45]},
-    {"prompt": "Close view of a thin young man in his twenties with curly hair and a moustache, grey shirt, slumped in a red theatre seat in the dark upper balcony, eyes lowered, jaw tight, holding back hurt. Rows of other extras blurred behind him. Dim warm light on one side of his face", "move": "pull", "focus": [0.5, 0.3]},
-    {"prompt": "Years later. A man in a long dark coat seen from behind, walking down the centre aisle of the same grand old theatre toward a glowing stage, rows of empty red seats on both sides, golden stage lights and haze, balconies above", "move": "push", "focus": [0.5, 0.4]},
-    {"prompt": "A bearded man in his forties dressed as a Mughal emperor for a stage drama, jewelled turban, pearl necklaces, embroidered maroon robe, standing proud on a theatre stage and looking up at the far balcony. Low angle from the stage floor, golden spotlights and haze behind him, a film camera to one side", "move": "pull", "focus": [0.5, 0.3]}
+ "_note": "Golden reel 2 of 3: the 'Second Tier' story, rebuilt from a plan. The person is drawn as an inspired-by illustration: era, clothes and setting, never a copy of a real face (safety rule 6).",
+ "reel_id": "golden-second-tier",
+ "series": "viral-story",
+ "template": "cinematic",
+ "lead": {
+  "topic": "An actor who began as a ₹100 junior artist returns to the same hall as the lead",
+  "score": 80,
+  "sources": [
+   "actor's own account in interviews (to be linked before any posting)"
+  ]
+ },
+ "music": {
+  "mood": "emotional_build",
+  "track": "Emotion Of Father-Son.mp3"
+ },
+ "image_style": "painterly_warm",
+ "images": [
+  {
+   "prompt": "Late 1990s Tamil film shoot inside a grand old theatre. Seen from behind a man's shoulder, his arm pointing up a red-carpeted staircase with brass railings. A thin young man in his twenties with curly hair and a moustache, grey half-sleeve shirt, turns back on the stairs looking small and unsure. Warm tungsten film lights above",
+   "move": "push",
+   "focus": [
+    0.6,
+    0.35
+   ]
+  },
+  {
+   "prompt": "Late 1990s, upper balcony of an old Tamil cinema hall with worn red seats. A thin young man in his twenties with curly hair and a moustache, grey shirt, sits among a crowd of extras, a banana leaf with rice and lemon rice on his lap, a single hundred rupee note in his hand, looking toward the stage with hope. Warm light from below",
+   "move": "right",
+   "focus": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "prompt": "View from the high second-tier balcony of an old theatre during a 1990s film shoot. A thin young man with curly hair, grey shirt, seen from behind, leaning on the brass balcony rail, looking far down at a brightly lit stage where a film crew, a big cine camera on a dolly and dancers are working. He is tiny and far from the lights",
+   "move": "push",
+   "focus": [
+    0.4,
+    0.45
+   ]
+  },
+  {
+   "prompt": "Close view of a thin young man in his twenties with curly hair and a moustache, grey shirt, slumped in a red theatre seat in the dark upper balcony, eyes lowered, jaw tight, holding back hurt. Rows of other extras blurred behind him. Dim warm light on one side of his face",
+   "move": "pull",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  },
+  {
+   "prompt": "Years later. A man in a long dark coat seen from behind, walking down the centre aisle of the same grand old theatre toward a glowing stage, rows of empty red seats on both sides, golden stage lights and haze, balconies above",
+   "move": "push",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  },
+  {
+   "prompt": "A bearded man in his forties dressed as a Mughal emperor for a stage drama, jewelled turban, pearl necklaces, embroidered maroon robe, standing proud on a theatre stage and looking up at the far balcony. Low angle from the stage floor, golden spotlights and haze behind him, a film camera to one side",
+   "move": "pull",
+   "focus": [
+    0.5,
+    0.3
+   ]
+  }
+ ],
+ "screens": [
+  {
+   "dur": 3.3,
+   "image": 0,
+   "kicker": "ON A FILM SET",
+   "line": "A junior artist was sent",
+   "headline": "BACK TO HIS SEAT.",
+   "tamil": "ஒரு துணை நடிகரை மீண்டும் அவர் இருக்கைக்கு அனுப்பினார்கள்."
+  },
+  {
+   "dur": 3.4,
+   "image": 0,
+   "kicker": "ON A FILM SET",
+   "line": "He only wanted to be",
+   "headline": "IN THE *SHOT*.",
+   "tamil": "ஒரே ஒரு ஷாட்டில் தெரிய வேண்டும். அவ்வளவுதான்.",
+   "motion": "underline"
+  },
+  {
+   "dur": 3.6,
+   "image": 1,
+   "kicker": "HIS PAY FOR THE DAY",
+   "line": "A meal, and",
+   "headline": "₹{n}.",
+   "tamil": "நூறு ரூபாயும் ஒரு வேளை சாப்பாடும்.",
+   "motion": {
+    "type": "count",
+    "to": 100
+   }
+  },
+  {
+   "dur": 3.2,
+   "image": 1,
+   "kicker": "HIS JOB",
+   "line": "Sit in the crowd.",
+   "headline": "FILL A SEAT.",
+   "tamil": "கூட்டத்தில் ஒருவராக அமர்ந்திருக்க வேண்டும்."
+  },
+  {
+   "dur": 3.4,
+   "image": 2,
+   "kicker": "THE SECOND TIER",
+   "line": "From way up there,",
+   "headline": "WOULD HE BE SEEN?",
+   "tamil": "அவ்வளவு உயரத்தில் இருந்தால் கேமராவில் தெரிவாரா?"
+  },
+  {
+   "dur": 3.4,
+   "image": 2,
+   "kicker": "THE SECOND TIER",
+   "line": "So he went downstairs,",
+   "headline": "HOPING.",
+   "tamil": "திரையில் தெரிய வேண்டும் என்று கீழே இறங்கினார்."
+  },
+  {
+   "dur": 3.8,
+   "image": 3,
+   "kicker": "IN HIS OWN WORDS",
+   "line": "Another actor sent him back.",
+   "headline": "\"I FELT SMALL.\"",
+   "tamil": "இன்னொரு நடிகர் அவரை மேலே திருப்பி அனுப்பினார்.",
+   "motion": {
+    "type": "stamp",
+    "stamp": "Sent back"
+   }
+  },
+  {
+   "dur": 3.4,
+   "image": 4,
+   "kicker": "YEARS LATER",
+   "line": "His 25th film brought him",
+   "headline": "TO THE SAME HALL.",
+   "tamil": "அவரது இருபத்தைந்தாவது படம் அதே அரங்கிற்கு அழைத்து வந்தது."
+  },
+  {
+   "dur": 3.4,
+   "image": 4,
+   "kicker": "YEARS LATER",
+   "line": "This time, the camera",
+   "headline": "FACED THE *STAGE*.",
+   "tamil": "இந்த முறை கேமரா மேடையை நோக்கி இருந்தது.",
+   "motion": "underline"
+  },
+  {
+   "dur": 3.6,
+   "image": 5,
+   "kicker": "HIS FIRST SCENE",
+   "line": "The ₹100 extra was back.",
+   "headline": "PLAYING AN EMPEROR.",
+   "tamil": "நூறு ரூபாய்க்கு வந்த அதே இளைஞர், இப்போது மேடையில் பேரரசர்."
+  },
+  {
+   "dur": 4.4,
+   "image": 5,
+   "kicker": "THAT JUNIOR ARTIST?",
+   "line": "None other than",
+   "headline": "VIJAY SETHUPATHI.",
+   "tamil": "அந்த துணை நடிகர் வேறு யாருமில்லை. விஜய் சேதுபதி.",
+   "motion": {
+    "type": "reveal"
+   }
+  },
+  {
+   "dur": 4.2,
+   "image": 5,
+   "kicker": "SAME HALL, MACHA",
+   "line": "Know someone still in",
+   "headline": "THE SECOND TIER?",
+   "tamil": "இன்னும் மேல் வரிசையில் காத்திருக்கும் நண்பருக்கு அனுப்புங்க.",
+   "motion": "question"
+  }
+ ],
+ "caption": {
+  "text": "₹100-kku vandha junior artist. Adhe hall-la hero.\nOru Tamil nadigar-oda unmai kadhai: second tier-la irundhu stage varaikkum.\nUnga life-la 'second tier' moment edhu?\nInnum kaathirukkura friend-ku anuppunga.",
+  "hashtags": [
+   "#TamilCinema",
+   "#Kollywood",
+   "#VijaySethupathi",
+   "#iNiKKiUntold"
   ],
-  "screens": [
-    {"dur": 3.3, "image": 0, "kicker": "ON A FILM SET", "line": "A junior artist was sent", "headline": "BACK TO HIS SEAT.", "tamil": "ஒரு துணை நடிகரை மீண்டும் அவர் இருக்கைக்கு அனுப்பினார்கள்."},
-    {"dur": 3.4, "image": 0, "kicker": "ON A FILM SET", "line": "He only wanted to be", "headline": "IN THE *SHOT*.", "tamil": "ஒரே ஒரு ஷாட்டில் தெரிய வேண்டும். அவ்வளவுதான்.", "motion": "underline"},
-    {"dur": 3.6, "image": 1, "kicker": "HIS PAY FOR THE DAY", "line": "A meal, and", "headline": "₹{n}.", "tamil": "நூறு ரூபாயும் ஒரு வேளை சாப்பாடும்.", "motion": {"type": "count", "to": 100}},
-    {"dur": 3.2, "image": 1, "kicker": "HIS JOB", "line": "Sit in the crowd.", "headline": "FILL A SEAT.", "tamil": "கூட்டத்தில் ஒருவராக அமர்ந்திருக்க வேண்டும்."},
-    {"dur": 3.4, "image": 2, "kicker": "THE SECOND TIER", "line": "From way up there,", "headline": "WOULD HE BE SEEN?", "tamil": "அவ்வளவு உயரத்தில் இருந்தால் கேமராவில் தெரிவாரா?"},
-    {"dur": 3.4, "image": 2, "kicker": "THE SECOND TIER", "line": "So he went downstairs,", "headline": "HOPING.", "tamil": "திரையில் தெரிய வேண்டும் என்று கீழே இறங்கினார்."},
-    {"dur": 3.8, "image": 3, "kicker": "IN HIS OWN WORDS", "line": "Another actor sent him back.", "headline": "\"I FELT SMALL.\"", "tamil": "இன்னொரு நடிகர் அவரை மேலே திருப்பி அனுப்பினார்.", "motion": {"type": "stamp", "stamp": "Sent back"}},
-    {"dur": 3.2, "image": 3, "kicker": "THAT NIGHT", "line": "He took the ₹100.", "headline": "AND STAYED.", "tamil": "நூறு ரூபாயை வாங்கினார். சினிமாவை விடவில்லை."},
-    {"dur": 3.4, "image": 4, "kicker": "YEARS LATER", "line": "His 25th film brought him", "headline": "TO THE SAME HALL.", "tamil": "அவரது இருபத்தைந்தாவது படம் அதே அரங்கிற்கு அழைத்து வந்தது."},
-    {"dur": 3.4, "image": 4, "kicker": "YEARS LATER", "line": "This time, the camera", "headline": "FACED THE *STAGE*.", "tamil": "இந்த முறை கேமரா மேடையை நோக்கி இருந்தது.", "motion": "underline"},
-    {"dur": 3.6, "image": 5, "kicker": "HIS FIRST SCENE", "line": "The ₹100 extra was back.", "headline": "PLAYING AN EMPEROR.", "tamil": "நூறு ரூபாய்க்கு வந்த அதே இளைஞர், இப்போது மேடையில் பேரரசர்."},
-    {"dur": 4.4, "image": 5, "kicker": "SAME HALL, MACHA", "line": "Know someone still in", "headline": "THE SECOND TIER?", "tamil": "இன்னும் மேல் வரிசையில் காத்திருக்கும் நண்பருக்கு அனுப்புங்க.", "motion": "question"}
-  ],
-  "caption": {"text": "₹100-kku vandha junior artist. Adhe hall-la hero.\nOru Tamil nadigar-oda unmai kadhai: second tier-la irundhu stage varaikkum.\nUnga life-la 'second tier' moment edhu?\nInnum kaathirukkura friend-ku anuppunga.", "hashtags": ["#TamilCinema", "#Kollywood", "#iNiKKiUntold"], "first_comment": "Yaaru nu guess panninga?"},
-  "cover": {"screen": 1}
+  "first_comment": "Kadaisi varaikkum yaaru nu guess panningala?"
+ },
+ "cover": {
+  "screen": 1
+ }
 }

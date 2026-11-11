@@ -5,7 +5,7 @@
   /* Diorama template: Guess the Tamil Movie. Scenes with depth, three clues, a countdown, the reveal. */
   html, body { background: color-mix(in srgb, var(--c-navy) 45%, black); }
   #scenes { position:absolute; inset:0; z-index:0; isolation:isolate; }
-  .scene { position:absolute; left:0; top:0; width:1080px; height:1620px; }
+  .scene { position:absolute; left:0; top:0; width:1080px; height:1620px; overflow:hidden; }
   #topshade { position:absolute; left:0; right:0; top:0; height:760px; background: linear-gradient(180deg, color-mix(in srgb, var(--c-navy) 82%, transparent) 0%, color-mix(in srgb, var(--c-navy) 52%, transparent) 55%, transparent 100%); }
   #fade { position:absolute; left:0; right:0; top:1040px; height:580px; background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--c-navy) 45%, black) 92%); }
   #floor { position:absolute; left:0; right:0; top:1618px; bottom:0; background: color-mix(in srgb, var(--c-navy) 45%, black); }
@@ -16,7 +16,7 @@
   #badge { top:262px; height:58px; } #badge b { display:inline-flex; align-items:center; height:58px; padding:0 34px; border-radius:12px; font-weight:900; font-size:27px; letter-spacing:0.06em; text-transform:uppercase; color: var(--c-navy); box-shadow: 0 8px 26px rgba(0,0,0,0.45); white-space:nowrap; }
   #kicker { top:340px; height:36px; font-weight:800; font-size:25px; letter-spacing:0.06em; text-transform:uppercase; color: var(--c-teal); white-space:nowrap; }
   #h1 { font-weight:800; line-height:1.08; text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
-  #h2 { font-weight:800; line-height:1.1; color: var(--c-gold); text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
+  #h2 { font-weight:800; line-height:1.1; color: var(--c-primary); text-shadow: 0 4px 22px rgba(0,0,0,0.75); }
   #h2.ta { font-weight:700; }
   #ring { position:absolute; left:320px; top:700px; width:360px; height:360px; }
   #ring .num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:800; color: var(--c-gold); text-shadow: 0 0 40px color-mix(in srgb, var(--c-gold) 45%, transparent), 0 6px 26px rgba(0,0,0,0.6); transform-origin:50% 50%; }
@@ -41,20 +41,32 @@
   <div id="cap" data-safe><div id="c1"><span></span></div><div id="c2" class="tamil"><span></span></div></div>
   <div id="dashes"><i><b></b></i><i><b></b></i><i><b></b></i></div>
   <div id="flash"></div>
+  <div id="hook"></div>
   <div id="safeguide"></div>
 </div>
 <script src="../common/base.js"></script>
 <script src="../common/scene.js"></script>
+<script src="../common/relief.js"></script>
+<script src="../common/hooks.js"></script>
 <script>
 // Diorama template. Screen kinds, in order: title, clue (x3), countdown, reveal.
 // Every text beat is in both: a Tanglish line and a Tamil line (AGENT.md 5.7).
-let PLAN, BRAND, TL, TOTAL, RUNS, SC, lastIdx = -1, NCLUE = 3;
-const $ = id => document.getElementById(id), MOVES = ["push", "right", "orbit", "left"];
+let PLAN, BRAND, TL, TOTAL, RUNS, SC, HOOK, USE3D, lastIdx = -1, NCLUE = 3;
+const $ = id => document.getElementById(id), MOVES = ["push", "track", "orbit", "crane"], STILL = { x: 0, y: 0, s: 1, flash: 0 };
 const put = (id, txt) => { $(id).firstElementChild.textContent = txt || ""; $(id).style.display = txt ? "" : "none"; };
+// one picture slot: a real 3D scene when the picture has a depth map, the layered scene otherwise
+class Slot {
+  constructor(host, rand, brand) { this.host = host; this.rand = rand; this.brand = brand; host.innerHTML = '<div style="position:absolute;inset:0"></div><div style="position:absolute;inset:0"></div>'; }
+  async set(v, key) { const three = USE3D && v && v.depth, [a, b] = this.host.children;
+    if (three) { if (!this.r) this.r = new Relief(a, this.rand, {}); await this.r.set(v, key); this.cur = this.r; }
+    else { if (!this.s) this.s = new Scene(b, this.rand, { amount: 54, fogColor: T.rgba(this.brand.colors.teal, 0.55), dustCount: 80 }); await this.s.set(v, key); this.cur = this.s; }
+    a.style.display = three ? "" : "none"; b.style.display = three ? "none" : ""; }
+  render(q, t, move, fx) { if (this.cur) this.cur.render(q, t, move, fx); }
+}
 
 window.setup = async function (plan, brand) {
   PLAN = plan; BRAND = brand; T.applyBrand(brand);
-  TL = T.timeline(plan.screens); TOTAL = TL[TL.length - 1].end;
+  TL = T.timeline(plan.screens); TOTAL = TL[TL.length - 1].end; USE3D = Relief.supported();
   const rand = T.seed(plan.reel_id || "reel"), cues = [];
   RUNS = []; NCLUE = TL.filter(s => s.kind === "clue").length || 3;
   TL.forEach((s, i) => { const key = s.visual && (s.visual.image != null ? "img" + s.visual.image : s.visual.src || "v" + i), last = RUNS[RUNS.length - 1];
@@ -62,14 +74,14 @@ window.setup = async function (plan, brand) {
     s.run = RUNS.length - 1;
     if (s.kind === "clue") cues.push({ t: +(s.start + 0.25).toFixed(3), kind: "pop" });
     if (s.kind === "countdown") { s.ready = Math.max(0, s.dur - 3); for (let k = 0; k < 3; k++) cues.push({ t: +(s.start + s.ready + k).toFixed(3), kind: "tock" }); }
-    if (s.kind === "reveal") { cues.push({ t: +s.start.toFixed(3), kind: "hit" }); cues.push({ t: +(s.start + 0.18).toFixed(3), kind: "ding" }); }
+    if (s.kind === "reveal") { cues.push({ t: +s.start.toFixed(3), kind: "thunder" }); cues.push({ t: +(s.start + 0.18).toFixed(3), kind: "ding" }); }
   });
   RUNS.forEach((r, i) => { r.move = (r.visual && r.visual.move) || MOVES[i % MOVES.length]; if (i) cues.push({ t: +r.start.toFixed(3), kind: "whoosh" }); });
-  const opt = { amount: 54, fogColor: T.rgba(brand.colors.teal, 0.55), dustCount: 80 };
-  SC = [new Scene($("sc0"), rand, opt), new Scene($("sc1"), rand, opt)];
+  SC = [new Slot($("sc0"), rand, brand), new Slot($("sc1"), rand, brand)];
+  HOOK = Hooks.make(plan.hook || "thunder", $("hook"), rand, brand); HOOK.cues.forEach(q => cues.push(q));
   const b = plan.badge || {}; $("badge").firstElementChild.textContent = (b.text || "") + (plan.episode ? "  #" + plan.episode : ""); $("badge").firstElementChild.style.background = T.badgeColor(b.color || "primary", brand);
   await T.fontsReady();
-  return { total: TOTAL, cues, screens: TL.map(s => ({ i: s.i, start: s.start, end: s.end })) };
+  return { total: TOTAL, cues, three_d: USE3D, screens: TL.map(s => ({ i: s.i, start: s.start, end: s.end })) };
 };
 
 function prepareScreen(s) {
@@ -89,10 +101,16 @@ function prepareScreen(s) {
 window.renderFrame = async function (t) {
   const s = T.active(TL, t), lt = t - s.start, left = s.dur - lt, k = s.kind || "clue", last = s.i === TL.length - 1;
   if (s.i !== lastIdx) { prepareScreen(s); lastIdx = s.i; }
-  const r = RUNS[s.run], prev = RUNS[s.run - 1], cur = SC[s.run % 2], old = SC[(s.run + 1) % 2];
-  await cur.set(r.visual, r.key); cur.host.style.zIndex = 2; old.host.style.zIndex = 1;
-  cur.render((t - r.start) / (r.end - r.start), t, r.move); cur.host.style.opacity = prev ? T.easeInOut((t - r.start) / 0.6).toFixed(3) : 1;
-  if (prev && t - r.start < 0.65) { await old.set(prev.visual, prev.key); old.render((t - prev.start) / (prev.end - prev.start), t, prev.move); old.host.style.opacity = 1; } else old.host.style.opacity = 0;
+  // the hook in the first second: the frame shakes or punches, 3D scenes light up with the strike
+  const hk = t < HOOK.dur ? HOOK.draw(t) : STILL; $("hook").style.display = t < HOOK.dur ? "" : "none"; Hooks.apply($("stage"), hk);
+  const strike = k === "reveal" ? Math.max(0, 1 - lt / 0.45) : 0, fx = { flash: Math.max(hk.flash, strike) };
+  // scenes: the camera travels for the whole run; a new clue whips in from the side
+  const r = RUNS[s.run], prev = RUNS[s.run - 1], cur = SC[s.run % 2], old = SC[(s.run + 1) % 2], rt = t - r.start, WH = 0.36;
+  await cur.set(r.visual, r.key); cur.render(rt / (r.end - r.start), t, r.move, fx);
+  if (prev && rt < WH) { const w = T.easeInOut(rt / WH), bl = (16 * Math.sin(Math.PI * w)).toFixed(1); await old.set(prev.visual, prev.key); old.render((t - prev.start) / (prev.end - prev.start), t, prev.move, fx);
+    cur.host.style.transform = `translateX(${((1 - w) * 1080).toFixed(1)}px)`; old.host.style.transform = `translateX(${(-w * 1080).toFixed(1)}px)`; cur.host.style.filter = old.host.style.filter = `blur(${bl}px)`; old.host.style.display = ""; }
+  else { cur.host.style.transform = "none"; cur.host.style.filter = "none"; old.host.style.display = "none"; }
+  cur.host.style.display = ""; cur.host.style.opacity = 1;
   // words: in at the start of each screen, out just before the next
   const out = last ? 1 : T.clamp(left / 0.18), e = T.easeOut(lt / 0.36), e2 = T.easeOut((lt - 0.14) / 0.36);
   $("kicker").style.opacity = (e * out).toFixed(3);

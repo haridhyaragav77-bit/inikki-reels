@@ -65,6 +65,9 @@ class Assets:
         style = spec.get("style") or style_default
         out = os.path.join(self.work, f"image_{n:02d}.png")
         if self.local or not secret("OPENAI_API_KEY"):
+            real = os.path.join(os.environ.get("INIKKI_LOCAL_IMAGES", ""), f"{self.reel_id}_{n:02d}.jpg")
+            if os.environ.get("INIKKI_LOCAL_IMAGES") and os.path.exists(real):     # template work with real pictures, offline
+                return {"src": real, "source": "placeholder", "style": style}
             self._placeholder(out, subject, style, n)
             return {"src": out, "source": "placeholder", "style": style}
         saved = None if spec.get("fresh") else self._made_before(n, out)

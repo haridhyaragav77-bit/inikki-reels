@@ -23,6 +23,8 @@ SFX = {   # small synthesized sounds (no files, no licences): source, filter cha
     "thud":   ("sine=frequency=92:duration=0.24", "afade=t=out:st=0.02:d=0.22,volume=0.85"),
     "ding":   ("sine=frequency=1320:duration=0.7", "afade=t=out:st=0.01:d=0.69,volume=0.22"),
     "hit":    ("sine=frequency=56:duration=1.0", "afade=t=out:st=0.04:d=0.96,volume=1.3"),
+    "thunder": ("anoisesrc=color=brown:duration=2.0:seed=11", "lowpass=f=1100,afade=t=in:d=0.01,afade=t=out:st=0.06:d=1.9,volume=3.2"),
+    "clack":  ("anoisesrc=color=white:duration=0.06:seed=5", "highpass=f=1200,afade=t=out:st=0.005:d=0.05,volume=0.8"),
 }
 
 

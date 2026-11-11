@@ -193,6 +193,7 @@ def resolve(plan, work, local, drive=None, budget=None):
     res["template"] = template
     if "badge" not in res and series.get("badge"):
         res["badge"] = series["badge"]
+    res["hook"] = plan.get("hook") or series.get("hook") or "impact"      # the visual hook for the first second (AGENT.md 5.8)
     for s in res["screens"]:
         s.setdefault("dur", 3.0)
     _voice(res, plan, series, work, local, A.notes)

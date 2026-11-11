@@ -147,6 +147,10 @@ def layers(image_path, outdir, local=False):
         img = img.resize((1080, round(img.height * 1080 / img.width)), Image.LANCZOS)
     rgb = np.asarray(img)
     d, source = depth_map(img, local)
+    saved = os.path.splitext(image_path)[0] + "_depth.png"
+    if local and os.path.exists(saved):          # a depth map saved next to the picture (offline template work)
+        d = np.asarray(Image.open(saved).convert("L").resize(img.size, Image.BICUBIC), dtype=np.float32) / 255.0
+        source = "model"
     if source == "simple" and not local:
         # no depth model: do not guess a split (it would show seams); the picture moves as one piece instead
         return [{"src": image_path, "depth": 0.5}], source, {}
