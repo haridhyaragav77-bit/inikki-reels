@@ -86,6 +86,8 @@ def candidates(ig, film, accounts, report=None):
         try:
             ps = posts(ig, acct)
         except Exception as e:
+            if any(w in str(e).lower() for w in ("api access blocked", "request limit", "too many calls")):
+                raise RuntimeError(f"Instagram stopped the search: {str(e)[:160]}")     # stop at once, never hammer
             _POSTS[acct] = []
             if report is not None:
                 report[acct] = f"not readable: {str(e)[:90]}"
