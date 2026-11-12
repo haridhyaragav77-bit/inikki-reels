@@ -595,6 +595,326 @@
    "last_used": "",
    "notes": "added 12 Nov for the laptop trailer library",
    "verify": "check year/director before first use"
+  },
+  {
+   "film": "The Godfather",
+   "year": 1972,
+   "director": "Francis Ford Coppola",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Pulp Fiction",
+   "year": 1994,
+   "director": "Quentin Tarantino",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "The Dark Knight",
+   "year": 2008,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Inception",
+   "year": 2010,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Interstellar",
+   "year": 2014,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Oppenheimer",
+   "year": 2023,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Memento",
+   "year": 2000,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "The Prestige",
+   "year": 2006,
+   "director": "Christopher Nolan",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Parasite",
+   "year": 2019,
+   "director": "Bong Joon-ho",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Joker",
+   "year": 2019,
+   "director": "Todd Phillips",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Whiplash",
+   "year": 2014,
+   "director": "Damien Chazelle",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Fight Club",
+   "year": 1999,
+   "director": "David Fincher",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Se7en",
+   "year": 1995,
+   "director": "David Fincher",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Gone Girl",
+   "year": 2014,
+   "director": "David Fincher",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Prisoners",
+   "year": 2013,
+   "director": "Denis Villeneuve",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "The Shawshank Redemption",
+   "year": 1994,
+   "director": "Frank Darabont",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Goodfellas",
+   "year": 1990,
+   "director": "Martin Scorsese",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Taxi Driver",
+   "year": 1976,
+   "director": "Martin Scorsese",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "No Country for Old Men",
+   "year": 2007,
+   "director": "Joel and Ethan Coen",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Dune: Part Two",
+   "year": 2024,
+   "director": "Denis Villeneuve",
+   "lang": "en",
+   "angles": [
+    "screenplay",
+    "editing",
+    "cinematography",
+    "music_cue"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
+   "verify": "check year/director before first use"
   }
  ]
 }

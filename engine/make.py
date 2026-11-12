@@ -95,7 +95,7 @@ def need_trailers(drive, plan, visuals=None):
     except Exception as e:
         print("trailers could not be fetched now:", str(e)[:160], file=sys.stderr)
     if missing:
-        trailers.want(drive, missing)
+        trailers.want(drive, missing, why=f"needed by the plan {plan.get('reel_id', '')}")
     return missing
 
 
