@@ -5,7 +5,9 @@ badge: { text: "UNTOLD", color: amber }
 per_week: 3             # shares the story slot with guess-the-movie
 slots: ["15:30"]
 template: cinematic
-image_quality: high      # build-up pictures at high quality; the reveal is a frame from the person's trailer
+image_model: gpt-image-1    # the full model for stories (about ₹5 a picture; the ₹500 monthly cap still holds)
+image_quality: medium
+image_style: cinematic_real
 visuals: ai_images
 voice: false
 length_s: [40, 45]
