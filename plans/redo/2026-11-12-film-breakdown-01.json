@@ -38,7 +38,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 45.8,
+    "start": 45.7,
     "len": 2.6,
     "label": "LEO"
    },
@@ -56,7 +56,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 150.7,
+    "start": 150.6,
     "len": 2.6
    },
    "motion": {
@@ -115,7 +115,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 49.0,
+    "start": 53.3,
     "len": 2.6,
     "label": "CAFE"
    },
@@ -164,7 +164,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 56.0,
+    "start": 84.6,
     "len": 2.6
    },
    "motion": {
@@ -181,7 +181,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 84.7,
+    "start": 62.4,
     "len": 2.6
    },
    "motion": {
@@ -202,7 +202,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 124.0,
+    "start": 100.4,
     "len": 2.6,
     "label": "CAFE FIGHT"
    },
@@ -229,7 +229,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 91.5,
+    "start": 70.3,
     "len": 2.6,
     "label": "DAS"
    },
@@ -252,7 +252,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 18.0,
+    "start": 149.3,
     "len": 2.6
    },
    "motion": {
@@ -273,7 +273,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 105.2,
+    "start": 105.1,
     "len": 2.6,
     "label": "PARTHI"
    },
@@ -329,7 +329,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 66.0,
+    "start": 76.9,
     "len": 2.6,
     "label": "LEO"
    },
@@ -361,7 +361,7 @@
    "tamil": "சந்தேகப்படும் நண்பருக்கு அனுப்புங்க.",
    "visual": {
     "type": "meme",
-    "mood": "overthinking"
+    "mood": "recognition"
    },
    "motion": {
     "type": "cta"

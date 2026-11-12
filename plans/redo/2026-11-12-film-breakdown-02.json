@@ -87,8 +87,9 @@
    "visual": {
     "type": "clip",
     "film": "Vikram Vedha",
-    "start": 33.2,
-    "len": 2.6
+    "start": 83.1,
+    "len": 2.6,
+    "label": "VEDHA"
    },
    "motion": {
     "type": "points",
@@ -238,9 +239,9 @@
    "visual": {
     "type": "clip",
     "film": "Vikram Vedha",
-    "start": 45.7,
+    "start": 50.3,
     "len": 2.6,
-    "label": "VIKRAM"
+    "label": "POLICE"
    },
    "motion": {
     "type": "versus",
@@ -306,7 +307,7 @@
    "tamil": "கதை சொல்லும் நண்பருக்கு அனுப்புங்க.",
    "visual": {
     "type": "meme",
-    "mood": "mind_blown"
+    "mood": "calling_friend"
    },
    "motion": {
     "type": "cta"
