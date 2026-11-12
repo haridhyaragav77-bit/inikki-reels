@@ -89,6 +89,7 @@ def duration(path):
 # ---------------------------------------------------------------- official Instagram accounts
 _POSTS = {}
 _LINKS = {}          # video links asked for in this run, by post id
+_ASKED = {}          # link questions per account in this run
 OTHERS = []          # every film name we know, so a caption about a longer title is not taken for a shorter one
 CACHE = {"drive": None, "data": None}
 CACHE_HOURS = 6
@@ -166,13 +167,18 @@ def page(ig, acct, after=None, links=None, limit=None):
 
 
 def link(ig, acct, hit):
-    """The video link (and post link) of one matched post: a small call from the same place in the account."""
+    """The video link (and post link) of one matched post: a small call from the same place in the account.
+    Why a link is missing is kept in hit["why"]: the post moved, or Meta sent no video link (Meta leaves the link out
+    of posts it treats as holding copyrighted music)."""
     if hit.get("url"):
         return hit
-    m = page(ig, acct, hit.get("_cur"), links=True, limit=int(hit.get("_i", 0)) + 1)
+    m = page(ig, acct, hit.get("_cur"), links=True, limit=int(hit.get("_i", 0)) + 3)
     p = next((x for x in m.get("data", []) if x.get("id") == hit["id"]), None)
-    if p:
-        hit["url"], hit["link"] = p.get("media_url"), p.get("permalink")
+    if p is None:
+        hit["why"] = "the post was not at its place any more"
+    elif not p.get("media_url"):
+        hit["why"] = f"Meta sent no video link ({', '.join(sorted(k for k in p if not k.startswith('_')))})"
+    hit["url"], hit["link"] = (p or {}).get("media_url"), (p or {}).get("permalink")
     return hit
 
 
@@ -227,8 +233,9 @@ def _ask(ig, acct, hits, kinds):
     """Ask for the video link of the best matching post not asked about yet (one small call). True if a link came back."""
     pend = sorted([_LINKS.get(h["id"], h) for h in hits if h["kind"] in kinds], key=_rank(kinds))
     pend = [h for h in pend if not h.get("url") and not h.get("_asked")]
-    if not pend:
+    if not pend or _ASKED.get(acct, 0) >= 2:          # at most 2 link questions per account per run
         return False
+    _ASKED[acct] = _ASKED.get(acct, 0) + 1
     h = pend[0]
     h["_asked"] = True
     _LINKS[h["id"]] = link(ig, acct, h)
@@ -274,8 +281,14 @@ def candidates(ig, film, accounts, report=None, enough=("trailer",), deep=(), wa
         if report is not None:
             back = min((p.get("timestamp") or "")[:10] for p in ps) if ps else "-"
             report[acct] = f"{len(hits)} match in {len(ps)} posts back to {back}" + "".join(
-                f" | {h['kind']} {str(h.get('when'))[:10]}{'' if h.get('url') else ' (no video link yet)'}: {h['title'][:60]}" for h in hits[:3])
+                f" | {h['kind']} {str(h.get('when'))[:10]}{'' if h.get('url') else ' (no video link: ' + h.get('why', 'not asked') + ')'}: {h['title'][:60]}"
+                for h in sorted(hits, key=lambda h: (not h.get("_asked"), _rank(list(want))(h)))[:4])
         if stopped:
+            break
+        if acct in deep and not any(a in deep for a in accounts[accounts.index(acct) + 1:]) and \
+                any(f.get("_asked") and not f.get("url") and f["account"] in deep for f in found):
+            if report is not None:
+                report["note"] = "the film's own accounts have the posts but Meta gave no video link; other accounts were not searched"
             break
     if not stopped and not any(f.get("url") and f["kind"] in want for f in found):
         try:                                   # no trailer anywhere: the best teaser or glimpse found on the way
