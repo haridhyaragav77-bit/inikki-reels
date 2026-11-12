@@ -302,7 +302,9 @@ Pictures must show what the line says. Who uses what:
 | --- | --- | --- |
 | Film breakdowns | **Only that film's own trailer, teaser or glimpse clips**, the exact moment for each line (a meme may close the reel) | Stock photos, AI pictures |
 | Movie updates | **The film's own official material** from its studio, label and star accounts: trailer clips when Meta gives the video, otherwise the official stills and video covers they posted, each picked from a numbered grid for the line it shows (a meme may close the reel) | Stock photos, AI pictures, fan edits |
-| Stories (the person is named only at the end) | AI pictures for the build-up (no real face, one consistent character); at the reveal, a frame from the person's own trailer | Photos of other people |
+| Movie recommendations | **Only the recommended films' own trailer clips**, one film at a time, the moment that shows why it is recommended | Stock photos, AI pictures, posters from fan sites |
+| Trailer breakdowns | **Only that new trailer's clips**, the exact shot for each thing noticed | Anything from outside the trailer |
+| Stories (paused since 12 Nov, replaced by recommendations) | AI pictures for the build-up (no real face, one consistent character); at the reveal, a frame from the person's own trailer | Photos of other people |
 | Guess the Movie | AI 3D scenes of objects and places from the film | Faces |
 
 A breakdown whose film has no trailer in the library is not made, nor an update with neither clips nor official stills; the film goes on the trailer wanted list and a spare takes the slot.
@@ -310,7 +312,8 @@ A breakdown whose film has no trailer in the library is not made, nor an update 
 **Trailers and stills, automatically (Harish decided on 12 Nov: stills for news, clips for breakdowns):**
 1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's hourly limit (the run stops at half of Meta's meter, so posting always has room). A plan names its film's own accounts (`trailer_from`); then only those are searched, further back (up to 6 pages), so an older trailer is found in a few calls. Without names, each listed account gives its newest page (a new drop). Meta's meter counts processing time, so pages are read as captions only and the video link is asked for the one matching post.
    Meta withholds the video of posts with licensed film music or with downloads turned off (checked on 12 Nov: Sun Pictures' Jailer 2 trailer posts), but it still gives each post's cover picture and the picture posts. So for news the Engine saves the film's **official stills** (up to 30, with a numbered grid) to `clip-library/stills/<film>/` within minutes, and uses real clips whenever Meta gives the video.
-2. Breakdowns need real clips. Harish fills the trailer library once from his laptop (`tools/clip_helper.py --film-bank`: one command, the film bank's official trailers, then one folder dragged into Drive `clip-library/`); grids are made by code. After that the library grows by itself (history search, videos Meta gives) and Harish adds a film only when he wants one. The Engine never works around YouTube's block on cloud computers.
+2. Breakdowns need real clips. Harish fills the trailer library once from his laptop (`tools/clip_helper.py --film-bank`: one command, the film bank's official trailers, then one folder dragged into Drive `clip-library/`); grids are made by code. After that the library grows by itself (history search, videos Meta gives) and by **Harish's top-up about every 2 weeks**: the Engine keeps one ready command in Drive `requests/trailers_to_get.md` (every film the coming plans need, new trailers first, each with its official link when the planning run found one) and the daily digest says "Needs you" when it is worth running. A new trailer can wait a day: it is run the next time Harish is at his laptop. The Engine never works around YouTube's block on cloud computers.
+4. Trailer dates: the news watch also notes announced trailer dates ("trailer on 15 Nov"); the brief shows the trailers expected this week, so the request is ready the day the trailer drops.
 3. When: the trailer job runs at 04:52 for the day's wanted list; the news watch asks for a trailer as soon as a drop is reported; Make asks for any film a plan needs.
 
 Every trailer gets a **shot grid**: one picture, each shot numbered with its start and end second (made by code, no AI); every stills set gets a numbered grid the same way. The planning run looks at the grid and picks the exact second for each line, the way the Kaithi reel was made.
@@ -330,8 +333,18 @@ The Kaithi reel is the model for every film breakdown (`plans/reference/kaithi-b
 
 - **Length:** 45 seconds (40 to 50), 16 to 19 spoken screens.
 - **Order:** hook on a film moment (a question the viewer felt but never named) → "it's not just X" → the 3 named points → for each point: its name, then 2 or 3 beats of specific story facts (a character, an object, a place, a scene), each on the trailer moment that shows it → recap → the punchline → a send-off with a meme or a witty line.
+- **Films:** Tamil first; well-known English and world films too (Nolan, Tarantino, Bong Joon-ho...), narrated in the same Tanglish, from their official trailers in the library.
 - **Topic test (all must be yes):** one craft question about a film people know; three points that are real scenes or facts of that film; something the viewer felt but did not notice; no plot retelling; no star-versus-star comparison.
 - **Checked by code:** a breakdown shorter than 40 seconds, with fewer than 15 screens, with any picture that is not a trailer clip, or with fewer than 3 different clip moments is refused before it is made.
+
+### 5.11 Movie recommendations (Harish, 12 Nov: replaces Viral Story)
+- **Whose list:** a Tamil star or director, a famous Hollywood director, a famous Tamil musician, or a Letterboxd list ("Lokesh Kanagaraj's favourite films", "5 films Nolan tells everyone to watch", "Letterboxd's top-rated Tamil thrillers").
+- **Proof:** every "X recommends Y" comes from a real interview, list or post, named in the plan's sources (2 trusted sources, as for news). No source, no film on the list.
+- **Shape (40 to 50 seconds):** hook with the person or list → 3 to 5 films, each on its own trailer moment with one line on why (in the person's words when there is a quote) → the one to start with → send-off.
+- **Pictures:** only the recommended films' trailer clips (5.9). Films whose trailers are not in the library go on the trailer request list; the reel waits for them.
+
+### 5.12 Trailer breakdowns
+When a new trailer lands in the library, one 40 to 50 second reel on what the trailer shows: 3 things noticed (a shot, a line, a detail), each on its exact shot, then what they might mean (as questions, never as facts or leaks), and a send-off. Only that trailer's clips. At most 1 a day, in the flex slot.
 
 ---
 
@@ -360,8 +373,8 @@ A folder with one settings card (`series.yaml`) and 2–3 example reels. The Eng
 | --- | --- | --- | --- | --- |
 | A | Movie Updates | 3 | Card | Yes |
 | B | Film Breakdown (the main product) | 2 | Card | Yes |
-| C | Story slot: Guess the Tamil Movie (4 days) / Viral Story (3 days) | 1 | Diorama / Cinematic | No |
-| Flex | Movie Review (release days, max 2) or Artwork + Quote (after 2–3 dull days) | 0–2 | Card / Cinematic | No |
+| C | Story slot: Guess the Tamil Movie (4 days) / Movie Recommendations (3 days) | 1 | Diorama / Card | No / Yes |
+| Flex | Trailer Breakdown (a new trailer in the library, max 1), Movie Review (release days, max 2) or Artwork + Quote (after 2–3 dull days) | 0–2 | Card / Cinematic | Yes / No |
 | Extra | Breaking News | 0–2 | Card, red | No |
 | Lab | Pilot as a Trial Reel | 1 every 2 days at most | Any | Optional |
 

@@ -1,0 +1,28 @@
+id: movie-recommendations
+name: Movie Recommendations
+status: trial            # Harish, 12 Nov 2026: replaces Viral Story in the story slot (AGENT.md 5.11)
+badge: { text: "THEY RECOMMEND", alt_texts: ["WATCH THIS NEXT", "LETTERBOXD PICKS"], color: teal }
+per_week: 3              # shares the story slot with guess-the-movie
+slots: ["15:30"]
+hook: spotlight
+template: card
+visuals: clips           # only the recommended films' own trailer clips (AGENT.md 5.9)
+min_screens: 12
+strict_length: true
+voice: true
+length_s: [40, 50]
+image_cap_per_reel: 0
+lead_sources: [interviews, letterboxd_lists, director_lists, musician_interviews, anniversaries]
+story_shape: [hook_with_the_person, film_1, film_2, film_3, film_4_optional, film_5_optional, start_with_this_one, send_to_friend]
+hook_examples:
+  - "Lokesh-oda favourite 5 padam?"
+  - "Nolan sonna: indha padam paakkaama irukkaadheenga."
+  - "Letterboxd-la top Tamil thriller edhu?"
+proof_required: 2        # every "X recommends Y" needs a real interview, list or post
+meme_use: ending_only
+success_metric: saves_per_reach
+rules:
+  - "Name the source of the list in the caption (the interview, the list, the post)."
+  - "3 to 5 films, each on its own trailer moment, one line on why; the person's own words when there is a quote."
+  - "No film whose trailer is not in the library: put it on the trailer request list and wait."
+  - "Same person at most once in 30 days."

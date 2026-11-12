@@ -1,6 +1,6 @@
 id: viral-story
 name: Viral Story
-status: live
+status: paused         # Harish, 12 Nov 2026: replaced by movie-recommendations (AGENT.md 5.11)
 badge: { text: "UNTOLD", color: amber }
 per_week: 3             # shares the story slot with guess-the-movie
 slots: ["15:30"]

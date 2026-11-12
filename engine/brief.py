@@ -237,8 +237,27 @@ def build(drive, run, date):
             L += [f"- {x['film']}: {len(x['stills'])} stills, grid: clip-library/sheets/{x['sheet']}" for x in sts[-20:]]
             L += ["Visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. "
                   "Pick the still that shows what the line says; skip stills that are mostly text."]
-        if want:
-            L += [f"Trailers being fetched: {', '.join(want[:10])} (plans for these wait; see below when they arrive)."]
+        try:
+            from . import trailers as T
+            asks = T.request_doc(drive)                       # Drive requests/trailers_to_get.md, Harish's ready command
+            cal = (drive.read_json("status", "trailer_calendar.json") or {}).get("expected", [])
+            idx = T.index(drive)
+        except Exception:
+            asks, cal, idx = [], [], {"trailers": []}
+        if asks:
+            L += ["", "## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)",
+                  f"Waiting: {', '.join(asks[:12])}. Plans for these wait until they arrive.",
+                  "Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line "
+                  "'Film = link' to data/notes/trailer_links.md, so the command has the exact video."]
+            if run == "refresh":
+                L += [f"Digest 'Needs you' line: {len(asks)} trailer(s) to get, command in Drive requests/trailers_to_get.md."]
+        if cal:
+            L += ["", "## Trailers expected (announced dates)"] + [f"- {x['film']}: {x['when']} ({x['headline'][:80]})" for x in cal[-8:]]
+        new = [t for t in idx.get("trailers", []) if t.get("kind") in ("trailer", "teaser", "glimpse")
+               and str(t.get("fetched", ""))[:10] >= (dt.date.fromisoformat(date) - dt.timedelta(days=3)).isoformat()]
+        if new:
+            L += ["", "## New trailers in the library (last 3 days)"] + [f"- {t['film']} ({t['kind']}, grid: clip-library/sheets/{t['sheet']})" for t in new[:6]]
+            L += ["Flex slot: plan one trailer-breakdown (AGENT.md 5.12) for the newest of these that is a new release."]
         try:
             from .trailers import index as clip_index, have
             idx = clip_index(drive)
@@ -249,7 +268,8 @@ def build(drive, run, date):
             L += ["", "## Re-pick moments (the trailer has arrived)"] + [
                 f"- {rid}: {f}'s grid is in the library now. Pick the shot for each line, write the start seconds into plans/{date}/{rid}.json, commit."
                 for rid, f in ready]
-        L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: movie-review on release days, artwork-quote after a dull stretch."]
+        L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: trailer-breakdown when a new trailer lands, movie-review on release days, "
+              "artwork-quote after a dull stretch."]
     if day.reels():
         L += ["", "## Today's reels"] + table([(r.get("slot") or "-", r["reel_id"], r.get("series", ""), r.get("state", ""), (r.get("reason") or "")[:60])
                                                for r in day.reels()], ["slot", "reel", "series", "state", "note"])

@@ -664,17 +664,92 @@ def wanted(drive):
         return []
 
 
-def want(drive, films):
-    """Put films on the trailer wanted list (fetched at the next trailer run; the planning run sees the list in the brief)."""
+def want(drive, films, why=None):
+    """Put films on the trailer wanted list (fetched at the next trailer run; the planning run sees the list in the brief),
+    with the reason each one is needed (a plan, a news drop). Films that now have a trailer leave the list."""
     try:
         cur = drive.read_json("status", "trailers_wanted.json") or {"films": []}
     except Exception:
         cur = {"films": []}
     have_now = {norm(x["film"]) for x in index(drive)["trailers"]}
     cur["films"] = [f for f in dict.fromkeys(cur.get("films", []) + list(films)) if norm(split_hint(f)[0]) not in have_now]
+    reasons = cur.setdefault("why", {})
+    for f in films:
+        if why:
+            reasons.setdefault(split_hint(f)[0], why)
+    cur["why"] = {k: v for k, v in reasons.items() if any(norm(split_hint(f)[0]) == norm(k) for f in cur["films"])}
     cur["updated"] = status.stamp()
     drive.write_json("status", "trailers_wanted.json", cur)
     return cur["films"]
+
+
+def announced(headline):
+    """A trailer date announced in a headline ('Jana Nayagan trailer on November 20', '... trailer tomorrow at 6 PM'):
+    (film, when) or None. A drop that has already happened ('out now', 'released') is not an announcement."""
+    h = str(headline or "")
+    if kind_of(h) not in ("trailer", "teaser", "glimpse") or re.search(r"(?i)\b(out now|is out|released|unveil|drops|dropped|launched|is here)\b", h):
+        return None
+    m = re.search(r"(?i)\b(today|tonight|tomorrow|on (?:\d{1,2}(?:st|nd|rd|th)? )?(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*(?: \d{1,2})?|"
+                  r"date|(?:to |will )(?:release|drop|be out|arrive))\b[^,.;|]{0,30}", h)
+    films = titles_in(h)
+    return (films[0], m.group(0).strip()) if (m and films) else None
+
+
+def note_dates(drive, stories):
+    """Keep announced trailer dates for 30 days in Drive status/trailer_calendar.json (the brief shows this week's)."""
+    try:
+        cal = drive.read_json("status", "trailer_calendar.json") or {"expected": []}
+    except Exception:
+        cal = {"expected": []}
+    now = status.now()
+    for st in stories:
+        a = announced(st.get("title"))
+        if a and not any(norm(x["film"]) == norm(a[0]) for x in cal["expected"]):
+            cal["expected"].append({"film": a[0], "when": a[1], "headline": st.get("title", "")[:140], "source": st.get("link") or st.get("url"),
+                                    "noted": now.isoformat(timespec="minutes")})
+    cal["expected"] = [x for x in cal["expected"] if (now - __import__("datetime").datetime.fromisoformat(x["noted"])).days < 30]
+    drive.write_json("status", "trailer_calendar.json", cal)
+    return cal["expected"]
+
+
+def links_from_notes():
+    """'Film = https://...' lines the planning run wrote into data/notes/trailer_links.md (official trailer links)."""
+    from .settings import ROOT
+    p = ROOT / "data" / "notes" / "trailer_links.md"
+    out = {}
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            m = re.match(r"\s*[-*]?\s*(.+?)\s*=\s*(https?://\S+)", line)
+            if m:
+                out[norm(m.group(1))] = (m.group(1).strip(), m.group(2))
+    return out
+
+
+def request_doc(drive):
+    """One ready command for Harish's laptop helper, in Drive requests/trailers_to_get.md: every film on the wanted list
+    without a trailer yet, new trailers first, each with its official link when the planning run found one."""
+    try:
+        cur = drive.read_json("status", "trailers_wanted.json") or {"films": []}
+    except Exception:
+        cur = {"films": []}
+    idx = index(drive)
+    names = [split_hint(f)[0] for f in cur.get("films", []) if not have(split_hint(f)[0], idx)]
+    names = list(dict.fromkeys(names))
+    links, why = links_from_notes(), cur.get("why", {})
+    news = [n for n in names if str(why.get(n, "")).startswith("news")]
+    names = news + [n for n in names if n not in news]
+    if not names:
+        text = f"# Trailers to get\nNothing to get right now (checked {status.stamp()}).\n"
+    else:
+        args = " ".join(f'"{n}={links[norm(n)][1]}"' if norm(n) in links else f'"{n}"' for n in names)
+        lines = [f"- {n}: {why.get(n, 'needed by a coming reel')}" + ("" if norm(n) in links else " (no link yet: the helper searches)") for n in names]
+        text = ("# Trailers to get\n"
+                f"Updated {status.stamp()}. Open the folder with clip_helper.py, type cmd in the address bar, then paste this line:\n\n"
+                f"py clip_helper.py {args}\n\n"
+                "Then drag the files in trailers_for_drive (helper_report.txt too) into Drive: iNiKKi Reels, clip-library.\n\n"
+                "Why each one:\n" + "\n".join(lines) + "\n")
+    drive.write_text("requests", "trailers_to_get.md", text, mime="text/markdown")
+    return names
 
 
 def main():
@@ -696,7 +771,12 @@ def main():
         CACHE["drive"] = drive
         adopted = adopt(drive)          # Drive only: hand-added trailers get their grids even when Instagram says no
         if a.adopt_only:
-            res = {"adopted": adopted, "at": status.stamp()}
+            want(drive, [])
+            try:
+                asks = request_doc(drive)
+            except Exception as e:
+                asks = [f"request list not written: {str(e)[:80]}"]
+            res = {"adopted": adopted, "to_get": asks, "at": status.stamp()}
             status.write(drive, "trailers.json", res)
             (OUT / "peek" / "trailers" / "result.json").write_text(json.dumps(res, indent=1, ensure_ascii=False))
             if (WORK / "sheets").exists():
@@ -765,8 +845,12 @@ def main():
     save_cache()
     filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
     want(drive, [])          # drop the films that now have a trailer
+    try:
+        res_asks = request_doc(drive)     # Harish's ready command, refreshed after every run
+    except Exception as e:
+        res_asks = [f"request list not written: {str(e)[:80]}"]
     res = {"adopted": adopted, "fetched": done, "failed": failed, "history_search": f"{pages} pages read, filed: {filed}",
-           "instagram_calls": type(ig).calls, "accounts": {f: n for f, n in notes.items() if n}, "meta_meters": type(ig).usage_raw,
+           "instagram_calls": type(ig).calls, "accounts": {f: n for f, n in notes.items() if n}, "meta_meters": type(ig).usage_raw, "to_get": res_asks,
            "seconds_per_call": type(ig).seconds}
     status.write(drive, "trailers.json", res)
     print(json.dumps(res, indent=1, ensure_ascii=False))
