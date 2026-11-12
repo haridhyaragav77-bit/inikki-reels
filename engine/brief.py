@@ -72,6 +72,15 @@ def lineup_today(ctl, date):
     return sorted(rows), lineup, bank_target
 
 
+def trailers(drive):
+    """Film names of the trailers in Drive clip-library (what the Brain can cut moments from)."""
+    try:
+        fid = drive.folder("clip-library", create=False)
+        return sorted(re.sub(r"\.\w+$", "", k["name"]) for k in (drive.children(fid) if fid else []) if k.get("mimeType", "").startswith("video/"))
+    except Exception:
+        return []
+
+
 def table(rows, head):
     if not rows:
         return []
@@ -204,6 +213,10 @@ def build(drive, run, date):
     L += ["## To do", nothing] if nothing else ["## To do"] + [f"{i}. {t}" for i, t in enumerate(todo, 1)]
     if run in ("plan", "refresh"):
         L += ["", f"## Today's slots ({date})"] + table(slots, ["time", "series", "template", "notes"])
+        vids = trailers(drive)
+        L += ["", "## Trailers in the clip library",
+              (", ".join(vids[:40]) if vids else "None yet: breakdowns and updates use free photos until trailers are added.")
+              + " For a film moment use visual {type: clip, film: <name above>, query: <what moment>}; leave start empty and the Engine picks one."]
         L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: movie-review on release days, artwork-quote after a dull stretch."]
     if day.reels():
         L += ["", "## Today's reels"] + table([(r.get("slot") or "-", r["reel_id"], r.get("series", ""), r.get("state", ""), (r.get("reason") or "")[:60])

@@ -1112,6 +1112,9 @@ field once: lead, hook, screens, visuals, motion graphic, music, meme, voice lin
 subtitles (Tanglish and Tamil), caption, hashtags, cover, time, fallbacks. Pick each motion
 graphic from rules/motion.md by what the line says. Keep each screen to one line of headline.
 Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
+Pictures: a film moment is {type: clip, film: <a trailer listed in the brief>, query: <moment>}; otherwise
+{type: image, find: <3-5 plain search words>, ai: false} for series that allow no AI pictures.
+If the check cannot start because a module is missing: pip install -q pyyaml, then run it again.
 
 # score-reel
 Score the plan on 7 lines, 0–10 each: hook, send trigger, comment trigger, save value, pacing,
