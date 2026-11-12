@@ -321,17 +321,33 @@ def download(url, path):
 
 
 # ---------------------------------------------------------------- shot grid (no AI)
-def shots(video, threshold=0.3):
-    """Every shot as [start, end] seconds, from the cuts ffmpeg finds."""
+def _cuts(video, threshold):
     r = subprocess.run([ffmpeg(), "-i", video, "-vf", f"select='gt(scene,{threshold})',showinfo", "-an", "-f", "null", "-"],
                        capture_output=True, text=True, timeout=600)
-    cuts = sorted({round(float(x), 2) for x in re.findall(r"pts_time:([\d.]+)", r.stderr)})
-    d = duration(video) or (cuts[-1] + 2 if cuts else 0)
-    edges = [0.0] + [c for c in cuts if 0.3 < c < d - 0.3] + [d]
-    return [[edges[i], edges[i + 1]] for i in range(len(edges) - 1) if edges[i + 1] - edges[i] >= 0.8]
+    return sorted({round(float(x), 2) for x in re.findall(r"pts_time:([\d.]+)", r.stderr)})
 
 
-def grid(video, out_jpg, max_tiles=40):
+def shots(video, threshold=0.3, piece=3.5):
+    """Every moment as [start, end] seconds. Cuts come from ffmpeg; a dark or fast trailer where few cuts are found is
+    read again more finely, and any stretch longer than 7 s is split into pieces of about 3.5 s, so every part of the
+    trailer gets its own numbered tile."""
+    d = duration(video) or 0
+    for th in (threshold, 0.2, 0.12):
+        cuts = _cuts(video, th)
+        d = d or (cuts[-1] + 2 if cuts else 0)
+        edges = [0.0] + [c for c in cuts if 0.3 < c < d - 0.3] + [d]
+        segs = [[edges[i], edges[i + 1]] for i in range(len(edges) - 1) if edges[i + 1] - edges[i] >= 0.8]
+        if len(segs) >= max(12, d / 6):
+            break
+    out = []
+    for a, b in segs:
+        n = int((b - a) // piece) if b - a > 2 * piece else 1
+        step = (b - a) / n
+        out += [[round(a + i * step, 2), round(a + (i + 1) * step, 2)] for i in range(n)]
+    return out
+
+
+def grid(video, out_jpg, max_tiles=50):
     """One picture: each usable shot as a numbered tile with its start and end. Black frames and title cards are left out."""
     from PIL import Image, ImageDraw, ImageFont, ImageStat
     tmp = WORK / "tiles"
@@ -346,7 +362,10 @@ def grid(video, out_jpg, max_tiles=40):
             continue
         im = Image.open(f).convert("L")
         dark = sum(im.histogram()[:28]) / (im.width * im.height)
-        if ImageStat.Stat(im).mean[0] < 22 or dark > 0.72:       # black frame, or text on black (title card)
+        st = ImageStat.Stat(im)
+        if st.mean[0] < 22 or dark > 0.72:                       # black frame, or text on black (title card)
+            continue
+        if st.mean[0] > 195 and st.stddev[0] < 50:              # a white card with a logo (label or studio)
             continue
         keep.append({"n": len(keep) + 1, "start": round(a, 2), "end": round(b, 2), "tile": str(f)})
     if len(keep) > max_tiles:
@@ -594,6 +613,39 @@ def adopt(drive):
     return done
 
 
+def regrid(drive, films=None):
+    """Make the shot grids again (after the grid maker improves): every trailer in the library, or only these films."""
+    idx = index(drive)
+    fid = drive.folder("clip-library", create=False)
+    kids = drive.children(fid) if fid else []
+    for sub in [k for k in kids if k.get("mimeType") == "application/vnd.google-apps.folder" and k["name"] not in ("sheets", "stills")]:
+        kids += drive.children(sub["id"])
+    by_name = {k["name"]: k for k in kids if k.get("mimeType", "").startswith("video/")}
+    want_films = {norm(f) for f in (films or [])}
+    done = []
+    for t in list(idx["trailers"]):
+        if want_films and norm(t["film"]) not in want_films:
+            continue
+        k = by_name.get(t["file"])
+        if not k:
+            continue
+        local = str(WORK / t["file"])
+        try:
+            drive.download(k["id"], local)
+            meta = grid(local, str(WORK / "sheets" / t["sheet"]))
+            file_entry(drive, t["film"], t["kind"], local, meta, t.get("source", "clip-library"), t.get("account", ""), t.get("link"),
+                       t.get("title"), upload_video=False)
+            done.append(f"{t['film']}: {len(t.get('shots') or [])} -> {len(meta)} moments")
+        except Exception as e:
+            print("could not regrid", t["file"], str(e)[:120])
+        finally:
+            try:
+                os.remove(local)
+            except OSError:
+                pass
+    return done
+
+
 def films_we_cover(drive):
     bank = json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])
     return list(dict.fromkeys([f["film"] for f in bank] + [split_hint(f)[0] for f in wanted(drive)]))
@@ -761,6 +813,7 @@ def main():
     ap.add_argument("--crawl", action="store_true", help="also work back through the accounts' history (inside the call budget)")
     ap.add_argument("--stills", action="append", default=[], help="a film's official stills only ('Film@account')")
     ap.add_argument("--adopt-only", action="store_true", help="only give the trailers dropped into Drive their grids (no Instagram)")
+    ap.add_argument("--regrid", nargs="*", help="make the grids again: every trailer, or only these films (no Instagram)")
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
@@ -770,7 +823,9 @@ def main():
         drive = Drive()
         CACHE["drive"] = drive
         adopted = adopt(drive)          # Drive only: hand-added trailers get their grids even when Instagram says no
-        if a.adopt_only:
+        if a.regrid is not None:
+            adopted += regrid(drive, a.regrid)
+        if a.adopt_only or a.regrid is not None:
             want(drive, [])
             try:
                 asks = request_doc(drive)
