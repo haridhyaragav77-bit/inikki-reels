@@ -234,14 +234,39 @@ def resolve(plan, work, local, drive=None, budget=None):
                 out[side] = one(v.get(side) or {}, length)
         return out
 
+    groups = []
     for run in _runs(res["screens"]):
         idxs = run["screens"]
         total = sum(float(res["screens"][i]["dur"]) for i in idxs)
-        vis = one(run["spec"], total) if run["spec"] is not None else None
+        groups.append({"idxs": list(idxs), "vis": one(run["spec"], total) if run["spec"] is not None else None})
+
+    def real(v):
+        return isinstance(v, dict) and v.get("source") != "placeholder" and v.get("type") not in ("none", "mascot", None)
+
+    def missing(v):
+        return isinstance(v, dict) and (v.get("source") == "placeholder" or v.get("fallback"))
+
+    # fail soft (CLAUDE.md rule 4): a picture that could not be found borrows its neighbour, which simply stays on screen
+    # longer (the one before it, else the one after). A reel with no real picture at all keeps its stand-ins and is held.
+    if not local and any(real(g["vis"]) for g in groups):
+        merged = []
+        for g in groups:
+            if missing(g["vis"]) and merged and real(merged[-1]["vis"]):
+                merged[-1]["idxs"] += g["idxs"]
+                A.notes.append(f"Screen {g['idxs'][0] + 1}: no picture was found, so the picture before it stays on screen.")
+            else:
+                merged.append(g)
+        while len(merged) > 1 and missing(merged[0]["vis"]) and real(merged[1]["vis"]):
+            merged[1]["idxs"] = merged[0]["idxs"] + merged[1]["idxs"]
+            A.notes.append(f"Screen {merged[0]['idxs'][0] + 1}: no picture was found, so the next picture starts early.")
+            merged.pop(0)
+        groups = merged
+    for g in groups:
+        total = sum(float(res["screens"][i]["dur"]) for i in g["idxs"])
         off = 0.0
-        for k, i in enumerate(idxs):
+        for k, i in enumerate(g["idxs"]):
             s = res["screens"][i]
-            s["visual"] = vis
+            s["visual"] = g["vis"]
             s["voff"], s["vdur"], s["visual_changed"] = round(off, 3), round(total, 3), k == 0
             off += float(s["dur"])
     moods = (load_yaml(f"niches/{AGENT['active']['niche']}/niche.yaml") or {}).get("music_moods", {})
