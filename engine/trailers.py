@@ -790,17 +790,25 @@ def request_doc(drive):
     links, why = links_from_notes(), cur.get("why", {})
     news = [n for n in names if str(why.get(n, "")).startswith("news")]
     names = news + [n for n in names if n not in news]
-    if not names:
-        text = f"# Trailers to get\nNothing to get right now (checked {status.stamp()}).\n"
+    try:                                   # the library top-up: film-bank films with no trailer yet (every 2 weeks)
+        bank = [f["film"] for f in json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])]
+    except Exception:
+        bank = []
+    topup = [f for f in bank if not have(f, idx) and f not in names]
+    arg = lambda n: f'"{n}={links[norm(n)][1]}"' if norm(n) in links else f'"{n}"'
+    text = [f"# Trailers to get\nUpdated {status.stamp()}. Open the folder with clip_helper.py, type cmd in the address bar, paste the line, "
+            "press Enter. Then drag the files in trailers_for_drive (helper_report.txt too) into Drive: iNiKKi Reels, clip-library.\n"]
+    if names:
+        text += ["## New trailers and films the coming reels need (run within a day)\n", f"py clip_helper.py {' '.join(arg(n) for n in names)}\n",
+                 "Why each one:"] + [f"- {n}: {why.get(n, 'needed by a coming reel')}" + ("" if norm(n) in links else " (no link yet: the helper searches)")
+                                     for n in names] + [""]
     else:
-        args = " ".join(f'"{n}={links[norm(n)][1]}"' if norm(n) in links else f'"{n}"' for n in names)
-        lines = [f"- {n}: {why.get(n, 'needed by a coming reel')}" + ("" if norm(n) in links else " (no link yet: the helper searches)") for n in names]
-        text = ("# Trailers to get\n"
-                f"Updated {status.stamp()}. Open the folder with clip_helper.py, type cmd in the address bar, then paste this line:\n\n"
-                f"py clip_helper.py {args}\n\n"
-                "Then drag the files in trailers_for_drive (helper_report.txt too) into Drive: iNiKKi Reels, clip-library.\n\n"
-                "Why each one:\n" + "\n".join(lines) + "\n")
-    drive.write_text("requests", "trailers_to_get.md", text, mime="text/markdown")
+        text += ["## New trailers\nNothing new right now.\n"]
+    if topup:
+        text += ["## Library top-up (about every 2 weeks)\n", f"py clip_helper.py {' '.join(arg(n) for n in topup)}\n",
+                 f"{len(topup)} film-bank films have no trailer in the library yet. If you still have the trailers_for_drive folder from "
+                 "last time, just type py clip_helper.py: it skips what it already has.\n"]
+    drive.write_text("requests", "trailers_to_get.md", "\n".join(text), mime="text/markdown")
     return names
 
 
