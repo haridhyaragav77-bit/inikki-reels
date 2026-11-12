@@ -424,6 +424,7 @@ def main():
                 rep["result"] = f"FAILED: {ex}"
             out[film] = rep
             print(film, json.dumps(rep, indent=1, ensure_ascii=False))
+        out["meta_usage_percent"], out["instagram_calls"] = type(ig).usage, type(ig).calls
         (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
         if (WORK / "sheets").exists():
             shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
