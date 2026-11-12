@@ -69,6 +69,8 @@ def need_trailers(drive, plan):
     missing = [f for f in films if not trailers.have(f, idx)]
     if not missing:
         return []
+    hint = "+".join(plan.get("trailer_from") or [])       # the film's own accounts, named in the plan: searched first
+    missing = [f"{f}@{hint}" if hint else f for f in missing]
     try:
         from .instagram import Instagram
         ig = Instagram()
@@ -163,17 +165,18 @@ def main():
             skipped.append(rid)
             continue
         errors, _ = plancheck.check(plan)
-        missing = [] if errors else need_trailers(drive, plan)
+        missing = need_trailers(drive, plan)       # asked for even when the plan still needs its moments picked
         if missing and ctl.series(series, niche_dir()).get("visuals") == "clips":
-            ledger.upsert(rid, **base, state="held", reason=f"No trailer yet for {', '.join(missing)} (on the trailer wanted list; "
-                          "the reel is made again with --retry once it arrives).")
+            films = [m.split("@")[0] for m in missing]
+            ledger.upsert(rid, **base, state="held", waiting_for=films, reason=f"No trailer yet for {', '.join(films)} (on the trailer wanted list; "
+                          "once it arrives the planning run picks the moments from its grid and the reel is made).")
             held.append(rid)
             continue
         if errors:
             ledger.upsert(rid, **base, state="held", reason="Plan check: " + " ".join(errors[:2]))
             held.append(rid)
             continue
-        ledger.upsert(rid, **base, state="rendering", reason=None)
+        ledger.upsert(rid, **base, state="rendering", reason=None, waiting_for=[])
         ledger.save()
         try:
             r = render.render(str(path), drive=drive, to_drive=f"{out_root}/{'bank' if is_bank else date}")

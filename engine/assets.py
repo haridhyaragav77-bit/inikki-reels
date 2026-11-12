@@ -287,7 +287,10 @@ class Assets:
             hit = scored[0][1] if scored and (film and film in norm(scored[0][0])) else None
         if not hit:
             return None
-        return self.drive.download(hit["id"], os.path.join(self.work, "clip_" + re.sub(r"[^\w.]+", "_", hit["name"])))
+        local = os.path.join(self.work, "clip_" + re.sub(r"[^\w.]+", "_", hit["name"]))
+        if os.path.exists(local) and os.path.getsize(local) > 0:       # one download per trailer, however many screens use it
+            return local
+        return self.drive.download(hit["id"], local)
 
     def _frames_from(self, src, start, length, n, label=None, audio=False, crop=None):
         d = os.path.join(self.work, f"frames_{n:02d}")

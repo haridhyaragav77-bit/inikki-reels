@@ -75,12 +75,15 @@ class Instagram:
     calls = 0                 # calls made by this run, all instances (Instagram allows about 200 an hour for this app)
     usage = 0                 # highest share of the app's hourly allowance in use, from Meta's own X-App-Usage header (0-100)
 
+    usage_raw = {}            # Meta's last meter readings, as sent (which meter is filling: calls, time or CPU)
+
     @staticmethod
     def _note_usage(r):
         for h in ("x-app-usage", "x-business-use-case-usage"):
             v = r.headers.get(h)
             if not v:
                 continue
+            Instagram.usage_raw[h] = v[:300]
             try:
                 j = json.loads(v)
                 vals = [j] if "call_count" in j else [x for lst in j.values() for x in (lst if isinstance(lst, list) else [lst])]
