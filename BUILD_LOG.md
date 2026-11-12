@@ -25,8 +25,9 @@ Tested: offline (fake Drive) for slot choice, reserves, bank, respect mode, 24-h
 Scheduled tasks made from a build session get no repository (tested twice), so the 5 thinking runs are created by Harish on the Routines page (Block D).
 
 Rehearsal day 1 (12 Nov, made by hand as the Brain): 6 plans + 2 reserves. Reserves (the two approved golden reels) came out ready.
-The 3 news reels and 2 breakdowns were held by inspection: no real pictures (clip-library is empty; free-photo keys not added yet;
-the public-domain search was too strict and is now wider). They also ran short (16-27 s against 30-50 s): the plan check now warns.
+The 3 news reels and 2 breakdowns were first held by inspection: no real pictures (clip-library is empty; free-photo keys not added yet;
+the public-domain search was too strict). After a wider search and the neighbour-picture fallback, a retry made 4 of the 5:
+7 of 8 reels ready; the Scene box-office update stays held (no free photo at all). They also ran short (16-27 s against 30-50 s): the plan check now warns.
 Health check on GitHub: Drive OK, voice OK, image budget ₹14 of ₹500, OpenAI key OK (limited to pictures), news feeds 4 of 4.
 **Instagram: Meta answers "API access blocked" for the app itself** (the Facebook door and the app's own token check). Not a token problem.
 Harish opens developers.facebook.com > My Apps > the app and follows the banner; the same token then works. Posting waits for this.
