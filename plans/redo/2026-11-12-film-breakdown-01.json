@@ -117,7 +117,7 @@
     "film": "Leo",
     "start": 55.2,
     "len": 2.6,
-    "max_len": 1.8,
+    "max_len": 1.1,
     "label": "CAFE"
    },
    "motion": {
@@ -184,9 +184,9 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 63.7,
+    "start": 63.6,
     "len": 2.6,
-    "max_len": 1.0
+    "max_len": 0.8
    },
    "motion": {
     "type": "points",
