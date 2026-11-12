@@ -274,8 +274,9 @@
    "visual": {
     "type": "clip",
     "film": "Amaran",
-    "start": 119.0,
-    "len": 2.6
+    "start": 117.6,
+    "len": 2.6,
+    "max_len": 3.4
    },
    "motion": {
     "type": "status",
