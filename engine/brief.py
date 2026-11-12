@@ -226,7 +226,9 @@ def build(drive, run, date):
         L += ["", "## Trailers in the clip library (breakdowns and updates may only use these films)"]
         L += [f"- {v}" for v in vids[:40]] or ["- None yet."]
         L += ["Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. "
-              "Visual: {type: clip, film: <film>, start: <shot start + 0.2>, len: 2.5, label: <2-word tag>}."]
+              "Then check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles from your start second "
+              "for as long as the line lasts (2-4 s) must all show what the line says; trailers dissolve between shots. "
+              "Visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}."]
         try:
             from .trailers import index as clip_index
             sts = clip_index(drive).get("stills", [])
