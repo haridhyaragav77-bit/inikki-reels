@@ -311,6 +311,7 @@ Rules:
 - Found photos get the page's look by code (crop, contrast, colour), then the same depth and camera treatment as any other picture.
 - Guess the Movie clues stay objects and places, never an actor's face, whichever step the picture comes from.
 - The dashboard shows how many pictures came from each step, and the image spend saved.
+- A picture that cannot be found from any allowed step borrows its neighbour (the picture before it stays on screen longer). A reel with no real picture at all is held and a spare takes its slot. Held reels are made again once trailers or keys arrive.
 
 ---
 
