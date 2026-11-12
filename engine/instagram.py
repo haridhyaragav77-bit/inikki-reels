@@ -18,7 +18,8 @@ def plain_error(j):
     msg = e.get("message", str(j)[:200])
     code = e.get("code")
     if code == 190 or "access token" in msg.lower() and ("expired" in msg.lower() or "invalid" in msg.lower()):
-        return "The Instagram token has expired or is not valid. Make a new long-lived token and update the secret IG_ACCESS_TOKEN."
+        return ("The Instagram token has expired or is not valid. Make a new long-lived token and update the secret IG_ACCESS_TOKEN."
+                f" (Meta says: {msg[:140]})")
     if code == 10 or "permission" in msg.lower():
         return f"The Instagram token is missing a permission: {msg}"
     return msg
