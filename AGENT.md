@@ -959,7 +959,8 @@ The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigge
 Use skill quiet-exit. Then read data/brief.md and AGENT.md sections 5 and 6 only if needed.
 Wear the hats in order (team/ cards): Researcher → Script Writer → Content Specialist →
 Marketing Expert → Branding Expert → Virality Advisor. Plan today's full lineup with skill
-plan-reel and skill score-reel. Keep 2 reserves for the day. Your settings from the Control Room
+plan-reel and skill score-reel. Breakdowns follow the Kaithi model (AGENT.md 5.10); breakdowns and updates use only
+trailer moments picked from the shot grids in Google Drive clip-library/sheets/. Keep 2 reserves for the day. Your settings from the Control Room
 are in data/control/. Write plans to plans/<today>/ and commit "plan <date>".
 
 [REFRESH — daily 16:37 IST]
