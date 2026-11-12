@@ -1,0 +1,150 @@
+{
+ "reel_id": "2026-11-12-movie-updates-02",
+ "series": "movie-updates",
+ "post_at": "2026-11-12T18:00:00+05:30",
+ "header": "INJI VELLAM / RELEASE DATE",
+ "credit": "NEWS · 12 Nov 2026 · Tamil and English film press (news watch, 8 publishers)",
+ "lead": {
+  "topic": "Mani Ratnam's Inji Vellam (Vijay Sethupathi, Sai Pallavi) gets a 29 January release date",
+  "score": 76,
+  "sources": [
+   "news watch radar 12 Nov 2026: 6 Tamil publishers + 2 English publishers",
+   "https://varietyindia.com/mani-ratnams-vijay-sethupathi-sai-pallavi-starrers-teaser-paints-a-portrait-of-kolkata-title-reveal-set-for-september-7/"
+  ]
+ },
+ "virality": {
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 8,
+  "total_100": 66
+ },
+ "music": {
+  "mood": "upbeat_percussive"
+ },
+ "screens": [
+  {
+   "headline": "Mani Ratnam *romance* is back!",
+   "tamil": "மணிரத்னம் மீண்டும் காதல் கதையுடன்.",
+   "visual": {
+    "type": "image",
+    "find": "Kolkata tram street rain",
+    "ai": false,
+    "label": "INJI VELLAM"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "ROMANCE"
+   },
+   "caption": "Mani Ratnam romance-ku thirumbi vandhaachu!",
+   "voice_line": "மணிரத்னம் காதலுக்கு திரும்பி வந்தாச்சு!"
+  },
+  {
+   "headline": "Title: *Inji Vellam*.",
+   "tamil": "படத்தின் பெயர்: இஞ்சி வெல்லம்.",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "Inji Vellam"
+   },
+   "caption": "Padam peyar: Inji Vellam.",
+   "voice_line": "படத்தோட பேரு இஞ்சி வெல்லம்."
+  },
+  {
+   "headline": "VJS + Sai Pallavi.",
+   "tamil": "விஜய் சேதுபதி, சாய் பல்லவி.",
+   "visual": "same",
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Vijay Sethupathi",
+     "Sai Pallavi"
+    ]
+   },
+   "caption": "Vijay Sethupathi, Sai Pallavi jodi.",
+   "voice_line": "விஜய் சேதுபதி, சாய் பல்லவி ஜோடி."
+  },
+  {
+   "headline": "Release: *Jan 29*.",
+   "tamil": "ஜனவரி 29 வெளியீடு.",
+   "visual": {
+    "type": "image",
+    "find": "calendar pages january",
+    "ai": false
+   },
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     "Teaser · Kolkata",
+     "29 Jan · Release"
+    ],
+    "at": 2
+   },
+   "caption": "January 29 theatre-la release.",
+   "voice_line": "ஜனவரி இருபத்தி ஒன்பது ரிலீஸ்."
+  },
+  {
+   "headline": "Kolkata-la oru kaadhal.",
+   "tamil": "கொல்கத்தாவில் ஒரு காதல்.",
+   "visual": {
+    "type": "image",
+    "find": "Howrah bridge Kolkata evening",
+    "ai": false
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Kadhai kalam",
+      "state": "yes",
+      "value": "Kolkata"
+     }
+    ]
+   },
+   "caption": "Teaser-la Kolkata dhaan kadhai kalam.",
+   "voice_line": "டீசர்ல கொல்கத்தா தான் கதைக்களம்."
+  },
+  {
+   "headline": "Unga fav Mani padam?",
+   "tamil": "உங்களுக்குப் பிடித்த மணிரத்னம் படம்?",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "?"
+   },
+   "caption": "Unga favourite Mani Ratnam padam? Comment.",
+   "voice_line": "உங்க ஃபேவரைட் மணிரத்னம் படம் எது?"
+  },
+  {
+   "headline": "Romance fan-ku anuppunga.",
+   "tamil": "காதல் பட ரசிகருக்கு அனுப்புங்க.",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Romance padam fan friend-ku share.",
+   "voice_line": "காதல் பட ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ],
+ "caption": {
+  "text": "Mani Ratnam romance-ku thirumbi vandhaachu!\nInji Vellam: Vijay Sethupathi, Sai Pallavi. January 29 release. Teaser-la Kolkata.\nUngaloda favourite Mani Ratnam padam edhu?\nRomance padam fan friend-ku anuppunga.",
+  "hashtags": [
+   "#InjiVellam",
+   "#ManiRatnam",
+   "#VijaySethupathi",
+   "#SaiPallavi",
+   "#iNiKKiUpdates"
+  ],
+  "first_comment": "Alaipayuthey-a, OK Kanmani-a? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ }
+}
