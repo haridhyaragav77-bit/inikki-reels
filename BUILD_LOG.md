@@ -20,8 +20,16 @@ Lesson: Instagram allows this app about 200 calls an hour. The first trailer tes
 of 25 posts per account, a 6-hour shared copy, and the search stops when Meta's own usage header says 50%.
 The earlier "API access blocked" (morning) cleared by itself: Meta's side.
 
+Later the same afternoon (15:14 IST): Instagram answered again, but Meta's meter read 51% after only 19 calls, so the
+search stopped as designed. Changes after that run:
+- A film's own accounts come first and are read further back (`Film@account`, or a plan's `trailer_from`), 50 posts a call.
+- The search stops at the first real trailer; wrong account names are remembered for 3 days; one refusal stops the run.
+- One-word titles (Scene, Leo) match only as a hashtag, in capitals, or right before "trailer".
+- Hand-added trailers get grids even when Instagram says no; every run puts its report and new grids on the `peek` branch.
+- Make asks for a plan's trailer before the moments are picked; the brief lists reels whose trailer has arrived.
+
 Redone so far: the story (Sivakarthikeyan) in Drive `rehearsal/redo-2026-11-12/`, inspection passed, pictures checked by eye.
-Waiting: Meta's limit to recover (resume at 17:10 IST), then the 3 updates from fetched trailers; the breakdowns need
+Waiting: Meta's meter to recover (next run 16:17 IST), then the 3 updates from fetched trailers; the breakdowns need
 their films' trailers (history search over a few days, or the laptop helper once).
 
 ## 12 Nov 2026 — Phase 3: the daily jobs (rehearsal) and Phase 4 hand-over
