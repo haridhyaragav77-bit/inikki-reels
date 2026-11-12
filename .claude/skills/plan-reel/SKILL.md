@@ -13,7 +13,8 @@ Breakdowns: copy the structure of plans/reference/kaithi-breakdown.json (AGENT.m
 listed in the brief: open its shot grid (Google Drive, clip-library/sheets/), pick the shot that shows what each line
 says, and write {type: clip, film, start: second, len: 2.5, label}. Times are in data/trailers.json. Then open the
 film's timeline sheet ("... - timeline.jpg", a frame every 1.5 s): every tile from your start second for as long as
-the line lasts (2-4 s) must show what the line says. A short moment gets a short line.
+the line lasts (2-4 s) must show what the line says. A short moment gets a short line, or "max_len": the seconds the
+moment lasts (the reel slows it gently and holds its last frame instead of running into the next shot).
 Movie updates may use the film's official stills instead (listed in the brief, grid in clip-library/sheets/):
 {type: image, still: {film, n: number on the grid}, ai: false, label}; pick stills that show what the line says, not text cards.
 A news film with no trailer or stills in the library yet: write the plan without start seconds and add

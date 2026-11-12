@@ -217,7 +217,8 @@ class Assets:
             h = int(hashlib.md5(f"{self.reel_id}:{n}".encode()).hexdigest(), 16)
             start = round(5 + (h % 1000) / 1000 * max(0.0, total - length - 10), 1) if total > length + 10 else 0
         try:
-            return self._frames_from(src, float(start), length, n, label=spec.get("label"), audio=bool(spec.get("audio")), crop=crop)
+            use = float(spec["max_len"]) if spec.get("max_len") else None     # the moment lasts only this long: never run into the next shot
+            return self._frames_from(src, float(start), length, n, label=spec.get("label"), audio=bool(spec.get("audio")), crop=crop, use=use)
         except RuntimeError as e:      # one bad clip never stops the reel (fail soft): a still card takes its place
             self.notes.append(f"Clip {n} ({spec.get('film', '')}) could not be cut ({e}); a still card was used.")
             return self.still(spec.get("film") or spec.get("query") or "", n, kind="clip")
@@ -314,17 +315,29 @@ class Assets:
             return local
         return self.drive.download(hit["id"], local)
 
-    def _frames_from(self, src, start, length, n, label=None, audio=False, crop=None):
+    def _frames_from(self, src, start, length, n, label=None, audio=False, crop=None, use=None):
+        """Frames for `length` seconds from `start`. With `use` (the moment's real length) shorter than `length`, the
+        moment plays in gentle slow motion (at most 1.6x slower) and then holds its last frame, so a line never runs into
+        the trailer's next shot."""
         d = os.path.join(self.work, f"frames_{n:02d}")
         if os.path.isdir(d):
             shutil.rmtree(d)
         os.makedirs(d)
         cropf = f"crop={crop[2]}:{crop[3]}:{crop[0]}:{crop[1]}," if crop else ""
-        _run([_ffmpeg(), "-y", "-v", "error", "-ss", f"{start:.3f}", "-t", f"{length:.3f}", "-i", src,
-              "-vf", f"{cropf}fps={FPS},scale=1080:-2:flags=lanczos", "-q:v", "3", os.path.join(d, "f%04d.jpg")])
+        slow = min(length / use, 1.6) if (use and use < length) else 1.0
+        take = use if slow > 1.0 else length
+        retime = f"setpts={slow:.4f}*PTS," if slow > 1.0 else ""
+        _run([_ffmpeg(), "-y", "-v", "error", "-ss", f"{start:.3f}", "-t", f"{take:.3f}", "-i", src,
+              "-vf", f"{cropf}{retime}fps={FPS},scale=1080:-2:flags=lanczos", "-q:v", "3", os.path.join(d, "f%04d.jpg")])
         count = len([f for f in os.listdir(d) if f.endswith(".jpg")])
         if not count:
             raise RuntimeError(f"no frames could be cut from {os.path.basename(src)} at {start:.1f}s")
+        want = int(round(length * FPS))
+        if use and count < want:                 # hold the last good frame for the rest of the line
+            last = os.path.join(d, f"f{count:04d}.jpg")
+            for k in range(count + 1, want + 1):
+                shutil.copyfile(last, os.path.join(d, f"f{k:04d}.jpg"))
+            count = want
         out = {"type": "clip", "frames": {"dir": "file://" + d, "count": count, "fps": FPS, "ext": "jpg"}, "label": label, "src_file": os.path.basename(src), "start": start, "len": length}
         if audio:
             a = os.path.join(self.work, f"audio_{n:02d}.m4a")

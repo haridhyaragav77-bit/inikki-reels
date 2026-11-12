@@ -39,6 +39,7 @@
     "film": "Leo",
     "start": 46.5,
     "len": 2.6,
+    "max_len": 1.9,
     "label": "LEO"
    },
    "motion": {
@@ -116,6 +117,7 @@
     "film": "Leo",
     "start": 55.2,
     "len": 2.6,
+    "max_len": 1.8,
     "label": "CAFE"
    },
    "motion": {
@@ -137,6 +139,7 @@
     "film": "Leo",
     "start": 127.9,
     "len": 2.6,
+    "max_len": 1.3,
     "label": "HYENA"
    },
    "motion": {
@@ -164,7 +167,8 @@
     "type": "clip",
     "film": "Leo",
     "start": 87.0,
-    "len": 2.6
+    "len": 2.6,
+    "max_len": 2.9
    },
    "motion": {
     "type": "punch",
@@ -181,7 +185,8 @@
     "type": "clip",
     "film": "Leo",
     "start": 63.7,
-    "len": 2.6
+    "len": 2.6,
+    "max_len": 1.0
    },
    "motion": {
     "type": "points",
@@ -203,6 +208,7 @@
     "film": "Leo",
     "start": 101.9,
     "len": 2.6,
+    "max_len": 2.5,
     "label": "CAFE FIGHT"
    },
    "motion": {
@@ -230,6 +236,7 @@
     "film": "Leo",
     "start": 75.0,
     "len": 2.6,
+    "max_len": 1.0,
     "label": "NEWS"
    },
    "motion": {
@@ -251,6 +258,7 @@
     "film": "Leo",
     "start": 71.1,
     "len": 2.6,
+    "max_len": 1.9,
     "label": "DAS"
    },
    "motion": {
@@ -273,7 +281,8 @@
     "type": "clip",
     "film": "Leo",
     "start": 156.9,
-    "len": 2.6
+    "len": 2.6,
+    "max_len": 1.8
    },
    "motion": {
     "type": "points",
@@ -322,7 +331,8 @@
     "type": "clip",
     "film": "Leo",
     "start": 45.7,
-    "len": 2.6
+    "len": 2.6,
+    "max_len": 2.7
    },
    "motion": {
     "type": "tension",
