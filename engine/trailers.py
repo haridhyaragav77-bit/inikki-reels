@@ -762,13 +762,49 @@ def main():
         shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
 
 
+def accounts_in(text):
+    """Official accounts named in a headline: a studio, label or star in sources.yaml trailers.handles (longest names first,
+    so 'Vijay Sethupathi' is not read as 'Vijay')."""
+    t, out = f" {norm(text)} ", []
+    for name, acct in sorted((settings().get("handles") or {}).items(), key=lambda kv: -len(kv[0])):
+        if f" {norm(name)} " in t:
+            t = t.replace(f" {norm(name)} ", " ")
+            out += [acct] if isinstance(acct, str) else list(acct)
+    return list(dict.fromkeys(out))
+
+
 def titles_in(headline):
-    """Film titles in a news headline: words in quotes, else the capitalised words just before trailer/teaser/glimpse."""
-    q = re.findall(r"[‘'\"“]([^’'\"”]{2,40})[’'\"”]", headline)
+    """Film titles in a news headline: words in quotes, else the capitalised words just before trailer/teaser/glimpse.
+    Possessives are dropped first ("Rajinikanth's Jailer 2 trailer" -> Jailer 2)."""
+    h = re.sub(r"(\w)['’]s\b", r"\1", str(headline or ""))
+    q = re.findall(r"[‘'\"“]([^’'\"”]{2,40})[’'\"”]", h)
     if q:
         return [x.strip() for x in q]
-    m = re.search(r"((?:[A-Z0-9][\w.]*\s){1,3})(?:official\s)?(?:trailer|teaser|glimpse)", headline, re.I)
-    return [re.sub(r"(?i)\s+official$", "", m.group(1).strip())] if m else []
+    m = re.search(r"((?:[A-Z0-9][\w.]*\s){1,3})(?i:official\s)?(?i:trailer|teaser|glimpse)", h)
+    if not m:
+        return []
+    words = m.group(1).split()
+    while words and words[-1].lower() in ("official", "new", "first"):
+        words = words[:-1]
+    names = {norm(n) for n in (settings().get("handles") or {})}
+    try:
+        names |= {norm(n) for n in ((yaml.safe_load((niche_dir() / "knowledge" / "sources.yaml").read_text(encoding="utf-8")) or {})
+                                    .get("watch") or {}).get("names", [])}
+    except Exception:
+        pass
+    names |= {"the", "a", "new", "watch", "first", "official", "superstar", "thalaivar"}
+    try:
+        known = {norm(f["film"]) for f in json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])}
+    except Exception:
+        known = set()
+    changed = True
+    while words and changed and norm(" ".join(words)) not in known:      # leading star names are not part of the title
+        changed = False
+        for k in (2, 1):
+            if len(words) > k - 1 and norm(" ".join(words[:k])) in names and len(words) > k:
+                words, changed = words[k:], True
+                break
+    return [" ".join(words)] if words else []
 
 
 if __name__ == "__main__":

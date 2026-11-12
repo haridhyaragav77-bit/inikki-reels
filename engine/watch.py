@@ -203,7 +203,8 @@ def run(drive=None, ctl=None, test=False):
     if drive:                 # a trailer, teaser or glimpse in the news: put the film on the trailer wanted list (AGENT.md 5.9)
         try:
             from . import trailers
-            films = [f for s in keep[:10] if trailers.kind_of(s["title"]) in ("trailer", "teaser", "glimpse") for f in trailers.titles_in(s["title"])]
+            films = [f + ("@" + "+".join(trailers.accounts_in(s["title"])) if trailers.accounts_in(s["title"]) else "")
+                     for s in keep[:10] if trailers.kind_of(s["title"]) in ("trailer", "teaser", "glimpse") for f in trailers.titles_in(s["title"])]
             if films:
                 trailers.want(drive, films)
         except Exception as e:

@@ -95,6 +95,33 @@ trailers:
   page_size: 50              # posts per call (Meta may ask for 25; the Engine then uses 25)
   deep_pages: 6              # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages, and only they
   # Wrong names found by the trailer job (12 Nov), to be corrected: rkfi_official, madrastalkies_, 7screenstudio; jiohotstar gave no posts.
+  # sivakarthikeyan is his real account, but Meta does not let the app read it (reported as an invalid user id).
+  max_stills: 30             # official stills kept per film for news updates
+  # Names in a news headline -> the official accounts to search first (the news watch uses these).
+  handles:
+    sun pictures: sunpictures
+    lyca: lycaproductions
+    red giant: redgiantmovies_
+    dream warrior: dreamwarriorpictures
+    2d entertainment: 2d_entertainment
+    zhagaram: zhagaramoffl
+    studio green: studiogreen_official
+    ags: agsentertainment
+    kvn: kvn.productions
+    vels: velsfilmintl
+    sony music: sonymusic_south
+    think music: thinkmusicofficial
+    saregama: saregamatamil
+    vijay sethupathi: actorvijaysethupathi
+    suriya: [actorsuriya, zhagaramoffl]
+    dhanush: dhanushkraja
+    karthi: actor_karthi
+    trisha: trishakrishnan
+    vijay: actorvijay
+    thalapathy: actorvijay
+    rajinikanth: sunpictures
+    anirudh: anirudhofficial
+    rahman: arrahman
   instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
                        dreamwarriorpictures, 2d_entertainment, shanthitalkies,
                        studiogreen_official, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
