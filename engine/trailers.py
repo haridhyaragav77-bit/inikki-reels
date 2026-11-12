@@ -646,6 +646,43 @@ def regrid(drive, films=None):
     return done
 
 
+def frames_check(drive, spec):
+    """'Leo=45.7,53.3' -> one picture: for each start second, the frames at +0, +1, +2 and +3 s, so a planned moment
+    is seen exactly as the reel will show it (before rendering)."""
+    from PIL import Image, ImageDraw, ImageFont
+    film, _, times = spec.partition("=")
+    t = have(film.strip(), index(drive))
+    if not t:
+        raise RuntimeError(f"{film} is not in the library")
+    fid = drive.folder("clip-library", create=False)
+    kids = drive.children(fid) if fid else []
+    for sub in [k for k in kids if k.get("mimeType") == "application/vnd.google-apps.folder" and k["name"] not in ("sheets", "stills")]:
+        kids += drive.children(sub["id"])
+    k = next((x for x in kids if x["name"] == t[0]["file"]), None)
+    local = str(WORK / t[0]["file"])
+    drive.download(k["id"], local)
+    starts = [float(x) for x in times.split(",") if x.strip()]
+    tw, th = 320, 180
+    sheet = Image.new("RGB", (4 * (tw + 6) + 6 + 90, len(starts) * (th + 6) + 6), (12, 12, 20))
+    fp = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+    font = ImageFont.truetype(fp, 20) if os.path.exists(fp) else ImageFont.load_default()
+    dr = ImageDraw.Draw(sheet)
+    for r, a in enumerate(starts):
+        dr.text((8, 6 + r * (th + 6) + th // 2 - 10), f"{a:.1f}", fill=(255, 214, 64), font=font)
+        for c in range(4):
+            f = WORK / "frames" / f"{r:02d}_{c}.jpg"
+            os.makedirs(f.parent, exist_ok=True)
+            subprocess.run([ffmpeg(), "-y", "-v", "error", "-ss", f"{a + c:.2f}", "-i", local, "-frames:v", "1", "-vf", f"scale={tw}:{th}", str(f)],
+                           capture_output=True, timeout=60)
+            if f.exists():
+                sheet.paste(Image.open(f).convert("RGB").resize((tw, th)), (90 + 6 + c * (tw + 6), 6 + r * (th + 6)))
+    out = OUT / "peek" / "trailers" / "frames" / f"{_safe(film.strip())}.jpg"
+    os.makedirs(out.parent, exist_ok=True)
+    sheet.save(out, quality=85)
+    os.remove(local)
+    return str(out)
+
+
 def films_we_cover(drive):
     bank = json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])
     return list(dict.fromkeys([f["film"] for f in bank] + [split_hint(f)[0] for f in wanted(drive)]))
@@ -822,6 +859,7 @@ def main():
     ap.add_argument("--stills", action="append", default=[], help="a film's official stills only ('Film@account')")
     ap.add_argument("--adopt-only", action="store_true", help="only give the trailers dropped into Drive their grids (no Instagram)")
     ap.add_argument("--regrid", nargs="*", help="make the grids again: every trailer, or only these films (no Instagram)")
+    ap.add_argument("--frames", action="append", default=[], help="'Film=t1,t2': frames at +0..+3 s of each start (no Instagram)")
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
@@ -833,7 +871,12 @@ def main():
         adopted = adopt(drive)          # Drive only: hand-added trailers get their grids even when Instagram says no
         if a.regrid is not None:
             adopted += regrid(drive, a.regrid)
-        if a.adopt_only or a.regrid is not None:
+        for spec in a.frames:
+            try:
+                adopted.append(f"frames: {frames_check(drive, spec)}")
+            except Exception as e:
+                adopted.append(f"frames {spec[:30]}: {str(e)[:120]}")
+        if a.adopt_only or a.regrid is not None or a.frames:
             want(drive, [])
             try:
                 asks = request_doc(drive)
