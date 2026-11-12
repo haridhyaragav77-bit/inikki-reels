@@ -73,6 +73,21 @@ class Instagram:
         return found
 
     calls = 0                 # calls made by this run, all instances (Instagram allows about 200 an hour for this app)
+    usage = 0                 # highest share of the app's hourly allowance in use, from Meta's own X-App-Usage header (0-100)
+
+    @staticmethod
+    def _note_usage(r):
+        for h in ("x-app-usage", "x-business-use-case-usage"):
+            v = r.headers.get(h)
+            if not v:
+                continue
+            try:
+                j = json.loads(v)
+                vals = [j] if "call_count" in j else [x for lst in j.values() for x in (lst if isinstance(lst, list) else [lst])]
+                for x in vals:
+                    Instagram.usage = max(Instagram.usage, *(int(x.get(k, 0) or 0) for k in ("call_count", "total_time", "total_cputime")))
+            except (ValueError, TypeError, AttributeError):
+                pass
 
     def get(self, path, **params):
         Instagram.calls += 1
@@ -80,6 +95,7 @@ class Instagram:
         last = None
         for v in self.versions:
             r = requests.get(f"{self.base}/{v}/{path.lstrip('/')}", params=params, timeout=60)
+            Instagram._note_usage(r)
             try:
                 j = r.json()
             except ValueError:

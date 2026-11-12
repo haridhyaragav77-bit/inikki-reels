@@ -114,7 +114,9 @@ def page(ig, acct, after=None):
     """One page (50 posts) of an official account. Stops the run before it nears Instagram's hourly limit."""
     if type(ig).calls >= budget():
         raise OutOfCalls(f"stopped at {type(ig).calls} Instagram calls (the per-run budget)")
-    media = "media.limit(50)" + (f".after({after})" if after else "")
+    if type(ig).usage >= int(settings().get("max_usage_percent", 50)):
+        raise OutOfCalls(f"stopped: Meta says {type(ig).usage}% of the hourly allowance is used; the rest is kept for posting")
+    media = "media.limit(25)" + (f".after({after})" if after else "")
     j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
     m = (j.get("business_discovery") or {}).get("media") or {}
     m["after"] = ((m.get("paging") or {}).get("cursors") or {}).get("after")
@@ -122,7 +124,7 @@ def page(ig, acct, after=None):
 
 
 def posts(ig, acct, pages=2):
-    """An account's recent posts (up to 100), read once per run and shared by every film."""
+    """An account's recent posts (up to 50), read once per run and shared by every film."""
     c = _cache().get(acct)
     if acct not in _POSTS and c and status.now().timestamp() - c.get("t", 0) < CACHE_HOURS * 3600:
         _POSTS[acct] = c["posts"]
