@@ -92,12 +92,16 @@ class Instagram:
             except (ValueError, TypeError, AttributeError):
                 pass
 
+    seconds = []              # how long each call took (Meta's meter counts processing time as well as calls)
+
     def get(self, path, **params):
         Instagram.calls += 1
         params["access_token"] = self.token
         last = None
         for v in self.versions:
+            t0 = time.time()
             r = requests.get(f"{self.base}/{v}/{path.lstrip('/')}", params=params, timeout=60)
+            Instagram.seconds.append(round(time.time() - t0, 2))
             Instagram._note_usage(r)
             try:
                 j = r.json()
