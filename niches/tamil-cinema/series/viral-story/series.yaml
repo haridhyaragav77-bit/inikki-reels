@@ -5,6 +5,7 @@ badge: { text: "UNTOLD", color: amber }
 per_week: 3             # shares the story slot with guess-the-movie
 slots: ["15:30"]
 template: cinematic
+image_quality: high      # build-up pictures at high quality; the reveal is a frame from the person's trailer
 visuals: ai_images
 voice: false
 length_s: [40, 45]

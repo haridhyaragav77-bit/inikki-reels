@@ -296,22 +296,40 @@ The hooks, transitions and camera moves are listed in `rules/motion.md`, with wh
 
 
 ### 5.9 Pictures: where they come from
-An AI image is the last step, not the first. The Engine looks for a picture in this order and stops at the first that fits.
+Pictures must show what the line says. Who uses what:
 
-| Step | Source | Cost | Good for |
-| --- | --- | --- | --- |
-| 1 | **Our image library** in Drive: every picture ever made or found, with tags | Free | Anything already there |
-| 2 | **A frame from an official trailer or promo** in the clip library. The Brain picks the moment from one contact sheet. | Free | Places, objects and moments from the film |
-| 3 | **Free photo libraries that need no credit line**: public-domain pictures, Pexels, Pixabay | Free | Everyday objects and places: a lorry at night, a plate of biryani, a police station |
-| 4 | **An AI image** | Paid, inside the monthly cap | Only when steps 1 to 3 find nothing, or the scene has to be invented |
+| Series | Pictures | Never |
+| --- | --- | --- |
+| Film breakdowns, movie updates | **Only that film's own trailer, teaser or glimpse clips**, the exact moment for each line (a meme may close the reel) | Stock photos, AI pictures |
+| Stories (the person is named only at the end) | AI pictures for the build-up (no real face, one consistent character); at the reveal, a frame from the person's own trailer | Photos of other people |
+| Guess the Movie | AI 3D scenes of objects and places from the film | Faces |
+
+A breakdown or update whose film has no trailer in the library is not made; the film goes on the trailer wanted list and a spare takes the slot.
+
+**Trailers, automatically (no one fetches them by hand):**
+1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's limit of about 200 calls an hour.
+2. Older films that are not on those accounts: the laptop helper (`tools/clip_helper.py`) when Harish wants one. The Engine never works around YouTube's block on cloud computers.
+3. When: the trailer job runs at 04:52 for the day's wanted list; the news watch asks for a trailer as soon as a drop is reported; Make asks for any film a plan needs.
+
+Every trailer gets a **shot grid**: one picture, each shot numbered with its start and end second (made by code, no AI). The planning run looks at the grid and picks the exact second for each line, the way the Kaithi reel was made.
+
+**AI pictures (stories and Guess the Movie only):** each prompt describes one exact film shot: who (never a name), action, place, era, time of day, light, lens and framing for a vertical reel with room for the text. A story repeats the same character description word for word in every picture. Stories use high quality (about ₹4 a picture), Guess the Movie medium; the ₹500 monthly cap still holds by code. A picture made once is reused from the library.
 
 Rules:
 - Only sources that allow reuse, or the film's own official material. Other people's artwork is never taken, whatever its style.
 - Every picture found is saved to the library with where it came from, its licence and its tags. The library grows, so each month needs fewer new pictures.
-- Found photos get the page's look by code (crop, contrast, colour), then the same depth and camera treatment as any other picture.
+- Trailer frames and pictures get the page's look by code (crop, contrast, colour), then the same depth and camera treatment.
 - Guess the Movie clues stay objects and places, never an actor's face, whichever step the picture comes from.
 - The dashboard shows how many pictures came from each step, and the image spend saved.
-- A picture that cannot be found from any allowed step borrows its neighbour (the picture before it stays on screen longer). A reel with no real picture at all is held and a spare takes its slot. Held reels are made again once trailers or keys arrive.
+- A picture that cannot be found from any allowed step borrows its neighbour (the picture before it stays on screen longer). A reel with no real picture at all is held and a spare takes its slot. Held reels are made again once their trailer arrives.
+
+### 5.10 The breakdown framework (the Kaithi model)
+The Kaithi reel is the model for every film breakdown (`plans/reference/kaithi-breakdown.json`).
+
+- **Length:** 45 seconds (40 to 50), 16 to 19 spoken screens.
+- **Order:** hook on a film moment (a question the viewer felt but never named) → "it's not just X" → the 3 named points → for each point: its name, then 2 or 3 beats of specific story facts (a character, an object, a place, a scene), each on the trailer moment that shows it → recap → the punchline → a send-off with a meme or a witty line.
+- **Topic test (all must be yes):** one craft question about a film people know; three points that are real scenes or facts of that film; something the viewer felt but did not notice; no plot retelling; no star-versus-star comparison.
+- **Checked by code:** a breakdown shorter than 40 seconds, with fewer than 15 screens, with any picture that is not a trailer clip, or with fewer than 3 different clip moments is refused before it is made.
 
 ---
 

@@ -6,7 +6,9 @@ per_day: 3
 slots: ["08:30", "18:00", "21:30"]
 hook: flare               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
-visuals: mixed          # official posters, stills, trailer clips
+visuals: clips           # only the film's own trailer, teaser or glimpse (AGENT.md 5.9)
+min_screens: 10
+strict_length: true
 voice: true
 length_s: [30, 40]
 image_cap_per_reel: 0

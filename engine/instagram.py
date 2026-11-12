@@ -59,8 +59,11 @@ class Instagram:
             if "error" not in r:
                 return route, host
             said[route] = r["error"].get("message", "")
-        if "api access blocked" in str(said.get("facebook_login", "")).lower():     # Meta refuses the app right now: say so, plainly
-            raise InstagramError(plain_error({"error": {"message": said["facebook_login"]}}))
+        fb = str(said.get("facebook_login", ""))
+        if "api access blocked" in fb.lower():     # Meta refuses the app right now: say so, plainly
+            raise InstagramError(plain_error({"error": {"message": fb}}))
+        if fb and "cannot parse" not in fb.lower():   # the Facebook door is the one this token uses: report its own answer
+            raise InstagramError(f"Instagram refused the call. Meta says: {fb[:200]}")
         return "instagram_login", ROUTES["instagram_login"]
 
     def resolve_user(self):
