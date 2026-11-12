@@ -210,7 +210,11 @@ def t_instagram():
         chk = diag.get("token_check")
         extra = ""
         if isinstance(chk, dict):
-            extra = f" Token check: valid={chk.get('valid')}, type={chk.get('type')}, expires {chk.get('expires')}, permissions {', '.join(chk.get('scopes') or []) or 'none listed'}."
+            extra = (f" Token check: valid={chk.get('valid')}, type={chk.get('type')}, expires {chk.get('expires')}, "
+                     f"permissions {', '.join(chk.get('scopes') or []) or 'none listed'}" + (f", Meta: {chk.get('error')}" if chk.get('error') else "") + ".")
+        elif chk:
+            extra = f" Token check: {chk}."
+        extra += f" Facebook door: {diag.get('facebook_login')}. Instagram door: {diag.get('instagram_login')}."
         result("Instagram numbers (read only)", False, f"{e}{extra}", diag.get("verdict", ""))
         return
     media = ig.media(8)

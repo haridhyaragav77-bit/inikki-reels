@@ -158,9 +158,13 @@ class Instagram:
                               "For stats it also needs the permission instagram_manage_insights; add it when you regenerate the token.")
         elif isinstance(out.get("token_check"), dict) and out["token_check"].get("valid") is False:
             out["verdict"] = "The token has expired or was revoked. Generate a new one and update the secret IG_ACCESS_TOKEN."
-        elif "Cannot parse" in str(out.get("instagram_login", "")) or "Invalid OAuth" in str(out.get("instagram_login", "")):
+        elif ("Cannot parse" in str(out.get("instagram_login", "")) or "Invalid OAuth" in str(out.get("instagram_login", ""))) and \
+                ("Cannot parse" in str(out.get("facebook_login", "")) or "Invalid OAuth" in str(out.get("facebook_login", ""))):
             out["verdict"] = ("Instagram cannot read this token at all. Most likely it was copied incompletely or it is not an Instagram token. "
                               "Generate a fresh token for @inikki_reels and paste the whole thing into the secret IG_ACCESS_TOKEN.")
+        elif "expired" in str(out.get("facebook_login", "")).lower() or "session" in str(out.get("facebook_login", "")).lower():
+            out["verdict"] = ("The token has expired (it was a short-lived token). Make a System User token that never expires: "
+                              "Meta Business Settings > System users > Generate new token, then update the secret IG_ACCESS_TOKEN.")
         else:
             out["verdict"] = "The token was refused. Generate a fresh one and update the secret IG_ACCESS_TOKEN."
         return out
