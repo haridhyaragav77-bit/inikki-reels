@@ -377,6 +377,19 @@ def wanted(drive):
         return []
 
 
+def want(drive, films):
+    """Put films on the trailer wanted list (fetched at the next trailer run; the planning run sees the list in the brief)."""
+    try:
+        cur = drive.read_json("status", "trailers_wanted.json") or {"films": []}
+    except Exception:
+        cur = {"films": []}
+    have_now = {norm(x["film"]) for x in index(drive)["trailers"]}
+    cur["films"] = [f for f in dict.fromkeys(cur.get("films", []) + list(films)) if norm(f) not in have_now]
+    cur["updated"] = status.stamp()
+    drive.write_json("status", "trailers_wanted.json", cur)
+    return cur["films"]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--film", action="append", default=[])
@@ -430,10 +443,20 @@ def main():
             failed[film] = str(ex)[:200]
     save_cache()
     filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
+    want(drive, [])          # drop the films that now have a trailer
     res = {"adopted": adopted, "fetched": done, "failed": failed, "history_search": f"{pages} pages read, filed: {filed}",
            "instagram_calls": type(ig).calls}
     status.write(drive, "trailers.json", res)
     print(json.dumps(res, indent=1, ensure_ascii=False))
+
+
+def titles_in(headline):
+    """Film titles in a news headline: words in quotes, else the capitalised words just before trailer/teaser/glimpse."""
+    q = re.findall(r"[‘'\"“]([^’'\"”]{2,40})[’'\"”]", headline)
+    if q:
+        return [x.strip() for x in q]
+    m = re.search(r"((?:[A-Z0-9][\w.]*\s){1,3})(?:official\s)?(?:trailer|teaser|glimpse)", headline, re.I)
+    return [re.sub(r"(?i)\s+official$", "", m.group(1).strip())] if m else []
 
 
 if __name__ == "__main__":

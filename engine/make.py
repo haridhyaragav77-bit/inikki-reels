@@ -14,7 +14,7 @@ import os
 import sys
 import traceback
 
-from .settings import ROOT
+from .settings import ROOT, niche_dir
 from . import status
 from .control import Control
 from .day import Bank, Day, slot_time, today
@@ -40,6 +40,51 @@ def held_reason(problems):
         why += (". No real pictures were found. Trailers in Drive clip-library, or the free photo keys PEXELS_API_KEY and"
                 " PIXABAY_API_KEY, fix this; the reel is then made again with --retry.")
     return why
+
+
+def clip_films(plan):
+    out = []
+    def walk(v):
+        if isinstance(v, dict):
+            if v.get("type") == "clip" and v.get("film") and not v.get("reference"):
+                out.append(v["film"])
+            for k in ("top", "bottom", "left", "right"):
+                walk(v.get(k))
+    for s in plan.get("screens", []):
+        walk(s.get("visual"))
+    for im in plan.get("images") or []:
+        if isinstance(im.get("trailer"), dict) and im["trailer"].get("film"):
+            out.append(im["trailer"]["film"])
+    return list(dict.fromkeys(out))
+
+
+def need_trailers(drive, plan):
+    """Films the plan cuts from that are not in the clip library yet: fetched now from the official accounts
+    (engine/trailers.py); any still missing go on the wanted list and are returned."""
+    from . import trailers
+    films = clip_films(plan)
+    if not films:
+        return []
+    idx = trailers.index(drive)
+    missing = [f for f in films if not trailers.have(f, idx)]
+    if not missing:
+        return []
+    try:
+        from .instagram import Instagram
+        ig = Instagram()
+        trailers.CACHE["drive"] = drive
+        for f in list(missing):
+            try:
+                trailers.fetch(drive, ig, f)
+                missing.remove(f)
+            except Exception as e:
+                print(f"trailer for {f}: {str(e)[:160]}", file=sys.stderr)
+        trailers.save_cache()
+    except Exception as e:
+        print("trailers could not be fetched now:", str(e)[:160], file=sys.stderr)
+    if missing:
+        trailers.want(drive, missing)
+    return missing
 
 
 def plan_hash(path):
@@ -118,6 +163,12 @@ def main():
             skipped.append(rid)
             continue
         errors, _ = plancheck.check(plan)
+        missing = [] if errors else need_trailers(drive, plan)
+        if missing and ctl.series(series, niche_dir()).get("visuals") == "clips":
+            ledger.upsert(rid, **base, state="held", reason=f"No trailer yet for {', '.join(missing)} (on the trailer wanted list; "
+                          "the reel is made again with --retry once it arrives).")
+            held.append(rid)
+            continue
         if errors:
             ledger.upsert(rid, **base, state="held", reason="Plan check: " + " ".join(errors[:2]))
             held.append(rid)

@@ -200,6 +200,14 @@ def run(drive=None, ctl=None, test=False):
             s["fired_at"], s["fire_result"] = now.isoformat(timespec="minutes"), fire_breaking(lead)
             fired_today.append(s)
             notes.append(f"{s['title'][:80]}: {s['fire_result']}")
+    if drive:                 # a trailer, teaser or glimpse in the news: put the film on the trailer wanted list (AGENT.md 5.9)
+        try:
+            from . import trailers
+            films = [f for s in keep[:10] if trailers.kind_of(s["title"]) in ("trailer", "teaser", "glimpse") for f in trailers.titles_in(s["title"])]
+            if films:
+                trailers.want(drive, films)
+        except Exception as e:
+            print("trailer wanted list not updated:", str(e)[:120])
     radar = {"updated": status.stamp(), "feeds": report, "stories": keep}
     if drive:
         drive.write_json("status", "radar.json", radar)
