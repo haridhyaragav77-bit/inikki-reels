@@ -2,9 +2,9 @@
 painterly_warm:      # Suriya, VJS Theatre Accountant, Bhaskar
   look: "warm painterly illustration, visible brush texture, golden-hour light, rich teal and amber palette, cinematic composition, 1990s Tamil Nadu details"
   people: "inspired-by likeness through hairstyle, costume and setting; illustrated, not photoreal"
-cinematic_real:      # VJS Second Tier, Petta
-  look: "cinematic film still, shallow depth of field, practical lights, festival or theatre atmosphere, film grain"
-  people: "inspired-by: back views, three-quarter views, period styling; never a photoreal copy of a real face"
+cinematic_real:      # stories: must read as a frame from a real Tamil film
+  look: "photoreal frame from a Tamil feature film, shot on a cinema camera with an anamorphic lens, natural skin and fabric texture, shallow depth of field, light from real sources in the scene (tube lights, stage lights, street lamps, sunlight through windows), rich film colour grade with deep shadows and warm highlights, subtle film grain, vertical frame"
+  people: "a fictional person who is not any real actor, shown in profile, three-quarter back view, silhouette or at a distance; never a recognisable real face"
 arcane_painterly:    # Vikram Sethu
   look: "painterly animated-film look, textured brushwork, moody teal shadows, warm highlights, rain-soaked old theatre"
   people: "stylised character inspired by era and look"

@@ -97,7 +97,8 @@ class Assets:
             self._placeholder(out, subject, style, n)
             return {"src": out, "source": "placeholder", "style": style}
         from . import images
-        r = images.generate(subject + ". " + self.compose if self.compose else subject, style, purpose=f"reel {self.reel_id}", reel_id=self.reel_id, out_path=out, budget=self.budget, drive=self.drive)
+        r = images.generate(subject + ". " + self.compose if self.compose else subject, style, quality=spec.get("quality") or self.series.get("image_quality"), model=self.series.get("image_model"),
+                            purpose=f"reel {self.reel_id}", reel_id=self.reel_id, out_path=out, budget=self.budget, drive=self.drive)
         if r.get("ok"):
             self.images_made += 1
             self._upscale(out)

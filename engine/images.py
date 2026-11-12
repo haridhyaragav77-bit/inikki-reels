@@ -49,7 +49,7 @@ def cost_from_usage(model, usage, quality):
     return round(usd, 5), usage
 
 
-def generate(subject, style_key=None, quality=None, purpose="reel", reel_id=None, out_path=None, budget=None, drive=None):
+def generate(subject, style_key=None, quality=None, purpose="reel", reel_id=None, out_path=None, budget=None, drive=None, model=None):
     """Make one image. Returns a dict with ok, path, model, cost. Raises nothing: failures come back as ok=False."""
     key = secret("OPENAI_API_KEY")
     if not key:
@@ -65,7 +65,7 @@ def generate(subject, style_key=None, quality=None, purpose="reel", reel_id=None
     out_path = out_path or str(OUT / "images" / f"{reel_id or 'image'}.png")
     client = OpenAI(api_key=key)
     errors = []
-    for model in cfg["image_models"]:
+    for model in ([model] if model else []) + [m for m in cfg["image_models"] if m != model]:
         try:
             budget.check(estimate_usd(model, quality))
         except BudgetStop as e:
