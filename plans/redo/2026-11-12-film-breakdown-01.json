@@ -5,8 +5,7 @@
  "header": "LEO / THE SCREENPLAY BREAKDOWN",
  "credit": "Leo · Seven Screen Studio · dir. Lokesh Kanagaraj",
  "trailer_from": [
-  "actorvijay",
-  "7screenstudio"
+  "actorvijay"
  ],
  "hook": "clap",
  "lead": {
@@ -38,7 +37,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 45.7,
+    "start": 46.5,
     "len": 2.6,
     "label": "LEO"
    },
@@ -94,7 +93,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 0.2,
+    "start": 0.9,
     "len": 2.6
    },
    "motion": {
@@ -115,7 +114,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 53.3,
+    "start": 55.2,
     "len": 2.6,
     "label": "CAFE"
    },
@@ -132,11 +131,11 @@
   },
   {
    "headline": "01 / Saadharana vaazhkai.",
-   "tamil": "ஊருக்குள் வந்த கழுதைப்புலியையும் அடக்குகிறார்.",
+   "tamil": "கழுதைப்புலியையும் அடக்குகிறார்.",
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 39.6,
+    "start": 127.9,
     "len": 2.6,
     "label": "HYENA"
    },
@@ -181,7 +180,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 62.4,
+    "start": 63.7,
     "len": 2.6
    },
    "motion": {
@@ -202,7 +201,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 100.4,
+    "start": 101.9,
     "len": 2.6,
     "label": "CAFE FIGHT"
    },
@@ -225,11 +224,32 @@
   },
   {
    "headline": "02 / Oru sambavam.",
-   "tamil": "அது செய்தியாகி தாஸ் கும்பல் வருகிறது.",
+   "tamil": "அது செய்தியாகிறது.",
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 71.8,
+    "start": 75.0,
+    "len": 2.6,
+    "label": "NEWS"
+   },
+   "motion": {
+    "type": "callout",
+    "at": [
+     0.5,
+     0.45
+    ],
+    "label": "News"
+   },
+   "caption": "Adhu news aagudhu.",
+   "voice_line": "அது நியூஸ் ஆகுது."
+  },
+  {
+   "headline": "02 / Oru sambavam.",
+   "tamil": "தாஸ் கும்பல் ஹிமாச்சலுக்கு வருகிறது.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 71.1,
     "len": 2.6,
     "label": "DAS"
    },
@@ -243,8 +263,8 @@
     "to": 1,
     "pending": "Leo?"
    },
-   "caption": "Adhu news aagudhu. Das gang Himachal-ku varudhu.",
-   "voice_line": "அது நியூஸ் ஆகுது. தாஸ் கும்பல் ஹிமாச்சலுக்கு வருது."
+   "caption": "Das gang Himachal-ku varudhu.",
+   "voice_line": "தாஸ் கும்பல் ஹிமாச்சலுக்கு வருது."
   },
   {
    "headline": "03 / Oru maruppu.",
@@ -273,7 +293,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 105.1,
+    "start": 105.8,
     "len": 2.6,
     "label": "PARTHI"
    },
@@ -301,7 +321,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 83.0,
+    "start": 45.7,
     "len": 2.6
    },
    "motion": {
