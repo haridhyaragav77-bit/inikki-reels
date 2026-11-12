@@ -33,25 +33,37 @@ def caption_of(plan):
     return (text + ("\n\n" + tags if tags else "")).strip(), (c.get("first_comment") or "").strip()
 
 
+def held_reason(problems):
+    """Why a made reel did not pass inspection, with what fixes it, in plain words."""
+    why = "Inspection: " + "; ".join(problems[:2])
+    if any("stand-in" in p for p in problems):
+        why += (". No real pictures were found. Trailers in Drive clip-library, or the free photo keys PEXELS_API_KEY and"
+                " PIXABAY_API_KEY, fix this; the reel is then made again with --retry.")
+    return why
+
+
 def plan_hash(path):
     return hashlib.md5(path.read_bytes()).hexdigest()[:12]
 
 
-def is_done(rec, h):
-    """Already made from this exact plan (or already posted): skip, so re-runs cost nothing."""
+def is_done(rec, h, retry=False):
+    """Already made from this exact plan (or already posted): skip, so re-runs cost nothing.
+    With retry, held and failed reels are made again (after trailers or picture keys were added)."""
     if not rec:
         return False
     if rec.get("state") in ("posted", "rehearsed", "used"):
         return True
+    if retry and rec.get("state") in ("held", "failed") and not str(rec.get("reason", "")).startswith("Plan check"):
+        return False
     return rec.get("hash") == h and rec.get("state") in ("ready", "held")
 
 
-def todo(day, bank, date, only=()):
+def todo(day, bank, date, only=(), retry=False):
     files, bank_files = plan_files(date)
     out = []
     for p, ledger, is_bank in [(f, day, False) for f in files] + [(f, bank, True) for f in bank_files]:
         rid = json.loads(p.read_text(encoding="utf-8")).get("reel_id") or p.stem
-        if (not only or rid in only) and not is_done(ledger.get(rid), plan_hash(p)):
+        if (not only or rid in only) and not is_done(ledger.get(rid), plan_hash(p), retry):
             out.append((p, is_bank))
     return out
 
@@ -61,6 +73,7 @@ def main():
     ap.add_argument("--date", default=None)
     ap.add_argument("--only", default="", help="comma-separated reel ids")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--retry", action="store_true", help="make held or failed reels again")
     a = ap.parse_args()
     from .drive import Drive
     drive = Drive()
@@ -68,7 +81,7 @@ def main():
     date = a.date or today()
     only = {x.strip() for x in a.only.split(",") if x.strip()}
     day, bank = Day(drive, date), Bank(drive)
-    jobs = todo(day, bank, date, only)
+    jobs = todo(day, bank, date, only, a.retry)
     if a.check:
         print(f"{len(jobs)} reel(s) to make")
         if os.environ.get("GITHUB_OUTPUT"):
@@ -122,7 +135,7 @@ def main():
         cap, comment = caption_of(plan)
         ok = r["ok"] and r["ids"].get("reel")
         ledger.upsert(rid, state="ready" if ok else "held",
-                      reason=None if ok else "Inspection: " + "; ".join((r["qc"].get("problems") or ["not uploaded"])[:2]),
+                      reason=None if ok else held_reason(r["qc"].get("problems") or ["not uploaded"]),
                       seconds=round(r["total_s"], 1), cover_t=r["cover_t"], music=r["music"], drive_reel=r["ids"].get("reel"),
                       drive_cover=r["ids"].get("cover"), link=r["link"], caption=cap, first_comment=comment,
                       images_made=r["images_made"], made_at=status.now().isoformat(timespec="seconds"))

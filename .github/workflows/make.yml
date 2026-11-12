@@ -10,6 +10,7 @@ on:
     inputs:
       date: { description: "Day to make (YYYY-MM-DD, IST). Empty = today", default: "" }
       only: { description: "Only these reel ids (comma-separated). Empty = all new ones", default: "" }
+      retry: { description: "Make held or failed reels again", type: boolean, default: false }
   schedule:
     - cron: "12 1 * * *"      # 06:42 IST, after the Plan run
     - cron: "52 11 * * *"     # 17:22 IST, after the Refresh run
@@ -27,6 +28,7 @@ env:
   GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
   DATE: ${{ inputs.date || '' }}
   ONLY: ${{ inputs.only || '' }}
+  RETRY: ${{ inputs.retry && '--retry' || '' }}
 
 jobs:
   check:
@@ -41,7 +43,7 @@ jobs:
         with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
       - run: pip install -q -r requirements-light.txt
       - id: c
-        run: python -m engine.make --check ${DATE:+--date $DATE} ${ONLY:+--only $ONLY}
+        run: python -m engine.make --check ${DATE:+--date $DATE} ${ONLY:+--only $ONLY} $RETRY
 
   make:
     name: Make the reels (nothing is posted here)
@@ -73,7 +75,7 @@ jobs:
           pip install -q -r requirements.txt
           python -m playwright install --with-deps chromium >/dev/null
       - name: Make
-        run: python -m engine.make ${DATE:+--date $DATE} ${ONLY:+--only $ONLY}
+        run: python -m engine.make ${DATE:+--date $DATE} ${ONLY:+--only $ONLY} $RETRY
       - name: Status (always, CLAUDE.md rule 6)
         if: always()
         run: python -m engine.status make "${{ job.status }}"
