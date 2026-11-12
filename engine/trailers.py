@@ -676,6 +676,7 @@ def main():
     ap.add_argument("--probe", nargs="*")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--crawl", action="store_true", help="also work back through the accounts' history (inside the call budget)")
+    ap.add_argument("--stills", action="append", default=[], help="a film's official stills only ('Film@account')")
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
@@ -716,6 +717,15 @@ def main():
         return
     films = a.film + (wanted(drive) if a.wanted else [])
     done, failed, notes = [], {}, {}
+    for film in dict.fromkeys(a.stills):
+        try:
+            st = stills(drive, ig, film, report=notes.setdefault(film, {}))
+            done.append(f"{st['film']}: {len(st['stills'])} official stills")
+        except OutOfCalls as ex:
+            failed[film] = str(ex)
+            break
+        except Exception as ex:
+            failed[film] = str(ex)[:200]
     for film in dict.fromkeys(films):
         try:
             e = fetch(drive, ig, film, force=a.force, report=notes.setdefault(film, {}))
