@@ -1,0 +1,249 @@
+{
+ "reel_id": "2026-11-12-movie-updates-03",
+ "series": "movie-updates",
+ "post_at": "2026-11-12T21:30:00+05:30",
+ "header": "SCENE / BOX OFFICE",
+ "credit": "NEWS · 12 Nov 2026 · figures: the makers (Zhagaram Studios) · pictures: Zhagaram Studios",
+ "trailer_from": [
+  "zhagaramoffl"
+ ],
+ "hook": "impact",
+ "lead": {
+  "topic": "Suriya's Scene: ₹205 crore+ worldwide gross in 5 days, say the makers (₹145 crore+ in 3 days)",
+  "score": 78,
+  "sources": [
+   "https://www.instagram.com/zhagaramoffl/ (makers' posts of 9, 10 and 11 Nov 2026)",
+   "https://www.outlookindia.com/art-entertainment/south-cinema/scene-box-office-collection-day-3-suriya-film-crosses-116-crore-worldwide-beats-vishwanath-and-sons",
+   "https://telanganatoday.com/suriyas-scene-trailer-showcases-action-comedy-and-nazriyas-character-maya"
+  ]
+ },
+ "music": {
+  "mood": "upbeat_percussive"
+ },
+ "caption": {
+  "text": "Scene box office sambavam!\nMakers sollradhu: 5 naal-la ₹205 Cr+ worldwide gross. 3 naal-la ₹145 Cr+.\nSuriya as DSP Inbaraj, Nazriya as Maya. Jithu Madhavan padam.\nNeenga paatheengala? Oru word review sollunga.",
+  "hashtags": [
+   "#Scene",
+   "#Suriya",
+   "#JithuMadhavan",
+   "#BoxOffice",
+   "#iNiKKiUpdates"
+  ],
+  "first_comment": "Scene-la unga favourite scene edhu? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ },
+ "screens": [
+  {
+   "headline": "Scene *box office* sambavam!",
+   "tamil": "சீன் பாக்ஸ் ஆபீஸ் சம்பவம்!",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 1
+    },
+    "ai": false,
+    "label": "SCENE"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "BOX OFFICE",
+    "color": "gold"
+   },
+   "caption": "Scene box office sambavam!",
+   "voice_line": "சீன் பாக்ஸ் ஆபீஸ் சம்பவம்!"
+  },
+  {
+   "headline": "5 naal: *₹205 Cr+*.",
+   "tamil": "ஐந்து நாளில் ₹205 கோடி+.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 2
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "count",
+    "to": 205,
+    "prefix": "₹",
+    "suffix": " Cr+",
+    "label": "Worldwide · 5 days · makers"
+   },
+   "caption": "Makers sollradhu: 5 naal-la 205 kodikku mela.",
+   "voice_line": "அஞ்சு நாள்ல இருநூத்தி அஞ்சு கோடிக்கு மேலன்னு தயாரிப்பாளர்கள் சொல்றாங்க."
+  },
+  {
+   "headline": "3 naal-laye *₹145 Cr+*.",
+   "tamil": "மூன்று நாளிலேயே ₹145 கோடி+.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 10
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "count",
+    "to": 145,
+    "prefix": "₹",
+    "suffix": " Cr+",
+    "label": "Worldwide · 3 days · makers"
+   },
+   "caption": "Moonu naal-laye 145 kodi.",
+   "voice_line": "மூணு நாள்லயே நூத்தி நாப்பத்தி அஞ்சு கோடி."
+  },
+  {
+   "headline": "*2.5M+* bookings.",
+   "tamil": "25 லட்சம்+ டிக்கெட்டுகள்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 6
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "count",
+    "to": 2.5,
+    "suffix": "M+",
+    "label": "BookMyShow bookings · makers"
+   },
+   "caption": "BookMyShow-la 25 latcham ticket-ku mela.",
+   "voice_line": "புக் மை ஷோல இருபத்தி அஞ்சு லட்சம் டிக்கெட்டுக்கு மேல."
+  },
+  {
+   "headline": "Suriya = *DSP Inbaraj*.",
+   "tamil": "சூர்யா டிஎஸ்பி இன்பராஜ்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 22
+    },
+    "ai": false,
+    "label": "INBARAJ"
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Suriya"
+    ],
+    "roles": [
+     "DSP Inbaraj"
+    ]
+   },
+   "caption": "Suriya idhula DSP Inbaraj. Thayangura oru police.",
+   "voice_line": "சூர்யா இதுல டிஎஸ்பி இன்பராஜ். தயங்குற ஒரு போலீஸ்."
+  },
+  {
+   "headline": "Nazriya = *Maya*.",
+   "tamil": "நஸ்ரியா மாயா.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 27
+    },
+    "ai": false,
+    "label": "MAYA"
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Nazriya"
+    ],
+    "roles": [
+     "Maya"
+    ]
+   },
+   "caption": "Nazriya Maya. Veettu velaikku varra ponnu.",
+   "voice_line": "நஸ்ரியா மாயா. வீட்டு வேலைக்கு வர்ற பொண்ணு."
+  },
+  {
+   "headline": "*Aavesham* director.",
+   "tamil": "ஆவேசம் இயக்குநர்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 18
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Jithu Madhavan",
+     "Sushin Shyam"
+    ],
+    "roles": [
+     "Direction",
+     "Music"
+    ]
+   },
+   "caption": "Aavesham director Jithu Madhavan padam.",
+   "voice_line": "ஆவேசம் இயக்குநர் ஜித்து மாதவன் படம்."
+  },
+  {
+   "headline": "*Atlee*-yum paaraattu.",
+   "tamil": "அட்லீயும் பாராட்டு.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 4
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "quote",
+    "text": "A complete paisa vasool entertainer",
+    "by": "Atlee"
+   },
+   "caption": "Director Atlee-yum paaraattiyirukkaaru.",
+   "voice_line": "இயக்குநர் அட்லீயும் பாராட்டியிருக்கார்."
+  },
+  {
+   "headline": "Neenga *paatheengala*?",
+   "tamil": "நீங்க பார்த்தீங்களா?",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 9
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "punch",
+    "text": "1 WORD?",
+    "color": "gold"
+   },
+   "caption": "Neenga paatheengala? Oru word review sollunga.",
+   "voice_line": "நீங்க பார்த்தீங்களா? ஒரு வார்த்தையில ரிவ்யூ சொல்லுங்க."
+  },
+  {
+   "headline": "Suriya fan-ku anuppunga.",
+   "tamil": "சூர்யா ரசிகருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "achievement"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Suriya fan friend-ku anuppunga.",
+   "voice_line": "சூர்யா ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ]
+}

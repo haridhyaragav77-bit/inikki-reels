@@ -1,0 +1,328 @@
+{
+ "reel_id": "2026-11-12-movie-recommendations-01",
+ "series": "movie-recommendations",
+ "post_at": "2026-11-12T15:30:00+05:30",
+ "header": "THEY RECOMMEND / SUPERSTAR'S PICKS",
+ "credit": "Rajinikanth's praise: The News Minute, Republic World, FilmiBeat, Deccan Chronicle",
+ "trailer_from": [],
+ "hook": "spotlight",
+ "lead": {
+  "topic": "4 films Rajinikanth praised: Vikram Vedha, Vikram, Viduthalai, Amaran",
+  "score": 79,
+  "sources": [
+   "https://www.thenewsminute.com/flix/rajini-impressed-vikram-vedha-special-screening-65915",
+   "https://www.republicworld.com/entertainment-news/regional-indian-cinema/rajinikanth-hails-kamal-haasan-and-vikram-team-after-watching-super-film-articleshow.html",
+   "https://www.filmibeat.com/tamil/news/2023/rajinikanth-appreciates-vetrimaaran-after-watching-viduthalai-says-tamil-film-industry-has-never-s-350391.html",
+   "https://deccanchronicle.com/southern-states/tamil-nadu/rajinikanth-meets-team-amaran-extends-best-wishes-1835071"
+  ]
+ },
+ "music": {
+  "mood": "confident_mid"
+ },
+ "caption": {
+  "text": "Superstar-e paaraattina 4 padam!\nVikram Vedha (special screening), Vikram (mottha team-ku phone), Viduthalai (X post), Amaran (team-a nerla sandhippu).\nUngalukku edhu pidikkum? Sources: The News Minute, Republic World, FilmiBeat, Deccan Chronicle.",
+  "hashtags": [
+   "#Rajinikanth",
+   "#VikramVedha",
+   "#Viduthalai",
+   "#Amaran",
+   "#iNiKKiPicks"
+  ],
+  "first_comment": "Neenga mudhalla edha paappeenga? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "screens": [
+  {
+   "headline": "Thalaivar-e *paaraattina* padangal!",
+   "tamil": "சூப்பர் ஸ்டார் பாராட்டிய படங்கள்!",
+   "visual": {
+    "type": "clip",
+    "film": "Jailer",
+    "start": 69.4,
+    "len": 2.6,
+    "label": "SUPERSTAR"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "4 PADAM",
+    "color": "gold"
+   },
+   "caption": "Superstar-e paaraattina 4 padam.",
+   "voice_line": "சூப்பர் ஸ்டாரே பாராட்டின நாலு படம்."
+  },
+  {
+   "headline": "Unga list-la *irukka*?",
+   "tamil": "உங்கள் பட்டியலில் இருக்கிறதா?",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ],
+    "build": true
+   },
+   "caption": "Unga watchlist-la ethana irukku?",
+   "voice_line": "உங்க வாட்ச்லிஸ்ட்ல எத்தனை இருக்கு?"
+  },
+  {
+   "headline": "01 / *Vikram Vedha*",
+   "tamil": "விக்ரம் வேதா (2017)",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 36.4,
+    "len": 2.6,
+    "label": "VIKRAM VEDHA"
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ],
+    "active": 0
+   },
+   "caption": "Onnu. Vikram Vedha.",
+   "voice_line": "ஒண்ணு. விக்ரம் வேதா."
+  },
+  {
+   "headline": "01 / Vikram Vedha",
+   "tamil": "சிறப்புக் காட்சியில் பார்த்து வியந்தார்.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 3.8,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Special screening",
+      "state": "yes",
+      "value": "2017"
+     }
+    ]
+   },
+   "caption": "Special screening-la paathu romba impress aanaaru.",
+   "voice_line": "ஸ்பெஷல் ஸ்கிரீனிங்ல பார்த்து ரொம்ப இம்ப்ரெஸ் ஆனார்."
+  },
+  {
+   "headline": "01 / Vikram Vedha",
+   "tamil": "ஒவ்வொரு கதையிலும் ஒரு கேள்வி.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 55.0,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "versus",
+    "left": "Police",
+    "right": "Gangster",
+    "tilt": 0
+   },
+   "caption": "Police, gangster. Ovvoru kadhaiyilum oru kelvi.",
+   "voice_line": "போலீஸ், கேங்ஸ்டர். ஒவ்வொரு கதையிலும் ஒரு கேள்வி."
+  },
+  {
+   "headline": "02 / *Vikram*",
+   "tamil": "விக்ரம் (2022)",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram",
+    "start": 66.2,
+    "len": 2.6,
+    "label": "VIKRAM"
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ],
+    "active": 1
+   },
+   "caption": "Rendu. Vikram.",
+   "voice_line": "ரெண்டு. விக்ரம்."
+  },
+  {
+   "headline": "02 / Vikram",
+   "tamil": "முழு டீமுக்கும் போன்.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram",
+    "start": 42.2,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Kamal Haasan",
+     "Lokesh",
+     "Anirudh"
+    ],
+    "roles": [
+     "called",
+     "called",
+     "called"
+    ]
+   },
+   "caption": "Paathuttu Kamal, Lokesh, Anirudh-nu mottha team-ku phone.",
+   "voice_line": "பார்த்துட்டு கமல், லோகேஷ், அனிருத்னு மொத்த டீமுக்கும் போன் பண்ணினார்."
+  },
+  {
+   "headline": "03 / *Viduthalai*",
+   "tamil": "விடுதலை (2023)",
+   "visual": {
+    "type": "clip",
+    "film": "Viduthalai Part 1",
+    "start": 54.0,
+    "len": 2.6,
+    "label": "VIDUTHALAI"
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ],
+    "active": 2
+   },
+   "caption": "Moonu. Viduthalai.",
+   "voice_line": "மூணு. விடுதலை."
+  },
+  {
+   "headline": "03 / Viduthalai",
+   "tamil": "இதுவரை பார்க்காத கதை.",
+   "visual": {
+    "type": "clip",
+    "film": "Viduthalai Part 1",
+    "start": 34.5,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "punch",
+    "text": "NEVER SEEN",
+    "color": "gold"
+   },
+   "caption": "Tamil cinema idhuvarai paakkaadha kadhai-nu sonnaaru.",
+   "voice_line": "தமிழ் சினிமா இதுவரை பார்க்காத கதைன்னு சொன்னார்."
+  },
+  {
+   "headline": "03 / Viduthalai",
+   "tamil": "சூரி, இளையராஜா, வெற்றிமாறன்.",
+   "visual": {
+    "type": "clip",
+    "film": "Viduthalai Part 1",
+    "start": 116.0,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Soori",
+     "Ilaiyaraaja",
+     "Vetrimaaran"
+    ],
+    "roles": [
+     "Acting",
+     "Music",
+     "Direction"
+    ]
+   },
+   "caption": "Soori nadippu, Ilaiyaraaja isai, Vetrimaaran.",
+   "voice_line": "சூரி நடிப்பு, இளையராஜா இசை, வெற்றிமாறன் இயக்கம்."
+  },
+  {
+   "headline": "04 / *Amaran*",
+   "tamil": "அமரன் (2024)",
+   "visual": {
+    "type": "clip",
+    "film": "Amaran",
+    "start": 116.3,
+    "len": 2.6,
+    "label": "AMARAN"
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ],
+    "active": 3
+   },
+   "caption": "Naalu. Amaran.",
+   "voice_line": "நாலு. அமரன்."
+  },
+  {
+   "headline": "04 / Amaran",
+   "tamil": "நேரில் சந்தித்துப் பாராட்டு.",
+   "visual": {
+    "type": "clip",
+    "film": "Amaran",
+    "start": 12.0,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Met the team",
+      "state": "yes",
+      "value": "Sivakarthikeyan"
+     }
+    ]
+   },
+   "caption": "Team-a nerla sandhichu, SK andha character-aave vaazhndhaar-nu paaraattu.",
+   "voice_line": "டீமை நேர்ல சந்திச்சு, சிவகார்த்திகேயன் அந்த கேரக்டராவே வாழ்ந்தார்னு பாராட்டினார்."
+  },
+  {
+   "headline": "Edhula *start* pannuveenga?",
+   "tamil": "முதலில் எதைப் பார்ப்பீர்கள்?",
+   "visual": {
+    "type": "clip",
+    "film": "Jailer",
+    "start": 97.3,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "list",
+    "items": [
+     "Vikram Vedha",
+     "Vikram",
+     "Viduthalai",
+     "Amaran"
+    ]
+   },
+   "caption": "Mudhalla edha paappeenga? Comment pannunga.",
+   "voice_line": "முதல்ல எதைப் பார்ப்பீங்க? கமெண்ட் பண்ணுங்க."
+  },
+  {
+   "headline": "Thalaivar fan-ku *anuppunga*.",
+   "tamil": "தலைவர் ரசிகருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "hype"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Thalaivar fan friend-ku anuppunga.",
+   "voice_line": "தலைவர் ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ]
+}
