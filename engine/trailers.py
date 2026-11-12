@@ -575,17 +575,22 @@ def adopt(drive):
     for sub in [k for k in kids if k.get("mimeType") == "application/vnd.google-apps.folder" and k["name"] not in ("sheets", "stills")]:
         kids += drive.children(sub["id"])          # a folder dragged in whole (for example trailers_for_drive) counts too
     vids = [k for k in kids if k.get("mimeType", "").startswith("video/") and k["name"] not in known]
-    done = []
+    done, cover = [], films_we_cover(drive) if vids else []
     for k in vids:
         local = str(WORK / k["name"])
         try:
             drive.download(k["id"], local)
             meta = grid(local, str(WORK / "sheets" / (k["name"][:-4] + ".jpg")))
-            file_entry(drive, film_from_name(k["name"], films_we_cover(drive)), kind_of(k["name"]) or "trailer", local, meta, "clip-library", "added by hand",
-                       upload_video=False)
-            done.append(k["name"])
+            film = film_from_name(k["name"], cover)
+            file_entry(drive, film, kind_of(k["name"]) or "trailer", local, meta, "clip-library", "added by hand", upload_video=False)
+            done.append(f"{film}: {len(meta)} shots")
         except Exception as e:
             print("could not file", k["name"], str(e)[:120])
+        finally:
+            try:
+                os.remove(local)            # keep the runner's disk small; the video stays in Drive
+            except OSError:
+                pass
     return done
 
 
@@ -680,6 +685,7 @@ def main():
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--crawl", action="store_true", help="also work back through the accounts' history (inside the call budget)")
     ap.add_argument("--stills", action="append", default=[], help="a film's official stills only ('Film@account')")
+    ap.add_argument("--adopt-only", action="store_true", help="only give the trailers dropped into Drive their grids (no Instagram)")
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
@@ -689,6 +695,14 @@ def main():
         drive = Drive()
         CACHE["drive"] = drive
         adopted = adopt(drive)          # Drive only: hand-added trailers get their grids even when Instagram says no
+        if a.adopt_only:
+            res = {"adopted": adopted, "at": status.stamp()}
+            status.write(drive, "trailers.json", res)
+            (OUT / "peek" / "trailers" / "result.json").write_text(json.dumps(res, indent=1, ensure_ascii=False))
+            if (WORK / "sheets").exists():
+                shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
+            print(json.dumps(res, indent=1, ensure_ascii=False))
+            return
     try:
         ig = Instagram()
         me = ig.me()
