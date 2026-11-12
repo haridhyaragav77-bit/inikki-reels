@@ -30,10 +30,6 @@ def lookup(query_or_url, timeout=90):
     if _supports("--js-runtimes"):
         cmd[1:1] = ["--js-runtimes", "node"]
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-    if r.returncode != 0 and "not a bot" in (r.stderr or ""):
-        # second try with another player client, which sometimes passes on cloud computers
-        r = subprocess.run(cmd[:1] + ["--extractor-args", "youtube:player_client=tv,android_vr"] + cmd[1:],
-                           capture_output=True, text=True, timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError((r.stderr or r.stdout).strip().splitlines()[-1][:300] if (r.stderr or r.stdout).strip() else "yt-dlp failed")
     j = json.loads(r.stdout)
@@ -56,9 +52,6 @@ def fetch(query_or_url, start_s, length_s, out_path, timeout=300):
     if _supports("--js-runtimes"):
         cmd[1:1] = ["--js-runtimes", "node"]
     r = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
-    if (r.returncode != 0 or not os.path.exists(out_path)) and "not a bot" in (r.stderr or ""):
-        r = subprocess.run(cmd[:1] + ["--extractor-args", "youtube:player_client=tv,android_vr"] + cmd[1:],
-                           capture_output=True, text=True, timeout=timeout)
     if r.returncode != 0 or not os.path.exists(out_path):
         msg = (r.stderr or r.stdout).strip().splitlines()
         raise RuntimeError(msg[-1][:300] if msg else "download failed")
