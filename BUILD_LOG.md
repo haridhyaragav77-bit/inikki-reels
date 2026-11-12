@@ -24,6 +24,15 @@ Sample reels (Drive `rehearsal/samples-2026-11-12/`): Leo and Vikram Vedha break
 official stills (Scene with the makers' own figures), the first recommendation reel (4 films Rajinikanth praised,
 each sourced). First render reviewed frame by frame; Leo had moments landing on title cards, fixed from the finer grid.
 
+Lessons from four review rounds (all built into the Engine, so planning runs get them for free):
+- Trailers dissolve between shots and carry star and director credits, so one frame per shot misleads. New: a
+  **timeline sheet** per trailer (a frame every 1.5 s) for planning, and a **frames check** in the trailer job
+  (frames at +0..+3 s of each planned start) for reviews.
+- A line often lasts longer than its moment. New: `max_len` on a clip: the moment plays in gentle slow motion (at most
+  1.6x) and holds its last frame, never running into the next shot or a credit card.
+- The voice service failed once (edge-tts "No audio was received"); the reel came out silent as designed (fail soft)
+  and was simply made again.
+
 ## 12 Nov 2026 (afternoon): Harish's review of rehearsal day 1, and the fixes
 Harish: only the Kaithi reel was up to standard. Breakdowns were 27 s with vague topics, pictures did not match the words,
 story pictures were weak, trailers must come automatically. Fixes (AGENT.md 5.9 and 5.10 first):
