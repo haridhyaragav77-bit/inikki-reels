@@ -515,6 +515,37 @@ def have_stills(film, idx):
     return [x for x in idx.get("stills", []) if norm(x["film"]) == norm(split_hint(film)[0])]
 
 
+def timeline(video, out_jpg, step=1.5, cols=8):
+    """One picture with a frame every `step` seconds, each labelled with its second. Trailers often dissolve between
+    shots, so a shot grid alone can mislead; here the planning run checks that the tiles from its start second onward
+    all show what the line says (a line lasts 2-4 seconds)."""
+    from PIL import Image, ImageDraw, ImageFont
+    d = duration(video) or 0
+    times = [round(i * step, 1) for i in range(int(d // step) + 1)]
+    tw, th = 240, 135
+    rows = (len(times) + cols - 1) // cols
+    sheet = Image.new("RGB", (cols * (tw + 4) + 4, rows * (th + 4) + 4), (12, 12, 20))
+    fp = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+    font = ImageFont.truetype(fp, 18) if os.path.exists(fp) else ImageFont.load_default()
+    dr = ImageDraw.Draw(sheet)
+    tmp = WORK / "timeline"
+    shutil.rmtree(tmp, ignore_errors=True)
+    tmp.mkdir(parents=True)
+    for k, t in enumerate(times):
+        f = tmp / f"{k:03d}.jpg"
+        subprocess.run([ffmpeg(), "-y", "-v", "error", "-ss", f"{t:.2f}", "-i", video, "-frames:v", "1", "-vf", f"scale={tw}:{th}", str(f)],
+                       capture_output=True, timeout=60)
+        x, y = 4 + (k % cols) * (tw + 4), 4 + (k // cols) * (th + 4)
+        if f.exists():
+            sheet.paste(Image.open(f).convert("RGB").resize((tw, th)), (x, y))
+        label = f"{t:.1f}"
+        dr.rectangle([x, y, x + 11 * len(label) + 8, y + 22], fill=(0, 0, 0))
+        dr.text((x + 4, y + 2), label, fill=(255, 214, 64), font=font)
+    os.makedirs(os.path.dirname(out_jpg), exist_ok=True)
+    sheet.save(out_jpg, quality=82)
+    return out_jpg
+
+
 # ---------------------------------------------------------------- the library
 def index(drive):
     try:
@@ -562,6 +593,13 @@ def file_entry(drive, film, kind, local, meta, source, account, link=None, title
     if upload_video:
         drive.upload(local, "clip-library", name=entry["file"])
     drive.upload(str(WORK / "sheets" / entry["sheet"]), "clip-library/sheets", name=entry["sheet"])
+    try:                                  # the second-by-second check sheet (see timeline())
+        entry["timeline"] = entry["sheet"][:-4] + " - timeline.jpg"
+        timeline(local, str(WORK / "sheets" / entry["timeline"]))
+        drive.upload(str(WORK / "sheets" / entry["timeline"]), "clip-library/sheets", name=entry["timeline"])
+    except Exception as e:
+        entry.pop("timeline", None)
+        print("timeline sheet not made:", str(e)[:120])
     idx = index(drive)
     idx["trailers"] = [x for x in idx["trailers"] if x["file"] != entry["file"]] + [entry]
     drive.write_json("clip-library", "index.json", idx)
