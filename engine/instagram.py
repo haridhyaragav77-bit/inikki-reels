@@ -120,6 +120,13 @@ class Instagram:
                     if keep and keep != wanted:
                         wanted = keep
                         continue
+                m = re.search(r"does not support the ([\w, ]+?) metric", msg)
+                if m:
+                    bad = {x.strip() for x in m.group(1).split(",")}
+                    keep = [w for w in wanted if w not in bad]
+                    if keep and keep != wanted:
+                        wanted = keep
+                        continue
                 m = re.search(r"metric\[(\d+)\]", msg)
                 if m and int(m.group(1)) < len(wanted):
                     wanted.pop(int(m.group(1)))
