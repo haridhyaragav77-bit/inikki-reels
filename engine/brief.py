@@ -73,12 +73,15 @@ def lineup_today(ctl, date):
 
 
 def trailers(drive):
-    """Film names of the trailers in Drive clip-library (what the Brain can cut moments from)."""
+    """The trailers in the clip library, each with its shot grid, copied as text to data/trailers.json (shot times),
+    so the planning run picks exact moments. Returns one short line per trailer for the brief."""
     try:
-        fid = drive.folder("clip-library", create=False)
-        return sorted(re.sub(r"\.\w+$", "", k["name"]) for k in (drive.children(fid) if fid else []) if k.get("mimeType", "").startswith("video/"))
+        idx = drive.read_json("clip-library", "index.json") or {"trailers": []}
     except Exception:
-        return []
+        idx = {"trailers": []}
+    keep = [{k: t.get(k) for k in ("film", "kind", "file", "sheet", "duration", "shots")} for t in idx.get("trailers", [])]
+    (OUT / "trailers.json").write_text(json.dumps({"trailers": keep}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return [f"{t['film']} ({t['kind']}, {len(t.get('shots') or [])} shots, grid: clip-library/sheets/{t['sheet']})" for t in keep]
 
 
 def table(rows, head):
@@ -214,9 +217,16 @@ def build(drive, run, date):
     if run in ("plan", "refresh"):
         L += ["", f"## Today's slots ({date})"] + table(slots, ["time", "series", "template", "notes"])
         vids = trailers(drive)
-        L += ["", "## Trailers in the clip library",
-              (", ".join(vids[:40]) if vids else "None yet: breakdowns and updates use free photos until trailers are added.")
-              + " For a film moment use visual {type: clip, film: <name above>, query: <what moment>}; leave start empty and the Engine picks one."]
+        try:
+            want = (drive.read_json("status", "trailers_wanted.json") or {}).get("films", [])
+        except Exception:
+            want = []
+        L += ["", "## Trailers in the clip library (breakdowns and updates may only use these films)"]
+        L += [f"- {v}" for v in vids[:40]] or ["- None yet."]
+        L += ["Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. "
+              "Visual: {type: clip, film: <film>, start: <shot start + 0.2>, len: 2.5, label: <2-word tag>}."]
+        if want:
+            L += [f"Trailers being fetched: {', '.join(want[:10])} (do not plan these until they appear above)."]
         L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: movie-review on release days, artwork-quote after a dull stretch."]
     if day.reels():
         L += ["", "## Today's reels"] + table([(r.get("slot") or "-", r["reel_id"], r.get("series", ""), r.get("state", ""), (r.get("reason") or "")[:60])
