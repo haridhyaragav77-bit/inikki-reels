@@ -2,6 +2,28 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 12 Nov 2026 (afternoon): Harish's review of rehearsal day 1, and the fixes
+Harish: only the Kaithi reel was up to standard. Breakdowns were 27 s with vague topics, pictures did not match the words,
+story pictures were weak, trailers must come automatically. Fixes (AGENT.md 5.9 and 5.10 first):
+
+| Fix | Where |
+| --- | --- |
+| Breakdowns follow the Kaithi model: 45 s, 16-19 screens, 3 named points proven by real scenes; the plan check refuses anything else | AGENT.md 5.10, `engine/plancheck.py`, series cards |
+| Breakdowns and updates use only the film's own trailer clips (no stock photos, no AI); no trailer, no reel | AGENT.md 5.9, plan check, `engine/make.py` |
+| Trailers by code from the official studio, label, star and streaming accounts on Instagram (official API), each with a numbered shot grid; planning runs pick the exact second per line | `engine/trailers.py`, `.github/workflows/trailers.yml` (04:52, 12:52, 20:52 IST) |
+| News drops go on a wanted list; Make fetches a plan's missing trailer first; trailers dropped into clip-library by hand get grids automatically | `engine/watch.py`, `engine/make.py`, `trailers.adopt` |
+| Story pictures: full image model, real-film look, exact-shot prompts with one character description | `brands/inikki-reels/image_styles.yaml` (cinematic_real), viral-story card |
+| No YouTube workarounds from the cloud; older films come from the laptop helper (`--film-bank`, one command) | `engine/clips.py`, `tools/clip_helper.py` |
+
+Lesson: Instagram allows this app about 200 calls an hour. The first trailer test read 30 accounts x 8 films and hit
+"(#4) Application request limit reached" (it also blocks posting while it lasts). Now: at most 40 calls a run, 2 pages
+of 25 posts per account, a 6-hour shared copy, and the search stops when Meta's own usage header says 50%.
+The earlier "API access blocked" (morning) cleared by itself: Meta's side.
+
+Redone so far: the story (Sivakarthikeyan) in Drive `rehearsal/redo-2026-11-12/`, inspection passed, pictures checked by eye.
+Waiting: Meta's limit to recover (resume at 17:10 IST), then the 3 updates from fetched trailers; the breakdowns need
+their films' trailers (history search over a few days, or the laptop helper once).
+
 ## 12 Nov 2026 — Phase 3: the daily jobs (rehearsal) and Phase 4 hand-over
 Harish approved the reels and the sound. Design first: AGENT.md **4.3** (Sync job), **4.5** (rehearsal, then live), **10.2** (respect mode), **12.1** (hold), Block D (how thinking runs hand over their work), Block E (`phase`, `respect`).
 
