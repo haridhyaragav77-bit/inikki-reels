@@ -91,7 +91,8 @@ watch:
 trailers:
   max_calls_per_run: 40      # Instagram allows this app about 200 calls an hour; posting and stats need the rest
   max_usage_percent: 50
-  deep_pages: 8            # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages of 25      # stop when Meta reports half the hourly allowance used (its X-App-Usage header)
+  page_size: 50            # posts per call (Meta may ask for 25; the Engine then uses 25)
+  deep_pages: 6            # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages      # stop when Meta reports half the hourly allowance used (its X-App-Usage header)
   instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
                        dreamwarriorpictures, rkfi_official, 2dentertainmentofficial, shanthitalkies, madrastalkies_,
                        studiogreen_official, 7screenstudio, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,

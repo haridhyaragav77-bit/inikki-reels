@@ -35,13 +35,20 @@ SUFFIXES = ("", "movie", "film", "trailer", "teaser", "glimpse", "official", "th
 
 
 def mentions(film, text):
-    """The film's name as words, or as one hashtag like #Jailer2 or #96Movie (never inside another word, like 1996)."""
-    f, t = norm(film), norm(text)
+    """The film's name as words, or as one hashtag like #Jailer2 or #96Movie (never inside another word, like 1996).
+    A one-word title that is also an everyday word (Scene, Leo) counts only as a hashtag, in capitals, or right before
+    trailer/teaser/glimpse, so 'behind the scene' is never taken for the film."""
+    f, t, raw = norm(film), norm(text), str(text or "")
     if not f:
         return False
+    fs = f.replace(" ", "")
+    if any(tag.lower().startswith(fs) and tag.lower()[len(fs):] in SUFFIXES for tag in re.findall(r"#(\w+)", raw)):
+        return True
+    if " " not in f and not any(ch.isdigit() for ch in f):
+        return bool(re.search(rf"(?<![A-Za-z]){re.escape(f.upper())}(?![A-Za-z])", raw)) or \
+            bool(re.search(rf"(^| ){re.escape(f)} (official )?(trailer|teaser|glimpse|promo)", t))
     if f" {f} " in f" {t} ":
         return True
-    fs = f.replace(" ", "")
     return any(tok.startswith(fs) and tok[len(fs):] in SUFFIXES for tok in t.split())
 
 
@@ -59,9 +66,14 @@ def kind_of(text):
     return None
 
 
+settings_cache = {}
+
+
 def settings():
-    s = yaml.safe_load((niche_dir() / "knowledge" / "sources.yaml").read_text(encoding="utf-8")) or {}
-    return s.get("trailers") or {}
+    if not settings_cache:
+        s = yaml.safe_load((niche_dir() / "knowledge" / "sources.yaml").read_text(encoding="utf-8")) or {}
+        settings_cache.update(s.get("trailers") or {})
+    return settings_cache
 
 
 def ffmpeg():
@@ -111,7 +123,7 @@ STOPPED = {}
 
 def limited(e):
     """Meta is refusing for now (hourly limit or a block): the whole run stops at once, it never tries the next account."""
-    if any(w in str(e).lower() for w in ("api access blocked", "request limit", "too many calls", "(#4)", "(#17)", "(#32)", "(#613)")):
+    if any(w in str(e).lower() for w in ("api access blocked", "blocked this app", "request limit", "too many calls", "(#4)", "(#17)", "(#32)", "(#613)")):
         STOPPED.setdefault("why", f"Instagram stopped the search: {str(e)[:160]}")
         return True
     return False
@@ -122,15 +134,22 @@ def budget():
 
 
 def page(ig, acct, after=None):
-    """One page (50 posts) of an official account. Stops the run before it nears Instagram's hourly limit."""
+    """One page (page_size posts, 50) of an official account. Stops the run before it nears Instagram's hourly limit."""
     if STOPPED:
         raise OutOfCalls(STOPPED["why"])
     if type(ig).calls >= budget():
         raise OutOfCalls(f"stopped at {type(ig).calls} Instagram calls (the per-run budget)")
     if type(ig).usage >= int(settings().get("max_usage_percent", 50)):
         raise OutOfCalls(f"stopped: Meta says {type(ig).usage}% of the hourly allowance is used; the rest is kept for posting")
-    media = "media.limit(25)" + (f".after({after})" if after else "")
-    j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
+    size = int(settings().get("page_size", 25))
+    media = f"media.limit({size})" + (f".after({after})" if after else "")
+    try:
+        j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
+    except Exception as e:
+        if "reduce the amount of data" not in str(e).lower() or size <= 25:
+            raise
+        settings_cache["page_size"] = 25        # Meta wants smaller pages: use 25 for the rest of the run
+        return page(ig, acct, after)
     m = (j.get("business_discovery") or {}).get("media") or {}
     m["after"] = ((m.get("paging") or {}).get("cursors") or {}).get("after")
     return m
