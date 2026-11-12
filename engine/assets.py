@@ -70,7 +70,7 @@ class Assets:
                 return {"src": real, "source": "placeholder", "style": style}
             self._placeholder(out, subject, style, n)
             return {"src": out, "source": "placeholder", "style": style}
-        saved = None if spec.get("fresh") else self._made_before(n, out)
+        saved = None if spec.get("fresh") else self._made_before(n, out, spec)
         if saved:                      # same plan, same reel: the picture made for this reel is used again, at no cost
             return {"src": saved, "source": "library", "style": style, "reused": True}
         if spec.get("find") or spec.get("trailer") or spec.get("still"):      # the free steps first (AGENT.md 5.9); an AI image only if they find nothing
@@ -81,7 +81,7 @@ class Assets:
                 self.notes.append(f"Picture {n}: found without AI ({got['source']}).")
                 if self.drive:
                     try:
-                        self.drive.upload(got["src"], "image-library", name=f"{self.reel_id}_{n:02d}.png")     # so a re-render uses the same picture
+                        self.drive.upload(got["src"], "image-library", name=self._saved_name(n, spec))     # so a re-render uses the same picture
                     except Exception:
                         pass
                 return {"src": got["src"], "source": got["source"], "style": style, "credit": got.get("credit")}
@@ -105,12 +105,12 @@ class Assets:
             try:                       # remember it in the library index, so a later reel can reuse it instead of paying again
                 from . import sources
                 self.library = getattr(self, "library", None) or sources.Library(self.drive)
-                self.library.items = [i for i in self.library.items if i.get("file") != f"{self.reel_id}_{n:02d}.png"] + [{"file": f"{self.reel_id}_{n:02d}.png", "source": "ai", "tags": sorted(sources.words(spec.get("find") or subject)), "film": spec.get("film"), "query": subject[:200], "style": style}]
+                self.library.items = [i for i in self.library.items if i.get("file") != self._saved_name(n, spec)] + [{"file": self._saved_name(n, spec), "source": "ai", "tags": sorted(sources.words(spec.get("find") or subject)), "film": spec.get("film"), "query": subject[:200], "style": style}]
             except Exception:
                 pass
             if self.drive:
                 try:
-                    self.drive.upload(out, "image-library", name=f"{self.reel_id}_{n:02d}.png")
+                    self.drive.upload(out, "image-library", name=self._saved_name(n, spec))
                     self.drive.write_json("image-library", "index.json", {"images": self.library.items})
                 except Exception as e:
                     self.notes.append(f"Image {n} could not be saved to the image library: {e}")
@@ -122,12 +122,26 @@ class Assets:
         self._placeholder(out, subject, style, n)
         return {"src": out, "source": "placeholder", "style": style}
 
-    def _made_before(self, n, out):
+    def _saved_name(self, n, spec):
+        """The library name of picture n of this reel, with a fingerprint of what was asked for: the same plan gets the
+        same picture again at no cost, a changed picture spec never gets an old picture."""
+        key = json.dumps({k: spec.get(k) for k in ("prompt", "subject", "find", "still", "trailer", "style")}, sort_keys=True, ensure_ascii=False)
+        return f"{self.reel_id}_{n:02d}_{hashlib.md5(key.encode()).hexdigest()[:6]}.png"
+
+    def _made_before(self, n, out, spec=None):
         if not self.drive:
             return None
         try:
             fid = self.drive.folder("image-library", create=False)
-            f = self.drive.find_child(fid, f"{self.reel_id}_{n:02d}.png") if fid else None
+            f = self.drive.find_child(fid, self._saved_name(n, spec or {})) if fid else None
+            if f:
+                return self.drive.download(f["id"], out)
+            old = f"{self.reel_id}_{n:02d}.png"           # saved before fingerprints: only when made for the same words
+            subject = ((spec or {}).get("prompt") or (spec or {}).get("subject") or "")[:200]
+            from . import sources
+            self.library = getattr(self, "library", None) or sources.Library(self.drive)
+            it = next((i for i in self.library.items if i.get("file") == old), None)
+            f = self.drive.find_child(fid, old) if (fid and it and subject and it.get("query") == subject) else None
             return self.drive.download(f["id"], out) if f else None
         except Exception:
             return None

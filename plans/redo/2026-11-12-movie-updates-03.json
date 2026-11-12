@@ -114,12 +114,40 @@
    },
    "motion": {
     "type": "count",
-    "to": 2.5,
-    "suffix": "M+",
+    "to": 25,
+    "suffix": " lakh+",
     "label": "BookMyShow bookings · makers"
    },
    "caption": "BookMyShow-la 25 latcham ticket-ku mela.",
    "voice_line": "புக் மை ஷோல இருபத்தி அஞ்சு லட்சம் டிக்கெட்டுக்கு மேல."
+  },
+  {
+   "headline": "Diwali, *Nov 6* release.",
+   "tamil": "தீபாவளிக்கு நவம்பர் 6 வெளியீடு.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Scene",
+     "n": 12
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     {
+      "label": "6 Nov",
+      "sub": "Release"
+     },
+     {
+      "label": "11 Nov",
+      "sub": "₹205 Cr+"
+     }
+    ],
+    "at": 1
+   },
+   "caption": "Diwali-ku November 6 release.",
+   "voice_line": "தீபாவளிக்கு நவம்பர் ஆறு ரிலீஸ் ஆச்சு."
   },
   {
    "headline": "Suriya = *DSP Inbaraj*.",
