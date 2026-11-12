@@ -24,3 +24,4 @@ rules:
   - "Unconfirmed = say 'reportedly' or skip."
   - "Show dates and names as chips."
   - "End with a light, no-fan-war question."
+expires_h: 24           # news older than this is not posted (AGENT.md 12.1)

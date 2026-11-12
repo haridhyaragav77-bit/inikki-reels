@@ -335,15 +335,18 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
     with open(outdir / "notes.md", "w", encoding="utf-8") as f:
         f.write("\n".join(notes) + "\n")
     print("\n".join(notes))
-    link = None
+    link, ids = None, {}
     if to_drive and drive:
         folder = to_drive.rstrip("/") + "/" + reel_id
-        for name, as_name in [("reel.mp4", reel_id + ".mp4"), ("cover.jpg", "cover.jpg"), ("notes.md", "notes.txt")]:
-            drive.upload(str(outdir / name), folder, name=as_name)
-        link = drive.folder_link(drive.folder(folder))
+        for name, as_name, key in [("reel.mp4", reel_id + ".mp4", "reel"), ("cover.jpg", "cover.jpg", "cover"), ("notes.md", "notes.txt", "notes"), ("sheet.jpg", "screens.jpg", "sheet")]:
+            if os.path.exists(outdir / name):
+                ids[key] = drive.upload(str(outdir / name), folder, name=as_name)["id"]
+        ids["folder"] = drive.folder(folder)
+        link = drive.folder_link(ids["folder"])
         print("uploaded to Drive", folder, "→", link)
     shutil.rmtree(work, ignore_errors=True)
-    return {"ok": report["pass"], "reel": final, "qc": report, "total_s": total, "reel_id": reel_id, "link": link, "notes": res.get("notes", [])}
+    return {"ok": report["pass"], "reel": final, "qc": report, "total_s": total, "reel_id": reel_id, "link": link, "ids": ids, "cover_t": round(ct, 2),
+            "music": res["music_resolved"]["name"], "images_made": res.get("images_made", 0), "notes": res.get("notes", []), "hook": res.get("hook")}
 
 
 def main():

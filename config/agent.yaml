@@ -1,4 +1,5 @@
 switch: run                 # run | hold_posts | sleep   (live value is in Drive control/)
+phase: rehearsal            # rehearsal | live   (live only after Harish says "go live")
 approval: autopilot         # autopilot | check_in | hands_on
 always_ask: [brand, niche, safety, budget]
 active: { brand: inikki-reels, niche: tamil-cinema, lineup: cinema-core }
@@ -13,3 +14,4 @@ metric_priority: [skip_rate, watch_through, share_rate, follow_rate, like_rate, 
 learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series_week: 3, auto_revert_drop: 0.20 }
 gates: { lead_min: 60, virality_min: 65 }
 away_mode: false
+respect: { allow_series: [breaking-news, artwork-quote, film-breakdown] }   # what may post on a respect day
