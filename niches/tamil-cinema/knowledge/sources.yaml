@@ -82,5 +82,6 @@ watch:
           Santhosh Narayanan, G.V. Prakash, Harris Jayaraj, Lyca, Sun Pictures, Red Giant]
   name_bonus: 2
   fire_score: 8          # a story at or above this, confirmed by 2 trusted publishers, wakes the Breaking run
-  fresh_hours: 6         # only stories first seen in the last 6 hours can wake it
+  fresh_hours: 6         # only stories first published in the last 6 hours can wake it
+  breaking_min_keyword: 3   # and only with a breaking word (trailer, release date, passes away ...), not just "box office"
   hours: [8, 22]         # the watcher wakes the Breaking run only between these hours (IST)

@@ -113,7 +113,8 @@ def check(plan):
             W.append("The last screen has no send prompt (motion 'cta').")
         if voiced and screens and _words(screens[0].get("voice_line")) > 5:
             W.append("Screen 1: the first spoken line is long. The hook should land in about 1.5 seconds.")
-        n_img = sum(1 for s in screens if isinstance(s.get("visual"), dict) and s["visual"].get("type") == "image")
+        # only pictures that may be made by AI count against the cap; free-only pictures ("ai": false) do not (AGENT.md 5.9)
+        n_img = sum(1 for s in screens if isinstance(s.get("visual"), dict) and s["visual"].get("type") == "image" and s["visual"].get("ai") is not False)
 
     elif template == "cinematic":
         names = set(F["motions"])
