@@ -73,7 +73,7 @@ class Assets:
         saved = None if spec.get("fresh") else self._made_before(n, out)
         if saved:                      # same plan, same reel: the picture made for this reel is used again, at no cost
             return {"src": saved, "source": "library", "style": style, "reused": True}
-        if spec.get("find") or spec.get("trailer"):      # the free steps first (AGENT.md 5.9); an AI image only if they find nothing
+        if spec.get("find") or spec.get("trailer") or spec.get("still"):      # the free steps first (AGENT.md 5.9); an AI image only if they find nothing
             from . import sources
             self.library = getattr(self, "library", None) or sources.Library(self.drive)
             got = sources.find(spec, n, self.reel_id, self.work, drive=self.drive, library=self.library, film=spec.get("film"))

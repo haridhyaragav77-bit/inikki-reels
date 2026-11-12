@@ -80,7 +80,9 @@ def trailers(drive):
     except Exception:
         idx = {"trailers": []}
     keep = [{k: t.get(k) for k in ("film", "kind", "file", "sheet", "duration", "shots")} for t in idx.get("trailers", [])]
-    (OUT / "trailers.json").write_text(json.dumps({"trailers": keep}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    stills = [{"film": x["film"], "sheet": x["sheet"], "stills": [{k: it.get(k) for k in ("n", "kind", "date", "caption")} for it in x.get("stills", [])]}
+              for x in idx.get("stills", [])]
+    (OUT / "trailers.json").write_text(json.dumps({"trailers": keep, "stills": stills}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     return [f"{t['film']} ({t['kind']}, {len(t.get('shots') or [])} shots, grid: clip-library/sheets/{t['sheet']})" for t in keep]
 
 
@@ -225,6 +227,16 @@ def build(drive, run, date):
         L += [f"- {v}" for v in vids[:40]] or ["- None yet."]
         L += ["Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. "
               "Visual: {type: clip, film: <film>, start: <shot start + 0.2>, len: 2.5, label: <2-word tag>}."]
+        try:
+            from .trailers import index as clip_index
+            sts = clip_index(drive).get("stills", [])
+        except Exception:
+            sts = []
+        if sts:
+            L += ["", "## Official stills (movie updates may use these when the film has no clips)"]
+            L += [f"- {x['film']}: {len(x['stills'])} stills, grid: clip-library/sheets/{x['sheet']}" for x in sts[-20:]]
+            L += ["Visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. "
+                  "Pick the still that shows what the line says; skip stills that are mostly text."]
         if want:
             L += [f"Trailers being fetched: {', '.join(want[:10])} (plans for these wait; see below when they arrive)."]
         try:

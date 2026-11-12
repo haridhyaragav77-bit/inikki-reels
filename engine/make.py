@@ -48,6 +48,8 @@ def clip_films(plan):
         if isinstance(v, dict):
             if v.get("type") == "clip" and v.get("film") and not v.get("reference"):
                 out.append(v["film"])
+            if v.get("type") == "image" and isinstance(v.get("still"), dict) and v["still"].get("film"):
+                out.append(v["still"]["film"])
             for k in ("top", "bottom", "left", "right"):
                 walk(v.get(k))
     for s in plan.get("screens", []):
@@ -58,15 +60,17 @@ def clip_films(plan):
     return list(dict.fromkeys(out))
 
 
-def need_trailers(drive, plan):
+def need_trailers(drive, plan, visuals=None):
     """Films the plan cuts from that are not in the clip library yet: fetched now from the official accounts
-    (engine/trailers.py); any still missing go on the wanted list and are returned."""
+    (engine/trailers.py); for updates (visuals: official) the film's official stills are enough. Any still missing go on
+    the wanted list and are returned."""
     from . import trailers
     films = clip_films(plan)
     if not films:
         return []
     idx = trailers.index(drive)
-    missing = [f for f in films if not trailers.have(f, idx)]
+    official = visuals == "official"
+    missing = [f for f in films if not trailers.have(f, idx) and not (official and trailers.have_stills(f, idx))]
     if not missing:
         return []
     hint = "+".join(plan.get("trailer_from") or [])       # the film's own accounts, named in the plan: searched first
@@ -81,6 +85,12 @@ def need_trailers(drive, plan):
                 missing.remove(f)
             except Exception as e:
                 print(f"trailer for {f}: {str(e)[:160]}", file=sys.stderr)
+                if official and not isinstance(e, trailers.OutOfCalls):
+                    try:
+                        trailers.stills(drive, ig, f)
+                        missing.remove(f)
+                    except Exception as e2:
+                        print(f"official stills for {f}: {str(e2)[:160]}", file=sys.stderr)
         trailers.save_cache()
     except Exception as e:
         print("trailers could not be fetched now:", str(e)[:160], file=sys.stderr)
@@ -165,8 +175,9 @@ def main():
             skipped.append(rid)
             continue
         errors, _ = plancheck.check(plan)
-        missing = need_trailers(drive, plan)       # asked for even when the plan still needs its moments picked
-        if missing and ctl.series(series, niche_dir()).get("visuals") == "clips":
+        visuals = ctl.series(series, niche_dir()).get("visuals")
+        missing = need_trailers(drive, plan, visuals)       # asked for even when the plan still needs its moments picked
+        if missing and visuals in ("clips", "official"):
             films = [m.split("@")[0] for m in missing]
             ledger.upsert(rid, **base, state="held", waiting_for=films, reason=f"No trailer yet for {', '.join(films)} (on the trailer wanted list; "
                           "once it arrives the planning run picks the moments from its grid and the reel is made).")
