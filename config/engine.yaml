@@ -42,7 +42,7 @@ openai:
 instagram:
   base: "https://graph.instagram.com"
   api_versions: ["v23.0", "v22.0", "v21.0"]        # first that works is used
-  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, follows, profile_visits, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
+  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
 
 voice:
   tool: tools/voice_tool.py
