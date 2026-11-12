@@ -81,11 +81,19 @@ def main():
         return
     from . import render, plancheck
     out_root = "finished" if ctl.phase == "live" else "rehearsal"
+    try:
+        tight = bool((drive.read_json("status", "minutes.json") or {}).get("tight"))
+    except Exception:
+        tight = False
     made, held, skipped = [], [], []
     for path, is_bank in jobs:
         plan = json.loads(path.read_text(encoding="utf-8"))
         rid, series = plan.get("reel_id") or path.stem, plan.get("series", "")
         ledger = bank if is_bank else day
+        if tight and (is_bank or plan.get("reserve")):      # cost guard (CLAUDE.md rule 5): main reels first
+            ledger.upsert(rid, series=series, state="skipped", reason="Runner minutes are nearly used up this month: reserves and bank reels wait.")
+            skipped.append(rid)
+            continue
         when = slot_time(plan, date)
         first = (plan.get("screens") or [{}])[0]
         base = dict(series=series, post_at=when.isoformat() if when and not is_bank else None,

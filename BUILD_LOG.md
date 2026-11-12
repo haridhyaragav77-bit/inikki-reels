@@ -2,6 +2,30 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 12 Nov 2026 — Phase 3: the daily jobs (rehearsal) and Phase 4 hand-over
+Harish approved the reels and the sound. Design first: AGENT.md **4.3** (Sync job), **4.5** (rehearsal, then live), **10.2** (respect mode), **12.1** (hold), Block D (how thinking runs hand over their work), Block E (`phase`, `respect`).
+
+| Job | Code | Workflow | When (IST) |
+| --- | --- | --- | --- |
+| Make | `engine/make.py` | `make.yml` | when plans arrive (Sync starts it), plus 06:42 and 17:22 as a safety net; a 1-minute check first |
+| Post | `engine/post.py` | `post.yml` | 8 runs, about 12 minutes before each slot; waits for the slot; also runs the news watch and 2-hour stats |
+| News watch | `engine/watch.py` | inside Post | no AI; trusted feeds in `niches/tamil-cinema/knowledge/sources.yaml` (proposed, Harish to confirm) |
+| Stats | `engine/measure.py` | `daily.yml` 23:40 | rates per reach, health colours against the series median, `data/metrics/` |
+| Brief | `engine/brief.py` | `daily.yml` 05:12, 16:12, Sun 22:12, 1st 22:42 | `data/brief.md`, Control Room copy in `data/control/`, `data/week_table.md` |
+| Clean-up | `engine/clean.py` | `daily.yml` 23:40 | retention rules from `config/engine.yaml`; to Drive's bin; old plans packed into `plans/archive/` |
+| Health | `engine/health.py` | `daily.yml` 04:01 | keys, posting permission, image budget, runner minutes (counted from GitHub), storage, voice |
+| Dashboard | `engine/dashboard.py` | `daily.yml` 23:40 | rewrites the 7 tabs of the sheet |
+| Sync | `engine/sync.py` | `brain-sync.yml` | when a thinking run pushes a `claude/brain-*` branch: only allowed text files reach main, the rest is refused and reported |
+
+How a day runs: Brief (05:12) → Plan run (05:37) pushes plans → Sync → Make → Post at each slot (rehearsal: marks "rehearsed") → Refresh (16:37) → nightly stats, dashboard, clean-up.
+Day status in Drive `status/days/<date>.json` and `status/today.json`; jobs save only the reels they touched, so Make and Post can run at once.
+Every workflow ends with `python -m engine.status <job> <result>` (CLAUDE.md rule 6). Cost guards: runner minutes counted daily; above 85% reserves and bank reels wait.
+
+Tested: offline (fake Drive) for slot choice, reserves, bank, respect mode, 24-hour news expiry, two-job saving; the Sync guard in a throwaway repository (took a plan and a note, refused a code change and a volume change); on GitHub: Post, Make check, Brief and the news watch (4 of 5 feeds answer).
+Scheduled tasks made from a build session get no repository (tested twice), so the 5 thinking runs are created by Harish on the Routines page (Block D).
+
+Waiting on Harish: merge to main (schedules only run there), the 5 routines, optional keys `PEXELS_API_KEY` and `PIXABAY_API_KEY`, `BRAIN_FIRE_URL` and `BRAIN_FIRE_TOKEN` from the Breaking routine, trailers in `clip-library/`, confirm the trusted news list, then "go live" after the rehearsal days.
+
 ## 11 Nov 2026 (later) — Phase 2, round two: Harish's feedback on the golden reels
 Harish watched the first three. Voice and music: fine. Asked for: Guess the Movie in real 3D, the story to name the person at the end,
 a premium and brighter look with a visual hook and transitions, and pictures from existing sources before AI.

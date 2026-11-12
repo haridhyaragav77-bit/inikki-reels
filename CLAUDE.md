@@ -3,7 +3,8 @@ The design is AGENT.md. Read it before any change. If anything disagrees with it
 To change the design, change AGENT.md first, then the build.
 
 Roles: the Brain (scheduled Claude runs) writes only small text files: plans/, rules/, lab/,
-niches/, data/brief notes. It never calls OpenAI or Instagram and holds no keys.
+niches/, data/brief notes. It never calls OpenAI or Instagram and holds no keys. It pushes its work to a
+claude/brain-* branch; the Engine's Sync job copies only those allowed files into main.
 The Engine (GitHub Actions + engine/) does everything mechanical with keys from GitHub Secrets.
 
 Rules:
