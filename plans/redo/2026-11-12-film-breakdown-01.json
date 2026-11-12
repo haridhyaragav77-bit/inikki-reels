@@ -155,8 +155,8 @@
      }
     ]
    },
-   "caption": "Ooruku vandha hyena-vaiyum adakkuraaru.",
-   "voice_line": "ஊருக்குள்ள வந்த கழுதைப்புலியைக் கூட அடக்குறார்."
+   "caption": "Hyena-vaiyum adakkuraaru.",
+   "voice_line": "கழுதைப்புலியையும் அடக்குறார்."
   },
   {
    "headline": "01 / Saadharana vaazhkai.",
@@ -164,7 +164,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 84.6,
+    "start": 87.0,
     "len": 2.6
    },
    "motion": {
@@ -229,7 +229,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 70.3,
+    "start": 71.8,
     "len": 2.6,
     "label": "DAS"
    },
@@ -252,7 +252,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 149.3,
+    "start": 156.9,
     "len": 2.6
    },
    "motion": {
@@ -301,7 +301,7 @@
    "visual": {
     "type": "clip",
     "film": "Leo",
-    "start": 36.4,
+    "start": 83.0,
     "len": 2.6
    },
    "motion": {
