@@ -134,9 +134,18 @@ def from_trailer(spec, drive, out, work):
     if not drive or not spec:
         return None
     fid = drive.folder("clip-library", create=False)
-    vids = [k for k in (drive.children(fid) if fid else []) if k.get("mimeType", "").startswith("video/")]
+    kids = drive.children(fid) if fid else []
+    for sub in [k for k in kids if k.get("mimeType") == "application/vnd.google-apps.folder" and k["name"] not in ("sheets", "stills")]:
+        kids += drive.children(sub["id"])
+    vids = [k for k in kids if k.get("mimeType", "").startswith("video/")]
     film = re.sub(r"[^a-z0-9]+", " ", str(spec.get("film", "")).lower()).strip()
-    hit = next((k for k in vids if film and film in re.sub(r"[^a-z0-9]+", " ", k["name"].lower())), None)
+    try:                                   # the library index names the exact file (Vikram, not Vikram Vedha)
+        from .trailers import index, have
+        exact = {t["file"] for t in have(spec.get("film", ""), index(drive))}
+    except Exception:
+        exact = set()
+    hit = next((k for k in vids if k["name"] in exact), None) or \
+        next((k for k in vids if film and film in re.sub(r"[^a-z0-9]+", " ", k["name"].lower())), None)
     if not hit:
         return None
     src = drive.download(hit["id"], os.path.join(work, "trailer_" + re.sub(r"[^\w.]+", "_", hit["name"])))

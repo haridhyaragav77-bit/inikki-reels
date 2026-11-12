@@ -571,7 +571,10 @@ def adopt(drive):
     idx = index(drive)
     known = {x["file"] for x in idx["trailers"]}
     fid = drive.folder("clip-library", create=False)
-    vids = [k for k in (drive.children(fid) if fid else []) if k.get("mimeType", "").startswith("video/") and k["name"] not in known]
+    kids = drive.children(fid) if fid else []
+    for sub in [k for k in kids if k.get("mimeType") == "application/vnd.google-apps.folder" and k["name"] not in ("sheets", "stills")]:
+        kids += drive.children(sub["id"])          # a folder dragged in whole (for example trailers_for_drive) counts too
+    vids = [k for k in kids if k.get("mimeType", "").startswith("video/") and k["name"] not in known]
     done = []
     for k in vids:
         local = str(WORK / k["name"])
