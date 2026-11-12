@@ -10,7 +10,9 @@ on:
       films: { description: "Films, separated by commas (empty = the wanted list)", default: "" }
       probe: { description: "Test only: nothing saved to Drive, grids to the 'peek' branch", type: boolean, default: false }
   schedule:
-    - cron: "22 23 * * *"     # 04:52 IST, before the brief, for the day's wanted list
+    - cron: "22 23 * * *"     # 04:52 IST, before the brief: the day's wanted list, then the history search
+    - cron: "22 7 * * *"      # 12:52 IST
+    - cron: "22 15 * * *"     # 20:52 IST
 
 permissions:
   contents: write
@@ -43,9 +45,9 @@ jobs:
           if [ -n "$PROBE" ]; then
             IFS=',' read -ra F <<< "$FILMS"; python -m engine.trailers --probe "${F[@]}"
           elif [ "${{ github.event_name }}" = "schedule" ] || [ -z "${{ inputs.films }}" ]; then
-            python -m engine.trailers --wanted
+            python -m engine.trailers --wanted --crawl
           else
-            IFS=',' read -ra F <<< "$FILMS"; args=(); for f in "${F[@]}"; do args+=(--film "$f"); done; python -m engine.trailers "${args[@]}"
+            IFS=',' read -ra F <<< "$FILMS"; args=(); for f in "${F[@]}"; do args+=(--film "$f"); done; python -m engine.trailers "${args[@]}" --crawl
           fi
       - name: Test results to the 'peek' branch (probe only)
         if: always() && env.PROBE != ''
