@@ -12,7 +12,9 @@ Breakdowns: copy the structure of plans/reference/kaithi-breakdown.json (AGENT.m
 3 named points, each proven by specific scenes of the film. Breakdowns and updates use only trailer clips of a film
 listed in the brief: open its shot grid (Google Drive, clip-library/sheets/), pick the shot that shows what each line
 says, and write {type: clip, film, start: shot start + 0.2, len: 2.5, label}. Times are in data/trailers.json.
-A news film with no trailer in the library yet: write the plan without start seconds and add
+Movie updates may use the film's official stills instead (listed in the brief, grid in clip-library/sheets/):
+{type: image, still: {film, n: number on the grid}, ai: false, label}; pick stills that show what the line says, not text cards.
+A news film with no trailer or stills in the library yet: write the plan without start seconds and add
 "trailer_from": [its studio, label or star Instagram accounts] so the Engine searches those first. The reel waits;
 when the trailer arrives the brief lists it under "Re-pick moments" and you fill the seconds from its grid.
 Stories: AI pictures for the build-up, written as exact film shots with one character description repeated word for

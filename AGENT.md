@@ -300,18 +300,20 @@ Pictures must show what the line says. Who uses what:
 
 | Series | Pictures | Never |
 | --- | --- | --- |
-| Film breakdowns, movie updates | **Only that film's own trailer, teaser or glimpse clips**, the exact moment for each line (a meme may close the reel) | Stock photos, AI pictures |
+| Film breakdowns | **Only that film's own trailer, teaser or glimpse clips**, the exact moment for each line (a meme may close the reel) | Stock photos, AI pictures |
+| Movie updates | **The film's own official material** from its studio, label and star accounts: trailer clips when Meta gives the video, otherwise the official stills and video covers they posted, each picked from a numbered grid for the line it shows (a meme may close the reel) | Stock photos, AI pictures, fan edits |
 | Stories (the person is named only at the end) | AI pictures for the build-up (no real face, one consistent character); at the reveal, a frame from the person's own trailer | Photos of other people |
 | Guess the Movie | AI 3D scenes of objects and places from the film | Faces |
 
-A breakdown or update whose film has no trailer in the library is not made; the film goes on the trailer wanted list and a spare takes the slot.
+A breakdown whose film has no trailer in the library is not made, nor an update with neither clips nor official stills; the film goes on the trailer wanted list and a spare takes the slot.
 
-**Trailers, automatically (no one fetches them by hand):**
+**Trailers and stills, automatically (Harish decided on 12 Nov: stills for news, clips for breakdowns):**
 1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's hourly limit (the run stops at half of Meta's meter, so posting always has room). A plan names its film's own accounts (`trailer_from`); then only those are searched, further back (up to 6 pages), so an older trailer is found in a few calls. Without names, each listed account gives its newest page (a new drop). Meta's meter counts processing time, so pages are read as captions only and the video link is asked for the one matching post.
-2. Older films that are not on those accounts: the laptop helper (`tools/clip_helper.py`) when Harish wants one. The Engine never works around YouTube's block on cloud computers.
+   Meta withholds the video of posts with licensed film music or with downloads turned off (checked on 12 Nov: Sun Pictures' Jailer 2 trailer posts), but it still gives each post's cover picture and the picture posts. So for news the Engine saves the film's **official stills** (up to 30, with a numbered grid) to `clip-library/stills/<film>/` within minutes, and uses real clips whenever Meta gives the video.
+2. Breakdowns need real clips. Harish fills the trailer library once from his laptop (`tools/clip_helper.py --film-bank`: one command, the film bank's official trailers, then one folder dragged into Drive `clip-library/`); grids are made by code. After that the library grows by itself (history search, videos Meta gives) and Harish adds a film only when he wants one. The Engine never works around YouTube's block on cloud computers.
 3. When: the trailer job runs at 04:52 for the day's wanted list; the news watch asks for a trailer as soon as a drop is reported; Make asks for any film a plan needs.
 
-Every trailer gets a **shot grid**: one picture, each shot numbered with its start and end second (made by code, no AI). The planning run looks at the grid and picks the exact second for each line, the way the Kaithi reel was made.
+Every trailer gets a **shot grid**: one picture, each shot numbered with its start and end second (made by code, no AI); every stills set gets a numbered grid the same way. The planning run looks at the grid and picks the exact second for each line, the way the Kaithi reel was made.
 
 **AI pictures (stories and Guess the Movie only):** each prompt describes one exact film shot: who (never a name), action, place, era, time of day, light, lens and framing for a vertical reel with room for the text. A story repeats the same character description word for word in every picture. Stories use the full picture model at medium quality (about ₹5 a picture), Guess the Movie the smaller model (about ₹1); the ₹500 monthly cap still holds by code. A picture made once is reused from the library.
 

@@ -373,6 +373,129 @@ def grid(video, out_jpg, max_tiles=40):
     return [{k: s[k] for k in ("n", "start", "end")} for s in keep]
 
 
+# ---------------------------------------------------------------- official stills (news updates, AGENT.md 5.9)
+def _safe(name):
+    return re.sub(r'[\\/:*?"<>|]+', " ", str(name)).strip()
+
+
+def download_image(url, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    r = requests.get(url, timeout=60)
+    r.raise_for_status()
+    if len(r.content) < 8000:
+        raise RuntimeError("the picture came back empty")
+    with open(path, "wb") as f:
+        f.write(r.content)
+    return path
+
+
+def stills_grid(items, folder, out_jpg):
+    """One picture with every still numbered, so the planning run picks the still that shows each line."""
+    from PIL import Image, ImageDraw, ImageFont, ImageOps
+    cols, tw, th = 5, 240, 300
+    rows = (len(items) + cols - 1) // cols
+    sheet = Image.new("RGB", (cols * (tw + 6) + 6, rows * (th + 6) + 6), (12, 12, 20))
+    fp = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+    font = ImageFont.truetype(fp, 20) if os.path.exists(fp) else ImageFont.load_default()
+    dr = ImageDraw.Draw(sheet)
+    for k, it in enumerate(items):
+        x, y = 6 + (k % cols) * (tw + 6), 6 + (k // cols) * (th + 6)
+        im = ImageOps.fit(Image.open(os.path.join(folder, it["file"])).convert("RGB"), (tw, th))
+        sheet.paste(im, (x, y))
+        label = f"#{it['n']} {it['date'][5:]}"
+        dr.rectangle([x, y, x + 11 * len(label) + 8, y + 26], fill=(0, 0, 0))
+        dr.text((x + 5, y + 3), label, fill=(255, 214, 64), font=font)
+    os.makedirs(os.path.dirname(out_jpg), exist_ok=True)
+    sheet.save(out_jpg, quality=86)
+    return out_jpg
+
+
+def stills(drive, ig, film, report=None):
+    """The film's official stills: the cover of each video post and each picture post on its own accounts that names it
+    (Meta gives these even when it withholds the video). Saved to clip-library/stills/<film>/ with a numbered grid;
+    returns the library entry. `film` may carry its accounts ('Jailer 2@sunpictures')."""
+    film, hint = split_hint(film)
+    accounts, deep = hint or settings().get("instagram_accounts", []), set(hint)     # named accounts are read further back
+    found, report = [], report if report is not None else {}
+    for acct in accounts:
+        try:
+            ps = posts(ig, acct, pages=int(settings().get("deep_pages", 6)) if acct in deep else 1, deep=acct in deep)
+        except OutOfCalls as e:
+            report["stopped"] = str(e)
+            break
+        except Exception as e:
+            if limited(e):
+                report["stopped"] = STOPPED["why"]
+                break
+            report[acct] = f"not readable: {str(e)[:90]}"
+            continue
+        mine = [p for p in ps if p.get("media_type") in ("VIDEO", "IMAGE") and mentions(film, p.get("caption") or "")
+                and norm(best_film(p.get("caption") or "", OTHERS + [film])) == norm(film)]
+        found += [(acct, p) for p in mine]
+        report[acct] = f"{len(mine)} posts of {film} in {len(ps)}"
+    found = found[:int(settings().get("max_stills", 30))]
+    pages_needed = {}
+    for acct, p in found:
+        if not (p.get("thumbnail_url") or (p.get("media_type") == "IMAGE" and p.get("media_url"))):
+            pages_needed.setdefault((acct, p.get("_cur")), []).append(p)
+    for (acct, cur), ps in pages_needed.items():       # one call per page that holds the film's posts
+        try:
+            m = page(ig, acct, cur, links=True, limit=max(int(x.get("_i", 0)) for x in ps) + 3)
+        except OutOfCalls as e:
+            report["stopped"] = str(e)
+            break
+        except Exception as e:
+            if limited(e):
+                report["stopped"] = STOPPED["why"]
+                break
+            continue
+        got = {x.get("id"): x for x in m.get("data", [])}
+        for p in ps:
+            q = got.get(p["id"]) or {}
+            for k in ("thumbnail_url", "media_url", "permalink"):
+                if q.get(k):
+                    p[k] = q[k]
+    folder = WORK / "stills" / _safe(film)
+    shutil.rmtree(folder, ignore_errors=True)
+    items = []
+    for acct, p in found:
+        url = p.get("thumbnail_url") if p.get("media_type") == "VIDEO" else p.get("media_url")
+        if not url:
+            continue
+        name = f"{len(items) + 1:02d}.jpg"
+        try:
+            download_image(url, str(folder / name))
+        except Exception:
+            continue
+        cap = p.get("caption") or ""
+        items.append({"n": len(items) + 1, "file": name, "account": acct, "post": p.get("permalink"), "date": (p.get("timestamp") or "")[:10],
+                      "kind": "video cover" if p.get("media_type") == "VIDEO" else "picture", "caption": cap.splitlines()[0][:90] if cap else ""})
+    if not items:
+        raise RuntimeError(f"no official stills for {film} on {', '.join(accounts[:4])}" + (f" ({report['stopped']})" if report.get("stopped") else ""))
+    sheet = f"{_safe(film)} - stills.jpg"
+    stills_grid(items, str(folder), str(WORK / "sheets" / sheet))
+    entry = {"film": film, "kind": "stills", "folder": f"clip-library/stills/{_safe(film)}", "sheet": sheet, "stills": items,
+             "accounts": accounts, "fetched": status.stamp()}
+    if drive is not None:
+        for it in items:
+            drive.upload(str(folder / it["file"]), entry["folder"], name=it["file"])
+        drive.upload(str(WORK / "sheets" / sheet), "clip-library/sheets", name=sheet)
+        idx = index(drive)
+        idx["stills"] = [x for x in idx.get("stills", []) if norm(x["film"]) != norm(film)] + [entry]
+        drive.write_json("clip-library", "index.json", idx)
+    try:
+        os.makedirs(OUT / "peek" / "trailers" / "sheets", exist_ok=True)
+        shutil.copy(str(WORK / "sheets" / sheet), str(OUT / "peek" / "trailers" / "sheets" / sheet))
+        (OUT / "peek" / "trailers" / "sheets" / (sheet[:-4] + ".json")).write_text(json.dumps(entry, indent=1, ensure_ascii=False))
+    except Exception:
+        pass
+    return entry
+
+
+def have_stills(film, idx):
+    return [x for x in idx.get("stills", []) if norm(x["film"]) == norm(split_hint(film)[0])]
+
+
 # ---------------------------------------------------------------- the library
 def index(drive):
     try:
@@ -602,6 +725,16 @@ def main():
             break
         except Exception as ex:
             failed[film] = str(ex)[:200]
+            if have_stills(film, index(drive)) and not a.force:
+                continue
+            try:                         # no video from Meta: the film's official stills, for news updates (AGENT.md 5.9)
+                st = stills(drive, ig, film, report=notes.setdefault(film, {}))
+                done.append(f"{st['film']}: {len(st['stills'])} official stills (Meta gave no video)")
+            except OutOfCalls as ex2:
+                failed[film] += f"; stills: {ex2}"
+                break
+            except Exception as ex2:
+                failed[film] += f"; stills: {str(ex2)[:160]}"
     save_cache()
     filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
     want(drive, [])          # drop the films that now have a trailer

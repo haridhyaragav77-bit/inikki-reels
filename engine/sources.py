@@ -146,6 +146,24 @@ def from_trailer(spec, drive, out, work):
     return {"source": "trailer", "licence": "official trailer frame, used inside commentary and design", "credit": hit["name"], "url": None}
 
 
+def from_still(spec, drive, out, work):
+    """An official still of the film (AGENT.md 5.9): {"film": ..., "n": number on the film's stills grid}."""
+    if not drive or not spec:
+        return None
+    from .trailers import index, have_stills
+    st = have_stills(spec.get("film", ""), index(drive))
+    if not st:
+        return None
+    it = next((x for x in st[0]["stills"] if int(x["n"]) == int(spec.get("n", 1))), None)
+    fid = drive.folder(st[0]["folder"], create=False) if it else None
+    f = drive.find_child(fid, it["file"]) if fid else None
+    if not f:
+        return None
+    drive.download(f["id"], out)
+    return {"source": "official still", "licence": "official promotional still from the film's own account, used inside news commentary",
+            "credit": f"@{it.get('account')}", "url": it.get("post")}
+
+
 def house_look(path, look=None):
     """Sourced photos get the page's look by code, so they sit beside our other pictures: deeper contrast, richer colour, portrait crop."""
     from PIL import Image, ImageEnhance
@@ -168,6 +186,8 @@ def find(spec, n, reel_id, work, drive=None, library=None, film=None):
     """Try every free step for one picture. Returns {"src", "source", ...} or None (then the caller makes an AI image)."""
     query = spec.get("find") or ""
     order = spec.get("sources") or ENGINE.get("images", {}).get("ladder", ["library", "trailer", "pexels", "pixabay", "openverse"])
+    if spec.get("still"):          # an official still is named: that one, nothing else
+        order = ["still"]
     out = os.path.join(work, f"found_{n:02d}.jpg")
     lib = library or Library(drive)
     for step in order:
@@ -179,13 +199,15 @@ def find(spec, n, reel_id, work, drive=None, library=None, film=None):
                     return {"src": out, "source": "library", "from": it.get("source"), "credit": it.get("credit"), "reused": True}
             elif step == "trailer" and spec.get("trailer"):
                 rec = from_trailer(spec["trailer"], drive, out, work)
+            elif step == "still" and spec.get("still"):
+                rec = from_still(spec["still"], drive, out, work)
             elif step in ("pexels", "pixabay", "openverse") and query:
                 rec = {"pexels": from_pexels, "pixabay": from_pixabay, "openverse": from_openverse}[step](query, out)
             else:
                 rec = None
             if step != "library" and rec:
                 house_look(out, spec.get("look"))
-                name = f"web_{re.sub(r'[^a-z0-9]+', '-', query.lower())[:40]}_{hashlib.md5((rec.get('url') or query).encode()).hexdigest()[:6]}.jpg" if step != "trailer" else f"trailer_{reel_id}_{n:02d}.jpg"
+                name = f"web_{re.sub(r'[^a-z0-9]+', '-', query.lower())[:40]}_{hashlib.md5((rec.get('url') or query).encode()).hexdigest()[:6]}.jpg" if step not in ("trailer", "still") else f"{step}_{reel_id}_{n:02d}.jpg"
                 lib.add(out, name, dict(rec, tags=sorted(words(query) | words(film)), film=film, query=query))
                 return dict(rec, src=out)
         except Exception as e:

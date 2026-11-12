@@ -176,19 +176,25 @@ def check(plan):
             L.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Cut a screen or two.")
     if series.get("min_screens") and len(screens) < int(series["min_screens"]):
         E.append(f"This series needs at least {series['min_screens']} screens (the Kaithi model has 18); this plan has {len(screens)}.")
-    if series.get("visuals") == "clips" and template == "card":
+    if series.get("visuals") in ("clips", "official") and template == "card":
+        official = series.get("visuals") == "official"       # updates: the film's clips, or its official stills
         def kinds(v):
             if not isinstance(v, dict):
                 return []
             if v.get("type") in ("stack", "split"):
                 return kinds(v.get("top") or v.get("left")) + kinds(v.get("bottom") or v.get("right"))
-            return [v.get("type")]
-        bad = [i + 1 for i, s in enumerate(screens) if any(k not in ("clip", "meme") for k in kinds(s.get("visual")))]
+            return ["still" if v.get("type") == "image" and v.get("still") and v.get("ai") is False else v.get("type")]
+        ok = ("clip", "meme", "still") if official else ("clip", "meme")
+        bad = [i + 1 for i, s in enumerate(screens) if any(k not in ok for k in kinds(s.get("visual")))]
         if bad:
-            E.append(f"Screens {', '.join(map(str, bad))}: this series uses only the film's trailer clips (AGENT.md 5.9), no photos or AI pictures.")
+            E.append(f"Screens {', '.join(map(str, bad))}: this series uses only the film's " + ("trailer clips or official stills" if official else "trailer clips")
+                     + " (AGENT.md 5.9), no other photos or AI pictures" + ("; a still is {type: image, still: {film, n}, ai: false}." if official else "."))
         moments = {(str(v.get("film", "")).lower(), v.get("start")) for s in screens for v in [s.get("visual")] if isinstance(v, dict) and v.get("type") == "clip"}
+        moments |= {(str(v["still"].get("film", "")).lower(), f"still {v['still'].get('n')}") for s in screens for v in [s.get("visual")]
+                    if isinstance(v, dict) and v.get("type") == "image" and isinstance(v.get("still"), dict)}
         if len(moments) < 3:
-            E.append(f"Only {len(moments)} different trailer moments; show at least 3, one for each point (AGENT.md 5.10).")
+            E.append(f"Only {len(moments)} different " + ("film pictures" if official else "trailer moments")
+                     + "; show at least 3" + ("." if official else ", one for each point (AGENT.md 5.10)."))
     if cap is not None and n_img > int(cap):
         E.append(f"The plan asks for {n_img} AI images; this series allows {cap} per reel.")
     for im in images:
