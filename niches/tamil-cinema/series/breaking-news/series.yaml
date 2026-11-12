@@ -17,3 +17,4 @@ success_metric: reach
 rules:
   - "Only real, confirmed, time-sensitive news."
   - "Respect mode overrides: deaths and tragedies are handled as tributes, never as 'breaking'."
+expires_h: 24           # news older than this is not posted (AGENT.md 12.1)

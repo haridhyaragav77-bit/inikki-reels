@@ -1,0 +1,79 @@
+name: make
+# Engine job "Make" (AGENT.md 4.3): plans → finished reels in Drive (rehearsal/<date>/ or finished/<date>/).
+# Started by the Sync job when a thinking run saves plans, by a push of plans to main, or by the safety-net times below.
+# A light first step checks whether anything new needs making, so the safety net costs about 1 runner minute.
+on:
+  push:
+    branches: [main, claude/gallant-dijkstra-6madni]
+    paths: ["plans/20*/**", "plans/bank/**", ".github/workflows/make.yml"]
+  workflow_dispatch:
+    inputs:
+      date: { description: "Day to make (YYYY-MM-DD, IST). Empty = today", default: "" }
+      only: { description: "Only these reel ids (comma-separated). Empty = all new ones", default: "" }
+  schedule:
+    - cron: "12 1 * * *"      # 06:42 IST, after the Plan run
+    - cron: "52 11 * * *"     # 17:22 IST, after the Refresh run
+
+permissions:
+  contents: read
+
+concurrency:
+  group: make
+  cancel-in-progress: false
+
+env:
+  GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+  GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+  GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+  DATE: ${{ inputs.date || '' }}
+  ONLY: ${{ inputs.only || '' }}
+
+jobs:
+  check:
+    name: Anything new to make?
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      todo: ${{ steps.c.outputs.todo }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
+      - run: pip install -q -r requirements-light.txt
+      - id: c
+        run: python -m engine.make --check ${DATE:+--date $DATE} ${ONLY:+--only $ONLY}
+
+  make:
+    name: Make the reels (nothing is posted here)
+    needs: check
+    if: needs.check.outputs.todo == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip }
+      - name: Keep the depth model and the browser between runs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/inikki
+            ~/.cache/ms-playwright
+          key: render-tools-v1
+      - name: Install ffmpeg, the Engine's libraries and the browser that draws the templates
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install -q -r requirements.txt
+          python -m playwright install --with-deps chromium >/dev/null
+      - name: Make
+        run: python -m engine.make ${DATE:+--date $DATE} ${ONLY:+--only $ONLY}
+      - name: Status (always, CLAUDE.md rule 6)
+        if: always()
+        run: python -m engine.status make "${{ job.status }}"

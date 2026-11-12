@@ -1,0 +1,7 @@
+# Light jobs (post, watch, stats, brief, sync, health, dashboard): no browser, no video tools
+google-api-python-client>=2.150
+google-auth>=2.35
+google-auth-oauthlib>=1.2
+requests>=2.32
+pyyaml>=6
+edge-tts>=7

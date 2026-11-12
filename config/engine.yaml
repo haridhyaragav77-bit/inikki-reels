@@ -3,6 +3,20 @@ drive:
   folders: [control, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
   music_folder_aliases: ["music", "background music", "background music (1)"]
   never_auto_delete: [reference-reels, meme-bank, music, control]
+  retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
+    finished_days: 30
+    finished_days_tight: 14
+    rehearsal_days: 14
+    work_days: 3
+    status_days: 30
+    clip_library_gb: 3
+    image_library_gb: 1.5
+    warn_gb: 6
+    tight_gb: 7.5
+    keep_top_share: 0.10
+runner:
+  minutes_month: 2000         # GitHub's free minutes for a private repository
+  tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
   dashboard_sheet_name: "iNiKKi Dashboard"
   dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
 
@@ -28,7 +42,7 @@ openai:
 instagram:
   base: "https://graph.instagram.com"
   api_versions: ["v23.0", "v22.0", "v21.0"]        # first that works is used
-  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, ig_reels_skip_rate, skip_rate]
+  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, follows, profile_visits, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
 
 voice:
   tool: tools/voice_tool.py

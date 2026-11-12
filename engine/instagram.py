@@ -1,5 +1,8 @@
-"""Instagram API with Instagram Login (archive 14). Phase 1 only reads; posting comes in Phase 3."""
+"""Instagram: reading stats and publishing reels (AGENT.md 5 stages 9-10). Works through either kind of Meta token."""
+import json
+import os
 import re
+import time
 
 import requests
 
@@ -160,6 +163,78 @@ class Instagram:
         else:
             out["verdict"] = "The token was refused. Generate a fresh one and update the secret IG_ACCESS_TOKEN."
         return out
+
+    # ------------------------------------------------------------------ publishing (resumable upload: no public link needed)
+    def post(self, path, **params):
+        params["access_token"] = self.token
+        r = requests.post(f"{self.base}/{self.version}/{path.lstrip('/')}", data=params, timeout=120)
+        try:
+            j = r.json()
+        except ValueError:
+            j = {"error": {"message": r.text[:200]}}
+        if not r.ok or "error" in j:
+            raise InstagramError(plain_error(j))
+        return j
+
+    def token_scopes(self):
+        chk = self.diagnose().get("token_check")
+        return (chk.get("scopes") or []) if isinstance(chk, dict) else []
+
+    def create_reel(self, video_path, caption, thumb_offset_ms=None, share_to_feed=True, trial=None):
+        """Make an unpublished reel container and upload the video into it. Nothing is visible until publish()."""
+        params = {"media_type": "REELS", "upload_type": "resumable", "caption": caption, "share_to_feed": "true" if share_to_feed else "false"}
+        if thumb_offset_ms is not None:
+            params["thumb_offset"] = str(int(thumb_offset_ms))
+        if trial:     # Trial Reels: shown to non-followers first (AGENT.md 7)
+            params["trial_params"] = json.dumps({"graduation_strategy": trial if isinstance(trial, str) else "SS_PERFORMANCE"})
+        j = self.post(f"{self.user_id}/media", **params)
+        cid = j["id"]
+        uri = j.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{self.version}/{cid}"
+        size = os.path.getsize(video_path)
+        with open(video_path, "rb") as f:
+            r = requests.post(uri, headers={"Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(size)}, data=f, timeout=900)
+        if not r.ok:
+            raise InstagramError(f"The video upload to Instagram failed: {r.text[:200]}")
+        return cid
+
+    def wait_ready(self, cid, timeout=900):
+        t0, last = time.time(), None
+        while time.time() - t0 < timeout:
+            j = self.get(cid, fields="status_code,status")
+            last = j
+            if j.get("status_code") == "FINISHED":
+                return j
+            if j.get("status_code") in ("ERROR", "EXPIRED"):
+                raise InstagramError(f"Instagram could not process the video ({j.get('status') or j.get('status_code')}).")
+            time.sleep(8)
+        raise InstagramError(f"Instagram was still processing the video after {timeout // 60} minutes ({last}).")
+
+    def copyright_status(self, cid):
+        """Instagram's own music and copyright check on the container, before anything is published (the mute guard)."""
+        try:
+            return self.get(cid, fields="copyright_check_status").get("copyright_check_status")
+        except InstagramError:
+            return None
+
+    def publish(self, cid):
+        j = self.post(f"{self.user_id}/media_publish", creation_id=cid)
+        mid = j["id"]
+        try:
+            info = self.get(mid, fields="permalink,shortcode,timestamp")
+        except InstagramError:
+            info = {}
+        return mid, info
+
+    def comment(self, media_id, text):
+        return self.post(f"{media_id}/comments", message=text)
+
+    def publishing_quota(self):
+        try:
+            j = self.get(f"{self.user_id}/content_publishing_limit", fields="quota_usage,config")
+            d = (j.get("data") or [{}])[0]
+            return d.get("quota_usage"), (d.get("config") or {}).get("quota_total")
+        except InstagramError:
+            return None, None
 
     def account_insights(self):
         j = self.get(f"{self.user_id}/insights", metric="reach,views", period="day", metric_type="total_value")
