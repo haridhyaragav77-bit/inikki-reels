@@ -39,6 +39,22 @@ What the runs at 16:19 and 17:23 IST showed (Meta's own meter readings are now i
 - Fact check before writing: "Inji Vellam on 29 January" is not confirmed (only "January 2027"); "extra 30 minutes" for
   Jailer 2 is not confirmed; both left out. Leo: "Sathya doubts him" is not confirmed; that point became "the denial".
 
+19:30 IST, the answer: Meta sent no video for the Jailer 2 trailer posts (7 of 32 posts around them had links), but it
+does send each post's cover picture. Meta's documentation: the video is left out for licensed music or when the owner
+turned downloads off. Vijay's account has no Leo trailer post; Lyca has no Inji Vellam post; Sivakarthikeyan's account
+cannot be read by the app.
+
+**Harish decided (19:45 IST): official stills for news, real clips for breakdowns.** Built:
+- `trailers.stills()`: the covers of the film's video posts and its picture posts, from its own accounts, up to 30, saved
+  to Drive `clip-library/stills/<film>/` with a numbered grid; the trailer job falls back to stills when Meta gives no
+  video, and has a stills-only option. Updates pick `{type: image, still: {film, n}, ai: false}`; the plan check accepts
+  clips or official stills for updates, clips only for breakdowns (series card `visuals: official`).
+- The laptop helper (`tools/clip_helper.py`, also in Drive) works on its own: film list inside (film bank + 6 well-known
+  films), ffmpeg bundled, only official channels and exact titles (not Jailer 2 for Jailer, not Vikram Vedha for Vikram),
+  skips what it already has. Steps for Harish: Drive doc "iNiKKi — fill the trailer library".
+- A trailer folder dragged into Drive whole is used too; the library index picks the exact trailer file.
+- The news watch reads film titles cleanly from headlines and searches the accounts a headline names first.
+
 Redone so far: the story (Sivakarthikeyan) in Drive `rehearsal/redo-2026-11-12/`, inspection passed, pictures checked by eye.
 Waiting: the trailer runs (hourly while needed), then the 3 updates from fetched trailers; the breakdowns need
 their films' trailers (history search over a few days, or the laptop helper once).
