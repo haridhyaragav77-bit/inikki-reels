@@ -61,10 +61,36 @@ def duration(path):
 
 # ---------------------------------------------------------------- official Instagram accounts
 _POSTS = {}
+CACHE = {"drive": None, "data": None}
+CACHE_HOURS = 6
 
 
-def posts(ig, acct, pages=4):
-    """An account's recent posts (up to 200), read once per run and shared by every film."""
+def _cache():
+    """Posts already read in the last 6 hours (Drive status/ig_posts.json), so repeat runs stay inside Instagram's limit
+    of about 200 calls an hour for an app this size."""
+    if CACHE["data"] is None:
+        CACHE["data"] = {}
+        if CACHE["drive"] is not None:
+            try:
+                CACHE["data"] = CACHE["drive"].read_json("status", "ig_posts.json") or {}
+            except Exception:
+                pass
+    return CACHE["data"]
+
+
+def save_cache():
+    if CACHE["drive"] is not None and CACHE["data"]:
+        try:
+            CACHE["drive"].write_json("status", "ig_posts.json", CACHE["data"])
+        except Exception:
+            pass
+
+
+def posts(ig, acct, pages=2):
+    """An account's recent posts (up to 100), read once per run and shared by every film."""
+    c = _cache().get(acct)
+    if acct not in _POSTS and c and status.now().timestamp() - c.get("t", 0) < CACHE_HOURS * 3600:
+        _POSTS[acct] = c["posts"]
     if acct not in _POSTS:
         out, after = [], None
         for _ in range(pages):
@@ -76,6 +102,7 @@ def posts(ig, acct, pages=4):
             if not after:
                 break
         _POSTS[acct] = out
+        _cache()[acct] = {"t": status.now().timestamp(), "posts": out}
     return _POSTS[acct]
 
 
@@ -249,6 +276,7 @@ def main():
         return
     from .drive import Drive
     drive = Drive()
+    CACHE["drive"] = drive
     films = a.film + (wanted(drive) if a.wanted else [])
     done, failed = [], {}
     for film in dict.fromkeys(films):
@@ -257,6 +285,7 @@ def main():
             done.append(f"{film}: {e['kind']} from {e['account']}")
         except Exception as ex:
             failed[film] = str(ex)[:200]
+    save_cache()
     status.write(drive, "trailers.json", {"fetched": done, "failed": failed})
     print(json.dumps({"fetched": done, "failed": failed}, indent=1, ensure_ascii=False))
 
