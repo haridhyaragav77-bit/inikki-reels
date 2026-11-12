@@ -7,6 +7,8 @@ per_day: 2
 slots: ["12:30", "20:00"]
 hook: clap               # visual hook for the first second (rules/motion.md); a plan may pick one that fits the film
 template: card
+min_screens: 15          # the Kaithi model: 16-19 screens (AGENT.md 5.10)
+strict_length: true      # shorter or longer than length_s is refused, not just noted
 visuals: clips
 voice: true
 length_s: [40, 50]

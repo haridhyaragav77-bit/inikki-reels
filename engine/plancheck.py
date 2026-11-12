@@ -168,11 +168,27 @@ def check(plan):
         else:
             est = round(sum(float(s.get("dur") or 0) for s in screens))
         lo, hi = float(lo_hi[0]), float(lo_hi[1])
+        L = E if series.get("strict_length") else W
         if est and est < lo * 0.9:
-            W.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Add about {max(1, round((lo - est) / 2.5))} "
+            L.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Add about {max(1, round((lo - est) / 2.5))} "
                      "more spoken screens (each is about 2.5 s), or say more in each line.")
         elif est > hi * 1.15:
-            W.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Cut a screen or two.")
+            L.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Cut a screen or two.")
+    if series.get("min_screens") and len(screens) < int(series["min_screens"]):
+        E.append(f"This series needs at least {series['min_screens']} screens (the Kaithi model has 18); this plan has {len(screens)}.")
+    if series.get("visuals") == "clips" and template == "card":
+        def kinds(v):
+            if not isinstance(v, dict):
+                return []
+            if v.get("type") in ("stack", "split"):
+                return kinds(v.get("top") or v.get("left")) + kinds(v.get("bottom") or v.get("right"))
+            return [v.get("type")]
+        bad = [i + 1 for i, s in enumerate(screens) if any(k not in ("clip", "meme") for k in kinds(s.get("visual")))]
+        if bad:
+            E.append(f"Screens {', '.join(map(str, bad))}: this series uses only the film's trailer clips (AGENT.md 5.9), no photos or AI pictures.")
+        moments = {(str(v.get("film", "")).lower(), v.get("start")) for s in screens for v in [s.get("visual")] if isinstance(v, dict) and v.get("type") == "clip"}
+        if len(moments) < 3:
+            E.append(f"Only {len(moments)} different trailer moments; show at least 3, one for each point (AGENT.md 5.10).")
     if cap is not None and n_img > int(cap):
         E.append(f"The plan asks for {n_img} AI images; this series allows {cap} per reel.")
     for im in images:
