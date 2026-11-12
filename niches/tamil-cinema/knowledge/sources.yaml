@@ -89,13 +89,14 @@ watch:
 # Public posts of business accounts, read through Instagram's own API. Names that turn out wrong are reported by the
 # trailer job and can be corrected here by the Researcher or in the Control Room.
 trailers:
-  max_calls_per_run: 40      # Instagram allows this app about 200 calls an hour; posting and stats need the rest
-  max_usage_percent: 50
-  scan_without_links: true # pages are read as captions only; the video link is asked for the matching post alone (Meta's meter counts time)
-  page_size: 50            # posts per call (Meta may ask for 25; the Engine then uses 25)
-  deep_pages: 6            # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages      # stop when Meta reports half the hourly allowance used (its X-App-Usage header)
+  max_calls_per_run: 40      # a ceiling; in practice Meta's time meter stops a run first (each page takes Meta 3-12 s)
+  max_usage_percent: 50      # stop when Meta's own meter says half the hourly allowance is used; posting keeps the rest
+  scan_without_links: true   # pages are read as captions only; the video link is asked for the matching post alone
+  page_size: 50              # posts per call (Meta may ask for 25; the Engine then uses 25)
+  deep_pages: 6              # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages, and only they
+  # Wrong names found by the trailer job (12 Nov), to be corrected: rkfi_official, madrastalkies_, 7screenstudio; jiohotstar gave no posts.
   instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
-                       dreamwarriorpictures, rkfi_official, 2d_entertainment, shanthitalkies, madrastalkies_,
-                       studiogreen_official, 7screenstudio, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
-                       primevideoin, netflix_in, jiohotstar, sunnxt, actorvijay, sivakarthikeyan, dhanushkraja,
+                       dreamwarriorpictures, 2d_entertainment, shanthitalkies,
+                       studiogreen_official, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
+                       primevideoin, netflix_in, sunnxt, actorvijay, sivakarthikeyan, dhanushkraja,
                        actorvijaysethupathi, trishakrishnan, actorsuriya, actor_karthi, anirudhofficial, arrahman]
