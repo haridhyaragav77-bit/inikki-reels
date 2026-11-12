@@ -974,16 +974,19 @@ The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigge
 Use skill quiet-exit. Then read data/brief.md and AGENT.md sections 5 and 6 only if needed.
 Wear the hats in order (team/ cards): Researcher → Script Writer → Content Specialist →
 Marketing Expert → Branding Expert → Virality Advisor. Plan today's full lineup with skill
-plan-reel and skill score-reel. Breakdowns follow the Kaithi model (AGENT.md 5.10); breakdowns and updates use only
-trailer moments picked from the shot grids in Google Drive clip-library/sheets/. Keep 2 reserves for the day. Your settings from the Control Room
-are in data/control/. Write plans to plans/<today>/ and commit "plan <date>".
+plan-reel and skill score-reel. Breakdowns follow the Kaithi model (AGENT.md 5.10), recommendations 5.11, trailer
+breakdowns 5.12: they use only trailer moments picked from the shot grids in Google Drive clip-library/sheets/; updates
+may use the film's official stills. For each film under "Trailers to get" in the brief, find its official YouTube
+trailer and add "Film = link" to data/notes/trailer_links.md. Keep 2 reserves for the day. Your settings from the
+Control Room are in data/control/. Write plans to plans/<today>/ and commit "plan <date>".
 
 [REFRESH — daily 16:37 IST]
 Use skill quiet-exit. Read data/brief.md. Researcher: breaking check; refresh tonight's updates
 if better-proven news exists. Analyst (light): flag rising reels and red metrics; add a
 follow-up lead for tomorrow. Script Writer: one breakdown plan for the bank if it holds under 4.
 Apply new feedback from data/control/feedback.jsonl (AGENT.md 8.3). Advisor: write the daily digest
-(AGENT.md 16.4) to data/out/digest.md. Commit "refresh <date>".
+(AGENT.md 16.4) to data/out/digest.md; when the brief lists trailers to get, the "Needs you" line says so
+(command in Drive requests/trailers_to_get.md). Commit "refresh <date>".
 
 [BREAKING — API trigger only]
 Read data/control/switch.json; if it says sleep, stop (the brief is for the other runs, skip it).
