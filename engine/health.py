@@ -13,8 +13,27 @@ from .settings import ENGINE, OUT, missing_secrets, secret
 from . import status
 
 
+def _day_minutes(repo, h, day):
+    """GitHub counts each job rounded up to a whole minute; skipped jobs cost nothing."""
+    api = f"https://api.github.com/repos/{repo}/actions/runs"
+    mins, page = 0, 1
+    while True:
+        j = requests.get(api, headers=h, params={"created": day, "per_page": 100, "page": page}, timeout=30).json()
+        runs = j.get("workflow_runs", [])
+        for r in runs:
+            jobs = requests.get(f"{api}/{r['id']}/jobs", headers=h, params={"per_page": 100}, timeout=30).json().get("jobs", [])
+            for jb in jobs:
+                if jb.get("started_at") and jb.get("completed_at") and jb.get("conclusion") != "skipped":
+                    a = dt.datetime.fromisoformat(jb["started_at"].replace("Z", "+00:00"))
+                    b = dt.datetime.fromisoformat(jb["completed_at"].replace("Z", "+00:00"))
+                    mins += max(1, math.ceil((b - a).total_seconds() / 60))
+        if len(runs) < 100:
+            return mins
+        page += 1
+
+
 def runner_minutes(drive):
-    """Adds yesterday's GitHub runner minutes (each job rounded up, as GitHub counts them) to the month's total."""
+    """Counts the month's GitHub runner minutes, a few days per run (yesterday first), into Drive status/minutes.json."""
     repo, tok = os.environ.get("GITHUB_REPOSITORY"), os.environ.get("GITHUB_TOKEN")
     led = {}
     try:
@@ -23,30 +42,21 @@ def runner_minutes(drive):
         pass
     if not (repo and tok):
         return led, "not counted (runs only on GitHub)"
-    day = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=1)).strftime("%Y-%m-%d")
-    month = day[:7]
+    today = dt.datetime.now(dt.timezone.utc).date()
+    month = (today - dt.timedelta(days=1)).strftime("%Y-%m")
     if led.get("month") != month:
         led = {"month": month, "days": {}}
-    if day not in led["days"]:
-        h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
-        api = f"https://api.github.com/repos/{repo}/actions/runs"
-        mins, page = 0, 1
-        while True:
-            j = requests.get(api, headers=h, params={"created": day, "per_page": 100, "page": page}, timeout=30).json()
-            runs = j.get("workflow_runs", [])
-            for r in runs:
-                t = requests.get(f"{api}/{r['id']}/timing", headers=h, timeout=30).json()
-                for os_name, b in (t.get("billable") or {}).items():
-                    mins += sum(math.ceil(jr.get("duration_ms", 0) / 60000) for jr in b.get("job_runs", [])) or math.ceil(b.get("total_ms", 0) / 60000)
-            if len(runs) < 100:
-                break
-            page += 1
-        led["days"][day] = mins
+    h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
+    todo = [d for d in ((today - dt.timedelta(days=k)).isoformat() for k in range(1, 32)) if d.startswith(month) and d not in led["days"]]
+    for d in todo[:4]:                       # newest first; earlier days are filled in on the next runs
+        led["days"][d] = _day_minutes(repo, h, d)
     limit = int(ENGINE.get("runner", {}).get("minutes_month", 2000))
-    led.update(minutes=sum(led["days"].values()), limit=limit)
+    led.update(minutes=sum(led["days"].values()), limit=limit, counted_days=len(led["days"]))
     led["tight"] = led["minutes"] >= limit * float(ENGINE.get("runner", {}).get("tight_share", 0.85))
     drive.write_json("status", "minutes.json", led)
-    return led, f"{led['minutes']} of {limit} minutes used this month" + (" (tight: extras paused)" if led["tight"] else "")
+    left = len(todo) - min(len(todo), 4)
+    return led, f"{led['minutes']} of {limit} minutes used this month" + (f" ({left} earlier days still to count)" if left else "") + \
+        (" (tight: extras paused)" if led["tight"] else "")
 
 
 def main():
@@ -84,7 +94,9 @@ def main():
 
     def oa():
         r = requests.get("https://api.openai.com/v1/models", headers={"Authorization": f"Bearer {secret('OPENAI_API_KEY')}"}, timeout=30)
-        return r.ok, "key works" if r.ok else f"refused ({r.status_code})"
+        if r.status_code == 403:          # a key limited to pictures may not list models: it is still a working key
+            return True, "key works (limited to pictures, which is all the Engine needs)"
+        return r.ok, "key works" if r.ok else f"refused ({r.status_code}: {r.text[:100]})"
     check("OpenAI key", oa, "Update the secret OPENAI_API_KEY (pictures fall back to free sources meanwhile).")
     if drive:
         def money():
