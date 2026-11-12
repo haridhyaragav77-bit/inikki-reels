@@ -408,6 +408,11 @@ def file_entry(drive, film, kind, local, meta, source, account, link=None, title
     idx = index(drive)
     idx["trailers"] = [x for x in idx["trailers"] if x["file"] != entry["file"]] + [entry]
     drive.write_json("clip-library", "index.json", idx)
+    try:                                  # the shot times beside the grid on the 'peek' branch (a quick look)
+        os.makedirs(OUT / "peek" / "trailers" / "sheets", exist_ok=True)
+        (OUT / "peek" / "trailers" / "sheets" / (entry["sheet"][:-4] + ".json")).write_text(json.dumps(entry, indent=1, ensure_ascii=False))
+    except Exception:
+        pass
     return entry
 
 
