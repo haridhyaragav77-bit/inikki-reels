@@ -950,7 +950,7 @@ Rules:
 ```
 
 ### Block D — Scheduled thinking runs
-Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, default environment, schedule in IST, no connectors needed (the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
+Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, default environment, schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings) (the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
 Each run saves its work on its own branch `claude/brain-<run>-<date>`. The Engine's Sync job checks it and copies only allowed text files into the live settings.
 The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigger → + → API → Generate token. Put the Fire URL in the GitHub secret `BRAIN_FIRE_URL` and the token in `BRAIN_FIRE_TOKEN`.
 
@@ -1131,8 +1131,12 @@ field once: lead, hook, screens, visuals, motion graphic, music, meme, voice lin
 subtitles (Tanglish and Tamil), caption, hashtags, cover, time, fallbacks. Pick each motion
 graphic from rules/motion.md by what the line says. Keep each screen to one line of headline.
 Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
-Pictures: a film moment is {type: clip, film: <a trailer listed in the brief>, query: <moment>}; otherwise
-{type: image, find: <3-5 plain search words>, ai: false} for series that allow no AI pictures.
+Breakdowns: copy the structure of plans/reference/kaithi-breakdown.json (AGENT.md 5.10): 45 s, 16-19 screens,
+3 named points, each proven by specific scenes of the film. Breakdowns and updates use only trailer clips of a film
+listed in the brief: open its shot grid (Google Drive, clip-library/sheets/), pick the shot that shows what each line
+says, and write {type: clip, film, start: shot start + 0.2, len: 2.5, label}. Times are in data/trailers.json.
+Stories: AI pictures for the build-up, written as exact film shots with one character description repeated word for
+word; the reveal beat uses {trailer: {film, at}} from the person's own trailer.
 If the check cannot start because a module is missing: pip install -q pyyaml, then run it again.
 
 # score-reel
