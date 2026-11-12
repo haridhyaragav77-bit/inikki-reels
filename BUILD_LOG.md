@@ -28,8 +28,19 @@ search stopped as designed. Changes after that run:
 - Hand-added trailers get grids even when Instagram says no; every run puts its report and new grids on the `peek` branch.
 - Make asks for a plan's trailer before the moments are picked; the brief lists reels whose trailer has arrived.
 
+What the runs at 16:19 and 17:23 IST showed (Meta's own meter readings are now in each report):
+- The meter that fills is **processing time** (`total_time`), not the call count: each account page takes Meta 3-8 seconds,
+  so about 20 calls use half the hourly allowance. Pages are now read as captions only; the video link is asked for the
+  matching post alone, at most twice per account per run.
+- Sun Pictures has 24 Jailer 2 videos in its last 300 posts (trailer posts on 6 and 11 Oct), but Meta sent no video link
+  for the ones asked. The next report says why (moved post, or Meta leaving the link out, which it does for posts it
+  treats as holding copyrighted music).
+- Wrong account names found: rkfi_official, madrastalkies_, 7screenstudio (skipped for 3 days, to be corrected).
+- Fact check before writing: "Inji Vellam on 29 January" is not confirmed (only "January 2027"); "extra 30 minutes" for
+  Jailer 2 is not confirmed; both left out. Leo: "Sathya doubts him" is not confirmed; that point became "the denial".
+
 Redone so far: the story (Sivakarthikeyan) in Drive `rehearsal/redo-2026-11-12/`, inspection passed, pictures checked by eye.
-Waiting: Meta's meter to recover (next run 16:17 IST), then the 3 updates from fetched trailers; the breakdowns need
+Waiting: the trailer runs (hourly while needed), then the 3 updates from fetched trailers; the breakdowns need
 their films' trailers (history search over a few days, or the laptop helper once).
 
 ## 12 Nov 2026 — Phase 3: the daily jobs (rehearsal) and Phase 4 hand-over
