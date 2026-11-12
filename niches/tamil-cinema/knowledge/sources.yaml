@@ -84,3 +84,13 @@ watch:
   fresh_hours: 6         # only stories first published in the last 6 hours can wake it
   breaking_min_keyword: 3   # and only with a breaking word (trailer, release date, passes away ...), not just "box office"
   hours: [8, 22]         # the watcher wakes the Breaking run only between these hours (IST)
+
+# Official Instagram accounts the Engine reads for trailers, teasers and glimpses (engine/trailers.py).
+# Public posts of business accounts, read through Instagram's own API. Names that turn out wrong are reported by the
+# trailer job and can be corrected here by the Researcher or in the Control Room.
+trailers:
+  instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
+                       dreamwarriorpictures, rkfi_official, 2dentertainmentofficial, shanthitalkies, madrastalkies_,
+                       studiogreen_official, 7screenstudio, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
+                       primevideoin, netflix_in, jiohotstar, sunnxt, actorvijay, sivakarthikeyan, dhanushkraja,
+                       actorvijaysethupathi, trishakrishnan, actorsuriya, actor_karthi, anirudhofficial, arrahman]
