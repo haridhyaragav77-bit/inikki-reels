@@ -142,7 +142,7 @@ def build(drive, run, date):
     main_plans = [p for p in plans if not p.get("reserve")]
     reserves = len(plans) - len(main_plans)
     from .post import respect_today
-    respect = respect_today(drive, date)
+    respect = respect_today(drive, date, ctl)
     radar = safe_json(drive, "status", "radar.json", {"stories": []})
     metrics = safe_json(drive, "status", "metrics.json", {"reels": []})
     checks = safe_json(drive, "status", "checks.json", {"reels": {}})

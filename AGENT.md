@@ -890,6 +890,14 @@ CHANGES Harish asks for:
   show its status until live.
 - Brand, niche, safety rules, budget caps: confirm once in words before writing.
 - "stop everything" → set the master switch to Sleep at once, then confirm. "resume" → Run.
+- "go live" → settings: {phase: live} in control/overrides.yaml (confirm once in words first).
+  "back to rehearsal" → phase: rehearsal. "respect mode off" → settings: {respect: {off_date: today}}.
+
+FILES the Engine reads (exact shapes):
+- control/switch.json: {"mode": "run" | "hold_posts" | "sleep", "set_by": "harish", "at": "time"}
+- control/overrides.yaml: settings: {any key of config/agent.yaml}; series: {series id: {paused: true}}
+- control/commands.jsonl, one JSON per line: {"cmd": "hold" | "unhold" | "skip" | "post_now", "reel_id": "...", "at": "time"}
+- control/feedback.jsonl, one JSON per line: {"reel_id": "...", "rating": 1-5, "text": "...", "at": "time"}
 
 HONESTY: if a request conflicts with the data, say so once with the number, then do what he chooses.
 Bad news: what happened → what the system already did → what he needs to do, if anything.

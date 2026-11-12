@@ -19,8 +19,12 @@ from .day import Bank, Day, today
 
 
 # ---------------------------------------------------------------- rules that can stop a reel
-def respect_today(drive, date):
-    """Respect mode (AGENT.md 10.2): set by the Breaking run (plans/<date>/respect.json) or by the watcher (status/respect.json)."""
+def respect_today(drive, date, ctl=None):
+    """Respect mode (AGENT.md 10.2): set by the Breaking run (plans/<date>/respect.json) or by the watcher (status/respect.json).
+    Harish can turn it off for the day from the Control Room (settings.respect.off_date)."""
+    ctl = ctl or Control(drive)
+    if str((ctl.settings.get("respect") or {}).get("off_date", "")) == date:
+        return None
     p = ROOT / "plans" / date / "respect.json"
     if p.exists():
         try:
@@ -155,7 +159,7 @@ def breaking_now(drive, day, rid, ctl):
     if sum(1 for x in day.reels("posted") if x.get("series") == "breaking-news") >= cap:
         day.upsert(rid, state="skipped", reason=f"Already {cap} breaking reels today.")
         return
-    deliver(drive, day, day.get(rid), ctl, respect_today(drive, day.date))
+    deliver(drive, day, day.get(rid), ctl, respect_today(drive, day.date, ctl))
     day.save()
 
 
@@ -262,7 +266,7 @@ def main():
     else:
         r = choose(day, bank, status.now(), ctl)
         if r:
-            result = f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect_today(drive, day.date))
+            result = f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect_today(drive, day.date, ctl))
     day.save()
     bank.save()
     status.write(drive, "post.json", {"last": result, "phase": ctl.phase, "switch": ctl.mode})
