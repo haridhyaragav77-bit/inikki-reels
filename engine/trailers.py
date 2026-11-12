@@ -106,12 +106,25 @@ class OutOfCalls(Exception):
     pass
 
 
+STOPPED = {}
+
+
+def limited(e):
+    """Meta is refusing for now (hourly limit or a block): the whole run stops at once, it never tries the next account."""
+    if any(w in str(e).lower() for w in ("api access blocked", "request limit", "too many calls", "(#4)", "(#17)", "(#32)", "(#613)")):
+        STOPPED.setdefault("why", f"Instagram stopped the search: {str(e)[:160]}")
+        return True
+    return False
+
+
 def budget():
     return int(settings().get("max_calls_per_run", 60))
 
 
 def page(ig, acct, after=None):
     """One page (50 posts) of an official account. Stops the run before it nears Instagram's hourly limit."""
+    if STOPPED:
+        raise OutOfCalls(STOPPED["why"])
     if type(ig).calls >= budget():
         raise OutOfCalls(f"stopped at {type(ig).calls} Instagram calls (the per-run budget)")
     if type(ig).usage >= int(settings().get("max_usage_percent", 50)):
@@ -123,10 +136,15 @@ def page(ig, acct, after=None):
     return m
 
 
+BAD_HOURS = 72
+
+
 def posts(ig, acct, pages=2):
     """An account's recent posts (up to 50), read once per run and shared by every film."""
     c = _cache().get(acct)
-    if acct not in _POSTS and c and status.now().timestamp() - c.get("t", 0) < CACHE_HOURS * 3600:
+    if acct not in _POSTS and c and status.now().timestamp() - c.get("t", 0) < (BAD_HOURS if c.get("bad") else CACHE_HOURS) * 3600:
+        if c.get("bad"):
+            raise RuntimeError(f"skipped: {c['bad']}")
         _POSTS[acct] = c["posts"]
     if acct not in _POSTS:
         out, after = [], None
@@ -141,18 +159,23 @@ def posts(ig, acct, pages=2):
     return _POSTS[acct]
 
 
-def candidates(ig, film, accounts, report=None):
-    """Video posts of the official accounts whose caption names the film and says trailer, teaser, glimpse ..."""
+def candidates(ig, film, accounts, report=None, enough=("trailer",)):
+    """Video posts of the official accounts whose caption names the film and says trailer, teaser, glimpse ...
+    The search stops at the first account that gives a real trailer with its video link (kinds in `enough`)."""
     found = []
     for acct in accounts:
+        if any(f["kind"] in enough and f.get("url") for f in found):
+            break
         try:
             ps = posts(ig, acct)
         except OutOfCalls:
             raise
         except Exception as e:
-            if any(w in str(e).lower() for w in ("api access blocked", "request limit", "too many calls")):
-                raise RuntimeError(f"Instagram stopped the search: {str(e)[:160]}")     # stop at once, never hammer
+            if limited(e):
+                raise OutOfCalls(STOPPED["why"])     # stop at once, never hammer
             _POSTS[acct] = []
+            if not str(e).startswith("skipped"):
+                _cache()[acct] = {"t": status.now().timestamp(), "posts": [], "bad": str(e)[:120]}
             if report is not None:
                 report[acct] = f"not readable: {str(e)[:90]}"
             continue
@@ -339,6 +362,8 @@ def crawl(drive, ig):
                 except OutOfCalls:
                     raise
                 except Exception as e:
+                    if limited(e):          # Meta's limit: stop for now and keep the place, never mark the account done
+                        raise OutOfCalls(STOPPED["why"])
                     st.update(done=True, note=str(e)[:100])
                     accounts.remove(acct)
                     continue
@@ -402,12 +427,20 @@ def main():
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
+    drive, adopted = None, []
+    if a.probe is None:
+        from .drive import Drive
+        drive = Drive()
+        CACHE["drive"] = drive
+        adopted = adopt(drive)          # Drive only: hand-added trailers get their grids even when Instagram says no
     try:
         ig = Instagram()
         me = ig.me()
     except Exception as e:
         (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps({"instagram": f"refused: {str(e)[:300]}", "at": status.stamp()}, indent=1))
         print("Instagram refused:", str(e)[:300])
+        if drive is not None:
+            status.write(drive, "trailers.json", {"adopted": adopted, "instagram": f"refused: {str(e)[:200]}", "at": status.stamp()})
         raise SystemExit(1)
     try:
         OTHERS.extend(f["film"] for f in json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", []))
@@ -429,11 +462,7 @@ def main():
         if (WORK / "sheets").exists():
             shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
         return
-    from .drive import Drive
-    drive = Drive()
-    CACHE["drive"] = drive
     films = a.film + (wanted(drive) if a.wanted else [])
-    adopted = adopt(drive)
     done, failed = [], {}
     for film in dict.fromkeys(films):
         try:
@@ -451,6 +480,10 @@ def main():
            "instagram_calls": type(ig).calls}
     status.write(drive, "trailers.json", res)
     print(json.dumps(res, indent=1, ensure_ascii=False))
+    (OUT / "peek" / "trailers" / "result.json").write_text(json.dumps({**res, "at": status.stamp(), "meta_usage_percent": type(ig).usage},
+                                                                      indent=1, ensure_ascii=False))
+    if (WORK / "sheets").exists():      # the new grids, for a quick look on the 'peek' branch (the real copies are in Drive)
+        shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
 
 
 def titles_in(headline):

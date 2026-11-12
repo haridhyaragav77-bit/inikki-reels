@@ -2,9 +2,6 @@ name: trailers
 # Engine job: official trailers into Drive clip-library/ with a shot grid each (engine/trailers.py). No AI, no cost.
 # Runs for the films the planning runs and the news watch ask for (Drive status/trailers_wanted.json), and on demand.
 on:
-  push:
-    branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/trailers.yml"]
   workflow_dispatch:
     inputs:
       films: { description: "Films, separated by commas (empty = the wanted list)", default: "" }
@@ -32,7 +29,7 @@ jobs:
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       FILMS: ${{ inputs.films || 'Jailer 2,Scene,Inji Vellam,Vikram,96,Amaran,Maaveeran,Kaithi' }}
-      PROBE: ${{ (github.event_name == 'push' || inputs.probe) && 'yes' || '' }}
+      PROBE: ${{ inputs.probe && 'yes' || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -49,11 +46,11 @@ jobs:
           else
             IFS=',' read -ra F <<< "$FILMS"; args=(); for f in "${F[@]}"; do args+=(--film "$f"); done; python -m engine.trailers "${args[@]}" --crawl
           fi
-      - name: Test results to the 'peek' branch (probe only)
-        if: always() && env.PROBE != ''
+      - name: Results and new grids to the 'peek' branch (a quick look; the real copies are in Drive)
+        if: always()
         run: |
           mkdir -p out/peek && cd out/peek && git init -q && git checkout -q -b peek && git add -A
-          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "trailers probe" || exit 0
+          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "trailers ${{ env.PROBE && 'probe' || 'run' }}" || exit 0
           git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" peek:peek
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
