@@ -88,7 +88,7 @@ class Instagram:
                 j = json.loads(v)
                 vals = [j] if "call_count" in j else [x for lst in j.values() for x in (lst if isinstance(lst, list) else [lst])]
                 for x in vals:
-                    Instagram.usage = max(Instagram.usage, *(int(x.get(k, 0) or 0) for k in ("call_count", "total_time", "total_cputime")))
+                    Instagram.usage = max(Instagram.usage, *(int(x.get(k, 0) or 0) for k in ("call_count", "total_time", "total_cputime", "acc_id_util_pct")))
             except (ValueError, TypeError, AttributeError):
                 pass
 
