@@ -2,6 +2,28 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 12 Nov 2026 (evening): the trailer library, new series, sample reels
+Harish ran the laptop helper: 23 of 38 trailers into Drive `clip-library/` (grids made by the adopt-only run).
+His feedback and what was done:
+
+| He said | Done |
+| --- | --- |
+| 15 films did not download (Vada Chennai, Asuran, Nayakan, Thalapathi...) | Helper: spelling- and spacing-tolerant titles (VADACHENNAI, Kaakka, Nayagan), sequels refused (Jailer 2 for Jailer), more official channels, three searches, a report file that goes to Drive with the trailers |
+| Do the top-up about every 2 weeks; new trailers can come a day later | Drive `requests/trailers_to_get.md`: one ready command for new trailers and one for the library top-up; the digest's "Needs you" line points to it; the Plan run adds official links |
+| Find updates before they drop | The news watch notes announced trailer dates; the brief shows trailers expected and new ones in the library |
+| Trailer breakdowns of new trailers | New series `trailer-breakdown` (AGENT.md 5.12), flex slot |
+| Breakdowns of English films too | 20 English films in the film bank and the helper |
+| Replace Viral Story with Movie Recommendations (actors, Hollywood directors, musicians, Letterboxd) | New series `movie-recommendations` (AGENT.md 5.11), every "X recommends Y" sourced; viral-story paused |
+
+Grid maker: dark or fast trailers read again more finely, long stretches split into 3.5-second moments, logo cards
+dropped (Vikram 13 -> 25 moments, Maharaja 7 -> 26, Kaithi 15 -> 24); `regrid` remade all 23.
+Bug found in review: a redone plan with the same reel id got this morning's stock photos back (pictures were reused
+by reel id and number only); saved pictures now carry a fingerprint of the picture asked for.
+
+Sample reels (Drive `rehearsal/samples-2026-11-12/`): Leo and Vikram Vedha breakdowns, Jailer 2 and Scene updates on
+official stills (Scene with the makers' own figures), the first recommendation reel (4 films Rajinikanth praised,
+each sourced). First render reviewed frame by frame; Leo had moments landing on title cards, fixed from the finer grid.
+
 ## 12 Nov 2026 (afternoon): Harish's review of rehearsal day 1, and the fixes
 Harish: only the Kaithi reel was up to standard. Breakdowns were 27 s with vague topics, pictures did not match the words,
 story pictures were weak, trailers must come automatically. Fixes (AGENT.md 5.9 and 5.10 first):
