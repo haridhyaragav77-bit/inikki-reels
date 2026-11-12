@@ -149,7 +149,7 @@ def page(ig, acct, after=None, links=None, limit=None):
         links = not settings().get("scan_without_links", True)
     size = int(limit or settings().get("page_size", 25))
     media = f"media.limit({size})" + (f".after({after})" if after else "")
-    fields = "id,caption,media_type,timestamp" + (",media_url,permalink" if links else "")
+    fields = "id,caption,media_type,timestamp" + (",media_url,permalink,thumbnail_url" if links else "")
     try:
         j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{{fields}}}}}")
     except Exception as e:
@@ -180,7 +180,7 @@ def link(ig, acct, hit):
     elif not p.get("media_url"):
         hit["why"] = (f"Meta sent no video link for this post, and links for {got} of {len(m.get('data', []))} posts around it"
                       f" (fields: {', '.join(sorted(k for k in p if not k.startswith('_')))})")
-    hit["url"], hit["link"] = (p or {}).get("media_url"), (p or {}).get("permalink")
+    hit["url"], hit["link"], hit["thumb"] = (p or {}).get("media_url"), (p or {}).get("permalink"), (p or {}).get("thumbnail_url")
     return hit
 
 
