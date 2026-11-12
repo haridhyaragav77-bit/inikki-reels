@@ -17,6 +17,9 @@ def plain_error(j):
     e = (j or {}).get("error", {}) if isinstance(j, dict) else {}
     msg = e.get("message", str(j)[:200])
     code = e.get("code")
+    if "api access blocked" in msg.lower():
+        return ("Meta has blocked this app's API access (the app, not the token). Open developers.facebook.com > My Apps > the app: "
+                "the banner at the top says why (often the yearly Data Use Checkup or a policy review). Fix that; the same token then works again.")
     if code == 190 or "access token" in msg.lower() and ("expired" in msg.lower() or "invalid" in msg.lower()):
         return ("The Instagram token has expired or is not valid. Make a new long-lived token and update the secret IG_ACCESS_TOKEN."
                 f" (Meta says: {msg[:140]})")
@@ -153,7 +156,10 @@ class Instagram:
                     out["token_check"] = r.get("error", {}).get("message", str(r))[:160]
             except Exception as e:
                 out["token_check"] = str(e)[:160]
-        if out.get("facebook_login") == "ok" and out.get("instagram_login") != "ok":
+        if "api access blocked" in str(out.get("facebook_login", "")).lower() or "api access blocked" in str(out.get("token_check", "")).lower():
+            out["verdict"] = ("Meta has blocked this app's API access (the app, not the token). Open developers.facebook.com > My Apps > the app "
+                              "and follow the banner at the top (often the yearly Data Use Checkup). No new token is needed after that.")
+        elif out.get("facebook_login") == "ok" and out.get("instagram_login") != "ok":
             out["verdict"] = ("This is a Facebook-side token (it works, and it never expires). The Engine now uses it through Facebook's door. "
                               "For stats it also needs the permission instagram_manage_insights; add it when you regenerate the token.")
         elif isinstance(out.get("token_check"), dict) and out["token_check"].get("valid") is False:
