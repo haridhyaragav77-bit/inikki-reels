@@ -6,6 +6,7 @@ on:
     inputs:
       films: { description: "Films, separated by commas (empty = the wanted list)", default: "" }
       probe: { description: "Test only: nothing saved to Drive, grids to the 'peek' branch", type: boolean, default: false }
+      stills: { description: "Official stills only, for these films (Film@account, separated by commas)", default: "" }
   schedule:
     - cron: "22 23 * * *"     # 04:52 IST, before the brief: the day's wanted list, then the history search
     - cron: "22 7 * * *"      # 12:52 IST
@@ -30,6 +31,7 @@ jobs:
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
       FILMS: ${{ inputs.films || 'Jailer 2,Scene,Inji Vellam,Vikram,96,Amaran,Maaveeran,Kaithi' }}
       PROBE: ${{ inputs.probe && 'yes' || '' }}
+      STILLS: ${{ inputs.stills || '' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -39,7 +41,9 @@ jobs:
           pip install -q -r requirements-light.txt pillow
       - name: Fetch trailers
         run: |
-          if [ -n "$PROBE" ]; then
+          if [ -n "$STILLS" ]; then
+            IFS=',' read -ra F <<< "$STILLS"; args=(); for f in "${F[@]}"; do args+=(--stills "$f"); done; python -m engine.trailers "${args[@]}"
+          elif [ -n "$PROBE" ]; then
             IFS=',' read -ra F <<< "$FILMS"; python -m engine.trailers --probe "${F[@]}"
           elif [ "${{ github.event_name }}" = "schedule" ] || [ -z "${{ inputs.films }}" ]; then
             python -m engine.trailers --wanted --crawl
