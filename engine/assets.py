@@ -267,6 +267,14 @@ class Assets:
     def _clip_from_library(self, spec):
         if not self.drive:
             return None
+        if spec.get("film") and not spec.get("file"):       # the library index names the exact file (Vikram, not Vikram Vedha)
+            try:
+                from .trailers import index, have
+                hits = have(spec["film"], index(self.drive))
+                if hits:
+                    spec = dict(spec, file=hits[0]["file"])
+            except Exception:
+                pass
         try:
             fid = self.drive.folder("clip-library", create=False)
             items = []
