@@ -60,32 +60,45 @@ def duration(path):
 
 
 # ---------------------------------------------------------------- official Instagram accounts
-def candidates(ig, film, accounts, pages=6, report=None):
+_POSTS = {}
+
+
+def posts(ig, acct, pages=4):
+    """An account's recent posts (up to 200), read once per run and shared by every film."""
+    if acct not in _POSTS:
+        out, after = [], None
+        for _ in range(pages):
+            media = "media.limit(50)" + (f".after({after})" if after else "")
+            j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
+            m = (j.get("business_discovery") or {}).get("media") or {}
+            out += m.get("data", [])
+            after = ((m.get("paging") or {}).get("cursors") or {}).get("after")
+            if not after:
+                break
+        _POSTS[acct] = out
+    return _POSTS[acct]
+
+
+def candidates(ig, film, accounts, report=None):
     """Video posts of the official accounts whose caption names the film and says trailer, teaser, glimpse ..."""
     found = []
     for acct in accounts:
-        after, seen = None, 0
-        for _ in range(pages):
-            media = "media.limit(50)" + (f".after({after})" if after else "")
-            try:
-                j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
-            except Exception as e:
-                if report is not None:
-                    report[acct] = f"not readable: {str(e)[:90]}"
-                break
-            m = (j.get("business_discovery") or {}).get("media") or {}
-            for p in m.get("data", []):
-                seen += 1
-                cap = p.get("caption") or ""
-                if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap):
-                    found.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
-                                  "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
-            after = ((m.get("paging") or {}).get("cursors") or {}).get("after")
-            if not after or any(f["account"] == acct for f in found):
-                break
-        if report is not None and acct not in report:
-            n = sum(1 for f in found if f["account"] == acct)
-            report[acct] = f"ok, {seen} posts read, {n} match" + ("" if n == 0 or all(f.get("url") for f in found if f["account"] == acct) else " (no video link given)")
+        try:
+            ps = posts(ig, acct)
+        except Exception as e:
+            _POSTS[acct] = []
+            if report is not None:
+                report[acct] = f"not readable: {str(e)[:90]}"
+            continue
+        n = 0
+        for p in ps:
+            cap = p.get("caption") or ""
+            if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap):
+                n += 1
+                found.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
+                              "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
+        if report is not None and n:
+            report[acct] = f"{n} match in {len(ps)} posts" + ("" if all(f.get("url") for f in found if f["account"] == acct) else " (no video link given)")
     return found
 
 
