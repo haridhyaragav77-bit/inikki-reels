@@ -138,7 +138,7 @@
    "visual": {
     "type": "clip",
     "film": "Vikram",
-    "start": 66.2,
+    "start": 42.2,
     "len": 2.6,
     "label": "VIKRAM"
    },
@@ -161,7 +161,7 @@
    "visual": {
     "type": "clip",
     "film": "Vikram",
-    "start": 42.2,
+    "start": 60.9,
     "len": 2.6
    },
    "motion": {
@@ -217,8 +217,8 @@
     "text": "NEVER SEEN",
     "color": "gold"
    },
-   "caption": "Tamil cinema idhuvarai paakkaadha kadhai-nu sonnaaru.",
-   "voice_line": "தமிழ் சினிமா இதுவரை பார்க்காத கதைன்னு சொன்னார்."
+   "caption": "Tamil cinema idhuvarai paakkaadha kadhai-nu X-la sonnaaru.",
+   "voice_line": "தமிழ் சினிமா இதுவரை பார்க்காத கதைன்னு எக்ஸ்ல சொன்னார்."
   },
   {
    "headline": "03 / Viduthalai",
@@ -274,7 +274,7 @@
    "visual": {
     "type": "clip",
     "film": "Amaran",
-    "start": 56.0,
+    "start": 38.0,
     "len": 2.6
    },
    "motion": {
@@ -308,8 +308,8 @@
      "Amaran"
     ]
    },
-   "caption": "Mudhalla edha paappeenga? Comment pannunga.",
-   "voice_line": "முதல்ல எதைப் பார்ப்பீங்க? கமெண்ட் பண்ணுங்க."
+   "caption": "Mudhalla edha paappeenga? Comment-la sollunga.",
+   "voice_line": "முதல்ல எதைப் பார்ப்பீங்க? கமெண்ட்ல சொல்லுங்க."
   },
   {
    "headline": "Thalaivar fan-ku *anuppunga*.",
