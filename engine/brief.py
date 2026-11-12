@@ -226,7 +226,17 @@ def build(drive, run, date):
         L += ["Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. "
               "Visual: {type: clip, film: <film>, start: <shot start + 0.2>, len: 2.5, label: <2-word tag>}."]
         if want:
-            L += [f"Trailers being fetched: {', '.join(want[:10])} (do not plan these until they appear above)."]
+            L += [f"Trailers being fetched: {', '.join(want[:10])} (plans for these wait; see below when they arrive)."]
+        try:
+            from .trailers import index as clip_index, have
+            idx = clip_index(drive)
+            ready = [(r["reel_id"], f) for r in day.reels() if r.get("state") == "held" for f in (r.get("waiting_for") or []) if have(f, idx)]
+        except Exception:
+            ready = []
+        if ready:
+            L += ["", "## Re-pick moments (the trailer has arrived)"] + [
+                f"- {rid}: {f}'s grid is in the library now. Pick the shot for each line, write the start seconds into plans/{date}/{rid}.json, commit."
+                for rid, f in ready]
         L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: movie-review on release days, artwork-quote after a dull stretch."]
     if day.reels():
         L += ["", "## Today's reels"] + table([(r.get("slot") or "-", r["reel_id"], r.get("series", ""), r.get("state", ""), (r.get("reason") or "")[:60])

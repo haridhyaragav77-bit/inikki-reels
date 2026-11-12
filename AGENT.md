@@ -307,13 +307,13 @@ Pictures must show what the line says. Who uses what:
 A breakdown or update whose film has no trailer in the library is not made; the film goes on the trailer wanted list and a spare takes the slot.
 
 **Trailers, automatically (no one fetches them by hand):**
-1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's limit of about 200 calls an hour.
+1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's hourly limit (the run stops at half of Meta's meter, so posting always has room). A plan names its film's own accounts (`trailer_from`); those are searched first and further back (up to 8 pages), so an older trailer is found in a few calls.
 2. Older films that are not on those accounts: the laptop helper (`tools/clip_helper.py`) when Harish wants one. The Engine never works around YouTube's block on cloud computers.
 3. When: the trailer job runs at 04:52 for the day's wanted list; the news watch asks for a trailer as soon as a drop is reported; Make asks for any film a plan needs.
 
 Every trailer gets a **shot grid**: one picture, each shot numbered with its start and end second (made by code, no AI). The planning run looks at the grid and picks the exact second for each line, the way the Kaithi reel was made.
 
-**AI pictures (stories and Guess the Movie only):** each prompt describes one exact film shot: who (never a name), action, place, era, time of day, light, lens and framing for a vertical reel with room for the text. A story repeats the same character description word for word in every picture. Stories use high quality (about ₹4 a picture), Guess the Movie medium; the ₹500 monthly cap still holds by code. A picture made once is reused from the library.
+**AI pictures (stories and Guess the Movie only):** each prompt describes one exact film shot: who (never a name), action, place, era, time of day, light, lens and framing for a vertical reel with room for the text. A story repeats the same character description word for word in every picture. Stories use the full picture model at medium quality (about ₹5 a picture), Guess the Movie the smaller model (about ₹1); the ₹500 monthly cap still holds by code. A picture made once is reused from the library.
 
 Rules:
 - Only sources that allow reuse, or the film's own official material. Other people's artwork is never taken, whatever its style.

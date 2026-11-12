@@ -139,55 +139,80 @@ def page(ig, acct, after=None):
 BAD_HOURS = 72
 
 
-def posts(ig, acct, pages=2):
-    """An account's recent posts (up to 50), read once per run and shared by every film."""
-    c = _cache().get(acct)
-    if acct not in _POSTS and c and status.now().timestamp() - c.get("t", 0) < (BAD_HOURS if c.get("bad") else CACHE_HOURS) * 3600:
-        if c.get("bad"):
-            raise RuntimeError(f"skipped: {c['bad']}")
-        _POSTS[acct] = c["posts"]
+def posts(ig, acct, pages=2, deep=False):
+    """An account's posts, newest first, read once per run and shared by every film. Asking for more pages carries on
+    from where the last read stopped (one call per 25 posts); the 6-hour copy in Drive is used first."""
     if acct not in _POSTS:
-        out, after = [], None
-        for _ in range(pages):
-            m = page(ig, acct, after)
-            out += m.get("data", [])
-            after = m.get("after")
-            if not after:
-                break
-        _POSTS[acct] = out
-        _cache()[acct] = {"t": status.now().timestamp(), "posts": out}
-    return _POSTS[acct]
+        c = _cache().get(acct)
+        if c and status.now().timestamp() - c.get("t", 0) < (BAD_HOURS if c.get("bad") else CACHE_HOURS) * 3600:
+            if c.get("bad"):
+                raise RuntimeError(f"skipped: {c['bad']}")
+            if "pages" in c:
+                _POSTS[acct] = {k: c[k] for k in ("posts", "after", "pages", "end")}
+            elif not deep:                         # an older copy without its place: fine for a normal read
+                _POSTS[acct] = {"posts": c["posts"], "after": None, "pages": 2, "end": True}
+    st = _POSTS.setdefault(acct, {"posts": [], "after": None, "pages": 0, "end": False})
+    while st["pages"] < pages and not st["end"]:
+        m = page(ig, acct, st["after"])
+        st["posts"] += m.get("data", [])
+        st["after"], st["pages"] = m.get("after"), st["pages"] + 1
+        st["end"] = not st["after"]
+        _cache()[acct] = {"t": status.now().timestamp(), **st}
+    return st["posts"]
 
 
-def candidates(ig, film, accounts, report=None, enough=("trailer",)):
+def split_hint(film):
+    """'Jailer 2@sunpictures+anirudhofficial' -> ('Jailer 2', ['sunpictures', 'anirudhofficial']): the film's own
+    accounts, named by the planning run or by hand, are searched first and further back."""
+    name, _, accts = str(film).partition("@")
+    return name.strip(), [x.strip().lstrip("@") for x in accts.split("+") if x.strip()]
+
+
+def _matches(film, acct, ps):
+    out = []
+    for p in ps:
+        cap = p.get("caption") or ""
+        if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap) and norm(best_film(cap, OTHERS + [film])) == norm(film):
+            out.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
+                        "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
+    return out
+
+
+def candidates(ig, film, accounts, report=None, enough=("trailer",), deep=()):
     """Video posts of the official accounts whose caption names the film and says trailer, teaser, glimpse ...
-    The search stops at the first account that gives a real trailer with its video link (kinds in `enough`)."""
+    The search stops at the first account that gives a real trailer with its video link (kinds in `enough`).
+    Accounts in `deep` (the film's own) are read back up to `deep_pages` pages, page by page, until the trailer shows."""
     found = []
+    good = lambda: any(f["kind"] in enough and f.get("url") for f in found)
     for acct in accounts:
-        if any(f["kind"] in enough and f.get("url") for f in found):
+        if good():
             break
+        top = int(settings().get("deep_pages", 8)) if acct in deep else 2
         try:
-            ps = posts(ig, acct)
+            ps, n = [], 0
+            for k in range(1, top + 1):
+                ps = posts(ig, acct, pages=k, deep=acct in deep)
+                hits = _matches(film, acct, ps)
+                if any(h["kind"] in enough and h.get("url") for h in hits) or _POSTS[acct]["end"]:
+                    break
+            hits = _matches(film, acct, ps)
+            found += hits
+            n = len(hits)
         except OutOfCalls:
             raise
         except Exception as e:
             if limited(e):
                 raise OutOfCalls(STOPPED["why"])     # stop at once, never hammer
-            _POSTS[acct] = []
+            _POSTS[acct] = {"posts": [], "after": None, "pages": 99, "end": True}
             if not str(e).startswith("skipped"):
                 _cache()[acct] = {"t": status.now().timestamp(), "posts": [], "bad": str(e)[:120]}
             if report is not None:
                 report[acct] = f"not readable: {str(e)[:90]}"
             continue
-        n = 0
-        for p in ps:
-            cap = p.get("caption") or ""
-            if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap) and norm(best_film(cap, OTHERS + [film])) == norm(film):
-                n += 1
-                found.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
-                              "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
-        if report is not None and n:
-            report[acct] = f"{n} match in {len(ps)} posts" + ("" if all(f.get("url") for f in found if f["account"] == acct) else " (no video link given)")
+        if report is not None:
+            back = min((p.get("timestamp") or "")[:10] for p in ps) if ps else "-"
+            report[acct] = f"{n} match in {len(ps)} posts back to {back}" + (
+                "" if all(f.get("url") for f in found if f["account"] == acct) else " (no video link given)")
     return found
 
 
@@ -270,11 +295,13 @@ def have(film, idx):
 
 def fetch(drive, ig, film, want=("trailer", "teaser", "glimpse", "promo"), force=False, report=None):
     """Find, download and file one trailer for a film. Returns the library entry or raises with a plain reason."""
+    film, hint = split_hint(film)
     idx = index(drive) if drive is not None else {"trailers": []}
     if have(film, idx) and not force:
         return have(film, idx)[0]
     order = {k: i for i, k in enumerate(want)}
-    cands = [c for c in candidates(ig, film, settings().get("instagram_accounts", []), report=report) if c["kind"] in order and c.get("url")]
+    accounts = hint + [x for x in settings().get("instagram_accounts", []) if x not in hint]
+    cands = [c for c in candidates(ig, film, accounts, report=report, deep=set(hint)) if c["kind"] in order and c.get("url")]
     if not cands:
         raise RuntimeError(f"no official trailer for {film} on the studio accounts (add it with the laptop helper)")
     cands.sort(key=lambda c: (order[c["kind"]], -(int(re.sub(r"\D", "", c.get("when") or "0")[:14] or 0))))
@@ -341,7 +368,7 @@ def adopt(drive):
 
 def films_we_cover(drive):
     bank = json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])
-    return list(dict.fromkeys([f["film"] for f in bank] + wanted(drive)))
+    return list(dict.fromkeys([f["film"] for f in bank] + [split_hint(f)[0] for f in wanted(drive)]))
 
 
 def crawl(drive, ig):
@@ -411,7 +438,7 @@ def want(drive, films):
     except Exception:
         cur = {"films": []}
     have_now = {norm(x["film"]) for x in index(drive)["trailers"]}
-    cur["films"] = [f for f in dict.fromkeys(cur.get("films", []) + list(films)) if norm(f) not in have_now]
+    cur["films"] = [f for f in dict.fromkeys(cur.get("films", []) + list(films)) if norm(split_hint(f)[0]) not in have_now]
     cur["updated"] = status.stamp()
     drive.write_json("status", "trailers_wanted.json", cur)
     return cur["films"]
@@ -457,16 +484,16 @@ def main():
                 rep["result"] = f"FAILED: {ex}"
             out[film] = rep
             print(film, json.dumps(rep, indent=1, ensure_ascii=False))
-        out["meta_usage_percent"], out["instagram_calls"] = type(ig).usage, type(ig).calls
+        out["meta_usage_percent"], out["instagram_calls"], out["meta_meters"] = type(ig).usage, type(ig).calls, type(ig).usage_raw
         (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
         if (WORK / "sheets").exists():
             shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
         return
     films = a.film + (wanted(drive) if a.wanted else [])
-    done, failed = [], {}
+    done, failed, notes = [], {}, {}
     for film in dict.fromkeys(films):
         try:
-            e = fetch(drive, ig, film, force=a.force)
+            e = fetch(drive, ig, film, force=a.force, report=notes.setdefault(film, {}))
             done.append(f"{film}: {e['kind']} from {e['account']}")
         except OutOfCalls as ex:
             failed[film] = str(ex)
@@ -477,7 +504,7 @@ def main():
     filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
     want(drive, [])          # drop the films that now have a trailer
     res = {"adopted": adopted, "fetched": done, "failed": failed, "history_search": f"{pages} pages read, filed: {filed}",
-           "instagram_calls": type(ig).calls}
+           "instagram_calls": type(ig).calls, "accounts": {f: n for f, n in notes.items() if n}, "meta_meters": type(ig).usage_raw}
     status.write(drive, "trailers.json", res)
     print(json.dumps(res, indent=1, ensure_ascii=False))
     (OUT / "peek" / "trailers" / "result.json").write_text(json.dumps({**res, "at": status.stamp(), "meta_usage_percent": type(ig).usage},
