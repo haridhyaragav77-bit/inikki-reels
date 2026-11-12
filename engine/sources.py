@@ -104,12 +104,25 @@ def from_pixabay(query, out):
 
 
 def from_openverse(query, out):
-    """Public-domain pictures only (CC0 and public domain mark): no credit line is owed."""
-    j = requests.get("https://api.openverse.org/v1/images/", params={"q": query, "license": "cc0,pdm", "aspect_ratio": "tall", "size": "large", "page_size": 8, "mature": "false"}, headers=UA, timeout=30).json()
-    for p in j.get("results", []):
-        if (p.get("height") or 0) >= 1200 and str(p.get("url", "")).lower().split("?")[0].endswith((".jpg", ".jpeg", ".png")):
+    """Public-domain pictures only (CC0 and public domain mark): no credit line is owed.
+    Tall pictures first, then any shape (house_look crops to portrait), then the first two words of the search."""
+    ws = query.split()
+    tries = [(query, "tall"), (query, None)] + ([(" ".join(ws[:2]), None)] if len(ws) > 2 else [])
+    seen = set()
+    for q, shape in tries:
+        params = {"q": q, "license": "cc0,pdm", "page_size": 12, "mature": "false"}
+        if shape:
+            params["aspect_ratio"] = shape
+        j = requests.get("https://api.openverse.org/v1/images/", params=params, headers=UA, timeout=30).json()
+        for p in j.get("results", []):
+            if p.get("id") in seen or (p.get("height") or 0) < 1000:
+                continue
+            seen.add(p.get("id"))
             try:
                 _download(p["url"], out)
+                from PIL import Image
+                with Image.open(out) as im:
+                    im.verify()
             except Exception:
                 continue
             return {"source": "openverse", "licence": f"{p.get('license', '').upper()} (public domain)", "credit": p.get("creator"), "url": p.get("foreign_landing_url")}
