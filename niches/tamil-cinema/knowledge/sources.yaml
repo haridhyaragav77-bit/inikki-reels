@@ -94,7 +94,7 @@ trailers:
   page_size: 50            # posts per call (Meta may ask for 25; the Engine then uses 25)
   deep_pages: 6            # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages      # stop when Meta reports half the hourly allowance used (its X-App-Usage header)
   instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
-                       dreamwarriorpictures, rkfi_official, 2dentertainmentofficial, shanthitalkies, madrastalkies_,
+                       dreamwarriorpictures, rkfi_official, 2d_entertainment, shanthitalkies, madrastalkies_,
                        studiogreen_official, 7screenstudio, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
                        primevideoin, netflix_in, jiohotstar, sunnxt, actorvijay, sivakarthikeyan, dhanushkraja,
                        actorvijaysethupathi, trishakrishnan, actorsuriya, actor_karthi, anirudhofficial, arrahman]
