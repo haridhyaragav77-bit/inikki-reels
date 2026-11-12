@@ -31,9 +31,24 @@ def norm(s):
     return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
 
 
+SUFFIXES = ("", "movie", "film", "trailer", "teaser", "glimpse", "official", "thetrailer", "officialtrailer")
+
+
 def mentions(film, text):
+    """The film's name as words, or as one hashtag like #Jailer2 or #96Movie (never inside another word, like 1996)."""
     f, t = norm(film), norm(text)
-    return bool(f) and (f" {f} " in f" {t} " or f.replace(" ", "") in t.replace(" ", ""))
+    if not f:
+        return False
+    if f" {f} " in f" {t} ":
+        return True
+    fs = f.replace(" ", "")
+    return any(tok.startswith(fs) and tok[len(fs):] in SUFFIXES for tok in t.split())
+
+
+def best_film(text, films):
+    """The longest film name the text mentions, so 'Vikram Vedha trailer' is Vikram Vedha, not Vikram."""
+    hits = [f for f in films if mentions(f, text)]
+    return max(hits, key=lambda f: len(norm(f))) if hits else None
 
 
 def kind_of(text):
@@ -61,6 +76,7 @@ def duration(path):
 
 # ---------------------------------------------------------------- official Instagram accounts
 _POSTS = {}
+OTHERS = []          # every film name we know, so a caption about a longer title is not taken for a shorter one
 CACHE = {"drive": None, "data": None}
 CACHE_HOURS = 6
 
@@ -86,6 +102,25 @@ def save_cache():
             pass
 
 
+class OutOfCalls(Exception):
+    pass
+
+
+def budget():
+    return int(settings().get("max_calls_per_run", 60))
+
+
+def page(ig, acct, after=None):
+    """One page (50 posts) of an official account. Stops the run before it nears Instagram's hourly limit."""
+    if type(ig).calls >= budget():
+        raise OutOfCalls(f"stopped at {type(ig).calls} Instagram calls (the per-run budget)")
+    media = "media.limit(50)" + (f".after({after})" if after else "")
+    j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
+    m = (j.get("business_discovery") or {}).get("media") or {}
+    m["after"] = ((m.get("paging") or {}).get("cursors") or {}).get("after")
+    return m
+
+
 def posts(ig, acct, pages=2):
     """An account's recent posts (up to 100), read once per run and shared by every film."""
     c = _cache().get(acct)
@@ -94,11 +129,9 @@ def posts(ig, acct, pages=2):
     if acct not in _POSTS:
         out, after = [], None
         for _ in range(pages):
-            media = "media.limit(50)" + (f".after({after})" if after else "")
-            j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
-            m = (j.get("business_discovery") or {}).get("media") or {}
+            m = page(ig, acct, after)
             out += m.get("data", [])
-            after = ((m.get("paging") or {}).get("cursors") or {}).get("after")
+            after = m.get("after")
             if not after:
                 break
         _POSTS[acct] = out
@@ -112,6 +145,8 @@ def candidates(ig, film, accounts, report=None):
     for acct in accounts:
         try:
             ps = posts(ig, acct)
+        except OutOfCalls:
+            raise
         except Exception as e:
             if any(w in str(e).lower() for w in ("api access blocked", "request limit", "too many calls")):
                 raise RuntimeError(f"Instagram stopped the search: {str(e)[:160]}")     # stop at once, never hammer
@@ -122,7 +157,7 @@ def candidates(ig, film, accounts, report=None):
         n = 0
         for p in ps:
             cap = p.get("caption") or ""
-            if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap):
+            if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap) and norm(best_film(cap, OTHERS + [film])) == norm(film):
                 n += 1
                 found.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
                               "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
@@ -228,17 +263,111 @@ def fetch(drive, ig, film, want=("trailer", "teaser", "glimpse", "promo"), force
         except Exception as e:
             errors.append(f"{c['account']}: {str(e)[:120]}")
             continue
-        entry = {"film": film, "kind": c["kind"], "file": f"{safe}.mp4", "sheet": f"{safe}.jpg", "duration": duration(local),
-                 "shots": meta, "source": "instagram", "account": c["account"], "link": c.get("link"), "title": c.get("title"),
-                 "fetched": status.stamp()}
-        if drive is not None:
-            drive.upload(local, "clip-library", name=entry["file"])
-            drive.upload(str(WORK / "sheets" / entry["sheet"]), "clip-library/sheets", name=entry["sheet"])
-            idx = index(drive)
-            idx["trailers"] = [t for t in idx["trailers"] if t["file"] != entry["file"]] + [entry]
-            drive.write_json("clip-library", "index.json", idx)
-        return entry
+        if drive is None:
+            return {"film": film, "kind": c["kind"], "duration": duration(local), "shots": meta, "account": c["account"]}
+        return file_entry(drive, film, c["kind"], local, meta, "instagram", c["account"], c.get("link"), c.get("title"))
     raise RuntimeError("; ".join(errors) or "download failed")
+
+
+def file_entry(drive, film, kind, local, meta, source, account, link=None, title=None, upload_video=True):
+    entry = {"film": film, "kind": kind, "file": os.path.basename(local), "sheet": os.path.basename(local)[:-4] + ".jpg",
+             "duration": duration(local), "shots": meta, "source": source, "account": account, "link": link, "title": title,
+             "fetched": status.stamp()}
+    if upload_video:
+        drive.upload(local, "clip-library", name=entry["file"])
+    drive.upload(str(WORK / "sheets" / entry["sheet"]), "clip-library/sheets", name=entry["sheet"])
+    idx = index(drive)
+    idx["trailers"] = [x for x in idx["trailers"] if x["file"] != entry["file"]] + [entry]
+    drive.write_json("clip-library", "index.json", idx)
+    return entry
+
+
+def film_from_name(name, known=()):
+    """'Vikram Kamal Haasan - Vikram Official Trailer [id].mp4' -> 'Vikram' (a film-bank title when one is named)."""
+    hit = best_film(re.sub(r"\[.*?\]", " ", name), list(known))
+    if hit:
+        return hit
+    base = re.sub(r"\.\w+$", "", name)
+    base = base.split(" - ")[0]
+    base = re.sub(r"\[.*?\]|\(.*?\)", " ", base)
+    base = re.sub(r"(?i)\b(official|trailer|teaser|glimpse|promo|hd|4k|tamil|full|video)\b", " ", base)
+    return re.sub(r"\s+", " ", base).strip(" -_") or name
+
+
+def adopt(drive):
+    """Trailers put in clip-library by hand or by the laptop helper: give each a shot grid and an index entry."""
+    idx = index(drive)
+    known = {x["file"] for x in idx["trailers"]}
+    fid = drive.folder("clip-library", create=False)
+    vids = [k for k in (drive.children(fid) if fid else []) if k.get("mimeType", "").startswith("video/") and k["name"] not in known]
+    done = []
+    for k in vids:
+        local = str(WORK / k["name"])
+        try:
+            drive.download(k["id"], local)
+            meta = grid(local, str(WORK / "sheets" / (k["name"][:-4] + ".jpg")))
+            file_entry(drive, film_from_name(k["name"], films_we_cover(drive)), kind_of(k["name"]) or "trailer", local, meta, "clip-library", "added by hand",
+                       upload_video=False)
+            done.append(k["name"])
+        except Exception as e:
+            print("could not file", k["name"], str(e)[:120])
+    return done
+
+
+def films_we_cover(drive):
+    bank = json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", [])
+    return list(dict.fromkeys([f["film"] for f in bank] + wanted(drive)))
+
+
+def crawl(drive, ig):
+    """Works back through each official account's history, one page at a time and inside the call budget, filing the
+    trailers of the films we cover (film bank and wanted list). Where it stopped is kept in Drive status/ig_crawl.json."""
+    state = drive.read_json("status", "ig_crawl.json") or {}
+    films = films_we_cover(drive)
+    idx = index(drive)
+    have_films = {norm(x["film"]) for x in idx["trailers"]}
+    filed, pages = [], 0
+    accounts = [a for a in settings().get("instagram_accounts", []) if not (state.get(a) or {}).get("done")]
+    try:
+        while accounts:
+            for acct in list(accounts):
+                st = state.setdefault(acct, {})
+                try:
+                    m = page(ig, acct, st.get("after"))
+                except OutOfCalls:
+                    raise
+                except Exception as e:
+                    st.update(done=True, note=str(e)[:100])
+                    accounts.remove(acct)
+                    continue
+                pages += 1
+                for p in m.get("data", []):
+                    cap = p.get("caption") or ""
+                    kind = kind_of(cap)
+                    if p.get("media_type") != "VIDEO" or kind not in ("trailer", "teaser", "glimpse") or not p.get("media_url"):
+                        continue
+                    film = best_film(cap, films)
+                    if not film or norm(film) in have_films:
+                        continue
+                    safe = re.sub(r'[\\/:*?"<>|]+', " ", f"{film} - {kind} [{p['id']}]").strip()
+                    local = str(WORK / f"{safe}.mp4")
+                    try:
+                        download(p["media_url"], local)
+                        meta = grid(local, str(WORK / "sheets" / f"{safe}.jpg"))
+                        file_entry(drive, film, kind, local, meta, "instagram", acct, p.get("permalink"), cap.splitlines()[0][:100])
+                        have_films.add(norm(film))
+                        filed.append(f"{film} ({kind}, @{acct})")
+                    except Exception as e:
+                        print("could not file", film, str(e)[:120])
+                st["after"], st["read"] = m.get("after"), st.get("read", 0) + len(m.get("data", []))
+                if not m.get("after"):
+                    st["done"] = True
+                    accounts.remove(acct)
+    except OutOfCalls:
+        pass
+    finally:
+        drive.write_json("status", "ig_crawl.json", state)
+    return filed, pages
 
 
 def wanted(drive):
@@ -254,6 +383,7 @@ def main():
     ap.add_argument("--wanted", action="store_true")
     ap.add_argument("--probe", nargs="*")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--crawl", action="store_true", help="also work back through the accounts' history (inside the call budget)")
     a = ap.parse_args()
     from .instagram import Instagram
     os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
@@ -264,6 +394,10 @@ def main():
         (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps({"instagram": f"refused: {str(e)[:300]}", "at": status.stamp()}, indent=1))
         print("Instagram refused:", str(e)[:300])
         raise SystemExit(1)
+    try:
+        OTHERS.extend(f["film"] for f in json.loads((niche_dir() / "knowledge" / "film_bank.json").read_text(encoding="utf-8")).get("films", []))
+    except Exception:
+        pass
     if a.probe is not None:
         out = {"instagram": f"ok as @{me.get('username')}", "at": status.stamp()}
         for film in a.probe:
@@ -283,16 +417,23 @@ def main():
     drive = Drive()
     CACHE["drive"] = drive
     films = a.film + (wanted(drive) if a.wanted else [])
+    adopted = adopt(drive)
     done, failed = [], {}
     for film in dict.fromkeys(films):
         try:
             e = fetch(drive, ig, film, force=a.force)
             done.append(f"{film}: {e['kind']} from {e['account']}")
+        except OutOfCalls as ex:
+            failed[film] = str(ex)
+            break
         except Exception as ex:
             failed[film] = str(ex)[:200]
     save_cache()
-    status.write(drive, "trailers.json", {"fetched": done, "failed": failed})
-    print(json.dumps({"fetched": done, "failed": failed}, indent=1, ensure_ascii=False))
+    filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
+    res = {"adopted": adopted, "fetched": done, "failed": failed, "history_search": f"{pages} pages read, filed: {filed}",
+           "instagram_calls": type(ig).calls}
+    status.write(drive, "trailers.json", res)
+    print(json.dumps(res, indent=1, ensure_ascii=False))
 
 
 if __name__ == "__main__":

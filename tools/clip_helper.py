@@ -7,6 +7,7 @@ From your own laptop it works. The Engine cuts its 2-4 second moments from whate
     python tools/clip_helper.py "Kaithi official trailer"            one film (the search words you would type on YouTube)
     python tools/clip_helper.py "Kaithi" "Vikram" "Jigarthanda"      several, one after another
     python tools/clip_helper.py https://www.youtube.com/watch?v=...  one exact video
+    python tools/clip_helper.py --film-bank                          every film in the film bank (one time, about 30 films)
 
 It saves the files into a folder called  clips_to_upload  next to this script.
 Then drag those files into Drive > iNiKKi Reels > clip-library. That is all.
@@ -47,8 +48,18 @@ def fetch(what):
     return r.returncode == 0
 
 
+def film_bank():
+    """Every film in the film bank (niches/tamil-cinema/knowledge/film_bank.json), as 'Film year official trailer'."""
+    p = os.path.join(os.path.dirname(OUT), "..", "niches", "tamil-cinema", "knowledge", "film_bank.json")
+    with open(p, encoding="utf-8") as f:
+        films = json.load(f).get("films", [])
+    return [f"{x['film']} {x.get('year', '')} official trailer".replace("  ", " ") for x in films]
+
+
 def main():
     wanted = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--film-bank" in sys.argv:
+        wanted += film_bank()
     if not wanted:
         print(__doc__)
         return

@@ -72,7 +72,10 @@ class Instagram:
         found = [(p["instagram_business_account"], p.get("name")) for p in j.get("data", []) if p.get("instagram_business_account")]
         return found
 
+    calls = 0                 # calls made by this run, all instances (Instagram allows about 200 an hour for this app)
+
     def get(self, path, **params):
+        Instagram.calls += 1
         params["access_token"] = self.token
         last = None
         for v in self.versions:
@@ -192,6 +195,7 @@ class Instagram:
 
     # ------------------------------------------------------------------ publishing (resumable upload: no public link needed)
     def post(self, path, **params):
+        Instagram.calls += 1
         params["access_token"] = self.token
         r = requests.post(f"{self.base}/{self.version}/{path.lstrip('/')}", data=params, timeout=120)
         try:
