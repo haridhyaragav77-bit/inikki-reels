@@ -160,6 +160,19 @@ def check(plan):
                 E.append(f"Screen {n}: the countdown needs at least 3.5 seconds (ready, 3, 2, 1).")
         n_img = len(images)
 
+    lo_hi = series.get("length_s") or []
+    if len(lo_hi) == 2 and screens:
+        if template == "card" and voiced:      # measured on the runner: about 2.5 s per spoken screen, about 11.5 Tamil letters a second
+            chars = sum(len(str(s.get("voice_line") or "").replace(" ", "")) for s in screens)
+            est = round(0.5 * chars / 11.5 + 0.5 * 2.5 * len(screens))
+        else:
+            est = round(sum(float(s.get("dur") or 0) for s in screens))
+        lo, hi = float(lo_hi[0]), float(lo_hi[1])
+        if est and est < lo * 0.9:
+            W.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Add about {max(1, round((lo - est) / 2.5))} "
+                     "more spoken screens (each is about 2.5 s), or say more in each line.")
+        elif est > hi * 1.15:
+            W.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Cut a screen or two.")
     if cap is not None and n_img > int(cap):
         E.append(f"The plan asks for {n_img} AI images; this series allows {cap} per reel.")
     for im in images:
