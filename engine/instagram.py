@@ -48,14 +48,19 @@ class Instagram:
         self.note = ""
 
     def _probe(self):
+        said = {}
         for route, host in ROUTES.items():
             fields = "id,username" if route == "instagram_login" else "id,name"
             try:
                 r = requests.get(f"{host}/{self.version}/me", params={"fields": fields, "access_token": self.token}, timeout=30).json()
-            except Exception:
+            except Exception as e:
+                said[route] = str(e)[:120]
                 continue
             if "error" not in r:
                 return route, host
+            said[route] = r["error"].get("message", "")
+        if "api access blocked" in str(said.get("facebook_login", "")).lower():     # Meta refuses the app right now: say so, plainly
+            raise InstagramError(plain_error({"error": {"message": said["facebook_login"]}}))
         return "instagram_login", ROUTES["instagram_login"]
 
     def resolve_user(self):
