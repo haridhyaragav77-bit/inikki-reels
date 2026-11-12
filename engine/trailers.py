@@ -174,10 +174,12 @@ def link(ig, acct, hit):
         return hit
     m = page(ig, acct, hit.get("_cur"), links=True, limit=int(hit.get("_i", 0)) + 3)
     p = next((x for x in m.get("data", []) if x.get("id") == hit["id"]), None)
+    got = sum(1 for x in m.get("data", []) if x.get("media_url"))
     if p is None:
-        hit["why"] = "the post was not at its place any more"
+        hit["why"] = f"the post was not at its place any more (links for {got} of {len(m.get('data', []))} posts there)"
     elif not p.get("media_url"):
-        hit["why"] = f"Meta sent no video link ({', '.join(sorted(k for k in p if not k.startswith('_')))})"
+        hit["why"] = (f"Meta sent no video link for this post, and links for {got} of {len(m.get('data', []))} posts around it"
+                      f" (fields: {', '.join(sorted(k for k in p if not k.startswith('_')))})")
     hit["url"], hit["link"] = (p or {}).get("media_url"), (p or {}).get("permalink")
     return hit
 
@@ -255,7 +257,7 @@ def candidates(ig, film, accounts, report=None, enough=("trailer",), deep=(), wa
     for acct in accounts:
         if have_it():
             break
-        top = int(settings().get("deep_pages", 8)) if acct in deep else 2
+        top = int(settings().get("deep_pages", 8)) if acct in deep else 1      # other accounts: the newest page (a new drop)
         kinds = want if acct in deep else enough
         ps = []
         try:
@@ -390,7 +392,7 @@ def fetch(drive, ig, film, want=("trailer", "teaser", "glimpse", "promo"), force
     if have(film, idx) and not force:
         return have(film, idx)[0]
     order = {k: i for i, k in enumerate(want)}
-    accounts = hint + [x for x in settings().get("instagram_accounts", []) if x not in hint]
+    accounts = hint or settings().get("instagram_accounts", [])     # a film's own accounts, when named, are the whole search
     cands = [c for c in candidates(ig, film, accounts, report=report, deep=set(hint), want=want) if c["kind"] in order and c.get("url")]
     if not cands:
         raise RuntimeError(f"no official trailer for {film} on the studio accounts (add it with the laptop helper)")
