@@ -88,6 +88,7 @@ def duration(path):
 
 # ---------------------------------------------------------------- official Instagram accounts
 _POSTS = {}
+_LINKS = {}          # video links asked for in this run, by post id
 OTHERS = []          # every film name we know, so a caption about a longer title is not taken for a shorter one
 CACHE = {"drive": None, "data": None}
 CACHE_HOURS = 6
@@ -133,26 +134,46 @@ def budget():
     return int(settings().get("max_calls_per_run", 60))
 
 
-def page(ig, acct, after=None):
-    """One page (page_size posts, 50) of an official account. Stops the run before it nears Instagram's hourly limit."""
+def page(ig, acct, after=None, links=None, limit=None):
+    """One page of an official account (page_size posts). Stops the run before it nears Meta's hourly meter.
+    Meta's meter counts processing time, so a normal page reads only captions; the video link is asked for later,
+    for the one post that matches (`links=True`, a page of `limit` posts from the same place)."""
     if STOPPED:
         raise OutOfCalls(STOPPED["why"])
     if type(ig).calls >= budget():
         raise OutOfCalls(f"stopped at {type(ig).calls} Instagram calls (the per-run budget)")
     if type(ig).usage >= int(settings().get("max_usage_percent", 50)):
         raise OutOfCalls(f"stopped: Meta says {type(ig).usage}% of the hourly allowance is used; the rest is kept for posting")
-    size = int(settings().get("page_size", 25))
+    if links is None:
+        links = not settings().get("scan_without_links", True)
+    size = int(limit or settings().get("page_size", 25))
     media = f"media.limit({size})" + (f".after({after})" if after else "")
+    fields = "id,caption,media_type,timestamp" + (",media_url,permalink" if links else "")
     try:
-        j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{id,caption,media_type,media_url,permalink,timestamp}}}}")
+        j = ig.get(ig.user_id, fields=f"business_discovery.username({acct}){{username,{media}{{{fields}}}}}")
     except Exception as e:
         if "reduce the amount of data" not in str(e).lower() or size <= 25:
             raise
         settings_cache["page_size"] = 25        # Meta wants smaller pages: use 25 for the rest of the run
-        return page(ig, acct, after)
+        return page(ig, acct, after, links, limit)
     m = (j.get("business_discovery") or {}).get("media") or {}
     m["after"] = ((m.get("paging") or {}).get("cursors") or {}).get("after")
+    for i, p in enumerate(m.get("data", [])):
+        p["_cur"], p["_i"] = after, i          # where the post sits, so its video link can be asked for alone
+        if p.get("caption"):
+            p["caption"] = p["caption"][:400]
     return m
+
+
+def link(ig, acct, hit):
+    """The video link (and post link) of one matched post: a small call from the same place in the account."""
+    if hit.get("url"):
+        return hit
+    m = page(ig, acct, hit.get("_cur"), links=True, limit=int(hit.get("_i", 0)) + 1)
+    p = next((x for x in m.get("data", []) if x.get("id") == hit["id"]), None)
+    if p:
+        hit["url"], hit["link"] = p.get("media_url"), p.get("permalink")
+    return hit
 
 
 BAD_HOURS = 72
@@ -193,45 +214,82 @@ def _matches(film, acct, ps):
         cap = p.get("caption") or ""
         if p.get("media_type") == "VIDEO" and mentions(film, cap) and kind_of(cap) and norm(best_film(cap, OTHERS + [film])) == norm(film):
             out.append({"account": acct, "id": p["id"], "kind": kind_of(cap), "url": p.get("media_url"),
-                        "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100]})
+                        "link": p.get("permalink"), "when": p.get("timestamp"), "title": cap.splitlines()[0][:100],
+                        "_cur": p.get("_cur"), "_i": p.get("_i", 0)})
     return out
 
 
-def candidates(ig, film, accounts, report=None, enough=("trailer",), deep=()):
+def _rank(kinds):
+    return lambda h: (kinds.index(h["kind"]) if h["kind"] in kinds else 99, -int(re.sub(r"\D", "", str(h.get("when") or "0"))[:14] or 0))
+
+
+def _ask(ig, acct, hits, kinds):
+    """Ask for the video link of the best matching post not asked about yet (one small call). True if a link came back."""
+    pend = sorted([_LINKS.get(h["id"], h) for h in hits if h["kind"] in kinds], key=_rank(kinds))
+    pend = [h for h in pend if not h.get("url") and not h.get("_asked")]
+    if not pend:
+        return False
+    h = pend[0]
+    h["_asked"] = True
+    _LINKS[h["id"]] = link(ig, acct, h)
+    return bool(h.get("url"))
+
+
+def candidates(ig, film, accounts, report=None, enough=("trailer",), deep=(), want=("trailer", "teaser", "glimpse", "promo")):
     """Video posts of the official accounts whose caption names the film and says trailer, teaser, glimpse ...
-    The search stops at the first account that gives a real trailer with its video link (kinds in `enough`).
-    Accounts in `deep` (the film's own) are read back up to `deep_pages` pages, page by page, until the trailer shows."""
+    The search stops at the first account that gives a real trailer with its video link (kinds in `enough`); on the
+    film's own accounts (`deep`) any wanted kind is enough, and they are read back up to `deep_pages` pages.
+    Pages are read without video links (Meta's meter counts time); the link is asked for only for the best match.
+    When Meta's meter or the call budget stops the run, what was found so far is still returned."""
     found = []
-    good = lambda: any(f["kind"] in enough and f.get("url") for f in found)
+    have_it = lambda: any(f.get("url") and f["kind"] in (want if f["account"] in deep else enough) for f in found)
+    hits_of = lambda acct, ps: [_LINKS.get(h["id"], h) for h in _matches(film, acct, ps)]
+    stopped = None
     for acct in accounts:
-        if good():
+        if have_it():
             break
         top = int(settings().get("deep_pages", 8)) if acct in deep else 2
+        kinds = want if acct in deep else enough
+        ps = []
         try:
-            ps, n = [], 0
             for k in range(1, top + 1):
                 ps = posts(ig, acct, pages=k, deep=acct in deep)
-                hits = _matches(film, acct, ps)
-                if any(h["kind"] in enough and h.get("url") for h in hits) or _POSTS[acct]["end"]:
+                if _ask(ig, acct, hits_of(acct, ps), kinds) or any(h.get("url") and h["kind"] in kinds for h in hits_of(acct, ps)) \
+                        or _POSTS[acct]["end"]:
                     break
-            hits = _matches(film, acct, ps)
-            found += hits
-            n = len(hits)
-        except OutOfCalls:
-            raise
+        except OutOfCalls as e:
+            stopped = str(e)
         except Exception as e:
             if limited(e):
-                raise OutOfCalls(STOPPED["why"])     # stop at once, never hammer
-            _POSTS[acct] = {"posts": [], "after": None, "pages": 99, "end": True}
-            if not str(e).startswith("skipped"):
-                _cache()[acct] = {"t": status.now().timestamp(), "posts": [], "bad": str(e)[:120]}
-            if report is not None:
-                report[acct] = f"not readable: {str(e)[:90]}"
-            continue
+                stopped = STOPPED["why"]
+            else:
+                _POSTS[acct] = {"posts": [], "after": None, "pages": 99, "end": True}
+                if not str(e).startswith("skipped"):
+                    _cache()[acct] = {"t": status.now().timestamp(), "posts": [], "bad": str(e)[:120]}
+                if report is not None:
+                    report[acct] = f"not readable: {str(e)[:90]}"
+                continue
+        hits = hits_of(acct, ps)
+        found += hits
         if report is not None:
             back = min((p.get("timestamp") or "")[:10] for p in ps) if ps else "-"
-            report[acct] = f"{n} match in {len(ps)} posts back to {back}" + (
-                "" if all(f.get("url") for f in found if f["account"] == acct) else " (no video link given)")
+            report[acct] = f"{len(hits)} match in {len(ps)} posts back to {back}" + "".join(
+                f" | {h['kind']} {str(h.get('when'))[:10]}{'' if h.get('url') else ' (no video link yet)'}: {h['title'][:60]}" for h in hits[:3])
+        if stopped:
+            break
+    if not stopped and not any(f.get("url") and f["kind"] in want for f in found):
+        try:                                   # no trailer anywhere: the best teaser or glimpse found on the way
+            for acct in dict.fromkeys(f["account"] for f in sorted(found, key=_rank(list(want)))):
+                if _ask(ig, acct, [f for f in found if f["account"] == acct], list(want)):
+                    break
+        except OutOfCalls as e:
+            stopped = str(e)
+        found = [_LINKS.get(f["id"], f) for f in found]
+    if stopped:
+        if report is not None:
+            report["stopped"] = stopped
+        if not any(f.get("url") for f in found):
+            raise OutOfCalls(stopped)
     return found
 
 
@@ -320,10 +378,10 @@ def fetch(drive, ig, film, want=("trailer", "teaser", "glimpse", "promo"), force
         return have(film, idx)[0]
     order = {k: i for i, k in enumerate(want)}
     accounts = hint + [x for x in settings().get("instagram_accounts", []) if x not in hint]
-    cands = [c for c in candidates(ig, film, accounts, report=report, deep=set(hint)) if c["kind"] in order and c.get("url")]
+    cands = [c for c in candidates(ig, film, accounts, report=report, deep=set(hint), want=want) if c["kind"] in order and c.get("url")]
     if not cands:
         raise RuntimeError(f"no official trailer for {film} on the studio accounts (add it with the laptop helper)")
-    cands.sort(key=lambda c: (order[c["kind"]], -(int(re.sub(r"\D", "", c.get("when") or "0")[:14] or 0))))
+    cands.sort(key=lambda c: (order[c["kind"]], c["account"] not in hint, -(int(re.sub(r"\D", "", c.get("when") or "0")[:14] or 0))))
     errors = []
     for c in cands[:3]:
         safe = re.sub(r'[\\/:*?"<>|]+', " ", f"{film} - {c['kind']} [{c['id']}]").strip()
@@ -417,11 +475,16 @@ def crawl(drive, ig):
                 for p in m.get("data", []):
                     cap = p.get("caption") or ""
                     kind = kind_of(cap)
-                    if p.get("media_type") != "VIDEO" or kind not in ("trailer", "teaser", "glimpse") or not p.get("media_url"):
+                    if p.get("media_type") != "VIDEO" or kind not in ("trailer", "teaser", "glimpse"):
                         continue
                     film = best_film(cap, films)
                     if not film or norm(film) in have_films:
                         continue
+                    if not p.get("media_url"):          # pages are read without links: ask for this one post's link
+                        h = link(ig, acct, {"id": p["id"], "_cur": p.get("_cur"), "_i": p.get("_i", 0)})
+                        p["media_url"], p["permalink"] = h.get("url"), h.get("link")
+                        if not p["media_url"]:
+                            continue
                     safe = re.sub(r'[\\/:*?"<>|]+', " ", f"{film} - {kind} [{p['id']}]").strip()
                     local = str(WORK / f"{safe}.mp4")
                     try:
@@ -523,7 +586,8 @@ def main():
     filed, pages = crawl(drive, ig) if a.crawl else ([], 0)
     want(drive, [])          # drop the films that now have a trailer
     res = {"adopted": adopted, "fetched": done, "failed": failed, "history_search": f"{pages} pages read, filed: {filed}",
-           "instagram_calls": type(ig).calls, "accounts": {f: n for f, n in notes.items() if n}, "meta_meters": type(ig).usage_raw}
+           "instagram_calls": type(ig).calls, "accounts": {f: n for f, n in notes.items() if n}, "meta_meters": type(ig).usage_raw,
+           "seconds_per_call": type(ig).seconds}
     status.write(drive, "trailers.json", res)
     print(json.dumps(res, indent=1, ensure_ascii=False))
     (OUT / "peek" / "trailers" / "result.json").write_text(json.dumps({**res, "at": status.stamp(), "meta_usage_percent": type(ig).usage},
