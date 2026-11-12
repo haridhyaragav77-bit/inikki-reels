@@ -12,7 +12,7 @@ A self-running Tamil cinema Instagram page (@inikki_reels).
 - `lab/` — ideas, pitches and pilot results for new series
 - `plans/` — one small plan per reel, written by the Brain (`plans/reference/` holds the three golden reels)
 - `data/` — brief, metrics and feedback (text only)
-- `engine/`, `templates/`, `.github/workflows/` — the Engine (code)
+- `engine/`, `templates/`, `.github/workflows/` — the Engine (code): make, post, news watch, stats, brief, clean-up, health, dashboard, sync (AGENT.md 4.3)
 - `.claude/skills/` — the saver skills the Brain uses
 - `tools/` — the voice tool, the trailer helper for your laptop, the Drive sign-in helper
 - `archive/v1/` — the earlier design, kept for reference
