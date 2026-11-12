@@ -256,10 +256,16 @@ def main():
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
     from .instagram import Instagram
-    ig = Instagram()
-    ig.me()
+    os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
+    try:
+        ig = Instagram()
+        me = ig.me()
+    except Exception as e:
+        (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps({"instagram": f"refused: {str(e)[:300]}", "at": status.stamp()}, indent=1))
+        print("Instagram refused:", str(e)[:300])
+        raise SystemExit(1)
     if a.probe is not None:
-        out = {}
+        out = {"instagram": f"ok as @{me.get('username')}", "at": status.stamp()}
         for film in a.probe:
             rep = {}
             try:
@@ -269,7 +275,6 @@ def main():
                 rep["result"] = f"FAILED: {ex}"
             out[film] = rep
             print(film, json.dumps(rep, indent=1, ensure_ascii=False))
-        os.makedirs(OUT / "peek" / "trailers", exist_ok=True)
         (OUT / "peek" / "trailers" / "probe.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
         if (WORK / "sheets").exists():
             shutil.copytree(WORK / "sheets", OUT / "peek" / "trailers" / "sheets", dirs_exist_ok=True)
