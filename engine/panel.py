@@ -98,15 +98,25 @@ def schedule(ctl, now, hours=40):
     labels = ENGINE.get("schedule_labels") or {}
     slots = sorted(set(ctl.settings.get("slots", []) + ctl.settings.get("flex_slots", [])))
     out = []
-    for job, cron in engine_clock():
+    for s in slots:                                   # Post is started at each slot by the clock tasks (AGENT.md 4.3)
+        for t in think_times(s, now, hours):
+            out.append({"at": t.isoformat(timespec="minutes"), "what": f"Post · {s} slot", "kind": "post"})
+    for c in ENGINE.get("clock") or []:
+        for t in think_times(c.get("at", ""), now, hours):
+            out.append({"at": t.isoformat(timespec="minutes"), "what": c.get("what", "job"), "kind": c.get("kind", "daily")})
+    for job, cron in engine_clock():                  # the rest still hangs on GitHub's own timer, which may run late
+        if job == "post":
+            continue
         lab = labels.get(job, job)
         lab = lab.get(cron, job) if isinstance(lab, dict) else lab
         for t in cron_times(cron, now, hours):
-            what, kind = lab, job
-            if job == "post":
-                slot = next((s for s in slots if 0 <= (dt.datetime.combine(t.date(), dt.time(*map(int, s.split(":"))), status.IST) - t).total_seconds() <= 1500), None)
-                what = f"Post · {slot} slot" if slot else "Post"
-            out.append({"at": t.isoformat(timespec="minutes"), "what": what, "kind": kind})
+            out.append({"at": t.isoformat(timespec="minutes"), "what": lab, "kind": job})
+    seen, uniq = set(), []
+    for x in sorted(out, key=lambda x: x["at"]):
+        if (x["at"], x["what"]) not in seen:
+            seen.add((x["at"], x["what"]))
+            uniq.append(x)
+    out = uniq
     for name, spec in (ctl.settings.get("thinking_runs") or {}).items():
         for t in think_times(spec, now, hours):
             out.append({"at": t.isoformat(timespec="minutes"), "what": f"Thinking run · {name.capitalize()}", "kind": "think"})
