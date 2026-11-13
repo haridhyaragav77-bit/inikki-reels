@@ -1,13 +1,10 @@
-# Brief · refresh run · 2026-11-13 (written 2026-11-13 23:30 IST)
+# Brief · plan run · 2026-11-14 (written 2026-11-14 05:13 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, commands.jsonl
 
 ## To do
-1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
-2. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
-3. Feedback: nothing new.
-4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
+1. Plan 7 reel(s) for 2026-11-14 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-14/<reel_id>.json and check it with: python -m engine.plancheck <file>.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -16,7 +13,7 @@ Control Room settings copied to data/control/: switch.json, overrides.yaml, comm
 - movie-recommendations: Make reels slightly longer, match the reading pace of a person to the reel and secondly add a motion graphics of the plot of the movie and extend length of reel accordingly so ppl get excited about the plot of each movie also without any spoilers (2026-11-13)
 - movie-review: Change series to be more direct of its content which is movie review, people may skip thinking it's something else and use the actors make sure a popular element like the actors face, post is on the first fram and make it feel richer for the visual hook and interesting visual desings to it make the  (2026-11-13)
 
-## Today's slots (2026-11-13)
+## Today's slots (2026-11-14)
 | time | series | template | notes |
 | --- | --- | --- | --- |
 | 08:30 | movie-updates | bulletin | voice: case by case, 15-30 s |
@@ -64,7 +61,6 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
-Digest 'Needs you' line: 2 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 
 ## New trailers in the library (last 3 days)
 - Lubber Pandhu (trailer, grid: clip-library/sheets/Lubber Pandhu - trailer [oP88LHBukW8].jpg)
@@ -76,20 +72,11 @@ Digest 'Needs you' line: 2 trailer(s) to get, command in Drive requests/trailers
 Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days, artwork-quote after a dull stretch.
 
-## Today's reels
-| slot | reel | series | state | note |
-| --- | --- | --- | --- | --- |
-| 15:30 | 2026-11-13-watch-loved-jailer-2 | movie-recommendations | posted |  |
-| 18:00 | 2026-11-13-pipeline-test-update | movie-updates | skipped | Skipped by Harish. |
-| 20:00 | 2026-11-13-pipeline-test-breakdown | film-breakdown | skipped | Skipped by Harish. |
-| 21:30 | 2026-11-13-update-jailer2-ott | movie-updates | posted |  |
-| - | 2026-11-13-update-inji-vellam-date | movie-updates | skipped | Skipped by Harish. |
-
 ## Yesterday's numbers (per reach; colour against the series median)
-Nothing posted yesterday.
-
-## Early numbers (2 hours after posting)
-- 2026-11-13-watch-loved-jailer-2: 115 views, share 0.0%, skip 67.6%
+| reel | series | views | skip | watch | share | follow |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2026-11-13-watch-loved-jailer-2 | movie-recommendations | 131 | 70.5% green | 30.7% green | 0.0% grey | - grey |
+| 2026-11-13-update-jailer2-ott | movie-updates | 703 | 85.6% green | 17.6% green | 0.0% grey | - grey |
 
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 15 publishers (6 trusted)
@@ -115,6 +102,6 @@ Nothing posted yesterday.
 ## Money and limits
 - Images ₹26 of ₹500 this month
 - Runner minutes: 368 of 2000 this month
-- Storage: 3.07 GB of 8 GB
+- Storage: 4.22 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
