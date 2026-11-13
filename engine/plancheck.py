@@ -1,8 +1,10 @@
 """Plan check (AGENT.md 5.10 "the standard", skill plan-reel). A plan that fails is not made.
 
-    python -m engine.plancheck plans/2026-11-12/*.json
+    python -m engine.plancheck plans/2026-11-14/*.json
 
-Says in plain words what is wrong. Errors stop the reel; warnings do not."""
+Says in plain words what is wrong. Errors stop the reel; notes do not.
+Plans in the approved looks (Stage, Bulletin, Poster Wall, Verdict, Flash; templates/README.md) get check_look;
+plans in the older looks (Cinematic, Diorama) get the earlier checks below it."""
 import json
 import re
 import sys
@@ -24,8 +26,236 @@ def _words(t):
     return len(re.sub(r"[*{}]", "", str(t or "")).split())
 
 
+# ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
+LOOK_KINDS = {
+    "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "end"},
+    "bulletin": {"title", "number", "bars", "ladder", "end"},
+    "poster-wall": {"title", "film", "recap"},
+    "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
+    "flash": {"title", "date", "team", "fact", "end"},
+}
+LAST_KIND = {"poster-wall": "recap"}          # every other look ends on "end"
+SPEAKS = {"stage"}                            # looks that carry a voice: TURN SOUND ON + Tamil and Tanglish subtitles
+TRANSITIONS = {"whip", "push", "zoom", "flash", "glitch", "wipe", "cut"}
+SOUNDS = {"whoosh", "impact", "stamp", "tick", "pop", "glitch", "riser"}
+DATED_ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")
+
+
+def series_of(plan):
+    p = niche_dir() / "series" / str(plan.get("series")) / "series.yaml"
+    return (load_yaml(p.relative_to(ROOT)) or {}) if plan.get("series") and p.exists() else {}
+
+
+def _label_words(t):
+    return len([w for w in str(t or "").split() if re.search(r"\w", w)])
+
+
+def _music_keys():
+    with open(ROOT / "engine" / "music_index.json", encoding="utf-8") as f:
+        return set(json.load(f)["tracks"])
+
+
+def _recommended_before(reel_id):
+    """Films other reels have already recommended (knowledge/recommended_log.csv)."""
+    import csv
+    p = niche_dir() / "knowledge" / "recommended_log.csv"
+    if not p.exists():
+        return set()
+    with open(p, encoding="utf-8") as f:
+        return {r["film"].strip().lower() for r in csv.DictReader(f) if r.get("reel_id") != reel_id}
+
+
+def _walk(v, key):
+    """Every value stored under `key` anywhere inside v."""
+    if isinstance(v, dict):
+        for k, x in v.items():
+            if k == key:
+                yield x
+            yield from _walk(x, key)
+    elif isinstance(v, list):
+        for x in v:
+            yield from _walk(x, key)
+
+
+def check_look(plan, series):
+    """A plan in an approved look, against the standard for every reel (AGENT.md 5.10). Returns (errors, notes)."""
+    E, W = [], []
+    sid = plan.get("series")
+    tpl = plan.get("template") or series.get("template")
+    rid = plan.get("id") or plan.get("reel_id") or ""
+    if not series:
+        E.append(f"Series '{sid}' has no settings card in this niche.")
+    if not DATED_ID.match(rid):
+        E.append("The plan's 'id' must start with its date, e.g. 2026-11-14-breakdown-kaithi.")
+    if series.get("template") and series["template"] != tpl:
+        E.append(f"Series '{sid}' has its own look, '{series['template']}'; this plan asks for '{tpl}' (AGENT.md 6.6).")
+    screens = plan.get("screens") or []
+    if not screens:
+        return E + ["The plan has no screens."], W
+    kinds = [s.get("kind") for s in screens]
+    for n, k in enumerate(kinds, 1):
+        if k not in LOOK_KINDS[tpl]:
+            E.append(f"Screen {n}: '{k}' is not a screen of the {tpl} look. Use one of: {', '.join(sorted(LOOK_KINDS[tpl]))}.")
+    if kinds[0] != "title":
+        E.append("Screen 1 must be the title screen: the film and what the reel is, big and clear (AGENT.md 5.3).")
+    if kinds[-1] != LAST_KIND.get(tpl, "end"):
+        E.append(f"The last screen must be '{LAST_KIND.get(tpl, 'end')}': the send prompt with the page name (AGENT.md 5.3).")
+
+    # value first: the worth-it test is answered before the script (AGENT.md 5.7)
+    lead, worth = plan.get("lead") or {}, plan.get("worth_it") or {}
+    if not lead.get("topic"):
+        E.append("The plan has no 'lead.topic'.")
+    if len([v for v in worth.values() if str(v).strip()]) < 2:
+        E.append("Answer the worth-it test before the script, in 'worth_it' (AGENT.md 5.7).")
+    need = int(series.get("proof_required") or 0)
+    if sid == "movie-recommendations" and not lead.get("person"):
+        need = 0                                            # proof of the list itself is only for "They recommend"
+    if need and len(lead.get("sources") or []) < need:
+        E.append(f"This series needs {need} trusted sources that agree; 'lead.sources' lists {len(lead.get('sources') or [])}.")
+
+    # screens: how each arrives, sounds, length of each screen, pictures
+    assets = plan.get("assets") or {}
+    voiced = bool((plan.get("voice") or {}).get("on"))
+    for n, s in enumerate(screens, 1):
+        if s.get("in") and s["in"] not in TRANSITIONS:
+            E.append(f"Screen {n}: transition '{s['in']}' does not exist. Use one of: {', '.join(sorted(TRANSITIONS))}.")
+        for fx in s.get("sfx") or []:
+            if isinstance(fx, dict) and fx.get("type") not in SOUNDS:
+                W.append(f"Screen {n}: sound '{fx.get('type')}' does not exist and is skipped.")
+        if not s.get("voice") and not s.get("dur"):
+            E.append(f"Screen {n} has no voice line and no 'dur' (seconds), so its length is unknown.")
+        if s.get("voice") and not voiced:
+            E.append(f"Screen {n} has a voice line, but the reel's voice is off.")
+        for key in ("image", "posters"):
+            for v in _walk(s, key):
+                for name in (v if isinstance(v, list) else [v]):
+                    if isinstance(name, str) and name not in assets:
+                        E.append(f"Screen {n} uses the picture '{name}', which is not in 'assets'.")
+        for v in _walk(s, "text") if s.get("kind") == "pins" else []:
+            if _label_words(v) > 3:
+                W.append(f"Screen {n}: the label '{v}' has more than 3 words (AGENT.md 5.8).")
+        for cue in _walk(s, "cue"):
+            if isinstance(cue, dict) and cue.get("word") and cue["word"] not in str(s.get("voice") or ""):
+                E.append(f"Screen {n}: a graphic waits for the word '{cue['word']}', which the voice line does not say.")
+        for cue in (s.get("cues") or {}).values() if isinstance(s.get("cues"), dict) else []:
+            if isinstance(cue, dict) and cue.get("word") and cue["word"] not in str(s.get("voice") or ""):
+                E.append(f"Screen {n}: a graphic waits for the word '{cue['word']}', which the voice line does not say.")
+
+    # voice: sound-on prompt and subtitles come with it (AGENT.md 5.3)
+    if voiced:
+        if tpl not in SPEAKS:
+            E.append(f"The {tpl} look has no subtitles yet, so this reel must be music-only: set voice.on to false (AGENT.md 5.3).")
+        if plan.get("subtitles") is False:
+            E.append("Voiced reels carry Tamil + Tanglish subtitles: remove 'subtitles: false' (AGENT.md 5.3).")
+        for n, s in enumerate(screens, 1):
+            ta, tg = str(s.get("voice") or ""), str(s.get("voice_tg") or "")
+            if not ta:
+                continue
+            if not TAMIL.search(ta):
+                E.append(f"Screen {n}: the voice line is not in Tamil script.")
+            if not tg:
+                E.append(f"Screen {n}: the voice line has no Tanglish line ('voice_tg') for the subtitles.")
+            elif TAMIL.search(tg):
+                E.append(f"Screen {n}: the Tanglish line has Tamil letters in it. Write it in English letters.")
+            elif len(ta.split()) != len(tg.split()):
+                E.append(f"Screen {n}: the Tanglish line has {len(tg.split())} words and the Tamil line {len(ta.split())}. "
+                         "They must match word for word, or the subtitles drift.")
+
+    # music: on frame 1, 1-3 parts that follow the story, from the library (AGENT.md 5.4)
+    secs = (plan.get("music") or {}).get("sections") or []
+    if not secs:
+        E.append("The plan has no music. Music starts on frame 1 and follows the story (AGENT.md 5.4).")
+    else:
+        f0 = secs[0]
+        if ("screen" in f0 and f0["screen"] != 0) or ("screen" not in f0 and float(f0.get("at", 0)) > 0):
+            E.append("The music must start on frame 1: the first music part starts on screen 0.")
+        if len(secs) > 3:
+            W.append(f"{len(secs)} music parts; 1 to 3 that follow the story work best (AGENT.md 5.4).")
+        keys = _music_keys()
+        for sec in secs:
+            if sec.get("track") not in keys:
+                E.append(f"Music track '{sec.get('track')}' is not in engine/music_index.json, so the Engine cannot fetch it.")
+            if "screen" in sec and not 0 <= int(sec["screen"]) < len(screens):
+                E.append(f"Music track '{sec.get('track')}' starts on screen {sec['screen']}, which does not exist.")
+
+    # length: set by the content, inside the series range (AGENT.md 5.9)
+    lo, hi = series.get("length_s") or [10, 75]
+    top = series.get("length_max_s", hi)
+    pl = plan.get("length_s") or [lo, hi]
+    if pl[1] > top:
+        E.append(f"The plan allows {pl[1]} s; this series allows {top} s at most.")
+    if pl[1] > 45 and not plan.get("length_reason"):
+        E.append("Over 45 seconds needs a reason in 'length_reason' (AGENT.md 5.9).")
+    if not voiced:
+        est = sum(float(s.get("dur") or 0) for s in screens)
+        if est and not pl[0] - 1 <= est <= pl[1] + 1:
+            W.append(f"The screens add up to about {est:.1f} s; the plan allows {pl[0]} to {pl[1]} s.")
+
+    # series rules that code can check
+    if sid == "film-breakdown":
+        if not lead.get("insight"):
+            E.append("Value first: the plan has no 'lead.insight' (AGENT.md 5.7).")
+        tech = [s for s in screens if s.get("kind") == "technique"]
+        if not tech:
+            E.append("Every breakdown pins a named technique (AGENT.md 5.7): add a 'technique' screen with its name and definition.")
+        else:
+            t = tech[0]
+            if not t.get("name"):
+                E.append("The technique screen has no 'name' (for example FRAME STORY).")
+            if not t.get("definition"):
+                E.append("The technique screen has no 'definition'.")
+            elif _label_words(t["definition"]) > 6:
+                W.append(f"The definition '{t['definition']}' is long; 6 words or fewer read best.")
+            if t.get("name") and str(t["name"]).lower() not in str(screens[-1].get("recap", "")).lower():
+                E.append(f"The end card must recap the technique, e.g. \"recap\": \"TECHNIQUE: {t['name']}\".")
+    if tpl == "poster-wall":
+        films = [(n, s) for n, s in enumerate(screens, 1) if s.get("kind") == "film"]
+        if len(films) not in (1, 3, 4, 5):
+            W.append(f"{len(films)} films; a list is 3 to 5 (or one film you missed).")
+        before = _recommended_before(rid)
+        for n, s in films:
+            name = str(s.get("title") or f"screen {n}")
+            r = s.get("rating")
+            if not isinstance(r, (int, float)) or not 0 < r <= 5:
+                E.append(f"{name}: no Letterboxd rating (a number out of 5).")
+            if not s.get("proof"):
+                E.append(f"{name}: no award, festival or famous fact ('proof').")
+            if not s.get("watch"):
+                E.append(f"{name}: no 'watch' (where to watch in India, checked on JustWatch on the day).")
+            if not s.get("reason"):
+                E.append(f"{name}: no reason to watch.")
+            elif _label_words(s["reason"]) > 6:
+                E.append(f"{name}: the reason has {_label_words(s['reason'])} words; 6 or fewer.")
+            if name.lower() in before:
+                E.append(f"{name} was recommended before (recommended_log.csv). Never recommend a film twice.")
+    if tpl == "verdict":
+        for c in (c for s in screens if s.get("kind") == "critics" for c in s.get("cards") or []):
+            if not c.get("critic") or not c.get("outlet"):
+                E.append("Every critic quote is named: give the critic and the outlet.")
+
+    vir = plan.get("virality") or {}
+    if isinstance(vir.get("value"), (int, float)) and vir["value"] < 6:
+        E.append("The Value score is under 6, so the reel fails whatever its total (AGENT.md 5.2).")
+
+    # the post itself
+    pk = plan.get("package") or {}
+    if not pk.get("cover"):
+        E.append("No cover title in 'package.cover' (it names the reel in Drive and on the grid).")
+    if not pk.get("caption"):
+        E.append("No caption in 'package.caption'.")
+    tags = pk.get("hashtags") or []
+    if not 3 <= len(tags) <= 5:
+        W.append(f"The caption has {len(tags)} hashtags (3 to 5 is the rule).")
+    if not (pk.get("slot") or plan.get("slot") or plan.get("post_at")):
+        W.append("No slot: the reel will be made, but it has no posting time.")
+    return E, W
+
+
 def check(plan):
     """Returns (errors, warnings) as lists of plain sentences."""
+    series = series_of(plan)
+    if (plan.get("template") or series.get("template")) in LOOK_KINDS:
+        return check_look(plan, series)
     E, W = [], []
     for k in ("reel_id", "series", "screens"):
         if not plan.get(k):

@@ -1040,7 +1040,7 @@ Rules:
 ```
 
 ### Block D — Scheduled thinking runs
-Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, default environment, schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings) (the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
+Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, default environment, schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
 Each run saves its work on its own branch `claude/brain-<run>-<date>`. The Engine's Sync job checks it and copies only allowed text files into the live settings.
 The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigger → + → API → Generate token. Put the Fire URL in the GitHub secret `BRAIN_FIRE_URL` and the token in `BRAIN_FIRE_TOKEN`.
 
@@ -1049,11 +1049,15 @@ The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigge
 Use skill quiet-exit. Then read data/brief.md and AGENT.md sections 5 and 6 only if needed.
 Wear the hats in order (team/ cards): Researcher → Script Writer → Content Specialist →
 Marketing Expert → Branding Expert → Virality Advisor. Plan today's full lineup with skill
-plan-reel and skill score-reel. Every reel follows the standard (AGENT.md 5.10) and copies its series' reference plan
-(plans/reference/). Breakdowns pin a named technique (5.7); recommendations 5.12; trailer breakdowns 5.13. Pictures
-are the film's own official stills, posters and trailer frames (5.11), picked from Google Drive clip-library/sheets/. For each film under "Trailers to get" in the brief, find its official YouTube
-trailer and add "Film = link" to data/notes/trailer_links.md. Keep 2 reserves for the day. Your settings from the
-Control Room are in data/control/. Write plans to plans/<today>/ and commit "plan <date>".
+plan-reel and skill score-reel. Every reel follows the standard (AGENT.md 5.10) and copies its
+series' reference plan (plans/reference/). Breakdowns pin a named technique (5.7); recommendations
+5.12; trailer breakdowns 5.13. Pictures are the film's own official stills, posters and trailer
+frames (5.11): official YouTube frames and posters for the approved looks; trailer moments from the
+shot grids in Google Drive clip-library/sheets/ for the older looks. Check every plan with
+python -m engine.plancheck and fix what it reports. For each film under "Trailers to get" in the
+brief, find its official YouTube trailer and add "Film = link" to data/notes/trailer_links.md.
+Keep 2 reserves for the day. Your settings from the Control Room are in data/control/. Write plans
+to plans/<today>/ and commit "plan <date>".
 
 [REFRESH — daily 16:37 IST]
 Use skill quiet-exit. Read data/brief.md. Researcher: breaking check; refresh tonight's updates
@@ -1229,22 +1233,38 @@ nothing to do for this run, stop without committing anything.
 data/brief.md is written by the Engine before each run: today's slots, top 5 trends, yesterday's
 rates with colours, active tests and rules, bank level, budgets, alerts, new feedback. Start
 from it. Open another file only when the brief points to it. Do not read raw metrics or old plans.
+Your Control Room settings are in data/control/. Notes meant for Harish go to data/out/
+(digest.md, weekly_report.md, monthly_review.md, alerts.md); the Engine puts them in Drive.
 
 # plan-reel
-Fill the plan form for the series' template in templates/<template>/plan_form.json. Fill every
-field once, in this order: lead, insight, worth-it answers, title screen, hook, script and voice
-lines, motion graphics per screen, visuals per screen, music sections (mood + start time), meme,
-voice on/off, captions, length (reason if over 45 s), caption, hashtags, cover, time, fallbacks.
-Keep each screen to one line of headline. Copy the structure of the series' reference plan
-(plans/reference/, AGENT.md 6.6). Validate with: python -m engine.plancheck <plan file>. Fix what
-it reports, then save. Pictures: the film's own official stills, posters or trailer frames (5.11).
-Stories: AI pictures for the build-up, written as exact film shots with one character description
-repeated word for word; the reveal beat uses {trailer: {film, at}} from the person's own trailer.
+Approved looks (Stage, Bulletin, Poster Wall, Verdict, Flash): the plan form is templates/README.md. Copy the
+series' reference plan (plans/reference/, named under "reference" in its series.yaml) and change only the content.
+Work in this order (value first, AGENT.md 5.7): lead (topic, insight, sources) → worth_it answers → script (Tamil
+voice lines in short sentences; each also written word for word in Tanglish as voice_tg) → screens and motion
+graphics from niches/tamil-cinema/motion_library.md → pictures last → music → package.
+- Breakdowns: pin one named technique on a "technique" screen (name, and a definition of 6 words or fewer) and
+  recap it on the end card ("recap": "TECHNIQUE: <NAME>"). About 1 minute.
+- Watch This Next: every film screen has rating (Letterboxd), proof (one award, festival or famous fact), watch
+  (where to watch in India, checked on JustWatch today) and a reason of 6 words or fewer. Add each film to
+  niches/tamil-cinema/knowledge/recommended_log.csv.
+- Updates and breaking: music-only, no spoilers, 2 trusted sources in lead.sources.
+- Pictures: the film's own official stills, posters or trailer frames (AGENT.md 5.11). An official YouTube frame is
+  {"src": "engine/.cache/stills/<film>/<youtube id>_maxres2.jpg"} (maxresdefault, maxres1, maxres2, maxres3);
+  anything else gives "fetch": {"url": "..."}. Add "crop": [x, y, w, h] (0-1) to cut baked-in text.
+- Graphics land on a word the voice says: {"cue": {"word": "<a word from that screen's Tamil line>"}}.
+- Music: 1-3 parts from engine/music_index.json that follow the story; the first starts on screen 0. Bold, never subtle.
+- Package: caption lines, 3-5 hashtags, cover title (it names the reel in Drive), slot, first comment.
+- The id is "<date>-<short name>" (e.g. 2026-11-14-breakdown-kaithi); save it as plans/<date>/<id>.json.
+Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
+Older looks (Diorama for Guess the Movie, Cinematic for Artwork + Quote): fill templates/<template>/plan_form.json
+and validate the same way.
+If the check cannot start because a module is missing: pip install -q pyyaml, then run it again.
 
 # score-reel
 Score the plan on 8 lines, 0–10 each: value, hook, send trigger, comment trigger, save value,
 pacing, loop, timely and original. Value under 6 = fail. Give the total out of 100 and the 2
-weakest lines with one fix each. No other text.
+weakest lines with one fix each. Write the scores into the plan as "virality": {"value": n, ...,
+"total_100": n}. No other text.
 
 # pick-clips
 Open the one contact-sheet image for the trailer. Choose 2–4 second moments that match each

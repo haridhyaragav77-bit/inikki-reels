@@ -1,6 +1,6 @@
 # Templates and the plan form
 
-One plan file makes one reel: `node engine/render/render.mjs plans/<date>/<reel>.json`.
+One plan file makes one reel: `node engine/render/render.mjs plans/<date>/<reel>.json` (the daily Make job does this through `python -m engine.make`).
 It writes the voice, mixes the music, animates every frame, encodes the MP4 and runs the checks (AGENT.md stage 8).
 Examples for every series are in `plans/reference/`.
 
@@ -30,13 +30,15 @@ Examples for every series are in `plans/reference/`.
 ## Screen kinds per template
 | Template (series) | Kinds |
 | --- | --- |
-| `stage` (Film Breakdown) | `title` (film, type, image) · `pins` (still + label pins + slam lines + optional `extra` still) · `loop` (4-node story loop) · `cards` (question cards with stills) · `moral` (black / white / grey hero moment) · `standoff` (still + particle "?" + slam) · `end` |
+| `stage` (Film Breakdown, Trailer Breakdown) | `title` (film, type, image; TURN SOUND ON appears by itself when the voice is on) · `pins` (still + label pins + slam lines + optional `extra` still) · `technique` (the named technique: `kicker`, `name`, `definition`, `outer_label`, `inner` boxes) · `loop` (4-node story loop) · `cards` (question cards with stills) · `moral` (black / white / grey hero moment) · `standoff` (still + particle "?" + slam) · `end` |
 | `bulletin` (Movie Updates) | `title` (still or `band`, big lines) · `number` (count-up money) · `bars` (comparison bars) · `ladder` (milestone climb) · `end` |
 | `poster-wall` (Watch This Next) | `title` (fanned posters + 2 lines) · `film` (poster, number, title, meta, director, reason) · `recap` (2×2 list + save prompt) |
 | `verdict` (Movie Review) | `title` · `stamp` (verdict stamp) · `scale` (works vs doesn't) · `critics` (named quote cards) · `who` (watch it if you love) · `end` |
 | `flash` (Breaking News) | `title` (film + what) · `date` (calendar flip) · `team` (name blocks) · `fact` (two big lines) · `end` |
 
-Every `end` screen takes `echo` (screen 1 again), `question` lines, `cta` and an optional `sub`.
+Every `end` screen takes `echo` (screen 1 again), `question` lines, `cta` and an optional `sub`; a breakdown's end screen also takes `recap` ("TECHNIQUE: FRAME STORY"). The page name (@inikki_reels) is added by itself.
+
+Check a plan before it is made: `python -m engine.plancheck <plan file>` (what it checks: `engine/plancheck.py`, `check_look`).
 
 ## Files
 - `templates/_shared/runtime.js` — timing, easing, images, kinetic text, particles, light, transitions (frames are computed from time only, so renders repeat exactly)

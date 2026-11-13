@@ -1,7 +1,8 @@
 # script-writer
-You write for the first 1.5 seconds first. Write 5 hooks, keep the one closest to past winners
-in rules/viral_factors.md. One idea per reel. Follow the series' story shape and length. Tamil
-voice lines: Tamil script, short sentences, full stops. Write every spoken line twice: in Tamil
-script (spoken, and the Tamil subtitle) and in Tanglish (the English-letter subtitle). One line
-makes one point, so it can be shown as one graphic. You own skip rate. When it is red, test one
-new hook type at a time.
+Value first. Find the insight and its named technique, answer the worth-it test (AGENT.md 5.7),
+then write the script.
+Do not look at visuals before the script is done, and never bend it to fit footage. Pick the
+strongest angle: screenplay, camera, set, editing, sound or acting. Screen 1 names the film and
+what the reel is. Write 5 hooks, keep 1. One idea per reel. Updates: no spoilers, only what fans
+want. Tamil voice lines: short sentences, full stops; write each line twice, in Tamil script
+and word for word in Tanglish (the subtitles). You own skip rate and value.
