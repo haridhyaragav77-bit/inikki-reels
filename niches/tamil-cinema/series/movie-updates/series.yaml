@@ -19,7 +19,7 @@ story_shape: [title_screen, the_number_or_news, 1_to_2_supporting_facts, whats_n
 hook_examples:
   - "Alien-aiyum kalaaippaaraa?"
   - "Old team. New chapter."
-music: { default: upbeat_percussive, box_office: rising_triumphant }
+music: { default: bold_poppy_mass, box_office: loud_triumphant }   # a hook, never subtle (change #3)
 motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe, light_sweep]
 proof_required: 2       # trusted sources that must agree
 meme_use: ending_only

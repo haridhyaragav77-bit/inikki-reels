@@ -2,6 +2,18 @@
 
 Every change has a number, a reason and an Undo (AGENT.md 1, 9). Newest first.
 
+## #3 · 13 Nov 2026 · Harish's feedback, round 3 · set by Harish (hard rules)
+**Why:** the motion graphics and style got a big yes. The Updates and Watch This Next music was too quiet to work as a hook. Recommendations needed proof (Letterboxd, reviews) and where to watch. The Inji Vellam reel was missing its official poster.
+
+**What changed:**
+1. The look and motion graphics are approved: keep this style.
+2. Music is bold, never subtle: catchy, loud, recognisable, starting on its strongest part (AGENT.md 5.4).
+3. Every recommended film shows proof (Letterboxd rating + one award, festival or famous fact) and where to watch in India from JustWatch; films not streaming in India are swapped (5.7, 6.6).
+4. Breaking news always scouts the official poster and stills; with no visuals, lead with the biggest name (6.6).
+5. Voice and rendering run only in the cloud, never on Harish's laptop (4.4).
+
+**Undo:** revert this commit.
+
 ## #2 · 13 Nov 2026 · Harish's feedback, round 2 · set by Harish (hard rules)
 **Why:** the motion graphics need much more animation, the new way of making reels must be the standard everywhere, and Movie Review and Breaking News need their own looks too.
 

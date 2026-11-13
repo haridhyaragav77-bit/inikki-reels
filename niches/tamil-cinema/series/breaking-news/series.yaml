@@ -19,6 +19,8 @@ success_metric: reach
 rules:
   - "Only real, confirmed, time-sensitive news."
   - "Respect mode overrides: deaths and tragedies are handled as tributes, never as 'breaking'."
+  - "Always scout the official poster and stills first: release-date news nearly always comes with them. The poster leads."
+  - "No visuals at all: lead with the biggest name (director, music director or star) and their picture, e.g. NEW MANI RATNAM FILM."
 captions: none
 music: stinger            # hits on frame 1 with the headline
 motion_presets: [live_dot, headline_slam, fact_blocks, ticker, glitch_cut, still_reframe]

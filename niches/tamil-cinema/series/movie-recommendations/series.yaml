@@ -20,10 +20,11 @@ formats:
   - "One film you missed: a single hidden gem, longer look"
   - "Around the world: one film each from different countries"
   - "Director set (sometimes): the lesser-seen films of one director"
-per_film_screen: [full_bleed_still, title, year_country, reason_6_words_max, where_to_watch]
+per_film_screen: [poster_still, title, year_country, reason_6_words_max, letterboxd_rating, proof_award_or_fact, where_to_watch_india]
+proof_sources: [letterboxd, justwatch_india, wikipedia_awards]
 lead_sources: [watch_lists, festival_lineups, critics_lists, ott_new_arrivals, film_bank, comments]
 story_shape: [title_screen, film_by_film, recap_grid, save_and_send]
-music: matches_list_theme
+music: bold_catchy_punchy   # a hook, never subtle (change #3)
 motion_presets: [poster_stack, meta_badges, still_reframe, ott_tag, recap_grid]
 recommended_log: "../../knowledge/recommended_log.csv"
 meme_use: never
@@ -34,7 +35,8 @@ rules:
   - "Not tied to directors. A director set is allowed sometimes."
   - "Never recommend a film twice: check and update the recommended log."
   - "No spoilers beyond the premise."
-  - "Where to watch only when confirmed for India; otherwise leave it out."
+  - "Every film shows its Letterboxd rating and one award, festival or famous fact."
+  - "Where to watch in India is checked on JustWatch on the day. A film not streaming in India is swapped for one that is."
   - "If only one still exists, reuse it with motion (push-in, crops, split panels, colour). Never drop a great film for lack of stills."
   - "Before picking, answer: has most of our audience already seen this? Would I tell a friend to watch it tonight?"
 worth_it_extra:
