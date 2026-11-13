@@ -19,8 +19,24 @@ That work was built on a second branch (claude/clever-clarke-b0wco6). This branc
 | Plans | The approved plan form (templates/README.md): `id`, `package` (caption, cover, slot). Make, Post and the golden test read both forms |
 | Retired | The Card look and the Kaithi model (16-19 screens): plans moved to `archive/plans-v1/` |
 
-Still to do: the plan check for the approved form (technique pinned, Tanglish line for every spoken line, proof and
-where-to-watch, music from frame 1), the planning runs writing that form, then a rehearsal day end to end.
+Then, the same day:
+- Plan check for the approved form (`engine/plancheck.py` check_look); skills plan-reel, score-reel (8 checks) and
+  weekly-learn rewritten; role cards synced to AGENT.md.
+- Tests in the cloud, all passed: golden (same picture twice, 5 looks, re-made into Drive `rehearsal/golden-check/`),
+  the daily Make job on two copies of reference plans (both "ready" in Drive `rehearsal/2026-11-13/`, then the test
+  plans were removed; in rehearsal they are only marked "rehearsed"), Instagram read, health.
+- **Instagram:** the "API access blocked" spell has cleared on Meta's side. Health: "posting permission OK".
+  The trailer job now runs once a day (04:52, as AGENT.md 5.11 says): both blocks came on heavy-reading days.
+- **On main** (Harish's go-ahead): the schedules run from there. Phase: rehearsal.
+- Learning loop: the week table now checks whether each recent change helped (14 days before and after, each
+  series' own number) and marks REVERT at -20%; Harish's rules are only shown, never undone; the small numbers
+  rule needs 10 reels and 14 days. The brief and the week table now see every change (#1-#9).
+- Sync takes the recommended-films log; the brief gives picture instructions for the approved looks.
+- The 5 thinking runs: made as scheduled tasks in the `inikki-reels` cloud environment (which has the repository).
+
+Open: the Bulletin look cannot carry a voice yet (voiced updates are held by the plan check: music-only for now);
+Guess the Movie and Artwork keep their earlier looks until rebuilt; a still from any trailer second (not only the
+4 official YouTube frames) would give breakdowns more pictures.
 
 ## 12 Nov 2026 (evening): the trailer library, new series, sample reels
 Harish ran the laptop helper: 23 of 38 trailers into Drive `clip-library/` (grids made by the adopt-only run).
