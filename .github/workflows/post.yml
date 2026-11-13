@@ -12,6 +12,9 @@ on:
         description: "Posting test: upload one made reel to Instagram WITHOUT publishing it"
         type: boolean
         default: false
+      now:
+        description: "Post this made reel id right now (live phase only), e.g. 2026-11-13-watch-loved-jailer-2"
+        default: ""
   schedule:
     - cron: "48 2 * * *"      # 08:18 IST → 08:30 slot
     - cron: "18 5 * * *"      # 10:48 IST → 11:00 flex slot
@@ -42,6 +45,7 @@ jobs:
       BRAIN_FIRE_URL: ${{ secrets.BRAIN_FIRE_URL }}
       BRAIN_FIRE_TOKEN: ${{ secrets.BRAIN_FIRE_TOKEN }}
       DRY: ${{ inputs.dry && '--dry' || '' }}
+      NOW: ${{ inputs.now || '' }}
       NO_WAIT: ${{ github.event_name != 'schedule' && '--no-wait' || '' }}
     steps:
       - uses: actions/checkout@v4
@@ -49,7 +53,7 @@ jobs:
         with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
       - run: pip install -q -r requirements-light.txt
       - name: Post (or rehearse) the reel that is due
-        run: python -m engine.post $DRY $NO_WAIT
+        run: python -m engine.post $DRY $NO_WAIT ${NOW:+--now $NOW --no-wait}
       - name: Status (always)
         if: always()
         run: python -m engine.status post "${{ job.status }}"

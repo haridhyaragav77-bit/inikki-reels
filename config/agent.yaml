@@ -1,5 +1,5 @@
 switch: run                 # run | hold_posts | sleep   (live value is in Drive control/)
-phase: rehearsal            # rehearsal | live   (live only after Harish says "go live")
+phase: live                 # rehearsal | live   (live only after Harish says "go live")
 approval: autopilot         # autopilot | check_in | hands_on
 always_ask: [brand, niche, safety, budget]
 active: { brand: inikki-reels, niche: tamil-cinema, lineup: cinema-core }

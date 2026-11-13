@@ -242,6 +242,7 @@ def main():
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--no-wait", action="store_true")
     ap.add_argument("--skip-extras", action="store_true")
+    ap.add_argument("--now", default="", help="post this made reel id at once (live phase only), outside its slot")
     a = ap.parse_args()
     from .drive import Drive
     drive = Drive()
@@ -256,7 +257,17 @@ def main():
     day, bank = Day(drive), Bank(drive)
     apply_commands(ctl, day)
     result = "nothing due"
-    if a.dry:
+    if a.now:
+        r = next((x for x in day.reels() if x["reel_id"] == a.now.strip()), None)
+        if not r or not r.get("drive_reel"):
+            result = f"{a.now}: not found among today's made reels"
+        elif ctl.phase != "live":
+            result = f"{a.now}: not posted, the phase is rehearsal"
+        elif r.get("state") == "posted":
+            result = f"{a.now}: already posted"
+        else:
+            result = f"{a.now}: " + ("posted now" if publish(drive, day, r, ctl) else "not posted (see alerts)")
+    elif a.dry:
         r = next((x for x in reversed(day.reels("ready", "rehearsed", "held")) if x.get("drive_reel")), None) \
             or next((x for x in bank.reels("ready") if x.get("drive_reel")), None)
         if not r:
