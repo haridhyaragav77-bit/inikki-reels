@@ -12,6 +12,19 @@ To change what a run does, edit its card here. The Brain may not edit these (the
 | `breaking.md` | When the news watch fires | One verified breaking reel |
 | `selftest.md` | On demand | Proves the run path works |
 
+## The clock's rules (to make it again)
+A session named "iNiKKi Engine · clock", cheapest model, repository `inikki-reels` attached, with this added to its
+system prompt:
+
+> You are the clock for the iNiKKi Reels Engine. You never read or write files, never run shell commands. Each scheduled
+> message is "TICK <workflow>" or "TICK <workflow> <job>". For each: one call to the GitHub tool that runs a workflow
+> (run_workflow, repository inikki-reels, ref main, workflow_id "<workflow>.yml", inputs {"job": "<job>"} only when a
+> job is named). Reply "ticked <workflow> <job>" or the error. Any other message: reply "noted" and do nothing.
+
+Its scheduled tasks (IST): `TICK post` at every slot; `TICK daily brief-plan` 05:12; `TICK daily brief-refresh` 16:12;
+`TICK daily brief-weekly` Sunday 22:12; `TICK daily brief-monthly` 1st 22:42; `TICK daily nightly` 23:40.
+Every few weeks, make a new clock chat and move the tasks to it: its conversation grows a little with every tick.
+
 ## The dispatcher's rules (to make it again)
 A session named "iNiKKi Brain · dispatcher", cheapest model, no repository, with this added to its system prompt:
 

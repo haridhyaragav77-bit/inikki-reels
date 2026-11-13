@@ -194,6 +194,8 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | Health | Daily 04:00 | Keys valid, credit left, storage, runner minutes, voice reachable |
 | Dashboard | After Measure | Updates the Dashboard sheet |
 
+**The clock (14 Nov 2026).** GitHub's own timer delivered this repository's scheduled jobs about 7 hours late. So the jobs that must be on time are started by Claude scheduled tasks: each sends `TICK <job>` to a small **clock** chat on the cheapest model, which starts that one GitHub job and does nothing else. Started this way: Post at each of the 8 slots (it posts at once, with no waiting on the runner), the briefs before the Plan, Refresh, Weekly and Monthly runs, and the Nightly job. GitHub's own timer stays in the job files as a late backstop for the rest (health, trailers, the Make safety nets, music). If GitHub's timer becomes punctual, or a free outside pinger is set up (`GUIDE.md` section 12), the clock tasks are switched off.
+
 ### 4.4 Voice
 Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → a cloud Claude session → music-only version with short key-line captions (the motion graphics still carry the ideas). **Voice and rendering always run in the cloud, never on your laptop.**
 
@@ -1067,6 +1069,11 @@ Rules:
 | iNiKKi Brain · Monthly | 1st, 23:07 | `RUN monthly` |
 | iNiKKi Brain · Breaking | Only when the Engine's news watch fires (API trigger; `BRAIN_FIRE_URL` and `BRAIN_FIRE_TOKEN` in GitHub Secrets) | The lead, to the long-lived Brain chat, which follows `runs/breaking.md` |
 
+| iNiKKi Clock · Post | 08:30, 11:00, 12:30, 15:30, 17:00, 18:00, 20:00, 21:30 | `TICK post` to the clock chat |
+| iNiKKi Clock · Briefs | 05:12 `TICK daily brief-plan` · 16:12 `TICK daily brief-refresh` · Sunday 22:12 `TICK daily brief-weekly` · 1st 22:42 `TICK daily brief-monthly` | to the clock chat |
+| iNiKKi Clock · Nightly | 23:40 | `TICK daily nightly` |
+
+The **clock** is a chat named "iNiKKi Engine · clock" on the cheapest model, with the repository attached so it may start GitHub jobs. Its rules are in `runs/README.md`.
 The **dispatcher** is a chat named "iNiKKi Brain · dispatcher" on the cheapest model. For each `RUN <name>` it starts one new session: repository `inikki-reels` at `main`, the Brain's model, branch `claude/brain-<name>-<date>`, with the prompt "read `runs/<name>.md` and do exactly what it says". It archives the session of the run before. It never does the work itself.
 Each run saves its work on its own branch. The Engine's Sync job checks it and copies only allowed text files into the live settings.
 To make the set again: a Workshop session creates the dispatcher (its rules are in `runs/README.md`) and the four scheduled tasks bound to it.

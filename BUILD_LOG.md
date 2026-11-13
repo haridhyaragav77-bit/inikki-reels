@@ -30,6 +30,8 @@ Harish asked for: buttons before chat, far fewer tokens, easy refinement loops, 
 | Approval levels "check_in" and "hands_on" and away mode are shown but the Engine does not act on them | Not built; "Hold posts" + "Post now" is the working approve-first mode |
 | The Breaking run still wakes the long-lived chat (its API link is tied to that task) | Left as is: rare. To move it, make a new API trigger and update the two GitHub secrets. |
 
+**The clock, checked at 02:30 on 14 Nov:** GitHub's timer does fire, but every tick arrives about 7 hours late (09:48 UTC came at 17:23, 10:42 at 18:00, 11:52 at 18:48, 14:18 at 20:53). The earlier "never fired" was this delay, seen 9 hours after the files reached main. Fix: Claude scheduled tasks send `TICK <job>` to a small clock chat that starts the GitHub job on time (AGENT.md 4.3, `runs/README.md`). GitHub's timer stays as a late backstop. A free outside pinger can replace the Claude clock (`GUIDE.md` 12).
+
 **Tests:** `python -m tests.test_control_room` (no keys). On the real Drive: `daily` → `panel` and `control` from the branch; `RUN selftest` through the dispatcher reached main.
 
 **Scheduled tasks now:** Plan, Refresh, Weekly, Monthly and Self-test send `RUN <name>` to "iNiKKi Brain · dispatcher". The four long-chat tasks are switched off (kept, named OLD). One one-time safety net for the first clean Plan run: 14 Nov 06:20.

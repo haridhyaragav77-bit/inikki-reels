@@ -10,11 +10,10 @@ on:
         options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel]
         default: brief-plan
   schedule:
+    # GitHub's timer runs about 7 hours late here (found 14 Nov 2026), so the briefs and the nightly job are started on
+    # time by the Claude clock tasks (AGENT.md 4.3, runs/README.md). The briefs have no line here on purpose: a late
+    # brief would overwrite the right one just before a thinking run. These two stay as a late backstop.
     - cron: "31 22 * * *"     # 04:01 IST  health
-    - cron: "42 23 * * *"     # 05:12 IST  brief for the Plan run (05:37)
-    - cron: "42 10 * * *"     # 16:12 IST  brief for the Refresh run (16:37)
-    - cron: "42 16 * * 0"     # Sun 22:12 IST  brief for the Weekly run (22:37)
-    - cron: "12 17 1 * *"     # 1st 22:42 IST  brief for the Monthly run (23:07)
     - cron: "10 18 * * *"     # 23:40 IST  nightly: stats, dashboard, clean-up
 
 permissions:
