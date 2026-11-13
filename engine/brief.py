@@ -298,21 +298,26 @@ def build(drive, run, date):
             want = (drive.read_json("status", "trailers_wanted.json") or {}).get("films", [])
         except Exception:
             want = []
-        L += ["", "## Trailers in the clip library (breakdowns and updates may only use these films)"]
+        L += ["", "## Pictures for the approved looks (AGENT.md 5.11, skill plan-reel)"]
+        L += ["Breakdowns, updates, Watch This Next, reviews and breaking use official YouTube frames and posters, which the Engine "
+              "fetches itself: an asset {\"src\": \"engine/.cache/stills/<film>/<YouTube id>_maxres2.jpg\"} (maxresdefault, maxres1, "
+              "maxres2 or maxres3), or a poster with \"fetch\": {\"url\": ...}. Any film works; no film waits for the library. "
+              "The YouTube ids of the trailers below are in their grid names, e.g. Kaithi [g79CvhHaj5I]."]
+        L += ["", "## Trailers in the clip library (older looks: Guess the Movie, Artwork; and trailer ids for the frames above)"]
         L += [f"- {v}" for v in vids[:40]] or ["- None yet."]
-        L += ["Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. "
-              "Then check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles from your start second "
-              "for as long as the line lasts (2-4 s) must all show what the line says; trailers dissolve between shots. "
-              "Visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}."]
+        L += ["For an older look, open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are "
+              "in data/trailers.json. Check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles "
+              "from your start second for as long as the line lasts (2-4 s) must all show what the line says. "
+              "Older-look visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}."]
         try:
             from .trailers import index as clip_index
             sts = clip_index(drive).get("stills", [])
         except Exception:
             sts = []
         if sts:
-            L += ["", "## Official stills (movie updates may use these when the film has no clips)"]
+            L += ["", "## Official stills in the library (older looks; approved looks use the official frames above)"]
             L += [f"- {x['film']}: {len(x['stills'])} stills, grid: clip-library/sheets/{x['sheet']}" for x in sts[-20:]]
-            L += ["Visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. "
+            L += ["Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. "
                   "Pick the still that shows what the line says; skip stills that are mostly text."]
         try:
             from . import trailers as T
