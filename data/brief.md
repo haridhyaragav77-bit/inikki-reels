@@ -1,4 +1,4 @@
-# Brief · plan run · 2026-11-13 (written 2026-11-13 12:22 IST)
+# Brief · plan run · 2026-11-13 (written 2026-11-13 12:25 IST)
 
 Switch: **run** · Phase: **rehearsal** (nothing posts; plan exactly as if live) · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json
@@ -16,7 +16,10 @@ Control Room settings copied to data/control/: switch.json
 | 20:00 | film-breakdown | stage | voice, 40-62 s |
 | 21:30 | movie-updates | bulletin | voice: case by case, 15-30 s |
 
-## Trailers in the clip library (breakdowns and updates may only use these films)
+## Pictures for the approved looks (AGENT.md 5.11, skill plan-reel)
+Breakdowns, updates, Watch This Next, reviews and breaking use official YouTube frames and posters, which the Engine fetches itself: an asset {"src": "engine/.cache/stills/<film>/<YouTube id>_maxres2.jpg"} (maxresdefault, maxres1, maxres2 or maxres3), or a poster with "fetch": {"url": ...}. Any film works; no film waits for the library. The YouTube ids of the trailers below are in their grid names, e.g. Kaithi [g79CvhHaj5I].
+
+## Trailers in the clip library (older looks: Guess the Movie, Artwork; and trailer ids for the frames above)
 - Lubber Pandhu (trailer, 50 shots, grid: clip-library/sheets/Lubber Pandhu - trailer [oP88LHBukW8].jpg)
 - Master (trailer, 50 shots, grid: clip-library/sheets/Master - trailer [1_iUFT3nWHk].jpg)
 - Maaveeran (trailer, 50 shots, grid: clip-library/sheets/Maaveeran - trailer [EcNACt-LOi0].jpg)
@@ -40,13 +43,13 @@ Control Room settings copied to data/control/: switch.json
 - Ratsasan (trailer, 50 shots, grid: clip-library/sheets/Ratsasan - trailer [GsrN7rNch9Y].jpg)
 - Jigarthanda (trailer, 39 shots, grid: clip-library/sheets/Jigarthanda - trailer [_T8n-EHr4ZE].jpg)
 - Kaithi (trailer, 24 shots, grid: clip-library/sheets/Kaithi - trailer [g79CvhHaj5I].jpg)
-Open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. Then check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles from your start second for as long as the line lasts (2-4 s) must all show what the line says; trailers dissolve between shots. Visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}.
+For an older look, open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. Check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles from your start second for as long as the line lasts (2-4 s) must all show what the line says. Older-look visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}.
 
-## Official stills (movie updates may use these when the film has no clips)
+## Official stills in the library (older looks; approved looks use the official frames above)
 - Jailer 2: 30 stills, grid: clip-library/sheets/Jailer 2 - stills.jpg
 - Scene: 30 stills, grid: clip-library/sheets/Scene - stills.jpg
 - Inji Vellam: 1 stills, grid: clip-library/sheets/Inji Vellam - stills.jpg
-Visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
+Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
 
 ## New trailers in the library (last 3 days)
 - Lubber Pandhu (trailer, grid: clip-library/sheets/Lubber Pandhu - trailer [oP88LHBukW8].jpg)
