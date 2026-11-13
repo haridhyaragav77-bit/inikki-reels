@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: guess-the-movie
 name: Guess the Tamil Movie
 status: live
@@ -23,3 +25,8 @@ rules:
   - "Clue 1 alone should be solvable by the biggest fans only."
   - "Tune difficulty from the 1/2/3 answers in comments (target: most say 2)."
   - "No text inside images; all text is added by the template."
+music: suspense_ticks     # starts on frame 1; ticks speed up into the countdown
+motion_presets: [clue_reveal, countdown_ring, answer_lock, title_burst, parallax_layers]
+worth_it_extra:
+  - "Is this a film people love or are talking about now?"
+  - "Is clue 1 hard but fair?"

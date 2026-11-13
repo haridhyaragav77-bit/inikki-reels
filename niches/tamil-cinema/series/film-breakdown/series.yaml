@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: film-breakdown
 name: Film Breakdown
 status: live
@@ -40,3 +42,5 @@ rules:
   - "If no clip fits a beat, the motion graphic goes full-screen for that beat."
   - "Never retell the plot; explain why a scene works."
   - "Same film at most once in 21 days; same film + angle at most once in 60 days."
+worth_it_extra:
+  - "Is this the strongest angle on this film?"

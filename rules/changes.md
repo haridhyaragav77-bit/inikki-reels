@@ -2,6 +2,17 @@
 
 Every change has a number, a reason and an Undo (AGENT.md 1, 9). Newest first.
 
+## #2 · 13 Nov 2026 · Harish's feedback, round 2 · set by Harish (hard rules)
+**Why:** the motion graphics need much more animation, the new way of making reels must be the standard everywhere, and Movie Review and Breaking News need their own looks too.
+
+**What changed:**
+1. Lots of animation: nothing sits still for more than a second; enter, move and leave with motion; hits on the beat; moving transitions. The inspect stage checks for frozen pictures (AGENT.md 5.8, stage 8; motion library "Animation toolkit").
+2. One standard for every reel, in every series and every Lab pilot (AGENT.md 5.10). New series must set their title screen, look, motion, music, voice and worth-it questions first. A niche switch keeps the standard.
+3. Movie Review gets its own **Verdict** look; Breaking News gets its own **Flash** look (AGENT.md 6.6). 7 templates in all.
+4. Every series file now names its title screen, music, motion graphics and extra worth-it questions.
+
+**Undo:** revert this commit.
+
 ## #1 · 13 Nov 2026 · Harish's feedback on the first reels · set by Harish (hard rules)
 **Why:** some breakdowns opened with about 5 seconds of silence, then calm music played under intense moments. Graphics were wordy and repeated, and didn't help people follow along. Scripts were built around the pictures that could be found, not around an insight. The opening text didn't say what the reel was about. Updates, Breakdowns and Recommendations all looked the same. Updates gave away spoilers.
 

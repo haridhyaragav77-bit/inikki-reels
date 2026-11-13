@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: movie-review
 name: First Verdict (Movie Review)
 status: live
@@ -6,16 +8,22 @@ title_screen: "{FILM} · FIRST VERDICT"
 per_day: 0              # flex: 1 on release days, max 2 on event days
 trigger: release_day
 slots: ["11:00", "17:00"]
-template: bulletin      # violet skin (AGENT.md 6.6)
+template: verdict       # its own look: violet scorecard, verdict stamp, critic cards (AGENT.md 6.6)
 visuals: mixed          # trailer clips + 1-2 AI hype art images
 voice: false
 length_s: [35, 45]
 image_cap_per_reel: 2
 lead_sources: [release_calendar, trusted_critics, audience_talk_24h, trends]
-story_shape: [verdict_hook, what_works_3_chips, what_doesnt, who_should_watch, comment_prompt]
+story_shape: [title_screen, verdict_stamp, what_works, what_doesnt, critics_say, who_should_watch, comment_prompt]
 meme_use: ending_only
 success_metric: saves_and_sends
 rules:
   - "Quote critics fairly and name them; mark audience talk as audience talk."
   - "No spoilers after the first 20 minutes of the film."
   - "No rating wars or star comparisons."
+captions: none
+music: confident_mid      # starts on frame 1; lifts when the verdict stamps down
+motion_presets: [verdict_stamp, works_vs_not, critic_cards, audience_meter, still_reframe]
+worth_it_extra:
+  - "Are people deciding this week whether to watch it?"
+  - "Is every critic quote real, short and named?"

@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: breaking-news
 name: Breaking
 status: live
@@ -5,15 +7,21 @@ badge: { text: "BREAKING", color: red }
 title_screen: "BREAKING · {FILM OR PERSON}: {WHAT}"
 per_day_max: 2
 trigger: watcher_or_brain_run
-template: bulletin      # red skin (AGENT.md 6.6)
+template: flash         # its own look: red wash, live dot, headline slam, ticker (AGENT.md 6.6)
 visuals: mixed
 voice: false
 length_s: [15, 25]
 image_cap_per_reel: 0
 proof_required: 2
-story_shape: [breaking_headline, 2_facts, what_next, follow_prompt]
+story_shape: [title_screen, headline_slam, fact_1, fact_2, what_next, follow_prompt]
 meme_use: never
 success_metric: reach
 rules:
   - "Only real, confirmed, time-sensitive news."
   - "Respect mode overrides: deaths and tragedies are handled as tributes, never as 'breaking'."
+captions: none
+music: stinger            # hits on frame 1 with the headline
+motion_presets: [live_dot, headline_slam, fact_blocks, ticker, glitch_cut, still_reframe]
+worth_it_extra:
+  - "Is it confirmed by 2 trusted sources?"
+  - "Would a fan want to know this today, not tomorrow?"
