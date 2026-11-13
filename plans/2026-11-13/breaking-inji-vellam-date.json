@@ -1,0 +1,59 @@
+{
+  "id": "2026-11-13-breaking-inji-vellam-date",
+  "series": "breaking-news",
+  "template": "flash",
+  "fps": 30,
+  "length_s": [15, 25],
+  "badge": "BREAKING",
+  "when": "13 NOV",
+  "ticker": "INJI VELLAM · 29 JAN 2027 · WORLDWIDE · MANI RATNAM · VIJAY SETHUPATHI · SAI PALLAVI · A.R. RAHMAN",
+  "lead": {
+    "topic": "Mani Ratnam's Inji Vellam releases worldwide on 29 January 2027 (announced 12 Nov 2026)",
+    "facts": ["Release: 29 Jan 2027, worldwide, in theatres", "Vijay Sethupathi and Sai Pallavi star; music by A.R. Rahman", "Sai Pallavi's first film with Mani Ratnam"],
+    "sources": [
+      "https://www.aninews.in/news/entertainment/bollywood/mani-ratnams-inji-vellam-starring-vijay-sethupathi-sai-pallavi-to-hit-theatres-on-january-29-202720261112193134/",
+      "https://www.pinkvilla.com/entertainment/south/inji-vellam-release-date-vijay-sethupathi-and-sai-pallavis-romantic-film-to-hit-big-screens-on-january-29-2027-1406396",
+      "https://www.bollywoodhungama.com/news/south-cinema/mani-ratnam-announces-inji-vellam-release-date-vijay-sethupathi-and-sai-pallavi-romance-to-hit-theatres-on-january-29-2027/"
+    ]
+  },
+  "worth_it": {
+    "confirmed": "Yes: makers' announcement, reported by ANI, Pinkvilla and Bollywood Hungama.",
+    "today": "Announced yesterday; fans want the date now.",
+    "stills": "Only the title teaser exists: one close-up reused with motion (series rule)."
+  },
+  "voice": { "on": false },
+  "music": { "sections": [ { "track": "under_attack", "from": 2.0, "screen": 0, "mood": "urgent stinger" }, { "track": "true_love", "from": 0.0, "screen": 1, "mood": "the film's romance" } ],
+             "level_db": -15, "xfade": 0.5, "fade_out": 1.0 },
+  "assets": {
+    "eye": { "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres3.jpg", "crop": [0.33, 0.0, 0.67, 1.0] },
+    "painter": { "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres2.jpg" },
+    "orange": { "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres1.jpg" }
+  },
+  "screens": [
+    { "kind": "title", "image": "eye", "fx": 0.42, "fy": 0.35, "dur": 2.8, "film": "INJI VELLAM", "what": "RELEASE DATE OUT",
+      "sfx": [ { "at": 0.1, "type": "impact" }, { "at": 0.5, "type": "glitch" } ] },
+    { "kind": "date", "in": "glitch", "image": "painter", "fx": 0.5, "dur": 3.8, "month": "JANUARY", "day": 29, "year": "2027", "land": 1.0,
+      "line": "WORLDWIDE · IN THEATRES", "sfx": [ { "at": 0.35, "type": "riser" }, { "at": 1.0, "type": "impact" } ] },
+    { "kind": "team", "in": "glitch", "image": "orange", "fx": 0.5, "dur": 4.2, "heading": "THE TEAM", "gap": 0.55,
+      "people": [ { "name": "MANI RATNAM", "role": "DIRECTOR" }, { "name": "VIJAY SETHUPATHI", "role": "STARRING" }, { "name": "SAI PALLAVI", "role": "STARRING" }, { "name": "A.R. RAHMAN", "role": "MUSIC" } ],
+      "sfx": [ { "at": 0.3, "type": "whoosh" }, { "at": 0.85, "type": "whoosh" }, { "at": 1.4, "type": "whoosh" }, { "at": 1.95, "type": "whoosh" } ] },
+    { "kind": "fact", "in": "glitch", "image": "eye", "fx": 0.45, "fy": 0.36, "zoom": 1.7, "dur": 3.4, "lines": ["SAI PALLAVI'S FIRST", "MANI RATNAM FILM"],
+      "source": "Source: Bollywood Hungama", "sfx": [ { "at": 0.3, "type": "whoosh" }, { "at": 0.55, "type": "impact" } ] },
+    { "kind": "end", "in": "zoom", "bg": "eye", "dur": 3.6, "echo": "BREAKING · INJI VELLAM: RELEASE DATE",
+      "question": [ { "text": "29 JAN.", "size": 150, "color": "#E5484D" }, { "text": "YOU IN?", "size": 130 } ], "cta": "SEND TO THAT FRIEND", "sub": "Follow for every update",
+      "sfx": [ { "at": 1.15, "type": "pop" } ] }
+  ],
+  "package": {
+    "caption": [
+      "Inji Vellam has a date: 29 January 2027.",
+      "Mani Ratnam's Inji Vellam with Vijay Sethupathi and Sai Pallavi, music by A.R. Rahman, releases worldwide on 29 Jan 2027.",
+      "First day, first show?",
+      "Send this to your Mani Ratnam friend.",
+      "இஞ்சி வெள்ளம் — ஜனவரி 29."
+    ],
+    "hashtags": ["#TamilCinema", "#InjiVellam", "#ManiRatnam", "#SaiPallavi", "#iNiKKiBreaking"],
+    "cover": "BREAKING · INJI VELLAM: RELEASE DATE",
+    "slot": "as soon as rendered",
+    "first_comment": "Which Mani Ratnam film is your favourite?"
+  }
+}

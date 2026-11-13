@@ -1179,6 +1179,7 @@ something. One question, with 2–4 options. Nothing about files, code or tools.
 | OpenAI key | Created; $5 credit, auto-recharge off, $6 monthly limit |
 | Turn on the **Google Sheets API** in the same Google Cloud project (search "Google Sheets API" → Enable) | To do, 1 minute |
 | Add the keys to GitHub | **Last step**, below |
+| Reel maker (Engine "Make" job): plan in, checked MP4 out. Tamil voice with word timing, music sections from your Drive library, 5 looks (Stage, Bulletin, Poster Wall, Verdict, Flash), stage 8 checks | **Built 13 Nov 2026**, 5 sample reels made. Cinematic and Diorama next; then it moves to GitHub Actions |
 | Instagram display name and bio | To do, 2 minutes |
 | Trusted sources list and competitor watchlist | To do, in the Control Room when asked |
 

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/engine/.cache/fonts/fonts.local.css">
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script type="module">
+import * as R from './runtime.js';
+window.boot = async (plan, timeline) => {
+  const mod = await import(`../${plan.template}/template.js`);
+  const env = await R.createEnv(document.getElementById('c'), plan, timeline);
+  const reel = await mod.build(env, plan, timeline);
+  window.renderAt = t => R.renderFrame(env, reel, t);
+  window.renderBatch = (ts, q) => ts.map(t => { R.renderFrame(env, reel, t); return env.canvas.toDataURL('image/jpeg', q); });
+  window.__env = env;
+  return env.warnings;
+};
+window.__ready = true;
+</script>
+</body>
+</html>
