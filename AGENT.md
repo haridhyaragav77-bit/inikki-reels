@@ -1040,7 +1040,7 @@ Rules:
 ```
 
 ### Block D — Scheduled thinking runs
-Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, default environment, schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
+Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, the `inikki-reels` environment (it can reach YouTube frames, Wikipedia posters, Letterboxd and JustWatch), schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
 Each run saves its work on its own branch `claude/brain-<run>-<date>`. The Engine's Sync job checks it and copies only allowed text files into the live settings.
 The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigger → + → API → Generate token. Put the Fire URL in the GitHub secret `BRAIN_FIRE_URL` and the token in `BRAIN_FIRE_TOKEN`.
 
