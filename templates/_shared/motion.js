@@ -30,7 +30,7 @@ export function mascot(ctx, x, y, s, t, enter = 1) {
 // ---------------------------------------------------------------- end card: question + send prompt + mascot + echo of the title
 export function endCard(env, ctx, lt, t, o) {
   const acc = o.accent || '#F8C028', cx = o.cx ?? W / 2;
-  const ey = o.echoY ?? 330, qy = o.qy ?? 760, cy = o.ctaY ?? 1180, sy = o.subY ?? 1320, [mx, my, ms] = o.mascot || [860, 1420, .9];
+  const ey = o.echoY ?? 330, qy = o.qy ?? 760, cy = o.ctaY ?? 1180, sy = o.subY ?? 1385, [mx, my, ms] = o.mascot || [860, 1440, .85];
   if (o.echo) {
     const a = ep(lt, .05, .5);
     txt(ctx, o.echo, cx, ey - (1 - a) * 30, { size: o.echoSize || 34, weight: 800, ls: .14, color: rgba('#ffffff', .75 * a) });
@@ -47,7 +47,51 @@ export function endCard(env, ctx, lt, t, o) {
     ring(ctx, cx, cy, lt - pt - .05, { color: acc, r0: 60, r1: 460, w: 10, alpha: .6 });
   }
   if (o.sub) wordsIn(ctx, o.sub, cx, sy, lt - pt - .3, { size: o.subSize || 44, weight: 700, family: o.subFamily || 'Inter', color: rgba('#ffffff', .88), stagger: .05, rise: 30 });
+  handle(env, ctx, lt - pt - .45, cx, o.handleY ?? cy + 100, acc);
   mascot(ctx, mx, my, ms, t, ep(lt, pt + .2, pt + .8, E.outBack));
+}
+
+// ---------------------------------------------------------------- the page name on every reel's end (brand sign-off)
+export function handle(env, ctx, lt, x, y, acc = '#F8C028', size = 48) {
+  if (lt < 0) return;
+  const name = (env.plan.brand && env.plan.brand.handle) || '@inikki_reels';
+  const chars = [...name], n = Math.max(1, Math.floor(chars.length * clamp(lt / .5)));
+  const shown = chars.slice(0, n).join('');
+  setFont(ctx, size, 'Inter', 900, .02); const full = ctx.measureText(name).width;
+  ctx.save();
+  ctx.shadowColor = rgba(acc, .6); ctx.shadowBlur = 24;
+  txt(ctx, shown, x - full / 2, y, { size, weight: 900, ls: .02, color: '#fff', align: 'left' });
+  ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+  const u = ep(lt, .35, .8, E.inOutCubic);
+  ctx.fillStyle = acc; ctx.fillRect(x - full / 2, y + 14, full * u, 5);
+  ctx.restore();
+}
+
+// ---------------------------------------------------------------- "TURN SOUND ON": for reels with a voice, so no one misses it
+export function soundOn(ctx, lt, x, y, o = {}) {
+  const at = o.at ?? .05, until = o.until ?? 3.0;
+  const a = life(lt, at, until, .25, .35);
+  if (a <= 0) return;
+  const p = ep(lt, at, at + .4, E.outBack), acc = o.accent || '#F8C868';
+  const label = o.label || 'TURN SOUND ON';
+  setFont(ctx, 36, 'Inter', 900, .12); const tw = ctx.measureText(label).width;
+  const w = tw + 140, h = 80;
+  ctx.save(); ctx.translate(x, y); ctx.scale(p, p); ctx.globalAlpha = a;
+  ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 30;
+  rrect(ctx, -w / 2, -h / 2, w, h, h / 2); ctx.fillStyle = o.bg || 'rgba(8,9,12,.86)'; ctx.fill();
+  ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+  ctx.lineWidth = 3; ctx.strokeStyle = acc; ctx.stroke();
+  const sx = -w / 2 + 50; ctx.fillStyle = acc;
+  ctx.beginPath(); ctx.moveTo(sx - 18, -10); ctx.lineTo(sx - 7, -10); ctx.lineTo(sx + 7, -23); ctx.lineTo(sx + 7, 23); ctx.lineTo(sx - 7, 10); ctx.lineTo(sx - 18, 10); ctx.closePath(); ctx.fill();
+  ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.strokeStyle = acc;
+  for (let k = 0; k < 3; k++) {
+    const ph = ((lt * 1.7 - k * .24) % 1 + 1) % 1;
+    ctx.globalAlpha = a * (1 - ph * .85);
+    ctx.beginPath(); ctx.arc(sx + 9, 0, 12 + k * 9 + ph * 5, -.85, .85); ctx.stroke();
+  }
+  ctx.globalAlpha = a;
+  txt(ctx, label, sx + 44 + tw / 2, 13, { size: 36, weight: 900, ls: .12, color: '#fff' });
+  ctx.restore(); ctx.globalAlpha = 1;
 }
 
 // ---------------------------------------------------------------- subtitles: Tamil + Tanglish, synced to the voice

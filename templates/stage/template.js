@@ -2,7 +2,7 @@
 // motion graphics lead and can take the whole screen. Gold accents, Anton titles, Tamil voice.
 import { W, H, clamp, lerp, prog, ep, E, life, rng, cue, beatPulse, shake, fill, grad, radial, cover, framed, rrect,
   txt, setFont, fitSize, slam, wordsIn, pill, dust, tint, sweep, ring, streak, flash, vignette, grain, rgba, filtered } from '../_shared/runtime.js';
-import { endCard, labelPin, shapePoints, assemble, subtitles } from '../_shared/motion.js';
+import { endCard, labelPin, shapePoints, assemble, subtitles, soundOn, handle } from '../_shared/motion.js';
 
 const GOLD = '#F8C868', TEAL = '#78E0D0', INK = '#050608';
 // Instagram-safe layout for breakdowns: the action buttons sit on the right and the profile, caption and
@@ -72,6 +72,7 @@ const KINDS = {
       const rl = ep(lt, hit + .65, hit + 1.15, E.inOutCubic);
       ctx.fillStyle = GOLD; ctx.fillRect(CX - 230 * rl, 1274, 460 * rl, 5);
       ctx.restore();
+      if (env.plan.voice && env.plan.voice.on) soundOn(ctx, lt, CX, 300, { until: T.end - T.start + .2, accent: GOLD });
     };
   },
 
@@ -97,6 +98,57 @@ const KINDS = {
       }
       s.slam.lines.forEach((ln, k) => slam(ctx, ln.text, CX, 1105 + k * 158, lt - slamT - k * .2, { size: Math.min(ln.size || 150, fitSize(env, ctx, ln.text, 'Anton', 400, MAXW, ln.size || 150, 60)), family: 'Anton', weight: 400, color: ln.color || '#fff', glow: ln.glow, glowBlur: 45 }));
       ring(ctx, CX, 1150, lt - slamT - .2, { color: GOLD, r1: 640 });
+      ctx.restore();
+    };
+  },
+
+  // ------------------------------------------------------------ THE TECHNIQUE: name it, define it, show it (the pin)
+  technique(env, s, i, T) {
+    const cn = cue(env, i, s.cues.name) - T.start, co = cue(env, i, s.cues.outer) - T.start, ci = cue(env, i, s.cues.inner) - T.start;
+    const per = (s.frame_w || 780) + 0 ;
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      const [sx, sy] = shake(lt, [cn], 12);
+      ctx.save(); ctx.translate(sx, sy);
+      wordsIn(ctx, s.kicker || 'THE TECHNIQUE', CX, 330, lt - .05, { size: 40, weight: 900, ls: .22, color: GOLD, stagger: .1 });
+      const nsz = fitSize(env, ctx, s.name, 'Anton', 400, MAXW, 170, 80);
+      if (lt < cn) {
+        // before the word: the name scrambles, building up to the reveal
+        const r = rng(env.frame * 7 + 3), AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ?';
+        const scr = [...s.name].map(ch => ch === ' ' ? ' ' : AZ[Math.floor(r() * AZ.length)]).join('');
+        txt(ctx, scr, CX, 500, { size: nsz, family: 'Anton', weight: 400, color: rgba('#ffffff', .18 + .12 * Math.sin(lt * 9)), alpha: ep(lt, .1, .5) });
+        ctx.save(); ctx.globalAlpha = .5 * ep(lt, .1, .5); ctx.strokeStyle = GOLD; ctx.lineWidth = 3;
+        const bw = MAXW * .9, ph = (lt * .7) % 1; ctx.beginPath(); ctx.moveTo(CX - bw / 2 + bw * ph, 520); ctx.lineTo(CX - bw / 2 + bw * Math.min(1, ph + .25), 520); ctx.stroke(); ctx.restore();
+      }
+      slam(ctx, s.name, CX, 500, lt - cn, { size: nsz, family: 'Anton', weight: 400, color: '#fff', glow: 'rgba(248,200,104,.7)', glowBlur: 50 });
+      ring(ctx, CX, 450, lt - cn, { color: GOLD, r1: 720, w: 16 });
+      streak(ctx, CX, 452, lt - cn - .05, { len: 950 });
+      if (s.definition) pill(ctx, s.definition, CX, 590, lt - cn - .55, { size: 36, bg: 'rgba(248,232,200,.95)', color: INK, ls: .06 });
+      // the diagram: one big story holding small stories
+      const fw = s.frame_w || 800, fh = 520, fx = CX - fw / 2, fy = 690;
+      const po = ep(lt, co, co + .9, E.inOutCubic);
+      if (po > 0) {
+        ctx.save(); ctx.lineWidth = 5; ctx.strokeStyle = GOLD; ctx.shadowColor = GOLD; ctx.shadowBlur = 18 + 14 * beatPulse(env, t);
+        const perim = 2 * (fw + fh), L = perim * po;
+        ctx.setLineDash([L, perim]); rrect(ctx, fx, fy, fw, fh, 30); ctx.stroke(); ctx.setLineDash([]);
+        ctx.restore();
+        ctx.globalAlpha = .9 * po; rrect(ctx, fx, fy, fw, fh, 30); ctx.fillStyle = 'rgba(16,14,10,.55)'; ctx.fill(); ctx.globalAlpha = 1;
+        pill(ctx, s.outer_label, fx + 190, fy, lt - co - .3, { size: 32, bg: GOLD, color: INK, ls: .08 });
+      }
+      (s.inner || []).forEach((lab, k) => {
+        const st = ci + k * .3, p = ep(lt, st, st + .45, E.outBack); if (p <= 0) return;
+        const bw = 210, bh = 300, bx = CX + (k - 1) * 250, by = fy + fh / 2 + 25;
+        const lit = Math.floor(((lt - ci) * 1.2)) % 3 === k && lt > ci + 1.2;
+        ctx.save(); ctx.translate(bx, by + (1 - p) * 60); ctx.scale(p, p);
+        if (lit) { ctx.shadowColor = rgba(TEAL, .8); ctx.shadowBlur = 30; }
+        rrect(ctx, -bw / 2, -bh / 2, bw, bh, 20); ctx.fillStyle = 'rgba(12,16,20,.95)'; ctx.fill();
+        ctx.lineWidth = 4; ctx.strokeStyle = lit ? '#fff' : TEAL; ctx.stroke(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        icon(ctx, 'story', 1.1, TEAL);
+        txt(ctx, lab, 0, 100, { size: 34, family: 'Anton', weight: 400, color: '#fff' });
+        const qp = ep(lt, st + .35, st + .65, E.outBack);
+        if (qp > 0) { ctx.save(); ctx.translate(bw / 2 - 12, -bh / 2 + 12); ctx.scale(qp, qp); ctx.beginPath(); ctx.arc(0, 0, 30, 0, 7); ctx.fillStyle = GOLD; ctx.fill(); txt(ctx, '?', 0, 14, { size: 40, family: 'Anton', weight: 400, color: INK }); ctx.restore(); }
+        ctx.restore();
+      });
       ctx.restore();
     };
   },
@@ -222,6 +274,7 @@ const KINDS = {
         }
         flash(ctx, lt, c.crack, { alpha: .55 });
       }
+      if (s.kicker) pill(ctx, s.kicker, CX, 330, lt - .1, { size: 34, bg: INK, color: GOLD, border: rgba(GOLD, .7), ls: .16, alpha: 1 - ep(lt, c.crack - .2, c.crack + .2) });
       s.slam_text.forEach((w, k) => slam(ctx, w, CX, 840 + k * 220, lt - c.slam - k * .16, { size: k ? 250 : 170, family: 'Anton', weight: 400, color: k ? '#fff' : '#111', glow: k ? 'rgba(255,255,255,.55)' : null, glowBlur: 50 }));
       ring(ctx, CX, 960, lt - c.slam - .16, { color: '#ffffff', r1: 800, w: 14, alpha: .7 });
       ctx.restore();
@@ -252,8 +305,9 @@ const KINDS = {
     return (ctx, lt, t) => {
       stage(env, ctx, t);
       if (bg) { ctx.save(); ctx.globalAlpha = .38 * ep(lt, 0, .8); cover(ctx, bg, 0, 0, W, H, { zoom: 1.15 + .05 * Math.sin(lt * .5), fy: .4 }); ctx.restore(); ctx.globalAlpha = 1; grad(ctx, 0, 0, 0, H, [[0, 'rgba(5,6,8,.75)'], [.5, 'rgba(5,6,8,.35)'], [1, 'rgba(5,6,8,.85)']]); }
+      if (s.recap) pill(ctx, s.recap, CX, 505, lt - .15, { size: 38, bg: GOLD, color: INK, ls: .1, glow: rgba(GOLD, .6) });
       endCard(env, ctx, lt, t, { echo: s.echo, question: s.question, cta: s.cta, sub: env.plan.subtitles === false ? s.sub : null, subFamily: s.subFamily, accent: GOLD,
-        cx: CX, echoY: 330, qy: 690, ctaY: 1065, mascot: [180, 1230, .72], echoSize: 30 });
+        cx: CX, echoY: 330, qy: 690, ctaY: 990, handleY: 1100, mascot: [170, 1235, .7], echoSize: 30 });
     };
   },
 };

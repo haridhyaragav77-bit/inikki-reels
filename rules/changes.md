@@ -2,6 +2,19 @@
 
 Every change has a number, a reason and an Undo (AGENT.md 1, 9). Newest first.
 
+## #5 · 13 Nov 2026 · Harish's feedback, round 5 · set by Harish (hard rules)
+**Why:** viewers may miss the voice; the breakdown didn't pin down exactly what the insight was; the Letterboxd rating was hard to read; reels need the page name.
+
+**What changed:**
+1. Voiced reels open with "TURN SOUND ON" (AGENT.md 5.3).
+2. Every breakdown pins a named technique (frame story, ticking clock, match cut, leitmotif...): named on screen, defined, shown, explained, recapped (5.7).
+3. Breakdowns aim for about 1 minute; shorter is fine (5.9).
+4. Watch This Next: a bigger rating ring and a clear LETTERBOXD label.
+5. Every reel ends with @inikki_reels (5.3).
+6. This set of five reels is the new reference for each look; the earlier reference reels are retired (6.6).
+
+**Undo:** revert this commit.
+
 ## #4 · 13 Nov 2026 · Harish's feedback, round 4 · set by Harish (hard rules)
 **Why:** the Vikram Vedha reel had no subtitles; Instagram's right-side buttons and bottom profile/caption area can cover words; reels must reach Drive.
 

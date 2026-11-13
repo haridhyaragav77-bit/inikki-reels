@@ -222,6 +222,8 @@ A lead with Value under 15 is dropped, whatever its total. A strong idea is neve
 - **Screen 1 is the title screen.** It says, big and clear, which film and what kind of reel: "VIKRAM VEDHA · SCREENPLAY BREAKDOWN", "COOLIE · WEEK 1 BOX OFFICE", "5 FILMS TO WATCH TONIGHT". Use the film's own title logo from its trailer when there is one; otherwise type the title in the series font. Behind it sits the most striking shot available (the visual hook). Music and motion start on frame 1, and the voice can start its hook over it. At most 2 s.
 - A small kicker never replaces the title. If someone sees only screen 1, they must know what the reel is about.
 - Words on screen: a headline of 7 words or fewer, motion-graphic labels of **3 words or fewer**, a Tamil line where it helps. Sentences are spoken, not written.
+- **Voiced reels open with "TURN SOUND ON"** (an animated speaker on the title screen), so no one misses the voice.
+- **Every reel ends with the page name, @inikki_reels**, on the end card, next to the send prompt.
 - **Voiced reels (breakdowns) carry Tamil + Tanglish subtitles** synced to the voice: two lines on a soft plate, about 4 words at a time, the spoken word lit in the series colour. Music-only reels carry no subtitles.
 - **Breakdowns keep clear of Instagram's own buttons:** every word and key visual stays in the safe column (away from the right-side buttons and the bottom profile, caption and message area); subtitles get their own band just above it.
 - Clips are 2–4 s, from official trailers and promos, always transformed with commentary and design.
@@ -273,6 +275,8 @@ An old film with no cult following is skipped, however good it is.
 
 **Breakdowns are not only about screenplay.** Pick the strongest angle for that film: screenplay, cinematography and camera, set and production design, editing, sound and music, or acting. If a film has no strong insight left, change the angle or the film.
 
+**Every breakdown pins a named technique.** The core of a breakdown is an existing, named technique, brought to light: a storytelling or screenplay device (frame story, ticking clock, dramatic irony, setup and payoff, unreliable narrator), a camera or lighting technique, an editing technique (match cut, cross-cutting), a music or sound technique (leitmotif, silence). The reel names it on screen ("THE TECHNIQUE: FRAME STORY"), defines it in a few words, shows how the film uses it, says why it works, and recaps it on the end card. If you cannot name the technique, it is not a breakdown yet.
+
 **What counts as an insight.** A specific craft choice + why it works + what the viewer felt without noticing. Weak: "Kaithi has great action." Strong: "Kaithi happens in one night, so every delay costs a life. The clock is the real villain."
 
 **The worth-it test.** The Script Writer answers these in the plan, one line each, before writing the script:
@@ -302,7 +306,7 @@ Motion graphics exist to **show the idea the voice is saying, at the moment it i
 | Moving transitions | Screens change with movement (whip, zoom-through, light flash, mask wipe), never a plain cut to a still card. |
 
 ### 5.9 Length and voice
-- **The content decides the length.** Most reels stay at 45 s or less. A breakdown may run up to 75 s when the insight truly needs the time. The plan writes down why.
+- **The content decides the length.** Most reels stay at 45 s or less. **Breakdowns aim for about 1 minute** (the safe spot: enough time to explain a technique, short enough to hold); shorter is fine, up to 75 s only when truly needed. The plan writes down why.
 - **Not every reel needs a voice.** Box office updates, release dates and first-look drops can be music-only: numbers, stills and motion graphics tell the story, with no captions. Voice is used when something needs explaining. Each series sets its default; the plan can switch it for one reel.
 - **Some reels should stay simple.** A clear number on a great still beats a busy screen.
 
@@ -316,6 +320,8 @@ This is the one way every reel is made, in every series, every day, Lab pilots i
 | 3 | **Title screen:** the film and what the reel is, big, over the most striking shot | 5.3 |
 | 4 | **Sound:** music on frame 1, sections that follow the story, voice only when it helps | 5.4, 5.9 |
 | 5 | **Motion:** lots of animation, graphics on the word, labels of 3 words or fewer, no repeats, one hero moment | 5.8 |
+| 5b | **Voice and brand:** "TURN SOUND ON" first when there is a voice; @inikki_reels on the end card | 5.3 |
+| 5c | **Breakdowns:** a named technique, pinned on screen and recapped at the end | 5.7 |
 | 6 | **Look:** the series' own template, using the whole frame | 6.6 |
 | 7 | **Length:** set by the content | 5.9 |
 | 8 | **Honest:** facts with 2 sources, no spoilers in updates and recommendations | 5.7, 12.4 |
@@ -387,6 +393,8 @@ Series must not look alike. Each has its own template, background and use of spa
 | Viral Story, Artwork + Quote | Cinematic | Unchanged | Unchanged | No | Unchanged |
 | **Movie Review** (First Verdict) | **Verdict** | The film's still in a dark violet tint, a spotlight on the verdict | A tall scorecard fills the frame: verdict stamp, works-vs-not scale, critic cards | No | Verdict + named critic quotes of 6 words or fewer |
 | **Breaking News** | **Flash** | Full-bleed still in a red wash, a pulsing live dot, scan lines, a running ticker | The headline slams across the full width; facts snap in as big blocks | No | Headline of 7 words or fewer + 2 facts |
+
+**Reference reels (13 Nov 2026).** The approved set is the reference for each look and replaces the earlier reference reels: Vikram Vedha (Breakdown, Stage), Scene week 1 (Updates, Bulletin), Loved Vikram Vedha? Watch these 4 (Watch This Next, Poster Wall), Scene first verdict (Review, Verdict), Inji Vellam release date (Breaking, Flash). Plans: `plans/2026-11-13/`; reels: Drive `reference-reels/2026-11-13/`. Templates are tested against them (Block C rule 3).
 
 **Stills and pictures.** First choice: official stills, posters and behind-the-scenes posts from the film's official Instagram accounts (production house, director, stars), then trailer frames and press kits. **Always scout for the official poster:** news like a release date nearly always comes with a new poster or stills, and the poster is the hook. If a new film truly has no visuals, lead with its biggest name (the director, music director or star, whoever pulls most) and their picture, for example "NEW MANI RATNAM FILM". One good still is enough. Reframe it with motion: slow push-in, crops on details, split panels, a colour treatment, motion graphics around it. A topic is never dropped only because stills are scarce. If there are no stills at all, the title and motion graphics carry the reel.
 
@@ -1253,3 +1261,4 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | Harish's feedback round 2 (13 Nov 2026): lots of animation, one standard for every reel everywhere, own looks for Movie Review and Breaking News | 5.8, 5.10, 6.5, 6.6, 7, 12.2; motion library; `rules/changes.md` #2 |
 | Harish's feedback round 3 (13 Nov 2026): style approved; bold music as a hook; proof and where-to-watch in recommendations; always scout the poster for breaking news; never render on the laptop | 4.4, 5.4, 5.7, 6.6, 10.1, 16.2, 17; `rules/changes.md` #3 |
 | Harish's feedback round 4 (13 Nov 2026): Tamil + Tanglish subtitles on breakdowns, Instagram-safe layout for breakdowns, everything works with Drive | 4.3, 5.3, 6.6, 14.2, 19; `engine/drive/`, `.github/workflows/make-reels.yml`; `rules/changes.md` #4 |
+| Harish's feedback round 5 (13 Nov 2026): sound-on prompt, a named technique in every breakdown, about 1 minute, legible Letterboxd, @inikki_reels on every reel, this set becomes the reference | 5.3, 5.7, 5.9, 5.10, 6.6; `rules/changes.md` #5 |
