@@ -2,6 +2,39 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 13 Nov 2026, night — Managing the agent (Control Room round)
+Harish asked for: buttons before chat, far fewer tokens, easy refinement loops, a guidebook, and a safety audit.
+
+**Built (AGENT.md first: 4.2, 4.3, 8.5, 8.6, 12.1, 12.5, 13.3, 15, 16, Blocks B and D)**
+| Piece | Where | In one line |
+| --- | --- | --- |
+| Relay | `engine/relay.py`, Drive `control/inbox/` | The Control Room creates one small file per action; every job takes them in, applies, logs, bins. Undo for switch, settings, series, rules. |
+| Panel | `engine/panel.py`, Drive `status/panel.md` + `panel.txt` | One status file after every job: reels, next runs, tomorrow, numbers, money, alerts, last actions. |
+| Word changes | `engine/edits.py` | Change a hook or caption before posting; new version of a posted reel that waits for "post now". |
+| Standing rules, ideas | `engine/brief.py` | Printed at the top of every brief. |
+| Hold posts = approve first | `engine/post.py` | "Post now" releases one reel while posts are on Hold (never on Sleep). |
+| Control Room page | `control-room/page.html`, https://claude.ai/artifact/LiQvqiXriy9fZeWteZLWD6 | Cards and buttons; reads the panel and writes the inbox through the Google Drive connector. No Claude tokens. |
+| Clean chat per run | `runs/*.md`, dispatcher chat | Scheduled tasks send `RUN <name>`; a dispatcher on the cheapest model starts a new session that reads its run card. |
+| Guidebook, skills | `GUIDE.md`, `.claude/skills/{apply-feedback,series-change,workshop}` | Every control, loop and ready prompt. |
+
+**Found in the audit**
+| Finding | Status |
+| --- | --- |
+| No scheduled GitHub job had ever fired (0 runs with event "schedule"); everything so far ran by hand. The 18:00, 20:00 and 21:30 slots of 13 Nov did not post. | Clock files re-saved on main by this merge; checked again after the 23:40 nightly. See the next entry. |
+| Two "PIPELINE TEST" reels were still marked ready for 18:00 and 20:00 on the live page | Skipped through the new inbox (also the first real test of the relay) |
+| Thinking runs woke one long chat: about 200,000 tokens re-read per step (Plan run 5.5 million tokens, about $2.7 at list price, for 3 reels) | Clean chat per run; self-test passed end to end |
+| The Control Room had never managed to write a setting (the Drive connector can create files but not rewrite them) | Inbox design: create only |
+| Dashboard sheet settings sat under `runner:` in `config/engine.yaml`, so the nightly dashboard job failed | Fixed |
+| Image cap ignored a change from the Control Room; a reel Harish skipped was made again at the next Make run | Fixed |
+| Dead branch triggers in five workflows | Removed |
+| Approval levels "check_in" and "hands_on" and away mode are shown but the Engine does not act on them | Not built; "Hold posts" + "Post now" is the working approve-first mode |
+| The Breaking run still wakes the long-lived chat (its API link is tied to that task) | Left as is: rare. To move it, make a new API trigger and update the two GitHub secrets. |
+
+**Tests:** `python -m tests.test_control_room` (no keys). On the real Drive: `daily` → `panel` and `control` from the branch; `RUN selftest` through the dispatcher reached main.
+
+**Scheduled tasks now:** Plan, Refresh, Weekly, Monthly and Self-test send `RUN <name>` to "iNiKKi Brain · dispatcher". The four long-chat tasks are switched off (kept, named OLD). One one-time safety net for the first clean Plan run: 14 Nov 06:20.
+
+
 ## 13 Nov 2026: the approved looks, and the two builds joined into one
 Harish reviewed reels in five rounds (rules/changes.md #4 to #8) and approved five looks: Stage (breakdowns), Bulletin
 (updates), Poster Wall (Watch This Next), Verdict (review) and Flash (breaking). Their plans are the reference set in
