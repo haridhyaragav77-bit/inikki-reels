@@ -2,6 +2,7 @@ id: guess-the-movie
 name: Guess the Tamil Movie
 status: live
 badge: { text: "GUESS THE TAMIL MOVIE", color: ticket_yellow }
+title_screen: "GUESS THE TAMIL MOVIE #{N}"
 episode_counter: 4      # next episode number; #3 is pinned on the page (confirm)
 per_week: 4             # shares the story slot with viral-story (starting mix 4/3, tuned weekly)
 slots: ["15:30"]

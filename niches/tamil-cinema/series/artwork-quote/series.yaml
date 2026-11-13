@@ -2,6 +2,7 @@ id: artwork-quote
 name: Frame & Line (Artwork + Quote)
 status: live
 badge: { text: "FRAME & LINE", color: soft_gold }
+title_screen: "{FILM} · THE LINE"
 per_day: 0              # flex: switches on after a dull stretch of 2-3 days
 trigger: dull_streak
 slots: ["17:00"]

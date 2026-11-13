@@ -18,8 +18,10 @@
       "viral-story": "#F0A040",
       "movie-review": "#A78BFA",
       "artwork-quote": "#E8D29A",
-      "breaking-news": "#E5484D"
-    }
+      "breaking-news": "#E5484D",
+      "movie-recommendations": "#7CC4FA"
+    },
+    "sky": "#7CC4FA"
   },
   "gradient": {
     "card_background": [

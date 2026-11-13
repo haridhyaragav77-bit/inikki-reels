@@ -1,35 +1,54 @@
-# iNiKKi Reels playbook — v0 (starting rules, 10 Nov 2026)
+# iNiKKi Reels playbook — v1 (13 Nov 2026)
 
-These are starting rules taken from Harish's 11 sample reels and the page as it stood on 10 Nov 2026. The weekly learning run rewrites them from real results. Every change is logged in `changes.md`.
+These are starting rules taken from Harish's 11 sample reels, the page as it stood on 10 Nov 2026, and Harish's feedback on the first reels (13 Nov 2026, change #1). The weekly learning run rewrites them from real results. Every change is logged in `changes.md`.
 
 ## What the page has proven so far
 - An interactive guess format (**Guess the Tamil Movie #3**, 3D style) reached **104K views**. The newest cinematic stories got 203 and 17. Early evidence that **play-along formats travel to non-followers**. Treat this as one data point, not a law.
-- Breakdowns in the card style are the page's identity (Kaithi, Jigarthanda, Ratsasan).
+- Breakdowns are the page's identity (Kaithi, Jigarthanda, Ratsasan). What makes them worth watching is the insight, explained with motion graphics.
+
+## Value first (Harish, 13 Nov)
+- The insight is the hero. Find it, write the script, then plan graphics, then look for visuals. Never write a script around footage we happened to find.
+- Pick films people care about now: cult classics, new releases, films in the news. Skip old films with no cult following.
+- Breakdowns can cover any craft: screenplay, camera, set, editing, sound, acting. Pick the strongest angle.
+- Ask before every reel: what will they learn, why stop, why now, who would they send it to?
+
+## The first 2 seconds
+- Screen 1 is a big, clear title: the film and what the reel is ("VIKRAM VEDHA · SCREENPLAY BREAKDOWN", "COOLIE · WEEK 1 BOX OFFICE", "5 FILMS TO WATCH TONIGHT"). Use the film's title logo when there is one, over its most striking shot.
+- Music starts on frame 1. Never open in silence. The voice can start its hook over the title.
 
 ## Hooks
-- Screen 1 asks a question or states a surprise in 7 words or fewer. Examples that fit the voice: "Phone-a thoda vidala. Yen?", "Why did Suriya need ₹25,000?", "Anirudh called. They thought it was a prank.", "Vikram's breakthrough. No buyers."
+- The voice hook asks a question or states a surprise in 7 words or fewer. Examples that fit the voice: "Phone-a thoda vidala. Yen?", "Why did Suriya need ₹25,000?", "Anirudh called. They thought it was a prank.", "Vikram's breakthrough. No buyers."
 - Money, numbers and specific years in hooks feel concrete (₹100, ₹750, '96, 1999).
 - Tanglish questions for breakdowns. English plus Tamil for viral stories.
 
 ## Structure
-- Breakdowns: question → name the idea → 3 numbered points with real clips → the turn → payoff line → "Send to that friend" + meme.
+- Breakdowns: title → hook → the insight in 2–4 beats → the turn → payoff → "Send to that friend" + meme. Usually 45 s or less; up to 75 s only when the insight needs it.
+- Updates: title → the number or news → 1–2 facts → what's next → light question. 15–30 s. Often music-only. No spoilers.
+- Recommendations (Watch This Next): title → one film per screen (still, title, year, country, short reason, where to watch) → recap grid → "Save this for the weekend".
 - Viral stories: 6–8 images, each carrying 2 text beats. Humble start → struggle → turn → break → payoff → a question that names a person ("Know someone starting over?").
 - Guess the Movie: 3 clues → lock-your-answer countdown → reveal → "Clue 1, 2 or 3? Comment."
-- Updates: question → news → 2 fact chips → what it means → light question → "Send to that friend".
 
-## Text
-- Kicker (small caps, teal) → headline (white plus a gold condensed line) → Tamil line.
-- No more than 2 lines of headline. The Tamil line always sits under it.
+## Motion graphics
+- They show the idea the voice says, on the word it is said. Labels of 3 words or fewer. No sentences on screen.
+- No graphic twice in one reel. The same idea gets the same graphic across reels (motion library).
+- One hero moment per reel. When no clip fits, the graphic goes full-screen.
+
+## Music
+- Music follows the story: calm for the setup, tension for the build, release at the payoff. Change track or section at the turn, on a beat. Never a calm track under an intense section.
+
+## Text and look
+- Each series has its own look: Breakdown = dark stage, graphics lead · Updates = full-bleed stills, big numbers · Recommendations = one film per screen, poster wall.
+- Use the whole frame. No small card floating in empty space.
 - Cover title inside the middle 3:4 area of the frame.
 
 ## Endings that invite sends
 - "Send this to your cinema friend." · "Know someone starting over?" · "Which scene would you try on mute?" · "Got it at clue 1 or 2? Comment."
 
 ## Avoid
-- Long setups before the hook. Text near the top edge (the grid crops it). Two ideas in one breakdown. Memes on serious news.
+- Silent openings. Music that doesn't match the moment. Wordy graphics and full-sentence captions. Small cryptic text instead of a title. Spoilers in updates. Scripts built around available footage. Two ideas in one breakdown. Long setups before the hook. Text near the top edge (the grid crops it). Memes on serious news. Recommending films everyone has already seen.
 
 ## Posting (starting guess, to be learned)
-08:30, 12:30, 15:30, 18:00, 20:00, 21:30 IST. Flex at 11:00 and 17:00.
+08:30, 12:30, 15:30, 18:00, 20:00, 21:30 IST. Flex at 11:00 and 17:00. Watch This Next: Fri–Sun 17:00.
 
 ## Metrics that decide "good" (per Instagram's guidance)
 Sends per reach and average watch time first, then likes per reach, skip rate, saves, comments, follows. Each reel is always compared with its own series' median.

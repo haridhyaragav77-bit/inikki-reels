@@ -2,29 +2,41 @@ id: film-breakdown
 name: Film Breakdown
 status: live
 priority: 1            # the page's main product
-badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE FILMMAKING BREAKDOWN", "THE CINEMATOGRAPHY BREAKDOWN"], color: gold }
+badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE CINEMATOGRAPHY BREAKDOWN", "THE CAMERA BREAKDOWN", "THE SET DESIGN BREAKDOWN", "THE EDITING BREAKDOWN", "THE SOUND BREAKDOWN", "THE PERFORMANCE BREAKDOWN"], color: gold }
+title_screen: "{FILM} · {ANGLE} BREAKDOWN"     # e.g. "VIKRAM VEDHA · SCREENPLAY BREAKDOWN"; film's title logo from the trailer when available
 per_day: 2
 slots: ["12:30", "20:00"]
-template: card
-visuals: clips
+template: stage         # its own look: dark stage, motion graphics lead (AGENT.md 6.6)
+visuals: motion_graphics_first   # clips where they truly show the point; graphics carry the rest
 voice: true
-length_s: [40, 50]
+captions: keywords      # 2-4 key words synced to the voice, never full sentences
+length_s: [30, 45]
+length_max_s: 75        # only when the insight needs it; the plan writes down why
 image_cap_per_reel: 0
 bank_target: 4          # keep 3-4 finished breakdowns ready
-lead_sources: [film_bank, news_hooks, anniversaries, comments]
-story_shape: [hook_question, frame_the_idea, numbered_points_3, the_turn, payoff, send_to_friend]
+angles: [screenplay, cinematography_camera, set_production_design, editing, sound_music, performance]
+lead_sources: [cult_classics, new_releases, news_hooks, anniversaries, re_releases, film_bank, comments]
+story_shape: [title_screen, hook, insight_beats_2_to_4, the_turn, payoff, send_to_friend]
 hook_style: "A short Tanglish question about something the viewer felt but never noticed."
 hook_examples:
   - "Phone-a thoda vidala. Yen?"
   - "Yaaru yaarai iyakkuraanga?"
   - "Saadhaarana satham. Bayam yen?"
-motion_presets: [card_pop, chips_in, timer_dial, tension_bar, split_compare, list_reveal, meme_end]
+music_arc: [intrigue, tension, release]   # music changes with the story; starts on frame 1
+motion_library: "../../motion_library.md"
+motion_presets: [tension_bar, timer_dial, timeline_scrub, setup_payoff_thread, power_scale, character_map, knowledge_gap, camera_path, shot_scale_ladder, light_map, cut_rhythm, sound_layers, fight_map, split_compare]
 meme_use: ending_only
 trend_hooks: true
 success_metric: sends_per_reach
 done_well: ["KAITHI_Premium_Reels_Aligned_VOICED.mp4", "JIGARTHANDA_Filmmaking_Tamil_VOICED.mp4", "Ratsasan breakdown (on the page)"]
 rules:
-  - "One idea per reel, explained in exactly 3 points."
-  - "Every point is shown with a real clip from the film, inside the card frame."
+  - "Value is the hero: the reel must pass the worth-it test (AGENT.md 5.7) before any visual is chosen."
+  - "Write the script first, then plan the motion graphics, then look for clips. Never bend the script to fit footage."
+  - "Pick the strongest angle for the film: screenplay, camera, set, editing, sound or acting."
+  - "Pick films people care about now: cult classics, new releases, films in the news. Skip old films with no cult following."
+  - "Screen 1 names the film and the angle, big and clear."
+  - "One idea per reel, told in 2-4 beats."
+  - "Motion graphics show the idea on the word it is said: labels of 3 words or fewer, no graphic repeated in a reel, one hero moment."
+  - "If no clip fits a beat, the motion graphic goes full-screen for that beat."
   - "Never retell the plot; explain why a scene works."
   - "Same film at most once in 21 days; same film + angle at most once in 60 days."
