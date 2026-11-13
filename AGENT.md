@@ -189,7 +189,7 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | Dashboard | After Measure | Updates the Dashboard sheet |
 
 ### 4.4 Voice
-Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → your laptop at 8 PM (Voice Session card) → music-only version with short key-line captions (the motion graphics still carry the ideas).
+Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → a cloud Claude session → music-only version with short key-line captions (the motion graphics still carry the ideas). **Voice and rendering always run in the cloud, never on your laptop.**
 
 ---
 
@@ -234,9 +234,10 @@ A lead with Value under 15 is dropped, whatever its total. A strong idea is neve
 | --- | --- |
 | Source | **Your background music in Drive `music/`** (first choice), then royalty-free tracks (for example YouTube Audio Library, Pixabay Music) as a backup when nothing fits |
 | **Start** | Music starts on frame 1. A reel never opens in silence. The first beat lands with the title screen, so the music is part of the hook. |
+| **Bold, never subtle** | Music is a hook: it makes people stop. Pick catchy, loud, recognisable tracks (mass themes, punchy BGMs) and start on their strongest part. Music-only reels play it at full presence. A quiet, background-only track is a fail. |
 | **Follows the story** | The plan splits the reel into sections (for example hook, build, turn, payoff) and gives each a mood. The music changes when the story changes: a crossfade on a beat at the turn, or one track whose energy rises the same way. A calm track never plays under an intense section. 2–3 sections at most. |
 | Library | `music/` in Drive with an index: mood, tempo, length, **energy shape** (steady / builds / calm-then-intense / drops), the timestamps of each section, licence, times used, results |
-| Mood map | Breakdown: follows the story (intrigue → tension → release) · Updates: upbeat percussive; box office: rising and triumphant · Recommendations: matches the theme of the list · Viral story: slow emotional build · Guess the Movie: suspense with ticks · Breaking: short stinger · Artwork: soft and warm |
+| Mood map | Breakdown: follows the story (intrigue → tension → release) · Updates: bold, poppy mass themes; box office: loud and triumphant · Recommendations: bold, catchy and punchy, matching the list · Viral story: slow emotional build · Guess the Movie: suspense with ticks · Breaking: short stinger · Artwork: soft and warm |
 | Fit | Cuts and graphics land on the beat. Music lifts at the payoff. Under voice, music drops to about 20–30%. In music-only reels the music is the storyteller and stays at full level. |
 | Variety | The same track is not reused within 7 days in the same series |
 | Learning | Tracks are scored by the watch-through of reels that used them. Weak tracks are retired. |
@@ -280,7 +281,7 @@ An old film with no cult following is skipped, however good it is.
 4. Who would they send it to?
 5. Is this the best angle on this film?
 
-Updates also answer: "Why would a fan open this?" and "Does this spoil anything?" Recommendations also answer: "Has most of our audience already seen this?" and "Would I tell a friend to watch it tonight?" A weak answer means change the angle or drop the topic. Small compromises are fine (a reused still, a graphic instead of a clip). A compromise on the insight is not.
+Updates also answer: "Why would a fan open this?" and "Does this spoil anything?" Recommendations also answer: "Has most of our audience already seen this?" and "Would I tell a friend to watch it tonight?" Every recommended film carries proof (its Letterboxd rating and one award, festival or famous fact) and where to watch it in India, checked on JustWatch on the day; a film that is not streaming in India is swapped for one that is. A weak answer means change the angle or drop the topic. Small compromises are fine (a reused still, a graphic instead of a clip). A compromise on the insight is not.
 
 ### 5.8 Motion graphics: the page's signature
 Motion graphics exist to **show the idea the voice is saying, at the moment it is said**, so the viewer stays focused. They are not subtitles and not decoration. **Lots of animation is the page's look:** every reel should feel alive from the first frame to the last.
@@ -380,13 +381,13 @@ Series must not look alike. Each has its own template, background and use of spa
 | --- | --- | --- | --- | --- | --- |
 | **Film Breakdown** | **Stage** | Deep black stage, soft spotlight, film grain. Clips float in a cinematic frame. | Motion graphics own the screen and can go full-screen | Yes | Title + labels of 3 words or fewer + key-word captions |
 | **Movie Updates** | **Bulletin** | The film's official still or poster, edge to edge, with a colour wash | Big numbers and bold type across the full frame; no small floating card | Case by case: box office, dates and first looks are music-only | Hero title + numbers. No sentences. |
-| **Watch This Next** (recommendations) | **Poster Wall** | Each film's still fills the frame; a blurred copy of the same still fills any gap (never an empty background) | One film per screen, full-bleed | Off by default | Title, year, country, a reason of 6 words or fewer, where to watch |
+| **Watch This Next** (recommendations) | **Poster Wall** | Each film's still fills the frame; a blurred copy of the same still fills any gap (never an empty background) | One film per screen, full-bleed | Off by default | Title, year, country, a reason of 6 words or fewer, **proof** (Letterboxd rating + one award, festival or famous fact) and **where to watch in India** |
 | Guess the Tamil Movie | Diorama | Unchanged | Unchanged | No | Unchanged |
 | Viral Story, Artwork + Quote | Cinematic | Unchanged | Unchanged | No | Unchanged |
 | **Movie Review** (First Verdict) | **Verdict** | The film's still in a dark violet tint, a spotlight on the verdict | A tall scorecard fills the frame: verdict stamp, works-vs-not scale, critic cards | No | Verdict + named critic quotes of 6 words or fewer |
 | **Breaking News** | **Flash** | Full-bleed still in a red wash, a pulsing live dot, scan lines, a running ticker | The headline slams across the full width; facts snap in as big blocks | No | Headline of 7 words or fewer + 2 facts |
 
-**Stills and pictures.** First choice: official stills, posters and behind-the-scenes posts from the film's official Instagram accounts (production house, director, stars), then trailer frames and press kits. One good still is enough. Reframe it with motion: slow push-in, crops on details, split panels, a colour treatment, motion graphics around it. A topic is never dropped only because stills are scarce. If there are no stills at all, the title and motion graphics carry the reel.
+**Stills and pictures.** First choice: official stills, posters and behind-the-scenes posts from the film's official Instagram accounts (production house, director, stars), then trailer frames and press kits. **Always scout for the official poster:** news like a release date nearly always comes with a new poster or stills, and the poster is the hook. If a new film truly has no visuals, lead with its biggest name (the director, music director or star, whoever pulls most) and their picture, for example "NEW MANI RATNAM FILM". One good still is enough. Reframe it with motion: slow push-in, crops on details, split panels, a colour treatment, motion graphics around it. A topic is never dropped only because stills are scarce. If there are no stills at all, the title and motion graphics carry the reel.
 
 ---
 
@@ -483,7 +484,7 @@ Every Reel card has:
 | Your own comments | Questions, guesses, requests |
 | Calendar | Releases, re-releases, OTT drops, anniversaries (10/15/20/25 years), birthdays, festivals, awards |
 | Cult-classic signals | Films people still rewatch, quote and meme; "underrated" threads; re-release crowds |
-| Watch lists (for Recommendations) | Festival line-ups, critics' lists, new OTT arrivals in India, well-rated films from other languages and countries |
+| Watch lists (for Recommendations) | Festival line-ups, critics' lists, new OTT arrivals in India, well-rated films from other languages and countries; Letterboxd ratings and JustWatch India for proof and where to watch |
 | Official Instagram accounts | New stills, posters and behind-the-scenes posts to use as visuals |
 
 Each trend gets a speed (rising / peak / fading), a risk (none / fan war / sensitive), an expiry date and a fit per series. Trends feed every series: breakdowns ride **news hooks** and cult classics, reviews use first-day talk, Guess the Movie picks films in conversation, Recommendations ride what people are looking to watch this weekend.
@@ -745,7 +746,6 @@ One Claude Project. Paste **Block B** into Instructions. Upload this file. Keep 
 | **Team** | "team" | Roles, their metric and its colour | Edit a role · Add a role |
 | **Trends** | "trends" | Rising, peak, fading, and who uses them | Use more · Avoid |
 | **Global** | "global", "settings" | Switch, approval level, volume, budgets, active brand / niche / lineup | Run/Hold/Sleep · Rebrand · Switch niche · Edit settings |
-| **Voice session** | Only in laptop mode, 7:30–9:30 PM | Scripts waiting, minutes | Start · Audio uploaded · Skip tonight |
 | **Alert** | Something needs you | What happened, what was done, what you do | Fix it · Explain · Snooze |
 | **Weekly report** | Mondays | Section 16.5 | Undo a change · Details |
 | **Milestone** | 100 / 300 / 500 / 1,000 followers, or a breakout | The moment and what drove it | Make part 2 · Share |
@@ -819,7 +819,7 @@ Every delete asks once. Everything except posted-reel deletion can be undone.
 ### Errors
 | Scenario | What the agent does | What you see |
 | --- | --- | --- |
-| Voice service blocked in the cloud | Retry → laptop session → silent version | Voice session card, or a note |
+| Voice service blocked in the cloud | Retry → a cloud Claude session → music-only version | A note |
 | Image refused, or cap reached | Library image → stylised fallback → skip | Note on the reel |
 | Clip download blocked | Clip library → still frame → next lead | Nothing, unless repeated |
 | Render or inspection fails | Reel held, reserve used | Alert only if 2+ in a day |
@@ -1240,3 +1240,4 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | Defaults: 90-day pace, language mix, self-change limits | 2.1, 12.3, 9.2 |
 | Harish's reel feedback (13 Nov 2026): value is the hero, script before visuals, any craft angle, cult classics and hot topics, clear title screen, motion graphics that show and stay on pace, no silent start, music that follows the story, length set by content, music-only updates, no spoilers, one look per series, use of stills and space, Recommendations | 1, 5, 5.3, 5.4, 5.7–5.9, 6.2, 6.6, 8.2, 10.1, Blocks F and G; `niches/tamil-cinema/motion_library.md`; series files; `rules/changes.md` #1 |
 | Harish's feedback round 2 (13 Nov 2026): lots of animation, one standard for every reel everywhere, own looks for Movie Review and Breaking News | 5.8, 5.10, 6.5, 6.6, 7, 12.2; motion library; `rules/changes.md` #2 |
+| Harish's feedback round 3 (13 Nov 2026): style approved; bold music as a hook; proof and where-to-watch in recommendations; always scout the poster for breaking news; never render on the laptop | 4.4, 5.4, 5.7, 6.6, 10.1, 16.2, 17; `rules/changes.md` #3 |

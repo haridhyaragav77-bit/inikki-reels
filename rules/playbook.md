@@ -6,6 +6,9 @@ These are starting rules taken from Harish's 11 sample reels, the page as it sto
 - An interactive guess format (**Guess the Tamil Movie #3**, 3D style) reached **104K views**. The newest cinematic stories got 203 and 17. Early evidence that **play-along formats travel to non-followers**. Treat this as one data point, not a law.
 - Breakdowns are the page's identity (Kaithi, Jigarthanda, Ratsasan). What makes them worth watching is the insight, explained with motion graphics.
 
+## Approved style (Harish, 13 Nov)
+The five looks and the motion graphics are approved. Keep them; improve inside them.
+
 ## The standard (AGENT.md 5.10)
 Every reel in every series is made the same way: worth it → script first → clear title screen → music from frame 1 that follows the story → lots of animation → the series' own look → length set by the content → honest facts, no spoilers.
 
@@ -29,7 +32,7 @@ Every reel in every series is made the same way: worth it → script first → c
 - Updates: title → the number or news → 1–2 facts → what's next → light question. 15–30 s. Often music-only. No spoilers.
 - Reviews (First Verdict): title → verdict stamp → what works → what doesn't → named critics → who should watch → question.
 - Breaking: title → headline slam → 2 confirmed facts → what's next → follow.
-- Recommendations (Watch This Next): title → one film per screen (still, title, year, country, short reason, where to watch) → recap grid → "Save this for the weekend".
+- Recommendations (Watch This Next): title → one film per screen (still, title, year, country, short reason, Letterboxd rating, one award or famous fact, where to watch in India) → recap grid with where to watch → "Save for the weekend".
 - Viral stories: 6–8 images, each carrying 2 text beats. Humble start → struggle → turn → break → payoff → a question that names a person ("Know someone starting over?").
 - Guess the Movie: 3 clues → lock-your-answer countdown → reveal → "Clue 1, 2 or 3? Comment."
 
@@ -40,6 +43,7 @@ Every reel in every series is made the same way: worth it → script first → c
 - Lots of animation: nothing sits still for more than a second. Things pop, draw on, drift, pulse and sweep; hits land on the beat; screens change with a whip, zoom or flash.
 
 ## Music
+- Bold, never subtle: music is a hook. Catchy, loud, recognisable tracks, starting on their strongest part (What's Cookin' on the Scene review worked; Vintage Arjun Is Back and Varun Intro are good picks for updates and lists).
 - Music follows the story: calm for the setup, tension for the build, release at the payoff. Change track or section at the turn, on a beat. Never a calm track under an intense section.
 
 ## Text and look
