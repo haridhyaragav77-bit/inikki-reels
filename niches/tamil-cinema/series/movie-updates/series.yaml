@@ -1,25 +1,33 @@
 id: movie-updates
 name: Movie Updates
 status: live
-badge: { text: "TAMIL CINEMA / {DATE} EDITION", color: teal }
+badge: { text: "MOVIE UPDATE", color: teal }
+title_screen: "{FILM} · {WHAT}"   # e.g. "COOLIE · WEEK 1 BOX OFFICE", "COOLIE CROSSES ₹100 CR", "JAILER 2 · RELEASE DATE"
 per_day: 3
 slots: ["08:30", "18:00", "21:30"]
-template: card
-visuals: mixed          # official posters, stills, trailer clips
-voice: true
-length_s: [30, 40]
+template: bulletin      # its own look: full-bleed stills, big numbers, bold type (AGENT.md 6.6)
+visuals: stills_first   # official stills and posters (official Instagram accounts first), trailer clips
+voice: case_by_case     # music-only for box office, dates and first looks; voice only when something needs explaining
+voice_default_by_type: { box_office: false, release_date: false, first_look: false, trailer_drop: false, cast_crew_news: true, explainer: true }
+captions: none_when_music_only
+length_s: [15, 30]
 image_cap_per_reel: 0
-lead_sources: [trusted_news, official_accounts, youtube_trailers, release_calendar, trends]
-story_shape: [hook_question, the_news, 2_facts_as_chips, what_it_means, comment_prompt, send_to_friend]
+lead_sources: [trusted_news, official_accounts, official_instagram, youtube_trailers, release_calendar, box_office_trackers, trends]
+story_shape: [title_screen, the_number_or_news, 1_to_2_supporting_facts, whats_next, light_question]
 hook_examples:
   - "Alien-aiyum kalaaippaaraa?"
   - "Old team. New chapter."
+music: { default: upbeat_percussive, box_office: rising_triumphant }
+motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe]
 proof_required: 2       # trusted sources that must agree
 meme_use: ending_only
 trend_hooks: true
 success_metric: sends_per_reach
 done_well: ["TAMIZH_PADAM_3_News_07Nov2026_Tamil.mp4"]
 rules:
+  - "The title screen says exactly what the update is, e.g. 'COOLIE · WEEK 1 BOX OFFICE'."
+  - "No spoilers, ever: no plot, twists, cameos or endings. Report numbers, dates, cast, crew, trailers, songs, OTT dates."
+  - "Before writing, answer: why would a fan open this? Report only that."
+  - "Keep it simple: one big number or fact per screen, on a full-bleed still."
   - "Unconfirmed = say 'reportedly' or skip."
-  - "Show dates and names as chips."
   - "End with a light, no-fan-war question."

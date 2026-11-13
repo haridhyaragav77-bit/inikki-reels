@@ -2,9 +2,10 @@ id: breaking-news
 name: Breaking
 status: live
 badge: { text: "BREAKING", color: red }
+title_screen: "BREAKING · {FILM OR PERSON}: {WHAT}"
 per_day_max: 2
 trigger: watcher_or_brain_run
-template: card
+template: bulletin      # red skin (AGENT.md 6.6)
 visuals: mixed
 voice: false
 length_s: [15, 25]

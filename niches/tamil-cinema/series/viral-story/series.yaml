@@ -2,6 +2,7 @@ id: viral-story
 name: Viral Story
 status: live
 badge: { text: "UNTOLD", color: amber }
+title_screen: "{PERSON} · THE UNTOLD STORY"   # the badge alone never stands in for the title
 per_week: 3             # shares the story slot with guess-the-movie
 slots: ["15:30"]
 template: cinematic

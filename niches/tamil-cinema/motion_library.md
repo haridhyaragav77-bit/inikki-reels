@@ -1,0 +1,78 @@
+# Motion library — the page's visual language
+
+Motion graphics **show the idea the voice is saying, at the moment it is said**. They are not subtitles and not decoration (AGENT.md 5.8).
+
+**Rules for every graphic**
+- Labels of 3 words or fewer (names, numbers). Sentences are spoken, not written.
+- Appears on the word it explains, leaves when the idea ends.
+- Never twice in one reel (a single callback at the end is fine).
+- The same idea always gets the same graphic, so viewers learn the page's language.
+- One **hero moment** per reel: the richest graphic, layered, with depth, light and movement.
+- When no clip fits a beat, the graphic goes full-screen and leads.
+- Premium finish: smooth easing, depth layers, soft glow, film grain, brand colours. No clip-art.
+
+The Content Specialist picks from this list. A new graphic is added here when an idea needs one, then reused. The weekly review notes which graphics hold attention best.
+
+## Story and screenplay
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `tension_bar` | Stakes or tension rising | A meter fills with each beat, shakes and spikes at the turn |
+| `timer_dial` | A deadline, a ticking clock | A dial sweeps down; the tick gets louder as it nears zero |
+| `timeline_scrub` | Time structure, flashbacks, jumps | A horizontal timeline; the playhead jumps back and forth with the story |
+| `setup_payoff_thread` | Setup and payoff, foreshadowing | A glowing thread links an early moment to its later payoff |
+| `power_scale` | Who holds power in a scene | A balance tips as control shifts between characters |
+| `character_map` | Alliances, who knows what | Characters as dots; lines connect, snap or change colour |
+| `knowledge_gap` | Suspense: the audience knows more than the hero | Two bars, "WE KNOW" and "HE KNOWS", fill at different speeds |
+| `goal_arrow` | What the hero wants and what blocks them | An arrow drives toward a goal; obstacles drop in its way |
+| `act_bar` | Where in the film a moment sits | The runtime as a bar split into acts, with a marker sliding to the scene |
+| `choice_fork` | A decision, the road not taken | A path splits; one branch lights up, the other fades |
+
+## Camera and cinematography
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `camera_path` | Camera movement and blocking | A top-down map of the set; a camera icon travels its path with a view cone |
+| `shot_scale_ladder` | Why this shot size (wide, mid, close) | Frames stack from wide to close, the chosen one lights up |
+| `lens_cone` | Wide versus long lens | The view cone widens or narrows; the background stretches or squeezes |
+| `light_map` | Where the light comes from | Light sources glow; rays hit the subject; shadows fall |
+| `colour_strip` | The film's colour palette and how it changes | Swatches lift out of the frame and line up; they shift across acts |
+| `frame_grid` | Composition: thirds, symmetry, lines | Guide lines draw themselves over a still |
+| `eyeline_arrows` | Who looks where, the 180-degree line | Arrows trace each look; a line marks the side the camera stays on |
+
+## Editing, sound and set
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `cut_rhythm` | Editing pace | A barcode of shot lengths; bars get thinner as cuts speed up |
+| `sound_layers` | Sound design, the power of silence | A waveform split into layers (music, effects, silence); one layer lights up |
+| `split_compare` | Match cuts, visual rhymes, two versions | Two frames side by side, then they slide into one |
+| `set_blueprint` | Production design, locations | Blueprint lines draw over a still of the set |
+| `before_after_wipe` | A change: set dressing, effects, a character's arc | A wipe reveals the second state |
+
+## Action
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `fight_map` | How a fight is staged | A top-down arena; fighters as glowing figures with motion trails, beats numbered as they land. A strong hero moment. |
+| `geography_map` | Where everyone is (spatial clarity) | A mini map; positions pulse and move as the scene plays |
+
+## Numbers and news (Updates, Breaking, Review)
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `counter_rollup` | A box office figure | Digits roll up and land on the beat |
+| `bar_race` | Day-by-day or week-by-week trend | Bars grow one by one |
+| `milestone_ladder` | Crossing ₹50 / 100 / 200 Cr | The film climbs a ladder; the new rung flashes |
+| `calendar_flip` | A release date | Calendar pages flip and stop on the date |
+| `map_pins` | Where it released or earned | Pins drop on a map with numbers |
+
+## Recommendations
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `poster_stack` | A list of films | Stills slide in like a deck; each one fills the screen in turn |
+| `meta_badges` | Year, country, runtime | Small badges pop onto the still |
+| `ott_tag` | Where to watch | A tag slides in at the bottom |
+| `recap_grid` | The whole list at the end | All films shrink into a grid, good to save |
+
+## Any series
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `still_reframe` | Making one still carry a whole reel | Slow push-in, crops on details, split panels, colour treatment, parallax depth |
+| `list_reveal` | Counting points | Numbers tick in one at a time |
+| `meme_end` | The light ending | Meme pops in with a beat |

@@ -1,0 +1,37 @@
+id: movie-recommendations
+name: Watch This Next (Movie Recommendations)
+status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3)
+badge: { text: "WATCH THIS NEXT", color: sky }
+title_screen: "{THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "ONE FILM YOU MISSED"
+per_week: 3
+days: [fri, sat, sun]
+slots: ["17:00"]
+template: poster_wall   # its own look: one film per screen, full-bleed stills (AGENT.md 6.6)
+visuals: stills_first   # official stills, posters, official Instagram posts, trailer frames
+voice: false            # music-led; voice can be switched on for one reel in the plan
+captions: none
+length_s: [20, 40]
+image_cap_per_reel: 0
+formats:
+  - "Theme list: 3-5 films around one feeling or idea (one-night thrillers, slow-burn villages, heist films)"
+  - "If you loved X: 3 films for fans of a popular film"
+  - "One film you missed: a single hidden gem, longer look"
+  - "Around the world: one film each from different countries"
+  - "Director set (sometimes): the lesser-seen films of one director"
+per_film_screen: [full_bleed_still, title, year_country, reason_6_words_max, where_to_watch]
+lead_sources: [watch_lists, festival_lineups, critics_lists, ott_new_arrivals, film_bank, comments]
+story_shape: [title_screen, film_by_film, recap_grid, save_and_send]
+music: matches_list_theme
+motion_presets: [poster_stack, meta_badges, still_reframe, ott_tag, recap_grid]
+recommended_log: "../../knowledge/recommended_log.csv"
+meme_use: never
+success_metric: saves_and_sends
+rules:
+  - "Recommend films most of our audience has not seen. Skip big-star Tamil blockbusters and world-famous hits that everyone knows."
+  - "Mix Tamil hidden gems with other Indian languages and international films."
+  - "Not tied to directors. A director set is allowed sometimes."
+  - "Never recommend a film twice: check and update the recommended log."
+  - "No spoilers beyond the premise."
+  - "Where to watch only when confirmed for India; otherwise leave it out."
+  - "If only one still exists, reuse it with motion (push-in, crops, split panels, colour). Never drop a great film for lack of stills."
+  - "Before picking, answer: has most of our audience already seen this? Would I tell a friend to watch it tonight?"
