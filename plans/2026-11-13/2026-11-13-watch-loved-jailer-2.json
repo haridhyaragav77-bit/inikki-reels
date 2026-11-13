@@ -1,0 +1,340 @@
+{
+  "id": "2026-11-13-watch-loved-jailer-2",
+  "series": "movie-recommendations",
+  "template": "poster-wall",
+  "fps": 30,
+  "length_s": [
+    20,
+    40
+  ],
+  "lead": {
+    "topic": "Loved Jailer 2? 4 films about quiet men with a violent past",
+    "films": [
+      {
+        "film": "Kammatipaadam",
+        "year": 2016,
+        "language": "Malayalam",
+        "country": "India",
+        "director": "Rajeev Ravi",
+        "premise": "A man returns to Kochi to find his oldest friend from their gang days.",
+        "letterboxd": "3.86/5 (7,397 ratings)",
+        "proof": "4 Kerala State Film Awards incl. Best Actor (Vinayakan, Varman in Jailer 2)",
+        "watch_india": "JioHotstar (JustWatch India, 13 Nov 2026)"
+      },
+      {
+        "film": "A Bittersweet Life",
+        "year": 2005,
+        "language": "Korean",
+        "country": "South Korea",
+        "director": "Kim Jee-woon",
+        "premise": "A loyal hotel enforcer disobeys his boss once, and the gang turns on him.",
+        "letterboxd": "3.93/5 (66,778 ratings)",
+        "proof": "Screened at Cannes 2005 (out of competition)",
+        "watch_india": "Prime Video (JustWatch India, 13 Nov 2026)"
+      },
+      {
+        "film": "Sisu",
+        "year": 2022,
+        "language": "Finnish",
+        "country": "Finland",
+        "director": "Jalmari Helander",
+        "premise": "An old gold prospector meets soldiers who steal his gold. He was once a commando.",
+        "letterboxd": "3.24/5 (234,803 ratings)",
+        "proof": "Premiered in TIFF Midnight Madness 2022",
+        "watch_india": "JioHotstar, SonyLIV (JustWatch India, 13 Nov 2026)"
+      },
+      {
+        "film": "Nobody",
+        "year": 2021,
+        "language": "English",
+        "country": "USA",
+        "director": "Ilya Naishuller",
+        "premise": "A dull family man is pushed one time too many. His old life comes back.",
+        "letterboxd": "3.51/5 (815,922 ratings)",
+        "proof": "Written by Derek Kolstad, the writer of John Wick",
+        "watch_india": "JioHotstar (JustWatch India, 13 Nov 2026)"
+      }
+    ],
+    "why_now": "Jailer 2 started streaming on Prime Video on 12 Nov 2026; fans rewatching it want the next one tonight. Friday watch list.",
+    "dropped": "A History of Violence (rent/buy only in India) and The Man from Nowhere (no India streaming): JustWatch India, 13 Nov 2026"
+  },
+  "worth_it": {
+    "seen_by_most": "No: none was a mainstream release in Tamil Nadu; Kammatipaadam is a Malayalam cult film most Tamil fans have not seen.",
+    "tell_a_friend": "Yes: each is the Jailer feeling, a calm man you should never push.",
+    "spoilers": "Premise only.",
+    "where_to_watch": "Checked on JustWatch India today: JioHotstar, Prime Video, SonyLIV.",
+    "proof": "Letterboxd ratings and one award, festival or famous fact per film (Wikipedia)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.3,
+        "screen": 0,
+        "mood": "bold mass theme, loud from frame 1 (a hook; Jailer energy)"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "kammati": {
+      "src": "engine/.cache/stills/kammatipaadam/B-m13AJMxW4_maxres2.jpg"
+    },
+    "bitter": {
+      "src": "engine/.cache/stills/a_bittersweet_life/h0B2nunfdDI_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.82
+      ]
+    },
+    "sisu": {
+      "src": "engine/.cache/stills/sisu/d2k4QAItiSA_maxres1.jpg"
+    },
+    "nobody": {
+      "src": "engine/.cache/stills/nobody/wZti8QKBWPo_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.2,
+      "posters": [
+        "kammati",
+        "bitter",
+        "sisu",
+        "nobody"
+      ],
+      "fx": [
+        0.62,
+        0.55,
+        0.4,
+        0.55
+      ],
+      "lines": [
+        "LOVED JAILER 2?",
+        "WATCH THESE 4"
+      ],
+      "sfx": [
+        {
+          "at": 0.15,
+          "type": "impact"
+        },
+        {
+          "at": 0.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "in": "push",
+      "dur": 5.8,
+      "image": "kammati",
+      "fx": 0.62,
+      "num": "01",
+      "title": "KAMMATIPAADAM",
+      "meta": [
+        "2016",
+        "MALAYALAM",
+        "INDIA"
+      ],
+      "director": "DIR. RAJEEV RAVI",
+      "reason": "Jailer's Varman. His award-winning role.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.9,
+      "proof": "4 KERALA STATE AWARDS",
+      "watch": "JIOHOTSTAR"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 5.8,
+      "image": "bitter",
+      "fx": 0.55,
+      "num": "02",
+      "title": "A BITTERSWEET LIFE",
+      "meta": [
+        "2005",
+        "KOREAN",
+        "SOUTH KOREA"
+      ],
+      "director": "DIR. KIM JEE-WOON",
+      "reason": "One mistake. A whole gang hunting.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.9,
+      "proof": "CANNES 2005 SELECTION",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 5.8,
+      "image": "sisu",
+      "fx": 0.4,
+      "num": "03",
+      "title": "SISU",
+      "meta": [
+        "2022",
+        "FINNISH",
+        "FINLAND"
+      ],
+      "director": "DIR. JALMARI HELANDER",
+      "reason": "Old commando. They stole his gold.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.2,
+      "proof": "TIFF MIDNIGHT MADNESS",
+      "watch": "JIOHOTSTAR"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 5.8,
+      "image": "nobody",
+      "fx": 0.55,
+      "num": "04",
+      "title": "NOBODY",
+      "meta": [
+        "2021",
+        "ENGLISH",
+        "USA"
+      ],
+      "director": "DIR. ILYA NAISHULLER",
+      "reason": "Boring dad. Very bad idea.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.5,
+      "proof": "FROM JOHN WICK'S WRITER",
+      "watch": "JIOHOTSTAR"
+    },
+    {
+      "kind": "recap",
+      "in": "zoom",
+      "dur": 5.2,
+      "heading": "YOUR FRIDAY NIGHT LIST",
+      "items": [
+        {
+          "image": "kammati",
+          "title": "KAMMATIPAADAM",
+          "fx": 0.62,
+          "watch": "JIOHOTSTAR"
+        },
+        {
+          "image": "bitter",
+          "title": "A BITTERSWEET LIFE",
+          "fx": 0.55,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "sisu",
+          "title": "SISU",
+          "fx": 0.4,
+          "watch": "JIOHOTSTAR"
+        },
+        {
+          "image": "nobody",
+          "title": "NOBODY",
+          "fx": 0.55,
+          "watch": "JIOHOTSTAR"
+        }
+      ],
+      "cta": "SAVE FOR TONIGHT",
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Loved Jailer 2? 4 films about quiet men you should never push.",
+      "Kammatipaadam (JioHotstar), A Bittersweet Life (Prime Video), Sisu (JioHotstar), Nobody (JioHotstar). Letterboxd 3.2 to 3.9; Vinayakan's award-winning role, a Cannes selection, a TIFF Midnight Madness opener and the writer of John Wick.",
+      "Which one are you starting tonight?",
+      "Save this for the weekend. Send it to your Jailer gang.",
+      "ஜெயிலர் 2 பிடிச்சிருந்தா, இந்த நாலு படம்."
+    ],
+    "hashtags": [
+      "#MovieRecommendations",
+      "#Jailer2",
+      "#WorldCinema",
+      "#iNiKKiWatchNext"
+    ],
+    "cover": "LOVED JAILER 2? WATCH THESE 4",
+    "slot": "15:30",
+    "first_comment": "Seen any of these? Which one first?"
+  },
+  "drive_folder": "2026-11-13",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 6,
+    "save_value": 9,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 75,
+    "weakest": {
+      "loop": "end the recap on the title screen collage so the replay feels seamless",
+      "comment_trigger": "first comment asks which film they have already seen"
+    }
+  }
+}
