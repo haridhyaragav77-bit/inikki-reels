@@ -1,7 +1,7 @@
 # Run card: PLAN (daily 05:37 IST)
-You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.md; AGENT.md wins.
+You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.md; AGENT.md wins. Do not read AGENT.md whole: only a section this card names.
 
-## Start (3 steps)
+## Start (4 steps)
 1. `pip install -q -r requirements-light.txt` and `TODAY=$(TZ=Asia/Kolkata date +%F)`. You are on a fresh copy of `main`.
    Work on the branch you were told to push to: `git checkout -q -B claude/brain-plan-$TODAY`.
 2. Skill `quiet-exit` (the switch, then `data/brief.md`). If there is nothing to do, stop: push nothing.
@@ -9,6 +9,8 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
    day, the right brief is missing: if you have a GitHub tool that can start a workflow, start `daily.yml` on `main`
    with job `brief-plan`, wait 2 minutes, `git pull -q origin main`, and read the brief again. Still wrong: one line
    in `data/out/alerts.md` ("today's plan brief was not written"), then carry on with its slots and today's date.
+4. Late start? `python tools/run_due.py plan`. If it says `late start: plan only <times>`, plan only those slots, keep
+   1 reserve when 3 or fewer are left (else 2), and skip the bank top-up. If it says `done` or `too late`, stop: push nothing.
 
 ## The work
 Wear the hats in order (the cards in `team/`): Researcher → Script Writer → Content Specialist → Marketing Expert →

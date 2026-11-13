@@ -178,6 +178,8 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 
 **Each run gets a clean chat (13 Nov 2026).** A run used to wake one long-lived chat, which re-read everything ever said in it at every step (about 200,000 tokens a step by its first evening). Now each scheduled task sends one line, `RUN plan`, to a small **dispatcher** chat on the cheapest model. The dispatcher starts a new session on `main` for that run and does nothing else. The new session reads its **run card** (`runs/<run>.md`) and the brief, does the work, pushes `claude/brain-<run>-<date>` and ends. What a run does is changed by editing its run card, not the scheduled task. `RUN selftest` proves the whole path in a few steps.
 
+**Missed runs catch up (14 Nov 2026).** A run can miss its time (Claude usage used up, a session that failed to start). Five times a day (07:07, 09:37, 13:07, 18:37, 21:07 IST) a scheduled task sends `RUN catchup` to the dispatcher. The dispatcher runs one command, `python tools/run_due.py` (no AI, no keys), which reads main and says for each run: done, not yet, due, or too late. Only a "due" run gets a new session, so a normal day costs five one-line checks and nothing more. A late Plan run plans only the slots still at least 75 minutes away (time to make the reel) and keeps 1 reserve when 3 or fewer slots are left; the bank and reserves cover the slots it missed. A Refresh run is owed until 22:45; Weekly until Tuesday; Monthly until the 3rd. Sleep stops all of it. Settings: `catch_up` in `config/agent.yaml`.
+
 ### 4.3 Engine jobs
 | Job | When | Does |
 | --- | --- | --- |
@@ -822,6 +824,9 @@ Drive: iNiKKi Reels/
 | Right-sized model | Daily runs on the faster model. Weekly and monthly on the most capable. |
 | Quiet exit | Switch says Sleep, or nothing to do → the run ends in one step |
 | A clean chat per run | Each thinking run starts in a new session (4.2), so no run pays for an earlier run's conversation |
+| Never read this file whole | It is about 30,000 tokens. Every session opens the map (`grep -n '^#' AGENT.md`) and reads only the sections its task names. A project hook refuses whole-file reads of any file over 40 KB |
+| Catch up by checking, not by re-running | Missed runs are found by one no-AI command (4.2); a run that already happened costs nothing |
+| Lean account | Every new session first loads the account's plugins and connectors (about 60,000 tokens measured on 13 Nov). Plugins and connectors this agent never uses stay switched off |
 | One file per answer | The Control Room chat reads only the panel (13.3). The Control Room page reads it with no tokens at all |
 | One file per action | Every change you make is one small new file in the inbox (12.5): nothing is read first |
 | Short project memory | The Control Room project holds `GUIDE.md` and Block B only, never this file |

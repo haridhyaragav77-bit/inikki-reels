@@ -41,6 +41,8 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 
 **What keeps time:** GitHub's own timer runs this project's jobs about 7 hours late, so the posts, the briefs and the nightly job are started on time by a small Claude "clock" task. It costs a little (13 short ticks a day on the cheapest model). Section 12 has a free replacement.
 
+**If a run is missed** (your Claude usage ran out, or a session did not start): five times a day (07:07, 09:37, 13:07, 18:37, 21:07) the dispatcher runs a quick check that uses no AI. A missed run starts then. A late Plan run plans only the slots that still have time to be made (75 minutes); the bank and reserves fill the slots it missed. If the run already happened, the check costs almost nothing. Weekly catches up until Tuesday, Monthly until the 3rd.
+
 **Your moments, if you want them:**
 - **Morning, after about 07:00:** today's reels are made. Preview them on the page. Change words, hold or skip before the first slot.
 - **Evening, after 17:00:** read the digest (6 lines) on the page.
@@ -172,6 +174,8 @@ Every change gets a number, a reason and an Undo in the change log.
 4. **Do not upload `AGENT.md` to the Control Room project.** This guide is its only file.
 5. **Workshop:** one task per session, and start with "Use the workshop skill." Open a new session for the next task.
 6. **Do not ask for drawings** unless you want one. The page already has the cards.
+7. **Keep your Claude account lean.** Every new session first loads every plugin and connector you have switched on: about 60,000 tokens before it does anything (measured 13 Nov). Switch off the ones this agent does not use at claude.ai → Customize (plugins and connectors). The agent needs only GitHub, Google Drive and the Claude Code session tools.
+8. **AGENT.md is never read whole** (about 30,000 tokens). Sessions read its map and one section; a project hook enforces it.
 
 ## 11. Files and clean-up
 

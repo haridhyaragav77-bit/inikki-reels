@@ -4,7 +4,8 @@ description: How a build session on inikki-reels starts cheaply, tests, and ship
 ---
 # workshop
 Read first, and only these: CLAUDE.md, GUIDE.md section 2 (who does what), and `grep -n '^#' AGENT.md` for the map.
-Open AGENT.md by section (sed -n 'a,bp'), never whole: it is long. BUILD_LOG.md: last entry only.
+Open AGENT.md by section (sed -n 'a,bp'), never whole: it is long. BUILD_LOG.md: the newest entry only (it is at the top: `sed -n '1,40p'`).
+A project hook refuses a whole-file Read of any file over 40 KB: read by section.
 
 Where things are:
 - What Harish sets: Drive control/ (inbox → engine/relay.py). What he sees: engine/panel.py → Drive status/panel.*.
