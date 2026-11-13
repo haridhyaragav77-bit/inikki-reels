@@ -1,0 +1,6 @@
+{
+  "name": "inikki-reels-engine",
+  "private": true,
+  "description": "Renders reels from plan files (engine/render/render.mjs).",
+  "dependencies": { "playwright": "1.63.0" }
+}

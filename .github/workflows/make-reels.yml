@@ -1,0 +1,74 @@
+# Make reels in the cloud and put them in Google Drive (AGENT.md 4.3 "Make"). Never runs on Harish's laptop.
+# Runs when plan files change (only the changed ones), or by hand from the Actions tab with a plan pattern.
+name: Make reels
+on:
+  workflow_dispatch:
+    inputs:
+      plans:
+        description: "Plan files to render (pattern), e.g. plans/2026-11-13/*.json"
+        required: false
+        default: ""
+      drive_folder:
+        description: "Drive folder (inside iNiKKi Reels) for the finished reels"
+        required: false
+        default: "rehearsal"
+  push:
+    paths: ["plans/**", "engine/**", "templates/**", ".github/workflows/make-reels.yml"]
+
+concurrency:
+  group: make-reels-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  make:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_OAUTH_CLIENT_ID: ${{ secrets.GDRIVE_OAUTH_CLIENT_ID }}
+      GDRIVE_OAUTH_CLIENT_SECRET: ${{ secrets.GDRIVE_OAUTH_CLIENT_SECRET }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Tools (ffmpeg, Python, browser)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q -r engine/requirements.txt
+          cd engine && npm install --no-audit --no-fund --silent && npx playwright install --with-deps chromium
+      - name: Drive check
+        id: drive
+        run: |
+          out=$(python3 engine/drive/drive.py check | tail -1); echo "$out"
+          echo "ready=$(echo "$out" | python3 -c 'import sys,json; print(str(json.load(sys.stdin).get("ready", False)).lower())')" >> "$GITHUB_OUTPUT"
+      - name: Which plans
+        run: |
+          python3 engine/tools/pick_plans.py "${{ github.event.inputs.plans }}" > plans.txt
+          echo "Plans to render:"; cat plans.txt
+      - name: Music from Drive
+        if: steps.drive.outputs.ready == 'true'
+        run: python3 engine/drive/drive.py sync-music
+      - name: Render and check
+        if: steps.drive.outputs.ready == 'true'
+        run: |
+          while read -r p; do [ -n "$p" ] && node engine/render/render.mjs "$p"; done < plans.txt
+      - name: Put finished reels in Drive
+        if: steps.drive.outputs.ready == 'true'
+        run: |
+          [ -s plans.txt ] && python3 engine/drive/drive.py upload-out "${{ github.event.inputs.drive_folder || 'rehearsal' }}" $(cat plans.txt) || echo "nothing to upload"
+      - name: Keep a copy on GitHub for 7 days
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reels
+          path: engine/.work/out/*.mp4
+          if-no-files-found: ignore
+          retention-days: 7

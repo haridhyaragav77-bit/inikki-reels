@@ -1,6 +1,6 @@
 // Shared motion graphics (motion library: niches/tamil-cinema/motion_library.md).
 // Every function draws from time only. lt = seconds since the graphic's screen started.
-import { W, H, clamp, lerp, prog, ep, E, life, rng, txt, setFont, pill, wordsIn, slam, ring, makeCanvas, rgba, beatPulse, tint } from './runtime.js';
+import { W, H, clamp, lerp, prog, ep, E, life, rng, txt, setFont, pill, wordsIn, slam, ring, makeCanvas, rgba, beatPulse, tint, rrect } from './runtime.js';
 
 // ---------------------------------------------------------------- the ticket mascot (brand sign-off)
 export function mascot(ctx, x, y, s, t, enter = 1) {
@@ -29,25 +29,83 @@ export function mascot(ctx, x, y, s, t, enter = 1) {
 
 // ---------------------------------------------------------------- end card: question + send prompt + mascot + echo of the title
 export function endCard(env, ctx, lt, t, o) {
-  const acc = o.accent || '#F8C028';
+  const acc = o.accent || '#F8C028', cx = o.cx ?? W / 2;
+  const ey = o.echoY ?? 330, qy = o.qy ?? 760, cy = o.ctaY ?? 1180, sy = o.subY ?? 1320, [mx, my, ms] = o.mascot || [860, 1420, .9];
   if (o.echo) {
     const a = ep(lt, .05, .5);
-    setFont(ctx, 34, 'Inter', 800, .14);
-    txt(ctx, o.echo, W / 2, 330 - (1 - a) * 30, { size: 34, weight: 800, ls: .14, color: rgba('#ffffff', .75 * a) });
-    ctx.fillStyle = rgba(acc, .9 * a); ctx.fillRect(W / 2 - 60 * a, 360, 120 * a, 5);
+    txt(ctx, o.echo, cx, ey - (1 - a) * 30, { size: o.echoSize || 34, weight: 800, ls: .14, color: rgba('#ffffff', .75 * a) });
+    ctx.fillStyle = rgba(acc, .9 * a); ctx.fillRect(cx - 60 * a, ey + 30, 120 * a, 5);
   }
   (o.question || []).forEach((line, k) => {
-    wordsIn(ctx, line.text, W / 2, 760 + k * 132, lt - .25 - k * .22, { size: line.size || 112, family: 'Anton', weight: 400, color: line.color || '#fff', stagger: .07, rise: 70, glow: line.glow });
+    wordsIn(ctx, line.text, cx, qy + k * 132, lt - .25 - k * .22, { size: line.size || 112, family: 'Anton', weight: 400, color: line.color || '#fff', stagger: .07, rise: 70, glow: line.glow });
   });
   const pt = .95 + (o.question || []).length * .2, bp = beatPulse(env, t, 5);
   if (lt > pt) {
-    ctx.save(); ctx.translate(W / 2, 1180); const s = 1 + bp * .06; ctx.scale(s, s);
+    ctx.save(); ctx.translate(cx, cy); const s = 1 + bp * .06; ctx.scale(s, s);
     pill(ctx, o.cta || 'SEND TO THAT FRIEND', 0, 0, lt - pt, { size: 44, bg: acc, color: '#0A0F18', glow: rgba(acc, .8), ls: .08 });
     ctx.restore();
-    ring(ctx, W / 2, 1180, lt - pt - .05, { color: acc, r0: 60, r1: 460, w: 10, alpha: .6 });
+    ring(ctx, cx, cy, lt - pt - .05, { color: acc, r0: 60, r1: 460, w: 10, alpha: .6 });
   }
-  if (o.sub) wordsIn(ctx, o.sub, W / 2, 1320, lt - pt - .3, { size: o.subSize || 44, weight: 700, family: o.subFamily || 'Inter', color: rgba('#ffffff', .88), stagger: .05, rise: 30 });
-  mascot(ctx, 860, 1420, .9, t, ep(lt, pt + .2, pt + .8, E.outBack));
+  if (o.sub) wordsIn(ctx, o.sub, cx, sy, lt - pt - .3, { size: o.subSize || 44, weight: 700, family: o.subFamily || 'Inter', color: rgba('#ffffff', .88), stagger: .05, rise: 30 });
+  mascot(ctx, mx, my, ms, t, ep(lt, pt + .2, pt + .8, E.outBack));
+}
+
+// ---------------------------------------------------------------- subtitles: Tamil + Tanglish, synced to the voice
+// Two lines on a soft plate; the word being spoken lights up. Chunks break at sentence marks or every 4 words.
+function chunks(words, ta, tg) {
+  const out = []; let cur = null;
+  words.forEach((w, k) => {
+    if (!cur) cur = { idx: [], start: w.t };
+    cur.idx.push(k);
+    const raw = (ta[k] || w.w), endMark = /[.?!]$/.test(raw) || (/,$/.test(raw) && cur.idx.length >= 2);
+    if (endMark || cur.idx.length >= 4 || k === words.length - 1) {
+      const last = words[cur.idx[cur.idx.length - 1]];
+      out.push({ ...cur, end: last.t + last.d });
+      cur = null;
+    }
+  });
+  const clean = x => (x || '').replace(/[.,]+$/, '');
+  return out.map(c => ({ ...c, ta: c.idx.map(k => clean(ta[k] || words[k].w)), tg: c.idx.map(k => clean(tg[k] || '')) }));
+}
+export function subtitles(env, ctx, t, o) {
+  const S = env.tl.screens;
+  for (let si = 0; si < S.length; si++) {
+    const sc = S[si], words = sc.words || [];
+    if (!words.length || t < words[0].t - .1 || t > (sc.voice_end ?? sc.end) + .3) continue;
+    const ps = env.plan.screens[si];
+    const list = env.memo('subs:' + si, () => chunks(words, (ps.voice || '').split(/\s+/), (ps.voice_tg || '').split(/\s+/)));
+    let c = null; for (const ch of list) if (t >= ch.start - .08) c = ch;
+    if (!c) return;
+    const cx = o.cx ?? W / 2, y = o.y ?? 1415, maxW = o.maxW ?? 840;
+    const p = ep(t, c.start - .08, c.start + .12, E.outCubic);
+    let taS = o.taSize || 50, tgS = o.tgSize || 39;
+    const measure = (arr, size, fam, wt, ls) => { setFont(ctx, size, fam, wt, ls); const sp = size * .42; return { ws: arr.map(w => ctx.measureText(w).width), sp }; };
+    let A = measure(c.ta, taS, 'Noto Sans Tamil', 700, 0), B = measure(c.tg, tgS, 'Inter', 800, .01);
+    const total = m => m.ws.reduce((a, b) => a + b, 0) + m.sp * (m.ws.length - 1);
+    const scale = Math.min(1, (maxW - 64) / Math.max(total(A), total(B)));
+    if (scale < 1) { taS *= scale; tgS *= scale; A = measure(c.ta, taS, 'Noto Sans Tamil', 700, 0); B = measure(c.tg, tgS, 'Inter', 800, .01); }
+    const pw = Math.max(total(A), total(B)) + 70, ph = taS + tgS + 70;
+    ctx.save(); ctx.translate(0, (1 - p) * 18); ctx.globalAlpha = p;
+    ctx.shadowColor = 'rgba(0,0,0,.5)'; ctx.shadowBlur = 30;
+    rrect(ctx, cx - pw / 2, y - ph / 2, pw, ph, 24); ctx.fillStyle = 'rgba(6,7,10,.72)'; ctx.fill();
+    ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+    ctx.lineWidth = 2; ctx.strokeStyle = rgba(o.accent || '#F8C868', .35); ctx.stroke();
+    const lineY = [y - ph / 2 + 32 + taS * .78, y + ph / 2 - 30];
+    [[c.ta, A, taS, 'Noto Sans Tamil', 700, 0], [c.tg, B, tgS, 'Inter', 800, .01]].forEach(([arr, m, size, fam, wt, ls], li) => {
+      let x = cx - total(m) / 2;
+      arr.forEach((w, k) => {
+        const wd = words[c.idx[k]], on = t >= wd.t - .03 && t < wd.t + wd.d + .06, done = t >= wd.t + wd.d;
+        const col = on ? (o.accent || '#F8C868') : (done || li === 1 ? '#FFFFFF' : 'rgba(255,255,255,.72)');
+        const bump = on ? 1 + .035 * Math.exp(-(t - wd.t) * 9) : 1;
+        ctx.save(); ctx.translate(x + m.ws[k] / 2, lineY[li]); ctx.scale(bump, bump);
+        txt(ctx, w, 0, 0, { size, family: fam, weight: wt, ls, color: col, alpha: li === 1 && !on ? .9 : 1 });
+        ctx.restore();
+        x += m.ws[k] + m.sp;
+      });
+    });
+    ctx.restore(); ctx.globalAlpha = 1;
+    return;
+  }
 }
 
 // ---------------------------------------------------------------- label pin: a dot on the picture + a drawn line + a label

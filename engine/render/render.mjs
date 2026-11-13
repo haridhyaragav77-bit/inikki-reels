@@ -25,6 +25,10 @@ const out = path.resolve(opt('--out', path.join(ROOT, 'engine', '.work', 'out', 
 fs.mkdirSync(path.dirname(out), { recursive: true });
 const log = (...a) => console.log(`[${plan.id}]`, ...a);
 
+// 0. fonts and stills on disk (any cloud machine can render any plan)
+if (!fs.existsSync(path.join(ROOT, 'engine/.cache/fonts/fonts.local.css'))) execFileSync('python3', [path.join(ROOT, 'engine/tools/fetch_fonts.py')], { stdio: 'inherit' });
+execFileSync('python3', [path.join(ROOT, 'engine/render/assets.py'), planPath], { stdio: 'inherit' });
+
 // 1. audio + timeline
 if (!flag('--skip-audio') || !fs.existsSync(path.join(work, 'timeline.json'))) {
   const r = execFileSync('python3', [path.join(ROOT, 'engine/render/audio.py'), planPath, work], { encoding: 'utf8' });

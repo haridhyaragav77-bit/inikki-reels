@@ -45,47 +45,69 @@ const KINDS = {
     };
   },
   film(env, s, i, T) {
-    const dur = T.end - T.start;
+    const OTT = { NETFLIX: ['#E50914', '#fff'], 'PRIME VIDEO': ['#00A8E1', '#fff'], 'JIOHOTSTAR': ['#1F80E0', '#fff'], 'SONYLIV': ['#F5A623', INK], 'ZEE5': ['#8230C6', '#fff'] };
     return (ctx, lt, t) => {
       blurBg(env, ctx, s.image, lt, { fx: s.fx });
       dust(env, ctx, t, { n: 24, color: CREAM, alpha: .22, min: 2, max: 7, seed: 8 + i });
       const ent = ep(lt, 0, .55, E.outBack), tilt = Math.sin(lt * .7) * .012;
-      const pw = 900, ph = 1080, cx = W / 2, cy = 860;
+      const pw = 880, ph = 940, cx = W / 2, cy = 760;
       poster(env, ctx, s.image, cx, cy + (1 - ent) * 140, pw, ph, lt, { rot: tilt, scale: .92 + .08 * ent, fx: s.fx, fy: s.fy, zoom: s.zoom || 1.06 });
       sweep(ctx, lt, .5, 1.0, { alpha: .16 });
       // number
       const np = ep(lt, .15, .55, E.outBack);
-      ctx.save(); ctx.translate(cx - pw / 2 + 120, cy - ph / 2 + 120); ctx.scale(np, np);
-      setFont(ctx, 150, 'Anton', 400, 0); ctx.lineWidth = 5; ctx.strokeStyle = SKY; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.save(); ctx.translate(cx - pw / 2 + 110, cy - ph / 2 + 110); ctx.scale(np, np);
+      setFont(ctx, 140, 'Anton', 400, 0); ctx.lineWidth = 5; ctx.strokeStyle = SKY; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.strokeText(s.num, 0, 8); ctx.fillStyle = rgba(SKY, .25 + .2 * beatPulse(env, t)); ctx.fillText(s.num, 0, 8);
       ctx.restore();
+      // Letterboxd rating badge with a filling ring
+      if (s.rating) {
+        const bx = cx + pw / 2 - 125, by = cy - ph / 2 + 125, bp = ep(lt, .7, 1.1, E.outBack), fillp = E.outCubic(prog(lt, .8, 1.7));
+        ctx.save(); ctx.translate(bx, by); ctx.scale(bp, bp);
+        ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = 30;
+        ctx.beginPath(); ctx.arc(0, 0, 92, 0, 7); ctx.fillStyle = 'rgba(11,18,32,.88)'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.beginPath(); ctx.arc(0, 0, 78, 0, 7); ctx.stroke();
+        ctx.strokeStyle = SKY; ctx.lineCap = 'round'; ctx.shadowColor = SKY; ctx.shadowBlur = 16 + 14 * beatPulse(env, t);
+        ctx.beginPath(); ctx.arc(0, 0, 78, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (s.rating / 5) * fillp); ctx.stroke(); ctx.shadowBlur = 0;
+        txt(ctx, (s.rating * fillp).toFixed(1), 0, 18, { size: 66, family: 'Anton', weight: 400, color: '#fff' });
+        txt(ctx, 'LETTERBOXD', 0, 50, { size: 15, weight: 900, ls: .12, color: rgba(CREAM, .85) });
+        txt(ctx, '/ 5', 0, -38, { size: 18, weight: 800, color: rgba(CREAM, .6) });
+        ctx.restore();
+      }
       // title + badges inside the poster
-      const tsz = fitSize(env, ctx, s.title, 'Anton', 400, pw - 90, 118, 60);
-      wordsIn(ctx, s.title, cx, cy + ph / 2 - 200, lt - .3, { size: tsz, family: 'Anton', weight: 400, color: '#fff', stagger: .06, rise: 40 });
-      chipsRow(ctx, s.meta, cx, cy + ph / 2 - 118, lt - .65, { size: 30, bg: rgba(SKY, .95), color: INK, stagger: .1 });
-      txt(ctx, s.director, cx, cy + ph / 2 - 52, { size: 28, weight: 700, ls: .12, color: rgba(CREAM, .8 * ep(lt, .9, 1.3)) });
-      // the reason, below the poster
-      wordsIn(ctx, s.reason, W / 2, 1490, lt - 1.05, { size: fitSize(env, ctx, s.reason, 'Inter', 900, 960, 54, 34), weight: 900, color: CREAM, stagger: .07, rise: 34 });
-      void dur;
+      const tsz = fitSize(env, ctx, s.title, 'Anton', 400, pw - 90, 112, 56);
+      wordsIn(ctx, s.title, cx, cy + ph / 2 - 190, lt - .3, { size: tsz, family: 'Anton', weight: 400, color: '#fff', stagger: .06, rise: 40 });
+      chipsRow(ctx, s.meta, cx, cy + ph / 2 - 112, lt - .65, { size: 30, bg: rgba(SKY, .95), color: INK, stagger: .1 });
+      txt(ctx, s.director, cx, cy + ph / 2 - 50, { size: 28, weight: 700, ls: .12, color: rgba(CREAM, .8 * ep(lt, .9, 1.3)) });
+      // below the poster: proof, the reason, where to watch
+      if (s.proof) pill(ctx, '★ ' + s.proof, W / 2, 1290, lt - 1.55, { size: 34, bg: CREAM, color: INK, ls: .06 });
+      wordsIn(ctx, s.reason, W / 2, 1392, lt - 1.05, { size: fitSize(env, ctx, s.reason, 'Inter', 900, 960, 52, 34), weight: 900, color: CREAM, stagger: .07, rise: 34 });
+      if (s.watch) {
+        const [bg, fg] = OTT[s.watch] || [SKY, INK], wp = 1 + beatPulse(env, t, 6) * .05 * (lt > 2.4 ? 1 : 0);
+        ctx.save(); ctx.translate(W / 2, 1478); ctx.scale(wp, wp);
+        pill(ctx, 'WATCH ON ' + s.watch, 0, 0, lt - 2.1, { size: 40, bg, color: fg, glow: rgba(bg, .8), ls: .08 });
+        ctx.restore();
+        ring(ctx, W / 2, 1478, lt - 2.15, { color: bg, r0: 50, r1: 420, w: 8, alpha: .5 });
+      }
     };
   },
   recap(env, s, i, T) {
     return (ctx, lt, t) => {
       blurBg(env, ctx, s.items[0].image, lt);
-      wordsIn(ctx, s.heading, W / 2, 400, lt - .05, { size: 92, family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      wordsIn(ctx, s.heading, W / 2, 380, lt - .05, { size: 92, family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
       s.items.forEach((it, k) => {
-        const col = k % 2, row = Math.floor(k / 2), x = 300 + col * 480, y = 720 + row * 470;
+        const col = k % 2, row = Math.floor(k / 2), x = 300 + col * 480, y = 630 + row * 462;
         const p = ep(lt, .15 + k * .12, .75 + k * .12, E.outBack);
         if (p <= 0) return;
-        poster(env, ctx, it.image, x, y + (1 - p) * 120, 420 * p, 420 * p, lt, { fx: it.fx, rot: (col ? .02 : -.02) + Math.sin(lt + k) * .01, zoom: 1.12 });
-        txt(ctx, it.title, x, y + 170, { size: fitSize(env, ctx, it.title, 'Anton', 400, 390, 46, 26), family: 'Anton', weight: 400, color: '#fff', alpha: p });
+        poster(env, ctx, it.image, x, y + (1 - p) * 120, 330 * p, 330 * p, lt, { fx: it.fx, rot: (col ? .02 : -.02) + Math.sin(lt + k) * .01, zoom: 1.12 });
+        txt(ctx, it.title, x, y + 210, { size: fitSize(env, ctx, it.title, 'Anton', 400, 400, 42, 26), family: 'Anton', weight: 400, color: '#fff', alpha: p });
+        if (it.watch) pill(ctx, it.watch, x, y + 256, lt - .5 - k * .12, { size: 26, bg: it.watch === 'NETFLIX' ? '#E50914' : '#00A8E1', color: '#fff', ls: .08 });
       });
       const pt = 1.0, bp = 1 + beatPulse(env, t, 5) * .05;
-      ctx.save(); ctx.translate(W / 2, 1430); ctx.scale(bp, bp);
+      ctx.save(); ctx.translate(W / 2, 1478); ctx.scale(bp, bp);
       pill(ctx, s.cta, 0, 0, lt - pt, { size: 44, bg: SKY, color: INK, glow: rgba(SKY, .8), ls: .08 });
       ctx.restore();
-      ring(ctx, W / 2, 1430, lt - pt, { color: SKY, r0: 60, r1: 440, w: 10, alpha: .6 });
-      mascot(ctx, 900, 1530, .7, t, ep(lt, pt + .2, pt + .8, E.outBack));
+      ring(ctx, W / 2, 1478, lt - pt, { color: SKY, r0: 60, r1: 440, w: 10, alpha: .6 });
+      mascot(ctx, 135, 1450, .52, t, ep(lt, pt + .2, pt + .8, E.outBack));
     };
   },
 };
