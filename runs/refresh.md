@@ -1,5 +1,5 @@
 # Run card: REFRESH (daily 16:37 IST)
-You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.md; AGENT.md wins.
+You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.md; AGENT.md wins. Do not read AGENT.md whole: only a section this card names.
 
 ## Start (3 steps)
 1. `pip install -q -r requirements-light.txt` and `TODAY=$(TZ=Asia/Kolkata date +%F)`. You are on a fresh copy of `main`.

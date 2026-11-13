@@ -2,6 +2,15 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 14 Nov 2026 — Cheaper session starts, missed runs catch up
+Harish: every session burned half the usage limit just reading context, and a missed run never happened later.
+| Piece | Where | In one line |
+| --- | --- | --- |
+| No whole AGENT.md | `CLAUDE.md`, run cards, `.claude/hooks/no_whole_big_reads.py` | Sessions read the map and one section; a hook refuses whole reads of files over 40 KB (AGENT.md is about 30,000 tokens) |
+| Catch-up check | `tools/run_due.py`, `config/agent.yaml` `catch_up` | No-AI check of main: each run is done, not yet, due or too late; a late Plan plans only the slots with time left |
+| Dispatcher v2 | `runs/README.md` | Repository attached; `RUN catchup` five times a day starts only the runs that are due |
+| Measured | — | A new session with no repository loaded about 60,000 tokens of plugin and connector lists before its first step; unused ones should be switched off (GUIDE 10) |
+
 ## 13 Nov 2026, night — Managing the agent (Control Room round)
 Harish asked for: buttons before chat, far fewer tokens, easy refinement loops, a guidebook, and a safety audit.
 
