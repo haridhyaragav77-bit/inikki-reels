@@ -127,13 +127,76 @@ def metrics_rows(days):
     return [r for r in rows if r.get("posted_at", "")[:10] >= cut]
 
 
+# The number each series is judged on (its success_metric), as a rate the Measure job computes.
+PRIORITY = {"sends_per_reach": "share_rate", "saves_and_sends": "share_rate", "saves_per_reach": "save_rate", "reach": "views"}
+PLAIN = {"share_rate": "share rate", "save_rate": "save rate", "views": "views", "skip_rate": "skip rate"}
+
+
+def change_entries():
+    """Dated entries of rules/changes.md: (number, date, series or None for all, set by Harish?, text)."""
+    p = ROOT / "rules" / "changes.md"
+    out = []
+    for l in (p.read_text(encoding="utf-8").splitlines() if p.exists() else []):
+        m = re.match(r"^(?:`|##\s*)#(\d+)\s*·\s*(\d{1,2} \w{3} \d{4})\s*·\s*(.*)", l.strip())
+        if not m:
+            continue
+        try:
+            d = dt.datetime.strptime(m.group(2), "%d %b %Y").date()
+        except ValueError:
+            continue
+        rest = m.group(3).strip("`")
+        sm = re.match(r"\w+\s*\(([a-z0-9-]+)\)", rest)                 # "series (movie-recommendations) · ..."
+        out.append((int(m.group(1)), d, sm.group(1) if sm else None, "Harish" in rest, rest[:90]))
+    return out
+
+
+def change_effects(rows):
+    """Did each recent change help? Its series' priority number for 14 days before against 14 days after.
+    A drop of auto_revert_drop (20%) or more on 5+ reels each side means: apply its Undo (AGENT.md 9.3).
+    Harish's own rules are never undone by numbers; he is shown both (AGENT.md 8.4)."""
+    drop = float(AGENT.get("learning", {}).get("auto_revert_drop", 0.2))
+    nd, now = niche_dir(), dt.date.fromisoformat(today())
+    out = []
+    for n, d, sid, harish, text in change_entries():
+        if (now - d).days > 42:
+            continue
+        card = {}
+        if sid and (nd / "series" / sid / "series.yaml").exists():
+            card = yaml.safe_load((nd / "series" / sid / "series.yaml").read_text(encoding="utf-8")) or {}
+        k = PRIORITY.get(str(card.get("success_metric")), "share_rate")
+        def vals(lo, hi):
+            got = [r for r in rows if (sid is None or r.get("series") == sid) and lo <= r.get("posted_at", "")[:10] < hi]
+            v = [r.get("views") if k == "views" else (r.get("rates") or {}).get(k) for r in got]
+            return [x for x in v if x is not None]
+        b = vals(str(d - dt.timedelta(days=14)), str(d))
+        a = vals(str(d), str(d + dt.timedelta(days=15)))
+        who = sid or "all series"
+        if len(a) < 5 or len(b) < 5:
+            out.append(f"- #{n} ({who}): too early to judge ({len(b)} reels before, {len(a)} after; 5 each needed)")
+            continue
+        bm, am = statistics.median(b), statistics.median(a)
+        ch = (am - bm) / bm if bm else 0.0
+        fmt = (lambda v: str(int(v))) if k == "views" else pct
+        verdict = "keep"
+        if ch <= -drop:
+            verdict = "kept: Harish's own rule, show him these numbers" if harish else "REVERT: apply its Undo and log it"
+        out.append(f"- #{n} ({who}): {PLAIN.get(k, k)} {fmt(bm)} → {fmt(am)} ({ch:+.0%}) · {verdict}")
+    return out
+
+
 def week_table():
-    """data/week_table.md for the Weekly run: each series this week against its 14-day median (AGENT.md 2.3)."""
+    """data/week_table.md for the Weekly run: each series this week against its 14-day median (AGENT.md 2.3),
+    then whether recent changes helped (auto-revert, AGENT.md 9.3)."""
     from .measure import RATES, LOWER_BETTER, colour
     week, base = metrics_rows(7), metrics_rows(21)
     lines = [f"# Week table · {today()} (computed by the Engine; rates per reach)", ""]
-    if len(base) < int(AGENT.get("learning", {}).get("min_reels", 10)):
-        lines.append(f"Small numbers rule: {len(base)} reels measured so far (need {AGENT.get('learning', {}).get('min_reels', 10)}). No rule changes this week.")
+    learn = AGENT.get("learning", {})
+    need_reels, need_days = int(learn.get("min_reels", 10)), int(learn.get("min_days", 14))
+    first = min((r.get("posted_at", "")[:10] for r in metrics_rows(90)), default=None)
+    days_known = (dt.date.fromisoformat(today()) - dt.date.fromisoformat(first)).days if first else 0
+    if len(base) < need_reels or days_known < need_days:
+        lines.append(f"Small numbers rule: {len(base)} reels measured over {days_known} days (need {need_reels} reels and "
+                     f"{need_days} days). No rule changes this week.")
     for s in sorted({r.get("series") for r in week} | {"_page"}):
         w = [r for r in week if s == "_page" or r.get("series") == s]
         b = [r for r in base if s == "_page" or r.get("series") == s]
@@ -152,6 +215,8 @@ def week_table():
         views = [r.get("views") or 0 for r in w]
         lines += ["", f"## {'Whole page' if s == '_page' else s} · {len(w)} reels · median views {int(statistics.median(views)) if views else 0}",
                   f"Weakest priority metric: {weakest or 'none below median'}"] + table(rows, ["metric", "this week", "14-day median", "health"])
+    lines += ["", "## Did the recent changes help? (14 days before vs after, each series' own number)"] + \
+        (change_effects(metrics_rows(90)) or ["- no changes in the last 6 weeks"])
     lines += ["", "## Changes in force (newest first)"] + [f"- {c}" for c in changes(8)]
     (OUT / "week_table.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
