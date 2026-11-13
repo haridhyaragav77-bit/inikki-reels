@@ -125,6 +125,7 @@ def publish(drive, day, r, ctl, dry=False):
         _append_line(drive, "status", "posted.jsonl", {"reel_id": rid, "media_id": mid, "series": r.get("series"), "posted_at": when,
                                                         "permalink": info.get("permalink"), "seconds": r.get("seconds"), "hook": r.get("hook"),
                                                         "virality": r.get("virality"), "music": r.get("music"), "trial": bool(r.get("trial"))})
+        status.close_alerts(drive, rid)
         print(f"Posted {rid}: {info.get('permalink')}")
         return True
     except Exception as e:

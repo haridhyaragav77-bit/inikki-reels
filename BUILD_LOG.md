@@ -2,6 +2,24 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 13 Nov 2026 (evening): the Control Room page and tomorrow's lineup
+Harish: the Control Room showed few visuals and no clear "posted today / up next / tomorrow". Why: the Advisor had to piece
+cards together from raw status files each time, the card layouts were only named (never drawn out), nothing ever held
+tomorrow's lineup (plans are made at 05:37 the same day), the sheet updated only at night, and an alert stayed open after
+its reel posted. Design first: AGENT.md 4.3, 13.1, 13.2, 14.2, 16.2 (new Tomorrow card), Block B (one file, fixed card
+layout with a plain fallback), Block D (Refresh drafts tomorrow; Plan starts from it).
+
+| Built | Where |
+| --- | --- |
+| Control Room page, rewritten at the end of every job | `engine/room.py` → Drive `status/control_room.md` (called from `engine/status.py`) |
+| Sheet refreshed after every post and make | `engine/status.py` |
+| Alerts closed when the reel posts later | `status.close_alerts`, called in `engine/post.py` |
+| Tomorrow's draft lineup `plans/<date>/lineup.json` is never made or archived as a plan | `make.py`, `brief.py`, `sync.py`, `clean.py` |
+
+Tested offline with today's real reels in a fake Drive (today table, spares, hidden answered alert, tomorrow draft).
+Waiting on Harish: paste the new Block B into the Control Room project and re-upload AGENT.md there; add the Refresh and
+Plan lines to the two routines (only their own conversation can change them); merge this branch to main.
+
 ## 13 Nov 2026: the approved looks, and the two builds joined into one
 Harish reviewed reels in five rounds (rules/changes.md #4 to #8) and approved five looks: Stage (breakdowns), Bulletin
 (updates), Poster Wall (Watch This Next), Verdict (review) and Flash (breaking). Their plans are the reference set in

@@ -22,7 +22,7 @@ from .day import Bank, Day, slot_time, today
 
 def plan_files(date):
     d, b = ROOT / "plans" / date, ROOT / "plans" / "bank"
-    day = sorted(p for p in d.glob("*.json") if p.name != "respect.json") if d.exists() else []
+    day = sorted(p for p in d.glob("*.json") if p.name not in ("respect.json", "lineup.json")) if d.exists() else []
     return day, (sorted(b.glob("*.json")) if b.exists() else [])
 
 

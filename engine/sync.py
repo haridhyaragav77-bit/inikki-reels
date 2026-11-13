@@ -93,7 +93,7 @@ def run(branch, dry=False):
                 f.write(new)
             git("add", path)
         taken.append(path)
-    plans = sorted({p.split("/")[1] for p in taken if p.startswith("plans/")})
+    plans = sorted({p.split("/")[1] for p in taken if p.startswith("plans/") and not p.endswith("/lineup.json")})   # a draft lineup is not a plan to make
     notes = [p for p in taken if p.startswith("data/out/") and os.path.exists(p)]
     if not dry and git("diff", "--cached", "--name-only").strip():
         git("commit", "-q", "-m", f"brain: {head_msg[:80]}")

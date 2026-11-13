@@ -227,7 +227,7 @@ def build(drive, run, date):
     day, bank = Day(drive, date), Bank(drive)
     slots, lineup, bank_target = lineup_today(ctl, date)
     plans_dir = ROOT / "plans" / date
-    plans = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(plans_dir.glob("*.json")) if p.name != "respect.json"] if plans_dir.exists() else []
+    plans = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(plans_dir.glob("*.json")) if p.name not in ("respect.json", "lineup.json")] if plans_dir.exists() else []
     main_plans = [p for p in plans if not p.get("reserve")]
     reserves = len(plans) - len(main_plans)
     from .post import respect_today

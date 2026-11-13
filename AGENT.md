@@ -187,7 +187,8 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | Watch | Every 2 hours, 8 AM–10 PM | Scans trusted feeds for breaking news (no AI) |
 | Clean | Nightly | Deletes working files by the retention rules (section 14) |
 | Health | Daily 04:00 | Keys valid, credit left, storage, runner minutes, voice reachable |
-| Dashboard | After Measure | Updates the Dashboard sheet |
+| Dashboard | After every post and make, and nightly | Updates the Dashboard sheet |
+| Control Room page | At the end of every job | Rewrites Drive `status/control_room.md`: today (posted, up next, held, spares), tomorrow, what needs you, money and limits, in plain words. The Advisor draws its cards from this one file |
 
 ### 4.4 Voice
 Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → a cloud Claude session → music-only version with short key-line captions (the motion graphics still carry the ideas). **Voice and rendering always run in the cloud, never on your laptop.**
@@ -675,6 +676,8 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 Two views of the same numbers.
 
 ### 13.1 In chat
+The Advisor reads one ready-made file, Drive `status/control_room.md`, which the Engine rewrites at the end of every job. It never pieces cards together from raw status files.
+
 Say "dashboard". One card:
 - **Pace:** followers now, target line, days left, ahead or behind
 - **This week:** reels posted, median views, breakouts
@@ -685,7 +688,7 @@ Say "dashboard". One card:
 - Buttons: Today · Series · Changes · Global
 
 ### 13.2 Live page on your phone
-A Google Sheet, **"iNiKKi Dashboard"**, in your Drive folder. The Engine updates it after every measurement. It opens in the Sheets app.
+A Google Sheet, **"iNiKKi Dashboard"**, in your Drive folder. The Engine updates it after every post and every make, and again at night with the full stats. It opens in the Sheets app.
 
 | Tab | Shows |
 | --- | --- |
@@ -729,7 +732,7 @@ GitHub: inikki-reels/
 
 Drive: iNiKKi Reels/
   control/              switch, overrides, commands (written by the Control Room)
-  status/               today, alerts, budget, weekly report (written by the Engine)
+  status/               control_room.md (the page the Advisor reads), today, alerts, budget, weekly report (written by the Engine)
   reference-reels/  meme-bank/  music/  clip-library/  image-library/
   work/                 files for reels being made
   finished/             final reels
@@ -806,7 +809,8 @@ One Claude Project. Paste **Block B** into Instructions. Upload this file. Keep 
 ### 16.2 Cards (same layout every time, at most 4 buttons)
 | Card | Opens with | Shows | Buttons |
 | --- | --- | --- | --- |
-| **Today** | "hi", "status" | Day type, tiles (posted, ready, held, images ₹), one row per reel | Tomorrow · Dashboard · Refresh · Global |
+| **Today** | "hi", "status", "today" | Tiles (posted, still to post, held), the next reel, one row per reel with its time and status, spare reels | Tomorrow · Dashboard · Refresh · Global |
+| **Tomorrow** | "tomorrow", "what's next" | Tomorrow's lineup: made reels if any, else the Refresh run's draft (time, topic, series), else the slot times; bank reels ready | Today · Dashboard · Global |
 | **Dashboard** | "dashboard" | Section 13.1 | Today · Series · Changes · Global |
 | **Reel** | Tap a reel | Frames, hook, caption, music, why picked, score, results vs median | Love it · Not good · Pull it · Why? |
 | **Feedback** | After Love it / Not good | Reason chips | (chips) · Done |
@@ -974,15 +978,29 @@ You are the Advisor for iNiKKi Reels (@inikki_reels), a self-running Tamil cinem
 You are the only voice Harish hears. He is not a programmer. The full design is AGENT.md
 (project knowledge); follow sections 3.4, 8, 12, 13 and 16.
 
-TRUTH: live data is in the Google Drive folder "iNiKKi Reels" (status/, control/, the sheet
-"iNiKKi Dashboard"). Read what a card needs before showing it. Never guess a number; show "—"
-if it is missing, and say if status is older than 2 hours.
+TRUTH: before any Today, Tomorrow or Dashboard card, search Google Drive for the file
+"control_room.md" (folder "iNiKKi Reels" > status) and read it. It is rewritten after every job and
+already says, in plain words, what posted, what is next, tomorrow's lineup, what needs Harish and
+money used. Use only its numbers. Never guess; show "—" if missing. If its "Updated" time is more
+than 2 hours old, say so on the card. Other files (status/, control/, the sheet) only for other cards.
 
-REPLIES: every status, list or decision is a card from AGENT.md 16.2, drawn with the Visualizer:
-same layout each time, brand colours from the brand kit, at most 4 buttons, most-used first.
-Buttons call sendPrompt with a short plain command. Under a card write at most 2 sentences.
-Answer first. Compare every number with something. No jargon, no file names, no code.
-"hi" or "status" → Today card. "dashboard" → Dashboard card. Mondays → offer the Weekly report.
+REPLIES: every status, list or decision is a card from AGENT.md 16.2, same layout every time.
+Draw it as a visual (the Visualizer / interactive visual) when this chat can: navy background
+#0A0F18, gold #F8C028 headings, teal #78E0D0 for "ready", red #E5484D for held, at most 4 buttons
+that call sendPrompt with a short plain command. If a visual cannot be drawn, use the same card in
+Markdown, exactly like this, and list the buttons as words to type:
+
+  **TODAY · Fri 13 Nov** · Live · Switch: Run
+  ✅ 1 posted · ⏳ 3 to post · ⛔ 0 held · Next: 18:00 Scene update
+  | Time | Reel | Status |   (one row per reel, from the file's Today table)
+  Spares: Inji Vellam release date
+  ➜ Type: **tomorrow** · **dashboard** · **refresh** · **global**
+
+Tomorrow and Dashboard cards follow the same shape: a bold title line, one line of tiles, the
+table, one line of extras, the "Type:" line. Under a card write at most 2 sentences. Answer first.
+Compare every number with something. No jargon, no file names, no code.
+"hi", "status" or "today" → Today card. "tomorrow" or "what's next" → Tomorrow card.
+"dashboard" → Dashboard card. Mondays → offer the Weekly report.
 
 ASKING: one question at a time, tap-to-answer with 2–4 options. Never ask open questions.
 
@@ -1057,13 +1075,16 @@ frames (5.11): official YouTube frames and posters for the approved looks; trail
 shot grids in Google Drive clip-library/sheets/ for the older looks. Check every plan with
 python -m engine.plancheck and fix what it reports. For each film under "Trailers to get" in the
 brief, find its official YouTube trailer and add "Film = link" to data/notes/trailer_links.md.
-Keep 2 reserves for the day. Your settings from the Control Room are in data/control/. Write plans
+Keep 2 reserves for the day. If plans/<today>/lineup.json (last night's draft) exists, start from it and
+swap any topic that fresher news beats. Your settings from the Control Room are in data/control/. Write plans
 to plans/<today>/ and commit "plan <date>".
 
 [REFRESH — daily 16:37 IST]
 Use skill quiet-exit. Read data/brief.md. Researcher: breaking check; refresh tonight's updates
 if better-proven news exists. Analyst (light): flag rising reels and red metrics; add a
-follow-up lead for tomorrow. Script Writer: one breakdown plan for the bank if it holds under 4.
+follow-up lead for tomorrow. Draft tomorrow's lineup: plans/<tomorrow>/lineup.json,
+{"reels": [{"slot": "08:30", "series": "<series id>", "topic": "<one line>"}]}, one row per slot
+of the lineup (only a draft; the Control Room shows it). Script Writer: one breakdown plan for the bank if it holds under 4.
 Apply new feedback from data/control/feedback.jsonl (AGENT.md 8.3). Advisor: write the daily digest
 (AGENT.md 16.4) to data/out/digest.md; when the brief lists trailers to get, the "Needs you" line says so
 (command in Drive requests/trailers_to_get.md). Commit "refresh <date>".

@@ -53,6 +53,22 @@ def alert(drive, title, happened, did, you_do="nothing", level="info"):
     return item
 
 
+def close_alerts(drive, reel_id):
+    """A reel that failed and then posted: its open alerts are answered, so the Control Room stops showing them."""
+    if not drive:
+        return
+    try:
+        cur = drive.read_json("status", "alerts.json", {"alerts": []}) or {"alerts": []}
+    except Exception:
+        return
+    hit = False
+    for a in cur.get("alerts", []):
+        if a.get("open") and a.get("what_happened", "").startswith(f"{reel_id}:"):
+            a["open"], a["closed"], hit = False, f"posted later ({stamp()})", True
+    if hit:
+        write(drive, "alerts.json", cur)
+
+
 def job_end(name, result):
     """Last step of every workflow, even on failure (CLAUDE.md rule 6): Drive status/jobs.json, plus an alert on failure."""
     from .drive import Drive
@@ -73,6 +89,18 @@ def job_end(name, result):
     if result not in ("success", "skipped", "cancelled"):
         alert(drive, f"The {name} job did not finish", f"The {name} job stopped with: {result}.",
               "One reel or one step is affected, not the day; the next run starts fresh.", f"Nothing, unless it repeats. Details: {run}", level="warn")
+    if drive:                                   # the Control Room page follows every job (AGENT.md 16.2); fail soft
+        try:
+            from . import room
+            room.save(drive)
+        except Exception as e:
+            print("control room page not updated:", str(e)[:200])
+        if name in ("post", "make"):            # the sheet's Home tab shows today's reels, so it follows posts too (AGENT.md 13.2)
+            try:
+                from . import dashboard
+                dashboard.build(drive)
+            except Exception as e:
+                print("dashboard not updated:", str(e)[:200])
 
 
 if __name__ == "__main__":

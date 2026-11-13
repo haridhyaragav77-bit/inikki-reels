@@ -130,7 +130,7 @@ def pack_plans(dry=False):
         if not dry:
             arc.parent.mkdir(parents=True, exist_ok=True)
             with open(arc, "a", encoding="utf-8") as f:
-                for p in sorted(d.glob("*.json")):
+                for p in sorted(x for x in d.glob("*.json") if x.name != "lineup.json"):
                     f.write(json.dumps({"date": d.name, "file": p.name, "plan": json.loads(p.read_text(encoding="utf-8"))}, ensure_ascii=False) + "\n")
             shutil.rmtree(d)
         n += 1
