@@ -1,0 +1,545 @@
+{
+  "id": "2026-11-13-pipeline-test-breakdown",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "length_reason": "Name the technique, show where it came from, three stories, why it works, the ending: about a minute (Harish: 1 minute is the safe spot).",
+  "lead": {
+    "topic": "Vikram Vedha (2017): how the screenplay borrows the Vikramadithyan-Vetal tale",
+    "angle": "screenplay",
+    "insight": "Vikram Vedha is a frame story: the hunt for Vedha holds three smaller stories, each ending in a question like the Vetal's. Each answer tests Vikram and breaks his black-and-white view; the film leaves the last question to us.",
+    "why_now": "Cult classic: still quoted, rewatched and remade (Hindi, 2022).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vikram_Vedha (plot; 'inspired from Vikramaditya-Vetala tales', Sify)"
+    ],
+    "technique": "Frame story (story within a story), borrowed from the Vikramadithyan-Vetal tales"
+  },
+  "worth_it": {
+    "learn": "The technique has a name, frame story, and this film borrows it from the Vikram-Vetal tale.",
+    "stop": "A villain who wins an interrogation with stories, not guns.",
+    "why_now": "Cult classic people still argue about.",
+    "send_to": "The friend who still says Vikram was right.",
+    "best_angle": "Yes: the story structure is what people felt but never named."
+  },
+  "voice": {
+    "on": true,
+    "voice": "ta-IN-ValluvarNeural",
+    "rate": "+33%",
+    "pitch": "-2Hz"
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 2.0,
+        "screen": 0,
+        "mood": "intrigue"
+      },
+      {
+        "track": "villains_strategy",
+        "from": 9.0,
+        "screen": 4,
+        "mood": "tension"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 6,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.3,
+    "xfade": 0.8,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxresdefault.jpg",
+      "crop": [
+        0.1,
+        0.075,
+        0.8,
+        0.795
+      ]
+    },
+    "interrogation": {
+      "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres1.jpg",
+      "crop": [
+        0.06,
+        0.05,
+        0.94,
+        0.9
+      ]
+    },
+    "pulli": {
+      "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.08,
+        0.86,
+        0.9
+      ]
+    },
+    "chandra": {
+      "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        0.86,
+        0.88
+      ]
+    },
+    "vikram_gun": {
+      "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        0.86,
+        0.88
+      ]
+    },
+    "faces": {
+      "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxresdefault.jpg",
+      "crop": [
+        0.42,
+        0.0,
+        0.58,
+        0.86
+      ]
+    },
+    "surrender": {
+      "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres2.jpg",
+      "crop": [
+        0.06,
+        0.06,
+        0.94,
+        0.88
+      ]
+    },
+    "gun_full": {
+      "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        0.86,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "VIKRAM VEDHA",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.5,
+      "slam_at": 0.12,
+      "voice": "வேதா ஜெயிச்சது துப்பாக்கியால இல்ல. கதைகளால.",
+      "min": 3.2,
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ],
+      "voice_tg": "Vedha jeyichadhu thuppaakkiyaala illa. Kadhaigalaala."
+    },
+    {
+      "kind": "pins",
+      "image": "interrogation",
+      "in": "zoom",
+      "voice": "என்கவுண்டர் போலீஸ் விக்ரம். கேங்ஸ்டர் வேதா. சரண் அடைஞ்ச வேதா, விசாரணையில கதை சொல்றான்.",
+      "pins": [
+        {
+          "x": 0.33,
+          "y": 0.4,
+          "lx": 80,
+          "ly": 318,
+          "text": "VIKRAM · COP",
+          "cue": {
+            "word": "போலீஸ்"
+          }
+        },
+        {
+          "x": 0.7,
+          "y": 0.5,
+          "lx": 905,
+          "ly": 318,
+          "text": "VEDHA · GANGSTER",
+          "align": "right",
+          "cue": {
+            "word": "கேங்ஸ்டர்"
+          }
+        }
+      ],
+      "slam": {
+        "cue": {
+          "word": "கதை"
+        },
+        "lines": [
+          {
+            "text": "NOT GUNS.",
+            "size": 140,
+            "color": "#ffffff"
+          },
+          {
+            "text": "STORIES.",
+            "size": 158,
+            "color": "#F8C868",
+            "glow": "rgba(248,200,104,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "போலீஸ்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "கேங்ஸ்டர்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சரண்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "கதை"
+          },
+          "type": "impact"
+        }
+      ],
+      "extra": {
+        "image": "surrender",
+        "cue": {
+          "word": "சரண்"
+        },
+        "label": "HE SURRENDERS",
+        "fx": 0.45
+      },
+      "voice_tg": "Encounter police Vikram. Gangster Vedha. Saran adainja Vedha, visaaranaiyila kadhai solraan."
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "FRAME STORY",
+      "definition": "A STORY THAT HOLDS STORIES",
+      "outer_label": "VIKRAM vs VEDHA",
+      "inner": [
+        "STORY 1",
+        "STORY 2",
+        "STORY 3"
+      ],
+      "voice": "இந்த திரைக்கதை டெக்னிக் பேரு, ஃப்ரேம் ஸ்டோரி. ஒரு பெரிய கதைக்குள்ள, சின்ன சின்ன கதைகள்.",
+      "voice_tg": "Indha thiraikkadhai technique peru, frame story. Oru periya kadhaikkulla, chinna chinna kadhaigal.",
+      "cues": {
+        "name": {
+          "word": "ஃப்ரேம்"
+        },
+        "outer": {
+          "word": "பெரிய"
+        },
+        "inner": {
+          "word": "சின்ன"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "ஃப்ரேம்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "பெரிய"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சின்ன"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சின்ன",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சின்ன",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "WHERE IT CAME FROM",
+      "center_ta": "விக்ரமாதித்தன் - வேதாளம்",
+      "voice": "இது விக்ரமாதித்தன் வேதாளம் கதையிலிருந்து வந்தது. வேதாளம் கதை சொல்லி, கேள்வி கேட்கும். ராஜா பதில் சொன்னா, தப்பிச்சு ஓடிடும்.",
+      "nodes": [
+        {
+          "label": "STORY",
+          "cue": {
+            "word": "சொல்லி"
+          }
+        },
+        {
+          "label": "QUESTION",
+          "cue": {
+            "word": "கேள்வி"
+          }
+        },
+        {
+          "label": "ANSWER",
+          "cue": {
+            "word": "பதில்"
+          }
+        },
+        {
+          "label": "ESCAPES",
+          "cue": {
+            "word": "தப்பிச்சு"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "கேள்வி"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பதில்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "தப்பிச்சு"
+          },
+          "type": "whoosh"
+        }
+      ],
+      "voice_tg": "Idhu Vikramaadhithan Vedhaalam kadhaiyilirundhu vandhadhu. Vedhaalam kadhai solli, kelvi ketkum. Raaja badhil sonna, thappichu odidum."
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "3 STORIES. 3 QUESTIONS.",
+      "heading_ta": "மூணு கதை, மூணு கேள்வி",
+      "voice": "படத்துலயும் மூணு கதை, மூணு கேள்வி. அடியாளா, அனுப்பினவனா? முதலாளியா, குடும்பமா? உண்மையான குற்றவாளி யாரு?",
+      "cards": [
+        {
+          "lines": [
+            "WEAPON OR",
+            "MASTERMIND?"
+          ],
+          "image": "pulli",
+          "fx": 0.55,
+          "cue": {
+            "word": "அடியாளா"
+          }
+        },
+        {
+          "lines": [
+            "BOSS OR",
+            "FAMILY?"
+          ],
+          "image": "chandra",
+          "fx": 0.62,
+          "cue": {
+            "word": "முதலாளியா"
+          }
+        },
+        {
+          "lines": [
+            "WHO'S REALLY",
+            "GUILTY?"
+          ],
+          "image": "vikram_gun",
+          "fx": 0.4,
+          "cue": {
+            "word": "குற்றவாளி"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "அடியாளா"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "முதலாளியா"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "குற்றவாளி"
+          },
+          "type": "impact"
+        }
+      ],
+      "voice_tg": "Padathulayum moonu kadhai, moonu kelvi. Adiyaala, anuppinavanaa? Mudhalaaliyaa, kudumbamaa? Unmaiyaana kutravaali yaaru?"
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "faces",
+      "fx": 0.5,
+      "left": "GOOD",
+      "right": "BAD",
+      "left_ta": "நல்லவன்",
+      "right_ta": "கெட்டவன்",
+      "slam_text": [
+        "ONLY",
+        "GREY."
+      ],
+      "voice": "ஒவ்வொரு கதையும் விக்ரமுக்கு ஒரு டெஸ்ட். அவனோட கருப்பு வெள்ளை உலகம், ஒவ்வொரு பதிலிலும் உடையுது. தன்னோட டீமே லஞ்சம் வாங்கினது தெரிஞ்சதும், கோடே இல்ல.",
+      "cues": {
+        "line": {
+          "word": "கருப்பு"
+        },
+        "bleed": {
+          "word": "பதிலிலும்"
+        },
+        "crack": {
+          "word": "லஞ்சம்"
+        },
+        "slam": {
+          "word": "கோடே"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "கருப்பு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "லஞ்சம்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "கோடே"
+          },
+          "type": "stamp"
+        }
+      ],
+      "voice_tg": "Ovvoru kadhaiyum Vikramukku oru test. Avanoda karuppu vellai ulagam, ovvoru badhililum udaiyudhu. Thannoda team-e lanjam vaanginadhu therinjadhum, kode illa.",
+      "kicker": "WHY IT WORKS"
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "gun_full",
+      "fy": 0.45,
+      "slam_text": "YOUR ANSWER?",
+      "voice": "கடைசி சீன்ல, துப்பாக்கி விக்ரம் கையில. கேள்வியும் அவன்கிட்ட. படம் பதில் சொல்லல. வேதாளம் மாதிரியே, கேள்வியை நம்மகிட்ட விட்டுடுது.",
+      "q_cue": {
+        "word": "கேள்வியும்"
+      },
+      "slam_cue": {
+        "word": "நம்மகிட்ட"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "கேள்வியும்"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "நம்மகிட்ட",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ],
+      "fx": 0.32,
+      "voice_tg": "Kadaisi scene-la, thuppaakki Vikram kaiyila. Kelviyum avankitta. Padam badhil sollala. Vedhaalam maadhiriye, kelviyai nammakitta vittududhu."
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "echo": "VIKRAM VEDHA · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "ARREST HIM",
+          "size": 130
+        },
+        {
+          "text": "OR LET HIM GO?",
+          "size": 120,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "நீங்க விக்ரமா இருந்தா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ஃப்ரேம் ஸ்டோரி. நீங்க விக்ரமா இருந்தா? கமெண்ட்ல சொல்லுங்க. சினிமா நண்பனுக்கு அனுப்புங்க.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "bg": "title",
+      "voice_tg": "Idhu thaan frame story. Neenga Vikrama irundhaa? Comment-la sollunga. Cinema nanbanukku anuppunga.",
+      "recap": "TECHNIQUE: FRAME STORY"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Vedha didn't beat Vikram with a gun. He beat him with stories.",
+      "The technique is called a frame story: one big story holding smaller stories. Vikram Vedha borrows it from the Vikramadithyan-Vetal tale: a story, a question, an answer, an escape. Three times.",
+      "Arrest him or let him go? Tell us.",
+      "Send this to the friend who still says Vikram was right.",
+      "கதைகளால ஜெயிச்ச வேதா."
+    ],
+    "hashtags": [
+      "#TamilCinema",
+      "#VikramVedha",
+      "#VijaySethupathi",
+      "#iNiKKiBreakdown"
+    ],
+    "cover": "PIPELINE TEST · VIKRAM VEDHA",
+    "slot": "20:00",
+    "first_comment": "Which story hit you hardest: Pulli's or Chandra's?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "_note": "Pipeline test of the joined engine (13 Nov 2026): a copy of the reference plan. Not a real reel; nothing posts in rehearsal."
+}

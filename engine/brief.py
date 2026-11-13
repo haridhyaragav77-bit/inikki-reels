@@ -36,10 +36,16 @@ def mirror_control(drive):
 
 
 def story_series(lineup, date):
-    """The shared story slot alternates by weekday so each series gets its days_per_week (e.g. 4 + 3)."""
+    """The shared story slot. A series with fixed days (Watch This Next: fri, sat, sun) takes those days; the others
+    alternate by weekday over the rest, each by its days_per_week."""
     opts = next((s["story_slot"] for s in lineup.get("slots", []) if "story_slot" in s), [])
     if not opts:
         return None
+    wd = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"][dt.date.fromisoformat(date).weekday()]
+    for o in opts:
+        if wd in [str(d).lower()[:3] for d in o.get("days") or []]:
+            return o["series"]
+    opts = [o for o in opts if not o.get("days")] or opts
     left = {o["series"]: float(o.get("days_per_week", 1)) for o in opts}
     total = sum(left.values())
     credit = {k: 0.0 for k in left}
@@ -67,7 +73,9 @@ def lineup_today(ctl, date):
             continue
         n = int(s.get("per_day", 1))
         for t in (card.get("slots") or [])[:n]:
-            rows.append((t, sid, card.get("template", "?"), f"{'voice' if card.get('voice') else 'no voice'}, {'-'.join(map(str, card.get('length_s', [])))} s"))
+            v = card.get("voice")
+            voice = ("voice: " + v.replace("_", " ")) if isinstance(v, str) else ("voice" if v else "no voice")
+            rows.append((t, sid, card.get("template", "?"), f"{voice}, {'-'.join(map(str, card.get('length_s', [])))} s"))
     bank_target = next((int(s.get("bank_target", 0)) for s in lineup.get("slots", []) if s.get("bank_target")), 0)
     return sorted(rows), lineup, bank_target
 

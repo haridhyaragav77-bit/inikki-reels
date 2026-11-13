@@ -63,7 +63,7 @@ Every reel in every series is made the same way: worth it → script first → c
 - Silent openings. Music that doesn't match the moment. Wordy graphics and full-sentence captions. Small cryptic text instead of a title. Spoilers in updates. Scripts built around available footage. Two ideas in one breakdown. Long setups before the hook. Text near the top edge (the grid crops it). Memes on serious news. Recommending films everyone has already seen.
 
 ## Posting (starting guess, to be learned)
-08:30, 12:30, 15:30, 18:00, 20:00, 21:30 IST. Flex at 11:00 and 17:00. Watch This Next: Fri–Sun 17:00.
+08:30, 12:30, 15:30, 18:00, 20:00, 21:30 IST. Flex at 11:00 and 17:00. The 15:30 story slot: Guess the Movie Mon–Thu, Watch This Next Fri–Sun (change #9).
 
 ## Metrics that decide "good" (per Instagram's guidance)
 Sends per reach and average watch time first, then likes per reach, skip rate, saves, comments, follows. Each reel is always compared with its own series' median.
