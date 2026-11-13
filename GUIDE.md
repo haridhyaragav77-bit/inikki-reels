@@ -16,7 +16,7 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 
 | Place | Use it for | Token cost |
 | --- | --- | --- |
-| **Control Room page** (PAGE_URL) | Looking, previewing, pressing buttons: status, countdown, hold, skip, change words, rate, pause a series, settings | **None** |
+| **Control Room page** (https://claude.ai/artifact/LiQvqiXriy9fZeWteZLWD6) | Looking, previewing, pressing buttons: status, countdown, hold, skip, change words, rate, pause a series, settings | **None** |
 | **Control Room chat** (your Claude Project) | Anything that needs words: writing a new hook together, a question, a decision | Small |
 | **Workshop** (a Claude Code session on `inikki-reels`) | Changing the machine itself: a new series, a new look, the schedule, a new feature | Larger, and rare |
 

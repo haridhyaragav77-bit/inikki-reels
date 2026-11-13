@@ -1,0 +1,18 @@
+{
+ "measured": "2026-11-13",
+ "line": "13 Nov, the old way: a Plan run processed about 5.5 million tokens for 3 reels (about 1.8 million a reel) and a Refresh run about 3 million, because each run re-read one long chat. From 14 Nov every run starts in a clean chat. For the new numbers say \"measure thinking cost\" in a Workshop session.",
+ "runs": {
+  "plan_old": {
+   "tokens_m": 5.5,
+   "reels": 3,
+   "list_usd": 2.72
+  },
+  "refresh_old": {
+   "tokens_m": 3.1,
+   "list_usd": 2.1
+  },
+  "dispatch": {
+   "list_usd": 0.01
+  }
+ }
+}
