@@ -9,8 +9,12 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
    day, the right brief is missing: if you have a GitHub tool that can start a workflow, start `daily.yml` on `main`
    with job `brief-plan`, wait 2 minutes, `git pull -q origin main`, and read the brief again. Still wrong: one line
    in `data/out/alerts.md` ("today's plan brief was not written"), then carry on with its slots and today's date.
-4. Late start? `python tools/run_due.py plan`. If it says `late start: plan only <times>`, plan only those slots, keep
-   1 reserve when 3 or fewer are left (else 2), and skip the bank top-up. If it says `done` or `too late`, stop: push nothing.
+4. Late start? `python tools/run_due.py plan`. If it says `done` or `too late`, stop: push nothing. If it says
+   `late start`, the missed reels are moved, not cancelled (AGENT.md 4.2): plan the day's full lineup, then give each reel a
+   time from the open post times it lists (normal slots first, then flex slots), at least 60 minutes apart, the most valuable
+   reels first. A reel that still has no time: if it is evergreen (breakdown, recommendation, review), save it to
+   `plans/bank/` so it posts on a later day; if it is time-bound news that would be stale tomorrow, drop it. Keep 1 reserve
+   (2 if 4 or more times are open) and skip the bank top-up.
 
 ## The work
 Wear the hats in order (the cards in `team/`): Researcher → Script Writer → Content Specialist → Marketing Expert →

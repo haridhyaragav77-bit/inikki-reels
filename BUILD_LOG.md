@@ -8,6 +8,7 @@ Harish: every session burned half the usage limit just reading context, and a mi
 | --- | --- | --- |
 | No whole AGENT.md | `CLAUDE.md`, run cards, `.claude/hooks/no_whole_big_reads.py` | Sessions read the map and one section; a hook refuses whole reads of files over 40 KB (AGENT.md is about 30,000 tokens) |
 | Catch-up check | `tools/run_due.py`, `config/agent.yaml` `catch_up` | No-AI check of main: each run is done, not yet, due or too late; a late Plan plans only the slots with time left |
+| Missed reels move, not cancel | `runs/plan.md` step 4, `tools/run_due.py` | A late Plan run gives missed reels the open times (flex slots too); leftovers go to the bank unless stale news |
 | Dispatcher v2 | `runs/README.md` | Repository attached; `RUN catchup` five times a day starts only the runs that are due |
 | Measured | — | A new session with no repository loaded about 60,000 tokens of plugin and connector lists before its first step; unused ones should be switched off (GUIDE 10) |
 
