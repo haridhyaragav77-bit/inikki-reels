@@ -2,9 +2,6 @@ name: render
 # Makes reels from plan files (Engine job "Make", AGENT.md 4.3) and puts them in Drive for review.
 # Nothing is posted. Used in Phase 2 for the three golden reels (CLAUDE.md rule 3: template changes re-render them).
 on:
-  push:                       # registers the workflow; this run uses stand-in pictures (no keys, no spend)
-    branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/render.yml", "templates/**", "engine/render.py", "engine/assets.py", "engine/audio.py", "engine/depth.py"]
   workflow_dispatch:
     inputs:
       plans:
