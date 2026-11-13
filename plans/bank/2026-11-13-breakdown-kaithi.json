@@ -1,0 +1,480 @@
+{
+  "id": "2026-11-13-breakdown-kaithi",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "length_reason": "Name the technique, the setup, three clocks, why it works, the ending: about a minute.",
+  "lead": {
+    "topic": "Kaithi (2019): how one night and a deadline drive the whole film",
+    "angle": "screenplay",
+    "insight": "Kaithi is built on a ticking clock: one night, a lorry of drugged officers that must reach help, a station that must hold, and a father who must meet his daughter. No songs and no romance, so the clock never stops, and every fight is a race, not a show.",
+    "why_now": "Cult classic and the first film of the Lokesh Cinematic Universe; rewatched before every LCU release.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kaithi_(2019_film) (plot; set largely in a single night; songless, no female lead, citing The Times of India 13 Dec 2018)"
+    ],
+    "technique": "Ticking clock (a deadline the audience can feel)"
+  },
+  "worth_it": {
+    "learn": "The technique has a name, ticking clock, and Kaithi runs three of them at once.",
+    "stop": "The real villain of Kaithi is the clock.",
+    "why_now": "Cult classic people still rewatch; the LCU keeps it alive.",
+    "send_to": "The friend who says Kaithi is the best LCU film.",
+    "best_angle": "Yes: the tension people felt has a name, and it explains why there are no songs."
+  },
+  "voice": {
+    "on": true,
+    "voice": "ta-IN-ValluvarNeural",
+    "rate": "+33%",
+    "pitch": "-2Hz"
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "chase tension"
+      },
+      {
+        "track": "under_attack",
+        "from": 2.0,
+        "screen": 3,
+        "mood": "urgent"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.3,
+    "xfade": 0.8,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/kaithi/g79CvhHaj5I_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.42,
+        1.0
+      ]
+    },
+    "lorry": {
+      "src": "engine/.cache/stills/kaithi/g79CvhHaj5I_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.12,
+        1.0,
+        0.76
+      ]
+    },
+    "cop": {
+      "src": "engine/.cache/stills/kaithi/g79CvhHaj5I_maxres1.jpg",
+      "crop": [
+        0.1,
+        0.12,
+        0.9,
+        0.76
+      ]
+    },
+    "two": {
+      "src": "engine/.cache/stills/kaithi/g79CvhHaj5I_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.12,
+        1.0,
+        0.76
+      ]
+    },
+    "gun": {
+      "src": "engine/.cache/stills/kaithi/g79CvhHaj5I_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.42,
+        1.0
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "KAITHI",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.5,
+      "slam_at": 0.12,
+      "voice": "கைதி படத்தோட வில்லன், ஒரு கடிகாரம்.",
+      "min": 3.2,
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ],
+      "voice_tg": "Kaithi padathoda villain, oru kadigaaram."
+    },
+    {
+      "kind": "pins",
+      "image": "lorry",
+      "in": "zoom",
+      "voice": "ஜெயில்ல இருந்து வந்த டில்லி. மயக்கத்துல போலீஸ்காரங்க. ஒரே ராத்திரி. ஒரு லாரி.",
+      "pins": [
+        {
+          "x": 0.5,
+          "y": 0.45,
+          "lx": 80,
+          "ly": 318,
+          "text": "DILLI · JUST FREED",
+          "cue": {
+            "word": "டில்லி"
+          }
+        },
+        {
+          "x": 0.85,
+          "y": 0.6,
+          "lx": 905,
+          "ly": 318,
+          "text": "COPS · DRUGGED",
+          "align": "right",
+          "cue": {
+            "word": "போலீஸ்காரங்க"
+          }
+        }
+      ],
+      "slam": {
+        "cue": {
+          "word": "ராத்திரி"
+        },
+        "lines": [
+          {
+            "text": "ONE NIGHT.",
+            "size": 140,
+            "color": "#ffffff"
+          },
+          {
+            "text": "ONE LORRY.",
+            "size": 158,
+            "color": "#F8C868",
+            "glow": "rgba(248,200,104,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "டில்லி"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "போலீஸ்காரங்க"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ராத்திரி"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "லாரி"
+          },
+          "type": "whoosh"
+        }
+      ],
+      "extra": {
+        "image": "cop",
+        "cue": {
+          "word": "மயக்கத்துல"
+        },
+        "label": "LAST COP STANDING",
+        "fx": 0.6
+      },
+      "voice_tg": "Jail-la irundhu vandha Dilli. Mayakkathula policekaaranga. Ore raathiri. Oru lorry."
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "TICKING CLOCK",
+      "definition": "A DEADLINE THAT NEVER STOPS",
+      "outer_label": "ONE NIGHT",
+      "inner": [
+        "LORRY",
+        "STATION",
+        "DAUGHTER"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, டிக்கிங் கிளாக். ஒரு பெரிய டெட்லைன். அதுக்குள்ள சின்ன சின்ன ஓட்டங்கள்.",
+      "voice_tg": "Indha technique peru, ticking clock. Oru periya deadline. Adhukkulla chinna chinna oattangal.",
+      "cues": {
+        "name": {
+          "word": "டிக்கிங்"
+        },
+        "outer": {
+          "word": "பெரிய"
+        },
+        "inner": {
+          "word": "சின்ன"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "டிக்கிங்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "பெரிய"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சின்ன"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சின்ன",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சின்ன",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "3 CLOCKS. 1 NIGHT.",
+      "heading_ta": "மூணு கடிகாரம், ஒரு ராத்திரி",
+      "voice": "மூணு கடிகாரம் ஒரே நேரத்துல ஓடுது. லாரி உதவிக்கு போய் சேரணும். ஸ்டேஷன் தாக்குப்பிடிக்கணும். டில்லி மகளை பார்க்கணும்.",
+      "cards": [
+        {
+          "lines": [
+            "GET THEM",
+            "TO HELP"
+          ],
+          "image": "lorry",
+          "fx": 0.5,
+          "cue": {
+            "word": "லாரி"
+          }
+        },
+        {
+          "lines": [
+            "HOLD THE",
+            "STATION"
+          ],
+          "image": "cop",
+          "fx": 0.62,
+          "cue": {
+            "word": "ஸ்டேஷன்"
+          }
+        },
+        {
+          "lines": [
+            "MEET HIS",
+            "DAUGHTER"
+          ],
+          "image": "gun",
+          "fx": 0.4,
+          "cue": {
+            "word": "மகளை"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "லாரி"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ஸ்டேஷன்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "மகளை"
+          },
+          "type": "impact"
+        }
+      ],
+      "voice_tg": "Moonu kadigaaram ore nerathula odudhu. Lorry udhavikku poi seranum. Station thaakkuppidikkanum. Dilli magalai paakkanum."
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "two",
+      "fx": 0.5,
+      "left": "SONGS",
+      "right": "ROMANCE",
+      "left_ta": "பாட்டு",
+      "right_ta": "ஹீரோயின்",
+      "slam_text": [
+        "NO",
+        "BREAKS."
+      ],
+      "voice": "இந்த படத்துல பாட்டு இல்ல. ஹீரோயின் இல்ல. கதை ஒரு நிமிஷம் கூட நிக்கல. நின்னா, கடிகாரம் ஜெயிச்சிடும்.",
+      "cues": {
+        "line": {
+          "word": "பாட்டு"
+        },
+        "bleed": {
+          "word": "ஹீரோயின்"
+        },
+        "crack": {
+          "word": "நிமிஷம்"
+        },
+        "slam": {
+          "word": "கடிகாரம்"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "பாட்டு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "நிமிஷம்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "கடிகாரம்"
+          },
+          "type": "stamp"
+        }
+      ],
+      "voice_tg": "Indha padathula paattu illa. Heroine illa. Kadhai oru nimisham kooda nikkala. Ninnaa, kadigaaram jeyichidum.",
+      "kicker": "WHY IT WORKS"
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "gun",
+      "fy": 0.45,
+      "slam_text": "BEAT THE CLOCK",
+      "voice": "டில்லி சண்டை போடுறது ஜெயிக்க இல்ல. நேரத்துக்குள்ள போய் சேர. அதனால தான் ஒவ்வொரு அடியிலும் நமக்கு பதட்டம்.",
+      "q_cue": {
+        "word": "சண்டை"
+      },
+      "slam_cue": {
+        "word": "பதட்டம்"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "சண்டை"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "பதட்டம்",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ],
+      "fx": 0.5,
+      "voice_tg": "Dilli sandai podradhu jeyikka illa. Nerathukkulla poi sera. Adhanaala thaan ovvoru adiyilum namakku padhattam."
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "echo": "KAITHI · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHICH CLOCK",
+          "size": 130
+        },
+        {
+          "text": "SCARED YOU MOST?",
+          "size": 110,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "எந்த சீன்ல பதட்டம்?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் டிக்கிங் கிளாக். உங்களுக்கு எந்த சீன்ல பதட்டம்? கமெண்ட்ல சொல்லுங்க. சினிமா நண்பனுக்கு அனுப்புங்க.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "bg": "title",
+      "voice_tg": "Idhu thaan ticking clock. Ungalukku endha scene-la padhattam? Comment-la sollunga. Cinema nanbanukku anuppunga.",
+      "recap": "TECHNIQUE: TICKING CLOCK"
+    }
+  ],
+  "package": {
+    "caption": [
+      "The real villain of Kaithi is a clock.",
+      "The technique is called a ticking clock: a deadline you can feel. Kaithi runs three at once: the lorry, the station, and a father who has never met his daughter. No songs, no romance, so the clock never stops.",
+      "Which clock scared you most? Tell us.",
+      "Send this to the friend who says Kaithi is the best LCU film.",
+      "கைதி — ஒரு ராத்திரி, மூணு கடிகாரம்."
+    ],
+    "hashtags": [
+      "#TamilCinema",
+      "#Kaithi",
+      "#Karthi",
+      "#LokeshKanagaraj",
+      "#iNiKKiBreakdown"
+    ],
+    "cover": "KAITHI · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "Lorry, station or daughter: which clock got you?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "bank",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 7,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 71,
+    "weakest": {
+      "loop": "end card cuts back to the title frame (Karthi with the gun) so the replay feels seamless",
+      "timely_original": "post it near a LCU news day (Kaithi 2 or Coolie news)"
+    }
+  }
+}
