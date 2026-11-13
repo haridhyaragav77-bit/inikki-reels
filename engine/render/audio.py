@@ -40,6 +40,15 @@ def db(x):
     return 20 * np.log10(x + 1e-12)
 
 
+def lufs(x):
+    """Integrated loudness (EBU R128) of a stereo float buffer, measured by ffmpeg."""
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-",
+                        "-af", "ebur128", "-f", "null", "-"], input=x.astype(np.float32).tobytes(), capture_output=True)
+    import re
+    m = re.findall(r"I:\s+(-?[\d.]+) LUFS", r.stderr.decode(errors="ignore"))
+    return float(m[-1]) if m else -99.0
+
+
 # ---------------------------------------------------------------- voice
 def tts_module():
     ca = os.environ.get("SSL_CERT_FILE")
@@ -294,11 +303,15 @@ def main(plan_path, work):
         if b > a:
             fx[a:b] += y[: b - a]
 
-    # 6. mix + gentle limiter
+    # 6. mix, level to a fixed loudness (bold but inside the check range), gentle limiter
     mix = music + fx + np.stack([voice, voice], axis=1)
-    peak = np.max(np.abs(mix)) + 1e-9
-    if peak > 0.89:
-        mix = np.tanh(mix / peak * 1.25) / np.tanh(1.25) * 0.89
+    target = float(m.get("target_lufs", -13.0 if voice_on else -11.0))
+    measured = lufs(mix)
+    if measured > -70:
+        mix *= 10 ** ((target - measured) / 20)
+    knee, ceil = 0.7, 0.89  # soft-knee limiter: below the knee nothing changes; peaks bend smoothly under the ceiling
+    ax = np.abs(mix)
+    mix = np.where(ax <= knee, mix, np.sign(mix) * (knee + (ceil - knee) * np.tanh((ax - knee) / (ceil - knee))))
     raw = mix.astype(np.float32).tobytes()
     wav = os.path.join(work, "audio.wav")
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "f32le", "-ar", str(SR), "-ac", "2", "-i", "-", "-c:a", "pcm_s16le", wav],

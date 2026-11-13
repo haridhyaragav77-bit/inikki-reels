@@ -1,0 +1,22 @@
+{
+  "_note": "Tracks from Harish's Drive folder 'background music (1)' that plans use, by short key. The Engine downloads missing ones (engine/drive/drive.py sync-music). Add a line when a plan uses a new track.",
+  "folder_id": "1PCNlwM8GPnsxj5Bl7_eO0_Ax1UBza6WF",
+  "tracks": {
+    "the_story":         { "drive_id": "1msHe4ALKhO6fNoqlD_PuKLvKYwteBWA8", "title": "The Story", "mood": "intrigue, builds" },
+    "villains_strategy": { "drive_id": "1U2y96NGx8SH7ftbibkL4NpzTXpPxUT55", "title": "Villain's Strategy", "mood": "tension" },
+    "climax_theme":      { "drive_id": "1_Sq0P8coz90UNGOMJZOMpJtaKG0lvJJc", "title": "The Climax Theme", "mood": "big release" },
+    "giant_emerges":     { "drive_id": "1lwHPNvv6H33Y3sFld0SFlOPjATOIxNO9", "title": "The Giant Emerges", "mood": "epic build (quiet first 6 s)" },
+    "lone_wolf":         { "drive_id": "1J0-tfghZEUHBqRDsz1ZkJck5yipFKhfR", "title": "The Lone Wolf", "mood": "cool, moody" },
+    "plan_is_on":        { "drive_id": "1B4eRV3RaRzpcS_u8Ev5z1FJrx-n8Q9Rl", "title": "The Plan is ON", "mood": "heist, fun" },
+    "under_attack":      { "drive_id": "1bAsQAO7RP3RcF252hUkVJbTP818o8L63", "title": "Under Attack", "mood": "urgent stinger (silent first 2 s)" },
+    "hunt_begins":       { "drive_id": "15gGLax0WfUkYrs2FBnaZCeFVDFKzAN-u", "title": "The Hunt Begins", "mood": "chase tension" },
+    "suspects":          { "drive_id": "1MAASfbPCizsEldWfY2nBLzKuqaOX40wv", "title": "Suspects", "mood": "investigation" },
+    "whats_cookin":      { "drive_id": "1ddjZP2VDuLnhJC5uz3J3JBZViOaCqhmO", "title": "What's Cookin' (Background Score)", "mood": "quirky, bold (review: worked)" },
+    "threat_north":      { "drive_id": "1wJt2mLG3LneZZa3M8tWPeEhc9PFAyxRf", "title": "Threat from the North", "mood": "ominous" },
+    "true_love":         { "drive_id": "1UVcWJnkjGKTb1BFUomB347hHc3Zs7o9S", "title": "True Love", "mood": "romance" },
+    "feeling_of_love":   { "drive_id": "1zIgXr_CAEDRukk4QAqyRGcIKILeiSIrL", "title": "The Feeling of Love", "mood": "romance (silent first second)" },
+    "vintage_arjun":     { "drive_id": "1L9o8X-f2xcbZAhmgWgCSYtD1ljcbQiaQ", "title": "Vintage Arjun Is Back", "mood": "bold mass theme, loud from frame 1" },
+    "vip_gathering":     { "drive_id": "1FPHTQTtxoHY0uoyMVlgwIuZ6i4qblHid", "title": "VIP The Gathering", "mood": "swagger, dips mid-track" },
+    "varun_intro":       { "drive_id": "1SCZj4qerpyEKz41GGrXcMCuqUK109oQG", "title": "Varun Intro", "mood": "bold, catchy, punchy" }
+  }
+}

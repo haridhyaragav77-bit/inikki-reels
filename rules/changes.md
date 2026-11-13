@@ -2,6 +2,17 @@
 
 Every change has a number, a reason and an Undo (AGENT.md 1, 9). Newest first.
 
+## #4 · 13 Nov 2026 · Harish's feedback, round 4 · set by Harish (hard rules)
+**Why:** the Vikram Vedha reel had no subtitles; Instagram's right-side buttons and bottom profile/caption area can cover words; reels must reach Drive.
+
+**What changed:**
+1. Breakdowns carry Tamil + Tanglish subtitles synced to the voice, the spoken word lit (AGENT.md 5.3).
+2. Breakdowns keep every word and key visual in the Instagram-safe column, with a band for subtitles (5.3, 6.6).
+3. Everything goes through Drive: the "Make reels" cloud workflow renders and uploads full-quality reels to Drive and reads music from it (4.3, 19). Phone previews go to `rehearsal/<date>/` until the one-time Drive sign-in is added.
+4. Every reel's sound is levelled to a fixed loudness: bold, but never so loud that Instagram squashes it.
+
+**Undo:** revert this commit.
+
 ## #3 · 13 Nov 2026 · Harish's feedback, round 3 · set by Harish (hard rules)
 **Why:** the motion graphics and style got a big yes. The Updates and Watch This Next music was too quiet to work as a hook. Recommendations needed proof (Letterboxd, reviews) and where to watch. The Inji Vellam reel was missing its official poster.
 

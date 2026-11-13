@@ -32,13 +32,33 @@ const KINDS = {
     return (ctx, lt, t) => {
       const [sx, sy] = shake(lt, [hit, hit + .4], 14);
       ctx.save(); ctx.translate(sx + jitter(env, lt), sy);
-      redStill(env, ctx, s.image, lt, { fx: s.fx, fy: s.fy, zoom: 1.0, dim: .2 });
-      scanlines(env, ctx, .16, lt);
+      if (s.poster) {
+        // the official poster leads: blurred red wash behind, the poster itself in full colour
+        const bg = env.memo('redblur:' + s.poster, () => filtered(duotone(env.img[s.poster], '#0b0203', '#ff6b6f', 1.2), 'blur(14px)', .5));
+        fill(ctx, BLACK); cover(ctx, bg, 0, 0, W, H, { zoom: 1.25 + .05 * Math.sin(lt * .6) });
+        ctx.save(); ctx.globalAlpha = .35; fill(ctx, BLACK); ctx.restore(); ctx.globalAlpha = 1;
+        scanlines(env, ctx, .12, lt);
+        const pp = ep(lt, .05, .55, E.outBack), sz = s.poster_size || 760;
+        ctx.save(); ctx.translate(W / 2, 765 + (1 - pp) * 260); ctx.rotate(-.025 + Math.sin(lt * .8) * .008); ctx.scale(.86 + .14 * pp, .86 + .14 * pp);
+        ctx.shadowColor = 'rgba(229,72,77,.65)'; ctx.shadowBlur = 70 + 30 * beatPulse(env, t);
+        rrect(ctx, -sz / 2, -sz / 2, sz, sz, 22); ctx.fillStyle = '#000'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        ctx.save(); rrect(ctx, -sz / 2, -sz / 2, sz, sz, 22); ctx.clip();
+        cover(ctx, env.img[s.poster], -sz / 2, -sz / 2, sz, sz, { zoom: 1.0 + .05 * ep(lt, 0, 3, E.linear) });
+        ctx.restore();
+        rrect(ctx, -sz / 2, -sz / 2, sz, sz, 22); ctx.lineWidth = 6; ctx.strokeStyle = WHITE; ctx.stroke();
+        ctx.restore();
+        sweep(ctx, lt, .6, 1.0, { alpha: .22 });
+        pill(ctx, s.poster_tag || 'OFFICIAL POSTER', W / 2, 765 - sz / 2 + 2, lt - .45, { size: 30, bg: RED, color: WHITE, ls: .12 });
+      } else {
+        redStill(env, ctx, s.image, lt, { fx: s.fx, fy: s.fy, zoom: 1.0, dim: .2 });
+        scanlines(env, ctx, .16, lt);
+      }
       flash(ctx, lt, hit, { alpha: .6, color: RED });
       const f = fitSize(env, ctx, s.film, 'Anton', 400, 980, 210, 90);
-      slam(ctx, s.film, W / 2, 1230, lt - hit, { size: f, family: 'Anton', weight: 400, color: WHITE, from: 2.6, glow: 'rgba(229,72,77,.8)', glowBlur: 40 });
-      block(ctx, s.what, W / 2, 1380, lt - hit - .4, { size: 100, side: 1 });
-      ring(ctx, W / 2, 1230, lt - hit, { color: RED, r1: 900, w: 20 });
+      const fy = s.poster ? 1290 : 1230, wy = s.poster ? 1412 : 1380;
+      slam(ctx, s.film, W / 2, fy, lt - hit - (s.poster ? .35 : 0), { size: s.poster ? Math.min(f, 170) : f, family: 'Anton', weight: 400, color: WHITE, from: 2.6, glow: 'rgba(229,72,77,.8)', glowBlur: 40 });
+      block(ctx, s.what, W / 2, wy, lt - hit - .7, { size: s.poster ? 84 : 100, side: 1 });
+      ring(ctx, W / 2, fy, lt - hit - (s.poster ? .35 : 0), { color: RED, r1: 900, w: 20 });
       ctx.restore();
     };
   },

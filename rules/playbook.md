@@ -36,6 +36,9 @@ Every reel in every series is made the same way: worth it → script first → c
 - Viral stories: 6–8 images, each carrying 2 text beats. Humble start → struggle → turn → break → payoff → a question that names a person ("Know someone starting over?").
 - Guess the Movie: 3 clues → lock-your-answer countdown → reveal → "Clue 1, 2 or 3? Comment."
 
+## Subtitles (breakdowns)
+- Tamil + Tanglish, synced to the voice, the spoken word lit. In their own band above Instagram's caption area; nothing important under the right-side buttons.
+
 ## Motion graphics
 - They show the idea the voice says, on the word it is said. Labels of 3 words or fewer. No sentences on screen.
 - No graphic twice in one reel. The same idea gets the same graphic across reels (motion library).

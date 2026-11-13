@@ -87,7 +87,17 @@
       1440
     ],
     "radius_card": 24,
-    "radius_chip": 12
+    "radius_chip": 12,
+    "breakdown_safe": {
+      "left": 60,
+      "right": 920,
+      "content_bottom": 1310,
+      "subtitle_band": [
+        1335,
+        1500
+      ],
+      "note": "Instagram buttons on the right and profile/caption at the bottom"
+    }
   },
   "motion": {
     "push_in_pct": [

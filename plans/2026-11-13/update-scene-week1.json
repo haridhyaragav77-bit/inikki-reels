@@ -33,13 +33,13 @@
   "music": {
     "sections": [
       {
-        "track": "giant_emerges",
-        "from": 10.0,
+        "track": "vintage_arjun",
+        "from": 0.3,
         "screen": 0,
-        "mood": "rising, triumphant"
+        "mood": "bold mass theme (a hook)"
       }
     ],
-    "level_db": -15,
+    "level_db": -12.5,
     "fade_out": 1.0
   },
   "assets": {

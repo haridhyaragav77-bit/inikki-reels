@@ -11,7 +11,8 @@ slots: ["12:30", "20:00"]
 template: stage         # its own look: dark stage, motion graphics lead (AGENT.md 6.6)
 visuals: motion_graphics_first   # clips where they truly show the point; graphics carry the rest
 voice: true
-captions: keywords      # 2-4 key words synced to the voice, never full sentences
+captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit (change #4)
+instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }   # words and key visuals stay clear of Instagram's buttons
 length_s: [30, 45]
 length_max_s: 75        # only when the insight needs it; the plan writes down why
 image_cap_per_reel: 0

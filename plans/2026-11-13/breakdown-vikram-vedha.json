@@ -135,7 +135,7 @@
       "image": "title",
       "film": "VIKRAM VEDHA",
       "type": "SCREENPLAY BREAKDOWN",
-      "fy": 0.45,
+      "fy": 0.5,
       "slam_at": 0.12,
       "voice": "வேதா ஜெயிச்சது துப்பாக்கியால இல்ல. கதைகளால.",
       "min": 3.0,
@@ -144,7 +144,8 @@
           "at": 0.12,
           "type": "impact"
         }
-      ]
+      ],
+      "voice_tg": "Vedha jeyichadhu thuppaakkiyaala illa. Kadhaigalaala."
     },
     {
       "kind": "pins",
@@ -155,8 +156,8 @@
         {
           "x": 0.33,
           "y": 0.4,
-          "lx": 110,
-          "ly": 395,
+          "lx": 80,
+          "ly": 318,
           "text": "VIKRAM · COP",
           "cue": {
             "word": "போலீஸ்"
@@ -165,8 +166,8 @@
         {
           "x": 0.7,
           "y": 0.5,
-          "lx": 975,
-          "ly": 1090,
+          "lx": 905,
+          "ly": 318,
           "text": "VEDHA · GANGSTER",
           "align": "right",
           "cue": {
@@ -181,12 +182,12 @@
         "lines": [
           {
             "text": "NOT GUNS.",
-            "size": 150,
+            "size": 140,
             "color": "#ffffff"
           },
           {
             "text": "STORIES.",
-            "size": 170,
+            "size": 158,
             "color": "#F8C868",
             "glow": "rgba(248,200,104,.6)"
           }
@@ -225,7 +226,8 @@
         },
         "label": "HE SURRENDERS",
         "fx": 0.45
-      }
+      },
+      "voice_tg": "Encounter police Vikram. Gangster Vedha. Saran adainja Vedha, visaaranaiyila kadhai solraan."
     },
     {
       "kind": "loop",
@@ -279,7 +281,8 @@
           },
           "type": "whoosh"
         }
-      ]
+      ],
+      "voice_tg": "Idhu Vikramaadhithan, Vedhaalam kadhai. Vedhaalam kadhai solli, kelvi ketkum. Raaja badhil sonna, thappichu odidum."
     },
     {
       "kind": "cards",
@@ -341,7 +344,8 @@
           },
           "type": "impact"
         }
-      ]
+      ],
+      "voice_tg": "Padathulayum moonu kadhai, moonu kelvi. Adiyaala, anuppinavanaa? Mudhalaaliyaa, kudumbamaa? Unmaiyaana kutravaali yaaru?"
     },
     {
       "kind": "moral",
@@ -391,7 +395,8 @@
           },
           "type": "stamp"
         }
-      ]
+      ],
+      "voice_tg": "Vikramukku ulagam karuppu vellai. Aana ovvoru badhilum andha kottai azhikkudhu. Thannoda team-e lanjam vaanginadhu therinjadhum, kode illa."
     },
     {
       "kind": "standoff",
@@ -421,7 +426,8 @@
           "type": "impact"
         }
       ],
-      "fx": 0.32
+      "fx": 0.32,
+      "voice_tg": "Kadaisi scene-la, thuppaakki Vikram kaiyila. Kelviyum avankitta. Padam badhil sollala. Vedhaalam maadhiriye, kelviyai nammakitta vittududhu."
     },
     {
       "kind": "end",
@@ -448,7 +454,8 @@
           "type": "pop"
         }
       ],
-      "bg": "title"
+      "bg": "title",
+      "voice_tg": "Neenga Vikrama irundhaa? Comment-la sollunga. Cinema nanbanukku anuppunga."
     }
   ],
   "package": {
@@ -468,5 +475,7 @@
     "cover": "VIKRAM VEDHA · SCREENPLAY BREAKDOWN",
     "slot": "20:00",
     "first_comment": "Which story hit you hardest: Pulli's or Chandra's?"
-  }
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles"
 }

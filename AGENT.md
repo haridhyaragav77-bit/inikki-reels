@@ -179,7 +179,7 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 ### 4.3 Engine jobs
 | Job | When | Does |
 | --- | --- | --- |
-| Make | When new plans arrive | Images → clips → voice → render → inspect → queue |
+| Make | When new plans arrive | Stills → voice → render → inspect → **put the reel in Drive** (full quality; `rehearsal/<date>/` until go-live). GitHub workflow "Make reels"; a 7-day copy also stays on GitHub. |
 | Post | At each slot time (8 slots a day), not on a constant timer | Checks the switch, posts, sets cover, caption and first comment |
 | Measure | 2 hours after each post, and nightly | Pulls stats, computes rates, medians and health colours |
 | Brief | Before each thinking run | Builds the 1-page brief |
@@ -222,7 +222,8 @@ A lead with Value under 15 is dropped, whatever its total. A strong idea is neve
 - **Screen 1 is the title screen.** It says, big and clear, which film and what kind of reel: "VIKRAM VEDHA · SCREENPLAY BREAKDOWN", "COOLIE · WEEK 1 BOX OFFICE", "5 FILMS TO WATCH TONIGHT". Use the film's own title logo from its trailer when there is one; otherwise type the title in the series font. Behind it sits the most striking shot available (the visual hook). Music and motion start on frame 1, and the voice can start its hook over it. At most 2 s.
 - A small kicker never replaces the title. If someone sees only screen 1, they must know what the reel is about.
 - Words on screen: a headline of 7 words or fewer, motion-graphic labels of **3 words or fewer**, a Tamil line where it helps. Sentences are spoken, not written.
-- Captions follow the series setting: key words only for voiced reels, none for music-only reels. Never full sentences across the bottom.
+- **Voiced reels (breakdowns) carry Tamil + Tanglish subtitles** synced to the voice: two lines on a soft plate, about 4 words at a time, the spoken word lit in the series colour. Music-only reels carry no subtitles.
+- **Breakdowns keep clear of Instagram's own buttons:** every word and key visual stays in the safe column (away from the right-side buttons and the bottom profile, caption and message area); subtitles get their own band just above it.
 - Clips are 2–4 s, from official trailers and promos, always transformed with commentary and design.
 - **Visuals serve the script.** If no clip or still fits a beat, the motion graphic takes the whole screen for that beat. The script is never changed to match the footage.
 - No text inside AI images. Templates add all text, so Tamil spelling is exact.
@@ -379,7 +380,7 @@ Series must not look alike. Each has its own template, background and use of spa
 
 | Series | Template | Background | Use of space | Voice | Words on screen |
 | --- | --- | --- | --- | --- | --- |
-| **Film Breakdown** | **Stage** | Deep black stage, soft spotlight, film grain. Clips float in a cinematic frame. | Motion graphics own the screen and can go full-screen | Yes | Title + labels of 3 words or fewer + key-word captions |
+| **Film Breakdown** | **Stage** | Deep black stage, soft spotlight, film grain. Clips float in a cinematic frame. | Motion graphics own the screen and can go full-screen, inside the Instagram-safe column | Yes | Title + labels of 3 words or fewer + Tamil and Tanglish subtitles |
 | **Movie Updates** | **Bulletin** | The film's official still or poster, edge to edge, with a colour wash | Big numbers and bold type across the full frame; no small floating card | Case by case: box office, dates and first looks are music-only | Hero title + numbers. No sentences. |
 | **Watch This Next** (recommendations) | **Poster Wall** | Each film's still fills the frame; a blurred copy of the same still fills any gap (never an empty background) | One film per screen, full-bleed | Off by default | Title, year, country, a reason of 6 words or fewer, **proof** (Letterboxd rating + one award, festival or famous fact) and **where to watch in India** |
 | Guess the Tamil Movie | Diorama | Unchanged | Unchanged | No | Unchanged |
@@ -653,7 +654,8 @@ GitHub: inikki-reels/
   lab/                  backlog, pitches, results
   plans/YYYY-MM-DD/     one small plan per reel
   data/                 metrics by month, feedback, brief.md
-  engine/ templates/ tools/ .claude/skills/ .github/workflows/
+  engine/ templates/ tools/ .claude/skills/ .github/workflows/ (make-reels.yml)
+  engine/drive/         the Drive bridge (upload any size, download music)
 
 Drive: iNiKKi Reels/
   control/              switch, overrides, commands (written by the Control Room)
@@ -1180,6 +1182,7 @@ something. One question, with 2–4 options. Nothing about files, code or tools.
 | Turn on the **Google Sheets API** in the same Google Cloud project (search "Google Sheets API" → Enable) | To do, 1 minute |
 | Add the keys to GitHub | **Last step**, below |
 | Reel maker (Engine "Make" job): plan in, checked MP4 out. Tamil voice with word timing, music sections from your Drive library, 5 looks (Stage, Bulletin, Poster Wall, Verdict, Flash), stage 8 checks | **Built 13 Nov 2026**, 5 sample reels made. Cinematic and Diorama next; then it moves to GitHub Actions |
+| Drive bridge: reels uploaded to Drive at full quality from the cloud (any size), music read from your Drive folder | **Built 13 Nov 2026.** Waiting for the one-time Drive sign-in keys (19.2). Until then, phone previews (under 3 MB) go to `rehearsal/<date>/` from the chat session. |
 | Instagram display name and bio | To do, 2 minutes |
 | Trusted sources list and competitor watchlist | To do, in the Control Room when asked |
 
@@ -1199,9 +1202,19 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | `META_APP_SECRET` | App secret |
 | `GDRIVE_ROOT_FOLDER_ID` | `1Bi3SlmJK-KyJ7JMM6MyTnKu2evIAE9cJ` |
 | `GDRIVE_SERVICE_ACCOUNT_JSON` | Everything inside the downloaded `.json` file |
+| `GDRIVE_OAUTH_CLIENT_ID` | From your one-time Drive sign-in (steps below) |
+| `GDRIVE_OAUTH_CLIENT_SECRET` | From your one-time Drive sign-in |
+| `GDRIVE_OAUTH_REFRESH_TOKEN` | From your one-time Drive sign-in |
 
 4. Delete your notes file and the `.json` file from your laptop.
 5. Tell the build session "keys are in". It runs the smoke tests and reports each as OK or not.
+
+**The one-time Drive sign-in (needed so the Engine can put full-size reels in your Drive; a service account has no storage of its own). About 5 minutes, in any browser:**
+1. Google Cloud console → your `inikki-reels` project → APIs & Services → OAuth consent screen: External, your email as a test user, then **Publish app** (so the sign-in doesn't expire after 7 days).
+2. Credentials → Create credentials → OAuth client ID → Web application. Add the redirect address `https://developers.google.com/oauthplayground`. Copy the Client ID and Client secret.
+3. Open `developers.google.com/oauthplayground` → gear icon → tick "Use your own OAuth credentials" → paste both. In Step 1 type `https://www.googleapis.com/auth/drive`, click Authorize, sign in with your Google account, allow.
+4. Step 2 → "Exchange authorization code for tokens" → copy the **Refresh token**.
+5. Add the three as GitHub secrets (names above), plus `GDRIVE_ROOT_FOLDER_ID`. The "Make reels" run then says "ready" and puts every reel in Drive.
 
 **Later:**
 - Two more secrets (`BRAIN_FIRE_URL`, `BRAIN_FIRE_TOKEN`) are created in Phase 4 for the breaking-news trigger. The build tells you when.
@@ -1241,3 +1254,4 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | Harish's reel feedback (13 Nov 2026): value is the hero, script before visuals, any craft angle, cult classics and hot topics, clear title screen, motion graphics that show and stay on pace, no silent start, music that follows the story, length set by content, music-only updates, no spoilers, one look per series, use of stills and space, Recommendations | 1, 5, 5.3, 5.4, 5.7–5.9, 6.2, 6.6, 8.2, 10.1, Blocks F and G; `niches/tamil-cinema/motion_library.md`; series files; `rules/changes.md` #1 |
 | Harish's feedback round 2 (13 Nov 2026): lots of animation, one standard for every reel everywhere, own looks for Movie Review and Breaking News | 5.8, 5.10, 6.5, 6.6, 7, 12.2; motion library; `rules/changes.md` #2 |
 | Harish's feedback round 3 (13 Nov 2026): style approved; bold music as a hook; proof and where-to-watch in recommendations; always scout the poster for breaking news; never render on the laptop | 4.4, 5.4, 5.7, 6.6, 10.1, 16.2, 17; `rules/changes.md` #3 |
+| Harish's feedback round 4 (13 Nov 2026): Tamil + Tanglish subtitles on breakdowns, Instagram-safe layout for breakdowns, everything works with Drive | 4.3, 5.3, 6.6, 14.2, 19; `engine/drive/`, `.github/workflows/make-reels.yml`; `rules/changes.md` #4 |
