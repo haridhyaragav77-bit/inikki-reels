@@ -111,9 +111,11 @@ def pct(v):
     return "-" if v is None else f"{v * 100:.1f}%"
 
 
-def changes(n=5):
+def changes(n=10):
+    """The change log, newest first: one-line entries (`#n · ...`) and Harish's feedback rounds (## #n · ...)."""
     p = ROOT / "rules" / "changes.md"
-    lines = [l.strip().strip("`") for l in p.read_text(encoding="utf-8").splitlines() if re.match(r"^`#\d+", l.strip())] if p.exists() else []
+    lines = [re.sub(r"^(##\s*|`)", "", l.strip()).strip("`") for l in p.read_text(encoding="utf-8").splitlines()
+             if re.match(r"^(`|##\s*)#\d+", l.strip())] if p.exists() else []
     return [l[:170] for l in lines[:n]]
 
 
