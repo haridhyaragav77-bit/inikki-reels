@@ -2,7 +2,7 @@
 
 One plan file makes one reel: `node engine/render/render.mjs plans/<date>/<reel>.json`.
 It writes the voice, mixes the music, animates every frame, encodes the MP4 and runs the checks (AGENT.md stage 8).
-Examples for every series are in `plans/2026-11-13/`.
+Examples for every series are in `plans/reference/`.
 
 ## Plan: common fields
 | Field | Meaning |

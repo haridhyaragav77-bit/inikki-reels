@@ -1,0 +1,294 @@
+{
+ "reel_id": "2026-11-12-movie-updates-01",
+ "series": "movie-updates",
+ "post_at": "2026-11-12T08:30:00+05:30",
+ "header": "JAILER 2 / OTT UPDATE",
+ "credit": "NEWS · 12 Nov 2026 · Prime Video, Khaleej Times, The Week · pictures: Sun Pictures",
+ "trailer_from": [
+  "sunpictures"
+ ],
+ "hook": "flare",
+ "lead": {
+  "topic": "Jailer 2 streams on Prime Video from 12 November, four weeks after its 15 October release",
+  "score": 78,
+  "sources": [
+   "https://www.khaleejtimes.com/jailer-2-ott-release-november-12-rajinikanth",
+   "https://www.theweek.in/news/entertainment/2026/11/06/jailer-2-prime-video-release-date.amp.html",
+   "https://www.outlookindia.com/art-entertainment/south-cinema/rajinikanth-jailer-2-ott-release-date-out"
+  ]
+ },
+ "music": {
+  "mood": "upbeat_percussive"
+ },
+ "caption": {
+  "text": "Jailer 2 inniku mudhal Prime Video-la!\nOctober 15 theatre, sariyaa 4 vaarathula OTT. 5 mozhi, 240+ naadugal.\nNeenga theatre-la paatheengala, illa OTT-ku wait pannineengala?\nThalaivar fan friend-ku anuppunga.",
+  "hashtags": [
+   "#Jailer2",
+   "#Rajinikanth",
+   "#PrimeVideo",
+   "#TamilCinema",
+   "#iNiKKiUpdates"
+  ],
+  "first_comment": "Theatre-la paathavanga: oru word review sollunga 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ },
+ "screens": [
+  {
+   "headline": "Tiger *veetukke* vandhaachu!",
+   "tamil": "டைகர் வீட்டுக்கே வந்தாச்சு!",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 1
+    },
+    "ai": false,
+    "label": "JAILER 2"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "TODAY",
+    "color": "gold"
+   },
+   "caption": "Tiger ippo unga veetukke vandhaachu!",
+   "voice_line": "டைகர் இப்போ உங்க வீட்டுக்கே வந்தாச்சு!"
+  },
+  {
+   "headline": "Jailer 2 *inniku* OTT-la.",
+   "tamil": "ஜெயிலர் 2 இன்று முதல் ஓடிடியில்.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Platform",
+      "state": "yes",
+      "value": "Prime Video"
+     },
+     {
+      "label": "From",
+      "state": "yes",
+      "value": "12 Nov"
+     }
+    ]
+   },
+   "caption": "Jailer 2 inniku OTT-la vandhaachu.",
+   "voice_line": "ஜெயிலர் 2 இன்னைக்கு ஓடிடியில வந்தாச்சு."
+  },
+  {
+   "headline": "Prime Video-la *5 mozhi*.",
+   "tamil": "ஐந்து மொழிகளில்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 12
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Tamil",
+     "Telugu",
+     "Hindi",
+     "Malayalam"
+    ],
+    "roles": [
+     "",
+     "",
+     "",
+     "+ Kannada"
+    ]
+   },
+   "caption": "Tamil, Telugu, Hindi, Malayalam, Kannada.",
+   "voice_line": "தமிழ், தெலுங்கு, இந்தி, மலையாளம், கன்னடம். அஞ்சு மொழியில."
+  },
+  {
+   "headline": "*240+* naadugal.",
+   "tamil": "240-க்கும் மேற்பட்ட நாடுகளில்.",
+   "visual": "same",
+   "motion": {
+    "type": "count",
+    "to": 240,
+    "suffix": "+",
+    "label": "countries"
+   },
+   "caption": "240 naadugalukku mela, ore naalla.",
+   "voice_line": "இருநூத்தி நாப்பது நாடுகளுக்கு மேல, ஒரே நாள்ல."
+  },
+  {
+   "headline": "Theatre: *Oct 15*.",
+   "tamil": "அக்டோபர் 15 திரையரங்கில்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 4
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     {
+      "label": "15 Oct",
+      "sub": "Theatres"
+     },
+     {
+      "label": "12 Nov",
+      "sub": "Prime Video"
+     }
+    ],
+    "at": 0
+   },
+   "caption": "October 15 theatre-la vandhuchu.",
+   "voice_line": "அக்டோபர் பதினஞ்சு தியேட்டர்ல வந்துச்சு."
+  },
+  {
+   "headline": "Sariyaa *4 vaaram*.",
+   "tamil": "சரியாக நான்கு வாரத்தில்.",
+   "visual": "same",
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     {
+      "label": "15 Oct",
+      "sub": "Theatres"
+     },
+     {
+      "label": "12 Nov",
+      "sub": "Prime Video"
+     }
+    ],
+    "from": 0,
+    "at": 1
+   },
+   "caption": "Sariyaa 4 vaarathula OTT-ku.",
+   "voice_line": "சரியா நாலு வாரத்துல ஓடிடிக்கு."
+  },
+  {
+   "headline": "Muthuvel Pandian *is back*.",
+   "tamil": "முத்துவேல் பாண்டியன் மீண்டும்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 6
+    },
+    "ai": false,
+    "label": "TIGER"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "TIGER",
+    "color": "gold"
+   },
+   "caption": "Muthuvel Pandian thirumba vettaikku.",
+   "voice_line": "முத்துவேல் பாண்டியன் மறுபடியும் வேட்டைக்கு."
+  },
+  {
+   "headline": "Ippo oru *car driver*?",
+   "tamil": "இந்த முறை கார் டிரைவரா?",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 8
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "callout",
+    "at": [
+     0.5,
+     0.5
+    ],
+    "label": "Driver?"
+   },
+   "caption": "Indha murai amaidhiyaana car driver-aa?",
+   "voice_line": "இந்த முறை அமைதியான கார் டிரைவரா?"
+  },
+  {
+   "headline": "Aana ulla oru *ragasiyam*.",
+   "tamil": "ஆனால் உள்ளே ஒரு ரகசியம்.",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 14
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.2,
+     0.35,
+     0.3,
+     0.6,
+     0.95
+    ],
+    "peaks": [
+     {
+      "at": 4,
+      "text": "Secret"
+     }
+    ]
+   },
+   "caption": "Aana ulla oru ragasiyam irukku.",
+   "voice_line": "ஆனா உள்ள ஒரு ரகசியம் இருக்கு."
+  },
+  {
+   "headline": "Theatre-la *miss* pannineengala?",
+   "tamil": "தியேட்டரில் தவறவிட்டீர்களா?",
+   "visual": {
+    "type": "image",
+    "still": {
+     "film": "Jailer 2",
+     "n": 20
+    },
+    "ai": false
+   },
+   "motion": {
+    "type": "punch",
+    "text": "VEETLAYE",
+    "color": "teal"
+   },
+   "caption": "Theatre-la miss pannineengala? Ippo veetlaye.",
+   "voice_line": "தியேட்டர்ல மிஸ் பண்ணீங்களா? இப்போ வீட்லயே பாருங்க."
+  },
+  {
+   "headline": "Theatre-a, OTT-a?",
+   "tamil": "தியேட்டரா, ஓடிடியா?",
+   "visual": "same",
+   "motion": {
+    "type": "versus",
+    "left": "Theatre",
+    "right": "OTT",
+    "tilt": 0
+   },
+   "caption": "Neenga enga paatheenga? Comment pannunga.",
+   "voice_line": "நீங்க எங்க பார்த்தீங்க? தியேட்டரா, ஓடிடியா?"
+  },
+  {
+   "headline": "Thalaivar fan-ku anuppunga.",
+   "tamil": "தலைவர் ரசிகருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "backup"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Thalaivar fan friend-ku anuppunga.",
+   "voice_line": "தலைவர் ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ]
+}

@@ -19,7 +19,7 @@ story_shape: [title_screen, the_number_or_news, 1_to_2_supporting_facts, whats_n
 hook_examples:
   - "Alien-aiyum kalaaippaaraa?"
   - "Old team. New chapter."
-music: { default: bold_poppy_mass, box_office: loud_triumphant }   # a hook, never subtle (change #3)
+music: { default: bold_poppy_mass, box_office: loud_triumphant }   # a hook, never subtle (change #6)
 motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe, light_sweep]
 proof_required: 2       # trusted sources that must agree
 meme_use: ending_only
@@ -36,5 +36,6 @@ worth_it_extra:
   - "Why would a fan open this?"
   - "Does this spoil anything? (If yes, cut it.)"
 reference:   # approved 13 Nov 2026; replaces the earlier reference reels
-  plan: plans/2026-11-13/update-scene-week1.json
+  plan: plans/reference/update-scene-week1.json
   reel: "Drive reference-reels/2026-11-13/2026-11-13 · SCENE · WEEK 1 BOX OFFICE.mp4"
+expires_h: 24           # news older than this is not posted (AGENT.md 12.1)

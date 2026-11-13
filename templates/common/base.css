@@ -1,0 +1,20 @@
+/* Shared by every template. Colours, sizes and safe zones arrive as CSS variables from the brand kit
+   (set by base.js from brand.yaml + brand_tokens.json). Nothing brand-specific is typed here. */
+@font-face { font-family: "BrandCinematic"; src: url("../fonts/Anton-Regular.ttf"); }
+@font-face { font-family: "BrandCard"; src: url("../fonts/Inter.ttf"); font-weight: 100 900; }
+@font-face { font-family: "BrandTamil"; src: url("../fonts/NotoSansTamil.ttf"); font-weight: 100 900; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--c-navy); }
+body { font-family: "BrandCard", "BrandTamil", sans-serif; color: var(--c-text); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; transform-origin: 50% 45%; }
+#hook { position: absolute; inset: 0; z-index: 60; pointer-events: none; }
+.tamil { font-family: "BrandTamil", "BrandCard", sans-serif; }
+.cine { font-family: "BrandCinematic", "BrandCard", sans-serif; text-transform: uppercase; }
+em { font-style: normal; color: var(--c-primary); }
+.pill { display: inline-flex; align-items: center; height: 84px; padding: 0 40px; border-radius: 60px; background: var(--c-primary); color: var(--c-navy); font-weight: 900; font-size: 32px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%); }
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.045; background-repeat: repeat; }
+/* safe-zone guide, only drawn when window.DEBUG_SAFE is true */
+#safeguide { position: absolute; inset: 0; pointer-events: none; display: none; z-index: 99; }
+#safeguide div { position: absolute; background: rgba(229,72,77,0.18); }

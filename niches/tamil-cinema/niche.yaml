@@ -1,0 +1,11 @@
+topic: "Tamil cinema"
+audience: "Tamil film fans, 18-35, India and abroad"
+sources: "knowledge/sources.yaml"        # Harish to confirm the trusted list
+calendar_types: [release, re_release, ott, anniversary, birthday, festival, awards]
+competitors: []                           # 5-10 handles; Researcher proposes, Harish confirms
+hashtags: { broad: ["#TamilCinema", "#Kollywood"], series: {}, max: 5 }
+knowledge_bank: "knowledge/film_bank.json"
+meme_index: "memes/meme_index.csv"
+image_styles: [painterly_warm, cinematic_real, arcane_painterly, diorama_moody]
+extra_safety: ["no star-vs-star comparisons", "reviews: no spoilers past the first 20 minutes"]
+music_moods: { film-breakdown: tension_pulse, movie-updates: upbeat_percussive, viral-story: emotional_build, guess-the-movie: suspense_ticks, breaking-news: stinger, artwork-quote: soft_warm, movie-review: confident_mid }

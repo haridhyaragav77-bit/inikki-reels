@@ -1,6 +1,6 @@
 # iNiKKi Reels playbook — v1 (13 Nov 2026)
 
-These are starting rules taken from Harish's 11 sample reels, the page as it stood on 10 Nov 2026, and Harish's feedback on the first reels (13 Nov 2026, change #1). The weekly learning run rewrites them from real results. Every change is logged in `changes.md`.
+These are starting rules taken from Harish's 11 sample reels, the page as it stood on 10 Nov 2026, and Harish's feedback on the first reels (13 Nov 2026, change #4). The weekly learning run rewrites them from real results. Every change is logged in `changes.md`.
 
 ## What the page has proven so far
 - An interactive guess format (**Guess the Tamil Movie #3**, 3D style) reached **104K views**. The newest cinematic stories got 203 and 17. Early evidence that **play-along formats travel to non-followers**. Treat this as one data point, not a law.

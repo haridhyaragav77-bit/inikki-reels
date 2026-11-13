@@ -1,0 +1,162 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Card</title>
+<link rel="stylesheet" href="../common/base.css">
+<link rel="stylesheet" href="card.css">
+</head>
+<body><div id="stage">
+  <div id="bg"></div><canvas id="fx" width="1080" height="1920"></canvas>
+  <div id="dashes" class="col"><i></i><i></i><i></i></div>
+  <div id="header" class="col" data-safe></div>
+  <div id="headline" class="col" data-safe data-text><span></span></div>
+  <div id="tamil" class="col tamil" data-safe data-text><span></span></div>
+  <div id="cardA" class="card" data-safe></div>
+  <div id="connector"></div>
+  <div id="cardB" class="card" data-safe></div>
+  <div id="zone" class="col" data-safe></div>
+  <div id="subs" data-safe><i class="bar"></i><div class="sub en"><span></span></div><div class="sub ta tamil"><span></span></div></div>
+  <div id="credit" class="col"></div>
+  <div id="progress"><i></i></div>
+  <div id="hook"></div>
+  <div id="safeguide"></div>
+</div>
+<script src="../common/base.js"></script>
+<script src="../common/hooks.js"></script>
+<script src="motion.js"></script>
+<script>
+// Card template. A plan screen = one beat: headline + Tamil line, a picture, ONE motion graphic that shows
+// what the voice says, and two subtitles (Tanglish + Tamil) whose words light up as they are spoken.
+let PLAN, BRAND, TL, TOTAL, FX, HOOK, lastIdx = -1;
+const STILL = { x: 0, y: 0, s: 1, flash: 0 };
+const $ = id => document.getElementById(id), { M, normalize, LEAD } = MOTIONS;
+const ZBOTTOM = 1236;
+
+function cardHTML(v) {
+  v = v || {};
+  let h;
+  if (v.type === "split") h = `<div class="half l"><img class="v" data-k="left"></div><div class="half r"><img class="v" data-k="right"></div>`;
+  else if (v.type === "mascot") h = `<div class="mascot">${T.mascotHTML(BRAND, 300)}</div>`;
+  else if (v.type === "none" || (!v.frames && !v.src)) h = `<div class="still"><b>${T.esc(v.title || v.label || "")}</b></div>`;
+  else h = `<img class="v" data-k="self"><div class="shade"></div>` + (v.label ? `<div class="tag">${T.esc(v.label)}</div>` : "");
+  return h + `<div class="flashc"></div><div class="sheen"></div><div class="over"></div>`;
+}
+function layoutOf(s) {     // where the card(s) and the motion zone sit for this beat
+  const v = s.visual || {}, main = s.MO.find(m => !M[m.type].overlay);
+  if (v.type === "stack") return { aTop: 492, aH: 250, bOn: 1, wTop: 1146 };
+  const t = main && M[main.type].tall, tall = typeof t === "function" ? t(main) : !!t, h = (tall || s.card === "short") ? 330 : 460;
+  return { aTop: 505, aH: h, bOn: 0, wTop: 505 + h + 24 };
+}
+const sigOf = s => JSON.stringify(s.MO.map(m => [m.type, M[m.type].sig(m)]));
+function wordSpans(text) { return String(text || "").trim().split(/\s+/).filter(Boolean).map(w => `<span class="w">${T.esc(w)}</span>`).join(" "); }
+function wordTimes(text) {  // when each word is spoken, as a share of the line (by length: close enough to light words in step)
+  const ws = String(text || "").trim().split(/\s+/).filter(Boolean), len = ws.map(w => w.length + 1.5), sum = len.reduce((a, b) => a + b, 0) || 1; let acc = 0;
+  return len.map(l => { const a = acc / sum; acc += l; return [a, acc / sum]; });
+}
+
+window.setup = async function (plan, brand) {
+  PLAN = plan; BRAND = brand; T.applyBrand(brand);
+  TL = T.timeline(plan.screens); TOTAL = TL[TL.length - 1].end;
+  const cues = [];
+  TL.forEach((s, i) => { const p = TL[i - 1];
+    s.MO = normalize(s); s.L = layoutOf(s); s.P = p ? p.L : s.L;
+    s.say = s.say_dur || Math.max(0.6, s.dur * 0.8) ; s.voiced = !!s.say_dur;
+    s.sub1 = s.caption || ""; s.sub2 = s.caption_tamil != null ? s.caption_tamil : (s.voice_line || "");
+    s.hNew = !p || p.headline !== s.headline || p.tamil !== s.tamil;
+    s.vNew = !p || s.visual_changed === true || (s.visual_changed == null && JSON.stringify(p.visual) !== JSON.stringify(s.visual));
+    s.wNew = !p || sigOf(p) !== sigOf(s);
+    s.cNew = !p || p.sub1 !== s.sub1 || p.sub2 !== s.sub2;
+    if (p) { p.wOut = s.wNew; p.hOut = s.hNew; }
+    s.w1 = wordTimes(s.sub1); s.w2 = wordTimes(s.sub2);
+    const c0 = { s, say: s.say, isNew: s.wNew, brand };
+    s.MO.forEach(m => (M[m.type].cues(m, c0) || []).forEach(q => { if (q.at < s.dur - 0.02) cues.push({ t: +(s.start + q.at).toFixed(3), kind: q.kind }); }));
+    if (i > 0 && s.vNew) cues.push({ t: +s.start.toFixed(3), kind: "whoosh" });
+  });
+  const rand = T.seed(plan.reel_id || "reel"), c = brand.colors;
+  FX = { stars: Array.from({ length: 70 }, () => ({ x: rand() * 1080, y: rand() * 1920, r: 0.6 + rand() * 1.2, p: rand() * 6.28, s: 0.4 + rand() })),
+         squares: Array.from({ length: 34 }, () => ({ x: rand() * 1080, y: rand() * 1920, z: 6 + rand() * 6, s: 3 + rand() * 7, a: 0.05 + rand() * 0.1, col: rand() < 0.5 ? c.teal : c.muted })) };
+  HOOK = Hooks.make(plan.hook || "impact", $("hook"), rand, brand); HOOK.cues.forEach(q => cues.push(q));
+  const h = $("header"); h.innerHTML = "";
+  if (plan.badge && plan.badge.text && plan.badge.in_header) { const b = T.el("span", "badge", h); b.textContent = plan.badge.text; b.style.background = T.badgeColor(plan.badge.color, brand); }
+  T.el("span", "", h).textContent = String(plan.header || "").replace(/\s*\/\s*/g, "  /  ");
+  $("credit").textContent = plan.credit || "";
+  await T.fontsReady();
+  return { total: TOTAL, cues, screens: TL.map(s => ({ i: s.i, start: s.start, end: s.end })) };
+};
+
+function drawFx(t) {
+  const c = $("fx").getContext("2d"); c.clearRect(0, 0, 1080, 1920);
+  c.strokeStyle = "rgba(255,255,255,0.022)"; c.lineWidth = 1; c.beginPath();
+  for (let x = 45; x < 1080; x += 90) { c.moveTo(x + 0.5, 0); c.lineTo(x + 0.5, 1920); } for (let y = 45; y < 1920; y += 90) { c.moveTo(0, y + 0.5); c.lineTo(1080, y + 0.5); } c.stroke();
+  for (const q of FX.squares) { const y = ((q.y - t * q.s) % 1920 + 1920) % 1920; c.fillStyle = T.rgba(q.col, q.a); c.fillRect(q.x, y, q.z, q.z); }
+  for (const s of FX.stars) { c.globalAlpha = 0.25 + 0.4 * (0.5 + 0.5 * Math.sin(t * 1.3 * s.s + s.p)); c.fillStyle = "#fff"; c.beginPath(); c.arc(s.x, s.y, s.r, 0, 6.283); c.fill(); }
+  c.globalAlpha = 1;
+  $("bg").style.transform = `translate(${(18 * Math.sin(t * 0.21)).toFixed(1)}px, ${(14 * Math.cos(t * 0.17)).toFixed(1)}px)`;   // the glows drift slowly
+}
+
+function ctx(s, lt) {
+  const vt = lt - LEAD, c = { s, lt, vt, say: s.say, p: T.clamp(vt / s.say), isNew: s.wNew, brand: BRAND };
+  c.enter = s.wNew ? T.easeOut(lt / 0.32) : 1;
+  c.raw = (frac, d) => T.clamp((vt - frac * s.say) / d);
+  return c;
+}
+
+function prepareScreen(s) {
+  $("headline").firstElementChild.innerHTML = T.mark(s.headline || ""); const fs = T.fit($("headline"), 62, 46, { wrapMin: 36, wrapMax: 46 });
+  if (fs < 40) window.QC.push({ screen: s.i, flag: "headline is long (shrank to " + fs + "px)" });
+  $("tamil").firstElementChild.textContent = s.tamil || ""; if (s.tamil) T.fit($("tamil"), 30, 22);
+  const v = s.visual || { type: "mascot" }, A = $("cardA"), B = $("cardB");
+  A.style.height = s.L.aH + "px";                                   // overlays measure the final card size
+  if (v.type === "stack") { A.innerHTML = cardHTML(v.top); B.innerHTML = cardHTML(v.bottom); } else { A.innerHTML = cardHTML(v); B.innerHTML = ""; }
+  const z = $("zone"), c0 = ctx(s, 0); z.innerHTML = ""; s.EL = [];
+  s.MO.forEach(m => { const host = M[m.type].overlay ? A.querySelector(".over") : T.el("div", "", z); M[m.type].build(host, m, c0); s.EL.push(host); });
+  const e1 = document.querySelector(".sub.en"), e2 = document.querySelector(".sub.ta");
+  e1.firstElementChild.innerHTML = wordSpans(s.sub1); e2.firstElementChild.innerHTML = wordSpans(s.sub2);
+  e1.style.display = s.sub1 ? "" : "none"; e2.style.display = s.sub2 ? "" : "none"; $("subs").style.display = (s.sub1 || s.sub2) ? "" : "none";
+  if (s.sub1) { const f = T.fit(e1, 42, 30, { wrapMin: 26, wrapMax: 34 }); if (f <= 28) window.QC.push({ screen: s.i, flag: "Tanglish subtitle is long (two small rows)" }); }
+  if (s.sub2) { const f = T.fit(e2, s.sub1 ? 31 : 40, 22, { wrapMin: 22, wrapMax: 27 }); if (f <= 23) window.QC.push({ screen: s.i, flag: "Tamil subtitle is long (two small rows)" }); }
+}
+
+async function paint(img, v, lt, s) {
+  if (!img || !v) return;
+  const p = T.clamp((lt + (s.voff || 0)) / Math.max(s.vdur || s.dur, 0.5));
+  if (v.frames) await T.setSrc(img, T.frameSrc(v, lt + (s.voff || 0))); else if (v.src) await T.setSrc(img, v.src);
+  img.style.transform = `scale(${(1 + ((v.frames ? MOTION.push_in_pct[0] : MOTION.push_in_pct[1]) / 100) * p).toFixed(4)})`;   // the picture never sits still
+  if (v.focus != null) img.style.objectPosition = (v.focus * 100) + "% 50%";
+}
+function lightWords(box, times, p, voiced) {
+  const ws = box.querySelectorAll(".w");
+  ws.forEach((w, i) => { const tm = times[i] || [0, 1], said = !voiced || p >= tm[0], now = voiced && p >= tm[0] && p < tm[1] && p < 1;
+    w.classList.toggle("said", said); w.classList.toggle("now", now); });
+}
+
+window.renderFrame = async function (t) {
+  const s = T.active(TL, t), lt = t - s.start, swap = MOTION.beat_swap_ms / 1000, left = s.dur - lt;
+  if (s.i !== lastIdx) { prepareScreen(s); lastIdx = s.i; }
+  drawFx(t);
+  const hk = t < HOOK.dur ? HOOK.draw(t) : STILL; $("hook").style.display = t < HOOK.dur ? "" : "none"; Hooks.apply($("stage"), hk);
+  $("progress").firstElementChild.style.width = (100 * T.clamp(t / TOTAL)).toFixed(2) + "%";
+  // headline + Tamil line: move only when they change (in at the start, out just before the next one)
+  const hIn = s.hNew ? T.easeOut(lt / swap) : 1, hOut = s.hOut && s.i < TL.length - 1 ? T.clamp(left / 0.14) : 1;
+  for (const id of ["headline", "tamil"]) { $(id).style.opacity = (hIn * hOut).toFixed(3); $(id).style.transform = `translateY(${((1 - hIn) * 22).toFixed(2)}px)`; }
+  // cards: size glides between layouts; a pop and a sheen when the picture changes
+  const m = T.easeOut(lt / swap), L = s.L, P = s.P, A = $("cardA"), B = $("cardB");
+  const aTop = T.lerp(P.aTop, L.aTop, m), aH = T.lerp(P.aH, L.aH, m), pop = s.vNew ? 0.955 + 0.045 * T.back(lt / 0.42) : 1;
+  A.style.top = aTop + "px"; A.style.height = aH + "px"; A.style.transform = `scale(${pop.toFixed(4)})`; A.style.opacity = s.vNew ? T.easeOut(lt / 0.16).toFixed(3) : 1;
+  document.querySelectorAll(".card .flashc").forEach(f => { f.style.opacity = (s.vNew && s.i > 0 && lt < 0.2 ? 0.6 * (1 - lt / 0.2) : 0).toFixed(3); });   // flash cut on a new picture
+  A.querySelectorAll(".sheen").forEach(sh => { const k = s.vNew ? T.clamp((lt - 0.08) / 0.6) : 1; sh.style.left = (-40 + 150 * k) + "%"; sh.style.opacity = k < 1 ? 1 : 0; });
+  B.style.display = L.bOn ? "" : "none"; $("connector").style.display = L.bOn ? "" : "none";
+  if (L.bOn) { B.style.top = "876px"; B.style.height = "250px"; const bk = s.vNew ? T.easeOut((lt - 0.14) / swap) : 1; B.style.opacity = bk.toFixed(3); B.style.transform = `translateY(${((1 - bk) * 30).toFixed(1)}px)`; $("connector").style.top = "808px"; $("connector").style.opacity = bk.toFixed(3); }
+  const v = s.visual || {};
+  if (v.type === "stack") { await paint(A.querySelector("img.v"), v.top, lt, s); await paint(B.querySelector("img.v"), v.bottom, lt, s); }
+  else if (v.type === "split") { await paint(A.querySelector('[data-k="left"]'), v.left, lt, s); await paint(A.querySelector('[data-k="right"]'), v.right, lt, s); }
+  else await paint(A.querySelector("img.v"), v, lt, s);
+  // the motion graphic: starts with the voice line, lands before it ends, leaves just before the next one
+  const Z = $("zone"), wTop = T.lerp(P.wTop, L.wTop, m), c = ctx(s, lt), zOut = s.wOut && s.i < TL.length - 1 ? T.clamp(left / 0.14) : 1;
+  Z.style.top = wTop + "px"; Z.style.height = (ZBOTTOM - wTop) + "px"; Z.style.opacity = zOut.toFixed(3); Z.style.transform = `translateY(${((1 - c.enter) * 14).toFixed(1)}px)`;
+  s.MO.forEach((mo, i) => M[mo.type].draw(s.EL[i], mo, c));
+  // subtitles: each beat slides in; words light up as they are spoken
+  const ce = s.cNew ? T.easeOut(lt / 0.26) : 1, cOut = s.i < TL.length - 1 && TL[s.i + 1].cNew ? T.clamp(left / 0.1) : 1;
+  document.querySelectorAll(".sub").forEach(e => { e.style.opacity = (ce * cOut).toFixed(3); e.style.transform = `translateY(${((1 - ce) * 10).toFixed(1)}px)`; });
+  lightWords(document.querySelector(".sub.en"), s.w1, c.p, s.voiced); lightWords(document.querySelector(".sub.ta"), s.w2, c.p, s.voiced);
+  return true;
+};
+</script></body></html>

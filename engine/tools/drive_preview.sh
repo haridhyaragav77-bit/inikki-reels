@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Phone preview copy under 2.9 MB, for uploading through the Drive connector (its limit is about 3 MB per call).
-# Full-quality reels go to Drive through the Engine (engine/drive/drive.py), which has no size limit.
+# Full-quality reels go to Drive through the Engine (python -m engine.drive), which has no size limit.
 # Usage: engine/tools/drive_preview.sh in.mp4 out.mp4
 set -e
 d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$1")

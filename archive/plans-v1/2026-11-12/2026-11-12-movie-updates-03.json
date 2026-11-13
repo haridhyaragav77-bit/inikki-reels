@@ -1,0 +1,156 @@
+{
+ "reel_id": "2026-11-12-movie-updates-03",
+ "series": "movie-updates",
+ "post_at": "2026-11-12T21:30:00+05:30",
+ "header": "SCENE / BOX OFFICE",
+ "credit": "NEWS · box office: Sacnilk (India, first 3 days) · The Week",
+ "lead": {
+  "topic": "Suriya's Scene: ₹72.9 crore India gross in its first three days",
+  "score": 72,
+  "sources": [
+   "https://www.sacnilk.com/",
+   "https://www.theweek.in/news/entertainment/2026/11/07/suriya-scene-box-office-collection-day-two.html",
+   "https://www.outlookindia.com/art-entertainment/south-cinema/scene-suriyas-first-teaser-introduces-his-quirky-cop-avatar-as-dsp-inbaraj"
+  ]
+ },
+ "virality": {
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 61
+ },
+ "music": {
+  "mood": "upbeat_percussive"
+ },
+ "screens": [
+  {
+   "headline": "Scene *box office* blast!",
+   "tamil": "சீன் பாக்ஸ் ஆபிஸில் அதிரடி!",
+   "visual": {
+    "type": "image",
+    "find": "police siren lights night city",
+    "ai": false,
+    "label": "SCENE"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "₹72.9 Cr"
+   },
+   "caption": "Scene box office-la adhiradi!",
+   "voice_line": "சீன் பாக்ஸ் ஆபீஸ்ல அதிரடி!"
+  },
+  {
+   "headline": "3 naal: *₹72.9 Cr*.",
+   "tamil": "மூன்று நாளில் ₹72.9 கோடி.",
+   "visual": "same",
+   "motion": {
+    "type": "count",
+    "to": 72.9,
+    "decimals": 1,
+    "prefix": "₹",
+    "suffix": " Cr",
+    "label": "India gross · 3 days"
+   },
+   "caption": "Moonu naalla 72.9 crore.",
+   "voice_line": "மூணு நாள்ல எழுபத்தி ரெண்டு புள்ளி ஒன்பது கோடி."
+  },
+  {
+   "headline": "Day 1: ₹14.34 Cr.",
+   "tamil": "முதல் நாள் ₹14.34 கோடி.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Day 1 · India gross",
+      "state": "yes",
+      "value": "₹14.34 Cr"
+     },
+     {
+      "label": "Shows",
+      "state": "yes",
+      "value": "4,747"
+     }
+    ]
+   },
+   "caption": "First day 14.34 crore.",
+   "voice_line": "முதல் நாள் பதினாலு கோடிக்கு மேல."
+  },
+  {
+   "headline": "Suriya as *DSP Inbaraj*.",
+   "tamil": "டிஎஸ்பி இன்பராஜாக சூர்யா.",
+   "visual": {
+    "type": "image",
+    "find": "police badge closeup",
+    "ai": false
+   },
+   "motion": {
+    "type": "cast",
+    "names": [
+     "Suriya · DSP Inbaraj",
+     "Dir. Jithu Madhavan"
+    ]
+   },
+   "caption": "Suriya, DSP Inbaraj-aa.",
+   "voice_line": "சூர்யா, டிஎஸ்பி இன்பராஜா."
+  },
+  {
+   "headline": "Diwali release, Nov 6.",
+   "tamil": "நவம்பர் 6 தீபாவளி வெளியீடு.",
+   "visual": "same",
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     "6 Nov · Release",
+     "Day 3 · ₹72.9 Cr"
+    ],
+    "at": 2
+   },
+   "caption": "Diwali-ku November 6 release.",
+   "voice_line": "தீபாவளிக்கு நவம்பர் ஆறு ரிலீஸ்."
+  },
+  {
+   "headline": "Neenga paatheengala?",
+   "tamil": "நீங்க பார்த்தீங்களா?",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "?"
+   },
+   "caption": "Neenga paatheengala? Review comment-la.",
+   "voice_line": "நீங்க பார்த்தீங்களா? கமெண்ட்ல சொல்லுங்க."
+  },
+  {
+   "headline": "Suriya fan-ku anuppunga.",
+   "tamil": "சூர்யா ரசிகருக்கு அனுப்புங்க.",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Suriya fan friend-ku share pannunga.",
+   "voice_line": "சூர்யா ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ],
+ "caption": {
+  "text": "Scene box office-la adhiradi!\nSuriya-voda Scene: India-la moonu naalla ₹72.9 crore gross (Sacnilk). Director Jithu Madhavan, Suriya as DSP Inbaraj.\nNeenga paatheengala? Oru line review sollunga.\nSuriya fan friend-ku anuppunga.",
+  "hashtags": [
+   "#Scene",
+   "#Suriya",
+   "#JithuMadhavan",
+   "#BoxOffice",
+   "#iNiKKiUpdates"
+  ],
+  "first_comment": "Scene-la unga favourite moment? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ }
+}

@@ -11,7 +11,7 @@ slots: ["11:00", "17:00"]
 template: verdict       # its own look: violet scorecard, verdict stamp, critic cards (AGENT.md 6.6)
 visuals: mixed          # trailer clips + 1-2 AI hype art images
 voice: false
-length_s: [20, 45]       # music-only since change #2; content decides
+length_s: [20, 45]       # music-only since change #5; content decides
 image_cap_per_reel: 2
 lead_sources: [release_calendar, trusted_critics, audience_talk_24h, trends]
 story_shape: [title_screen, verdict_stamp, what_works, what_doesnt, critics_say, who_should_watch, comment_prompt]
@@ -28,5 +28,5 @@ worth_it_extra:
   - "Are people deciding this week whether to watch it?"
   - "Is every critic quote real, short and named?"
 reference:   # approved 13 Nov 2026; replaces the earlier reference reels
-  plan: plans/2026-11-13/review-scene.json
+  plan: plans/reference/review-scene.json
   reel: "Drive reference-reels/2026-11-13/2026-11-13 · SCENE · FIRST VERDICT.mp4"

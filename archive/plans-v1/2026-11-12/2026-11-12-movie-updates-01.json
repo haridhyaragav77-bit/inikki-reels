@@ -1,0 +1,159 @@
+{
+ "reel_id": "2026-11-12-movie-updates-01",
+ "series": "movie-updates",
+ "post_at": "2026-11-12T08:30:00+05:30",
+ "header": "JAILER 2 / OTT UPDATE",
+ "credit": "NEWS · 12 Nov 2026 · Khaleej Times, Sacnilk, Outlook India",
+ "lead": {
+  "topic": "Jailer 2 streams on Prime Video from 12 November",
+  "score": 78,
+  "sources": [
+   "https://www.khaleejtimes.com/jailer-2-ott-release-november-12-rajinikanth",
+   "https://www.sacnilk.com/news/jailer-2-ott-release-date-shows-tamil-cinemas-neglect-of-the-big-screen-continues",
+   "https://www.outlookindia.com/art-entertainment/south-cinema/rajinikanth-jailer-2-ott-release-date-out"
+  ]
+ },
+ "virality": {
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 9,
+  "total_100": 67
+ },
+ "music": {
+  "mood": "upbeat_percussive"
+ },
+ "screens": [
+  {
+   "headline": "Jailer 2 *inniku* OTT-la!",
+   "tamil": "ஜெயிலர் 2 இன்று முதல் ஓடிடியில்.",
+   "visual": {
+    "type": "image",
+    "find": "prison watchtower night searchlight",
+    "ai": false,
+    "label": "JAILER 2"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "TODAY"
+   },
+   "caption": "Jailer 2 inniku OTT-la!",
+   "voice_line": "ஜெயிலர் 2 இன்னைக்கு ஓடிடியில!"
+  },
+  {
+   "headline": "Prime Video-la ippo.",
+   "tamil": "பிரைம் வீடியோவில் இப்போது.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Platform",
+      "state": "yes",
+      "value": "Prime Video"
+     },
+     {
+      "label": "From",
+      "state": "yes",
+      "value": "12 Nov"
+     }
+    ]
+   },
+   "caption": "Prime Video-la ippove paakalaam.",
+   "voice_line": "பிரைம் வீடியோல இப்பவே பார்க்கலாம்."
+  },
+  {
+   "headline": "Theatre-la Oct 15.",
+   "tamil": "தியேட்டரில் அக்டோபர் 15.",
+   "visual": {
+    "type": "image",
+    "find": "crowded cinema hall audience cheering",
+    "ai": false
+   },
+   "motion": {
+    "type": "timeline",
+    "stops": [
+     "15 Oct · Theatres",
+     "12 Nov · OTT"
+    ],
+    "at": 2
+   },
+   "caption": "October 15 theatre, ippo OTT.",
+   "voice_line": "அக்டோபர் பதினஞ்சு தியேட்டர், இப்போ ஓடிடி."
+  },
+  {
+   "headline": "*4 vaaram* dhaan!",
+   "tamil": "நான்கே வாரத்தில் ஓடிடிக்கு.",
+   "visual": "same",
+   "motion": {
+    "type": "count",
+    "to": 4,
+    "suffix": " weeks",
+    "label": "Theatre → OTT"
+   },
+   "caption": "Naale vaarathula OTT-ku vandhuruchu.",
+   "voice_line": "நாலே வாரத்துல ஓடிடிக்கு வந்துருச்சு."
+  },
+  {
+   "headline": "Extra *30 min*?",
+   "tamil": "கூடுதல் 30 நிமிடம்? உறுதியில்லை.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Uncut version",
+      "state": "wait",
+      "value": "Report mattum"
+     }
+    ]
+   },
+   "caption": "Extra 30 min-nu report. Confirm illa.",
+   "voice_line": "கூடுதல் முப்பது நிமிஷம்னு செய்தி. இன்னும் உறுதியில்லை."
+  },
+  {
+   "headline": "Theatre-a, OTT-a?",
+   "tamil": "தியேட்டரா, ஓடிடியா?",
+   "visual": "same",
+   "motion": {
+    "type": "versus",
+    "left": "Theatre",
+    "right": "OTT",
+    "tilt": 0
+   },
+   "caption": "Neenga enga paappeenga? Comment pannunga.",
+   "voice_line": "நீங்க எங்க பார்ப்பீங்க? கமெண்ட் பண்ணுங்க."
+  },
+  {
+   "headline": "Thalaivar fan-ku anuppunga.",
+   "tamil": "தலைவர் ரசிகருக்கு அனுப்புங்க.",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Thalaivar fan friend-ku share pannunga.",
+   "voice_line": "தலைவர் ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ],
+ "caption": {
+  "text": "Jailer 2 inniku mudhal Prime Video-la!\nOctober 15 theatre release, 4 vaarathula OTT. Extra 30 nimisham varum-nu report, innum confirm illa.\nNeenga theatre-la paatheengala, illa OTT-ku wait pannineengala?\nThalaivar fan friend-ku anuppunga.",
+  "hashtags": [
+   "#Jailer2",
+   "#Rajinikanth",
+   "#PrimeVideo",
+   "#TamilCinema",
+   "#iNiKKiUpdates"
+  ],
+  "first_comment": "Theatre-la paathavanga: oru word review sollunga 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ }
+}

@@ -125,7 +125,7 @@ The Content Specialist picks from this list. A new graphic is added here when an
 | `brush_reveal` | An artwork appearing | Paint strokes uncover the image |
 
 
-## Breakdown pins and sign-off (change #5)
+## Breakdown pins and sign-off (change #8)
 | Graphic | The idea it shows | How it moves |
 | --- | --- | --- |
 | `sound_on` | Turn the sound on (voiced reels only) | A speaker with three sound waves rippling out, on the title screen |

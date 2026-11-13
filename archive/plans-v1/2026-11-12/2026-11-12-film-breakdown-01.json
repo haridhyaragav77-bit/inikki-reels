@@ -1,0 +1,217 @@
+{
+ "reel_id": "2026-11-12-film-breakdown-01",
+ "series": "film-breakdown",
+ "post_at": "2026-11-12T12:30:00+05:30",
+ "header": "96 / THE SCREENPLAY BREAKDOWN",
+ "credit": "96 (2018) · dir. C. Prem Kumar",
+ "lead": {
+  "topic": "96: why one night feels like twenty-two years",
+  "score": 80,
+  "sources": []
+ },
+ "virality": {
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 7,
+  "pacing": 7,
+  "loop": 6,
+  "timely_original": 5,
+  "total_100": 69
+ },
+ "music": {
+  "mood": "soft_warm"
+ },
+ "screens": [
+  {
+   "headline": "96 yen *valikkudhu*?",
+   "tamil": "96 ஏன் இவ்வளவு வலிக்குது?",
+   "visual": {
+    "type": "image",
+    "find": "empty school classroom night",
+    "ai": false,
+    "label": "96"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "Yen?"
+   },
+   "caption": "96 yen ivlo valikkudhu?",
+   "voice_line": "தொண்ணூத்தி ஆறு ஏன் இவ்வளவு வலிக்குது?"
+  },
+  {
+   "headline": "Love story mattum illa.",
+   "tamil": "இது வெறும் காதல் கதை இல்லை.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Kaadhal kadhai",
+      "state": "no",
+      "value": "Adhu mattum illa"
+     }
+    ]
+   },
+   "caption": "Idhu verum love story illa.",
+   "voice_line": "இது வெறும் காதல் கதை இல்லை."
+  },
+  {
+   "headline": "Moonu vishayam.",
+   "tamil": "மூன்று விஷயங்கள்.",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Ore raathiri",
+     "Pesaadha vaarthai",
+     "Paattu"
+    ],
+    "build": true
+   },
+   "caption": "Prem Kumar moonu vishayam vechirukkaaru.",
+   "voice_line": "பிரேம் குமார் மூணு விஷயம் வச்சிருக்கார்."
+  },
+  {
+   "headline": "01 / Ore raathiri.",
+   "tamil": "ஒரே ஒரு இரவு.",
+   "visual": {
+    "type": "image",
+    "find": "Chennai city night street lights",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Ore raathiri",
+     "Pesaadha vaarthai",
+     "Paattu"
+    ],
+    "active": 1
+   },
+   "caption": "Onnu. Ore oru raathiri.",
+   "voice_line": "ஒண்ணு. ஒரே ஒரு ராத்திரி."
+  },
+  {
+   "headline": "01 / Ore raathiri.",
+   "tamil": "காலையில் விமானம். நேரம் ஓடுகிறது.",
+   "visual": "same",
+   "motion": {
+    "type": "timer",
+    "time": [
+     0.9,
+     0.1
+    ]
+   },
+   "caption": "Kaalaila flight. Neram odudhu.",
+   "voice_line": "காலையில ஃப்ளைட். நேரம் ஓடுது."
+  },
+  {
+   "headline": "02 / Pesaadha vaarthai.",
+   "tamil": "சொல்லாமல் போன வார்த்தைகள்.",
+   "visual": {
+    "type": "image",
+    "find": "two cups of tea on a table at night",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Ore raathiri",
+     "Pesaadha vaarthai",
+     "Paattu"
+    ],
+    "active": 2
+   },
+   "caption": "Rendu. Sollaama pona vaarthai.",
+   "voice_line": "ரெண்டு. சொல்லாம போன வார்த்தை."
+  },
+  {
+   "headline": "02 / Pesaadha vaarthai.",
+   "tamil": "இருவருக்கும் நடுவில் 22 ஆண்டுகள்.",
+   "visual": "same",
+   "motion": {
+    "type": "count",
+    "to": 22,
+    "suffix": " years",
+    "label": "Ram · Janu"
+   },
+   "caption": "Ram-kkum Janu-kkum naduvula 22 varusham.",
+   "voice_line": "ராமுக்கும் ஜானுவுக்கும் நடுவுல இருபத்தி ரெண்டு வருஷம்."
+  },
+  {
+   "headline": "03 / Paattu.",
+   "tamil": "பாட்டுதான் நினைவு.",
+   "visual": {
+    "type": "image",
+    "find": "old cassette tape and radio",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Ore raathiri",
+     "Pesaadha vaarthai",
+     "Paattu"
+    ],
+    "active": 3
+   },
+   "caption": "Moonu. Paattu dhaan memory.",
+   "voice_line": "மூணு. பாட்டுதான் நினைவு."
+  },
+  {
+   "headline": "03 / Paattu.",
+   "tamil": "ஒரு பாடல், மொத்த பள்ளி நாட்களும்.",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "Memory"
+   },
+   "caption": "Oru paattu, motha school days.",
+   "voice_line": "ஒரு பாட்டு, மொத்த ஸ்கூல் நாட்களும்."
+  },
+  {
+   "headline": "Neram, mounam, paattu.",
+   "tamil": "நேரம், மௌனம், பாட்டு.",
+   "visual": "same",
+   "motion": {
+    "type": "list",
+    "items": [
+     "Ore raathiri",
+     "Pesaadha vaarthai",
+     "Paattu"
+    ]
+   },
+   "caption": "Idhu dhaan 96-oda valimai.",
+   "voice_line": "இதுதான் தொண்ணூத்தி ஆறோட வலிமை."
+  },
+  {
+   "headline": "School friend-ku anuppunga.",
+   "tamil": "பள்ளி நண்பருக்கு அனுப்புங்க.",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Unga school friend-ku share pannunga.",
+   "voice_line": "உங்க ஸ்கூல் நண்பருக்கு அனுப்புங்க."
+  }
+ ],
+ "caption": {
+  "text": "96 yen ivlo valikkudhu? Love story mattum illa.\n96 screenplay breakdown: ore raathiri, sollaama pona vaarthai, oru paattu. C. Prem Kumar-oda craft.\nUngalukku 96-la romba pidicha scene edhu?\nUnga school friend-ku anuppunga.",
+  "hashtags": [
+   "#96Movie",
+   "#VijaySethupathi",
+   "#Trisha",
+   "#TamilCinema",
+   "#iNiKKiBreakdown"
+  ],
+  "first_comment": "Reunion scene-a, illa kadaisi scene-a? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ }
+}

@@ -2,29 +2,31 @@
 # lots of animation, this series' own look.
 id: movie-recommendations
 name: Watch This Next (Movie Recommendations)
-status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3)
-badge: { text: "WATCH THIS NEXT", color: sky }
-title_screen: "{THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "ONE FILM YOU MISSED"
+status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3); replaces Viral Story in the story slot
+badge: { text: "WATCH THIS NEXT", alt_texts: ["THEY RECOMMEND", "LETTERBOXD PICKS"], color: sky }
+title_screen: "{THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "LOKESH'S 5 FAVOURITES"
 per_week: 3
 days: [fri, sat, sun]
 slots: ["17:00"]
-template: poster_wall   # its own look: one film per screen, full-bleed stills (AGENT.md 6.6)
-visuals: stills_first   # official stills, posters, official Instagram posts, trailer frames
+template: poster-wall   # its own look: one film per screen, full-bleed stills (AGENT.md 6.6)
+visuals: stills_first   # the recommended films' own official stills, posters and trailer frames (AGENT.md 5.11)
 voice: false            # music-led; voice can be switched on for one reel in the plan
 captions: none
-length_s: [20, 40]
+length_s: [20, 45]
 image_cap_per_reel: 0
 formats:
   - "Theme list: 3-5 films around one feeling or idea (one-night thrillers, slow-burn villages, heist films)"
   - "If you loved X: 3 films for fans of a popular film"
+  - "They recommend: a real person's list (an actor, a director, a musician), from an interview, a Letterboxd list or a post"
   - "One film you missed: a single hidden gem, longer look"
   - "Around the world: one film each from different countries"
   - "Director set (sometimes): the lesser-seen films of one director"
 per_film_screen: [poster_still, title, year_country, reason_6_words_max, letterboxd_rating, proof_award_or_fact, where_to_watch_india]
 proof_sources: [letterboxd, justwatch_india, wikipedia_awards]
-lead_sources: [watch_lists, festival_lineups, critics_lists, ott_new_arrivals, film_bank, comments]
+proof_required: 2       # for "They recommend": the interview, list or post must be real and found in 2 places
+lead_sources: [watch_lists, festival_lineups, critics_lists, ott_new_arrivals, interviews, letterboxd_lists, director_lists, musician_interviews, anniversaries, film_bank, comments]
 story_shape: [title_screen, film_by_film, recap_grid, save_and_send]
-music: bold_catchy_punchy   # a hook, never subtle (change #3)
+music: bold_catchy_punchy   # a hook, never subtle (change #6)
 motion_presets: [poster_stack, meta_badges, still_reframe, ott_tag, recap_grid]
 recommended_log: "../../knowledge/recommended_log.csv"
 meme_use: never
@@ -38,10 +40,11 @@ rules:
   - "Every film shows its Letterboxd rating and one award, festival or famous fact."
   - "Where to watch in India is checked on JustWatch on the day. A film not streaming in India is swapped for one that is."
   - "If only one still exists, reuse it with motion (push-in, crops, split panels, colour). Never drop a great film for lack of stills."
+  - "They recommend: name the source (the interview, list or post) in the caption; use the person's own words for the reason when there is a quote; same person at most once in 30 days."
   - "Before picking, answer: has most of our audience already seen this? Would I tell a friend to watch it tonight?"
 worth_it_extra:
   - "Has most of our audience already seen this? (If yes, skip it.)"
   - "Would I tell a friend to watch it tonight?"
 reference:   # approved 13 Nov 2026; replaces the earlier reference reels
-  plan: plans/2026-11-13/watch-loved-vikram-vedha.json
+  plan: plans/reference/watch-loved-vikram-vedha.json
   reel: "Drive reference-reels/2026-11-13/2026-11-13 · LOVED VIKRAM VEDHA? WATCH THESE 4.mp4"

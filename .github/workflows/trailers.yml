@@ -1,0 +1,77 @@
+name: trailers
+# Engine job: official trailers into Drive clip-library/ with a shot grid each (engine/trailers.py). No AI, no cost.
+# Runs for the films the planning runs and the news watch ask for (Drive status/trailers_wanted.json), and on demand.
+on:
+  workflow_dispatch:
+    inputs:
+      films: { description: "Films, separated by commas (empty = the wanted list)", default: "" }
+      probe: { description: "Test only: nothing saved to Drive, grids to the 'peek' branch", type: boolean, default: false }
+      stills: { description: "Official stills only, for these films (Film@account, separated by commas)", default: "" }
+      adopt: { description: "Only make grids for trailers dropped into Drive clip-library (no Instagram)", type: boolean, default: false }
+      regrid: { description: "Make the grids again (no Instagram): 'all', or films separated by commas", default: "" }
+      frames: { description: "Check planned moments (no Instagram): Film=t1,t2;Film2=t3", default: "" }
+  schedule:
+    - cron: "22 23 * * *"     # 04:52 IST, before the brief: the day's wanted list, then the history search
+    - cron: "22 7 * * *"      # 12:52 IST
+    - cron: "22 15 * * *"     # 20:52 IST
+
+permissions:
+  contents: write
+
+concurrency:
+  group: trailers
+  cancel-in-progress: false
+
+jobs:
+  trailers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      FILMS: ${{ inputs.films || 'Jailer 2,Scene,Inji Vellam,Vikram,96,Amaran,Maaveeran,Kaithi' }}
+      PROBE: ${{ inputs.probe && 'yes' || '' }}
+      STILLS: ${{ inputs.stills || '' }}
+      ADOPT: ${{ inputs.adopt && 'yes' || '' }}
+      REGRID: ${{ inputs.regrid || '' }}
+      FRAMES: ${{ inputs.frames || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
+      - run: |
+          sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
+          pip install -q -r requirements-light.txt pillow
+      - name: Fetch trailers
+        run: |
+          if [ -n "$FRAMES" ]; then
+            IFS=';' read -ra F <<< "$FRAMES"; args=(); for f in "${F[@]}"; do args+=(--frames "$f"); done; python -m engine.trailers "${args[@]}"
+          elif [ "$REGRID" = "all" ]; then
+            python -m engine.trailers --regrid
+          elif [ -n "$REGRID" ]; then
+            IFS=',' read -ra F <<< "$REGRID"; python -m engine.trailers --regrid "${F[@]}"
+          elif [ -n "$ADOPT" ]; then
+            python -m engine.trailers --adopt-only
+          elif [ -n "$STILLS" ]; then
+            IFS=',' read -ra F <<< "$STILLS"; args=(); for f in "${F[@]}"; do args+=(--stills "$f"); done; python -m engine.trailers "${args[@]}"
+          elif [ -n "$PROBE" ]; then
+            IFS=',' read -ra F <<< "$FILMS"; python -m engine.trailers --probe "${F[@]}"
+          elif [ "${{ github.event_name }}" = "schedule" ] || [ -z "${{ inputs.films }}" ]; then
+            python -m engine.trailers --wanted --crawl
+          else
+            IFS=',' read -ra F <<< "$FILMS"; args=(); for f in "${F[@]}"; do args+=(--film "$f"); done; python -m engine.trailers "${args[@]}" --crawl
+          fi
+      - name: Results and new grids to the 'peek' branch (a quick look; the real copies are in Drive)
+        if: always()
+        run: |
+          mkdir -p out/peek && cd out/peek && git init -q && git checkout -q -b peek && git add -A
+          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "trailers ${{ env.PROBE && 'probe' || 'run' }}" || exit 0
+          git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" peek:peek
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Status (always)
+        if: always() && env.PROBE == ''
+        run: python -m engine.status trailers "${{ job.status }}"

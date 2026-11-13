@@ -1,0 +1,220 @@
+{
+ "reel_id": "2026-11-12-film-breakdown-02",
+ "series": "film-breakdown",
+ "post_at": "2026-11-12T20:00:00+05:30",
+ "header": "VIKRAM / THE SCENE BREAKDOWN",
+ "credit": "Vikram (2022) · dir. Lokesh Kanagaraj · Raaj Kamal Films International",
+ "lead": {
+  "topic": "Vikram: why the Agent Tina scene gives goosebumps",
+  "score": 82,
+  "sources": []
+ },
+ "virality": {
+  "hook": 9,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 8,
+  "loop": 6,
+  "timely_original": 5,
+  "total_100": 70
+ },
+ "music": {
+  "mood": "tension_pulse"
+ },
+ "screens": [
+  {
+   "headline": "Tina scene *goosebumps* yen?",
+   "tamil": "டீனா காட்சி ஏன் சிலிர்க்க வைக்குது?",
+   "visual": {
+    "type": "image",
+    "find": "dark house corridor night",
+    "ai": false,
+    "label": "VIKRAM"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "Yen?"
+   },
+   "caption": "Agent Tina scene yen silirkkudhu?",
+   "voice_line": "டீனா சீன் ஏன் சிலிர்க்குது?"
+  },
+  {
+   "headline": "Fight mattum illa.",
+   "tamil": "சண்டை மட்டும் காரணம் இல்லை.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Sandai",
+      "state": "no",
+      "value": "Adhu mattum illa"
+     }
+    ]
+   },
+   "caption": "Fight mattum kaaranam illa.",
+   "voice_line": "சண்டை மட்டும் காரணம் இல்லை."
+  },
+  {
+   "headline": "Moonu vishayam.",
+   "tamil": "மூன்று விஷயங்கள்.",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Maraippu",
+     "Thiruppam",
+     "Isai"
+    ],
+    "build": true
+   },
+   "caption": "Lokesh moonu vishayam pannaaru.",
+   "voice_line": "லோகேஷ் மூணு விஷயம் பண்ணார்."
+  },
+  {
+   "headline": "01 / Maraippu.",
+   "tamil": "யாரும் கவனிக்காத ஒருவர்.",
+   "visual": {
+    "type": "image",
+    "find": "kitchen at night soft light",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Maraippu",
+     "Thiruppam",
+     "Isai"
+    ],
+    "active": 1
+   },
+   "caption": "Onnu. Yaarum gavanikkaadha oruthar.",
+   "voice_line": "ஒண்ணு. யாரும் கவனிக்காத ஒருத்தர்."
+  },
+  {
+   "headline": "01 / Maraippu.",
+   "tamil": "நாம் நினைத்தது: வீட்டு வேலை செய்பவர்.",
+   "visual": "same",
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Yaar?",
+      "state": "wait",
+      "value": "Veettu velai"
+     }
+    ]
+   },
+   "caption": "Naama ninaichadhu: veettu velai seiyyuravanga.",
+   "voice_line": "நாம நினைச்சது: வீட்டு வேலை செய்யறவங்க."
+  },
+  {
+   "headline": "02 / Thiruppam.",
+   "tamil": "ஒரே நொடியில் மாற்றம்.",
+   "visual": {
+    "type": "image",
+    "find": "broken glass dramatic light",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Maraippu",
+     "Thiruppam",
+     "Isai"
+    ],
+    "active": 2
+   },
+   "caption": "Rendu. Ore nodiyila maatram.",
+   "voice_line": "ரெண்டு. ஒரே நொடியில மாற்றம்."
+  },
+  {
+   "headline": "02 / Thiruppam.",
+   "tamil": "வேலையாள் இல்லை. ஏஜென்ட் டீனா.",
+   "visual": "same",
+   "motion": {
+    "type": "versus",
+    "left": "Velaiyaal",
+    "right": "Agent",
+    "tilt": 1
+   },
+   "caption": "Velaiyaal illa. Agent Tina.",
+   "voice_line": "வேலையாள் இல்லை. ஏஜென்ட் டீனா."
+  },
+  {
+   "headline": "03 / Isai.",
+   "tamil": "இசை ஏறும்போது நாமும் ஏறுவோம்.",
+   "visual": {
+    "type": "image",
+    "find": "concert speakers stage lights",
+    "ai": false
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Maraippu",
+     "Thiruppam",
+     "Isai"
+    ],
+    "active": 3
+   },
+   "caption": "Moonu. Anirudh isai yerudhu.",
+   "voice_line": "மூணு. அனிருத் இசை ஏறுது."
+  },
+  {
+   "headline": "03 / Isai.",
+   "tamil": "அமைதி, அதன் பின் உச்சம்.",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "PEAK"
+   },
+   "caption": "Amaidhi, appuram peak.",
+   "voice_line": "அமைதி, அப்புறம் உச்சம்."
+  },
+  {
+   "headline": "Maraippu, thiruppam, isai.",
+   "tamil": "மறைப்பு, திருப்பம், இசை.",
+   "visual": "same",
+   "motion": {
+    "type": "list",
+    "items": [
+     "Maraippu",
+     "Thiruppam",
+     "Isai"
+    ]
+   },
+   "caption": "Idhu dhaan Tina scene formula.",
+   "voice_line": "இதுதான் டீனா சீனோட ஃபார்முலா."
+  },
+  {
+   "headline": "Vikram fan-ku anuppunga.",
+   "tamil": "விக்ரம் ரசிகருக்கு அனுப்புங்க.",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Vikram fan friend-ku share pannunga.",
+   "voice_line": "விக்ரம் ரசிகர் நண்பருக்கு அனுப்புங்க."
+  }
+ ],
+ "caption": {
+  "text": "Agent Tina scene yen ivlo silirkkudhu? Fight mattum illa.\nVikram scene breakdown: maraippu, thiruppam, Anirudh isai. Lokesh Kanagaraj-oda craft.\nVikram-la unga favourite moment edhu?\nVikram fan friend-ku anuppunga.",
+  "hashtags": [
+   "#Vikram",
+   "#AgentTina",
+   "#LokeshKanagaraj",
+   "#TamilCinema",
+   "#iNiKKiBreakdown"
+  ],
+  "first_comment": "Tina scene-a, interval block-a? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "fallbacks": {
+  "if_clip_missing": "still_card",
+  "if_voice_fails": "silent_with_music"
+ }
+}
