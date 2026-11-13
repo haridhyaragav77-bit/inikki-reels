@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 14 Nov 2026, early — Voice switched to ElevenLabs (branch claude/voice-elevenlabs, not merged yet)
+Build request Drive requests/2026-11-13 switch-voice-to-elevenlabs.md. AGENT.md 4.4 first, then engine/voice.py (ElevenLabs API), cost guard and retry in engine/render.py, status/voice_usage.json, health and smoke checks, voice tile on the Control Room page; old Microsoft tool in archive/. Smoke test passed on the runner (run 43508157093): a 2.5 s Tamil line in "Ashwin", 36,764 of 40,000 credits left, reset 4 Dec. Still open: plan price (budgets.elevenlabs_plan_usd) so ₹ can be shown, the Costs-tab Voice block in the dashboard sheet, and a dry day before merging.
+
 ## 13 Nov 2026, night — Managing the agent (Control Room round)
 Harish asked for: buttons before chat, far fewer tokens, easy refinement loops, a guidebook, and a safety audit.
 
