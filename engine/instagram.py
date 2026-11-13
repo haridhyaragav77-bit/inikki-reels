@@ -245,7 +245,18 @@ class Instagram:
         uri = j.get("uri") or f"https://rupload.facebook.com/ig-api-upload/{self.version}/{cid}"
         size = os.path.getsize(video_path)
         with open(video_path, "rb") as f:
-            r = requests.post(uri, headers={"Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(size)}, data=f, timeout=900)
+            head = f.read(12)
+        print(f"upload: container {cid}, {size} bytes, looks like mp4: {head[4:8] == b'ftyp'}, to {uri.split('/v')[0]}")
+        with open(video_path, "rb") as f:
+            body = f.read()
+        r = None
+        for attempt in range(3):        # Instagram's upload host sometimes refuses once and then accepts
+            r = requests.post(uri, headers={"Authorization": f"OAuth {self.token}", "offset": "0", "file_size": str(size),
+                                            "Content-Type": "application/octet-stream"}, data=body, timeout=900)
+            print(f"upload attempt {attempt + 1}: {r.status_code} {r.text[:300]}")
+            if r.ok:
+                break
+            time.sleep(10)
         if not r.ok:
             raise InstagramError(f"The video upload to Instagram failed: {r.text[:200]}")
         return cid
