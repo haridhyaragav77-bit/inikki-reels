@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: artwork-quote
 name: Frame & Line (Artwork + Quote)
 status: live
@@ -15,3 +17,7 @@ lead_sources: [iconic_dialogues, occasions, trends]
 story_shape: [image_reveal, the_line_tamil, the_line_translation, relate_question]
 meme_use: never
 success_metric: saves_and_sends
+music: soft_warm          # starts on frame 1
+motion_presets: [brush_reveal, quote_reveal, parallax_layers, light_sweep]
+worth_it_extra:
+  - "Is the line famous enough to be recognised in 2 seconds?"

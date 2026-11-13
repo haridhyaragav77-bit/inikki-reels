@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: viral-story
 name: Viral Story
 status: live
@@ -29,3 +31,8 @@ rules:
   - "Every fact needs a source (interview, article); keep links in the plan."
   - "Real people as inspired-by illustrations only."
   - "The ending question must name a person the viewer will think of."
+music: emotional_build    # starts on frame 1; lifts at the break
+motion_presets: [parallax_layers, light_sweep, year_stamp, quote_reveal]
+worth_it_extra:
+  - "Is every fact sourced?"
+  - "Will it make the viewer think of someone they know?"

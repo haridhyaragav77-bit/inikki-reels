@@ -28,6 +28,14 @@ def need(pkg, mod):
     except ImportError:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "--quiet", pkg]); return __import__(mod)
 
+# Behind a proxy (cloud workspaces), use the standard proxy and certificate settings. Harmless elsewhere.
+PROXY = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or None
+def tts_lib():
+    ca = os.environ.get("SSL_CERT_FILE")
+    if ca and os.path.exists(ca) and "edge_tts" not in sys.modules:
+        import certifi; certifi.where = lambda: ca
+    return need("edge-tts", "edge_tts")
+
 def ff():
     return need("imageio-ffmpeg", "imageio_ffmpeg").get_ffmpeg_exe()
 
@@ -38,8 +46,8 @@ def duration(path):
 DEF = {"voice": "ta-IN-ValluvarNeural", "rate": "+35%", "pitch": "-2Hz"}
 
 async def speak(text, out, voice, rate, pitch):
-    tts = need("edge-tts", "edge_tts")
-    await tts.Communicate(text, voice, rate=rate, pitch=pitch).save(out)
+    tts = tts_lib()
+    await tts.Communicate(text, voice, rate=rate, pitch=pitch, proxy=PROXY).save(out)
     return round(duration(out), 2)
 
 def line_cfg(plan, ln):
@@ -47,8 +55,8 @@ def line_cfg(plan, ln):
     return {k: ln.get(k, g[k]) for k in DEF}
 
 def cmd_voices(a):
-    tts = need("edge-tts", "edge_tts")
-    vs = asyncio.run(tts.list_voices())
+    tts = tts_lib()
+    vs = asyncio.run(tts.list_voices(proxy=PROXY))
     vs = [{"name": v["ShortName"], "gender": v["Gender"], "locale": v["Locale"]} for v in vs if not a.lang or v["Locale"].lower().startswith(a.lang.lower())]
     for v in vs: print(f'{v["name"]:32s} {v["gender"]:7s} {v["locale"]}')
     print(json.dumps({"ok": True, "voices": vs}, ensure_ascii=False))

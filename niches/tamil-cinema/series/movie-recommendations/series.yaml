@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: movie-recommendations
 name: Watch This Next (Movie Recommendations)
 status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3)
@@ -35,3 +37,6 @@ rules:
   - "Where to watch only when confirmed for India; otherwise leave it out."
   - "If only one still exists, reuse it with motion (push-in, crops, split panels, colour). Never drop a great film for lack of stills."
   - "Before picking, answer: has most of our audience already seen this? Would I tell a friend to watch it tonight?"
+worth_it_extra:
+  - "Has most of our audience already seen this? (If yes, skip it.)"
+  - "Would I tell a friend to watch it tonight?"

@@ -1,3 +1,5 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
 id: movie-updates
 name: Movie Updates
 status: live
@@ -18,7 +20,7 @@ hook_examples:
   - "Alien-aiyum kalaaippaaraa?"
   - "Old team. New chapter."
 music: { default: upbeat_percussive, box_office: rising_triumphant }
-motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe]
+motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe, light_sweep]
 proof_required: 2       # trusted sources that must agree
 meme_use: ending_only
 trend_hooks: true
@@ -31,3 +33,6 @@ rules:
   - "Keep it simple: one big number or fact per screen, on a full-bleed still."
   - "Unconfirmed = say 'reportedly' or skip."
   - "End with a light, no-fan-war question."
+worth_it_extra:
+  - "Why would a fan open this?"
+  - "Does this spoil anything? (If yes, cut it.)"

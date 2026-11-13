@@ -10,6 +10,18 @@ Motion graphics **show the idea the voice is saying, at the moment it is said**.
 - One **hero moment** per reel: the richest graphic, layered, with depth, light and movement.
 - When no clip fits a beat, the graphic goes full-screen and leads.
 - Premium finish: smooth easing, depth layers, soft glow, film grain, brand colours. No clip-art.
+- **Lots of animation.** Nothing sits still for more than a second. Every graphic enters, keeps moving and leaves with motion.
+
+## Animation toolkit (used by every graphic)
+| Moment | Moves to use |
+| --- | --- |
+| Enter | Pop with a small overshoot · lines that draw themselves · mask wipes · pieces that arrive one after another · blur-to-sharp · drop with a bounce |
+| While on screen | Slow drift · gentle pulse · shimmer and light sweeps · floating particles and dust · a soft glow that breathes · numbers that keep ticking |
+| The frame | Constant slow push-in (3–5%) · layers moving at different speeds (parallax) · a light camera sway on intense beats |
+| Hit (big moment) | Flash · short shake · scale punch · colour burst · a ring of light pushing out |
+| Leave | Whip out · shrink and fade · wipe away · break into pieces |
+| Between screens | Whip pan · zoom through · light-leak flash · match move (one shape becomes the next) |
+| Timing | Entrances and hits land on the music's beats; graphics arrive on the word the voice says |
 
 The Content Specialist picks from this list. A new graphic is added here when an idea needs one, then reused. The weekly review notes which graphics hold attention best.
 
@@ -76,3 +88,39 @@ The Content Specialist picks from this list. A new graphic is added here when an
 | `still_reframe` | Making one still carry a whole reel | Slow push-in, crops on details, split panels, colour treatment, parallax depth |
 | `list_reveal` | Counting points | Numbers tick in one at a time |
 | `meme_end` | The light ending | Meme pops in with a beat |
+
+## Title screen (every series)
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `title_slam` | Which film and what the reel is | The film's title (or its logo) punches in on the first beat over its most striking shot; the reel type sweeps in under it; light streaks across |
+
+## Review (Verdict look)
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `verdict_stamp` | The verdict in one line (for example "WORTH THE TICKET") | Slams down like a rubber stamp with a shake and an ink splash |
+| `works_vs_not` | What works and what doesn't | Two pans of a scale; each point drops in and the scale tips |
+| `critic_cards` | What named critics said | Cards flip in one by one, each with a short quote and the critic's name |
+| `audience_meter` | How audiences are reacting | A dial sweeps to the reading, with a pulse at the end |
+
+## Breaking (Flash look)
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `live_dot` | This is happening now | A red dot pulses with expanding rings, next to the time |
+| `headline_slam` | The news itself | Words slam in one by one across the full width, with a red flash |
+| `fact_blocks` | The 2 confirmed facts | Big blocks snap in from the side and lock into place |
+| `ticker` | More to come | A running strip along the bottom |
+| `glitch_cut` | Urgency between screens | A short digital glitch and scan lines as the screen changes |
+
+## Guess the Movie, Viral Story, Artwork + Quote
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `clue_reveal` | Each clue | The clue object rises out of fog with light falling on it |
+| `countdown_ring` | Lock your answer | A ring drains around a big number; ticks get faster |
+| `answer_lock` | The reveal | A lock clicks open and the title bursts out |
+| `title_burst` | The answer's title | Letters fly in and settle with a flash |
+| `parallax_layers` | Depth in a still image | Foreground, middle and background move at different speeds |
+| `light_sweep` | Drawing the eye | A soft band of light passes across the frame |
+| `year_stamp` | When it happened | A big year rolls into place like a calendar counter |
+| `quote_reveal` | An iconic line | The line appears word by word, in rhythm with the music |
+| `brush_reveal` | An artwork appearing | Paint strokes uncover the image |
+
