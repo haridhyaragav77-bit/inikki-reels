@@ -1,10 +1,20 @@
-# Brief · plan run · 2026-11-13 (written 2026-11-13 12:25 IST)
+# Brief · refresh run · 2026-11-13 (written 2026-11-13 23:30 IST)
 
-Switch: **run** · Phase: **rehearsal** (nothing posts; plan exactly as if live) · Respect mode: **off** · Approval: autopilot
-Control Room settings copied to data/control/: switch.json
+Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
+Control Room settings copied to data/control/: switch.json, overrides.yaml, commands.jsonl
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-13 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-13/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
+2. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
+3. Feedback: nothing new.
+4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
+
+## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
+- every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
+- breaking-news: Make sure there are gradrail for images picked and avoid risks of random images being picked (2026-11-13)
+- film-breakdown: Make music sublte and less louder than the voiceover, make voice over more natural and paced for people to understand and loud and clear but don't compromise the music either make them play well together. (2026-11-13)
+- movie-recommendations: Make reels slightly longer, match the reading pace of a person to the reel and secondly add a motion graphics of the plot of the movie and extend length of reel accordingly so ppl get excited about the plot of each movie also without any spoilers (2026-11-13)
+- movie-review: Change series to be more direct of its content which is movie review, people may skip thinking it's something else and use the actors make sure a popular element like the actors face, post is on the first fram and make it feel richer for the visual hook and interesting visual desings to it make the  (2026-11-13)
 
 ## Today's slots (2026-11-13)
 | time | series | template | notes |
@@ -51,6 +61,11 @@ For an older look, open a film's grid (Google Drive) and pick the shot whose pic
 - Inji Vellam: 1 stills, grid: clip-library/sheets/Inji Vellam - stills.jpg
 Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
 
+## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
+Waiting: Sathyavan Savithiri, Jail Mates. Plans for these wait until they arrive.
+Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
+Digest 'Needs you' line: 2 trailer(s) to get, command in Drive requests/trailers_to_get.md.
+
 ## New trailers in the library (last 3 days)
 - Lubber Pandhu (trailer, grid: clip-library/sheets/Lubber Pandhu - trailer [oP88LHBukW8].jpg)
 - Master (trailer, grid: clip-library/sheets/Master - trailer [1_iUFT3nWHk].jpg)
@@ -64,18 +79,24 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 ## Today's reels
 | slot | reel | series | state | note |
 | --- | --- | --- | --- | --- |
-| 18:00 | 2026-11-13-pipeline-test-update | movie-updates | ready |  |
-| 20:00 | 2026-11-13-pipeline-test-breakdown | film-breakdown | ready |  |
+| 15:30 | 2026-11-13-watch-loved-jailer-2 | movie-recommendations | posted |  |
+| 18:00 | 2026-11-13-pipeline-test-update | movie-updates | skipped | Skipped by Harish. |
+| 20:00 | 2026-11-13-pipeline-test-breakdown | film-breakdown | skipped | Skipped by Harish. |
+| 21:30 | 2026-11-13-update-jailer2-ott | movie-updates | posted |  |
+| - | 2026-11-13-update-inji-vellam-date | movie-updates | skipped | Skipped by Harish. |
 
 ## Yesterday's numbers (per reach; colour against the series median)
-Rehearsal: nothing posted yet, so no numbers.
+Nothing posted yesterday.
+
+## Early numbers (2 hours after posting)
+- 2026-11-13-watch-loved-jailer-2: 115 views, share 0.0%, skip 67.6%
 
 ## Trends from the news watch (top 5, no AI; verify before use)
-- [20.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 13 publishers (6 trusted)
-- [6.2] Mani Ratnam returns to romance: Vijay Sethupathi, Sai Pallavi’s Inji Vellam gets release date · 2 publishers (1 trusted)
+- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 15 publishers (6 trusted)
+- [7.5] Mani Ratnam returns to romance: Vijay Sethupathi, Sai Pallavi’s Inji Vellam gets release date · 3 publishers (2 trusted)
 - [6.0] Noted cinematographer Shaji Kumar passes away · 1 publishers (1 trusted)
-- [4.5] மணிரத்னத்தின் ‘இஞ்சி வெல்லம்’ ஜன.29-ல் ரிலீஸ் · 6 publishers (1 trusted)
-- [4.0] Jithu Madhavan reveals the plot twist of Suriya starrer 'Scene' was leaked before the first look, admits · 1 publishers (1 trusted)
+- [6.0] Scene grosses over 200 crore; Suriya scripts Tamil cinema history · 9 publishers (3 trusted)
+- [6.0] Jail Mates title teaser: KP Jagan introduces Tamil cinema's first meta film with Vijay reference · 1 publishers (1 trusted)
 
 ## Changes in force (newest first)
 - #9 · 13 Nov 2026 · schedule (movie-recommendations) · Watch This Next 17:00 → 15:30, Fri–Sun · the story slot keeps one time every day; 17:00 is a flex slot and would cla
@@ -85,10 +106,11 @@ Rehearsal: nothing posted yet, so no numbers.
 - #5 · 13 Nov 2026 · Harish's feedback, round 2 · set by Harish (hard rules)
 
 ## Open alerts
+- 2026-11-13 16:42 IST: The sync job did not finish
+- 2026-11-13 16:42 IST: A note from the thinking run
+- 2026-11-13 16:11 IST: A reel could not be posted
+- 2026-11-13 12:45 IST: The make job did not finish
 - 2026-11-12 07:13 IST: 1 reel(s) held for 2026-11-12
-- 2026-11-12 06:50 IST: 5 reel(s) held for 2026-11-12
-- 2026-11-12 06:30 IST: 5 reel(s) held for 2026-11-12
-- 2026-11-12 06:22 IST: Health check: 2 thing(s) need a look
 
 ## Money and limits
 - Images ₹26 of ₹500 this month

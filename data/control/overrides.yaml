@@ -1,0 +1,41 @@
+settings:
+  volume:
+    base: 7
+series:
+  movie-recommendations:
+    notes:
+    - id: 0d8276
+      at: '2026-11-13'
+      text: Make reels slightly longer, match the reading pace of a person to the
+        reel and secondly add a motion graphics of the plot of the movie and extend
+        length of reel accordingly so ppl get excited about the plot of each movie
+        also without any spoilers
+  breaking-news:
+    notes:
+    - id: d170c1
+      at: '2026-11-13'
+      text: Make sure there are gradrail for images picked and avoid risks of random
+        images being picked
+  film-breakdown:
+    notes:
+    - id: da0630
+      at: '2026-11-13'
+      text: Make music sublte and less louder than the voiceover, make voice over
+        more natural and paced for people to understand and loud and clear but don't
+        compromise the music either make them play well together.
+  movie-review:
+    notes:
+    - id: 8eb365
+      at: '2026-11-13'
+      text: 'Change series to be more direct of its content which is movie review,
+        people may skip thinking it''s something else and use the actors make sure
+        a popular element like the actors face, post is on the first fram and make
+        it feel richer for the visual hook and interesting visual desings to it make
+        the '
+  viral-story:
+    paused: true
+notes:
+- id: 5be8dd
+  at: '2026-11-13'
+  text: 'When posting always use "#" captions as #fyp #trending #viral #explorepage
+    #reels'
