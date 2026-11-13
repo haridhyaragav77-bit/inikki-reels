@@ -11,9 +11,9 @@ on:
       regrid: { description: "Make the grids again (no Instagram): 'all', or films separated by commas", default: "" }
       frames: { description: "Check planned moments (no Instagram): Film=t1,t2;Film2=t3", default: "" }
   schedule:
-    - cron: "22 23 * * *"     # 04:52 IST, before the brief: the day's wanted list, then the history search
-    - cron: "22 7 * * *"      # 12:52 IST
-    - cron: "22 15 * * *"     # 20:52 IST
+    - cron: "22 23 * * *"     # 04:52 IST, before the brief: the day's wanted list, then the history search (AGENT.md 5.11)
+    # Once a day only: heavy Instagram reading on 12 Nov came with two "API access blocked" spells, and posting
+    # shares the same app limits. More runs come back only if the wanted list stays long.
 
 permissions:
   contents: write
