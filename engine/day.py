@@ -3,6 +3,7 @@ for the Control Room. States: planned → rendering → ready → posted (or reh
 
 Make and Post can run at the same time, so saving re-reads the file and writes back only the reels this run touched."""
 import datetime as dt
+import re
 import json
 
 from . import status
@@ -92,8 +93,8 @@ def slot_time(plan, date):
             return t if t.tzinfo else t.replace(tzinfo=tz)
         except ValueError:
             pass
-    if plan.get("slot"):
-        h, m = (int(x) for x in str(plan["slot"]).split(":"))
+    if plan.get("slot") and re.fullmatch(r"\d{1,2}:\d{2}", str(plan["slot"]).strip()):   # "reserve" or a typo is no time
+        h, m = (int(x) for x in str(plan["slot"]).strip().split(":"))
         d = dt.date.fromisoformat(date)
         return dt.datetime(d.year, d.month, d.day, h, m, tzinfo=tz)
     return None

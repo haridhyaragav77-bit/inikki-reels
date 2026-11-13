@@ -164,14 +164,20 @@ def main():
     for path, is_bank in jobs:
         plan = json.loads(path.read_text(encoding="utf-8"))
         rid, series = plan.get("reel_id") or plan.get("id") or path.stem, plan.get("series", "")
-        if not plan.get("slot") and (plan.get("package") or {}).get("slot"):
-            plan["slot"] = plan["package"]["slot"]
+        pslot = str((plan.get("package") or {}).get("slot") or "")
+        if pslot.lower() == "reserve":
+            plan["reserve"] = True
+        elif not plan.get("slot") and pslot:
+            plan["slot"] = pslot
         ledger = bank if is_bank else day
         if tight and (is_bank or plan.get("reserve")):      # cost guard (CLAUDE.md rule 5): main reels first
             ledger.upsert(rid, series=series, state="skipped", reason="Runner minutes are nearly used up this month: reserves and bank reels wait.")
             skipped.append(rid)
             continue
-        when = slot_time(plan, date)
+        try:
+            when = slot_time(plan, date)
+        except Exception:                                    # fail soft: a bad time holds this reel, not the day
+            when = None
         first = (plan.get("screens") or [{}])[0]
         base = dict(series=series, post_at=when.isoformat() if when and not is_bank else None,
                     slot=when.strftime("%H:%M") if when and not is_bank else None, reserve=bool(plan.get("reserve")) or None,
