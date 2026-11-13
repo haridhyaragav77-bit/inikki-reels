@@ -212,6 +212,9 @@ def wait_for_slot(ctl, max_wait_min=15):
     return None
 
 
+RELEASABLE = ("Held by Harish.", "Not posted: the master switch was on Hold.")
+
+
 def apply_commands(ctl, day):
     """One-off commands from the Control Room (control/commands.jsonl): hold, unhold, post_now, skip."""
     for c in ctl.lines("commands.jsonl")[-80:]:
@@ -225,8 +228,9 @@ def apply_commands(ctl, day):
             day.upsert(r["reel_id"], state="ready", reason=None)
         elif cmd == "skip" and st in ("ready", "held", "planned"):
             day.upsert(r["reel_id"], state="skipped", reason="Skipped by Harish.")
-        elif cmd == "post_now" and st == "ready" and not r.get("now_done"):
-            day.upsert(r["reel_id"], post_at=status.now().isoformat(timespec="seconds"), reserve=False, now_done=True)
+        elif cmd == "post_now" and not r.get("now_done") and (st == "ready" or (st == "held" and str(r.get("reason", "")).startswith(RELEASABLE))):
+            # also releases a reel Harish held, or one that waited while the switch was on Hold; never one that failed inspection
+            day.upsert(r["reel_id"], state="ready", reason=None, post_at=status.now().isoformat(timespec="seconds"), reserve=False, now_done=True)
 
 
 def extras(drive, ctl):
