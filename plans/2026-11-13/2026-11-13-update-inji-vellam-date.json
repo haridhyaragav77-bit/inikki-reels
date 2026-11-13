@@ -1,0 +1,221 @@
+{
+  "id": "2026-11-13-update-inji-vellam-date",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 13 NOV 2026",
+  "lead": {
+    "topic": "Mani Ratnam's Inji Vellam (Vijay Sethupathi, Sai Pallavi) releases on 29 January 2027",
+    "facts": [
+      "In theatres 29 Jan 2027 (ANI, Pinkvilla, Bollywood Hungama, The Hollywood Reporter India, 11-12 Nov 2026)",
+      "Vijay Sethupathi and Sai Pallavi lead; music by A.R. Rahman; Sai Pallavi's first film with Mani Ratnam",
+      "77 days from 13 Nov 2026"
+    ],
+    "sources": [
+      "https://www.aninews.in/news/entertainment/bollywood/mani-ratnams-inji-vellam-starring-vijay-sethupathi-sai-pallavi-to-hit-theatres-on-january-29-202720261112193134/",
+      "https://www.pinkvilla.com/entertainment/south/inji-vellam-release-date-vijay-sethupathi-and-sai-pallavis-romantic-film-to-hit-big-screens-on-january-29-2027-1406396",
+      "https://www.bollywoodhungama.com/news/south-cinema/mani-ratnam-announces-inji-vellam-release-date-vijay-sethupathi-and-sai-pallavi-romance-to-hit-theatres-on-january-29-2027/",
+      "https://www.hollywoodreporterindia.com/story/features/insight/inji-vellam-mani-ratnams-vijay-sethupathi-sai-pallavi-romance-drama-locks-january-2027-release"
+    ]
+  },
+  "worth_it": {
+    "fan_opens_because": "When is the new Mani Ratnam film out? The date, on screen 1.",
+    "spoilers": "None. Date, cast and composer only.",
+    "voice": "Off: a release date is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "varun_intro",
+        "from": 0.4,
+        "screen": 0,
+        "mood": "bold, catchy, punchy (a hook)"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "eye": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres3.jpg",
+      "crop": [
+        0.33,
+        0.0,
+        0.67,
+        1.0
+      ]
+    },
+    "painter": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres2.jpg"
+    },
+    "orange": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres1.jpg"
+    },
+    "poster": {
+      "src": "engine/.cache/stills/inji_vellam/poster_up.jpg",
+      "fetch": {
+        "url": "https://upload.wikimedia.org/wikipedia/en/a/ad/Inji_Vellam.jpg"
+      },
+      "prep": {
+        "resize": [
+          900,
+          900
+        ],
+        "sharpen": true
+      }
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "eye",
+      "fx": 0.5,
+      "fy": 0.5,
+      "dur": 2.8,
+      "lines": [
+        {
+          "text": "INJI VELLAM",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "RELEASE DATE",
+          "size": 165,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "painter",
+      "fx": 0.55,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "IN THEATRES · 29 JAN 2027",
+      "value": 77,
+      "unit": " DAYS",
+      "land": 1.7,
+      "tag": [
+        "TO GO",
+        "FROM TODAY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "orange",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "SAI PALLAVI × MANI RATNAM",
+      "value": 1,
+      "unit": "ST FILM",
+      "land": 1.7,
+      "tag": [
+        "FIRST TIME",
+        "TOGETHER"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "poster",
+      "dur": 3.8,
+      "echo": "INJI VELLAM · 29 JAN 2027",
+      "question": [
+        {
+          "text": "FIRST DAY?",
+          "size": 140
+        }
+      ],
+      "sub": "Save this for 29 Jan",
+      "cta": "SEND TO THAT FRIEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Mani Ratnam's Inji Vellam is in theatres on 29 January 2027.",
+      "Vijay Sethupathi and Sai Pallavi lead; A.R. Rahman scores. 77 days to go.",
+      "First day, first show?",
+      "Send this to your Mani Ratnam friend.",
+      "இஞ்சி வெல்லம் — ஜனவரி 29."
+    ],
+    "hashtags": [
+      "#TamilCinema",
+      "#InjiVellam",
+      "#ManiRatnam",
+      "#VijaySethupathi",
+      "#iNiKKiUpdates"
+    ],
+    "cover": "INJI VELLAM · RELEASE DATE",
+    "slot": "reserve",
+    "first_comment": "Mani Ratnam romance, are you in?"
+  },
+  "drive_folder": "2026-11-13",
+  "reserve": true,
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 6,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 5,
+    "timely_original": 6,
+    "total_100": 61,
+    "weakest": {
+      "save_value": "add a countdown save prompt: \"save for 29 Jan\"",
+      "loop": "cut back to the eye shot on the end card"
+    }
+  }
+}

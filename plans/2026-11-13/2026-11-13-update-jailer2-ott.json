@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-13-update-jailer2-ott",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 13 NOV 2026",
+  "lead": {
+    "topic": "Jailer 2 (Rajinikanth, Nelson) now streaming on Prime Video, after its theatrical run",
+    "facts": [
+      "Streaming on Amazon Prime Video from 12 Nov 2026 (Sacnilk; Esquire India OTT list for 9-15 Nov)",
+      "Released in theatres 15 Oct 2026; ₹826.74 Cr worldwide by day 23 (Zoom TV, cited on Wikipedia)",
+      "Streaming rights reportedly sold to Prime Video for ₹160 Cr, a record for a Tamil film (Bollywood Hungama; News18)"
+    ],
+    "sources": [
+      "https://www.sacnilk.com/news/jailer-2-ott-release-date-shows-tamil-cinemas-neglect-of-the-big-screen-continues",
+      "https://www.esquireindia.co.in/entertainment/what-to-stream/upcoming-south-indian-ott-releases-nov-9-15-jailer-2-bandra-the-third-murder-prime-video-zee5-manoramamax-netflix-aha",
+      "https://en.wikipedia.org/wiki/Jailer_2",
+      "https://www.zoomtventertainment.com/bollywood/jailer-2-box-office-collections-day-23-analysis-article-156478673",
+      "https://www.bollywoodhungama.com/news/bollywood/scoop-rajinikanth-creates-history-jailer-2-bags-record-rs-160-cr-ott-deal-biggest-ever-for-a-tamil-film/",
+      "https://www.news18.com/movies/tamil-cinema/jailer-2-ott-deal-rajinikanth-film-lands-biggest-amount-for-a-tamil-film-at-rs-160-crore-beats-thalapathy-vijays-leo-10282254.html"
+    ]
+  },
+  "worth_it": {
+    "fan_opens_because": "Where and when can I watch Jailer 2 at home? Answered on screen 1.",
+    "spoilers": "None. Platform, dates and numbers only; no plot, cameos or ending.",
+    "voice": "Off: an OTT date is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.3,
+        "screen": 0,
+        "mood": "bold mass theme, loud from frame 1 (a hook)"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "gun": {
+      "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres2.jpg"
+    },
+    "phone": {
+      "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres3.jpg"
+    },
+    "car": {
+      "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres1.jpg"
+    },
+    "poster": {
+      "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxresdefault.jpg",
+      "crop": [
+        0.3,
+        0.0,
+        0.36,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "gun",
+      "fx": 0.5,
+      "fy": 0.45,
+      "dur": 2.8,
+      "lines": [
+        {
+          "text": "JAILER 2",
+          "size": 250,
+          "y": 1310
+        },
+        {
+          "text": "NOW ON PRIME VIDEO",
+          "size": 120,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "phone",
+      "fx": 0.55,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "WORLDWIDE · 23 DAYS",
+      "value": 826,
+      "unit": " CR",
+      "land": 1.7,
+      "tag": [
+        "REPORTED",
+        "ZOOM TV"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "car",
+      "fx": 0.35,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "OTT DEAL · REPORTEDLY",
+      "value": 160,
+      "unit": " CR",
+      "land": 1.7,
+      "tag": [
+        "RECORD",
+        "FOR A TAMIL FILM"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "poster",
+      "dur": 3.8,
+      "echo": "JAILER 2 · NOW ON PRIME VIDEO",
+      "question": [
+        {
+          "text": "REWATCH TONIGHT?",
+          "size": 130
+        }
+      ],
+      "sub": "Theatre once, home twice?",
+      "cta": "SEND TO THAT FRIEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Jailer 2 is now streaming on Prime Video (from 12 Nov).",
+      "Rajinikanth and Nelson's Jailer 2: in theatres on 15 Oct, ₹826 Cr worldwide by day 23 (reported), and a reported ₹160 Cr streaming deal, a record for a Tamil film.",
+      "Rewatching tonight?",
+      "Send this to the friend who missed it in theatres.",
+      "ஜெயிலர் 2 — இப்போது Prime Video-வில்."
+    ],
+    "hashtags": [
+      "#TamilCinema",
+      "#Jailer2",
+      "#Rajinikanth",
+      "#PrimeVideo",
+      "#iNiKKiUpdates"
+    ],
+    "cover": "JAILER 2 · NOW ON PRIME VIDEO",
+    "slot": "21:30",
+    "first_comment": "Theatre or home, where did you watch it first?"
+  },
+  "drive_folder": "2026-11-13",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 6,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 9,
+    "total_100": 68,
+    "weakest": {
+      "save_value": "add the record OTT deal as a saveable fact on the end card",
+      "loop": "echo the title line on the end card"
+    }
+  }
+}
