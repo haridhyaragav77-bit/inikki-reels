@@ -200,11 +200,18 @@ def main(drive=None):
     except Exception:
         book = {}
     done = book.setdefault("done", {})
+    day, bank = Day(drive), Bank(drive)
+    try:                                                # hold, skip, release and post-now show on the panel at once
+        from .post import apply_commands
+        apply_commands(ctl, day)
+        if day.dirty:
+            day.save()
+    except Exception as e:
+        print("reel commands not applied here (the Post job applies them):", str(e)[:160])
     todo = [c for c in ctl.lines("commands.jsonl") if c.get("cmd") in ("edit", "remake", "retry") and c.get("id") and c["id"] not in done]
     if not todo:
         print("No edits waiting.")
         return
-    day, bank = Day(drive), Bank(drive)
     make, retry = [], False
     for c in todo:
         try:
