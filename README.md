@@ -2,8 +2,11 @@
 
 A self-running Tamil cinema Instagram page (@inikki_reels).
 
-**Start with `AGENT.md`.** It is the whole design in one file, including the copy-paste blocks to start the build and the Control Room.
+**Running it day to day: `GUIDE.md`** (every control, loop and ready prompt, in plain language). The Control Room page: https://claude.ai/artifact/LiQvqiXriy9fZeWteZLWD6
 
+**Changing it: start with `AGENT.md`.** It is the whole design in one file. Build sessions begin with the `workshop` skill.
+
+- `runs/` — one card per thinking run · `control-room/` — the Control Room's instructions and page
 - `config/` — global settings and the safety rules
 - `team/` — one card per role
 - `brands/inikki-reels/` — brand kit, colours, fonts, image styles

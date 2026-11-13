@@ -1,10 +1,14 @@
 # Run card: REFRESH (daily 16:37 IST)
 You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.md; AGENT.md wins.
 
-## Start (2 steps)
+## Start (3 steps)
 1. `pip install -q -r requirements-light.txt` and `TODAY=$(TZ=Asia/Kolkata date +%F)`. You are on a fresh copy of `main`.
    Work on the branch you were told to push to: `git checkout -q -B claude/brain-refresh-$TODAY`.
 2. Skill `quiet-exit` (the switch, then `data/brief.md`). If there is nothing to do, stop: push nothing.
+3. Check the brief's first line. It should name this run and today's date. If it is older, the Engine's brief job did not
+   run: if you have a GitHub tool that can start a workflow, start `daily.yml` on `main` with job `brief-refresh`, wait
+   2 minutes, `git pull -q origin main`, and read the brief again. Still old: one line in `data/out/alerts.md`
+   ("the brief was not written today"), then carry on with its slots and today's date.
 
 ## The work
 - Researcher: breaking check. Refresh tonight's updates only if better-proven news exists.

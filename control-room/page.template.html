@@ -1,0 +1,437 @@
+<title>iNiKKi Control Room</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a cinema showtimes board. One sticky marquee (switch, countdown to the next show), then tabs; each reel is a showtime row. */
+:root{
+  --bg:#0A0F18; --panel:#121829; --panel2:#1A2138; --line:#2A3354; --fg:#F4F6FB; --muted:#A9B2C8;
+  --gold:#F8C028; --on-gold:#0A0F18; --teal:#78E0D0; --sky:#7CC4FA; --red:#F0676B; --amber:#F0A040; --green:#5AD19A;
+  --display:"Anton","Arial Narrow",Impact,sans-serif; --text:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]){
+  --bg:#EEF1F7; --panel:#FFFFFF; --panel2:#E4E9F3; --line:#C5CEE0; --fg:#0E1424; --muted:#55607A;
+  --gold:#A66F00; --on-gold:#FFFFFF; --teal:#0B7F70; --sky:#1F6FB5; --red:#C4302B; --amber:#A85F00; --green:#17794B; color-scheme:light } }
+:root[data-theme="light"]{
+  --bg:#EEF1F7; --panel:#FFFFFF; --panel2:#E4E9F3; --line:#C5CEE0; --fg:#0E1424; --muted:#55607A;
+  --gold:#A66F00; --on-gold:#FFFFFF; --teal:#0B7F70; --sky:#1F6FB5; --red:#C4302B; --amber:#A85F00; --green:#17794B; color-scheme:light }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--text);font-size:15px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.marquee{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+.marquee .wrap{padding-block:12px 0;display:flex;flex-direction:column;gap:10px}
+.brandrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:26px;letter-spacing:.02em;line-height:1;text-transform:uppercase}
+.brand b{color:var(--gold);font-weight:400}
+.stamp{color:var(--muted);font-size:12.5px;margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.showrow{display:flex;gap:12px;flex-wrap:wrap;align-items:stretch}
+.next{flex:1 1 260px;min-width:0;display:flex;gap:12px;align-items:center;background:var(--panel);border:1px solid var(--line);border-left:6px dotted var(--gold);border-radius:4px;padding:8px 12px}
+.next .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.next .what{font-weight:600;overflow-wrap:anywhere}
+.next .count{font-family:var(--display);font-size:30px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+.switch{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex:0 0 auto}
+.switch button{border:0;border-radius:0;background:var(--panel);padding:8px 12px;min-width:74px}
+.switch button+button{border-left:1px solid var(--line)}
+.switch button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold);font-weight:700}
+.switch button[data-mode="sleep"][aria-pressed="true"]{background:var(--red);color:var(--bg)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{padding:9px 12px;color:var(--muted);text-decoration:none;font-weight:600;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--fg);border-bottom-color:var(--gold)}
+main .wrap{padding-block:18px 60px;display:flex;flex-direction:column;gap:18px}
+h2{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.03em;text-transform:uppercase;margin:0;text-wrap:balance}
+h3{font-size:15px;margin:0}
+.sub{color:var(--muted);font-size:13px}
+.banner{border:1px solid var(--line);border-left:4px solid var(--amber);background:var(--panel);padding:10px 12px;border-radius:4px;font-size:14px}
+.banner.bad{border-left-color:var(--red)} .banner.eg{border-left-color:var(--sky)}
+.list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden}
+.reel{display:grid;grid-template-columns:74px minmax(0,1fr);gap:4px 14px;padding:14px;border-top:1px solid var(--line)}
+.reel:first-child{border-top:0}
+.time{font-family:var(--display);font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
+.time small{display:block;font-family:var(--text);font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+.hook{font-weight:700;font-size:16px;overflow-wrap:anywhere}
+.meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;margin-top:3px}
+.pill{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.pill.ready{color:var(--teal)} .pill.posted{color:var(--green)} .pill.held,.pill.failed{color:var(--red)}
+.pill.planned,.pill.rendering{color:var(--amber)} .pill.skipped,.pill.rehearsed{color:var(--muted)} .pill.asked{color:var(--sky);border-style:dashed}
+.why{font-size:13px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button,a.btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--fg);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+button:hover,a.btn:hover{border-color:var(--muted)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+button.go{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+button.warn{color:var(--red)} button.quiet{background:transparent}
+button:disabled{opacity:.5;cursor:default}
+.drawer{grid-column:1/-1;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:12px;margin-top:10px;display:flex;flex-direction:column;gap:10px}
+label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+input[type=text],textarea{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px 10px;width:100%;text-transform:none;letter-spacing:0;font-weight:400}
+textarea{min-height:92px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border-radius:99px;padding:5px 11px;font-weight:500}
+.chips button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.rows{display:flex;flex-direction:column}
+.row{display:flex;gap:12px;align-items:baseline;padding:9px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.row:first-child{border-top:0}
+.row .t{font-variant-numeric:tabular-nums;font-weight:700;min-width:88px}
+.row .in{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px}
+.row.think .w{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.big{font-family:var(--display);font-size:34px;line-height:1;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--panel2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal)} .bar i.hot{background:var(--amber)} .bar i.over{background:var(--red)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{text-align:left;padding:8px 12px;border-top:1px solid var(--line);vertical-align:top}
+tr:first-child th{border-top:0} th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--muted)}
+.dot.green{background:var(--green)} .dot.amber{background:var(--amber)} .dot.red{background:var(--red)}
+.rule{display:flex;gap:8px;align-items:flex-start;font-size:14px;border-left:3px solid var(--gold);padding-left:10px}
+.rule span{flex:1;min-width:0;overflow-wrap:anywhere}
+.inline{display:flex;gap:8px;flex-wrap:wrap} .inline input{flex:1 1 220px;min-width:0}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:6px;font-weight:600;font-size:14px;max-width:min(92vw,560px);z-index:20;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+.guide{max-width:68ch} .guide h2{margin-top:26px} .guide h3{margin-top:14px;font-size:16px}
+.guide p,.guide li{font-size:15px} .guide ul,.guide ol{padding-left:22px;margin:6px 0}
+.guide code{background:var(--panel2);border:1px solid var(--line);border-radius:3px;padding:0 5px;font-size:13px;overflow-wrap:anywhere}
+.guide blockquote{margin:8px 0;border:1px solid var(--line);border-left:4px solid var(--gold);background:var(--panel);border-radius:4px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.guide blockquote p{margin:0} .guide .tablewrap{margin:8px 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:520px){ .reel{grid-template-columns:58px minmax(0,1fr)} .time{font-size:22px} .next .count{font-size:24px} .brand{font-size:22px} }
+@media (prefers-reduced-motion:no-preference){ button,a.btn{transition:border-color .12s} }
+</style>
+
+<header class="marquee"><div class="wrap">
+  <div class="brandrow">
+    <div class="brand">i<b>N</b>i<b>KK</b>i Control Room</div>
+    <div class="stamp"><span id="phase"></span><span id="updated">Loading…</span><button id="refresh" class="quiet" type="button">Refresh</button></div>
+  </div>
+  <div class="showrow">
+    <div class="next"><div style="min-width:0"><div class="lbl" id="nextlbl">Next run</div><div class="what" id="nextwhat">—</div></div><div class="count" id="count">--:--:--</div></div>
+    <div class="switch" role="group" aria-label="Master switch">
+      <button type="button" data-mode="run" aria-pressed="false">Run</button>
+      <button type="button" data-mode="hold_posts" aria-pressed="false">Hold posts</button>
+      <button type="button" data-mode="sleep" aria-pressed="false">Sleep</button>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#today">Today</a><a href="#next">Next</a><a href="#numbers">Numbers</a><a href="#series">Series</a><a href="#money">Money</a><a href="#setup">Setup</a><a href="#guide">Guide</a>
+  </nav>
+</div></header>
+<main><div class="wrap" id="view"></div></main>
+<div id="toast" hidden role="status"></div>
+
+<script>
+const CFG = { server: "Google Drive", panel: "1QTsgL08RAYpcVozoWxw6wExtzbQv0bTy", inbox: "1Y2XGA7u4D_8hH04Nm2gOywYXVgpeZmE1" };
+const GUIDE = __GUIDE_JSON__;
+const IST = { timeZone: "Asia/Kolkata" };
+const BAD = ["Hook slow", "Unclear title", "Too wordy", "Too static", "Too long", "Visuals weak", "Music doesn't fit", "Silent start", "Not worth it", "Voice off", "Spoiler", "Fact wrong"];
+const GOOD = ["Great hook", "Great insight", "Great style"];
+const FIELD = { "screens.0.lines": "Title lines (put / between lines)", "screens.0.headline": "Headline", "screens.0.headline2": "Second headline", "screens.0.line": "Opening line",
+  "screens.0.kicker": "Small line above the title", "screens.0.film": "Film name on the title screen", "screens.0.type": "Label under the film name", "screens.0.what": "What happened (title screen)",
+  "screens.0.voice": "Opening voice line (Tamil)", "screens.0.voice_tg": "Opening voice line (Tanglish subtitle)", "screens.0.caption": "Title screen caption", "screens.0.caption_tamil": "Title screen caption (Tamil)",
+  "screens.0.tamil": "Tamil line", "screens.0.poster_tag": "Poster tag", "package.caption": "Caption (blank line between paragraphs)", "package.hashtags": "Hashtags", "package.cover": "Cover title", "package.first_comment": "First comment" };
+
+/* Example data, shown only until the live panel loads or when Google Drive is not connected. Not your numbers. */
+function sample() {
+  const now = Date.now(), at = h => new Date(now + h * 3600e3).toISOString();
+  return { example: true, updated: "example", updated_iso: new Date(now).toISOString(), switch: "run", phase: "live", approval: "autopilot",
+    today: { date: "example day", reels: [
+      { n: 1, id: "example-update-01", series: "movie-updates", state: "posted", slot: "08:30", hook: "EXAMPLE · RELEASE DATE OUT", posted: "https://www.instagram.com/" },
+      { n: 2, id: "example-breakdown-01", series: "film-breakdown", state: "ready", slot: "12:30", hook: "EXAMPLE · THE TICKING CLOCK", seconds: 58, score: 76, caption: "An example caption.",
+        words: { "screens.0.film": "EXAMPLE FILM", "screens.0.type": "SCREENPLAY BREAKDOWN", "package.caption": "An example caption.\n\nSecond paragraph." } },
+      { n: 3, id: "example-watch-01", series: "movie-recommendations", state: "ready", slot: "15:30", hook: "4 FILMS TO WATCH TONIGHT", seconds: 31, score: 75,
+        words: { "screens.0.lines": "4 FILMS TO WATCH TONIGHT / IF YOU LOVED THE EXAMPLE", "package.caption": "An example caption." } },
+      { n: 4, id: "example-update-02", series: "movie-updates", state: "held", slot: "18:00", hook: "EXAMPLE · BOX OFFICE", why: "Inspection: a picture stayed still too long" } ] },
+    tomorrow: { date: "the day after", slots: [{ time: "08:30", series: "movie-updates" }, { time: "12:30", series: "film-breakdown" }, { time: "15:30", series: "guess-the-movie" }] },
+    bank: { ready: 2 }, schedule: [{ at: at(0.4), what: "Post · 12:30 slot", kind: "post" }, { at: at(3.4), what: "Post · 15:30 slot", kind: "post" }, { at: at(4.6), what: "Thinking run · Refresh", kind: "think" }, { at: at(5.3), what: "Make reels", kind: "make" }],
+    numbers: { followers: 120, goal: 1000, target_today: 140, days_left: 80, recent: [{ id: "example-update-00", views: 1840, rates: { skip_rate: .41, watch_through: .22, share_rate: .012 }, health: { skip_rate: "green", share_rate: "amber" } }] },
+    series: [{ id: "movie-updates", name: "Movie Updates", status: "live", slots: ["08:30", "18:00", "21:30"], median_views: 1500, page_views: 1300, rules: [] },
+             { id: "movie-recommendations", name: "Watch This Next", status: "trial", slots: ["15:30"], rules: [{ id: "eg1", text: "Open with a promise and a number.", at: "example" }] }],
+    money: { images_inr: 26, images_cap: 500, runner_min: 370, runner_limit: 2000, storage_gb: 3.1, storage_cap: 8, posted_month: 12, per_reel: { images_inr: 2.2, runner_min: 30 } },
+    alerts: [], actions: [], page_rules: [], digest: "" };
+}
+
+let P = sample(), mcp = null, live = false, problem = "", openDrawer = null;
+let asked = store("asked", []);          // what this browser sent and the Engine has not picked up yet
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function store(k, d) { try { const v = localStorage.getItem("icr." + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }
+function save(k, v) { try { localStorage.setItem("icr." + k, JSON.stringify(v)); } catch (e) {} }
+const hm = iso => new Date(iso).toLocaleTimeString("en-IN", { ...IST, hour: "2-digit", minute: "2-digit", hour12: false });
+const dayName = iso => new Date(iso).toLocaleDateString("en-IN", { ...IST, weekday: "short" });
+const pct = v => v == null ? "—" : (v * 100).toFixed(1) + "%";
+const num = v => v == null ? "—" : Number(v).toLocaleString("en-IN");
+function span(ms) { if (ms < 0) ms = 0; const s = Math.floor(ms / 1000), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); return h ? `${h} h ${String(m).padStart(2, "0")} m` : `${m} m`; }
+function clock(ms) { if (ms < 0) ms = 0; const s = Math.floor(ms / 1000); return [Math.floor(s / 3600), Math.floor(s % 3600 / 60), s % 60].map(x => String(x).padStart(2, "0")).join(":"); }
+function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 5200); }
+
+/* ---------- reading the panel from Drive (no Claude tokens) ---------- */
+function unpack(result) {
+  let p = result && result.payload;
+  if (typeof p === "string") { try { p = JSON.parse(p); } catch (e) { p = { fileContent: p }; } }
+  let t = p && (p.fileContent || p.content || p.text);
+  if (!t && result && result.content) t = result.content.map(c => c.text || "").join("\n");
+  if (typeof t === "string" && t.trim().startsWith("{") && t.includes("fileContent")) { try { t = JSON.parse(t).fileContent; } catch (e) {} }
+  const i = String(t || "").indexOf("INIKKI-PANEL-1");
+  if (i < 0) throw new Error("The status file is not in the expected form yet.");
+  const b = String(t).slice(i + 14).replace(/[^A-Za-z0-9+/=]/g, "");
+  if (!b) throw new Error("The Engine has not written the status file yet. It does so after its next job.");
+  return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0))));
+}
+function onData(result) {
+  try { P = unpack(result); live = true; problem = ""; } catch (e) { problem = e.message; }
+  asked = asked.filter(a => a.at > Date.parse(P.updated_iso || 0) - 60000 && Date.now() - a.at < 36 * 3600e3); save("asked", asked);
+  render();
+}
+function onError(err) {
+  const c = err && err.code;
+  problem = c === "needs_reauth" || c === "server_not_connected" ? "Google Drive is not connected. In Claude: Settings → Connectors → Google Drive, then press Refresh."
+    : c === "not_granted" ? "This page needs your permission to read Google Drive. Press Refresh and choose Allow."
+    : "The status file could not be read just now (" + ((err && err.message) || "unknown reason") + "). Press Refresh to try again.";
+  render();
+}
+function refresh() {
+  if (!mcp) return toast("Showing example data. Open this page in Claude with Google Drive connected.");
+  $("#updated").textContent = "Reading…";
+  mcp.callTool(CFG.server, "read_file_content", { fileId: CFG.panel }, { cache: { refresh: true } }).then(onData, onError);
+}
+let watching = false;
+function poll() { if (poll.on) return; poll.on = true; refresh(); setInterval(() => { if (!document.hidden) refresh(); }, 180000); }
+function connect() {
+  const c = window.claude;
+  if (!c || !c.use) { problem = "Showing example data. Open this page in Claude to see your own."; return render(); }
+  c.use("mcp").then(m => {
+    if (!m) { problem = "Showing example data. Live data needs this page opened in Claude with Google Drive connected."; return render(); }
+    mcp = m;
+    try { mcp.watchTool(CFG.server, "read_file_content", { fileId: CFG.panel }, ev => {
+        if (ev.type === "data") { watching = true; return onData(ev.result); }
+        if (!watching && !live) return poll();           // this viewer cannot keep a watch: read it ourselves instead
+        onError(ev.error); }, { refetchInterval: 180000 }); }
+    catch (e) { poll(); }
+  });
+}
+
+/* ---------- sending one small note to the inbox ---------- */
+function pickup() { const s = (P.schedule || []).find(x => x.kind !== "think" && Date.parse(x.at) > Date.now()); return s ? `${hm(s.at)} (in ${span(Date.parse(s.at) - Date.now())})` : "its next job"; }
+function send(action, label, key) {
+  if (!mcp) { toast("Example mode: nothing was sent. Open this page in Claude with Google Drive connected."); return Promise.resolve(false); }
+  const d = new Date(), ts = d.toISOString().replace(/[-:T]/g, "").slice(0, 14);
+  return mcp.callTool(CFG.server, "create_file", { title: `${ts}-${action.do}.json`, parentId: CFG.inbox, contentMimeType: "text/plain",
+    disableConversionToGoogleType: true, textContent: JSON.stringify(action) }).then(() => {
+      asked.push({ at: Date.now(), label, key: key || "" }); save("asked", asked);
+      toast(`Sent: ${label}. The Engine picks it up at ${pickup()}.`); render(); return true;
+    }, err => { toast("Not sent: " + ((err && err.message) || "Google Drive refused") + "."); return false; });
+}
+const askedFor = key => asked.filter(a => a.key === key).map(a => a.label);
+
+/* ---------- views ---------- */
+function head() {
+  $("#phase").innerHTML = P.phase ? `<span class="pill ${P.phase === "live" ? "posted" : "planned"}">${esc(P.phase)}</span>` : "";
+  $("#updated").textContent = P.example ? "Example data" : "Updated " + String(P.updated).replace(/^\d{4}-\d{2}-\d{2} /, "");
+  document.querySelectorAll(".switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === P.switch)));
+  document.querySelectorAll("nav.tabs a").forEach(a => a.getAttribute("href") === "#" + tab() ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  tick();
+}
+function tick() {
+  const s = (P.schedule || []).find(x => Date.parse(x.at) > Date.now());
+  $("#nextwhat").textContent = s ? `${s.what} · ${dayName(s.at)} ${hm(s.at)}` : "No run listed";
+  $("#count").textContent = s ? clock(Date.parse(s.at) - Date.now()) : "--:--:--";
+}
+function banners() {
+  let h = "";
+  if (problem) h += `<div class="banner ${live ? "bad" : "eg"}">${esc(problem)}</div>`;
+  if (live && P.updated_iso && Date.now() - Date.parse(P.updated_iso) > 4 * 3600e3) h += `<div class="banner bad">This status is ${span(Date.now() - Date.parse(P.updated_iso))} old: no Engine job has finished since. If that surprises you, see the guide, section 12.</div>`;
+  if (P.respect) h += `<div class="banner">Respect mode is on today: ${esc(P.respect)}. Only fitting reels post.</div>`;
+  if (openDrawer && openDrawer.id === "setup") h += `<div class="drawer"><div>${esc(openDrawer.text)}</div><div class="acts"><button type="button" class="go" data-act="yes">${esc(openDrawer.yes)}</button><button type="button" class="quiet" data-act="close">Cancel</button></div></div>`;
+  if (asked.length) h += `<div class="banner">Waiting for the Engine (${esc(pickup())}): ${asked.map(a => esc(a.label)).join(" · ")}</div>`;
+  return h;
+}
+function reelRow(r) {
+  const st = r.state || "planned", mine = askedFor(r.id), open = openDrawer && openDrawer.id === r.id ? openDrawer.kind : "";
+  const when = r.slot || (r.manual ? "NEW" : r.reserve ? "RES" : "—");
+  const b = (act, text, cls = "") => `<button type="button" class="${cls}" data-act="${act}" data-id="${esc(r.id)}">${text}</button>`;
+  let acts = "";
+  if (r.video && st !== "posted") acts += `<a class="btn" href="${esc(r.video)}" target="_blank" rel="noopener">Watch</a>`;
+  if (r.posted) acts += `<a class="btn" href="${esc(r.posted)}" target="_blank" rel="noopener">Open on Instagram</a>`;
+  if (st === "ready") acts += (r.manual ? "" : b("hold", "Hold")) + b("post_now", "Post now") + b("words", "Change words") + b("skip", "Skip", "warn");
+  if (st === "held") acts += (String(r.why || "").startsWith("Held by Harish") ? b("unhold", "Release") : "") + (/^(Held by Harish|Not posted)/.test(r.why || "") ? b("post_now", "Post now") : b("retry", "Make again")) + b("skip", "Skip", "warn");
+  if (st === "failed") acts += b("retry", "Make again");
+  if (st === "posted") acts += b("remake", "New version");
+  if (st === "posted" || st === "ready" || st === "rehearsed") acts += b("love", "Love it") + b("notgood", "Not good");
+  let drawer = "";
+  if (open === "words") {
+    const w = r.words || {};
+    drawer = `<div class="drawer"><div class="sub">Only the words change. The reel is checked and made again; until then it cannot post.</div>` +
+      Object.keys(w).map((k, i) => `<label>${esc(FIELD[k] || k)}${k === "package.caption" ? `<textarea id="w-${i}" data-path="${k}">${esc(w[k])}</textarea>` : `<input type="text" id="w-${i}" data-path="${k}" value="${esc(w[k])}">`}</label>`).join("") +
+      (Object.keys(w).length ? "" : `<div class="sub">This reel's words are not listed yet. Press Refresh after the next Engine job.</div>`) +
+      `<div class="acts">${b("send-words", "Send changes", "go")}${b("close", "Cancel", "quiet")}</div></div>`;
+  }
+  if (open === "remake") drawer = `<div class="drawer"><div class="sub">Instagram cannot swap a posted video. This makes a new reel with your hook. It waits here for your Post now; nothing posts by itself.</div>
+      <label>New hook (put / between lines)<input type="text" id="rm-hook" placeholder="4 FILMS TO WATCH TONIGHT / IF YOU LOVED JAILER 2"></label>
+      <div class="acts">${b("send-remake", "Make the new version", "go")}${b("close", "Cancel", "quiet")}</div></div>`;
+  if (open === "love" || open === "notgood") drawer = `<div class="drawer"><div class="sub">${open === "love" ? "What worked? It becomes an example for this series." : "What was off? It becomes a rule tried on the next 5 reels."}</div>
+      <div class="chips" id="fb-chips">${(open === "love" ? GOOD : BAD).map(c => `<button type="button" data-chip aria-pressed="false">${esc(c)}</button>`).join("")}</div>
+      <label>One line, if you like<input type="text" id="fb-text"></label>
+      <div class="acts">${b("send-" + open, "Send feedback", "go")}${b("close", "Cancel", "quiet")}</div></div>`;
+  if (open === "confirm") drawer = `<div class="drawer"><div>${esc(openDrawer.text)}</div><div class="acts">${b("yes", openDrawer.yes, "go")}${b("close", "Cancel", "quiet")}</div></div>`;
+  return `<div class="reel"><div class="time">${esc(when)}<small>#${r.n || ""}</small></div><div>
+    <div class="hook">${esc(r.hook || r.id)}</div>
+    <div class="meta"><span class="pill ${esc(st)}">${esc(r.manual && st === "ready" ? "waits for you" : st)}</span>${mine.map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
+      <span>${esc(r.series || "")}</span>${r.seconds ? `<span>${esc(r.seconds)} s</span>` : ""}${r.score ? `<span>score ${esc(r.score)}</span>` : ""}</div>
+    ${r.why ? `<div class="why">${esc(r.why)}</div>` : ""}<div class="acts">${acts}</div></div>${drawer}</div>`;
+}
+function vToday() {
+  const rs = P.today.reels || [], c = s => rs.filter(r => r.state === s).length;
+  let h = banners();
+  if ((P.alerts || []).length) h += `<div class="card"><div class="inline" style="align-items:center"><h3 style="flex:1">${P.alerts.length} alert${P.alerts.length > 1 ? "s" : ""}</h3><button type="button" data-act="ack">Mark all read</button></div>` +
+    P.alerts.map(a => `<div class="rule" style="border-left-color:var(--${a.level === "warn" ? "amber" : "sky"})"><span><b>${esc(a.title)}</b><br><span class="sub">${esc(a.what_happened || "")} ${esc(a.what_was_done || "")} <b>You:</b> ${esc(a.what_you_do || "nothing")}</span></span></div>`).join("") + `</div>`;
+  h += `<div><h2>Today's shows · ${esc(P.today.date)}</h2><div class="sub">${c("posted")} posted · ${c("ready")} ready · ${c("held") + c("failed")} held · ${c("skipped")} skipped · breakdown bank ${esc((P.bank || {}).ready ?? "—")}</div></div>`;
+  h += rs.length ? `<div class="list">${rs.map(reelRow).join("")}</div>` : `<div class="card"><div>No reels yet today.</div><div class="sub">The Plan run is at 05:37 and the reels are made right after. They appear here with a Watch button.</div></div>`;
+  h += `<div class="card"><h3>Suggest a topic</h3><div class="sub">A lead for the next plan. The agent uses it if it passes the worth-it test.</div><div class="inline"><input type="text" id="idea" placeholder="cover this: 5 one-night thrillers on Netflix"><button type="button" data-act="idea" class="go">Send</button></div></div>`;
+  if (P.digest) h += `<div class="card"><h3>Digest</h3><div class="sub" style="white-space:pre-wrap">${esc(P.digest.replace(/\*\*/g, ""))}</div></div>`;
+  return h;
+}
+function vNext() {
+  const now = Date.now(), sc = (P.schedule || []).filter(s => Date.parse(s.at) > now);
+  let h = banners() + `<div><h2>What runs next</h2><div class="sub">India time. Your changes are picked up by the first Engine job on this list; thinking runs are in gold.</div></div>`;
+  h += `<div class="list rows">${sc.map(s => `<div class="row ${s.kind === "think" ? "think" : ""}"><span class="t">${dayName(s.at)} ${hm(s.at)}</span><span class="w">${esc(s.what)}</span><span class="in">in ${span(Date.parse(s.at) - now)}</span></div>`).join("") || `<div class="row">Nothing listed.</div>`}</div>`;
+  const tm = (P.tomorrow || {}).slots || [];
+  h += `<div><h2>Tomorrow · ${esc((P.tomorrow || {}).date || "")}</h2><div class="sub">The slots are fixed by the lineup. The topics are chosen at 05:37; an idea or a rule sent before 05:00 steers them.</div></div>`;
+  h += `<div class="list rows">${tm.map(s => `<div class="row"><span class="t">${esc(s.time)}</span><span class="w">${esc(s.series)}</span><span class="in">${esc(s.notes || "")}</span></div>`).join("") || `<div class="row">Not listed yet.</div>`}</div>`;
+  return h;
+}
+function vNumbers() {
+  const n = P.numbers || {}, rec = n.recent || [];
+  const diff = n.followers != null && n.target_today != null ? n.followers - n.target_today : null;
+  let h = banners() + `<div><h2>Numbers</h2><div class="sub">${n.measured ? "Measured " + esc(n.measured) : "Numbers arrive after the nightly job (23:40)."}</div></div><div class="grid">
+    <div class="card"><div class="sub">Followers</div><div class="big">${num(n.followers)}</div><div class="bar"><i style="width:${Math.min(100, (n.followers || 0) / (n.goal || 1000) * 100)}%"></i></div><div class="sub">Goal ${num(n.goal)} · ${num(n.days_left)} days left</div></div>
+    <div class="card"><div class="sub">Against today's target line</div><div class="big" style="color:var(--${diff == null ? "muted" : diff >= 0 ? "green" : "amber"})">${diff == null ? "—" : (diff >= 0 ? "+" : "") + diff}</div><div class="sub">The line says ${num(n.target_today)} by today</div></div>
+    <div class="card"><div class="sub">Page middle value, 14 days</div><div class="big">${num((n.page || {}).views)}</div><div class="sub">views per reel · skip ${pct((n.page || {}).skip_rate)} · share ${pct((n.page || {}).share_rate)}</div></div></div>`;
+  h += `<div class="tablewrap"><table><tr><th>Reel</th><th>Views</th><th>Skip</th><th>Watched through</th><th>Share</th></tr>${rec.map(r => {
+    const d = k => `<span class="dot ${esc((r.health || {})[k] || "")}"></span>`;
+    return `<tr><td>${r.link ? `<a href="${esc(r.link)}" target="_blank" rel="noopener" style="color:var(--sky)">${esc(r.hook || r.id)}</a>` : esc(r.hook || r.id)}<div class="sub">${esc(r.series || "")} ${esc(r.posted_at || "")}</div></td>
+      <td class="num">${num(r.views)}</td><td class="num">${d("skip_rate")}${pct((r.rates || {}).skip_rate)}</td><td class="num">${d("watch_through")}${pct((r.rates || {}).watch_through)}</td><td class="num">${d("share_rate")}${pct((r.rates || {}).share_rate)}</td></tr>`; }).join("") || `<tr><td colspan="5" class="sub">No measured reels yet.</td></tr>`}</table></div>
+    <div class="sub">Dots compare each reel with its own series: green is better than the middle value, amber a little worse, red clearly worse.</div>`;
+  return h;
+}
+function ruleRows(rules) { return (rules || []).map(x => `<div class="rule"><span>${esc(x.text)} <span class="sub">${esc(x.at || "")}</span></span><button type="button" class="quiet" data-act="undo" data-id="${esc(x.id)}">Remove</button></div>`).join(""); }
+function vSeries() {
+  let h = banners() + `<div><h2>Series</h2><div class="sub">A rule is one sentence the agent follows in every plan from the next Plan run. It stays until you remove it.</div></div>`;
+  h += `<div class="card"><h3>Rules for every series</h3>${ruleRows(P.page_rules)}<div class="inline"><input type="text" id="rule-all" placeholder="Never open with a question."><button type="button" data-act="rule" data-id="all">Add a rule</button></div></div>`;
+  h += (P.series || []).map((s, i) => `<div class="card"><div class="inline" style="align-items:center"><h3 style="flex:1">${esc(s.name || s.id)}</h3>
+      <span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" ? "planned" : "ready"}">${s.paused ? "paused" : esc(s.status || "live")}</span>${askedFor(s.id).map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
+      <button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button></div>
+    <div class="sub">${esc((s.slots || []).join(" · ") || "flex slot")}${s.length_s ? " · " + esc(s.length_s.join("–")) + " s" : ""}${s.median_views != null ? ` · middle value ${num(s.median_views)} views (page ${num(s.page_views)})` : ""}</div>
+    ${ruleRows(s.rules)}<div class="inline"><input type="text" id="rule-${i}" placeholder="Open with a promise and a number: 4 FILMS TO WATCH TONIGHT"><button type="button" data-act="rule" data-id="${esc(s.id)}" data-input="rule-${i}">Add a rule</button></div></div>`).join("");
+  return h;
+}
+function meter(label, used, cap, unit, note) {
+  const p = cap ? Math.min(100, used / cap * 100) : 0;
+  return `<div class="card"><div class="sub">${label}</div><div class="big">${used == null ? "—" : unit === "₹" ? "₹" + num(Math.round(used)) : num(used)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${unit === "₹" ? "₹" : ""}${num(cap)}${unit && unit !== "₹" ? " " + unit : ""}</span></div><div class="bar"><i class="${p >= 100 ? "over" : p >= 75 ? "hot" : ""}" style="width:${p}%"></i></div><div class="sub">${note}</div></div>`;
+}
+function vMoney() {
+  const m = P.money || {}, pr = m.per_reel || {}, t = m.thinking || {};
+  return banners() + `<div><h2>Money and limits</h2><div class="sub">This month. Every limit is enforced by the Engine, not by good intentions.</div></div><div class="grid">
+    ${meter("AI pictures", m.images_inr, m.images_cap, "₹", "At the cap no new pictures are made until the 1st.")}
+    ${meter("GitHub runner minutes", m.runner_min, m.runner_limit, "min", "Near the limit, reserves and bank reels wait.")}
+    ${meter("Drive storage", m.storage_gb, m.storage_cap, "GB", "Old working files are binned every night.")}</div>
+    <div class="grid"><div class="card"><div class="sub">Per posted reel this month (${num(m.posted_month)} reels)</div><div class="big">${pr.images_inr == null ? "—" : "₹" + pr.images_inr}</div><div class="sub">pictures · ${pr.runner_min == null ? "—" : pr.runner_min + " runner minutes"}</div></div>
+    <div class="card"><div class="sub">Thinking runs (Claude tokens)</div><div>${esc(t.line || "Not measured yet. In a Workshop session say: measure thinking cost.")}</div><div class="sub">${esc(t.measured ? "Measured " + t.measured : "")}</div></div>
+    <div class="card"><div class="sub">This page</div><div class="big">0</div><div class="sub">tokens. It reads one small file from your Drive and writes one small note per button.</div></div></div>`;
+}
+function vSetup() {
+  const base = (P.volume || {}).base, acts = P.actions || [];
+  let h = banners() + `<div><h2>Setup</h2><div class="sub">Changes count from the next plan. Brand, niche and safety rules are changed in the Workshop.</div></div><div class="grid">
+    <div class="card"><div class="sub">Reels per day</div><div class="big">${num(base)}</div><div class="inline"><button type="button" data-act="vol" data-id="-1" ${base <= 3 ? "disabled" : ""}>One fewer</button><button type="button" data-act="vol" data-id="1" ${base >= 8 ? "disabled" : ""}>One more</button></div><div class="sub">Slots: ${esc((P.slots || []).join(" · "))}</div></div>
+    <div class="card"><div class="sub">Phase</div><div class="big">${esc(P.phase || "—")}</div><div class="inline"><button type="button" data-act="phase" data-id="${P.phase === "live" ? "rehearsal" : "live"}">${P.phase === "live" ? "Back to rehearsal" : "Go live"}</button></div><div class="sub">Rehearsal makes every reel and posts nothing.</div></div>
+    <div class="card"><div class="sub">Lineup</div><div style="font-weight:700">${esc(P.lineup || "—")}</div><div class="sub">Approval: ${esc(P.approval || "—")}. Use Hold posts to approve each reel yourself.</div></div></div>`;
+  h += `<div><h2>Your last actions</h2><div class="sub">What you asked for and what became of it.</div></div><div class="list rows">${acts.map(a => `<div class="row"><span class="t">${esc(String(a.at || "").replace(/^\d{4}-\d{2}-\d{2} /, "").replace(" IST", ""))}</span><span class="w" style="flex:1;min-width:0;overflow-wrap:anywhere">${esc(a.what || "")}<div class="sub">${esc(a.outcome || a.result || "")}${a.why ? " · " + esc(a.why) : ""}${a.undone ? " · undone" : ""}</div></span>${a.can_undo ? `<button type="button" class="quiet" data-act="undo" data-id="${esc(a.id)}">Undo</button>` : ""}</div>`).join("") || `<div class="row sub">Nothing yet. Every button you press is listed here once the Engine has picked it up.</div>`}</div>`;
+  h += `<div><h2>Jobs</h2></div><div class="list rows">${Object.entries(P.jobs || {}).map(([k, v]) => `<div class="row"><span class="t">${esc(k)}</span><span class="w"><span class="dot ${v.result === "success" ? "green" : "red"}"></span>${esc(v.result)}</span><span class="in">${esc(v.at || "")}</span></div>`).join("") || `<div class="row sub">No job results listed.</div>`}</div>`;
+  return h;
+}
+/* ---------- the guide: a small Markdown reader ---------- */
+function inline(s) { return esc(s).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>").replace(/(^|[\s(])\*([^*\s][^*]*)\*/g, "$1<i>$2</i>"); }
+function md(src) {
+  const L = src.split("\n"); let h = "", i = 0, toc = [];
+  const cells = l => l.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+  while (i < L.length) {
+    const l = L[i];
+    if (!l.trim()) { i++; continue; }
+    let m;
+    if ((m = l.match(/^(#{1,3})\s+(.*)/))) {
+      if (m[1].length === 1) h += `<h2 style="font-size:28px">${inline(m[2])}</h2>`;
+      else if (m[1].length === 2) { const id = "g" + toc.length; toc.push([id, m[2]]); h += `<h2 id="${id}">${inline(m[2])}</h2>`; }
+      else h += `<h3>${inline(m[2])}</h3>`;
+      i++; continue;
+    }
+    if (l.trim().startsWith("|") && L[i + 1] && /^\s*\|[\s:|-]+\|\s*$/.test(L[i + 1])) {
+      const hd = cells(l); i += 2; let rows = "";
+      while (i < L.length && L[i].trim().startsWith("|")) { rows += "<tr>" + cells(L[i]).map(c => `<td>${inline(c)}</td>`).join("") + "</tr>"; i++; }
+      h += `<div class="tablewrap"><table><tr>${hd.map(c => `<th>${inline(c)}</th>`).join("")}</tr>${rows}</table></div>`; continue;
+    }
+    if (l.startsWith(">")) { let t = []; while (i < L.length && L[i].startsWith(">")) { t.push(L[i].replace(/^>\s?/, "")); i++; }
+      const text = t.join(" "); h += `<blockquote><p>${inline(text)}</p><div><button type="button" data-copy="${esc(text)}">Copy this prompt</button></div></blockquote>`; continue; }
+    if (/^\s*(-|\d+\.)\s+/.test(l)) { const ord = /^\s*\d+\./.test(l); let items = "";
+      while (i < L.length && (/^\s*(-|\d+\.)\s+/.test(L[i]) || (/^\s{2,}\S/.test(L[i]) && L[i].trim()))) {
+        if (/^\s*(-|\d+\.)\s+/.test(L[i])) items += `<li>${inline(L[i].replace(/^\s*(-|\d+\.)\s+/, ""))}`; else items += " " + inline(L[i].trim());
+        i++; }
+      h += ord ? `<ol>${items}</ol>` : `<ul>${items}</ul>`; continue; }
+    let p = [l]; i++;
+    while (i < L.length && L[i].trim() && !/^(#|\||>|\s*(-|\d+\.)\s)/.test(L[i])) { p.push(L[i]); i++; }
+    h += `<p>${inline(p.join(" "))}</p>`;
+  }
+  return `<div class="toc">${toc.map(([id, t]) => `<button type="button" class="quiet" data-jump="${id}">${esc(t.replace(/^\d+\.\s*/, ""))}</button>`).join("")}</div><div class="guide">${h}</div>`;
+}
+let guideHtml = "";
+const VIEWS = { today: vToday, next: vNext, numbers: vNumbers, series: vSeries, money: vMoney, setup: vSetup, guide: () => guideHtml || (guideHtml = md(GUIDE)) };
+const tab = () => VIEWS[location.hash.slice(1)] ? location.hash.slice(1) : "today";
+function render() {
+  const keep = {}; document.querySelectorAll("#view input, #view textarea").forEach(el => { if (el.id && el.value) keep[el.id] = el.value; });
+  const focus = document.activeElement && document.activeElement.id;
+  $("#view").innerHTML = VIEWS[tab()]();
+  Object.entries(keep).forEach(([id, v]) => { const el = document.getElementById(id); if (el) el.value = v; });
+  if (focus && document.getElementById(focus)) document.getElementById(focus).focus();
+  head();
+}
+
+/* ---------- buttons ---------- */
+const reel = id => (P.today.reels || []).find(r => r.id === id) || {};
+const LABEL = { hold: "hold", unhold: "release", skip: "skip", post_now: "post now", retry: "make again" };
+document.addEventListener("click", e => {
+  const sw = e.target.closest(".switch button");
+  if (sw) { const mode = sw.dataset.mode; if (mode === P.switch) return;
+    if (mode === "sleep" || !mcp) return void send({ do: "switch", mode }, "switch to " + mode.replace("_", " "));
+    openDrawer = { id: "setup", kind: "confirm", text: mode === "run" ? "Switch to Run? Reels post at their slots again." : "Switch to Hold posts? Reels are still made; nothing posts until you press Post now on a reel.", yes: "Yes, switch", action: { do: "switch", mode }, label: "switch to " + mode.replace("_", " ") };
+    scrollTo(0, 0); return render(); }
+  if (e.target.id === "refresh") return refresh();
+  const cp = e.target.closest("[data-copy]");
+  if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Copied. Paste it into a Claude Code session."), () => { const r = document.createRange(); r.selectNodeContents(cp.closest("blockquote").querySelector("p")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it with your keyboard."); }); return; }
+  const j = e.target.closest("[data-jump]"); if (j) { const el = document.getElementById(j.dataset.jump); if (el) el.scrollIntoView({ block: "start" }); return; }
+  const chip = e.target.closest("[data-chip]"); if (chip) return chip.setAttribute("aria-pressed", String(chip.getAttribute("aria-pressed") !== "true"));
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const act = b.dataset.act, id = b.dataset.id, r = reel(id), name = r.hook || id;
+  const done = ok => { if (ok) { openDrawer = null; render(); } };
+  if (act === "close") { openDrawer = null; return render(); }
+  if (["words", "remake", "love", "notgood"].includes(act)) { openDrawer = { id, kind: act }; return render(); }
+  if (act === "skip") { openDrawer = { id, kind: "confirm", text: `Skip "${name}"? It will not post today. A skip cannot be undone.`, yes: "Yes, skip it", action: { do: "skip", reel_id: id }, label: "skip", key: id }; return render(); }
+  if (act === "post_now") { openDrawer = { id, kind: "confirm", text: `Post "${name}" at the Engine's next job (${pickup()})? Watch it first if you have not.`, yes: "Yes, post it", action: { do: "post_now", reel_id: id }, label: "post now", key: id }; return render(); }
+  if (act === "yes" && openDrawer) return void send(openDrawer.action, openDrawer.label, openDrawer.key).then(done);
+  if (["hold", "unhold", "retry"].includes(act)) return void send({ do: act, reel_id: id }, LABEL[act], id);
+  if (act === "send-words") { const set = {}; document.querySelectorAll(".drawer [data-path]").forEach(el => { if (el.value.trim() !== String((r.words || {})[el.dataset.path] || "").trim()) set[el.dataset.path] = el.value.trim(); });
+    if (!Object.keys(set).length) return toast("Nothing was changed."); return void send({ do: "edit", reel_id: id, set }, "change words", id).then(done); }
+  if (act === "send-remake") { const hook = ($("#rm-hook").value || "").trim(); if (!hook) return toast("Type the new hook first."); return void send({ do: "remake", reel_id: id, hook }, "new version", id).then(done); }
+  if (act === "send-love" || act === "send-notgood") { const reasons = [...document.querySelectorAll("#fb-chips [aria-pressed=true]")].map(x => x.textContent), text = ($("#fb-text").value || "").trim();
+    if (!reasons.length && !text) return toast("Pick a reason or type a line."); return void send({ do: "feedback", reel_id: id, series: r.series, rating: act === "send-love" ? 5 : 2, reasons, text }, act === "send-love" ? "love it" : "not good", id).then(done); }
+  if (act === "idea") { const el = $("#idea"), text = (el.value || "").trim(); if (!text) return toast("Type the idea first."); return void send({ do: "idea", text }, "idea").then(ok => { const x = $("#idea"); if (ok && x) x.value = ""; }); }
+  if (act === "ack") return void send({ do: "ack", alert: "all" }, "alerts read");
+  if (act === "rule") { const el = document.getElementById(b.dataset.input || "rule-all"), text = (el.value || "").trim(); if (!text) return toast("Type the rule first."); return void send({ do: "note", series: id, text }, "new rule", id === "all" ? "" : id).then(ok => { const x = document.getElementById(b.dataset.input || "rule-all"); if (ok && x) x.value = ""; }); }
+  if (act === "pause" || act === "resume") return void send({ do: "series", id, set: { paused: act === "pause" } }, act, id);
+  if (act === "undo") return void send({ do: "undo", id }, "undo");
+  if (act === "vol") { const n = ((P.volume || {}).base || 6) + Number(id); return void send({ do: "set", settings: { volume: { base: n } } }, n + " reels a day"); }
+  if (act === "phase") { scrollTo(0, 0); openDrawer = { id: "setup", kind: "confirm", text: id === "live" ? "Go live? Reels will post to Instagram at their slots." : "Back to rehearsal? Reels are still made, nothing posts.", yes: id === "live" ? "Yes, go live" : "Yes, rehearsal", action: { do: "set", settings: { phase: id } }, label: id }; return render(); }
+});
+addEventListener("hashchange", () => { openDrawer = null; render(); scrollTo(0, 0); });
+setInterval(tick, 1000);
+render(); connect();
+</script>
