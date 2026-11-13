@@ -536,7 +536,8 @@ Every Reel card has:
 
 ### 9.3 Safety limits on self-change
 - At most 3 rule changes per series per week, and one variable per test.
-- Auto-revert: if a top-4 metric falls more than 20% for a week after a change, the change is undone and logged.
+- Auto-revert: if a change's series number (its success metric) falls 20% or more over the 14 days after it, compared with the 14 days before (5+ reels each side), the change is undone and logged. The Engine works this out in the week table; the Weekly run applies the Undo. Harish's own rules are never undone by numbers: he is shown both (8.4).
+- No rule changes until 10 reels are measured over at least 14 days (the small numbers rule).
 - The playbook is capped at one page per series. Old or contradicted rules are pruned monthly.
 - The process is reviewed too: the step that failed most often that week gets one fix.
 
@@ -1271,9 +1272,11 @@ Open the one contact-sheet image for the trailer. Choose 2–4 second moments th
 screen's request. Output only: screen number, start time, length. Never open individual frames.
 
 # weekly-learn
-Read data/week_table.md only. For each series: weakest priority metric, one cause, one fix from
-AGENT.md table 2.4. Output at most 5 numbered changes: target, before → after, evidence, test
-or rule. Respect the limits in config/agent.yaml learning.
+Read data/week_table.md only. First: every change it marks REVERT gets its Undo applied, logged as a
+new numbered change. Changes marked "Harish's own rule" stay; put their numbers in the weekly report.
+If the table says "Small numbers rule", make no rule changes. Otherwise, for each series: weakest
+priority metric, one cause, one fix from AGENT.md table 2.4. Output at most 5 numbered changes:
+target, before → after, evidence, test or rule, undo. Respect the limits in config/agent.yaml learning.
 
 # series-pitch
 One pitch = name, one-line idea, evidence with numbers, template used, cost per reel, 3 sample
