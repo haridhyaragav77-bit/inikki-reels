@@ -1202,9 +1202,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 | `META_APP_SECRET` | App secret |
 | `GDRIVE_ROOT_FOLDER_ID` | `1Bi3SlmJK-KyJ7JMM6MyTnKu2evIAE9cJ` |
 | `GDRIVE_SERVICE_ACCOUNT_JSON` | Everything inside the downloaded `.json` file |
-| `GDRIVE_OAUTH_CLIENT_ID` | From your one-time Drive sign-in (steps below) |
-| `GDRIVE_OAUTH_CLIENT_SECRET` | From your one-time Drive sign-in |
-| `GDRIVE_OAUTH_REFRESH_TOKEN` | From your one-time Drive sign-in |
+| `GDRIVE_OAUTH_REFRESH_TOKEN` | Your one-time Drive sign-in: the single line `{"client_id": …, "client_secret": …, "refresh_token": …}` (steps below). If you made it earlier with `tools/drive_signin.py`, it already works. |
 
 4. Delete your notes file and the `.json` file from your laptop.
 5. Tell the build session "keys are in". It runs the smoke tests and reports each as OK or not.
@@ -1214,7 +1212,7 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 2. Credentials → Create credentials → OAuth client ID → Web application. Add the redirect address `https://developers.google.com/oauthplayground`. Copy the Client ID and Client secret.
 3. Open `developers.google.com/oauthplayground` → gear icon → tick "Use your own OAuth credentials" → paste both. In Step 1 type `https://www.googleapis.com/auth/drive`, click Authorize, sign in with your Google account, allow.
 4. Step 2 → "Exchange authorization code for tokens" → copy the **Refresh token**.
-5. Add the three as GitHub secrets (names above), plus `GDRIVE_ROOT_FOLDER_ID`. The "Make reels" run then says "ready" and puts every reel in Drive.
+5. Make one line: `{"client_id": "<Client ID>", "client_secret": "<Client secret>", "refresh_token": "<Refresh token>"}` and save it as the GitHub secret `GDRIVE_OAUTH_REFRESH_TOKEN` (never paste it into a chat). With `GDRIVE_ROOT_FOLDER_ID` also set, the "Make reels" run says "ready" and puts every reel in Drive.
 
 **Later:**
 - Two more secrets (`BRAIN_FIRE_URL`, `BRAIN_FIRE_TOKEN`) are created in Phase 4 for the breaking-news trigger. The build tells you when.

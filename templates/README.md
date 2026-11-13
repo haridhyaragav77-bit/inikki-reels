@@ -15,6 +15,8 @@ Examples for every series are in `plans/2026-11-13/`.
 | `assets` | Stills: `{ "src": "engine/.cache/stills/...", "crop": [x, y, w, h] }` (crop in 0–1, used to cut baked-in trailer text) |
 | `screens` | The reel, screen by screen (below) |
 | `package` | Caption lines, hashtags, cover title, slot, first comment |
+| `drive_folder` | Where the finished reel goes in Drive (`rehearsal` until go-live, then `finished`); the date folder is added by itself |
+| `voice_tg` (screen) | The Tanglish line, word for word with the Tamil `voice`, for subtitles |
 
 ## Screen: common fields
 | Field | Meaning |
