@@ -83,7 +83,7 @@ def retire_track(drive, track_name, why):
         print("could not retire track:", e, file=sys.stderr)
 
 
-def publish(drive, day, r, ctl, dry=False):
+def publish(drive, day, r, ctl, dry=False, forced=False):
     """Upload and publish one made reel. With dry=True: upload, let Instagram process and check it, never publish."""
     from .instagram import Instagram, InstagramError
     rid = r["reel_id"]
@@ -110,7 +110,8 @@ def publish(drive, day, r, ctl, dry=False):
             day.upsert(rid, dry_upload=f"ok {status.stamp()}")
             print(f"Dry upload worked for {rid}: Instagram processed it and it was NOT published (the container expires by itself).")
             return True
-        if Control(drive).mode != "run":       # read the switch once more, right before publishing (AGENT.md 12.1)
+        mode = Control(drive).mode             # read the switch once more, right before publishing (AGENT.md 12.1)
+        if mode == "sleep" or (mode != "run" and not forced):
             day.upsert(rid, state="held", reason="The master switch changed just before posting.")
             return False
         mid, info = ig.publish(cid)
@@ -137,8 +138,9 @@ def publish(drive, day, r, ctl, dry=False):
         return False
 
 
-def deliver(drive, day, r, ctl, respect):
-    """Decide what happens to the due reel: post, rehearse, hold or skip."""
+def deliver(drive, day, r, ctl, respect, forced=False):
+    """Decide what happens to the due reel: post, rehearse, hold or skip.
+    forced: Harish pressed "post now" on this reel, which also counts while the switch is on Hold posts (never on Sleep)."""
     rid = r["reel_id"]
     why = stopper(r, ctl, respect, status.now())
     if why:
@@ -147,10 +149,10 @@ def deliver(drive, day, r, ctl, respect):
     if ctl.phase != "live":
         day.upsert(rid, state="rehearsed", reason="Rehearsal: this is when it would have posted.")
         return "rehearsed"
-    if ctl.mode != "run":
+    if ctl.mode != "run" and not forced:
         day.upsert(rid, state="held", reason="Not posted: the master switch was on Hold.")
         return "held"
-    return "posted" if publish(drive, day, r, ctl) else "failed"
+    return "posted" if publish(drive, day, r, ctl, forced=forced) else "failed"
 
 
 def breaking_now(drive, day, rid, ctl):
@@ -177,7 +179,7 @@ def choose(day, bank, now, ctl):
     for r in sorted(due, key=lambda x: x["post_at"]):
         if r.get("state") == "ready":
             return r
-        reserves = [x for x in day.reels("ready") if x.get("reserve")]
+        reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual")]   # a new version waits for "post now"
         sub = (next((x for x in reserves if x.get("for_slot") in (r.get("slot"), r["reel_id"])), None)
                or next((x for x in reserves if x.get("series") == r.get("series")), None) or (reserves[0] if reserves else None))
         if sub:
@@ -212,9 +214,12 @@ def wait_for_slot(ctl, max_wait_min=15):
     return None
 
 
+RELEASABLE = ("Held by Harish.", "Not posted: the master switch was on Hold.")
+
+
 def apply_commands(ctl, day):
     """One-off commands from the Control Room (control/commands.jsonl): hold, unhold, post_now, skip."""
-    for c in ctl.lines("commands.jsonl")[-30:]:
+    for c in ctl.lines("commands.jsonl")[-80:]:
         r = day.get(c.get("reel_id", ""))
         if not r:
             continue
@@ -225,8 +230,9 @@ def apply_commands(ctl, day):
             day.upsert(r["reel_id"], state="ready", reason=None)
         elif cmd == "skip" and st in ("ready", "held", "planned"):
             day.upsert(r["reel_id"], state="skipped", reason="Skipped by Harish.")
-        elif cmd == "post_now" and st == "ready" and not r.get("now_done"):
-            day.upsert(r["reel_id"], post_at=status.now().isoformat(timespec="seconds"), reserve=False, now_done=True)
+        elif cmd == "post_now" and not r.get("now_done") and (st == "ready" or (st == "held" and str(r.get("reason", "")).startswith(RELEASABLE))):
+            # also releases a reel Harish held, or one that waited while the switch was on Hold; never one that failed inspection
+            day.upsert(r["reel_id"], state="ready", reason=None, post_at=status.now().isoformat(timespec="seconds"), reserve=False, now_done=True)
 
 
 def extras(drive, ctl):
@@ -275,9 +281,13 @@ def main():
         else:
             result = "dry upload ok" if publish(drive, day, r, ctl, dry=True) else "dry upload failed"
     else:
+        respect, out = respect_today(drive, day.date, ctl), []
+        for r in [x for x in day.reels("ready") if x.get("now_done") and x.get("drive_reel")]:      # "post now" from the Control Room
+            out.append(f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect, forced=True) + " (post now)")
         r = choose(day, bank, status.now(), ctl)
         if r:
-            result = f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect_today(drive, day.date, ctl))
+            out.append(f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect))
+        result = "; ".join(out) or result
     day.save()
     bank.save()
     status.write(drive, "post.json", {"last": result, "phase": ctl.phase, "switch": ctl.mode})
