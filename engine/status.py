@@ -73,6 +73,12 @@ def job_end(name, result):
     if result not in ("success", "skipped", "cancelled"):
         alert(drive, f"The {name} job did not finish", f"The {name} job stopped with: {result}.",
               "One reel or one step is affected, not the day; the next run starts fresh.", f"Nothing, unless it repeats. Details: {run}", level="warn")
+    if drive:                                    # the Control Room's one file, fresh after every job (AGENT.md 13.3)
+        try:
+            from . import panel
+            panel.save(drive)
+        except Exception as e:
+            print("panel not updated:", str(e)[:200])
 
 
 if __name__ == "__main__":
