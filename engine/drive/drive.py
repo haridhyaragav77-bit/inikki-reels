@@ -29,6 +29,16 @@ FOLDER = "application/vnd.google-apps.folder"
 def session():
     """An authorised HTTP session: Harish's sign-in first (can upload), else the service account (read)."""
     cid, sec, tok = (os.environ.get(k, "").strip() for k in ("GDRIVE_OAUTH_CLIENT_ID", "GDRIVE_OAUTH_CLIENT_SECRET", "GDRIVE_OAUTH_REFRESH_TOKEN"))
+    # The sign-in secret may also be the single line {"client_id":..,"client_secret":..,"refresh_token":..}
+    # made by the earlier sign-in script; accept both shapes.
+    if tok.startswith("{") or '"refresh_token"' in tok:
+        import re
+        m = re.search(r"\{[^{}]*refresh_token[^{}]*\}", tok, re.S)
+        try:
+            d = json.loads(m.group(0)) if m else {}
+            cid, sec, tok = d.get("client_id", cid), d.get("client_secret", sec), d.get("refresh_token", "")
+        except ValueError:
+            tok = ""
     sa = os.environ.get("GDRIVE_SERVICE_ACCOUNT_JSON", "").strip()
     if not ((cid and sec and tok) or sa):
         return None, None
@@ -121,7 +131,7 @@ def main():
     root = os.environ.get("GDRIVE_ROOT_FOLDER_ID", "").strip()
     if cmd == "check":
         if not s or not root:
-            missing = [k for k in ("GDRIVE_ROOT_FOLDER_ID", "GDRIVE_OAUTH_CLIENT_ID", "GDRIVE_OAUTH_CLIENT_SECRET", "GDRIVE_OAUTH_REFRESH_TOKEN") if not os.environ.get(k)]
+            missing = [k for k in ("GDRIVE_ROOT_FOLDER_ID", "GDRIVE_OAUTH_REFRESH_TOKEN", "GDRIVE_SERVICE_ACCOUNT_JSON") if not os.environ.get(k)]
             return done(ok=False, ready=False, reason="Drive keys are not set yet", missing=missing)
         try:
             names = sorted(f["name"] for f in children(s, root, folders_only=True))
@@ -158,7 +168,7 @@ def main():
                 continue
             date = plan["id"][:10]
             title = plan.get("package", {}).get("cover", plan["id"]).replace("/", "-")
-            parent = folder_path(s, root, f"{folder}/{date}")
+            parent = folder_path(s, root, f"{plan.get('drive_folder', folder)}/{date}")
             f = upload(s, mp4, parent, f"{date} · {title}.mp4")
             sent.append(f.get("name"))
             ins = os.path.join(ROOT, "engine", ".work", plan["id"], "inspect.json")
