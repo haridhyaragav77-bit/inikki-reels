@@ -17,6 +17,9 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
 - Pictures: the film's own official stills, posters or trailer frames (AGENT.md 5.11). An official YouTube frame is
   {"src": "engine/.cache/stills/<film>/<youtube id>_maxres2.jpg"} (maxresdefault, maxres1, maxres2, maxres3);
   anything else gives "fetch": {"url": "..."}. Add "crop": [x, y, w, h] (0-1) to cut baked-in text.
+  A trailer's YouTube id: the brief's library list, or curl -s -A Mozilla/5.0
+  "https://www.youtube.com/results?search_query=<film>+official+trailer" | grep -o '"videoId":"[^"]*"' | head -3;
+  open https://i.ytimg.com/vi/<id>/maxresdefault.jpg to check it is the film's official trailer.
 - Graphics land on a word the voice says: {"cue": {"word": "<a word from that screen's Tamil line>"}}.
 - Music: 1-3 parts from engine/music_index.json that follow the story; the first starts on screen 0. Bold, never subtle.
 - Package: caption lines, 3-5 hashtags, cover title (it names the reel in Drive), slot, first comment.

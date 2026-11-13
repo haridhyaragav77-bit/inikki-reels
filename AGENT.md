@@ -1041,7 +1041,7 @@ Rules:
 ```
 
 ### Block D — Scheduled thinking runs
-Create at claude.ai/code/routines ("scheduled tasks"). For each: Repository `inikki-reels`, the `inikki-reels` environment (it can reach YouTube frames, Wikipedia posters, Letterboxd and JustWatch), schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
+Made by the build session on 13 Nov 2026 as scheduled tasks (claude.ai/code/routines lists them); to make them again by hand, for each: Repository `inikki-reels`, the `inikki-reels` environment (it can reach YouTube frames, Wikipedia posters, Letterboxd and JustWatch), schedule in IST, the Google Drive connector on (the runs open trailer shot grids there; the brief carries your Control Room settings). Daily runs: the faster model. Weekly and monthly: the most capable. Turn on phone notifications for Refresh, Weekly and Breaking.
 Each run saves its work on its own branch `claude/brain-<run>-<date>`. The Engine's Sync job checks it and copies only allowed text files into the live settings.
 The Breaking task uses an **API** trigger instead of a schedule: Edit → Trigger → + → API → Generate token. Put the Fire URL in the GitHub secret `BRAIN_FIRE_URL` and the token in `BRAIN_FIRE_TOKEN`.
 
@@ -1252,6 +1252,9 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
 - Pictures: the film's own official stills, posters or trailer frames (AGENT.md 5.11). An official YouTube frame is
   {"src": "engine/.cache/stills/<film>/<youtube id>_maxres2.jpg"} (maxresdefault, maxres1, maxres2, maxres3);
   anything else gives "fetch": {"url": "..."}. Add "crop": [x, y, w, h] (0-1) to cut baked-in text.
+  A trailer's YouTube id: the brief's library list, or curl -s -A Mozilla/5.0
+  "https://www.youtube.com/results?search_query=<film>+official+trailer" | grep -o '"videoId":"[^"]*"' | head -3;
+  open https://i.ytimg.com/vi/<id>/maxresdefault.jpg to check it is the film's official trailer.
 - Graphics land on a word the voice says: {"cue": {"word": "<a word from that screen's Tamil line>"}}.
 - Music: 1-3 parts from engine/music_index.json that follow the story; the first starts on screen 0. Bold, never subtle.
 - Package: caption lines, 3-5 hashtags, cover title (it names the reel in Drive), slot, first comment.
@@ -1301,8 +1304,12 @@ something. One question, with 2–4 options. Nothing about files, code or tools.
 | OpenAI key | Created; $5 credit, auto-recharge off, $6 monthly limit |
 | Turn on the **Google Sheets API** in the same Google Cloud project (search "Google Sheets API" → Enable) | To do, 1 minute |
 | Add the keys to GitHub | **Last step**, below |
-| Reel maker (Engine "Make" job): plan in, checked MP4 out. Tamil voice with word timing, music sections from your Drive library, 5 looks (Stage, Bulletin, Poster Wall, Verdict, Flash), stage 8 checks | **Built 13 Nov 2026**, 5 sample reels made. Cinematic and Diorama next; then it moves to GitHub Actions |
-| Drive bridge: reels uploaded to Drive at full quality from the cloud (any size), music read from your Drive folder | **Built 13 Nov 2026.** Waiting for the one-time Drive sign-in keys (19.2). Until then, phone previews (under 3 MB) go to `rehearsal/<date>/` from the chat session. |
+| Reel maker (Engine "Make" job): plan in, checked MP4 out. Tamil voice with word timing, music sections from your Drive library, 5 looks (Stage, Bulletin, Poster Wall, Verdict, Flash), stage 8 checks | **Done 13 Nov 2026**, in the cloud (GitHub Actions); the reference set is in Drive `reference-reels/2026-11-13/`. Cinematic and Diorama still use their earlier looks |
+| Drive bridge: reels uploaded to Drive at full quality from the cloud (any size), music read from your Drive folder | **Done 13 Nov 2026** |
+| The two builds joined, on `main`; the schedules run from there | **Done 13 Nov 2026.** Phase: rehearsal (nothing posts; reels go to Drive `rehearsal/<date>/`) |
+| Instagram posting permission | **Working 13 Nov 2026** (Meta's "API access blocked" spell on 12 Nov cleared on Meta's side; the health check confirms posting permission) |
+| The 5 thinking runs (Block D) | **Made 13 Nov 2026** as scheduled tasks by the build session. Optional: on the Breaking task, add an API trigger and put its URL and token in the GitHub secrets `BRAIN_FIRE_URL` and `BRAIN_FIRE_TOKEN`, so strong news wakes it at once (otherwise breaking leads wait for the 16:37 Refresh run) |
+| Go live | When you say so, after a rehearsal day you like: the switch moves from rehearsal to live |
 | Instagram display name and bio | To do, 2 minutes |
 | Trusted sources list and competitor watchlist | To do, in the Control Room when asked |
 
