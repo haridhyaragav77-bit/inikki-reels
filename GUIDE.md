@@ -39,6 +39,8 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 | 17:22 | Engine | Makes anything new from the Refresh run |
 | 23:40 | Engine | Nightly: all numbers, the dashboard sheet, clean-up |
 
+**What keeps time:** GitHub's own timer runs this project's jobs about 7 hours late, so the posts, the briefs and the nightly job are started on time by a small Claude "clock" task. It costs a little (13 short ticks a day on the cheapest model). Section 12 has a free replacement.
+
 **Your moments, if you want them:**
 - **Morning, after about 07:00:** today's reels are made. Preview them on the page. Change words, hold or skip before the first slot.
 - **Evening, after 17:00:** read the digest (6 lines) on the page.
@@ -214,6 +216,13 @@ Every alert says: what happened → what the system already did → what you nee
 
 **Emergency:** press **Sleep**. Nothing posts until you press **Run**.
 
+### A free clock, if you want one (10 minutes, once)
+The Claude clock works, but it spends a few tokens every day. A free outside pinger does the same job with none:
+1. On GitHub: Settings → Developer settings → Fine-grained tokens → new token for `inikki-reels` only, permission **Actions: Read and write**.
+2. On cron-job.org (free): one job per line of the clock table in `runs/README.md`. Each job sends a POST to `https://api.github.com/repos/haridhyaragav77-bit/inikki-reels/actions/workflows/<workflow>.yml/dispatches` with the header `Authorization: Bearer <your token>` and the body `{"ref":"main"}` (for a daily job: `{"ref":"main","inputs":{"job":"brief-plan"}}`).
+3. Tell a Workshop session "the outside clock is set up": it switches the Claude clock tasks off.
+Or ask the Workshop: "walk me through the free clock, one step at a time."
+
 ## 13. The skills (what makes repeat work cheap)
 
 A skill is a short card that tells Claude exactly how to do one repeated job, so it does not work it out again each time.
@@ -269,7 +278,10 @@ Short is best: `status` · `next` · `tomorrow` · `numbers` · `money` · `aler
 > Use the workshop skill. Change the [Plan] run card so that [what you want]. Show me the before and after lines.
 
 **Check the clock**
-> Use the workshop skill. Check that the Engine's scheduled jobs fired in the last 24 hours and that the thinking runs started. List anything that did not run and fix what you can.
+> Use the workshop skill. Check that the Engine's jobs ran on time in the last 24 hours (posts at their slots, both briefs, the nightly job) and that the thinking runs started. Say whether GitHub's own timer is still late. List anything that did not run and fix what you can.
+
+**Renew the clock** (every few weeks)
+> Use the workshop skill. Make a new clock chat from the rules in runs/README.md, move the clock tasks to it, and switch the old ones off.
 
 **Measure thinking cost**
 > Use the workshop skill. Read the usage of the last Plan, Refresh and Weekly sessions (tag inikki-brain), work out tokens and cost per reel, write one line to data/notes/usage.json for the panel, and tell me the numbers in a small table.

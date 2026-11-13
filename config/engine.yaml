@@ -19,6 +19,14 @@ drive:
 runner:
   minutes_month: 2000         # GitHub's free minutes for a private repository
   tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
+# Jobs the Claude clock tasks start on time (AGENT.md 4.3; times are IST: "05:12" daily, "sun 22:12", "1 22:42" on that
+# day of the month). Post is started at every slot of config/agent.yaml. The Control Room's "next runs" list reads this.
+clock:
+  - { what: "Brief for the Plan run", kind: daily, at: "05:12" }
+  - { what: "Brief for the Refresh run", kind: daily, at: "16:12" }
+  - { what: "Brief for the Weekly run", kind: daily, at: "sun 22:12" }
+  - { what: "Brief for the Monthly run", kind: daily, at: "1 22:42" }
+  - { what: "Nightly: numbers, dashboard, clean-up", kind: daily, at: "23:40" }
 # What each clock line of the Engine's jobs does, for the Control Room's "next runs" list (engine/panel.py).
 # The times themselves are read from .github/workflows/*.yml; a line missing here shows under its job's name.
 schedule_labels:

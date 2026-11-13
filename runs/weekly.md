@@ -5,10 +5,10 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
 1. `pip install -q -r requirements-light.txt` and `TODAY=$(TZ=Asia/Kolkata date +%F)`. You are on a fresh copy of `main`.
    Work on the branch you were told to push to: `git checkout -q -B claude/brain-weekly-$TODAY`.
 2. Skill `quiet-exit` (the switch, then `data/brief.md`). If there is nothing to do, stop: push nothing.
-3. Check the brief's first line. It should name this run and today's date. If it is older, the Engine's brief job did not
-   run: if you have a GitHub tool that can start a workflow, start `daily.yml` on `main` with job `brief-weekly`, wait
-   2 minutes, `git pull -q origin main`, and read the brief again. Still old: one line in `data/out/alerts.md`
-   ("the brief was not written today"), then carry on with its slots and today's date.
+3. Check the brief's first line. It must read `# Brief · weekly run · <today's date>`. If it names another run or another
+   day, the right brief is missing: if you have a GitHub tool that can start a workflow, start `daily.yml` on `main`
+   with job `brief-weekly`, wait 2 minutes, `git pull -q origin main`, and read the brief again. Still wrong: one line
+   in `data/out/alerts.md` ("today's weekly brief was not written"), then carry on with its slots and today's date.
 
 ## The work
 - Skill `weekly-learn` on `data/week_table.md`. Analyst, Virality Advisor, Marketing Expert: at most 3 rule changes per
