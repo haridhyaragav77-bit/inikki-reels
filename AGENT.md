@@ -641,10 +641,10 @@ Undo is one tap: switch back to the old kit. Posted reels are not changed.
 | Mode | What runs | Use it when |
 | --- | --- | --- |
 | **Run** | Everything | Normal |
-| **Hold posts** | Planning and making continue. Nothing posts. | You want to look before anything goes out |
+| **Hold posts** | Planning and making continue. Nothing posts by itself; a reel you release with **Post now** still posts. | You want to look before anything goes out |
 | **Sleep** | Nothing. Thinking runs end in one step. Only the health check runs. | A break, a crisis, a rebuild |
 
-One tap on the Global card, or say "stop everything". The Engine checks the switch right before every post, so nothing posts after you tap. A reel that comes due while posts are on Hold is marked held and is not posted later. News reels older than 24 hours never post. On **Resume**, news older than 24 hours is dropped and the breakdown bank is used first. Each series also has its own pause.
+One tap on the Global card, or say "stop everything". The Engine checks the switch right before every post, so nothing posts after you tap. A reel that comes due while posts are on Hold is marked held and is not posted later, unless you press **Post now** on it. News reels older than 24 hours never post. On **Resume**, news older than 24 hours is dropped and the breakdown bank is used first. Each series also has its own pause.
 
 ### 12.2 Niche switch (for example cinema → food)
 A **niche profile** holds everything that is about the topic:
