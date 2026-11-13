@@ -2,15 +2,12 @@ name: daily
 # Engine jobs on a clock (AGENT.md 4.3): health check, the brief before each thinking run, and the nightly
 # stats + dashboard + clean-up. Times are IST; cron lines are UTC. Text results are committed to the repository.
 on:
-  push:
-    branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/daily.yml"]
   workflow_dispatch:
     inputs:
       job:
         description: "Which job"
         type: choice
-        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test]
+        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel]
         default: brief-plan
   schedule:
     - cron: "31 22 * * *"     # 04:01 IST  health
@@ -22,7 +19,7 @@ on:
 
 permissions:
   contents: write
-  actions: read
+  actions: write        # "control" starts Make for the reels Harish changed
 
 concurrency:
   group: daily-${{ github.event.schedule || inputs.job || 'push' }}
@@ -76,11 +73,17 @@ jobs:
       - name: Clean-up
         if: env.JOB == 'nightly' || env.JOB == 'clean-dry'
         run: python -m engine.clean ${{ env.JOB == 'clean-dry' && '--dry' || '' }}
+      - name: Control Room changes now (the inbox, word edits, new versions)
+        if: env.JOB == 'control'
+        run: python -m engine.edits
+      - name: Control Room panel now
+        if: env.JOB == 'panel'
+        run: python -m engine.panel --print
       - name: News feeds test
         if: env.JOB == 'watch-test'
         run: python -m engine.watch --test
       - name: Save the text results (brief, Control Room copy, metrics, packed plans)
-        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test'
+        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel'
         run: |
           git add -A data plans
           git diff --cached --quiet && exit 0

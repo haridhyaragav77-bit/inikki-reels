@@ -1,6 +1,6 @@
 # Engine settings (code reads these; nothing brand- or niche-specific lives here)
 drive:
-  folders: [control, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
+  folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
   music_folder_aliases: ["music", "background music", "background music (1)"]
   never_auto_delete: [reference-reels, meme-bank, music, control]
   retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
@@ -14,11 +14,25 @@ drive:
     warn_gb: 6
     tight_gb: 7.5
     keep_top_share: 0.10
+  dashboard_sheet_name: "iNiKKi Dashboard"
+  dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
 runner:
   minutes_month: 2000         # GitHub's free minutes for a private repository
   tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
-  dashboard_sheet_name: "iNiKKi Dashboard"
-  dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
+# What each clock line of the Engine's jobs does, for the Control Room's "next runs" list (engine/panel.py).
+# The times themselves are read from .github/workflows/*.yml; a line missing here shows under its job's name.
+schedule_labels:
+  post: "Post"
+  make: "Make reels"
+  trailers: "Fetch trailers"
+  music: "Music index"
+  daily:
+    "31 22 * * *": "Health check"
+    "42 23 * * *": "Brief for the Plan run"
+    "42 10 * * *": "Brief for the Refresh run"
+    "42 16 * * 0": "Brief for the Weekly run"
+    "12 17 1 * *": "Brief for the Monthly run"
+    "10 18 * * *": "Nightly: numbers, dashboard, clean-up"
 
 openai:
   image_models: [gpt-image-1-mini, gpt-image-1]     # first that works is used

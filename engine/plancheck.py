@@ -55,14 +55,14 @@ def _music_keys():
         return set(json.load(f)["tracks"])
 
 
-def _recommended_before(reel_id):
+def _recommended_before(reel_id, also=None):
     """Films other reels have already recommended (knowledge/recommended_log.csv)."""
     import csv
     p = niche_dir() / "knowledge" / "recommended_log.csv"
     if not p.exists():
         return set()
     with open(p, encoding="utf-8") as f:
-        return {r["film"].strip().lower() for r in csv.DictReader(f) if r.get("reel_id") != reel_id}
+        return {r["film"].strip().lower() for r in csv.DictReader(f) if r.get("reel_id") not in (reel_id, also)}
 
 
 def _walk(v, key):
@@ -212,7 +212,7 @@ def check_look(plan, series):
         films = [(n, s) for n, s in enumerate(screens, 1) if s.get("kind") == "film"]
         if len(films) not in (1, 3, 4, 5):
             W.append(f"{len(films)} films; a list is 3 to 5 (or one film you missed).")
-        before = _recommended_before(rid)
+        before = _recommended_before(rid, plan.get("remake_of"))     # a new version of a posted reel keeps its films
         for n, s in films:
             name = str(s.get("title") or f"screen {n}")
             r = s.get("rating")

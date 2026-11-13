@@ -177,7 +177,7 @@ def choose(day, bank, now, ctl):
     for r in sorted(due, key=lambda x: x["post_at"]):
         if r.get("state") == "ready":
             return r
-        reserves = [x for x in day.reels("ready") if x.get("reserve")]
+        reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual")]   # a new version waits for "post now"
         sub = (next((x for x in reserves if x.get("for_slot") in (r.get("slot"), r["reel_id"])), None)
                or next((x for x in reserves if x.get("series") == r.get("series")), None) or (reserves[0] if reserves else None))
         if sub:
@@ -214,7 +214,7 @@ def wait_for_slot(ctl, max_wait_min=15):
 
 def apply_commands(ctl, day):
     """One-off commands from the Control Room (control/commands.jsonl): hold, unhold, post_now, skip."""
-    for c in ctl.lines("commands.jsonl")[-30:]:
+    for c in ctl.lines("commands.jsonl")[-80:]:
         r = day.get(c.get("reel_id", ""))
         if not r:
             continue

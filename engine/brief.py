@@ -291,6 +291,15 @@ def build(drive, run, date):
          + f" · Respect mode: **{'ON: ' + respect.get('why', '') if respect else 'off'}** · Approval: {ctl.settings.get('approval')}",
          f"Control Room settings copied to data/control/: {', '.join(got) or 'none yet'}", ""]
     L += ["## To do", nothing] if nothing else ["## To do"] + [f"{i}. {t}" for i, t in enumerate(todo, 1)]
+    rules = [f"- every series: {n['text']} ({n.get('at', '')})" for n in ctl.notes()]
+    for p in sorted((niche_dir() / "series").glob("*/series.yaml")):
+        rules += [f"- {p.parent.name}: {n['text']} ({n.get('at', '')})" for n in ctl.notes(p.parent.name)]
+    if rules:
+        L += ["", "## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)"] + rules
+    ideas = [c for c in load_json_lines((OUT / "control" / "commands.jsonl").read_text(encoding="utf-8")) if c.get("cmd") == "idea"
+             and str(c.get("at", ""))[:10] >= (dt.date.fromisoformat(date) - dt.timedelta(days=2)).isoformat()] if (OUT / "control" / "commands.jsonl").exists() else []
+    if ideas and run in ("plan", "refresh"):
+        L += ["", "## Ideas from Harish (leads, not orders: use one if it passes the worth-it test, AGENT.md 5.7)"] + [f"- {c['text'][:200]}" for c in ideas[-5:]]
     if run in ("plan", "refresh"):
         L += ["", f"## Today's slots ({date})"] + table(slots, ["time", "series", "template", "notes"])
         vids = trailers(drive)
@@ -373,7 +382,8 @@ def build(drive, run, date):
     L += [f"- [{s.get('rank')}] {s['title'][:110]} · {len(s.get('publishers', {}))} publishers ({s.get('trusted', 0)} trusted)" for s in top] or ["- No feed stories yet."]
     L += ["", "## Changes in force (newest first)"] + ([f"- {c}" for c in changes(5)] or ["- none"])
     if feedback:
-        L += ["", "## New feedback from Harish"] + [f"- {f.get('reel_id', '')}: {str(f.get('text', f.get('note', '')))[:140]}" for f in feedback[-5:]]
+        L += ["", "## New feedback from Harish"] + [f"- {f.get('reel_id') or f.get('series') or 'page'}: " + " · ".join(x for x in (f"rated {f['rating']}/5" if f.get("rating") else "", ", ".join(f.get("reasons") or []),
+                                                    str(f.get("text", f.get("note", "")))[:140]) if x) for f in feedback[-5:]]
     if alerts:
         L += ["", "## Open alerts"] + [f"- {a['at']}: {a['title']}" for a in alerts]
     L += ["", "## Money and limits", f"- {money}",

@@ -116,6 +116,8 @@ def is_done(rec, h, retry=False):
         return True
     if retry and rec.get("state") in ("held", "failed") and not str(rec.get("reason", "")).startswith("Plan check"):
         return False
+    if rec.get("hash") == h and rec.get("state") == "skipped" and rec.get("reason") == "Skipped by Harish.":
+        return True                                # his skip stands; the reel is not made again
     return rec.get("hash") == h and rec.get("state") in ("ready", "held")
 
 
@@ -182,6 +184,7 @@ def main():
         base = dict(series=series, post_at=when.isoformat() if when and not is_bank else None,
                     slot=when.strftime("%H:%M") if when and not is_bank else None, reserve=bool(plan.get("reserve")) or None,
                     for_slot=plan.get("for_slot"), trial=plan.get("trial"), tribute=bool(plan.get("tribute")) or None,
+                    manual=bool(plan.get("manual")) or None, remake_of=plan.get("remake_of"),
                     hash=plan_hash(path), hook=first.get("headline") or first.get("line") or (plan.get("package") or {}).get("cover"), virality=(plan.get("virality") or {}).get("total_100"))
         if ctl.series_paused(series):
             ledger.upsert(rid, **base, state="skipped", reason="The series is paused.")

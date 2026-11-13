@@ -4,7 +4,7 @@ name: make
 # A light first step checks whether anything new needs making, so the safety net costs about 1 runner minute.
 on:
   push:
-    branches: [main, claude/clever-clarke-b0wco6]
+    branches: [main]
     paths: ["plans/20*/**", "plans/bank/**", ".github/workflows/make.yml"]
   workflow_dispatch:
     inputs:

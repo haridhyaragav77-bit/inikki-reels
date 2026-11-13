@@ -2,9 +2,6 @@ name: music
 # Tags every track in the Drive music folder (and anything dropped into music/inbox) by tempo, energy and mood,
 # and writes music/index.json. Reels then pick tracks by mood (AGENT.md 5.4). Free; nothing is posted.
 on:
-  push:                            # registers the job and tags the library once when this file or the tagger changes
-    branches: [claude/gallant-dijkstra-6madni]
-    paths: [".github/workflows/music.yml", "engine/music_index.py"]
   workflow_dispatch:
     inputs:
       all:

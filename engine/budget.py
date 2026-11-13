@@ -14,6 +14,12 @@ class Budget:
     def __init__(self, drive=None):
         self.drive = drive
         self.cap_inr = float(AGENT["budgets"]["images_inr_month"])
+        if drive:                                     # a cap changed in the Control Room counts too (AGENT.md 12.3)
+            try:
+                from .control import Control
+                self.cap_inr = float(Control(drive, relay=False).settings["budgets"]["images_inr_month"])
+            except Exception:
+                pass
         self.rate = float(ENGINE["openai"]["usd_to_inr"])
         self.month = status.now().strftime("%Y-%m")
         data = None
