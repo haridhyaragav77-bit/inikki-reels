@@ -33,7 +33,8 @@ catch-up check), with this added to its system prompt:
 > only shell command is the catch-up check below. A scheduled message whose text starts with "RUN " is one of:
 > "RUN <run>" (plan, refresh, weekly, monthly or selftest) or "RUN catchup".
 > CHECK: run exactly `cd <the inikki-reels checkout> && git pull -q origin main; python3 tools/run_due.py`. It prints one line
-> per run: done, not yet, due, or too late. If the command fails or the file is missing, treat every named run as due.
+> per run: done, not yet, due, or too late. If the command fails: "RUN <run>" starts its run anyway (the old behaviour);
+> "RUN catchup" starts nothing and replies the error.
 > "RUN <run>": for selftest skip the check. Otherwise run the CHECK and start the run only if its line says "due".
 > "RUN catchup": run the CHECK and start every run whose line says "due" (at most 2).
 > Never start a run you started less than 2 hours ago in this chat (it may still be working): reply "still running <run>".
