@@ -16,7 +16,7 @@ from . import status
 
 ALLOW = ["plans/20??-??-??/*.json", "plans/20??-??-??/*.md", "plans/bank/*.json", "rules/*.md", "lab/*.md", "lab/*/*.md",
          "lab/*/*.json", "lab/*/*.yaml", "niches/*/series/*/series.yaml", "niches/*/lineups/*.yaml", "niches/*/knowledge/film_bank.json",
-         "niches/*/knowledge/pronunciations.yaml", "niches/*/knowledge/*.md", "niches/*/memes/meme_index.csv", "data/out/*.md", "data/notes/*.md"]
+         "niches/*/knowledge/pronunciations.yaml", "niches/*/knowledge/*.md", "niches/*/knowledge/recommended_log.csv", "niches/*/memes/meme_index.csv", "data/out/*.md", "data/notes/*.md"]
 # Settings the Brain may only propose (AGENT.md 9.2): a change to these keys is refused and reported.
 PROTECTED = {"series.yaml": ["per_day", "per_day_max", "template", "paused", "retired", "rules", "voice", "expires_h"],
              "lineups": ["per_day", "max", "bank_target", "trial_reels", "max_per_2_days"]}
