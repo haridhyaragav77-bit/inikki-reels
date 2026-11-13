@@ -1,0 +1,452 @@
+{
+ "reel_id": "2026-11-12-film-breakdown-r2",
+ "series": "film-breakdown",
+ "header": "KAITHI / THE SCREENPLAY BREAKDOWN",
+ "credit": "Kaithi · Dream Warrior Pictures",
+ "lead": {
+  "topic": "Kaithi: why time, place and want hold our attention",
+  "score": 82,
+  "sources": []
+ },
+ "music": {
+  "mood": "tension_pulse",
+  "track": "The Chase Anxious.mp3"
+ },
+ "screens": [
+  {
+   "headline": "Phone-a thoda vidala.",
+   "tamil": "ஃபோனைத் தொடவே தோணலையே?",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "KAITHI",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 0.1,
+    "crop": [
+     80,
+     514,
+     820,
+     360
+    ]
+   },
+   "motion": {
+    "type": "punch",
+    "text": "Yen?"
+   },
+   "caption": "Kaithi paakkumbodhu…",
+   "voice_line": "கைதி படம் பார்க்கும்போது…"
+  },
+  {
+   "headline": "Fight mattum illa.",
+   "tamil": "சண்டையைத் தாண்டி மூன்று விஷயம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 2.3,
+    "crop": [
+     86,
+     494,
+     804,
+     352
+    ]
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Sandai kaatchigal",
+      "state": "no",
+      "value": "Adhu mattum illa"
+     }
+    ]
+   },
+   "caption": "Sandai mattum kaaranam illa.",
+   "voice_line": "சண்டை மட்டும் காரணம் இல்லை."
+  },
+  {
+   "headline": "Fight mattum illa.",
+   "tamil": "சண்டையைத் தாண்டி மூன்று விஷயம்.",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Neram",
+     "Idam",
+     "Aasai"
+    ],
+    "build": true
+   },
+   "caption": "Lokesh moonu vidhamaa pidikkiraaru.",
+   "voice_line": "லோகேஷ் நம்ம கவனத்தை மூணு விதமா பிடிக்கிறார்."
+  },
+  {
+   "headline": "01 / Neram kuraiyudhu.",
+   "tamil": "நேரம் குறையக் குறைய பதற்றம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "SAVE THE POLICE",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 6.7,
+    "crop": [
+     90,
+     494,
+     800,
+     262
+    ]
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Neram",
+     "Idam",
+     "Aasai"
+    ],
+    "active": 1
+   },
+   "caption": "Onnu. Neram.",
+   "voice_line": "ஒண்ணு. நேரம்."
+  },
+  {
+   "headline": "01 / Neram kuraiyudhu.",
+   "tamil": "நேரம் குறையக் குறைய பதற்றம்.",
+   "visual": "same",
+   "motion": {
+    "type": "timer",
+    "time": [
+     0.95,
+     0.55
+    ],
+    "rise": [
+     0.15,
+     0.5
+    ]
+   },
+   "caption": "Mayangina police-a kaappaathanum.",
+   "voice_line": "மயங்கிக் கிடக்கிற போலீஸைக் காப்பாத்தணும்."
+  },
+  {
+   "headline": "01 / Neram kuraiyudhu.",
+   "tamil": "நேரம் குறையக் குறைய பதற்றம்.",
+   "visual": "same",
+   "motion": {
+    "type": "timer",
+    "time": [
+     0.55,
+     0.1
+    ],
+    "rise": [
+     0.5,
+     0.96
+    ]
+   },
+   "caption": "Neram kuraiya kuraiya, tension yerudhu.",
+   "voice_line": "நேரம் குறையக் குறைய, நமக்கு டென்ஷன் ஏறுது."
+  },
+  {
+   "headline": "02 / Idam maarudhu.",
+   "tamil": "ஒரு இடத்திலிருந்து இன்னொரு இடம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 15.4,
+    "crop": [
+     78,
+     498,
+     824,
+     392
+    ]
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Neram",
+     "Idam",
+     "Aasai"
+    ],
+    "active": 2
+   },
+   "caption": "Rendu. Idam.",
+   "voice_line": "ரெண்டு. இடம்."
+  },
+  {
+   "headline": "02 / Idam maarudhu.",
+   "tamil": "ஒரு இடத்திலிருந்து இன்னொரு இடம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "LORRY",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 18.1,
+    "crop": [
+     78,
+     498,
+     824,
+     322
+    ]
+   },
+   "motion": {
+    "type": "switch",
+    "places": [
+     "Lorry",
+     "Station"
+    ],
+    "to": 1
+   },
+   "caption": "Lorry-la aabathu.",
+   "voice_line": "லாரியில ஆபத்து."
+  },
+  {
+   "headline": "02 / Idam maarudhu.",
+   "tamil": "ஒரு இடத்திலிருந்து இன்னொரு இடம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "STATION",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 19.8,
+    "crop": [
+     78,
+     498,
+     824,
+     322
+    ]
+   },
+   "motion": {
+    "type": "switch",
+    "places": [
+     "Lorry",
+     "Station"
+    ],
+    "from": 1,
+    "to": 2,
+    "pending": "Innum mudiyala"
+   },
+   "caption": "Udane station-ku cut.",
+   "voice_line": "உடனே ஸ்டேஷனுக்கு கட்."
+  },
+  {
+   "headline": "02 / Idam maarudhu.",
+   "tamil": "ஒரு இடத்திலிருந்து இன்னொரு இடம்.",
+   "visual": "same",
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.25,
+     0.45,
+     0.38,
+     0.7,
+     0.96
+    ],
+    "peaks": [
+     {
+      "at": 1,
+      "text": "Cut"
+     },
+     {
+      "at": 4,
+      "text": "Enna aagum?"
+     }
+    ]
+   },
+   "caption": "Enna aagumnu kaathirukkom.",
+   "voice_line": "அங்க என்ன ஆகும்னு நம்ம காத்திருக்கோம்."
+  },
+  {
+   "headline": "03 / Oru appa-oda aasai.",
+   "tamil": "தன் மகளைப் பார்க்கணும்.",
+   "visual": {
+    "type": "stack",
+    "top": {
+     "type": "clip",
+     "film": "Kaithi",
+     "label": "DILLI",
+     "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+     "start": 24.1,
+     "crop": [
+      292,
+      490,
+      598,
+      236
+     ]
+    },
+    "bottom": {
+     "type": "clip",
+     "film": "Kaithi",
+     "label": "MAGAL",
+     "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+     "start": 24.1,
+     "crop": [
+      90,
+      900,
+      560,
+      240
+     ]
+    }
+   },
+   "motion": {
+    "type": "punch",
+    "text": "Oru appa. Orey aasai.",
+    "color": "gold"
+   },
+   "caption": "Moonu. Aasai.",
+   "voice_line": "மூணு. ஆசை."
+  },
+  {
+   "headline": "03 / Oru appa-oda aasai.",
+   "tamil": "தன் மகளைப் பார்க்கணும்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "DILLI",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 26.0,
+    "crop": [
+     292,
+     490,
+     598,
+     236
+    ]
+   },
+   "motion": {
+    "type": "goal",
+    "who": "Dilli",
+    "goal": "Magal",
+    "blocks": [],
+    "start": 0,
+    "reach": 0.34
+   },
+   "caption": "Dilli-ku magala paakkanum. Avlo dhaan.",
+   "voice_line": "டில்லிக்கு மகளைப் பார்க்கணும். அவ்வளவுதான்."
+  },
+  {
+   "headline": "03 / Oru appa-oda aasai.",
+   "tamil": "தன் மகளைப் பார்க்கணும்.",
+   "visual": "same",
+   "motion": {
+    "type": "goal",
+    "who": "Dilli",
+    "goal": "Magal",
+    "blocks": [
+     "Gang",
+     "Police",
+     "Neram"
+    ],
+    "start": 0.34
+   },
+   "caption": "Ovvoru thadaiyum adha thalli podudhu.",
+   "voice_line": "ஒவ்வொரு தடையும் அந்த சந்திப்பைத் தள்ளிப் போடுது."
+  },
+  {
+   "headline": "03 / Oru appa-oda aasai.",
+   "tamil": "தன் மகளைப் பார்க்கணும்.",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "MAGAL",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 28.5,
+    "crop": [
+     90,
+     900,
+     560,
+     240
+    ]
+   },
+   "motion": {
+    "type": "goal",
+    "who": "Dilli",
+    "goal": "Magal",
+    "blocks": [
+     "Gang",
+     "Police",
+     "Neram"
+    ],
+    "start": 0.34,
+    "from": 3
+   },
+   "caption": "Adhanaala namakkum valikkudhu.",
+   "voice_line": "அதனால நமக்கும் வலிக்குது."
+  },
+  {
+   "headline": "Ippo puriyudhaa?",
+   "tamil": "நம்ம கவனம் ஏன் நகரவில்லை?",
+   "visual": {
+    "type": "clip",
+    "film": "Kaithi",
+    "label": "KAITHI",
+    "reference": "KAITHI_Premium_Reels_Aligned_VOICED.mp4",
+    "start": 32.9,
+    "crop": [
+     90,
+     490,
+     800,
+     332
+    ]
+   },
+   "motion": {
+    "type": "list",
+    "items": [
+     "Neram odudhu",
+     "Aabathu koodudhu",
+     "Magala paakkanum"
+    ]
+   },
+   "caption": "Neram odudhu. Aabathu koodudhu. Magala paakkanum.",
+   "voice_line": "நேரம் ஓடுது. ஆபத்து கூடுது. அவன் மகளைப் பார்க்கணும்."
+  },
+  {
+   "headline": "Ippo puriyudhaa?",
+   "tamil": "நம்ம கவனம் ஏன் நகரவில்லை?",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "Idhu dhaan screenplay.",
+    "color": "gold"
+   },
+   "caption": "Idhudhaan vithai.",
+   "voice_line": "இதுதான் வித்தை."
+  },
+  {
+   "headline": "Kadhai ezhudhura friend?",
+   "tamil": "கதை எழுதும் நண்பருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "calling_friend"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Kadhai ezhudhura friend-ku anuppu.",
+   "voice_line": "கதை எழுதுற உன் ஃப்ரெண்டுக்கு அனுப்பு."
+  },
+  {
+   "headline": "Sandai mattum ezhudhaadha da!",
+   "tamil": "சண்டை மட்டும் எழுதாத டா!",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Sandai mattum ezhudhaadha da!",
+   "voice_line": "சண்டை மட்டும் எழுதாத டா!"
+  }
+ ],
+ "caption": {
+  "text": "Kaithi-la phone-a thoda vidaama pannadhu sandai illa. Screenplay.\nLokesh Kanagaraj: neram, idam, oru appa-oda aasai.\nNeenga endha scene-la tension aaneenga?\nKadhai ezhudhura friend-ku anuppunga.",
+  "hashtags": [
+   "#TamilCinema",
+   "#Kaithi",
+   "#LokeshKanagaraj",
+   "#iNiKKiBreakdown"
+  ],
+  "first_comment": "Neenga endha scene-la note pannineenga?"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "hook": "flare",
+ "reserve": true,
+ "for_slot": "12:30"
+}

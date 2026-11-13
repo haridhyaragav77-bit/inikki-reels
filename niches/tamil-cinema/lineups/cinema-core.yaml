@@ -1,0 +1,7 @@
+slots:
+  - { series: movie-updates, per_day: 3 }
+  - { series: film-breakdown, per_day: 2, bank_target: 4 }
+  - { story_slot: [ { series: guess-the-movie, days_per_week: 4 }, { series: movie-recommendations, days_per_week: 3 } ] }
+flex: [ { series: trailer-breakdown, trigger: new_trailer, max: 1 }, { series: movie-review, trigger: release_day, max: 2 }, { series: artwork-quote, trigger: dull_streak } ]
+extra: [ { series: breaking-news, max: 2 } ]
+lab: { trial_reels: true, max_per_2_days: 1 }

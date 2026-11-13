@@ -1,0 +1,17 @@
+switch: run                 # run | hold_posts | sleep   (live value is in Drive control/)
+phase: rehearsal            # rehearsal | live   (live only after Harish says "go live")
+approval: autopilot         # autopilot | check_in | hands_on
+always_ask: [brand, niche, safety, budget]
+active: { brand: inikki-reels, niche: tamil-cinema, lineup: cinema-core }
+goal: { followers: 1000, by_days: 90, start_followers: 37, start_date: 2026-11-10 }
+volume: { base: 6, max: 8 }
+slots: ["08:30", "12:30", "15:30", "18:00", "20:00", "21:30"]
+flex_slots: ["11:00", "17:00"]
+timezone: Asia/Kolkata
+language: { headline: "tanglish_or_english", line2: "tamil", voice: "ta-IN-ValluvarNeural", subtitles: ["tanglish", "tamil"] }
+budgets: { images_inr_month: 500, lab_share: 0.20, storage_gb: 8, breaking_per_day: 2 }
+metric_priority: [skip_rate, watch_through, share_rate, follow_rate, like_rate, save_rate, comment_rate, repost_rate]
+learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series_week: 3, auto_revert_drop: 0.20 }
+gates: { lead_min: 60, virality_min: 65 }
+away_mode: false
+respect: { allow_series: [breaking-news, artwork-quote, film-breakdown] }   # what may post on a respect day

@@ -1,0 +1,61 @@
+name: smoke
+# Phase 1 smoke tests (AGENT.md Block A). Nothing is posted publicly.
+on:
+  # A push of this file on the build branch registers the workflow and runs it (no image spent).
+  push:
+    branches: [claude/gallant-dijkstra-6madni]
+    paths: [".github/workflows/smoke.yml"]
+  workflow_dispatch:
+    inputs:
+      tests:
+        description: "Which tests: all, or a list like drive,voice,instagram"
+        default: all
+      spend_on_image:
+        description: "Make one real OpenAI test image (about ₹0.50)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    name: Phase 1 smoke tests (nothing is posted)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      META_APP_ID: ${{ secrets.META_APP_ID }}
+      META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install ffmpeg, Tamil fonts and the Engine's libraries
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq ffmpeg fonts-noto-core >/dev/null
+          pip install -q -r requirements.txt
+      - name: Run the smoke tests
+        run: python -m engine.smoke --tests "${{ inputs.tests }}" --image "${{ inputs.spend_on_image }}"
+      - name: Keep the results (report, voice clip, image, clip)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-results
+          path: out/
+          retention-days: 7
+          if-no-files-found: ignore

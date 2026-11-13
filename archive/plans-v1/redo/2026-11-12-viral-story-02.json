@@ -1,0 +1,184 @@
+{
+ "reel_id": "2026-11-12-viral-story-02",
+ "series": "viral-story",
+ "template": "cinematic",
+ "post_at": "2026-11-12T15:30:00+05:30",
+ "lead": {
+  "topic": "A TV mimicry artist who became one of Tamil cinema's biggest stars",
+  "score": 79,
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sivakarthikeyan",
+   "https://en.wikipedia.org/wiki/Amaran_(2024_film)"
+  ]
+ },
+ "virality": {
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 5,
+  "pacing": 8,
+  "loop": 6,
+  "timely_original": 5,
+  "total_100": 67
+ },
+ "music": {
+  "mood": "emotional_build"
+ },
+ "image_style": "cinematic_real",
+ "images": [
+  {
+   "prompt": "Mid-2000s Tamil television comedy studio, night. a lean young Tamil man in his early twenties, short neatly combed black hair, light stubble, a faded maroon checked shirt with rolled sleeves (a fictional character, not any real actor) stands on a small raised stage under hot red and yellow stage lights, holding a microphone close to his mouth, doing an exaggerated impression with one hand raised. Shot from the side at chest height with a 50mm lens; his face turned away in profile and partly hidden by the microphone. In the blurred foreground, the backs of an audience laughing. Haze in the light beams.",
+   "move": "push",
+   "focus": [
+    0.55,
+    0.38
+   ]
+  },
+  {
+   "prompt": "Backstage of a bright Tamil TV game show, late 2000s. a lean young Tamil man in his early twenties, short neatly combed black hair, light stubble, a faded maroon checked shirt with rolled sleeves (a fictional character, not any real actor), now in a cheap navy blazer over the same checked shirt, adjusts an earpiece in front of a make-up mirror ringed with warm bulbs. Over-the-shoulder shot from behind him; his reflection in the mirror is soft and out of focus. Colourful show lights spill in through a curtain gap.",
+   "move": "right",
+   "focus": [
+    0.45,
+    0.4
+   ]
+  },
+  {
+   "prompt": "Chennai, Marina beach at dawn, 2012. a lean young Tamil man in his early twenties, short neatly combed black hair, light stubble, a faded maroon checked shirt with rolled sleeves (a fictional character, not any real actor) sits alone on the sand, knees up, looking at the sea. Beside him a film camera on a wooden tripod, a silver reflector and a folding director's chair. Wide shot from behind and slightly above; soft pink sky, fishing boats on the shoreline, light sea mist.",
+   "move": "left",
+   "focus": [
+    0.5,
+    0.45
+   ]
+  },
+  {
+   "prompt": "Inside a packed single-screen Tamil cinema hall at night. Hundreds of fans on their feet with raised hands, paper confetti floating through the bright beam of the projector. Shot from the back of the hall at seat height; the screen is only a white glow with no image on it. Warm amber light, haze, motion in the crowd.",
+   "move": "push",
+   "focus": [
+    0.5,
+    0.35
+   ]
+  },
+  {
+   "prompt": "A lone Indian Army officer in combat uniform seen from behind, standing on a misty Himalayan ridge at dawn, helmet under one arm, looking across the valley. Wide shot, low sun rim-lighting his outline, cold blue mist, a single faint ray of gold light. Respectful, quiet, heroic.",
+   "move": "push",
+   "focus": [
+    0.5,
+    0.4
+   ]
+  }
+ ],
+ "screens": [
+  {
+   "dur": 3.4,
+   "image": 0,
+   "kicker": "ON A TV COMEDY STAGE",
+   "line": "A young man did",
+   "headline": "MIMICRY.",
+   "tamil": "ஒரு இளைஞர் டிவி மேடையில் மிமிக்ரி செய்தார்."
+  },
+  {
+   "dur": 3.6,
+   "image": 0,
+   "kicker": "ON A TV COMEDY STAGE",
+   "line": "People laughed. Few saw",
+   "headline": "A *HERO*.",
+   "tamil": "எல்லோரும் சிரித்தார்கள். ஹீரோவைப் பார்த்தவர்கள் குறைவு.",
+   "motion": "underline"
+  },
+  {
+   "dur": 3.5,
+   "image": 1,
+   "kicker": "THEN",
+   "line": "He held the mic as",
+   "headline": "A TV ANCHOR.",
+   "tamil": "பிறகு டிவி தொகுப்பாளர் ஆனார்."
+  },
+  {
+   "dur": 3.6,
+   "image": 1,
+   "kicker": "EVERY WEEK",
+   "line": "Making others",
+   "headline": "THE *STARS*.",
+   "tamil": "ஒவ்வொரு வாரமும் மற்றவர்களை நட்சத்திரங்களாக்கினார்.",
+   "motion": "underline"
+  },
+  {
+   "dur": 3.6,
+   "image": 2,
+   "kicker": "2012",
+   "line": "His first film as",
+   "headline": "THE LEAD.",
+   "tamil": "2012-ல் முதல் படம், கதாநாயகனாக.",
+   "motion": {
+    "type": "stamp",
+    "stamp": "LEAD"
+   }
+  },
+  {
+   "dur": 3.4,
+   "image": 2,
+   "kicker": "THE FILM",
+   "line": "A small film called",
+   "headline": "MARINA.",
+   "tamil": "மெரினா என்ற ஒரு சின்னப் படம்."
+  },
+  {
+   "dur": 3.8,
+   "image": 3,
+   "kicker": "FILM AFTER FILM",
+   "line": "The comedy boy became",
+   "headline": "A CROWD-PULLER.",
+   "tamil": "சிரிக்க வைத்தவர், கூட்டம் கூட்டும் நாயகன் ஆனார்."
+  },
+  {
+   "dur": 3.6,
+   "image": 4,
+   "kicker": "2024",
+   "line": "He played a soldier in",
+   "headline": "AMARAN.",
+   "tamil": "2024-ல் அமரன் படத்தில் ஒரு ராணுவ வீரராக."
+  },
+  {
+   "dur": 3.8,
+   "image": 4,
+   "kicker": "FROM MIMICRY",
+   "line": "To one of the biggest",
+   "headline": "STARS TODAY.",
+   "tamil": "மிமிக்ரியில் இருந்து இன்றைய பெரிய நட்சத்திரம் வரை.",
+   "motion": "underline"
+  },
+  {
+   "dur": 4.4,
+   "image": 3,
+   "kicker": "THAT MIMICRY ARTIST?",
+   "line": "None other than",
+   "headline": "SIVAKARTHIKEYAN.",
+   "tamil": "அந்த மிமிக்ரி கலைஞர் வேறு யாருமில்லை. சிவகார்த்திகேயன்.",
+   "motion": {
+    "type": "reveal"
+   }
+  },
+  {
+   "dur": 4.2,
+   "image": 3,
+   "kicker": "YOUR TURN",
+   "line": "Know someone still on",
+   "headline": "THE SIDE STAGE?",
+   "tamil": "இன்னும் ஓரத்தில் நிற்கும் நண்பருக்கு அனுப்புங்க.",
+   "motion": "question"
+  }
+ ],
+ "caption": {
+  "text": "TV-la mimicry pannina paiyan. Ippo Tamil cinema-voda periya star.\nOru TV comedy stage-la irundhu Marina, Amaran varaikkum: oru unmai kadhai.\nKadaisi varaikkum yaaru-nu guess pannineengala?\nInnum oram-la nikkura friend-ku anuppunga.",
+  "hashtags": [
+   "#Sivakarthikeyan",
+   "#TamilCinema",
+   "#Kollywood",
+   "#iNiKKiUntold"
+  ],
+  "first_comment": "Ungaloda favourite SK padam edhu? 👇"
+ },
+ "cover": {
+  "screen": 1
+ }
+}

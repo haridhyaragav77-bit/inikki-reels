@@ -1,0 +1,92 @@
+# Engine settings (code reads these; nothing brand- or niche-specific lives here)
+drive:
+  folders: [control, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
+  music_folder_aliases: ["music", "background music", "background music (1)"]
+  never_auto_delete: [reference-reels, meme-bank, music, control]
+  retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
+    finished_days: 30
+    finished_days_tight: 14
+    rehearsal_days: 14
+    work_days: 3
+    status_days: 30
+    clip_library_gb: 3
+    image_library_gb: 1.5
+    warn_gb: 6
+    tight_gb: 7.5
+    keep_top_share: 0.10
+runner:
+  minutes_month: 2000         # GitHub's free minutes for a private repository
+  tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
+  dashboard_sheet_name: "iNiKKi Dashboard"
+  dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
+
+openai:
+  image_models: [gpt-image-1-mini, gpt-image-1]     # first that works is used
+  image_size: "1024x1536"                           # portrait, upscaled to 1080x1920 by code
+  image_quality: medium
+  smoke_quality: low
+  # Prices per image in US dollars for 1024x1536 (OpenAI pricing page, re-checked by the Health job).
+  price_usd_per_image:
+    gpt-image-1-mini: { low: 0.006, medium: 0.015, high: 0.05 }
+    gpt-image-1:      { low: 0.016, medium: 0.063, high: 0.25 }
+  # Token prices (USD per 1M tokens) used when the API reports usage
+  price_usd_per_m_tokens:
+    gpt-image-1-mini: { text_in: 2.0, image_in: 2.5, image_out: 8.0 }
+    gpt-image-1:      { text_in: 5.0, image_in: 10.0, image_out: 40.0 }
+  usd_to_inr: 88.0
+  # Added to every image request, by template, so the words never sit on a face or on the main object
+  compose:
+    cinematic: "Composition: the main subject and any face sit in the upper half of the frame; the lower third is darker and simpler, with no important detail"
+    diorama: "Composition: the main object sits in the middle band of the frame; the top third is darker and simpler, with no important detail"
+
+instagram:
+  base: "https://graph.instagram.com"
+  api_versions: ["v23.0", "v22.0", "v21.0"]        # first that works is used
+  reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
+
+voice:
+  tool: tools/voice_tool.py
+  voice: ta-IN-ValluvarNeural
+  rate: "+35%"
+  pitch: "-2Hz"
+  smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
+
+clips:
+  max_height: 720
+  smoke_query: "ytsearch1:Kaithi official trailer Karthi Lokesh Kanagaraj"
+  smoke_seconds: 8
+  contact_sheet: { cols: 5, rows: 6, width: 1800 }
+
+depth:
+  # A small free depth model (Depth Anything V2 small, ONNX). It runs on the runner's CPU: no key, no cost.
+  # If it cannot be fetched, pictures still move, with a simpler split (fail soft).
+  file: depth_anything_v2_small.onnx
+  model_urls:
+    - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model.onnx"
+    - "https://huggingface.co/onnx-community/depth-anything-v2-small/resolve/main/onnx/model_quantized.onnx"
+  threads: 2
+
+music:
+  # Words in a track's file name that suggest a mood. The weekly review replaces this guess with results
+  # (tracks are scored by the watch-through of the reels that used them, AGENT.md 5.4).
+  mood_words:
+    tension_pulse: [chase, anxious, hunt, mission, danger, escape, attack, investigates, investigation, suspense, tension, thriller]
+    upbeat_percussive: [intro, entry, rap, beat, dance, kuthu, celebration, title, swag]
+    emotional_build: [emotion, emotional, sad, amma, promise, heart, memories, farewell, piano, father, mother]
+    suspense_ticks: [investigation, investigates, mystery, secret, missing, search, suspense, pact]
+    stinger: [intro, title, attack, hunt]
+    soft_warm: [love, romance, flute, piano, lullaby, melody]
+    confident_mid: [theme, hero, walk, intro, king]
+  # Words in a file name that say a track does NOT fit a mood (a love theme is not suspense, a fight is not soft)
+  avoid_words:
+    tension_pulse: [love, romance, romantic, propose, proposes, married, marriage, wedding, kadhal, baby, lullaby, comedy]
+    suspense_ticks: [love, romance, romantic, propose, proposes, married, marriage, wedding, kadhal, baby, lullaby, comedy, entry, mass]
+    stinger: [love, romance, lullaby, sad, farewell]
+    emotional_build: [fight, chase, attack, shoot, riots, entry, rap, phonk, comedy]
+    soft_warm: [fight, chase, attack, shoot, riots, entry, rap, phonk, villain]
+    upbeat_percussive: [sad, emotional, death, cry, farewell, lullaby]
+    confident_mid: [sad, cry, lullaby, farewell]
+
+images:
+  # Where a picture is looked for, cheapest first (AGENT.md 5.11). An AI image is made only when these find nothing.
+  ladder: [library, trailer, pexels, pixabay, openverse]

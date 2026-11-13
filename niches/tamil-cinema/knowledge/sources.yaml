@@ -1,13 +1,129 @@
-# Trusted sources for news, reviews and updates. Harish to confirm or edit.
-# tier 1 = can confirm on its own together with one other tier 1/2 source; tier 3 = signal only, never proof.
-official:
-  - { name: "Production houses and stars' verified accounts", tier: 1, note: "list handles here" }
-news:
-  - { name: "<Tamil film news site 1>", url: "", tier: 1 }
-  - { name: "<Tamil film news site 2>", url: "", tier: 2 }
-trade:
-  - { name: "<box office tracker>", url: "", tier: 2 }
-youtube_channels:     # official channels; RSS used for trailer and song drops
-  - { name: "<label or studio channel>", channel_id: "" }
-audience_signal:      # never proof, only trend signal
+# Trusted sources for the news watch (AGENT.md 10). Proposed by the build; Harish confirms or edits in the Control Room.
+# tier 1: can confirm news together with one other tier 1-2 source · tier 2: good · tier 3: signal only, never proof.
+# Aggregator feeds (Google News) name the publisher of each story; its tier comes from "publishers" below.
+feeds:
+  - { name: "Google News: Tamil cinema", kind: aggregator, url: "https://news.google.com/rss/search?q=Tamil+cinema+when:2d&hl=en-IN&gl=IN&ceid=IN:en" }
+  - { name: "Google News: Kollywood", kind: aggregator, url: "https://news.google.com/rss/search?q=Kollywood+when:2d&hl=en-IN&gl=IN&ceid=IN:en" }
+  - { name: "Google News: தமிழ் சினிமா", kind: aggregator, url: "https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%AE%E0%AE%BF%E0%AE%B4%E0%AF%8D+%E0%AE%9A%E0%AE%BF%E0%AE%A9%E0%AE%BF%E0%AE%AE%E0%AE%BE+when:2d&hl=ta&gl=IN&ceid=IN:ta" }
+  - { name: "The Hindu: Movies", tier: 1, url: "https://www.thehindu.com/entertainment/movies/feeder/default.rss" }
+publishers:
+  "The Hindu": 1
+  "The New Indian Express": 1
+  "Cinema Express": 1
+  "The Indian Express": 1
+  "The Times of India": 2
+  "Times of India": 2
+  "Hindustan Times": 2
+  "India Today": 2
+  "NDTV": 2
+  "News18": 2
+  "DT Next": 2
+  "OTTplay": 2
+  "Moneycontrol": 2
+  "Deccan Herald": 2
+  "The News Minute": 2
+  "Behindwoods": 2
+  "Dinamani": 2
+  "Dinamalar": 2
+  "Vikatan": 2
+  "Hindu Tamil Thisai": 1
+  "BBC": 1
+  "Sacnilk": 3
+  "Pinkvilla": 3
+  "Koimoi": 3
+  "Galatta": 3
+default_tier: 3
+official:            # verified accounts of production houses and stars (signals; Researcher proposes, Harish confirms)
+  - { name: "Production houses and stars' verified accounts", tier: 1, note: "add handles here" }
+youtube_channels: [] # official channels: { name, channel_id }; their trailer and song drops are read from YouTube's free feed
+audience_signal:     # never proof, only trend signal
   - { name: "r/kollywood", url: "https://www.reddit.com/r/kollywood/", tier: 3 }
+
+# How the watcher scores a headline (no AI). Words are matched in lower case, English and Tamil.
+watch:
+  keywords:
+    trailer: 3
+    teaser: 3
+    first look: 3
+    glimpse: 2
+    release date: 3
+    postponed: 3
+    box office: 2
+    crore: 1
+    ott: 2
+    announced: 2
+    announces: 2
+    title: 1
+    audio launch: 2
+    single: 1
+    wins: 2
+    award: 2
+    national award: 3
+    hospitalised: 4
+    hospitalized: 4
+    passes away: 6
+    passed away: 6
+    dies: 5
+    demise: 5
+    no more: 3
+    டிரெய்லர்: 3
+    டீசர்: 3
+    ரிலீஸ்: 2
+    அறிவிப்பு: 2
+    வசூல்: 2
+    காலமானார்: 6
+    மறைவு: 5
+  respect_words: [passes away, passed away, dies, died, demise, no more, last rites, condolences, காலமானார், மறைவு]
+  avoid_words: [election, party, tvk, rally, minister, dmk, aiadmk, bjp, politics, political, vote]   # politics is not this page's news
+  names: [Rajinikanth, Kamal Haasan, Vijay, Ajith, Suriya, Dhanush, Vikram, Karthi, Sivakarthikeyan, Vijay Sethupathi, Silambarasan, Simbu,
+          Jayam Ravi, Ravi Mohan, Arya, Vishal, Nayanthara, Trisha, Keerthy Suresh, Sai Pallavi, Lokesh Kanagaraj, Vetrimaaran, Mani Ratnam,
+          Shankar, Atlee, Nelson, Karthik Subbaraj, Pa. Ranjith, Mari Selvaraj, Anirudh, A.R. Rahman, AR Rahman, Yuvan, Ilaiyaraaja,
+          Santhosh Narayanan, G.V. Prakash, Harris Jayaraj, Lyca, Sun Pictures, Red Giant]
+  name_bonus: 2
+  fire_score: 8          # a story at or above this, confirmed by 2 trusted publishers, wakes the Breaking run
+  fresh_hours: 6         # only stories first published in the last 6 hours can wake it
+  breaking_min_keyword: 3   # and only with a breaking word (trailer, release date, passes away ...), not just "box office"
+  hours: [8, 22]         # the watcher wakes the Breaking run only between these hours (IST)
+
+# Official Instagram accounts the Engine reads for trailers, teasers and glimpses (engine/trailers.py).
+# Public posts of business accounts, read through Instagram's own API. Names that turn out wrong are reported by the
+# trailer job and can be corrected here by the Researcher or in the Control Room.
+trailers:
+  max_calls_per_run: 40      # a ceiling; in practice Meta's time meter stops a run first (each page takes Meta 3-12 s)
+  max_usage_percent: 50      # stop when Meta's own meter says half the hourly allowance is used; posting keeps the rest
+  scan_without_links: true   # pages are read as captions only; the video link is asked for the matching post alone
+  page_size: 50              # posts per call (Meta may ask for 25; the Engine then uses 25)
+  deep_pages: 6              # a film's own accounts (a plan's trailer_from, or "Film@account") are read back this many pages, and only they
+  # Wrong names found by the trailer job (12 Nov), to be corrected: rkfi_official, madrastalkies_, 7screenstudio; jiohotstar gave no posts.
+  # sivakarthikeyan is his real account, but Meta does not let the app read it (reported as an invalid user id).
+  max_stills: 30             # official stills kept per film for news updates
+  # Names in a news headline -> the official accounts to search first (the news watch uses these).
+  handles:
+    sun pictures: sunpictures
+    lyca: lycaproductions
+    red giant: redgiantmovies_
+    dream warrior: dreamwarriorpictures
+    2d entertainment: 2d_entertainment
+    zhagaram: zhagaramoffl
+    studio green: studiogreen_official
+    ags: agsentertainment
+    kvn: kvn.productions
+    vels: velsfilmintl
+    sony music: sonymusic_south
+    think music: thinkmusicofficial
+    saregama: saregamatamil
+    vijay sethupathi: actorvijaysethupathi
+    suriya: [actorsuriya, zhagaramoffl]
+    dhanush: dhanushkraja
+    karthi: actor_karthi
+    trisha: trishakrishnan
+    vijay: actorvijay
+    thalapathy: actorvijay
+    rajinikanth: sunpictures
+    anirudh: anirudhofficial
+    rahman: arrahman
+  instagram_accounts: [sunpictures, lycaproductions, redgiantmovies_, sonymusic_south, thinkmusicofficial, saregamatamil,
+                       dreamwarriorpictures, 2d_entertainment, shanthitalkies,
+                       studiogreen_official, agsentertainment, kvn.productions, velsfilmintl, wunderbarfilms,
+                       primevideoin, netflix_in, sunnxt, actorvijay, sivakarthikeyan, dhanushkraja,
+                       actorvijaysethupathi, trishakrishnan, actorsuriya, actor_karthi, anirudhofficial, arrahman]

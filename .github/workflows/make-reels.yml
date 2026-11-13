@@ -1,19 +1,22 @@
-# Make reels in the cloud and put them in Google Drive (AGENT.md 4.3 "Make"). Never runs on Harish's laptop.
-# Runs when plan files change (only the changed ones), or by hand from the Actions tab with a plan pattern.
+# Make reels in the cloud and put them in Google Drive (AGENT.md 4.3). Never runs on Harish's laptop.
+# By hand (Actions tab → Make reels → Run workflow): any plans in the approved looks, into any Drive folder.
+# After a change to the approved looks (templates/, engine/render/): the golden test (CLAUDE.md rules 2 and 3).
+# The reference set is checked for "same plan, same picture", made again and put in Drive rehearsal/golden-check/
+# to compare with reference-reels/. The daily reels are made by the "make" workflow.
 name: Make reels
 on:
   workflow_dispatch:
     inputs:
       plans:
-        description: "Plan files to render (pattern), e.g. plans/2026-11-13/*.json"
+        description: "Plan files to render (pattern). Empty = the reference set in plans/reference/"
         required: false
         default: ""
       drive_folder:
-        description: "Drive folder (inside iNiKKi Reels) for the finished reels"
+        description: "Drive folder inside iNiKKi Reels (e.g. rehearsal). Empty = each plan's own folder"
         required: false
-        default: "rehearsal"
+        default: ""
   push:
-    paths: ["plans/**", "engine/**", "templates/**", ".github/workflows/make-reels.yml"]
+    paths: ["templates/**", "engine/render/**", "engine/drive.py", "engine/tools/pick_plans.py", ".github/workflows/make-reels.yml"]
 
 concurrency:
   group: make-reels-${{ github.ref }}
@@ -25,37 +28,35 @@ jobs:
     timeout-minutes: 90
     env:
       GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
-      GDRIVE_OAUTH_CLIENT_ID: ${{ secrets.GDRIVE_OAUTH_CLIENT_ID }}
-      GDRIVE_OAUTH_CLIENT_SECRET: ${{ secrets.GDRIVE_OAUTH_CLIENT_SECRET }}
       GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
       GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      FOLDER: ${{ github.event_name == 'push' && 'rehearsal/golden-check' || inputs.drive_folder }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+        with: { python-version: "3.12", cache: pip }
       - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-      - name: Tools (ffmpeg, Python, browser)
+        with: { node-version: "22" }
+      - name: Tools (ffmpeg, the Engine's libraries, the browser that draws the looks)
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          pip install -q -r engine/requirements.txt
+          pip install -q -r requirements.txt
           cd engine && npm install --no-audit --no-fund --silent && npx playwright install --with-deps chromium
       - name: Drive check
         id: drive
         run: |
-          out=$(python3 engine/drive/drive.py check | tail -1); echo "$out"
-          echo "ready=$(echo "$out" | python3 -c 'import sys,json; print(str(json.load(sys.stdin).get("ready", False)).lower())')" >> "$GITHUB_OUTPUT"
+          out=$(python -m engine.drive check | tail -1); echo "$out"
+          echo "ready=$(echo "$out" | python -c 'import sys,json; print(str(json.load(sys.stdin).get("ready", False)).lower())')" >> "$GITHUB_OUTPUT"
       - name: Which plans
         run: |
-          python3 engine/tools/pick_plans.py "${{ github.event.inputs.plans }}" > plans.txt
+          python engine/tools/pick_plans.py "${{ inputs.plans }}" > plans.txt
           echo "Plans to render:"; cat plans.txt
       - name: Music from Drive
         if: steps.drive.outputs.ready == 'true'
-        run: python3 engine/drive/drive.py sync-music
+        run: python -m engine.drive sync-music $(cat plans.txt)
+      - name: Same plan, same picture (golden test, after a change to the looks)
+        if: steps.drive.outputs.ready == 'true' && github.event_name == 'push'
+        run: python -m engine.golden $(cat plans.txt)
       - name: Render and check
         if: steps.drive.outputs.ready == 'true'
         run: |
@@ -63,7 +64,9 @@ jobs:
       - name: Put finished reels in Drive
         if: steps.drive.outputs.ready == 'true'
         run: |
-          [ -s plans.txt ] && python3 engine/drive/drive.py upload-out "${{ github.event.inputs.drive_folder || 'rehearsal' }}" $(cat plans.txt) || echo "nothing to upload"
+          if [ ! -s plans.txt ]; then echo "nothing to upload"; exit 0; fi
+          if [ -n "$FOLDER" ]; then python -m engine.drive upload-out "$FOLDER" --here $(cat plans.txt)
+          else python -m engine.drive upload-out rehearsal $(cat plans.txt); fi
       - name: Keep a copy on GitHub for 7 days
         if: always()
         uses: actions/upload-artifact@v4

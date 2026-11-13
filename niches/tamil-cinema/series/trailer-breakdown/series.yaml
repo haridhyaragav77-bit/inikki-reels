@@ -1,0 +1,35 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
+id: trailer-breakdown
+name: Trailer Breakdown
+status: trial            # Harish, 12 Nov 2026 (AGENT.md 5.13)
+badge: { text: "TRAILER BREAKDOWN", color: gold }
+title_screen: "{FILM} · TRAILER BREAKDOWN"
+per_day: 1               # flex slot, only when a new trailer has landed in the library
+slots: ["19:00"]
+template: stage          # the breakdown look (AGENT.md 6.6), with the trailer's own frames
+visuals: official        # only that trailer's own frames and the film's official stills (AGENT.md 5.11)
+voice: true
+captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit
+instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }
+length_s: [30, 50]
+image_cap_per_reel: 0
+lead_sources: [new_trailers_in_library]
+story_shape: [title_screen_sound_on, hook_on_the_biggest_shot, noticed_1, noticed_2, noticed_3, what_it_might_mean, end_send_to_friend]
+hook_examples:
+  - "Indha shot-a gavanicheengala?"
+  - "Trailer-la 3 vishayam miss pannirupeenga."
+music: { from: the_trailer_mood, rule: "bold, starts on frame 1, never subtle" }
+motion_presets: [frame_grid, shot_scale_ladder, colour_strip, timeline_scrub, split_compare, still_reframe]
+proof_required: 0        # only what the trailer shows; guesses are asked as questions, never stated as facts or leaks
+meme_use: ending_only
+success_metric: sends_per_reach
+expires_h: 72            # a trailer breakdown is worth posting within 3 days of the drop
+rules:
+  - "Only what is on screen in the trailer; anything more is a question, not a claim."
+  - "No leaks, no rumours, no star-versus-star."
+  - "When a shot uses a known technique (a match cut, a colour shift, a ticking clock), name it on screen, as in a film breakdown."
+worth_it_extra:
+  - "Would a fan who watched the trailer twice still learn something?"
+reference:   # the breakdown reference set (approved 13 Nov 2026)
+  plan: plans/reference/breakdown-vikram-vedha.json

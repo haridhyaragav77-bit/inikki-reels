@@ -1,0 +1,329 @@
+{
+ "reel_id": "2026-11-12-film-breakdown-02",
+ "series": "film-breakdown",
+ "post_at": "2026-11-12T20:00:00+05:30",
+ "header": "VIKRAM VEDHA / THE SCREENPLAY BREAKDOWN",
+ "credit": "Vikram Vedha · YNOT Studios · dir. Pushkar-Gayathri",
+ "trailer_from": [],
+ "hook": "clap",
+ "lead": {
+  "topic": "Vikram Vedha: how a villain's stories make the hero doubt his own line between good and bad",
+  "score": 80,
+  "sources": []
+ },
+ "music": {
+  "mood": "tension_pulse"
+ },
+ "caption": {
+  "text": "Vikram Vedha-la namma kozhambinadhu sandai-naala illa. Kadhai-naala.\nPushkar-Gayathri: oru kadhai, oru kelvi, oru kodu.\nNeenga Vikram pakkama, Vedha pakkama?\nKadhai solra friend-ku anuppunga.",
+  "hashtags": [
+   "#VikramVedha",
+   "#VijaySethupathi",
+   "#Madhavan",
+   "#TamilCinema",
+   "#iNiKKiBreakdown"
+  ],
+  "first_comment": "Vedha-voda endha kadhai unga favourite? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "screens": [
+  {
+   "headline": "Yaaru *nallavan*?",
+   "tamil": "யார் நல்லவன்?",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 3.8,
+    "len": 2.6,
+    "label": "VIKRAM VEDHA"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "YAARU NALLAVAN?",
+    "color": "gold"
+   },
+   "caption": "Vikram Vedha paakkumbodhu…",
+   "voice_line": "விக்ரம் வேதா பார்க்கும்போது…"
+  },
+  {
+   "headline": "Cop vs gangster *mattum illa*.",
+   "tamil": "போலீஸ், ரவுடி கதை மட்டும் இல்லை.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 55.0,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "versus",
+    "left": "Vikram",
+    "right": "Vedha",
+    "tilt": 0
+   },
+   "caption": "Idhu police, rowdy kadhai mattum illa.",
+   "voice_line": "இது போலீஸ், ரவுடி கதை மட்டும் இல்ல."
+  },
+  {
+   "headline": "Cop vs gangster *mattum illa*.",
+   "tamil": "மூன்று விதமாகக் குழப்புகிறார்கள்.",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Kadhai",
+     "Kelvi",
+     "Kodu"
+    ],
+    "build": true
+   },
+   "caption": "Pushkar-Gayathri moonu vidhamaa nammala kozhappuraanga.",
+   "voice_line": "புஷ்கர் காயத்ரி மூணு விதமா நம்மள குழப்புறாங்க."
+  },
+  {
+   "headline": "01 / Oru *kadhai*.",
+   "tamil": "ஒரு கதை.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 83.1,
+    "len": 2.6,
+    "label": "VEDHA"
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Kadhai",
+     "Kelvi",
+     "Kodu"
+    ],
+    "active": 0
+   },
+   "caption": "Onnu. Oru kadhai.",
+   "voice_line": "ஒண்ணு. ஒரு கதை."
+  },
+  {
+   "headline": "01 / Oru *kadhai*.",
+   "tamil": "வேதா விக்ரமின் முன் அமர்கிறான்.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 36.4,
+    "len": 2.6,
+    "label": "VEDHA"
+   },
+   "motion": {
+    "type": "switch",
+    "places": [
+     "Vikram",
+     "Vedha"
+    ],
+    "from": 1,
+    "to": 0,
+    "pending": "Kadhai?"
+   },
+   "caption": "Vedha, Vikram munnaadi utkaaraan.",
+   "voice_line": "வேதா விக்ரம் முன்னாடி உட்காருறான்."
+  },
+  {
+   "headline": "01 / Oru *kadhai*.",
+   "tamil": "ஒரு கதை சொல்லட்டுமா சார்?",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 95.8,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "punch",
+    "text": "ORU KADHAI?",
+    "color": "gold"
+   },
+   "caption": "'Oru kadhai sollattuma, sir?'",
+   "voice_line": "ஒரு கதை சொல்லட்டுமா சார்?"
+  },
+  {
+   "headline": "02 / Oru *kelvi*.",
+   "tamil": "ஒரு கேள்வி.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 20.6,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Kadhai",
+     "Kelvi",
+     "Kodu"
+    ],
+    "active": 1
+   },
+   "caption": "Rendu. Oru kelvi.",
+   "voice_line": "ரெண்டு. ஒரு கேள்வி."
+  },
+  {
+   "headline": "02 / Oru *kelvi*.",
+   "tamil": "ஒவ்வொரு கதையும் ஒரு கேள்வியில் முடிகிறது.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 37.2,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "list",
+    "items": [
+     "Kadhai 1 → ?",
+     "Kadhai 2 → ?",
+     "Kadhai 3 → ?"
+    ]
+   },
+   "caption": "Ovvoru kadhaiyum oru kelvi-la mudiyudhu.",
+   "voice_line": "ஒவ்வொரு கதையும் ஒரு கேள்வியில முடியுது."
+  },
+  {
+   "headline": "02 / Oru *kelvi*.",
+   "tamil": "பதில் சொல்லச் சொல்ல விக்ரமே மாறுகிறார்.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 41.0,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.2,
+     0.4,
+     0.35,
+     0.7,
+     0.95
+    ],
+    "peaks": [
+     {
+      "at": 4,
+      "text": "Maarraaru"
+     }
+    ]
+   },
+   "caption": "Badhil solla solla, Vikram-e maarraaru.",
+   "voice_line": "பதில் சொல்லச் சொல்ல, விக்ரமே மாறுறார்."
+  },
+  {
+   "headline": "03 / Oru *kodu*.",
+   "tamil": "ஒரு கோடு.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 11.9,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Kadhai",
+     "Kelvi",
+     "Kodu"
+    ],
+    "active": 2
+   },
+   "caption": "Moonu. Oru kodu.",
+   "voice_line": "மூணு. ஒரு கோடு."
+  },
+  {
+   "headline": "03 / Oru *kodu*.",
+   "tamil": "நல்லவன், கெட்டவன்: ஒரு தெளிவான கோடு.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 50.3,
+    "len": 2.6,
+    "label": "POLICE"
+   },
+   "motion": {
+    "type": "versus",
+    "left": "Nallavan",
+    "right": "Kettavan",
+    "tilt": -0.6
+   },
+   "caption": "Vikram-ku nallavan, kettavan naduvula oru theLivaana kodu.",
+   "voice_line": "விக்ரமுக்கு நல்லவன், கெட்டவன் நடுவுல ஒரு தெளிவான கோடு."
+  },
+  {
+   "headline": "03 / Oru *kodu*.",
+   "tamil": "கதை கதையாக அந்தக் கோடு அழிகிறது.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 94.7,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "versus",
+    "left": "Nallavan",
+    "right": "Kettavan",
+    "tilt": 0
+   },
+   "caption": "Kadhai kadhaiyaa, andha kodu azhiyudhu.",
+   "voice_line": "கதை கதையா, அந்த கோடு அழியுது."
+  },
+  {
+   "headline": "Ippo *puriyudhaa*?",
+   "tamil": "ஒரு கதை. ஒரு கேள்வி. ஒரு கோடு.",
+   "visual": {
+    "type": "clip",
+    "film": "Vikram Vedha",
+    "start": 139.4,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "list",
+    "items": [
+     "Kadhai",
+     "Kelvi",
+     "Kodu"
+    ]
+   },
+   "caption": "Oru kadhai. Oru kelvi. Oru kodu.",
+   "voice_line": "ஒரு கதை. ஒரு கேள்வி. ஒரு கோடு."
+  },
+  {
+   "headline": "Ippo *puriyudhaa*?",
+   "tamil": "வில்லன் கதை சொல்ல, ஹீரோ யோசிக்கிறார்.",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "Idhu dhaan screenplay.",
+    "color": "gold"
+   },
+   "caption": "Villain kadhai solla, hero yosikkiraaru. Idhudhaan vithai.",
+   "voice_line": "வில்லன் கதை சொல்ல, ஹீரோ யோசிக்கிறார். இதுதான் வித்தை."
+  },
+  {
+   "headline": "Kadhai solra *friend*?",
+   "tamil": "கதை சொல்லும் நண்பருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "calling_friend"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Eppavum kadhai solra friend-ku anuppu.",
+   "voice_line": "எப்பவும் கதை சொல்ற உன் ஃப்ரெண்டுக்கு அனுப்பு."
+  },
+  {
+   "headline": "Oru kadhai sollattuma, *macha*?",
+   "tamil": "ஒரு கதை சொல்லட்டுமா மச்சா?",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Oru kadhai sollattuma, macha?",
+   "voice_line": "ஒரு கதை சொல்லட்டுமா, மச்சா?"
+  }
+ ]
+}

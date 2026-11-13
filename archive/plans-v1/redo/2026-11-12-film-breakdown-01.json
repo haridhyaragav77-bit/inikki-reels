@@ -1,0 +1,413 @@
+{
+ "reel_id": "2026-11-12-film-breakdown-01",
+ "series": "film-breakdown",
+ "post_at": "2026-11-12T12:30:00+05:30",
+ "header": "LEO / THE SCREENPLAY BREAKDOWN",
+ "credit": "Leo · Seven Screen Studio · dir. Lokesh Kanagaraj",
+ "trailer_from": [
+  "actorvijay"
+ ],
+ "hook": "clap",
+ "lead": {
+  "topic": "Leo: how Lokesh keeps us doubting our own hero (an ordinary life, one incident, one denial)",
+  "score": 82,
+  "sources": []
+ },
+ "music": {
+  "mood": "tension_pulse"
+ },
+ "caption": {
+  "text": "Leo-la kadaisi varaikkum namma ukkaandhadhu sandai-kaaga illa. Sandhegam.\nLokesh Kanagaraj: oru saadharana vaazhkai, oru sambavam, oru 'naan Leo illa'.\nNeenga endha scene-la 'ivan Leo dhaan'-nu nenacheenga?\nSandhega friend-ku anuppunga.",
+  "hashtags": [
+   "#Leo",
+   "#ThalapathyVijay",
+   "#LokeshKanagaraj",
+   "#TamilCinema",
+   "#iNiKKiBreakdown"
+  ],
+  "first_comment": "Neenga endha scene-la Parthi = Leo-nu decide pannineenga? 👇"
+ },
+ "cover": {
+  "screen": 1
+ },
+ "screens": [
+  {
+   "headline": "Kadaisi varaikkum *sandhegam*.",
+   "tamil": "கடைசி வரை ஒரு சந்தேகம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 46.5,
+    "len": 2.6,
+    "max_len": 1.9,
+    "label": "LEO"
+   },
+   "motion": {
+    "type": "punch",
+    "text": "PARTHI? LEO?",
+    "color": "gold"
+   },
+   "caption": "Leo paakkumbodhu…",
+   "voice_line": "லியோ பார்க்கும்போது…"
+  },
+  {
+   "headline": "Fight mattum illa.",
+   "tamil": "சண்டையைத் தாண்டி மூன்று விஷயம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 150.6,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Fights",
+      "state": "no",
+      "value": "Not the reason"
+     }
+    ]
+   },
+   "caption": "Sandai mattum kaaranam illa.",
+   "voice_line": "சண்டை மட்டும் காரணம் இல்லை."
+  },
+  {
+   "headline": "Fight mattum illa.",
+   "tamil": "சண்டையைத் தாண்டி மூன்று விஷயம்.",
+   "visual": "same",
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vaazhkai",
+     "Sambavam",
+     "Maruppu"
+    ],
+    "build": true
+   },
+   "caption": "Lokesh moonu vidhamaa sandhegatha valakkuraaru.",
+   "voice_line": "லோகேஷ் மூணு விதமா நம்ம சந்தேகத்தை வளர்க்கிறார்."
+  },
+  {
+   "headline": "01 / Saadharana vaazhkai.",
+   "tamil": "ஒரு சாதாரண வாழ்க்கை.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 0.9,
+    "len": 2.6
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vaazhkai",
+     "Sambavam",
+     "Maruppu"
+    ],
+    "active": 0
+   },
+   "caption": "Onnu. Saadharana vaazhkai.",
+   "voice_line": "ஒண்ணு. சாதாரண வாழ்க்கை."
+  },
+  {
+   "headline": "01 / Saadharana vaazhkai.",
+   "tamil": "ஹிமாச்சலில் ஒரு சின்ன கஃபே.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 55.2,
+    "len": 2.6,
+    "max_len": 1.1,
+    "label": "CAFE"
+   },
+   "motion": {
+    "type": "callout",
+    "at": [
+     0.5,
+     0.55
+    ],
+    "label": "Café"
+   },
+   "caption": "Himachal-la oru chinna café.",
+   "voice_line": "ஹிமாச்சல்ல ஒரு சின்ன காபி கடை."
+  },
+  {
+   "headline": "01 / Saadharana vaazhkai.",
+   "tamil": "கழுதைப்புலியையும் அடக்குகிறார்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 127.9,
+    "len": 2.6,
+    "max_len": 1.3,
+    "label": "HYENA"
+   },
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.2,
+     0.5,
+     0.4,
+     0.8
+    ],
+    "peaks": [
+     {
+      "at": 3,
+      "text": "Hyena"
+     }
+    ]
+   },
+   "caption": "Hyena-vaiyum adakkuraaru.",
+   "voice_line": "கழுதைப்புலியையும் அடக்குறார்."
+  },
+  {
+   "headline": "01 / Saadharana vaazhkai.",
+   "tamil": "இவருக்குள் என்ன இருக்கிறது?",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 87.0,
+    "len": 2.6,
+    "max_len": 2.9
+   },
+   "motion": {
+    "type": "punch",
+    "text": "?",
+    "color": "teal"
+   },
+   "caption": "Ivvalavu amaidhiyaanavarukkulla enna irukku?",
+   "voice_line": "இவ்வளவு அமைதியானவருக்குள்ள என்ன இருக்கு?"
+  },
+  {
+   "headline": "02 / Oru sambavam.",
+   "tamil": "ஒரு சம்பவம்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 63.6,
+    "len": 2.6,
+    "max_len": 0.8
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vaazhkai",
+     "Sambavam",
+     "Maruppu"
+    ],
+    "active": 1
+   },
+   "caption": "Rendu. Oru sambavam.",
+   "voice_line": "ரெண்டு. ஒரு சம்பவம்."
+  },
+  {
+   "headline": "02 / Oru sambavam.",
+   "tamil": "கடைக்கு வந்த கும்பலைத் தனியே முடிக்கிறார்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 101.9,
+    "len": 2.6,
+    "max_len": 2.5,
+    "label": "CAFE FIGHT"
+   },
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.3,
+     0.6,
+     0.95
+    ],
+    "peaks": [
+     {
+      "at": 2,
+      "text": "Alone"
+     }
+    ]
+   },
+   "caption": "Kadaikku vandha gang-a thaniyaa mudikkiraaru.",
+   "voice_line": "கடைக்கு வந்த கும்பலைத் தனியா முடிக்கிறார்."
+  },
+  {
+   "headline": "02 / Oru sambavam.",
+   "tamil": "அது செய்தியாகிறது.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 75.0,
+    "len": 2.6,
+    "max_len": 1.0,
+    "label": "NEWS"
+   },
+   "motion": {
+    "type": "callout",
+    "at": [
+     0.5,
+     0.45
+    ],
+    "label": "News"
+   },
+   "caption": "Adhu news aagudhu.",
+   "voice_line": "அது நியூஸ் ஆகுது."
+  },
+  {
+   "headline": "02 / Oru sambavam.",
+   "tamil": "தாஸ் கும்பல் ஹிமாச்சலுக்கு வருகிறது.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 71.1,
+    "len": 2.6,
+    "max_len": 1.9,
+    "label": "DAS"
+   },
+   "motion": {
+    "type": "switch",
+    "places": [
+     "Das gang",
+     "Himachal"
+    ],
+    "from": 0,
+    "to": 1,
+    "pending": "Leo?"
+   },
+   "caption": "Das gang Himachal-ku varudhu.",
+   "voice_line": "தாஸ் கும்பல் ஹிமாச்சலுக்கு வருது."
+  },
+  {
+   "headline": "03 / Oru maruppu.",
+   "tamil": "ஒரு மறுப்பு.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 156.9,
+    "len": 2.6,
+    "max_len": 1.8
+   },
+   "motion": {
+    "type": "points",
+    "items": [
+     "Vaazhkai",
+     "Sambavam",
+     "Maruppu"
+    ],
+    "active": 2
+   },
+   "caption": "Moonu. Oru maruppu.",
+   "voice_line": "மூணு. ஒரு மறுப்பு."
+  },
+  {
+   "headline": "03 / Oru maruppu.",
+   "tamil": "நான் லியோ இல்லை என்கிறார்.",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 105.8,
+    "len": 2.6,
+    "label": "PARTHI"
+   },
+   "motion": {
+    "type": "status",
+    "rows": [
+     {
+      "label": "Parthi",
+      "state": "no",
+      "value": "Naan Leo illa"
+     },
+     {
+      "label": "Das",
+      "state": "yes",
+      "value": "Nee dhaan Leo"
+     }
+    ]
+   },
+   "caption": "'Naan Leo illa'-nu Parthi solraaru.",
+   "voice_line": "நான் லியோ இல்லன்னு பார்த்தி சொல்றார்."
+  },
+  {
+   "headline": "03 / Oru maruppu.",
+   "tamil": "யாரை நம்புவது?",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 45.7,
+    "len": 2.6,
+    "max_len": 2.7
+   },
+   "motion": {
+    "type": "tension",
+    "points": [
+     0.3,
+     0.5,
+     0.45,
+     0.75,
+     0.97
+    ],
+    "peaks": [
+     {
+      "at": 4,
+      "text": "Yaaru?"
+     }
+    ]
+   },
+   "caption": "Das gang nambala. Naamalum yaara namburadhu?",
+   "voice_line": "தாஸ் கும்பல் நம்பல. நாமளும் யாரை நம்புறது?"
+  },
+  {
+   "headline": "Ippo puriyudhaa?",
+   "tamil": "நாம் ஏன் கடைசி வரை உட்கார்ந்தோம்?",
+   "visual": {
+    "type": "clip",
+    "film": "Leo",
+    "start": 76.9,
+    "len": 2.6,
+    "label": "LEO"
+   },
+   "motion": {
+    "type": "list",
+    "items": [
+     "Vaazhkai",
+     "Sambavam",
+     "Maruppu"
+    ]
+   },
+   "caption": "Amaidhiyaana vaazhkai. Oru sambavam. Oru maruppu.",
+   "voice_line": "அமைதியான வாழ்க்கை. ஒரு சம்பவம். ஒரு மறுப்பு."
+  },
+  {
+   "headline": "Ippo puriyudhaa?",
+   "tamil": "நாம் ஏன் கடைசி வரை உட்கார்ந்தோம்?",
+   "visual": "same",
+   "motion": {
+    "type": "punch",
+    "text": "Idhu dhaan screenplay.",
+    "color": "gold"
+   },
+   "caption": "Hero mele sandhegam. Idhudhaan vithai.",
+   "voice_line": "ஹீரோ மேலயே சந்தேகம். இதுதான் வித்தை."
+  },
+  {
+   "headline": "Sandhega friend?",
+   "tamil": "சந்தேகப்படும் நண்பருக்கு அனுப்புங்க.",
+   "visual": {
+    "type": "meme",
+    "mood": "recognition"
+   },
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Ellathayum sandhegappadura friend-ku anuppu.",
+   "voice_line": "எல்லாத்தையும் சந்தேகப்படுற உன் ஃப்ரெண்டுக்கு அனுப்பு."
+  },
+  {
+   "headline": "Naan Leo illa da!",
+   "tamil": "நான் லியோ இல்லை டா!",
+   "visual": "same",
+   "motion": {
+    "type": "cta"
+   },
+   "caption": "Naan Leo illa da!",
+   "voice_line": "நான் லியோ இல்ல டா!"
+  }
+ ]
+}

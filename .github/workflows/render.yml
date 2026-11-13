@@ -1,0 +1,94 @@
+name: render
+# Makes reels from plan files (Engine job "Make", AGENT.md 4.3) and puts them in Drive for review.
+# Nothing is posted. Used in Phase 2 for the three golden reels (CLAUDE.md rule 3: template changes re-render them).
+on:
+  push:                       # registers the workflow; this run uses stand-in pictures (no keys, no spend)
+    branches: [claude/gallant-dijkstra-6madni]
+    paths: [".github/workflows/render.yml", "templates/**", "engine/render.py", "engine/assets.py", "engine/audio.py", "engine/depth.py"]
+  workflow_dispatch:
+    inputs:
+      plans:
+        description: "Plan files, separated by spaces"
+        default: "plans/reference/vjs-second-tier.json plans/reference/kaithi-guess.json"
+      to_drive:
+        description: "Drive folder for the results"
+        default: "rehearsal/phase2-golden"
+      stand_ins:
+        description: "Stand-in pictures and voice (no AI images made, nothing spent)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render
+  cancel-in-progress: false
+
+jobs:
+  render:
+    name: Make reels from plans (nothing is posted)
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+      PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
+      PLANS: ${{ inputs.plans || 'plans/reference/kaithi-guess.json' }}
+      TO_DRIVE: ${{ inputs.to_drive || '' }}
+      STAND_INS: ${{ (github.event_name == 'push' || inputs.stand_ins) && '--local' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Keep the depth model and the browser between runs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/inikki
+            ~/.cache/ms-playwright
+          key: render-tools-v1
+      - name: Install ffmpeg, the Engine's libraries and the browser that draws the templates
+        run: |
+          sudo apt-get update -qq >/dev/null
+          sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install -q -r requirements.txt
+          python -m playwright install --with-deps chromium >/dev/null
+      - name: Check the plans against the rules
+        run: python -m engine.plancheck --selftest $PLANS
+      - name: Same plan, same picture (only on the test run after a template change)
+        if: github.event_name == 'push'
+        run: python -m engine.golden
+      - name: Make the reels
+        run: |
+          if [ -n "$TO_DRIVE" ] && [ -z "$STAND_INS" ]; then python -m engine.render $PLANS --to-drive "$TO_DRIVE"; else python -m engine.render $PLANS $STAND_INS; fi
+      - name: Review pictures to the throwaway 'review' branch (for the build session)
+        if: always()
+        run: |
+          mkdir -p out/peek/render
+          for d in out/reels/*/; do n=$(basename "$d"); mkdir -p "out/peek/render/$n"; cp "$d"sheet.jpg "$d"cover.jpg "$d"notes.md "$d"qc.json "out/peek/render/$n/" 2>/dev/null || true; done
+          cp out/status/*.json out/peek/render/ 2>/dev/null || true
+          B=review; [ -n "$STAND_INS" ] && B=review-test        # a stand-in test never overwrites the real review
+          cd out/peek && git init -q && git checkout -q -b "$B" && git add -A
+          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "render review $(date -u +%FT%TZ)" || exit 0
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$B:$B"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Keep the reels with this run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reels
+          path: |
+            out/reels/*/reel.mp4
+            out/reels/*/cover.jpg
+            out/reels/*/notes.md
+            out/reels/*/qc.json
+            out/reels/*/plan_resolved.json
+          retention-days: 7
+          if-no-files-found: ignore

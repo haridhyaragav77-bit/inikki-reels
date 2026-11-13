@@ -1,0 +1,92 @@
+name: daily
+# Engine jobs on a clock (AGENT.md 4.3): health check, the brief before each thinking run, and the nightly
+# stats + dashboard + clean-up. Times are IST; cron lines are UTC. Text results are committed to the repository.
+on:
+  push:
+    branches: [claude/gallant-dijkstra-6madni]
+    paths: [".github/workflows/daily.yml"]
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Which job"
+        type: choice
+        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test]
+        default: brief-plan
+  schedule:
+    - cron: "31 22 * * *"     # 04:01 IST  health
+    - cron: "42 23 * * *"     # 05:12 IST  brief for the Plan run (05:37)
+    - cron: "42 10 * * *"     # 16:12 IST  brief for the Refresh run (16:37)
+    - cron: "42 16 * * 0"     # Sun 22:12 IST  brief for the Weekly run (22:37)
+    - cron: "12 17 1 * *"     # 1st 22:42 IST  brief for the Monthly run (23:07)
+    - cron: "10 18 * * *"     # 23:40 IST  nightly: stats, dashboard, clean-up
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: daily-${{ github.event.schedule || inputs.job || 'push' }}
+  cancel-in-progress: false
+
+jobs:
+  daily:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
+      GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+      IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+      IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      META_APP_ID: ${{ secrets.META_APP_ID }}
+      META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Which job
+        run: |
+          case "${{ github.event.schedule }}" in
+            "31 22 * * *") J=health;;
+            "42 23 * * *") J=brief-plan;;
+            "42 10 * * *") J=brief-refresh;;
+            "42 16 * * 0") J=brief-weekly;;
+            "12 17 1 * *") J=brief-monthly;;
+            "10 18 * * *") J=nightly;;
+            *) J="${{ inputs.job }}";;
+          esac
+          echo "JOB=${J:-brief-plan}" >> "$GITHUB_ENV"
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
+      - run: pip install -q -r requirements-light.txt
+      - name: Health
+        if: env.JOB == 'health'
+        run: python -m engine.health
+      - name: Brief
+        if: startsWith(env.JOB, 'brief-')
+        run: python -m engine.brief --run "${JOB#brief-}"
+      - name: Nightly stats
+        if: env.JOB == 'nightly'
+        continue-on-error: true
+        run: python -m engine.measure --nightly
+      - name: Dashboard sheet
+        if: env.JOB == 'nightly'
+        continue-on-error: true
+        run: python -m engine.dashboard
+      - name: Clean-up
+        if: env.JOB == 'nightly' || env.JOB == 'clean-dry'
+        run: python -m engine.clean ${{ env.JOB == 'clean-dry' && '--dry' || '' }}
+      - name: News feeds test
+        if: env.JOB == 'watch-test'
+        run: python -m engine.watch --test
+      - name: Save the text results (brief, Control Room copy, metrics, packed plans)
+        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test'
+        run: |
+          git add -A data plans
+          git diff --cached --quiet && exit 0
+          git -c user.name="iNiKKi Engine" -c user.email=engine@users.noreply.github.com commit -q -m "engine: $JOB $(TZ=Asia/Kolkata date +%F)"
+          for i in 1 2 3 4; do git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; git pull -q --rebase origin "${GITHUB_REF_NAME}"; done
+          exit 1
+      - name: Status (always)
+        if: always()
+        run: python -m engine.status "$JOB" "${{ job.status }}"

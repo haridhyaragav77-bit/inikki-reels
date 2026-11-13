@@ -1,3 +1,20 @@
+# Engine working files: media never goes into git (CLAUDE.md rule 7)
 engine/.cache/
 engine/.work/
+node_modules/
+/out/
+/work/
 __pycache__/
+*.pyc
+*.mp3
+*.mp4
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.webm
+# keys never go into git
+.env
+client_secret*.json
+token*.json
+*service*account*.json

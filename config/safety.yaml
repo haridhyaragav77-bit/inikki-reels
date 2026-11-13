@@ -1,0 +1,24 @@
+# Safety rules (AGENT.md 12.4). Only Harish changes these, with a typed confirmation in the Control Room.
+rules:
+  - id: 1
+    rule: "No rumours as fact. Unconfirmed is labelled or skipped."
+  - id: 2
+    rule: "No fan-war bait. No insults to people or films. Comparisons are about craft."
+  - id: 3
+    rule: "Respect mode for deaths and tragedies."
+  - id: 4
+    rule: "Clips are short and always transformed with commentary and design."
+  - id: 5
+    rule: "Music only from the Drive music folder or royalty-free backups. Tracks that get a reel muted are retired."
+  - id: 6
+    rule: "Real people in AI images are inspired-by illustrations, never photoreal fakes or false situations."
+  - id: 7
+    rule: "Budget caps are hard stops."
+  - id: 8
+    rule: "Nothing posts that fails inspection."
+  - id: 9
+    rule: "Wrong facts are corrected in the next run, or the reel is deleted if serious."
+respect_mode:
+  pauses: [memes, jokes, hype_reels]
+  allows: [tribute]
+  lasts: "the day"
