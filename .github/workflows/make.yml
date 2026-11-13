@@ -26,6 +26,7 @@ env:
   GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
   GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
   GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
+  ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
   DATE: ${{ inputs.date || '' }}
   ONLY: ${{ inputs.only || '' }}
   RETRY: ${{ inputs.retry && '--retry' || '' }}

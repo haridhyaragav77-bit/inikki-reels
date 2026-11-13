@@ -115,11 +115,14 @@ def main():
 
     def voice():
         from . import voice as v
-        out = str(OUT / "health_voice.mp3")
-        r = v.say(ENGINE["voice"]["smoke_text"], out)
-        ok = r.get("ok") and os.path.exists(out) and os.path.getsize(out) > 1000
-        return ok, "Microsoft's Tamil voice answers" if ok else f"no answer: {r.get('error', 'no file')}"
-    check("Voice", voice, "Nothing: reels with voice retry later, then post as silent versions with full on-screen text.")
+        from .settings import AGENT
+        u = v.usage_report(drive)
+        if not u.get("ok"):
+            return False, f"ElevenLabs key or account problem: {u.get('error')}"
+        under = float((AGENT.get("voice") or {}).get("guard", {}).get("alert_under_left", 0.10))
+        left = 1 - (u.get("pct_used") or 0)
+        return left >= under, f"ElevenLabs: {u['credits_left']} of {u['credit_limit']} credits left ({left:.0%}), reset {str(u.get('next_reset'))[:10]}"
+    check("Voice", voice, "If the key failed: check the GitHub Secret ELEVENLABS_API_KEY. If credits are low: nothing, the cost guard shortens voice by itself.")
     bad = [c for c in checks if not c["ok"]]
     res = {"ok": not bad, "checks": checks}
     status.write(drive, "health.json", res)

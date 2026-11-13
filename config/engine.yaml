@@ -66,11 +66,11 @@ instagram:
   api_versions: ["v23.0", "v22.0", "v21.0"]        # first that works is used
   reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
 
-voice:
-  tool: tools/voice_tool.py
-  voice: ta-IN-ValluvarNeural
-  rate: "+35%"
-  pitch: "-2Hz"
+voice:            # the voice itself is a setting in config/agent.yaml (voice:); this is plumbing only
+  api: https://api.elevenlabs.io/v1
+  output_format: mp3_44100_128
+  gap_s: 0.3
+  smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
   smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
 
 clips:

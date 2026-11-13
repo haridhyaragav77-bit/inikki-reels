@@ -205,6 +205,10 @@ def money(ctl, drive):
     stor = _safe(lambda: drive.read_json("status", "storage.json"), {}) or {}
     out.update(runner_min=mins.get("minutes"), runner_limit=mins.get("limit", ENGINE.get("runner", {}).get("minutes_month")),
                storage_gb=stor.get("gb"), storage_cap=ctl.settings.get("budgets", {}).get("storage_gb"), last_cleanup_deleted=stor.get("deleted"))
+    vu = _safe(lambda: drive.read_json("status", "voice_usage.json"), {}) or {}
+    if vu.get("ok"):          # ElevenLabs (AGENT.md 4.4)
+        out["voice"] = {k: vu.get(k) for k in ("plan", "credits_used", "credit_limit", "credits_left", "pct_used", "next_reset",
+                                               "spent_inr_cycle", "plan_price_inr", "inr_per_reel", "reels_today", "voice")}
     month = status.now().strftime("%Y-%m")
     posted = [p for p in load_json_lines(_safe(lambda: drive.read_text("status", "posted.jsonl"), "") or "") if str(p.get("posted_at", "")).startswith(month)]
     out["posted_month"] = len(posted)

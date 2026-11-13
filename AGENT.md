@@ -191,13 +191,16 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | Brief | Before each thinking run | Builds the 1-page brief and copies your Control Room settings (switch, changes, feedback, commands) to `data/control/`, so the Brain needs no Drive access |
 | Watch | Every 2 hours, 8 AM–10 PM | Scans trusted feeds for breaking news (no AI) |
 | Clean | Nightly | Deletes working files by the retention rules (section 14) |
-| Health | Daily 04:00 | Keys valid, credit left, storage, runner minutes, voice reachable |
+| Health | Daily 04:00 | Keys valid, credit left, storage, runner minutes, voice reachable, ElevenLabs credits (status/voice_usage.json) |
 | Dashboard | After Measure | Updates the Dashboard sheet |
 
 **The clock (14 Nov 2026).** GitHub's own timer delivered this repository's scheduled jobs about 7 hours late. So the jobs that must be on time are started by Claude scheduled tasks: each sends `TICK <job>` to a small **clock** chat on the cheapest model, which starts that one GitHub job and does nothing else. Started this way: Post at each of the 8 slots (it posts at once, with no waiting on the runner), the briefs before the Plan, Refresh, Weekly and Monthly runs, and the Nightly job. GitHub's own timer stays in the job files as a late backstop for the rest (health, trailers, the Make safety nets, music). If GitHub's timer becomes punctual, or a free outside pinger is set up (`GUIDE.md` section 12), the clock tasks are switched off.
 
 ### 4.4 Voice
-Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → a cloud Claude session → music-only version with short key-line captions (the motion graphics still carry the ideas). **Voice and rendering always run in the cloud, never on your laptop.**
+**ElevenLabs** (Harish's subscription, 13 Nov 2026). The key is the GitHub Secret `ELEVENLABS_API_KEY`; the voice, model and speed are settings in `config/agent.yaml` under `voice:` (default "Ashwin – Casual Tamil Social Creator"), and a series can set its own `voice_id` in its series.yaml. The pronunciation list in the niche profile is applied as text substitutions before each line is sent.
+Order of preference: ElevenLabs → retry after 10 minutes → silent version (music + full on-screen text). The laptop and Microsoft routes are retired (`archive/voice_tool.py`). **Voice and rendering always run in the cloud, never on your laptop.**
+Cost guard (code): before each voice job the Engine reads the credits left. At 80% used, only the hook and the payoff are voiced; at 95%, only Film Breakdown is voiced; at 100%, silent versions until the reset date. Each step tells the Advisor (an alert).
+Usage: after every voice job and in the daily health check, the Engine writes Drive `status/voice_usage.json` (plan, credits used / limit / left, % used, reset date, characters and reels voiced today, ₹ spent this cycle = plan price × % used, ₹ per reel). The rupee rate and the plan price are settings (`budgets.usd_to_inr`, `budgets.elevenlabs_plan_usd`). The Today card shows voice credits left and ₹; the health check alerts when the key fails or credits fall under 10%.
 
 ### 4.5 Rehearsal, then live
 | Phase | What happens |

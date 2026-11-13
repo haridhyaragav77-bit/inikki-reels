@@ -18,7 +18,7 @@ import subprocess
 import sys
 import time
 
-from .settings import ENGINE, OUT, ROOT, load_yaml, niche_dir, secret
+from .settings import AGENT, ENGINE, OUT, ROOT, load_yaml, niche_dir, secret
 from .brandkit import kit
 from . import status
 
@@ -183,7 +183,7 @@ def encode_video(frames, total_s, out_mp4):
 
 
 # ---------------------------------------------------------------- resolving a plan
-def _voice(res, plan, series, work, local, notes):
+def _voice(res, plan, series, work, local, notes, drive=None):
     """Record the voice lines. Real line lengths decide the screen lengths (AGENT.md 4.4)."""
     v = plan.get("voice")
     voice_on = v.get("on", True) if isinstance(v, dict) else (bool(v) if v is not None else bool(series.get("voice")))
@@ -203,7 +203,7 @@ def _voice(res, plan, series, work, local, notes):
     vdir = os.path.join(work, "voice")
     os.makedirs(vdir, exist_ok=True)
     clips = None
-    if local:   # stand-in tones with estimated lengths, so timing and mixing can be tested without Microsoft's service
+    if local:   # stand-in tones with estimated lengths, so timing and mixing can be tested without spending ElevenLabs credits
         clips = []
         res["voice_stand_in"] = True
         for n, (_, txt) in enumerate(lines):
@@ -214,20 +214,35 @@ def _voice(res, plan, series, work, local, notes):
             clips.append({"file": f, "seconds": secs})
     else:
         from . import voice as V
-        cfg = {k: val for k, val in (v or {}).items() if k in ("voice", "rate", "pitch")} if isinstance(v, dict) else {}
-        cfg["lines"] = [{"text": spoken(txt)} for _, txt in lines]
-        r = V.batch(cfg, vdir)
-        for wait in (10, 30):  # two fresh retries, then the silent version (fail soft)
-            if r.get("ok"):
-                break
-            print("voice attempt failed:", r.get("error"), "| retrying in", wait, "s", file=sys.stderr)
-            time.sleep(wait)
-            r = V.batch(cfg, vdir, fresh=True)
-        if r.get("ok"):
-            clips = r["clips"]
-        else:
-            notes.append(f"Voice could not be recorded ({r.get('error')}). This reel is the silent version with music and full on-screen text.")
+        from . import status
+        mode, why = V.guard(series.get("id") or plan.get("series"))          # cost guard (AGENT.md 4.4, CLAUDE.md rule 5)
+        if why:
+            notes.append(why)
+            status.alert(drive, "Voice credits", why, "The cost guard changed how this reel is voiced.", level="warn")
+        if mode == "hook_payoff" and len(lines) > 2:
+            lines = [lines[0], lines[-1]]
+        if mode == "silent":
+            lines = []
             res["voice_failed"] = True
+        else:
+            cfg = {"lines": [{"text": spoken(txt)} for _, txt in lines]}
+            if isinstance(v, dict) and v.get("voice_id"):
+                cfg["voice_id"] = v["voice_id"]
+            r = V.batch(cfg, vdir, series=series)
+            if not r.get("ok"):          # one retry after a wait (settings), then the silent version (fail soft)
+                wait = int(float((AGENT.get("voice") or {}).get("retry_after_min", 10)) * 60)
+                print("voice attempt failed:", r.get("error"), "| retrying in", wait, "s", file=sys.stderr)
+                time.sleep(wait)
+                r = V.batch(cfg, vdir, series=series)        # good clips from the first try are reused
+            if r.get("ok"):
+                clips = r["clips"]
+                try:
+                    V.usage_report(drive, chars_today=r.get("chars", 0), reels_today=1)
+                except Exception as e:
+                    print("voice usage report failed:", e, file=sys.stderr)
+            else:
+                notes.append(f"Voice could not be recorded ({r.get('error')}). This reel is the silent version with music and full on-screen text.")
+                res["voice_failed"] = True
     if clips:
         for (i, _), c in zip(lines, clips):
             s = res["screens"][i]
@@ -271,7 +286,7 @@ def resolve(plan, work, local, drive=None, budget=None):
     res["hook"] = plan.get("hook") or series.get("hook") or "impact"      # the visual hook for the first second (AGENT.md 5.14)
     for s in res["screens"]:
         s.setdefault("dur", 3.0)
-    _voice(res, plan, series, work, local, A.notes)
+    _voice(res, plan, series, work, local, A.notes, drive)
 
     counter = {"img": 0, "n": 0}
 

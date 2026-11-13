@@ -9,10 +9,21 @@ slots: ["08:30", "12:30", "15:30", "18:00", "20:00", "21:30"]
 flex_slots: ["11:00", "17:00"]
 timezone: Asia/Kolkata
 language: { headline: "tanglish_or_english", line2: "tamil", voice: "ta-IN-ValluvarNeural", subtitles: ["tanglish", "tamil"] }
-budgets: { images_inr_month: 500, lab_share: 0.20, storage_gb: 8, breaking_per_day: 2 }
+budgets: { images_inr_month: 500, usd_to_inr: 84, elevenlabs_plan_usd: null, lab_share: 0.20, storage_gb: 8, breaking_per_day: 2 }
 metric_priority: [skip_rate, watch_through, share_rate, follow_rate, like_rate, save_rate, comment_rate, repost_rate]
 learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series_week: 3, auto_revert_drop: 0.20 }
 gates: { lead_min: 60, virality_min: 65 }
 away_mode: false
 respect: { allow_series: [breaking-news, artwork-quote, film-breakdown] }   # what may post on a respect day
 thinking_runs: { plan: "05:37", refresh: "16:37", weekly: "sun 22:37", monthly: "1 23:07" }   # IST; the Brain's clock (AGENT.md 4.2)
+voice:            # ElevenLabs (AGENT.md 4.4); a series may set its own voice_id in series.yaml
+  provider: elevenlabs
+  voice_id: OP382u5y4MvFmE1mReFV          # Ashwin – Casual Tamil Social Creator
+  voice_name: "Ashwin – Casual Tamil Social Creator"
+  model: eleven_multilingual_v2           # supports Tamil
+  speed: 1.1                              # 0.7–1.2; energetic but clear
+  stability: 0.45
+  similarity_boost: 0.8
+  retry_after_min: 10                     # one retry, then the silent version
+  guard: { hook_payoff_at: 0.80, breakdown_only_at: 0.95, silent_at: 1.0, alert_under_left: 0.10 }
+  breakdown_series: [film-breakdown]

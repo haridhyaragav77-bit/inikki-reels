@@ -143,11 +143,14 @@ def t_voice():
     r = voice.say(ENGINE["voice"]["smoke_text"], out)
     if r.get("ok") and os.path.exists(out) and os.path.getsize(out) > 1000:
         CTX["voice_file"] = out
-        result("Voice from the cloud (Microsoft)", True,
-               f"Tamil line recorded on the GitHub runner: {r.get('seconds')} s, {os.path.getsize(out) // 1024} KB. Voice jobs can run in the cloud.")
+        u = voice.usage_report(CTX.get("drive") if CTX.get("drive_writable") else None)
+        left = f"; credits left {u.get('credits_left')} of {u.get('credit_limit')}, reset {str(u.get('next_reset'))[:10]}" if u.get("ok") else ""
+        result("Voice from the cloud (ElevenLabs)", True,
+               f"Tamil line recorded on the GitHub runner with {voice.defaults().get('voice_name')}: {r.get('seconds')} s, "
+               f"{os.path.getsize(out) // 1024} KB{left}.")
     else:
-        result("Voice from the cloud (Microsoft)", False, f"Microsoft's voice service did not answer from the runner: {r.get('error', 'no file')}",
-               "The evening laptop route (Voice Session card, 8 PM) becomes the voice plan; the Engine will retry the cloud each day.")
+        result("Voice from the cloud (ElevenLabs)", False, f"ElevenLabs did not make the line: {r.get('error', 'no file')}",
+               "Check the GitHub Secret ELEVENLABS_API_KEY and the ElevenLabs plan. Until then reels post as silent versions.")
 
 
 def t_image(spend):
@@ -326,7 +329,7 @@ def main():
     os.makedirs(OUTDIR, exist_ok=True)
     order = [("secrets", "Keys in GitHub", t_secrets, ()), ("runner", "Runner tools", t_runner, ()),
              ("drive", "Drive: read", t_drive_read, ()), ("drive", "Drive: write", t_drive_write, ()),
-             ("sheet", "Dashboard sheet", t_sheet, ()), ("voice", "Voice from the cloud (Microsoft)", t_voice, ()),
+             ("sheet", "Dashboard sheet", t_sheet, ()), ("voice", "Voice from the cloud (ElevenLabs)", t_voice, ()),
              ("image", "One AI image (OpenAI)", t_image, (spend,)), ("clip", "One trailer clip (YouTube)", t_clip, ()),
              ("instagram", "Instagram numbers (read only)", t_instagram, ()), ("pictures", "Free pictures from the web", t_pictures, ())]
     ran = []
