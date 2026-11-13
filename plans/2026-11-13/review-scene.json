@@ -1,0 +1,67 @@
+{
+  "id": "2026-11-13-review-scene",
+  "series": "movie-review",
+  "template": "verdict",
+  "fps": 30,
+  "length_s": [20, 45],
+  "lead": {
+    "topic": "Scene (Suriya, dir. Jithu Madhavan): what critics say",
+    "critics": [
+      { "outlet": "The Times of India", "critic": "M. Suganth", "rating": "4/5", "quote": "the film starts getting into the groove" },
+      { "outlet": "Cinema Express", "critic": "Avinash Ramachandran", "rating": "4/5", "quote": "With Suriya in terrific form" },
+      { "outlet": "Hindustan Times", "critic": "Neeshita Nyayapati", "rating": "3.5/5", "quote": "a Diwali film that crackles" },
+      { "outlet": "Baradwaj Rangan", "critic": "Film critic", "quote": "ends up working only in parts" },
+      { "outlet": "Deccan Herald", "critic": "Jagadish Angadi", "rating": "2.5/5", "quote": "sluggish narration (first half)" }
+    ],
+    "sources": ["https://en.wikipedia.org/wiki/Scene_(2026_film) (Critical response, with links to each review)", "https://thereviewmonk.com/movie/scene/"]
+  },
+  "worth_it": {
+    "deciding_this_week": "Yes: Diwali release, second weekend coming.",
+    "quotes": "Real, short, named; one mixed voice included for balance.",
+    "spoilers": "None. No plot beyond 'a murder mystery'."
+  },
+  "voice": { "on": false },
+  "music": { "sections": [ { "track": "whats_cookin", "from": 0.0, "screen": 0, "mood": "quirky dark comedy" } ], "level_db": -15, "fade_out": 1.0 },
+  "assets": {
+    "cast": { "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg", "crop": [0.25, 0.0, 0.5, 0.7] },
+    "suriya_dance": { "src": "engine/.cache/stills/scene/92HSSqE2VBU_maxres2.jpg" },
+    "glimpse": { "src": "engine/.cache/stills/scene/zt35WyMBaWo_maxres1.jpg" },
+    "nazriya": { "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg" },
+    "naslen": { "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres1.jpg" }
+  },
+  "screens": [
+    { "kind": "title", "image": "cast", "fx": 0.45, "fy": 0.35, "dur": 2.9, "film": "SCENE", "type": "FIRST VERDICT",
+      "sfx": [ { "at": 0.12, "type": "impact" }, { "at": 0.6, "type": "stamp" } ] },
+    { "kind": "stamp", "in": "flash", "image": "suriya_dance", "dur": 3.4, "heading": "THE VERDICT", "lines": ["WORTH THE", "TICKET"], "land": 0.45,
+      "sub": "MOST CRITICS AGREE", "sfx": [ { "at": 0.62, "type": "stamp" } ] },
+    { "kind": "scale", "in": "whip", "image": "glimpse", "dur": 5.4, "works_label": "WORKS", "not_label": "DOESN'T",
+      "works": ["SURIYA IN FORM", "NASLEN", "NAZRIYA", "DARK HUMOUR"], "not": ["SLOW FIRST HALF"],
+      "sfx": [ { "at": 0.5, "type": "pop" }, { "at": 0.95, "type": "pop" }, { "at": 1.4, "type": "pop" }, { "at": 1.85, "type": "pop" }, { "at": 2.3, "type": "tick" } ] },
+    { "kind": "critics", "in": "push", "image": "nazriya", "dur": 6.4, "heading": "WHAT CRITICS SAY",
+      "cards": [
+        { "outlet": "THE TIMES OF INDIA", "critic": "M. Suganth", "quote": "starts getting into the groove", "rating": "4/5" },
+        { "outlet": "CINEMA EXPRESS", "critic": "Avinash Ramachandran", "quote": "Suriya in terrific form", "rating": "4/5" },
+        { "outlet": "HINDUSTAN TIMES", "critic": "Neeshita Nyayapati", "quote": "a Diwali film that crackles", "rating": "3.5/5" },
+        { "outlet": "BARADWAJ RANGAN", "critic": "Film critic", "quote": "working only in parts" }
+      ],
+      "sfx": [ { "at": 0.25, "type": "whoosh" }, { "at": 1.7, "type": "whoosh" }, { "at": 3.15, "type": "whoosh" }, { "at": 4.6, "type": "whoosh" } ] },
+    { "kind": "who", "in": "whip", "image": "naslen", "fx": 0.4, "fy": 0.35, "dur": 3.6, "heading": "WATCH IT IF YOU LOVE",
+      "chips": [["DARK COMEDY", "MURDER MYSTERY"], ["SURIYA", "JITHU MADHAVAN"]], "sfx": [ { "at": 0.5, "type": "pop" }, { "at": 0.8, "type": "pop" } ] },
+    { "kind": "end", "in": "zoom", "bg": "cast", "dur": 3.8, "echo": "SCENE · FIRST VERDICT",
+      "question": [ { "text": "SEEN IT?", "size": 130 }, { "text": "YOUR VERDICT?", "size": 120, "color": "#F8C028" } ], "cta": "SEND TO THAT FRIEND",
+      "sfx": [ { "at": 1.15, "type": "pop" } ] }
+  ],
+  "package": {
+    "caption": [
+      "Scene: worth the ticket? Most critics say yes.",
+      "Suriya, Naslen and Nazriya in Jithu Madhavan's dark comedy. Times of India and Cinema Express 4/5, Hindustan Times 3.5/5; the slow first half is the common complaint.",
+      "Seen it? Your verdict?",
+      "Send this to the friend you're going with.",
+      "ஸீன் — பார்க்கலாமா? விமர்சகர்கள் சொல்றது."
+    ],
+    "hashtags": ["#TamilCinema", "#Scene", "#Suriya", "#MovieReview", "#iNiKKiVerdict"],
+    "cover": "SCENE · FIRST VERDICT",
+    "slot": "17:00",
+    "first_comment": "Theatre-worthy or wait for Netflix? 1 or 2."
+  }
+}

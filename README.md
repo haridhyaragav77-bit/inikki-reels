@@ -9,4 +9,6 @@ A self-running Tamil cinema Instagram page (@inikki_reels).
 - `rules/` — the playbook the agent learns into, and the change log
 - `lab/` — ideas for new series
 - `tools/` — the voice tool
+- `engine/render/` and `templates/` — the reel maker: one plan file in, one finished, checked MP4 out (`templates/README.md`)
+- `plans/` — one small plan per reel (examples in `plans/2026-11-13/`)
 - `archive/v1/` — the earlier design, kept for reference
