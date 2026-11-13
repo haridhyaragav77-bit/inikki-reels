@@ -13,6 +13,8 @@ The five looks and the motion graphics are approved. Keep them; improve inside t
 Every reel in every series is made the same way: worth it → script first → clear title screen → music from frame 1 that follows the story → lots of animation → the series' own look → length set by the content → honest facts, no spoilers.
 
 ## Value first (Harish, 13 Nov)
+- Breakdowns pin a named technique ("THE TECHNIQUE: FRAME STORY"): name it, define it in a few words, show it, say why it works, recap it at the end. About 1 minute.
+- Voiced reels open with "TURN SOUND ON". Every reel ends with @inikki_reels.
 - The insight is the hero. Find it, write the script, then plan graphics, then look for visuals. Never write a script around footage we happened to find.
 - Pick films people care about now: cult classics, new releases, films in the news. Skip old films with no cult following.
 - Breakdowns can cover any craft: screenplay, camera, set, editing, sound, acting. Pick the strongest angle.

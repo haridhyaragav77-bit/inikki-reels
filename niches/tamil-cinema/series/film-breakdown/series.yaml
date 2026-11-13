@@ -13,13 +13,13 @@ visuals: motion_graphics_first   # clips where they truly show the point; graphi
 voice: true
 captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit (change #4)
 instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }   # words and key visuals stay clear of Instagram's buttons
-length_s: [30, 45]
-length_max_s: 75        # only when the insight needs it; the plan writes down why
+length_s: [40, 62]      # about 1 minute is the safe spot (change #5); shorter is fine
+length_max_s: 75        # only when truly needed; the plan writes down why
 image_cap_per_reel: 0
 bank_target: 4          # keep 3-4 finished breakdowns ready
 angles: [screenplay, cinematography_camera, set_production_design, editing, sound_music, performance]
 lead_sources: [cult_classics, new_releases, news_hooks, anniversaries, re_releases, film_bank, comments]
-story_shape: [title_screen, hook, insight_beats_2_to_4, the_turn, payoff, send_to_friend]
+story_shape: [title_screen_sound_on, hook, setup, the_technique_named, where_it_comes_from, how_the_film_uses_it, why_it_works, payoff, end_recap_technique]
 hook_style: "A short Tanglish question about something the viewer felt but never noticed."
 hook_examples:
   - "Phone-a thoda vidala. Yen?"
@@ -31,9 +31,9 @@ motion_presets: [tension_bar, timer_dial, timeline_scrub, setup_payoff_thread, p
 meme_use: ending_only
 trend_hooks: true
 success_metric: sends_per_reach
-done_well: ["KAITHI_Premium_Reels_Aligned_VOICED.mp4", "JIGARTHANDA_Filmmaking_Tamil_VOICED.mp4", "Ratsasan breakdown (on the page)"]
 rules:
   - "Value is the hero: the reel must pass the worth-it test (AGENT.md 5.7) before any visual is chosen."
+  - "Pin a named technique (frame story, ticking clock, match cut, leitmotif...): name it on screen, define it, show it, say why it works, recap it at the end."
   - "Write the script first, then plan the motion graphics, then look for clips. Never bend the script to fit footage."
   - "Pick the strongest angle for the film: screenplay, camera, set, editing, sound or acting."
   - "Pick films people care about now: cult classics, new releases, films in the news. Skip old films with no cult following."
@@ -45,3 +45,6 @@ rules:
   - "Same film at most once in 21 days; same film + angle at most once in 60 days."
 worth_it_extra:
   - "Is this the strongest angle on this film?"
+reference:   # approved 13 Nov 2026; replaces the earlier reference reels
+  plan: plans/2026-11-13/breakdown-vikram-vedha.json
+  reel: "Drive reference-reels/2026-11-13/2026-11-13 · VIKRAM VEDHA · SCREENPLAY BREAKDOWN.mp4"

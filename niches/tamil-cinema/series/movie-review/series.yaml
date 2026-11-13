@@ -27,3 +27,6 @@ motion_presets: [verdict_stamp, works_vs_not, critic_cards, audience_meter, stil
 worth_it_extra:
   - "Are people deciding this week whether to watch it?"
   - "Is every critic quote real, short and named?"
+reference:   # approved 13 Nov 2026; replaces the earlier reference reels
+  plan: plans/2026-11-13/review-scene.json
+  reel: "Drive reference-reels/2026-11-13/2026-11-13 · SCENE · FIRST VERDICT.mp4"

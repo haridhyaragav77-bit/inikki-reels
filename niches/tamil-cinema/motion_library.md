@@ -124,3 +124,10 @@ The Content Specialist picks from this list. A new graphic is added here when an
 | `quote_reveal` | An iconic line | The line appears word by word, in rhythm with the music |
 | `brush_reveal` | An artwork appearing | Paint strokes uncover the image |
 
+
+## Breakdown pins and sign-off (change #5)
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `sound_on` | Turn the sound on (voiced reels only) | A speaker with three sound waves rippling out, on the title screen |
+| `technique_pin` | The named technique, the heart of a breakdown | Letters scramble, then the name slams in ("FRAME STORY"); a short definition pops; a diagram builds (for a frame story: one big frame drawing itself, small story boxes popping inside it, each with a "?") |
+| `handle` | The page name on every reel | @inikki_reels types itself in under the send prompt, with an underline sweeping across |

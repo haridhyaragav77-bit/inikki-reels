@@ -19,6 +19,8 @@ const planPath = path.resolve(args[0]);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
 const flag = k => args.includes(k);
 const plan = JSON.parse(fs.readFileSync(planPath, 'utf8'));
+// the brand kit travels with the plan (handle on every end card); nothing brand-specific is typed into templates
+try { const bt = JSON.parse(fs.readFileSync(path.join(ROOT, 'brands', plan.brand_kit || 'inikki-reels', 'brand_tokens.json'), 'utf8')); plan.brand = { handle: bt.handle, name: bt.name }; } catch (e) { plan.brand = { handle: '@inikki_reels' }; }
 const work = path.join(ROOT, 'engine', '.work', plan.id);
 fs.mkdirSync(work, { recursive: true });
 const out = path.resolve(opt('--out', path.join(ROOT, 'engine', '.work', 'out', `${plan.id}.mp4`)));

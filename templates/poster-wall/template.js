@@ -2,7 +2,7 @@
 // its own still blurred behind it (never an empty background), big number, title, year / language / country, a short reason.
 import { W, H, clamp, lerp, prog, ep, E, rng, cue, beatPulse, nearestBeat, shake, fill, grad, radial, cover, framed, rrect,
   txt, setFont, fitSize, slam, wordsIn, pill, dust, tint, sweep, ring, streak, flash, vignette, grain, rgba, filtered } from '../_shared/runtime.js';
-import { endCard, chipsRow, mascot } from '../_shared/motion.js';
+import { endCard, chipsRow, mascot, handle } from '../_shared/motion.js';
 
 const SKY = '#7CC4FA', INK = '#0B1220', CREAM = '#F4EFE6';
 
@@ -61,17 +61,17 @@ const KINDS = {
       ctx.restore();
       // Letterboxd rating badge with a filling ring
       if (s.rating) {
-        const bx = cx + pw / 2 - 125, by = cy - ph / 2 + 125, bp = ep(lt, .7, 1.1, E.outBack), fillp = E.outCubic(prog(lt, .8, 1.7));
+        const bx = cx + pw / 2 - 150, by = cy - ph / 2 + 150, bp = ep(lt, .7, 1.1, E.outBack), fillp = E.outCubic(prog(lt, .8, 1.7));
         ctx.save(); ctx.translate(bx, by); ctx.scale(bp, bp);
         ctx.shadowColor = 'rgba(0,0,0,.6)'; ctx.shadowBlur = 30;
-        ctx.beginPath(); ctx.arc(0, 0, 92, 0, 7); ctx.fillStyle = 'rgba(11,18,32,.88)'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
-        ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.beginPath(); ctx.arc(0, 0, 78, 0, 7); ctx.stroke();
+        ctx.beginPath(); ctx.arc(0, 0, 124, 0, 7); ctx.fillStyle = 'rgba(8,12,22,.94)'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        ctx.lineWidth = 13; ctx.strokeStyle = 'rgba(255,255,255,.16)'; ctx.beginPath(); ctx.arc(0, 0, 106, 0, 7); ctx.stroke();
         ctx.strokeStyle = SKY; ctx.lineCap = 'round'; ctx.shadowColor = SKY; ctx.shadowBlur = 16 + 14 * beatPulse(env, t);
-        ctx.beginPath(); ctx.arc(0, 0, 78, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (s.rating / 5) * fillp); ctx.stroke(); ctx.shadowBlur = 0;
-        txt(ctx, (s.rating * fillp).toFixed(1), 0, 18, { size: 66, family: 'Anton', weight: 400, color: '#fff' });
-        txt(ctx, 'LETTERBOXD', 0, 50, { size: 15, weight: 900, ls: .12, color: rgba(CREAM, .85) });
-        txt(ctx, '/ 5', 0, -38, { size: 18, weight: 800, color: rgba(CREAM, .6) });
+        ctx.beginPath(); ctx.arc(0, 0, 106, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (s.rating / 5) * fillp); ctx.stroke(); ctx.shadowBlur = 0;
+        txt(ctx, (s.rating * fillp).toFixed(1), -14, 36, { size: 104, family: 'Anton', weight: 400, color: '#fff' });
+        txt(ctx, '/5', 52, 36, { size: 36, family: 'Anton', weight: 400, color: rgba(CREAM, .85), align: 'left' });
         ctx.restore();
+        pill(ctx, 'LETTERBOXD', bx, by + 128, lt - 1.0, { size: 26, bg: SKY, color: INK, ls: .1 });
       }
       // title + badges inside the poster
       const tsz = fitSize(env, ctx, s.title, 'Anton', 400, pw - 90, 112, 56);
@@ -93,6 +93,7 @@ const KINDS = {
   recap(env, s, i, T) {
     return (ctx, lt, t) => {
       blurBg(env, ctx, s.items[0].image, lt);
+      handle(env, ctx, lt - 1.3, W / 2, 1530, SKY, 40);
       wordsIn(ctx, s.heading, W / 2, 380, lt - .05, { size: 92, family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
       s.items.forEach((it, k) => {
         const col = k % 2, row = Math.floor(k / 2), x = 300 + col * 480, y = 630 + row * 462;
@@ -103,11 +104,11 @@ const KINDS = {
         if (it.watch) pill(ctx, it.watch, x, y + 256, lt - .5 - k * .12, { size: 26, bg: it.watch === 'NETFLIX' ? '#E50914' : '#00A8E1', color: '#fff', ls: .08 });
       });
       const pt = 1.0, bp = 1 + beatPulse(env, t, 5) * .05;
-      ctx.save(); ctx.translate(W / 2, 1478); ctx.scale(bp, bp);
+      ctx.save(); ctx.translate(W / 2, 1432); ctx.scale(bp, bp);
       pill(ctx, s.cta, 0, 0, lt - pt, { size: 44, bg: SKY, color: INK, glow: rgba(SKY, .8), ls: .08 });
       ctx.restore();
-      ring(ctx, W / 2, 1478, lt - pt, { color: SKY, r0: 60, r1: 440, w: 10, alpha: .6 });
-      mascot(ctx, 135, 1450, .52, t, ep(lt, pt + .2, pt + .8, E.outBack));
+      ring(ctx, W / 2, 1432, lt - pt, { color: SKY, r0: 60, r1: 440, w: 10, alpha: .6 });
+      mascot(ctx, 135, 1405, .5, t, ep(lt, pt + .2, pt + .8, E.outBack));
     };
   },
 };
