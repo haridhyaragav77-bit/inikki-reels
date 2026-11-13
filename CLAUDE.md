@@ -1,6 +1,8 @@
 # iNiKKi Reels — Workshop rules
-The design is AGENT.md. Read it before any change. If anything disagrees with it, AGENT.md wins.
-To change the design, change AGENT.md first, then the build.
+The design is AGENT.md. If anything disagrees with it, AGENT.md wins. To change the design, change AGENT.md first, then the build.
+AGENT.md is about 30,000 tokens: NEVER read it whole. Start with `grep -n '^#' AGENT.md` (the map), then open only the sections
+your task needs with Read offset/limit. Same for GUIDE.md and BUILD_LOG.md (newest entry is at the top). A thinking run reads
+its run card and data/brief.md, nothing more unless they point to it. A Workshop session starts with skill `workshop`.
 
 Roles: the Brain (scheduled Claude runs) writes only small text files: plans/, rules/, lab/,
 niches/, data/brief notes. It never calls OpenAI or Instagram and holds no keys. It pushes its work to a
