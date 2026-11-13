@@ -7,7 +7,7 @@ badge: { text: "WATCH THIS NEXT", alt_texts: ["THEY RECOMMEND", "LETTERBOXD PICK
 title_screen: "{THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "LOKESH'S 5 FAVOURITES"
 per_week: 3
 days: [fri, sat, sun]
-slots: ["17:00"]
+slots: ["15:30"]        # the story slot keeps one time every day (change #9)
 template: poster-wall   # its own look: one film per screen, full-bleed stills (AGENT.md 6.6)
 visuals: stills_first   # the recommended films' own official stills, posters and trailer frames (AGENT.md 5.11)
 voice: false            # music-led; voice can be switched on for one reel in the plan

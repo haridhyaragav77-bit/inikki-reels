@@ -1,0 +1,233 @@
+{
+  "id": "2026-11-13-pipeline-test-update",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 13 NOV 2026",
+  "lead": {
+    "topic": "Scene (Suriya, Jithu Madhavan) first-week box office",
+    "facts": [
+      "Crossed ₹100 Cr worldwide within 4 days (Wikipedia: ₹116 Cr on day 4; TrackTollywood: ₹124 Cr in the first weekend)",
+      "₹200 Cr+ worldwide on day 7 (reported: Times of India, 13 Nov 2026; Wikipedia infobox ₹200.60 Cr)",
+      "By day 6: India ₹122.5 Cr gross, overseas ₹66 Cr (Jay-Ho; overseas ₹66 Cr also The Week)"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Scene_(2026_film)",
+      "https://www.theweek.in/news/entertainment/2026/11/11/scene-box-office-collection-day-six-200-crore.html",
+      "https://jay-ho.com/scene-box-office-collection-day-6/",
+      "https://tracktollywood.com/scene-1st-weekend-box-office-collection"
+    ]
+  },
+  "worth_it": {
+    "fan_opens_because": "Is Scene a hit? The week-1 number answers it in one look.",
+    "spoilers": "None. Numbers, dates and names only; nothing about the story.",
+    "voice": "Off: box office is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.3,
+        "screen": 0,
+        "mood": "bold mass theme (a hook)"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "logo_fire": {
+      "src": "engine/.cache/stills/scene/zt35WyMBaWo_maxres3.jpg"
+    },
+    "suriya_police": {
+      "src": "engine/.cache/stills/scene/_nuRAflabx8_maxres3.jpg"
+    },
+    "nazriya": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg"
+    },
+    "suriya_dance": {
+      "src": "engine/.cache/stills/scene/92HSSqE2VBU_maxres1.jpg"
+    },
+    "poster": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "logo_fire",
+      "fx": 0.5,
+      "fy": 0.5,
+      "dur": 2.8,
+      "lines": [
+        {
+          "text": "WEEK 1",
+          "size": 250,
+          "y": 1310
+        },
+        {
+          "text": "BOX OFFICE",
+          "size": 165,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "suriya_police",
+      "fx": 0.62,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "WORLDWIDE · 7 DAYS",
+      "value": 200,
+      "unit": " CR+",
+      "land": 1.7,
+      "tag": [
+        "REPORTED",
+        "TIMES OF INDIA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "bars",
+      "in": "push",
+      "image": "nazriya",
+      "fx": 0.45,
+      "fy": 0.35,
+      "dur": 4.4,
+      "kicker": "BY DAY 6",
+      "items": [
+        {
+          "label": "INDIA",
+          "value": 122.5,
+          "decimals": 1,
+          "color": "#F8C028"
+        },
+        {
+          "label": "OVERSEAS",
+          "value": 66,
+          "color": "#78E0D0"
+        }
+      ],
+      "note": "Sources: Jay-Ho, The Week",
+      "sfx": [
+        {
+          "at": 0.35,
+          "type": "whoosh"
+        },
+        {
+          "at": 0.7,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "ladder",
+      "in": "whip",
+      "image": "suriya_dance",
+      "fx": 0.42,
+      "fy": 0.4,
+      "dur": 4.8,
+      "heading": "THE CLIMB",
+      "max": 200,
+      "step": 50,
+      "stops": [
+        {
+          "value": 100,
+          "at": 1.4,
+          "label": "4 DAYS"
+        },
+        {
+          "value": 200,
+          "at": 2.9,
+          "label": "7 DAYS"
+        }
+      ],
+      "footer": "SURIYA × JITHU MADHAVAN",
+      "sfx": [
+        {
+          "at": 1.4,
+          "type": "tick"
+        },
+        {
+          "at": 2.9,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "poster",
+      "dur": 3.8,
+      "echo": "SCENE · WEEK 1 BOX OFFICE",
+      "question": [
+        {
+          "text": "SEEN IT YET?",
+          "size": 140
+        }
+      ],
+      "sub": "Theatre this weekend?",
+      "cta": "SEND TO THAT FRIEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Scene crosses ₹200 Cr worldwide in 7 days (reported).",
+      "Suriya and Jithu Madhavan's Scene: ₹100 Cr in 4 days, ₹66 Cr from overseas by day 6. Week 2 starts now.",
+      "Seen it yet?",
+      "Send this to the friend you're watching it with.",
+      "ஸீன் — முதல் வாரம், ₹200 கோடி."
+    ],
+    "hashtags": [
+      "#TamilCinema",
+      "#Scene",
+      "#Suriya",
+      "#BoxOffice",
+      "#iNiKKiUpdates"
+    ],
+    "cover": "PIPELINE TEST · SCENE UPDATE",
+    "slot": "18:00",
+    "first_comment": "Theatre or wait for Netflix?"
+  },
+  "_note": "Pipeline test of the joined engine (13 Nov 2026): a copy of the reference plan. Not a real reel; nothing posts in rehearsal."
+}

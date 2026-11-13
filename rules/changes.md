@@ -8,6 +8,8 @@ Short format for small changes:
 
 ---
 
+`#9 · 13 Nov 2026 · schedule (movie-recommendations) · Watch This Next 17:00 → 15:30, Fri–Sun · the story slot keeps one time every day; 17:00 is a flex slot and would clash with release-day reviews on Fridays · rule · undo: slots back to ["17:00"] in the series card`
+
 ## #8 · 13 Nov 2026 · Harish's feedback, round 5 · set by Harish (hard rules)
 **Why:** viewers may miss the voice; the breakdown didn't pin down exactly what the insight was; the Letterboxd rating was hard to read; reels need the page name.
 
