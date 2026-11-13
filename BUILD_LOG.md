@@ -16,6 +16,11 @@ layout with a plain fallback), Block D (Refresh drafts tomorrow; Plan starts fro
 | Alerts closed when the reel posts later | `status.close_alerts`, called in `engine/post.py` |
 | Tomorrow's draft lineup `plans/<date>/lineup.json` is never made or archived as a plan | `make.py`, `brief.py`, `sync.py`, `clean.py` |
 
+Then, from Harish's screenshots: the chat's visual tool answered "Unable to reach visualize" and the Advisor still said
+"the card is above"; Block B now makes it write the plain card at once when that happens. It also showed yesterday's
+key warning (today's health check was all green): a newer health check, a job that works again, or a reel that posts
+later now close the older alert. A repeat Sync trigger after the branch was already taken in no longer counts as a failure.
+
 Tested offline with today's real reels in a fake Drive (today table, spares, hidden answered alert, tomorrow draft).
 Waiting on Harish: paste the new Block B into the Control Room project and re-upload AGENT.md there; add the Refresh and
 Plan lines to the two routines (only their own conversation can change them); merge this branch to main.

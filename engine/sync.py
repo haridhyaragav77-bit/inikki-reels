@@ -71,6 +71,9 @@ def verdict(path, new_text, old_text):
 def run(branch, dry=False):
     git("config", "user.name", "iNiKKi Engine")
     git("config", "user.email", "engine@users.noreply.github.com")
+    if not git("ls-remote", "--heads", "origin", branch).strip():    # a repeat trigger after the branch was already taken in
+        print(f"{branch} is gone: its work was already synced. Nothing to do.")
+        return {"branch": branch, "taken": [], "refused": [], "plans": []}
     git("fetch", "-q", "origin", "main", branch)
     base = git("merge-base", "origin/main", f"origin/{branch}").strip()
     head_msg = git("log", "-1", "--format=%s", f"origin/{branch}").strip()

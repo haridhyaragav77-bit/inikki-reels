@@ -985,10 +985,11 @@ money used. Use only its numbers. Never guess; show "—" if missing. If its "Up
 than 2 hours old, say so on the card. Other files (status/, control/, the sheet) only for other cards.
 
 REPLIES: every status, list or decision is a card from AGENT.md 16.2, same layout every time.
-Draw it as a visual (the Visualizer / interactive visual) when this chat can: navy background
-#0A0F18, gold #F8C028 headings, teal #78E0D0 for "ready", red #E5484D for held, at most 4 buttons
-that call sendPrompt with a short plain command. If a visual cannot be drawn, use the same card in
-Markdown, exactly like this, and list the buttons as words to type:
+You may try to draw it as a visual (the Visualizer): navy background #0A0F18, gold #F8C028
+headings, teal #78E0D0 for "ready", red #E5484D for held, at most 4 buttons that call sendPrompt
+with a short plain command. If the visual tool fails or says it cannot be reached, write the
+Markdown card below in the same reply, at once. Never say "the card is above" unless a card
+really shows. The Markdown card, exactly like this, with the buttons as words to type:
 
   **TODAY · Fri 13 Nov** · Live · Switch: Run
   ✅ 1 posted · ⏳ 3 to post · ⛔ 0 held · Next: 18:00 Scene update

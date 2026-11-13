@@ -53,8 +53,9 @@ def alert(drive, title, happened, did, you_do="nothing", level="info"):
     return item
 
 
-def close_alerts(drive, reel_id):
-    """A reel that failed and then posted: its open alerts are answered, so the Control Room stops showing them."""
+def close_alerts(drive, reel_id=None, title_prefix=None):
+    """Open alerts that a later success answered: a reel that failed and then posted (reel_id), or an older health
+    warning after a newer health check (title_prefix). Closed alerts stop showing in the Control Room."""
     if not drive:
         return
     try:
@@ -63,8 +64,10 @@ def close_alerts(drive, reel_id):
         return
     hit = False
     for a in cur.get("alerts", []):
-        if a.get("open") and a.get("what_happened", "").startswith(f"{reel_id}:"):
-            a["open"], a["closed"], hit = False, f"posted later ({stamp()})", True
+        hit_reel = reel_id and a.get("what_happened", "").startswith(f"{reel_id}:")
+        hit_title = title_prefix and a.get("title", "").startswith(title_prefix)
+        if a.get("open") and (hit_reel or hit_title):
+            a["open"], a["closed"], hit = False, f"answered by a later run ({stamp()})", True
     if hit:
         write(drive, "alerts.json", cur)
 
@@ -86,6 +89,8 @@ def job_end(name, result):
             pass
     jobs.setdefault("jobs", {})[name] = {"result": result, "at": stamp(), "run": run}
     write(drive, "jobs.json", jobs)
+    if result == "success" and drive:          # this job working again answers its earlier "did not finish" warning
+        close_alerts(drive, title_prefix=f"The {name} job did not finish")
     if result not in ("success", "skipped", "cancelled"):
         alert(drive, f"The {name} job did not finish", f"The {name} job stopped with: {result}.",
               "One reel or one step is affected, not the day; the next run starts fresh.", f"Nothing, unless it repeats. Details: {run}", level="warn")

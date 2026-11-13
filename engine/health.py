@@ -123,6 +123,8 @@ def main():
     bad = [c for c in checks if not c["ok"]]
     res = {"ok": not bad, "checks": checks}
     status.write(drive, "health.json", res)
+    if drive:                                   # a newer check answers the older warnings (they stop showing in the Control Room)
+        status.close_alerts(drive, title_prefix="Health check:")
     if bad and drive:
         status.alert(drive, f"Health check: {len(bad)} thing(s) need a look", "; ".join(f"{c['name']}: {c['detail']}" for c in bad)[:400],
                      "Everything else keeps running.", " ".join(c["you_do"] for c in bad if c["you_do"])[:300] or "nothing", level="warn")
