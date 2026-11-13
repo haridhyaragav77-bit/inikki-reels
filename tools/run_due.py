@@ -45,9 +45,10 @@ def settings():
             if body.startswith("["):
                 return re.findall(r'"([^"]*)"', body)
             return {k: v.strip().strip('"') for k, v in re.findall(r'(\w+):\s*("[^"]*"|[^,}]+)', body[1:-1])}
-        s = {"thinking_runs": flow("thinking_runs"), "slots": flow("slots"), "catch_up": flow("catch_up")}
+        s = {"thinking_runs": flow("thinking_runs"), "slots": flow("slots"), "flex_slots": flow("flex_slots"),
+             "catch_up": flow("catch_up")}
     c = s.get("catch_up") or {}
-    return {"runs": s.get("thinking_runs") or {}, "slots": s.get("slots") or [],
+    return {"runs": s.get("thinking_runs") or {}, "slots": s.get("slots") or [], "flex": s.get("flex_slots") or [],
             "make_minutes": int(c.get("make_minutes", 75)), "refresh_until": c.get("refresh_until", "22:45"),
             "weekly_days": int(c.get("weekly_days", 2)), "monthly_days": int(c.get("monthly_days", 2))}
 
@@ -100,11 +101,17 @@ def check(run, now, s):
             return "not yet", ""
         if plans_in(today.isoformat()) or today.isoformat() in brain_dates("plan") or branch_waiting("plan", today):
             return "done", ""
-        left = [t for t in s["slots"] if at(today, hm(t)) >= now + dt.timedelta(minutes=s["make_minutes"])]
-        if not left:
-            return "too late", "no slot left today with time to make a reel; the bank and reserves cover the day"
-        late = now > start + dt.timedelta(minutes=45)
-        return "due", (f"late start: plan only {' '.join(left)} ({len(left)} of {len(s['slots'])} slots)" if late else "")
+        ready_by = now + dt.timedelta(minutes=s["make_minutes"])
+        left = [t for t in s["slots"] if at(today, hm(t)) >= ready_by]
+        flex = [t for t in s["flex"] if at(today, hm(t)) >= ready_by]
+        if not left and not flex:
+            return "too late", "no post time left today with time to make a reel; tomorrow's Plan run takes the lineup"
+        if now <= start + dt.timedelta(minutes=45):
+            return "due", ""
+        missed = len(s["slots"]) - len(left)
+        open_times = sorted(left + flex, key=hm)
+        return "due", (f"late start: {missed} of {len(s['slots'])} slot(s) passed; post times still open: {' '.join(open_times)} "
+                       f"(flex: {' '.join(flex) or 'none'}); move the missed reels to these times, see runs/plan.md step 4")
     if run == "refresh":
         start = at(today, hm(s["runs"].get("refresh", "16:37")))
         if now < start:

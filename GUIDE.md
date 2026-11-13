@@ -41,7 +41,7 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 
 **What keeps time:** GitHub's own timer runs this project's jobs about 7 hours late, so the posts, the briefs and the nightly job are started on time by a small Claude "clock" task. It costs a little (13 short ticks a day on the cheapest model). Section 12 has a free replacement.
 
-**If a run is missed** (your Claude usage ran out, or a session did not start): five times a day (07:07, 09:37, 13:07, 18:37, 21:07) the dispatcher runs a quick check that uses no AI. A missed run starts then. A late Plan run plans only the slots that still have time to be made (75 minutes); the bank and reserves fill the slots it missed. If the run already happened, the check costs almost nothing. Weekly catches up until Tuesday, Monthly until the 3rd.
+**If a run is missed** (your Claude usage ran out, or a session did not start): five times a day (07:07, 09:37, 13:07, 18:37, 21:07) the dispatcher runs a quick check that uses no AI. A missed run starts then. A late Plan run does not cancel reels: it moves them to the post times still open, flex slots included. What still does not fit is kept in the bank for a later day, except news that would be stale by then. If the run already happened, the check costs almost nothing. Weekly catches up until Tuesday, Monthly until the 3rd.
 
 **Your moments, if you want them:**
 - **Morning, after about 07:00:** today's reels are made. Preview them on the page. Change words, hold or skip before the first slot.
