@@ -67,11 +67,32 @@ instagram:
   reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
 
 voice:
+  # Main voice and backup (AGENT.md 4.4). Harish's live choice is config/agent.yaml `voice` (Control Room → Setup).
+  provider: elevenlabs
+  backup: microsoft
+  # Microsoft (free, the backup), through tools/voice_tool.py
   tool: tools/voice_tool.py
   voice: ta-IN-ValluvarNeural
   rate: "+35%"
   pitch: "-2Hz"
+  microsoft_prefixes: ["ta-", "en-", "hi-"]          # a voice name that starts like this is a Microsoft voice
   smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
+  elevenlabs:
+    base: "https://api.elevenlabs.io"
+    key_names: [ELEVENLABS_API_KEY, ELEVEN_LABS_API_KEY, ELEVENLABS_KEY, ELEVEN_API_KEY, XI_API_KEY]   # the first one set is used
+    voice: ashwin                                    # the default; a series or a plan may name another from this list
+    voices:                                          # short name → ElevenLabs voice (shown as a pick-list in the Control Room)
+      ashwin:    { id: OP382u5y4MvFmE1mReFV, label: "Ashwin · casual Tamil creator (young, energetic)" }
+      bharadwaj: { id: msoKpYddp2Iy2G7DJ3dc, label: "Bharadwaj · deep suspense storyteller" }
+      prashant:  { id: yIFUVClxedWzoMYhk15k, label: "Prashant · calm, friendly, Chennai accent" }
+    models: [eleven_multilingual_v2, eleven_v3]      # first that works is used (best quality first)
+    economy_models: [eleven_flash_v2_5, eleven_multilingual_v2]   # "economy" quality: about half the credits per line
+    context_models: [eleven_multilingual_v2, eleven_flash_v2_5, eleven_turbo_v2_5]   # these read the lines before and after
+    language_code: ta
+    language_code_models: [eleven_flash_v2_5, eleven_turbo_v2_5, eleven_v3]
+    output_format: mp3_44100_128
+    settings: { stability: 0.45, similarity_boost: 0.8, style: 0.2, use_speaker_boost: true, speed: 1.1 }
+    reserve_credits: 1000                            # below this the backup voice speaks until the credits renew
 
 clips:
   max_height: 720

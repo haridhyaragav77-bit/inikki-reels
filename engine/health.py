@@ -119,7 +119,18 @@ def main():
         r = v.say(ENGINE["voice"]["smoke_text"], out)
         ok = r.get("ok") and os.path.exists(out) and os.path.getsize(out) > 1000
         return ok, "Microsoft's Tamil voice answers" if ok else f"no answer: {r.get('error', 'no file')}"
-    check("Voice", voice, "Nothing: reels with voice retry later, then post as silent versions with full on-screen text.")
+    check("Backup voice (Microsoft)", voice, "Nothing: reels with voice retry later, then post as silent versions with full on-screen text.")
+
+    def main_voice():
+        from . import voice as v
+        ok, detail = v.check()
+        sub = v.subscription()
+        if sub and drive:
+            led = v.ledger(drive)
+            led["subscription"] = {**sub, "read": status.stamp()}
+            status.write(drive, "voice.json", led)
+        return ok, detail
+    check("Main voice (ElevenLabs)", main_voice, "Check the secret ELEVENLABS_API_KEY on GitHub. Until then reels use the Microsoft backup voice.")
     bad = [c for c in checks if not c["ok"]]
     res = {"ok": not bad, "checks": checks}
     status.write(drive, "health.json", res)
