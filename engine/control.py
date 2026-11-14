@@ -100,8 +100,15 @@ class Control:
         return {k: v for k, v in ((self.overrides.get("series") or {}).get(series_id) or {}).items() if k not in ("notes", "paused")}
 
     def series_paused(self, series_id):
+        """Paused by the Pause button, or by its stage (paused or retired) in the series card or the Control Room."""
         s = (self.overrides.get("series") or {}).get(series_id) or {}
-        return bool(s.get("paused"))
+        if s.get("paused"):
+            return True
+        try:
+            from .settings import niche_dir
+            return self.series(series_id, niche_dir()).get("status") in ("paused", "retired")
+        except Exception:
+            return False
 
     def series(self, series_id, niche_dir):
         """A series card with any Control Room changes applied."""

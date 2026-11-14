@@ -404,7 +404,7 @@ function fieldInput(f, s) {
   const k = f.key, id = "f-" + k.replace(/\W/g, "_"), v = k in ed.draft ? ed.draft[k] : rawf(f, s.values[k]);
   if (f.type === "list" || f.type === "times") return listEditor(k);
   if (f.type === "days") return `<div class="chips">${DAYS.map(d => `<button type="button" data-act="day" data-key="${k}" data-id="${d}" aria-pressed="${ed.lists[k].includes(d)}">${d}</button>`).join("")}</div>`;
-  if (f.type === "choice" || f.type === "bool") { const opts = f.type === "bool" ? ["true", "false"] : f.options || [];
+  if (f.type === "choice" || f.type === "bool") { const o0 = f.type === "bool" ? ["true", "false"] : f.options || [], opts = v !== "" && !o0.map(String).includes(String(v)) ? [v, ...o0] : o0;
     return `<select id="${id}" data-key="${k}"><option value="">(not set)</option>${opts.map(o => `<option value="${esc(o)}" ${String(o) === String(v) ? "selected" : ""}>${esc(k.endsWith("elevenlabs_voice") ? voiceName(o) : f.type === "bool" ? (o === "true" ? "on" : "off") : NICE[o] || o)}</option>`).join("")}</select>`; }
   if (f.type === "long" || f.type === "any") return `<textarea id="${id}" data-key="${k}">${esc(v)}</textarea>`;
   return `<input type="text" id="${id}" data-key="${k}" value="${esc(v)}" ${f.type === "number" ? 'inputmode="decimal"' : ""} ${f.type === "range" ? 'placeholder="20, 45"' : ""}>`;

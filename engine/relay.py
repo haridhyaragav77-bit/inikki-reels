@@ -142,7 +142,8 @@ def options(spec):
     """The choices of a field. Some lists come from what is installed: the looks, the voices."""
     src = spec.get("options_from")
     if src == "templates":
-        return sorted(p.parent.name for p in (ROOT / "templates").glob("*/template.js"))
+        return sorted(p.name for p in (ROOT / "templates").iterdir()          # every look: the approved ones and the older ones
+                      if p.is_dir() and ((p / "template.js").exists() or (p / "index.html").exists()))
     if src == "voice_providers":
         return ["elevenlabs", "microsoft"]
     if src == "elevenlabs_voices":

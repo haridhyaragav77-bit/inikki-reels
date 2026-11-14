@@ -8,13 +8,13 @@ blocks:
     fields:
       - { key: name, label: "Name", type: text, ask: "What is the series called?", required: true }
       - { key: promise, label: "The promise", type: text, ask: "In one sentence: what does a viewer get from every reel?", required: true }
-      - { key: status, label: "Stage", type: choice, options: [draft, trial, live, retired], help: "draft = one reel every other day for you to watch, never posted · trial = 2 weeks on the page · live · retired = never planned again" }
+      - { key: status, label: "Stage", type: choice, options: [draft, trial, live, paused, retired], help: "draft = one reel every other day for you to watch, never posted · trial = 2 weeks on the page · live · paused · retired = never planned again" }
       - { key: slots, label: "Post times", type: times, ask: "At what time(s) should it post? (India time, e.g. 15:30)", required: true }
       - { key: days, label: "Days", type: days, help: "Empty = every day." }
       - { key: per_day, label: "Reels a day", type: number }
       - { key: per_week, label: "Reels a week", type: number, ask: "How many reels a week?" }
       - { key: length_s, label: "Length in seconds (from, to)", type: range, ask: "How long is a reel, in seconds? (from, to)", required: true }
-      - { key: success_metric, label: "What success means", type: choice, options: [saves_and_sends, sends_per_reach, watch_through, comments, follows] }
+      - { key: success_metric, label: "What success means", type: choice, options: [saves_and_sends, sends_per_reach, comments_and_sends, watch_through, reach, comments, follows] }
   - id: structure
     name: Structure
     about: "The reel, section by section. Add, remove or reorder lines to change the build of every future reel."
