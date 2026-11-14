@@ -34,6 +34,10 @@ series:
         the '
   viral-story:
     paused: true
+  guess-the-movie:
+    paused: true
+  trailer-breakdown:
+    status: live
 notes:
 - id: 5be8dd
   at: '2026-11-13'
