@@ -15,6 +15,11 @@ learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series
 gates: { lead_min: 60, virality_min: 65 }
 away_mode: false
 voice: { provider: elevenlabs, backup: microsoft, elevenlabs_voice: ashwin, quality: best, speed: 1.1 }   # provider: elevenlabs | microsoft; quality: best | economy (AGENT.md 4.4)
+breaking: { enabled: true }          # the news watch may wake the Breaking run (AGENT.md 10.2)
+calendar: { enabled: true }          # day, hour, season and festivals in the brief (AGENT.md 10.5)
+scouts: { enabled: true }           # the news watch reads the fast pages in sources.yaml
+unique_designs: { enabled: true }    # a breakdown may not repeat the last reels' design (AGENT.md 5.8)
+saver: { enabled: false }            # fewer runner minutes: no reserves, no bank reels (AGENT.md 15.3)
 respect: { allow_series: [breaking-news, artwork-quote, film-breakdown] }   # what may post on a respect day
 thinking_runs: { plan: "05:37", refresh: "16:37", weekly: "sun 22:37", monthly: "1 23:07" }   # IST; the Brain's clock (AGENT.md 4.2)
 catch_up: { make_minutes: 75, refresh_until: "22:45", weekly_days: 2, monthly_days: 2 }   # missed runs run late (AGENT.md 4.2, tools/run_due.py)

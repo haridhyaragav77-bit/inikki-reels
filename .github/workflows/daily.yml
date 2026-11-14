@@ -85,7 +85,7 @@ jobs:
       - name: Save the text results (brief, Control Room copy, metrics, packed plans)
         if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel'
         run: |
-          git add -A data plans
+          git add -A data plans niches/*/series
           git diff --cached --quiet && exit 0
           git -c user.name="iNiKKi Engine" -c user.email=engine@users.noreply.github.com commit -q -m "engine: $JOB $(TZ=Asia/Kolkata date +%F)"
           for i in 1 2 3 4; do git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; git pull -q --rebase origin "${GITHUB_REF_NAME}"; done

@@ -50,13 +50,28 @@ def runner_minutes(drive):
     todo = [d for d in ((today - dt.timedelta(days=k)).isoformat() for k in range(1, 32)) if d.startswith(month) and d not in led["days"]]
     for d in todo[:4]:                       # newest first; earlier days are filled in on the next runs
         led["days"][d] = _day_minutes(repo, h, d)
-    limit = int(ENGINE.get("runner", {}).get("minutes_month", 2000))
+    R = ENGINE.get("runner", {})
+    limit = int(R.get("minutes_month", 2000))
     led.update(minutes=sum(led["days"].values()), limit=limit, counted_days=len(led["days"]))
-    led["tight"] = led["minutes"] >= limit * float(ENGINE.get("runner", {}).get("tight_share", 0.85))
+    import calendar as _cal
+    y, m = (int(x) for x in month.split("-"))
+    days_in = _cal.monthrange(y, m)[1]
+    per_day = led["minutes"] / max(1, led["counted_days"])
+    last7 = sorted(led["days"].items())[-7:]
+    pace = sum(v for _, v in last7) / max(1, len(last7))            # the last week says more than the month's average
+    passed = max((int(d[-2:]) for d in led["days"]), default=0)
+    forecast = round(led["minutes"] + pace * max(0, days_in - passed))
+    led.update(per_day=round(per_day), pace_per_day=round(pace), forecast=forecast, days_in_month=days_in,
+               runs_out=None if forecast <= limit or pace <= 0 else f"{month}-{min(days_in, passed + int((limit - led['minutes']) / pace)):02d}")
+    # normal → save (heading over the limit) → tight (85%) → last (95%: only a few new reels a day, so posting never stops)
+    share = led["minutes"] / limit if limit else 0
+    led["stage"] = ("last" if share >= float(R.get("last_share", 0.95)) else "tight" if share >= float(R.get("tight_share", 0.85))
+                    else "save" if forecast > limit * float(R.get("save_forecast", 1.0)) and led["counted_days"] >= 3 else "normal")
+    led["tight"] = led["stage"] in ("save", "tight", "last")
     drive.write_json("status", "minutes.json", led)
     left = len(todo) - min(len(todo), 4)
     return led, f"{led['minutes']} of {limit} minutes used this month" + (f" ({left} earlier days still to count)" if left else "") + \
-        (" (tight: extras paused)" if led["tight"] else "")
+        (f" · heading for {led['forecast']} by month end" if led.get("forecast") else "") + (f" ({led['stage']}: extras paused)" if led["tight"] else "")
 
 
 def main():

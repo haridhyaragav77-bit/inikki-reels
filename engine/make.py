@@ -132,6 +132,40 @@ def todo(day, bank, date, only=(), retry=False):
     return out
 
 
+def pending_tests(drive, ctl):
+    done = {}
+    try:
+        done = (drive.read_json("status", "tests.json") or {}).get("done") or {}
+    except Exception:
+        pass
+    return [c for c in ctl.lines("commands.jsonl") if c.get("cmd") == "test" and c.get("id") not in done], done
+
+
+def tests(drive, ctl, out_root="rehearsal"):
+    """"Test this series" from the Control Room: its reference reel is made with today's settings (voice, look, pace) and
+    put in Drive rehearsal/tests/<series>. Never posted. One reel per press; a failure is written down, never raised."""
+    todo, done = pending_tests(drive, ctl)
+    if not todo:
+        return
+    from . import render
+    for c in todo[:2]:
+        sid = c.get("series")
+        ref = ((ctl.series(sid, niche_dir()).get("reference") or {}).get("plan"))
+        rec = {"series": sid, "at": status.stamp(), "ok": False}
+        try:
+            if not ref or not (ROOT / ref).exists():
+                rec["note"] = "This series has no reference reel yet. Its first planned reel becomes the test."
+            else:
+                r = render.render(str(ROOT / ref), drive=drive, to_drive=f"rehearsal/tests/{sid}")
+                rec.update(ok=bool(r.get("ok")), link=r.get("link"), seconds=round(r.get("total_s") or 0, 1),
+                           note="Made. Watch it in Drive." if r.get("ok") else "Made, but it did not pass inspection: " + "; ".join((r.get("qc") or {}).get("problems") or [])[:200])
+        except Exception as e:
+            rec["note"] = f"Could not be made: {str(e)[:160]}"
+        done[c["id"]] = rec
+        print(f"test {sid}: {rec['note']}")
+    status.write(drive, "tests.json", {"done": dict(list(done.items())[-30:])})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=None)
@@ -147,10 +181,11 @@ def main():
     day, bank = Day(drive, date), Bank(drive)
     jobs = todo(day, bank, date, only, a.retry)
     if a.check:
-        print(f"{len(jobs)} reel(s) to make")
+        waiting = len(pending_tests(drive, ctl)[0])
+        print(f"{len(jobs)} reel(s) to make, {waiting} test reel(s)")
         if os.environ.get("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-                f.write(f"todo={'true' if jobs and ctl.mode != 'sleep' else 'false'}\n")
+                f.write(f"todo={'true' if (jobs or waiting) and ctl.mode != 'sleep' else 'false'}\n")
         return
     if ctl.mode == "sleep":
         status.write(drive, "make.json", {"state": "asleep", "date": date, "note": "The master switch says Sleep. Nothing was made."})
@@ -159,10 +194,14 @@ def main():
     from . import render, plancheck
     out_root = "finished" if ctl.phase == "live" else "rehearsal"
     try:
-        tight = bool((drive.read_json("status", "minutes.json") or {}).get("tight"))
+        mins = drive.read_json("status", "minutes.json") or {}
     except Exception:
-        tight = False
+        mins = {}
+    tight = bool(mins.get("tight")) or ctl.on("saver", False)
+    from .settings import ENGINE
+    cap_day = int(ENGINE.get("runner", {}).get("last_reels_day", 3)) if mins.get("stage") == "last" else None
     made, held, skipped = [], [], []
+    tests(drive, ctl, out_root)
     for path, is_bank in jobs:
         plan = json.loads(path.read_text(encoding="utf-8"))
         rid, series = plan.get("reel_id") or plan.get("id") or path.stem, plan.get("series", "")
@@ -173,7 +212,12 @@ def main():
             plan["slot"] = pslot
         ledger = bank if is_bank else day
         if tight and (is_bank or plan.get("reserve")):      # cost guard (CLAUDE.md rule 5): main reels first
-            ledger.upsert(rid, series=series, state="skipped", reason="Runner minutes are nearly used up this month: reserves and bank reels wait.")
+            ledger.upsert(rid, series=series, state="skipped", reason="Saving runner minutes this month: reserves and bank reels wait.")
+            skipped.append(rid)
+            continue
+        if cap_day is not None and not is_bank and series != "breaking-news" and \
+                len([r for r in day.reels("ready", "posted", "rendering") if r["reel_id"] != rid]) >= cap_day:
+            ledger.upsert(rid, series=series, state="skipped", reason=f"Runner minutes are almost used up this month: only {cap_day} new reels a day until the 1st, so posting never stops.")
             skipped.append(rid)
             continue
         try:

@@ -82,6 +82,23 @@ class Control:
         home = self.overrides if series_id is None else ((self.overrides.get("series") or {}).get(series_id) or {})
         return [n for n in (home.get("notes") or []) if isinstance(n, dict) and n.get("text")]
 
+    def on(self, key, default=True):
+        """A global switch of config/agent.yaml, e.g. on("breaking"), as Harish last set it (Control Room → Setup)."""
+        v = self.settings.get(key)
+        return bool(v.get("enabled", default)) if isinstance(v, dict) else default
+
+    def new_series(self):
+        """Series added in the Control Room (AGENT.md 7). They become files at the next brief; until then they live here."""
+        return {k: v for k, v in (self.overrides.get("new_series") or {}).items() if isinstance(v, dict)}
+
+    def series_ids(self, niche_dir):
+        files = [p.parent.name for p in sorted((niche_dir / "series").glob("*/series.yaml"))]
+        return files + [k for k in self.new_series() if k not in files]
+
+    def series_changes(self, series_id):
+        """What the Control Room changed on a series (beyond pause and rules), for the brief."""
+        return {k: v for k, v in ((self.overrides.get("series") or {}).get(series_id) or {}).items() if k not in ("notes", "paused")}
+
     def series_paused(self, series_id):
         s = (self.overrides.get("series") or {}).get(series_id) or {}
         return bool(s.get("paused"))
@@ -89,6 +106,6 @@ class Control:
     def series(self, series_id, niche_dir):
         """A series card with any Control Room changes applied."""
         p = niche_dir / "series" / series_id / "series.yaml"
-        base = yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else {}
+        base = yaml.safe_load(p.read_text(encoding="utf-8")) if p.exists() else dict(self.new_series().get(series_id) or {})
         extra = {k: v for k, v in ((self.overrides.get("series") or {}).get(series_id) or {}).items() if k != "notes"}
         return deep_merge(base, extra)

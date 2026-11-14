@@ -155,18 +155,101 @@ def tomorrow(ctl, date):
     return [{"time": t, "series": s, "look": tpl, "notes": notes} for t, s, tpl, notes in rows if t != "-"]
 
 
-def series_cards(ctl, base):
+def _flat(card, key):
+    v = card
+    for k in key.split("."):
+        if not isinstance(v, dict) or k not in v:
+            return None
+        v = v[k]
+    return v
+
+
+def framework_card(ctl):
+    """The series framework for the page: the 7 blocks with their fields, and the global switches with today's values."""
+    from . import relay
+    fw = relay.framework()
+    f = lambda x: {k: v for k, v in {"key": x["key"], "label": x.get("label"), "type": x.get("type", "text"), "help": x.get("help"), "ask": x.get("ask"),
+                                    "required": x.get("required"), "options": relay.options(x) if x.get("type") == "choice" else None}.items() if v not in (None, False, [])}
+    voices = (ENGINE["voice"].get("elevenlabs") or {}).get("voices") or {}
+    return {"blocks": [{"id": b["id"], "name": b["name"], "about": b.get("about"), "fields": [f(x) for x in b["fields"]]} for b in fw.get("blocks", [])],
+            "switches": [{**f(x), "value": _flat(ctl.settings, x["key"])} for x in fw.get("switches", [])],
+            "voice_labels": {k: v.get("label", k) for k, v in voices.items()}}
+
+
+def series_cards(ctl, base, drive=None):
+    from . import relay
     nd, out = niche_dir(), []
+    keys = list(relay.field_specs())
     page = ((base.get("_page") or {}).get("median") or {}).get("views")
-    for p in sorted((nd / "series").glob("*/series.yaml")):
-        sid = p.parent.name
+    tests = {}
+    try:
+        for t in ((drive.read_json("status", "tests.json") or {}).get("done") or {}).values():
+            tests[t.get("series")] = {k: t.get(k) for k in ("at", "ok", "link", "note")}
+    except Exception:
+        pass
+    new = ctl.new_series()
+    for sid in ctl.series_ids(nd):
         card = ctl.series(sid, nd)
         med = ((base.get(sid) or {}).get("median") or {}).get("views")
+        vals = {k: _flat(card, k) for k in keys}
         out.append({k: v for k, v in {"id": sid, "name": card.get("name", sid), "status": card.get("status"), "paused": ctl.series_paused(sid),
                     "slots": card.get("slots"), "look": card.get("template"), "length_s": card.get("length_s"),
                     "reels_14d": (base.get(sid) or {}).get("reels"), "median_views": med, "page_views": page,
-                    "rules": [{"id": n.get("id"), "text": n["text"], "at": n.get("at")} for n in ctl.notes(sid)]}.items() if v not in (None, [], "")})
+                    "values": {k: v for k, v in vals.items() if v not in (None, [], "")}, "changed": sorted(ctl.series_changes(sid)),
+                    "new": sid in new, "has_reference": bool((card.get("reference") or {}).get("plan")), "test": tests.get(sid),
+                    "rules": [{"id": n.get("id"), "text": n["text"], "at": n.get("at")} for n in ctl.notes(sid)]}.items() if v not in (None, [], "", False)})
     return out
+
+
+def usage(ctl, drive, money_card):
+    """Everything that is counted and capped, in one card: GitHub runner minutes, voice credits, pictures, Claude."""
+    R = ENGINE.get("runner", {})
+    mins = _safe(lambda: drive.read_json("status", "minutes.json"), {}) or {}
+    limit = mins.get("limit", R.get("minutes_month"))
+    stage = "saver" if ctl.on("saver", False) and mins.get("stage", "normal") == "normal" else mins.get("stage", "normal")
+    runner = {"minutes": mins.get("minutes"), "limit": limit, "forecast": mins.get("forecast"), "per_day": mins.get("pace_per_day") or mins.get("per_day"),
+              "stage": stage, "runs_out": mins.get("runs_out"), "month": mins.get("month"),
+              "pct": round(100 * mins["minutes"] / limit) if mins.get("minutes") is not None and limit else None,
+              "forecast_pct": round(100 * mins["forecast"] / limit) if mins.get("forecast") and limit else None,
+              "ladder": [f"Heading past {limit}: reserve and bank reels wait", f"At {int(float(R.get('tight_share', .85)) * 100)}%: the same, and no extra news checks",
+                         f"At {int(float(R.get('last_share', .95)) * 100)}%: only {R.get('last_reels_day', 3)} new reels a day, so posting never stops",
+                         "At 100%: GitHub stops every job until the 1st. Nothing moves to Claude: the Brain cannot make or post reels."]}
+    v = _safe(lambda: drive.read_json("status", "voice.json"), {}) or {}
+    sub, reels = v.get("subscription") or {}, v.get("reels") or {}
+    el = reels.get("elevenlabs", 0)
+    per_reel = round(v.get("credits_by_engine", 0) / el) if el else None
+    now = status.now()
+    voice = {"main": (ctl.settings.get("voice") or {}).get("provider"), "now": v.get("provider_now"), "used": sub.get("used"), "limit": sub.get("limit"),
+             "left": sub.get("left"), "resets": sub.get("resets"), "tier": sub.get("tier"), "read": sub.get("read"),
+             "reels_elevenlabs": el, "reels_microsoft": reels.get("microsoft", 0), "per_reel": per_reel,
+             "covers_reels": int(sub["left"] / per_reel) if per_reel and sub.get("left") is not None else None,
+             "reused_lines": v.get("lines_reused"), "last_backup": next((r for r in v.get("recent", []) if r.get("voice") == "microsoft" and r.get("why")), None)}
+    try:
+        if per_reel and sub.get("resets") and sub.get("left") is not None:
+            days_left = max(1, (dt.date.fromisoformat(sub["resets"]) - now.date()).days)
+            day_n = max(1, now.day)
+            voice["need_to_reset"] = round(el / day_n * days_left * per_reel)          # at this month's pace
+            voice["enough"] = voice["need_to_reset"] <= sub["left"]
+    except Exception:
+        pass
+    runs = ctl.settings.get("thinking_runs") or {}
+    claude = {"runs": [{"name": k, "at": str(t)} for k, t in runs.items()], "measured": (money_card.get("thinking") or {}).get("measured"),
+              "line": (money_card.get("thinking") or {}).get("line"),
+              "quiet": [f"{str(t)} ({k})" for k, t in runs.items() if k in ("plan", "refresh")],
+              "note": "Claude has no way to set tokens aside for the agent. What protects the runs: each one starts in a clean chat, "
+                      "and a run that was blocked is started again by the catch-up check (5 times a day)."}
+    return {"runner": {k: x for k, x in runner.items() if x is not None}, "voice": {k: x for k, x in voice.items() if x is not None}, "claude": claude}
+
+
+def scouts_card(drive):
+    st = _safe(lambda: drive.read_json("status", "scouts.json"), {}) or {}
+    out = []
+    for name, pg in (st.get("pages") or {}).items():
+        leads = sorted(pg.get("lead_min") or [])
+        out.append({"page": name, "posts": pg.get("posts"), "film_posts": pg.get("film_posts"), "first": pg.get("first"),
+                    "lead_min": leads[len(leads) // 2] if leads else None, "kinds": pg.get("kinds"),
+                    "names": sorted((pg.get("mentions") or {}).items(), key=lambda kv: -kv[1])[:6]})
+    return {"since": st.get("since"), "pages": out, "learned": st.get("learned") or []} if out else None
 
 
 def numbers(ctl, drive):
@@ -246,7 +329,8 @@ def build(drive, ctl=None):
     except Exception:
         respect = None
     reels = _safe(lambda: reels_today(day, ROOT / "plans" / date), [])
-    P = {"v": 1, "updated": status.stamp(), "updated_iso": now.isoformat(timespec="seconds"),
+    money_card = _safe(lambda: money(ctl, drive), {})
+    P = {"v": 2, "updated": status.stamp(), "updated_iso": now.isoformat(timespec="seconds"),
          "switch": ctl.mode, "phase": ctl.phase, "approval": ctl.settings.get("approval"), "away": bool(ctl.settings.get("away_mode")),
          "respect": (respect or {}).get("why") if respect else None,
          "active": ctl.settings.get("active"), "volume": ctl.settings.get("volume"), "slots": ctl.settings.get("slots"),
@@ -254,7 +338,12 @@ def build(drive, ctl=None):
          "tomorrow": {"date": nxt, "slots": _safe(lambda: tomorrow(ctl, nxt), [])},
          "bank": {"ready": len(bank.reels("ready"))},
          "schedule": _safe(lambda: schedule(ctl, now), [])[:24],
-         "numbers": nums, "series": _safe(lambda: series_cards(ctl, base), []), "money": _safe(lambda: money(ctl, drive), {}),
+         "numbers": nums, "series": _safe(lambda: series_cards(ctl, base, drive), []), "money": money_card,
+         "usage": _safe(lambda: usage(ctl, drive, money_card), {}), "framework": _safe(lambda: framework_card(ctl), {}),
+         "insights": _safe(lambda: __import__("engine.insights", fromlist=["build"]).build(drive.read_json("status", "metrics.json") or {}, now), {}),
+         "calendar": _safe(lambda: __import__("engine.almanac", fromlist=["today"]).today(date, ctl.settings.get("slots") or []), {}) if ctl.on("calendar") else None,
+         "scouts": _safe(lambda: scouts_card(drive), None), "radar": [{"title": x.get("title"), "rank": x.get("rank"), "sources": len(x.get("publishers") or {}), "fired": bool(x.get("fired_at"))}
+                                                                      for x in (_safe(lambda: drive.read_json("status", "radar.json"), {}) or {}).get("stories", [])[:5]],
          "page_rules": [{"id": n.get("id"), "text": n["text"], "at": n.get("at")} for n in ctl.notes()],
          "alerts": [{k: a.get(k) for k in ("id", "at", "level", "title", "what_happened", "what_was_done", "what_you_do")}
                     for a in (_safe(lambda: drive.read_json("status", "alerts.json"), {}) or {}).get("alerts", []) if a.get("open")][:6],
@@ -303,6 +392,12 @@ def text(P):
             for r in n["recent"][:6]]
     L += ["", "## MONEY AND LIMITS",
           f"Images ₹{m.get('images_inr', '?')} of ₹{m.get('images_cap', '?')} · runner minutes {m.get('runner_min', '?')} of {m.get('runner_limit', '?')} · storage {m.get('storage_gb', '?')} of {m.get('storage_cap', '?')} GB"]
+    u = P.get("usage") or {}
+    r, v = u.get("runner") or {}, u.get("voice") or {}
+    if r.get("forecast"):
+        L.append(f"Runner minutes are heading for {r['forecast']} of {r.get('limit')} by month end ({r.get('stage')})." + (f" At this pace they run out on {r['runs_out']}." if r.get("runs_out") else ""))
+    if v.get("limit"):
+        L.append(f"Voice: ElevenLabs {v.get('used')} of {v.get('limit')} credits used, new credits on {v.get('resets')} · this month {v.get('reels_elevenlabs', 0)} reels with ElevenLabs, {v.get('reels_microsoft', 0)} with the Microsoft backup")
     if m.get("per_reel"):
         L.append(f"Per posted reel this month ({m.get('posted_month')} reels): ₹{m['per_reel'].get('images_inr')} images · {m['per_reel'].get('runner_min', '?')} runner minutes")
     t = m.get("thinking") or {}
@@ -319,6 +414,9 @@ def text(P):
     if P.get("actions"):
         L += ["", "## YOUR LAST ACTIONS"] + [f"- [{a.get('id')}] {a.get('what')} → {a.get('outcome') or a.get('result')}" + (f" ({a['why']})" if a.get("why") else "")
                                              for a in P["actions"][:6]]
+    ins = P.get("insights") or {}
+    if ins.get("headline"):
+        L += ["", "## INSIGHTS (worked out by code)", ins["headline"]] + [f"- {d['do']}: {d['why']}" for d in ins.get("do_next", [])[:4]]
     if P.get("digest"):
         L += ["", "## DIGEST", P["digest"].strip()]
     return "\n".join(L) + "\n"

@@ -19,6 +19,10 @@ drive:
 runner:
   minutes_month: 2000         # GitHub's free minutes for a private repository
   tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
+  save_forecast: 1.0          # the month is heading past the limit at today's pace: the same savings start early
+  last_share: 0.95            # above this: at most `last_reels_day` new reels a day, so posting never stops before the 1st
+  last_reels_day: 3
+  usd_per_minute_over: 0.008  # what GitHub charges per extra minute, only if a spending limit is set (default: none, jobs stop)
 # Jobs the Claude clock tasks start on time (AGENT.md 4.3; times are IST: "05:12" daily, "sun 22:12", "1 22:42" on that
 # day of the month). Post is started at every slot of config/agent.yaml. The Control Room's "next runs" list reads this.
 clock:

@@ -17,6 +17,12 @@ One action is one JSON object:
     {"do": "idea", "text": "cover this: ..."}
     {"do": "ack", "alert": "<alert id>" | "all"}
     {"do": "undo", "id": "<id of an earlier action>"}        switch, set, series and note can be undone
+    {"do": "series", "id": "<series>", "set": {"story_shape": [...], "voice_cfg.provider": "microsoft"}}
+                                                             any field of the series framework (config/framework.yaml)
+    {"do": "series_add", "card": {"name": "...", "template": "...", "slots": ["17:00"], ...}}     a new series, as a lab series
+    {"do": "series_remove", "id": "<series>"}                retired: never planned again (undo brings it back)
+    {"do": "test", "series": "<series>"}                     make the series' reference reel into Drive rehearsal/tests (never posted)
+    {"do": "sample", "series": "<series>", "url": "...", "note": "what to learn from it"}   a reel to learn from, for the weekly run
 """
 import copy
 import hashlib
@@ -24,7 +30,7 @@ import json
 
 import yaml
 
-from .settings import AGENT, niche_dir
+from .settings import AGENT, ENGINE, ROOT, load_yaml, niche_dir
 from . import status
 
 INBOX = "control/inbox"
@@ -112,6 +118,103 @@ def _same_kind(a, b):
     return (isinstance(a, num) and isinstance(b, num)) or type(a) is type(b)
 
 
+DAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+
+
+def framework():
+    return load_yaml("config/framework.yaml")
+
+
+def field_specs():
+    return {f["key"]: f for b in framework().get("blocks", []) for f in b.get("fields", [])}
+
+
+def options(spec):
+    """The choices of a field. Some lists come from what is installed: the looks, the voices."""
+    src = spec.get("options_from")
+    if src == "templates":
+        return sorted(p.parent.name for p in (ROOT / "templates").glob("*/template.js"))
+    if src == "voice_providers":
+        return ["elevenlabs", "microsoft"]
+    if src == "elevenlabs_voices":
+        return list((ENGINE["voice"].get("elevenlabs") or {}).get("voices") or {})
+    return list(spec.get("options") or [])
+
+
+def coerce(spec, v):
+    """One value of a series or a switch, checked against its field in the framework. Raises ValueError in plain words."""
+    t, label = spec.get("type", "text"), spec.get("label", spec["key"])
+    if v is None or v == "":
+        return ABSENT
+    if t in ("list", "times", "days"):
+        items = [x.strip() for x in (v.splitlines() if isinstance(v, str) else list(v)) if str(x).strip()] if not isinstance(v, (int, float, bool)) else None
+        if items is None:
+            raise ValueError(f"'{label}' is a list, one item per line")
+        items = [str(x)[:300] for x in items][:30]
+        if t == "times":
+            for x in items:
+                hh, _, mm = x.partition(":")
+                if not (hh.isdigit() and mm.isdigit() and len(mm) == 2 and 0 <= int(hh) < 24 and 0 <= int(mm) < 60):
+                    raise ValueError(f"'{x}' is not a time; write it like 15:30")
+            items = [f"{int(x.split(':')[0]):02d}:{x.split(':')[1]}" for x in items]
+        if t == "days":
+            items = [x.lower()[:3] for x in items]
+            if any(x not in DAYS for x in items):
+                raise ValueError("days are: " + ", ".join(DAYS))
+        return items if items else ABSENT
+    if t == "range":
+        try:
+            a, b = [float(x) for x in (str(v).replace("-", ",").split(",") if isinstance(v, str) else list(v))][:2]
+        except (TypeError, ValueError):
+            raise ValueError(f"'{label}' needs two numbers: from, to")
+        if not 3 <= a <= b <= 180:
+            raise ValueError(f"'{label}': from must be below to, between 3 and 180 seconds")
+        return [int(a) if a == int(a) else a, int(b) if b == int(b) else b]
+    if t == "number":
+        try:
+            n = float(v)
+        except (TypeError, ValueError):
+            raise ValueError(f"'{label}' must be a number")
+        return int(n) if n == int(n) else n
+    if t == "bool":
+        if isinstance(v, bool):
+            return v
+        if str(v).lower() in ("true", "yes", "on", "1", "false", "no", "off", "0"):
+            return str(v).lower() in ("true", "yes", "on", "1")
+        raise ValueError(f"'{label}' is on or off")
+    if t == "choice":
+        opts = options(spec)
+        pick = next((o for o in opts if str(o).lower() == str(v).lower()), None)
+        if pick is None:
+            raise ValueError(f"'{label}' can be: {', '.join(map(str, opts))}")
+        return {"true": True, "false": False}.get(pick, pick) if isinstance(pick, str) else pick
+    if t == "any":
+        if isinstance(v, str):
+            try:
+                return yaml.safe_load(v)
+            except yaml.YAMLError:
+                return v[:600]
+        return v
+    return str(v).strip()[:600]
+
+
+def nest(flat):
+    """{"voice_cfg.provider": "x"} → {"voice_cfg": {"provider": "x"}}"""
+    out = {}
+    for k, v in flat.items():
+        _put(out, tuple(k.split(".")), v)
+    return out
+
+
+def series_exists(st, sid):
+    return bool(sid) and ((niche_dir() / "series" / sid / "series.yaml").exists() or sid in (st.overrides.get("new_series") or {}))
+
+
+def slug(name):
+    import re
+    return re.sub(r"[^a-z0-9]+", "-", str(name).lower()).strip("-")[:40]
+
+
 class State:
     """The control files as they stand, changed in memory, saved once at the end."""
     def __init__(self, drive):
@@ -181,6 +284,7 @@ def apply_one(st, a, aid, at):
         s = a.get("settings")
         if not isinstance(s, dict) or not s:
             raise ValueError("no settings given")
+        s = nest(s) if any("." in k for k in s) else s
         for k, v in s.items():
             if k not in AGENT:
                 raise ValueError(f"'{k}' is not a setting (config/agent.yaml)")
@@ -188,16 +292,72 @@ def apply_one(st, a, aid, at):
                 raise ValueError(f"'{k}' can be: {', '.join(CHOICES[k])}")
             if not _same_kind(v, AGENT[k]):
                 raise ValueError(f"'{k}' must look like its default ({json.dumps(AGENT[k], ensure_ascii=False)[:60]})")
+        sw = {x["key"]: x for x in framework().get("switches", [])}
+        for path, v in _leaves(s):
+            spec = sw.get(".".join(path))
+            if spec:                                    # a global switch: only its listed choices
+                _put(s, path, coerce(spec, v))
         before = _patch(st, ("settings",), s)
         return ("Settings: " + ", ".join(f"{'.'.join(k)} = {json.dumps(v, ensure_ascii=False)}" for k, v in _leaves(s)))[:220], {"overrides": before}
     if do == "series":
-        sid, s = str(a.get("id") or a.get("series") or ""), a.get("set")
-        if not (niche_dir() / "series" / sid / "series.yaml").exists():
+        sid, raw = str(a.get("id") or a.get("series") or ""), a.get("set")
+        if not series_exists(st, sid):
             raise ValueError(f"there is no series '{sid}'")
-        if not isinstance(s, dict) or not s or any(k not in SERIES_KEYS for k in s):
-            raise ValueError("a series change can set: " + ", ".join(SERIES_KEYS))
-        before = _patch(st, ("series", sid), s)
-        return f"Series {sid}: " + ", ".join(f"{k} = {json.dumps(v)}" for k, v in s.items()), {"overrides": before}
+        specs = field_specs()
+        if not isinstance(raw, dict) or not raw:
+            raise ValueError("no change given")
+        flat = {}
+        for k, v in raw.items():
+            if k == "paused":
+                flat[k] = bool(v)
+            elif k in specs:
+                flat[k] = coerce(specs[k], v)
+            elif k in SERIES_KEYS:
+                flat[k] = v
+            else:
+                raise ValueError(f"'{k}' is not a field of a series (config/framework.yaml)")
+        before = _patch(st, ("series", sid), nest(flat))
+        said = ", ".join(f"{specs.get(k, {}).get('label', k)} = {'(cleared)' if v == ABSENT else json.dumps(v, ensure_ascii=False)[:70]}" for k, v in flat.items())
+        return f"Series {sid}: {said}"[:230], {"overrides": before}
+    if do == "series_add":
+        card = a.get("card")
+        if not isinstance(card, dict) or not card.get("name"):
+            raise ValueError("a new series needs at least a name")
+        sid = slug(card.get("id") or card["name"])
+        if not sid or series_exists(st, sid):
+            raise ValueError(f"a series called '{sid}' already exists; pick another name")
+        specs, out = field_specs(), {"id": sid}
+        for k, spec in specs.items():
+            if card.get(k) not in (None, "", []):
+                v = coerce(spec, card[k])
+                if v != ABSENT:
+                    _put(out, tuple(k.split(".")), v)
+            elif spec.get("required"):
+                raise ValueError(f"a new series needs: {spec.get('label', k)}")
+        out["status"] = out.get("status") if out.get("status") in ("lab", "trial") else "lab"     # never live at once (AGENT.md 6.3)
+        out.setdefault("image_cap_per_reel", 0)
+        out["added"] = {"by": "Control Room", "at": at[:10]}
+        before = _patch(st, ("new_series",), {sid: out})
+        return f"New series '{out['name']}' ({sid}) added as a {out['status']} series, look {out.get('template')}, at {', '.join(out.get('slots', []))}", {"overrides": before}
+    if do == "series_remove":
+        sid = str(a.get("id") or a.get("series") or "")
+        if not series_exists(st, sid):
+            raise ValueError(f"there is no series '{sid}'")
+        before = _patch(st, ("series", sid), {"paused": True, "status": "retired"})
+        return f"Series {sid} retired: it is not planned any more (Undo brings it back)", {"overrides": before}
+    if do in ("test", "sample"):
+        sid = str(a.get("series") or a.get("id") or "")
+        if not series_exists(st, sid):
+            raise ValueError(f"there is no series '{sid}'")
+        c = {"cmd": do, "series": sid, "at": at, "id": aid}
+        if do == "sample":
+            c.update(url=str(a.get("url") or "").strip()[:300], note=str(a.get("note") or "").strip()[:300])
+            if not (c["url"] or c["note"]):
+                raise ValueError("a sample needs a link or a note")
+        st.commands += json.dumps(c, ensure_ascii=False) + "\n"
+        st.dirty.add("commands")
+        return (f"Test reel for {sid}: made at the next Make run, into Drive rehearsal/tests (never posted)" if do == "test"
+                else f"Sample for {sid}: {(c['url'] or c['note'])[:120]}"), None
     if do == "note":
         text, sid = str(a.get("text") or "").strip(), str(a.get("series") or "all")
         if not text:

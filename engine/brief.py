@@ -76,8 +76,41 @@ def lineup_today(ctl, date):
             v = card.get("voice")
             voice = ("voice: " + v.replace("_", " ")) if isinstance(v, str) else ("voice" if v else "no voice")
             rows.append((t, sid, card.get("template", "?"), f"{voice}, {'-'.join(map(str, card.get('length_s', [])))} s"))
+    day = DOW3[dt.date.fromisoformat(date).weekday()]
+    for sid, card in ctl.new_series().items():          # series added in the Control Room run beside the lineup (AGENT.md 7)
+        card = ctl.series(sid, nd)
+        if ctl.series_paused(sid) or card.get("status") not in ("lab", "trial", "live") or (card.get("days") and day not in card["days"]):
+            continue
+        for t in (card.get("slots") or [])[:int(card.get("per_day") or 1)]:
+            rows.append((t, sid, card.get("template", "?"), f"{card.get('status')} series, {'voice' if card.get('voice') is True else 'no voice'}, {'-'.join(map(str, card.get('length_s', [])))} s"))
     bank_target = next((int(s.get("bank_target", 0)) for s in lineup.get("slots", []) if s.get("bank_target")), 0)
     return sorted(rows), lineup, bank_target
+
+
+DOW3 = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+
+def series_files(ctl):
+    """A series added in the Control Room becomes a real series file here (the brief job saves it to the repository),
+    so the plan check, the Make job and the Brain all read it like any other series."""
+    made = []
+    for sid, card in ctl.new_series().items():
+        p = niche_dir() / "series" / sid / "series.yaml"
+        if not p.exists():
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(f"# Added in the Control Room on {(card.get('added') or {}).get('at', '')} (AGENT.md 7). Follows the standard for every reel (AGENT.md 5.10).\n"
+                         + yaml.safe_dump({k: v for k, v in card.items() if k != "added"}, allow_unicode=True, sort_keys=False, width=160), encoding="utf-8")
+            made.append(sid)
+    return made
+
+
+def looks_lately(n=4):
+    """The design kit and the build of the last breakdowns, so the next one is different (AGENT.md 5.8). No AI."""
+    from .plancheck import recent_plans, shape
+    out = []
+    for d in recent_plans("stage", "9999-99-99-x", n):
+        out.append(f"- {d.get('id')}: kit {d.get('design') or 'none named'} · {' → '.join(shape(d))}")
+    return out
 
 
 def trailers(drive):
@@ -296,6 +329,47 @@ def build(drive, run, date):
         rules += [f"- {p.parent.name}: {n['text']} ({n.get('at', '')})" for n in ctl.notes(p.parent.name)]
     if rules:
         L += ["", "## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)"] + rules
+    if ctl.on("calendar"):
+        try:
+            from . import almanac
+            cal = almanac.lines(date, [t for t, *_ in slots if t != "-"])
+            if cal:
+                L += ["", "## Today (use it in hooks and titles; AGENT.md 10.5)"] + cal
+        except Exception as e:
+            print("calendar left out:", str(e)[:100])
+    new_files = series_files(ctl)
+    changed = [(sid, ctl.series_changes(sid)) for sid in ctl.series_ids(niche_dir())]
+    changed = [(sid, c) for sid, c in changed if c]
+    if changed or new_files:
+        L += ["", "## Series settings changed in the Control Room (these win over the series file; AGENT.md 6.5)"]
+        L += [f"- {sid}: " + "; ".join(f"{k} = {json.dumps(v, ensure_ascii=False)}" for k, v in c.items())[:600] for sid, c in changed]
+        L += [f"- NEW series {sid}: its card is niches/{AGENT['active']['niche']}/series/{sid}/series.yaml. Plan it at its slot as a {ctl.series(sid, niche_dir()).get('status')} series."
+              for sid in ctl.new_series()]
+    if run in ("plan", "refresh") and ctl.on("unique_designs"):
+        try:
+            recent = looks_lately()
+            if recent:
+                L += ["", "## Breakdown designs used lately (the next breakdown names another kit in \"design\" and a different build; AGENT.md 5.8)"] + recent
+        except Exception as e:
+            print("designs left out:", str(e)[:100])
+    if run in ("weekly", "monthly"):
+        try:
+            from . import insights
+            L += ["", "## What the numbers say (worked out by code; check before acting, AGENT.md 9.4)"] + insights.lines(insights.build(metrics, status.now()))
+            sc = safe_json(drive, "status", "scouts.json", {})
+            for name, pg in (sc.get("pages") or {}).items():
+                top = sorted((pg.get("mentions") or {}).items(), key=lambda kv: -kv[1])[:6]
+                L.append(f"- Fast page @{name} since {sc.get('since')}: {pg.get('film_posts')} film posts of {pg.get('posts')}; first with the story {pg.get('first')} times; "
+                         f"kinds {pg.get('kinds')}; accounts it names most: {', '.join(f'{a} ({n})' for a, n in top) or 'none yet'}.")
+            if sc.get("learned"):
+                L.append(f"- Accounts learned from the fast pages (the trailer search looks there first; add the good ones to sources.yaml): {', '.join(sc['learned'])}")
+        except Exception as e:
+            print("insights left out:", str(e)[:100])
+    cmds = load_json_lines((OUT / "control" / "commands.jsonl").read_text(encoding="utf-8")) if (OUT / "control" / "commands.jsonl").exists() else []
+    samples = [c for c in cmds if c.get("cmd") == "sample"][-12:]
+    if samples and run in ("weekly", "monthly"):
+        L += ["", "## Sample reels Harish wants a series to learn from (study each once; turn what works into numbered changes)"]
+        L += [f"- {c.get('series')}: {c.get('url') or ''} {('· ' + c['note']) if c.get('note') else ''}" for c in samples]
     ideas = [c for c in load_json_lines((OUT / "control" / "commands.jsonl").read_text(encoding="utf-8")) if c.get("cmd") == "idea"
              and str(c.get("at", ""))[:10] >= (dt.date.fromisoformat(date) - dt.timedelta(days=2)).isoformat()] if (OUT / "control" / "commands.jsonl").exists() else []
     if ideas and run in ("plan", "refresh"):
