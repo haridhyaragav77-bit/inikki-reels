@@ -78,6 +78,8 @@ def render_look(plan_path, plan, to_drive=None, drive=None, snap=None):
     report = {"pass": bool(checks.get("pass")), "problems": problems, "warnings": [], "checks": checks["checks"]}
     with open(outdir / "qc.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
+    if tl.get("voice_note"):
+        notes.append(tl["voice_note"])
     title = tl["screens"][0]                                # the cover: the title screen once everything has landed
     cover_t = round(title["start"] + (title["end"] - title["start"]) * 0.86, 2)
     subprocess.run([_ffmpeg(), "-y", "-v", "error", "-ss", str(cover_t), "-i", str(final), "-frames:v", "1", "-q:v", "2",

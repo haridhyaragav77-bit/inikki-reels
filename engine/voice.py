@@ -177,28 +177,55 @@ def _line_key(text, vid, model, vs):
 
 
 def _cache_get(drive, name, path):
+    """A line recorded earlier (its sound and its word timings), from Drive. True when both are back."""
     if not drive:
         return False
     try:
-        f = drive.find_child(drive.folder(CACHE_FOLDER), name)
-        if f:
-            drive.download(f["id"], path)
-            return os.path.getsize(path) > 1000
+        folder = drive.folder(CACHE_FOLDER)
+        for n, pth in ((name, path), (name + ".json", path + ".json")):
+            f = drive.find_child(folder, n)
+            if not f:
+                return False
+            drive.download(f["id"], pth)
+        return os.path.getsize(path) > 1000
     except Exception:
-        pass
-    return False
+        return False
 
 
 def _cache_put(drive, name, path):
     if drive:
         try:
             drive.upload(path, CACHE_FOLDER, name)
+            drive.upload(path + ".json", CACHE_FOLDER, name + ".json")
         except Exception:
             pass
 
 
+def words_from(alignment):
+    """ElevenLabs gives a time for every letter; subtitles and graphics want words: [{"w", "t", "d"}]."""
+    chars = (alignment or {}).get("characters") or []
+    t0s, t1s = (alignment or {}).get("character_start_times_seconds") or [], (alignment or {}).get("character_end_times_seconds") or []
+    out, cur = [], None
+    for c, a, b in zip(chars, t0s, t1s):
+        if c.isspace():
+            cur = None
+            continue
+        if cur is None:
+            cur = {"w": "", "t": round(float(a), 3), "end": float(b)}
+            out.append(cur)
+        cur["w"] += c
+        cur["end"] = float(b)
+    words = []
+    for w in out:
+        text = w["w"].strip(".,!?;:\"'“”‘’()[]…-–—|")
+        if text:
+            words.append({"w": text, "t": w["t"], "d": round(max(0.05, w["end"] - w["t"]), 3)})
+    return words
+
+
 def _speak(text, out, vid, model, vs, seed, before=None, after=None):
-    """One line, one call. Returns the credits it cost. Raises on any refusal."""
+    """One line, one call, with word timings. Returns the credits it cost. Raises on any refusal."""
+    import base64
     e = eleven()
     body = {"text": text, "model_id": model, "voice_settings": vs, "seed": seed}
     if e.get("language_code") and model in (e.get("language_code_models") or []):
@@ -208,19 +235,24 @@ def _speak(text, out, vid, model, vs, seed, before=None, after=None):
             body["previous_text"] = before[-300:]
         if after:
             body["next_text"] = after[:300]
-    r = requests.post(f"{e.get('base', 'https://api.elevenlabs.io')}/v1/text-to-speech/{vid}", params={"output_format": e.get("output_format", "mp3_44100_128")},
+    r = requests.post(f"{e.get('base', 'https://api.elevenlabs.io')}/v1/text-to-speech/{vid}/with-timestamps",
+                      params={"output_format": e.get("output_format", "mp3_44100_128")},
                       headers={"xi-api-key": key(), "Content-Type": "application/json"}, json=body, timeout=120)
     if not r.ok:
         try:
             d = r.json().get("detail")
-            msg = d.get("message") or d.get("status") if isinstance(d, dict) else str(d)
+            msg = (d.get("message") or d.get("status")) if isinstance(d, dict) else str(d)
         except Exception:
             msg = r.text[:160]
         raise RuntimeError(f"ElevenLabs refused ({r.status_code}): {str(msg)[:200]}")
-    if len(r.content) < 1000:
+    j = r.json()
+    audio = base64.b64decode(j.get("audio_base64") or "")
+    if len(audio) < 1000:
         raise RuntimeError("ElevenLabs sent an empty clip")
     with open(out, "wb") as f:
-        f.write(r.content)
+        f.write(audio)
+    with open(out + ".json", "w", encoding="utf-8") as f:
+        json.dump(words_from(j.get("alignment") or j.get("normalized_alignment")), f, ensure_ascii=False)
     try:
         return int(r.headers.get("character-cost") or r.headers.get("x-character-count") or len(text))
     except ValueError:
@@ -236,7 +268,7 @@ def elevenlabs_batch(plan, outdir, drive=None, reel_id=None, sub=None):
     vid = voice_id(plan.get("voice"))
     vs = {**(e.get("settings") or {}), **{k: v for k, v in (plan.get("settings") or {}).items() if k in ("stability", "similarity_boost", "style", "speed", "use_speaker_boost")}}
     if plan.get("speed"):
-        vs["speed"] = float(plan["speed"])
+        vs["speed"] = min(1.2, max(0.7, float(plan["speed"])))
     texts = [str(l["text"]).strip() for l in plan["lines"]]
     seed = int(hashlib.md5(str(reel_id or "reel").encode()).hexdigest()[:7], 16)          # same plan, same reel (CLAUDE.md rule 2)
     last = None
@@ -244,29 +276,29 @@ def elevenlabs_batch(plan, outdir, drive=None, reel_id=None, sub=None):
         clips, todo = [], []
         for i, t in enumerate(texts):
             name = f"{_line_key(t, vid, model, vs)}.mp3"
-            out = os.path.join(outdir, f"el_{i:02d}_{name}")
-            if (os.path.exists(out) and os.path.getsize(out) > 1000) or _cache_get(drive, name, out):
-                clips.append({"line": i, "file": out, "new": False})
-            else:
-                clips.append({"line": i, "file": out, "new": True, "name": name})
+            out = os.path.join(outdir, name)
+            have = os.path.exists(out) and os.path.getsize(out) > 1000 and os.path.exists(out + ".json")
+            clips.append({"line": i, "file": out, "name": name})
+            if not (have or _cache_get(drive, name, out)):
                 todo.append(i)
         need = sum(len(texts[i]) for i in todo)
         if todo and sub is not None and sub["left"] - need < int(e.get("reserve_credits", 0)):
-            return {"ok": False, "skipped": True, "error": f"ElevenLabs credits are nearly used up this month ({sub['left']} left, this reel needs {need})"}
+            return {"ok": False, "skipped": True, "error": f"ElevenLabs credits are nearly used up this month ({sub['left']} left, this reel needs about {need})"}
         spent = 0
         try:
             for i in todo:
                 c = clips[i]
                 spent += _speak(texts[i], c["file"], vid, model, vs, seed + i, " ".join(texts[:i]), " ".join(texts[i + 1:]))
                 _cache_put(drive, c["name"], c["file"])
+            out = []
             for c in clips:
-                c["seconds"] = seconds(c["file"])
-            return {"ok": True, "provider": "elevenlabs", "model": model, "voice_id": vid, "credits": spent, "reused": len(texts) - len(todo),
-                    "clips": [{"line": c["line"], "file": os.path.abspath(c["file"]), "seconds": c["seconds"]} for c in clips]}
+                with open(c["file"] + ".json", encoding="utf-8") as f:
+                    out.append({"line": c["line"], "file": os.path.abspath(c["file"]), "seconds": seconds(c["file"]), "words": json.load(f)})
+            return {"ok": True, "provider": "elevenlabs", "model": model, "voice_id": vid, "credits": spent, "reused": len(texts) - len(todo), "clips": out}
         except Exception as ex:                         # try the next model once; lines already recorded stay kept
             last = str(ex)[:240]
             print("voice:", last, file=sys.stderr)
-            if "401" in last or "quota" in last.lower() or "credits" in last.lower():
+            if "401" in last or "quota" in last.lower() or "credit" in last.lower():
                 break
     return {"ok": False, "error": last or "ElevenLabs gave no answer"}
 
@@ -281,43 +313,71 @@ def order(want=None, drive=None):
     return [first] + ([backup] if backup in PROVIDERS and backup != first else [])
 
 
+def job_drive():
+    """The Drive of this job, for the sound mixer (it runs as its own program). None when there are no Drive keys."""
+    if "d" not in _DRIVE:
+        _DRIVE["d"] = None
+        if secret("GDRIVE_ROOT_FOLDER_ID"):
+            try:
+                from .drive import Drive
+                _DRIVE["d"] = Drive()
+            except Exception:
+                pass
+    return _DRIVE["d"]
+
+
+_DRIVE = {}
+
+
+def main_voice(plan, outdir, drive=None, reel_id=None):
+    """The ElevenLabs take of a reel's lines, when ElevenLabs is the voice to use and it answers.
+    → (result or None, why). None means: the Microsoft voice speaks this reel; `why` says why in plain words."""
+    first = order(plan.get("provider"), drive)[0]
+    if first != "elevenlabs":
+        return None, None
+    sub, lv, p = subscription(), live(drive), dict(plan)
+    if not p.get("voice") or str(p["voice"]).startswith(tuple(cfg().get("microsoft_prefixes") or ["ta-", "en-"])):
+        p["voice"] = plan.get("elevenlabs_voice") or lv.get("elevenlabs_voice")     # a Microsoft name in a plan is for the backup only
+    if lv.get("quality") == "economy" and eleven().get("economy_models"):
+        p.setdefault("models", eleven()["economy_models"])
+    if lv.get("speed"):
+        p.setdefault("speed", lv["speed"])
+    r = elevenlabs_batch(p, outdir, drive, reel_id, sub)
+    if not r.get("ok"):
+        print(f"voice: ElevenLabs did not record ({r.get('error')})", file=sys.stderr)
+        return None, r.get("error")
+    try:
+        note_use(drive, "elevenlabs", reel_id, r.get("credits", 0), r.get("reused", 0), sub=subscription() if r.get("credits") else sub)
+    except Exception:
+        pass
+    return r, None
+
+
+def backup_note(drive, reel_id, why):
+    """The backup spoke: count it, and say why in words Harish can read."""
+    try:
+        note_use(drive, "microsoft", reel_id, why=why)
+    except Exception:
+        pass
+    return f"The backup voice (Microsoft) spoke this reel: {why}." if why else None
+
+
 def batch(plan, outdir, fresh=False, drive=None, reel_id=None):
     """plan = {"lines":[{"text":...}], "provider":..., "voice":..., "rate":..., "pitch":..., "speed":...}
     → {"ok", "provider", "clips":[{"file","seconds"}], "note"}. `note` says in plain words when the backup spoke."""
-    why = None
-    for n, prov in enumerate(order(plan.get("provider"), drive)):
-        if prov == "elevenlabs":
-            sub = subscription()
-            lv = live(drive)
-            p = dict(plan)
-            if not p.get("voice") or str(p["voice"]).startswith(tuple(cfg().get("microsoft_prefixes") or ["ta-", "en-"])):
-                p["voice"] = plan.get("elevenlabs_voice") or lv.get("elevenlabs_voice")     # a Microsoft name in a plan is for the backup only
-            if lv.get("quality") == "economy" and eleven().get("economy_models"):
-                p.setdefault("models", eleven()["economy_models"])
-            if lv.get("speed"):
-                p.setdefault("speed", lv["speed"])
-            r = elevenlabs_batch(p, os.path.join(outdir, "elevenlabs"), drive, reel_id, sub)
-            if r.get("ok"):
-                try:
-                    note_use(drive, "elevenlabs", reel_id, r.get("credits", 0), r.get("reused", 0), sub=subscription() if r.get("credits") else sub)
-                except Exception:
-                    pass
-        else:
-            r = microsoft_batch(plan, os.path.join(outdir, "microsoft"), fresh)
-            if not r.get("ok"):                           # one fresh try for the free voice (its service drops now and then)
-                r = microsoft_batch(plan, os.path.join(outdir, "microsoft"), True)
-            if r.get("ok"):
-                try:
-                    note_use(drive, "microsoft", reel_id, why=why)
-                except Exception:
-                    pass
-        if r.get("ok"):
-            if n and why:
-                r["note"] = f"The backup voice ({prov}) spoke this reel: {why}."
-            return r
-        why = r.get("error")
-        print(f"voice: {prov} did not record ({why})", file=sys.stderr)
-    return {"ok": False, "error": why or "no voice answered"}
+    r, why = main_voice(plan, os.path.join(outdir, "elevenlabs"), drive, reel_id)
+    if r:
+        return r
+    if "microsoft" not in order(plan.get("provider"), drive):
+        return {"ok": False, "error": why or "no voice answered"}
+    r = microsoft_batch(plan, os.path.join(outdir, "microsoft"), fresh)
+    if not r.get("ok"):                           # one fresh try for the free voice (its service drops now and then)
+        r = microsoft_batch(plan, os.path.join(outdir, "microsoft"), True)
+    if r.get("ok"):
+        note = backup_note(drive, reel_id, why)
+        if note:
+            r["note"] = note
+    return r
 
 
 def check():

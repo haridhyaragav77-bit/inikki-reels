@@ -4,7 +4,8 @@
 Usage: python3 engine/render/audio.py <plan.json> <workdir>
 Writes <workdir>/audio.wav and <workdir>/timeline.json.
 
-- Voice: Microsoft neural voice (edge-tts) with word timings, so graphics can land on the word.
+- Voice: ElevenLabs first (engine/voice.py: one take per line, kept and reused), Microsoft (edge-tts) as the backup;
+  both give word timings, so graphics can land on the word (AGENT.md 4.4).
 - Music: 1-3 sections from the music library that follow the story; starts on frame 1, never silent;
   crossfades at story turns; ducks under the voice (AGENT.md 5.4).
 - Sound effects: small synthesized whooshes, hits, ticks and stamps for transitions and big moments.
@@ -21,6 +22,14 @@ PROXY = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or None
 
 def rp(p):
     return p if os.path.isabs(p) else os.path.join(ROOT, p)
+
+
+def faster(path, tempo):
+    """The same clip a little faster (pitch kept), for a reel that would run past its series' longest length."""
+    out = f"{os.path.splitext(path)[0]}_x{int(round(tempo * 1000))}.mp3"
+    if not os.path.exists(out):
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", path, "-af", f"atempo={tempo:.3f}", out], check=True)
+    return out
 
 
 def decode(path, ch=2, start=0.0, dur=None):
@@ -170,15 +179,52 @@ def main(plan_path, work):
     voice_on = bool(vcfg.get("on"))
     screens = plan["screens"]
 
-    # 1. voice lines
-    voice_clips = {}
-    if voice_on:
-        async def all_lines():
-            for i, s in enumerate(screens):
-                if s.get("voice"):
-                    voice_clips[i] = await speak(s["voice"], vcfg.get("voice", "ta-IN-ValluvarNeural"),
-                                                 s.get("rate", vcfg.get("rate", "+25%")), vcfg.get("pitch", "-2Hz"))
-        asyncio.run(all_lines())
+    # 1. voice lines: the main voice (ElevenLabs) for the whole reel, else the backup (Microsoft) for the whole reel
+    voice_clips, provider, voice_note = {}, None, None
+    spoken = [(i, s["voice"]) for i, s in enumerate(screens) if s.get("voice")] if voice_on else []
+    if spoken:
+        V = drive = why = None
+        try:
+            sys.path.insert(0, ROOT)
+            from engine import voice as V
+            drive = V.job_drive()
+            cfg = {k: vcfg[k] for k in ("provider", "voice", "elevenlabs_voice", "speed", "settings") if vcfg.get(k)}
+            series_cfg = {}
+            try:
+                from engine.render import series_for
+                series_cfg = series_for(plan).get("voice_cfg") or {}
+            except Exception:
+                pass
+            for k in ("provider", "elevenlabs_voice", "speed"):
+                if series_cfg.get(k):
+                    cfg.setdefault(k, series_cfg[k])
+            cfg["lines"] = [{"text": text} for _, text in spoken]
+            r, why = V.main_voice(cfg, os.path.join(VOICE_CACHE, "elevenlabs"), drive, plan.get("reel_id") or plan.get("id"))
+            if r:
+                provider = "elevenlabs"
+                for (i, _), c in zip(spoken, r["clips"]):
+                    voice_clips[i] = (c["file"], c["words"])
+        except Exception as e:                       # fail soft: the backup voice speaks
+            why = str(e)[:160]
+            print("voice: main voice skipped:", why, file=sys.stderr)
+        if not voice_clips:
+            async def all_lines():
+                for i, text in spoken:
+                    voice_clips[i] = await speak(text, vcfg.get("voice", "ta-IN-ValluvarNeural") if str(vcfg.get("voice", "ta-")).startswith(("ta-", "en-", "hi-")) else "ta-IN-ValluvarNeural",
+                                                 screens[i].get("rate", vcfg.get("rate", "+25%")), vcfg.get("pitch", "-2Hz"))
+            asyncio.run(all_lines())
+            provider = "microsoft"
+            if V is not None:
+                voice_note = V.backup_note(drive, plan.get("reel_id") or plan.get("id"), why)
+        # A reel that would run past its series' longest length is spoken a little faster (never above 1.15x), not held.
+        longest = (plan.get("length_s") or [0, 0])[-1]
+        said = sum(len(decode(mp3, ch=1)) / SR for mp3, _ in voice_clips.values())
+        planned = sum((s.get("lead", 0.45 if i == 0 else 0.12) + s.get("tail", 0.3)) if i in voice_clips else float(s.get("dur", 3.0)) for i, s in enumerate(screens)) + said
+        if longest and said and planned > float(longest) - 0.3:
+            tempo = min(1.15, said / max(1.0, said - (planned - float(longest) + 0.5)))
+            if tempo > 1.01:
+                voice_clips = {i: (faster(mp3, tempo), [{"w": w["w"], "t": w["t"] / tempo, "d": w["d"] / tempo} for w in words]) for i, (mp3, words) in voice_clips.items()}
+                print(f"voice: spoken {tempo:.2f}x faster to fit {longest} s", file=sys.stderr)
 
     # 2. timeline
     t = 0.0
@@ -319,6 +365,8 @@ def main(plan_path, work):
 
     timeline = {"id": plan["id"], "duration": total, "fps": plan.get("fps", 30), "screens": tl,
                 "beats": sorted(set(beats)), "music": sec_out, "sfx": fx_events}
+    if voice_on:
+        timeline["voice_provider"], timeline["voice_note"] = provider, voice_note
     json.dump(timeline, open(os.path.join(work, "timeline.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     first = rms(mix[: int(0.5 * SR)])
     print(json.dumps({"ok": True, "duration": total, "screens": len(tl), "beats": len(beats),
