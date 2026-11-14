@@ -70,6 +70,84 @@ def fetch(feed):
     return items
 
 
+def scout_items(src, report):
+    """Fast pages (sources.yaml `scouts`, e.g. a city page that is quick with trailers): their newest posts, read through
+    Instagram's own API, one small call per page. A scout is a signal, never proof (AGENT.md 10.2)."""
+    scouts = [s for s in (src.get("scouts") or []) if s.get("account")]
+    if not scouts or not secret("IG_ACCESS_TOKEN"):
+        return []
+    out = []
+    try:
+        from .instagram import Instagram
+        from . import trailers
+        ig = Instagram()
+    except Exception as e:
+        report["Instagram scouts"] = f"failed: {str(e)[:100]}"
+        return []
+    for sc in scouts:
+        acct = sc["account"]
+        try:
+            m = trailers.page(ig, acct, links=False, limit=int(sc.get("posts", 12)))
+            got = 0
+            for p in m.get("data", []):
+                cap = " ".join(str(p.get("caption") or "").split())
+                if not cap:
+                    continue
+                got += 1
+                out.append({"title": re.split(r"(?<=[.!?|])\s|\s#", cap)[0][:160], "text": cap, "link": f"https://www.instagram.com/{acct}/",
+                            "at": parse_date(str(p.get("timestamp") or "").replace("+0000", "+00:00")), "publisher": "@" + acct, "feed": "@" + acct,
+                            "feed_tier": int(sc.get("tier", 2)), "scout": acct, "post_id": p.get("id"),
+                            "mentions": [x.strip(".").lower() for x in re.findall(r"@([\w.]{3,30})", cap)]})
+            report["@" + acct] = f"ok ({got} posts)"
+        except Exception as e:
+            report["@" + acct] = f"failed: {str(e)[:100]}"
+    return out
+
+
+def study(drive, items, stories, src, now):
+    """The scout study (AGENT.md 10.3), no AI: what the fast pages post about films, which official accounts they name,
+    and how far ahead of our news feeds they are. Kept in Drive status/scouts.json; the weekly brief prints it.
+    Accounts named again and again are learned: the trailer search looks there first."""
+    try:
+        st = drive.read_json("status", "scouts.json") or {}
+    except Exception:
+        st = {}
+    st.setdefault("since", now.strftime("%Y-%m-%d"))
+    pages, seen = st.setdefault("pages", {}), set(st.get("seen") or [])
+    from . import trailers
+    for i in items:
+        if not i.get("scout") or not i.get("post_id") or i["post_id"] in seen:
+            continue
+        seen.add(i["post_id"])
+        pg = pages.setdefault(i["scout"], {"posts": 0, "film_posts": 0, "kinds": {}, "mentions": {}, "first": 0, "lead_min": []})
+        pg["posts"] += 1
+        if i.get("_score", 0) <= 0:
+            continue
+        pg["film_posts"] += 1
+        kind = trailers.kind_of(i["text"]) or (i.get("_hits") or ["other"])[0]
+        pg["kinds"][kind] = pg["kinds"].get(kind, 0) + 1
+        for m in i.get("mentions") or []:
+            if m != i["scout"]:
+                pg["mentions"][m] = pg["mentions"].get(m, 0) + 1
+    for s in stories:                                   # who had the story first, and by how many minutes
+        seen_by = s.get("seen") or {}
+        sc = {p: t for p, t in seen_by.items() if p.startswith("@")}
+        rest = [t for p, t in seen_by.items() if not p.startswith("@")]
+        if sc and rest and not s.get("studied"):
+            p, t = min(sc.items(), key=lambda kv: kv[1])
+            lead = round((dt.datetime.fromisoformat(min(rest)) - dt.datetime.fromisoformat(t)).total_seconds() / 60)
+            pg = pages.setdefault(p[1:], {"posts": 0, "film_posts": 0, "kinds": {}, "mentions": {}, "first": 0, "lead_min": []})
+            pg["first"] += 1 if lead > 0 else 0
+            pg["lead_min"] = (pg["lead_min"] + [lead])[-60:]
+            s["studied"] = True
+    known = {str(a).lower() for a in ((src.get("trailers") or {}).get("instagram_accounts") or [])}
+    need = int((src.get("watch") or {}).get("learn_after_mentions", 3))
+    st["learned"] = sorted({m for pg in pages.values() for m, n in pg["mentions"].items() if n >= need and m not in known})[:40]
+    st["seen"], st["updated"] = sorted(seen)[-400:], status.stamp()
+    drive.write_json("status", "scouts.json", st)
+    return st
+
+
 def tier_of(item, src):
     if item.get("feed_tier"):
         return int(item["feed_tier"])
@@ -82,7 +160,7 @@ def tier_of(item, src):
 
 
 def score(item, w):
-    t = item["title"].lower()
+    t = (item.get("text") or item["title"]).lower()
     hits = [k for k in w.get("keywords", {}) if k.lower() in t]
     s = sum(float(w["keywords"][k]) for k in hits)
     names = [n for n in w.get("names", []) if re.search(r"(?<!\w)" + re.escape(n.lower()) + r"(?!\w)", t)]
@@ -95,6 +173,13 @@ def score(item, w):
 
 
 def story_key(names, hits, title):
+    try:                                    # a film's trailer, teaser or glimpse is one story, whoever reports it
+        from . import trailers
+        kind, films = trailers.kind_of(title), trailers.titles_in(title)
+        if kind in ("trailer", "teaser", "glimpse") and films:
+            return f"f|{trailers.norm(films[0])}|{kind}"
+    except Exception:
+        pass
     if names and hits:
         return f"{sorted(names, key=len)[-1].lower()}|{sorted(hits)[0]}"
     toks = [x for x in re.findall(r"\w{4,}", title.lower())][:6]
@@ -126,6 +211,7 @@ def run(drive=None, ctl=None, test=False):
             report[f["name"]] = f"ok ({len(got)} items)"
         except Exception as e:
             report[f["name"]] = f"failed: {str(e)[:100]}"
+    items += scout_items(src, report)
     if test:
         for k, v in report.items():
             print(f"{k}: {v}")
@@ -144,6 +230,7 @@ def run(drive=None, ctl=None, test=False):
         if i["at"] and now - i["at"] > dt.timedelta(hours=48):
             continue
         s, hits, names, death = score(i, w)
+        i["_score"], i["_hits"] = s, hits
         if s <= 0:
             continue
         tier = tier_of(i, src)
@@ -155,6 +242,12 @@ def run(drive=None, ctl=None, test=False):
         if i["at"] and (not st.get("since") or i["at"].isoformat(timespec="minutes") < st["since"]):
             st["since"] = i["at"].isoformat(timespec="minutes")       # when the story itself first appeared
         st["publishers"][i["publisher"]] = min(tier, st["publishers"].get(i["publisher"], 9))
+        st.setdefault("seen", {}).setdefault(i["publisher"], (i["at"] or now).isoformat(timespec="minutes"))
+        if i.get("scout"):                              # the official accounts a fast page names: where the trailer search looks first
+            st["accounts"] = sorted(set(st.get("accounts") or []) | set(i.get("mentions") or []))[:6]
+            st["drop"] = st.get("drop") or bool(set(hits) & set(w.get("drop_words") or []))
+        else:
+            st["drop"] = st.get("drop") or bool(set(hits) & set(w.get("drop_words") or []))
         if s > st["score"]:
             st["score"], st["title"] = round(s, 1), i["title"]
         st["death"] = st["death"] or death
@@ -186,9 +279,16 @@ def run(drive=None, ctl=None, test=False):
                              "Hype reels, memes and jokes are paused for today. Only fitting reels post.",
                              "Nothing. If this is wrong, say \"respect mode off\" in the Control Room.", level="warn")
             s["respect_done"] = True
-        if (s["rank"] >= float(w.get("fire_score", 8)) and s["trusted"] >= 2 and fresh and not s.get("fired_at")
+        official = {str(a).lower() for a in ((src.get("trailers") or {}).get("instagram_accounts") or [])}
+        strong = s["rank"] >= float(w.get("fire_score", 8)) and s["trusted"] >= 2
+        # A drop (trailer, teaser, first look, release date) is worth minutes, not hours: two trusted sources are enough,
+        # or one fast page that names the film's own official account. The Breaking run still verifies before it plans.
+        drop = bool(s.get("drop")) and s["rank"] >= float(w.get("fire_score_drop", 2)) and (
+            s["trusted"] >= 2 or bool(official & set(s.get("accounts") or [])))
+        if ((strong or drop) and fresh and not s.get("fired_at")
                 and s.get("kw_max", 0) >= float(w.get("breaking_min_keyword", 3))
-                and lo <= now.hour < hi and len(fired_today) < 2 and (ctl is None or ctl.mode != "sleep")):
+                and lo <= now.hour < hi and len(fired_today) < int(w.get("max_wakes_per_day", 2)) and (ctl is None or ctl.mode != "sleep")
+                and (ctl is None or (ctl.settings.get("breaking") or {}).get("on", True))):
             try:
                 from .day import Day
                 done = sum(1 for r in Day(drive).reels() if r.get("series") == "breaking-news") if drive else 0
@@ -203,7 +303,9 @@ def run(drive=None, ctl=None, test=False):
     if drive:                 # a trailer, teaser or glimpse in the news: put the film on the trailer wanted list (AGENT.md 5.11)
         try:
             from . import trailers
-            films = [f + ("@" + "+".join(trailers.accounts_in(s["title"])) if trailers.accounts_in(s["title"]) else "")
+            def accts(s):                                   # the accounts named in the headline, then the ones a fast page tagged
+                return list(dict.fromkeys(trailers.accounts_in(s["title"]) + list(s.get("accounts") or [])))[:4]
+            films = [f + ("@" + "+".join(accts(s)) if accts(s) else "")
                      for s in keep[:10] if trailers.kind_of(s["title"]) in ("trailer", "teaser", "glimpse") for f in trailers.titles_in(s["title"])]
             if films:
                 trailers.want(drive, films, why="news: a new trailer, teaser or glimpse was reported")
@@ -212,6 +314,10 @@ def run(drive=None, ctl=None, test=False):
             print("trailer wanted list not updated:", str(e)[:120])
     radar = {"updated": status.stamp(), "feeds": report, "stories": keep}
     if drive:
+        try:
+            study(drive, items, keep, src, now)
+        except Exception as e:
+            print("scout study not updated:", str(e)[:120])
         drive.write_json("status", "radar.json", radar)
     print(f"news watch: {sum(1 for v in report.values() if v.startswith('ok'))}/{len(report)} feeds, {len(keep)} stories" + (f"; {notes}" if notes else ""))
     return radar
