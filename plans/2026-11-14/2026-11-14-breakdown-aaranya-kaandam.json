@@ -1,0 +1,523 @@
+{
+  "id": "2026-11-14-breakdown-aaranya-kaandam",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "length_reason": "Name the technique, where the word comes from, what the bag means to three people, why it works: about a minute.",
+  "lead": {
+    "topic": "Aaranya Kaandam (2011): the bag of cocaine everyone chases, and why it does not matter",
+    "angle": "screenplay",
+    "insight": "The cocaine bag is a MacGuffin: the thing everyone chases that the story is not really about. To the ageing don it is pride, to his man Pasupathy survival, to a broke father his son's future. Every time the bag changes hands, power changes hands; the bag only shows who each person is.",
+    "why_now": "Cult classic: still quoted and rewatched; now streaming on JioHotstar.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aaranya_Kaandam (plot: Singaperumal, Pasupathy, Kaalayan and Kodukapuli chase the cocaine stash)",
+      "https://en.wikipedia.org/wiki/MacGuffin (term popularised by Alfred Hitchcock)"
+    ],
+    "technique": "MacGuffin (the object everyone chases; the story is about the chasers)"
+  },
+  "worth_it": {
+    "learn": "The bag has a name in film craft, MacGuffin, from Hitchcock, and Aaranya Kaandam uses it to show character.",
+    "stop": "Everyone in the film wants one bag, and it barely matters.",
+    "why_now": "Cult classic people still rewatch; on JioHotstar.",
+    "send_to": "The friend who quotes Singaperumal.",
+    "best_angle": "Yes: the chase is the film's spine; naming it explains why every character feels so sharp."
+  },
+  "voice": {
+    "on": true,
+    "voice": "ta-IN-ValluvarNeural",
+    "rate": "+18%",
+    "pitch": "-2Hz"
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "lone_wolf",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cool, moody"
+      },
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 4,
+        "mood": "chase tension"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 6,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/aaranya_kaandam/haI-Rq8PX3g_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.6
+      ]
+    },
+    "don": {
+      "src": "engine/.cache/stills/aaranya_kaandam/haI-Rq8PX3g_maxres1.jpg"
+    },
+    "car": {
+      "src": "engine/.cache/stills/aaranya_kaandam/haI-Rq8PX3g_maxres2.jpg"
+    },
+    "gang": {
+      "src": "engine/.cache/stills/aaranya_kaandam/haI-Rq8PX3g_maxres3.jpg"
+    },
+    "kaalayan": {
+      "src": "engine/.cache/stills/aaranya_kaandam/p1GqeahUNls_maxresdefault.jpg",
+      "crop": [
+        0.33,
+        0.15,
+        0.36,
+        0.85
+      ]
+    },
+    "son": {
+      "src": "engine/.cache/stills/aaranya_kaandam/p1GqeahUNls_maxres3.jpg",
+      "crop": [
+        0.62,
+        0.15,
+        0.25,
+        0.85
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "AARANYA KAANDAM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "எல்லாரும் ஒரு பையை துரத்தறாங்க. ஆனா கதை பை இல்ல.",
+      "voice_tg": "Ellaarum oru paiyai thuratharaanga. Aana kadhai pai illa.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "pins",
+      "image": "don",
+      "in": "zoom",
+      "voice": "ஒரு பை நிறைய கொக்கைன். தாதா சிங்கப்பெருமாள், அவனோட ஆள் பசுபதி, ஒரு ஏழை அப்பா காளையன். எல்லாருக்கும் அது வேணும்.",
+      "voice_tg": "Oru pai niraiya cocaine. Dhaadhaa Singaperumal, avanoda aal Pasupathy, oru ezhai appa Kaalaiyan. Ellaarukkum adhu venum.",
+      "pins": [
+        {
+          "x": 0.5,
+          "y": 0.42,
+          "lx": 80,
+          "ly": 318,
+          "text": "SINGAPERUMAL · DON",
+          "cue": {
+            "word": "சிங்கப்பெருமாள்"
+          }
+        }
+      ],
+      "extra": {
+        "image": "kaalayan",
+        "cue": {
+          "word": "காளையன்"
+        },
+        "label": "KAALAYAN · FATHER",
+        "fx": 0.5
+      },
+      "slam": {
+        "cue": {
+          "word": "வேணும்"
+        },
+        "lines": [
+          {
+            "text": "ONE BAG.",
+            "size": 150,
+            "color": "#ffffff"
+          },
+          {
+            "text": "EVERYONE WANTS IT.",
+            "size": 110,
+            "color": "#F8C868",
+            "glow": "rgba(248,200,104,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "கொக்கைன்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "சிங்கப்பெருமாள்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "பசுபதி"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "காளையன்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வேணும்"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "MACGUFFIN",
+      "definition": "THE THING EVERYONE CHASES",
+      "outer_label": "THE BAG",
+      "inner": [
+        "THE DON",
+        "PASUPATHY",
+        "THE FATHER"
+      ],
+      "voice": "இந்த திரைக்கதை டெக்னிக் பேரு, மெக்கஃபின். எல்லாரும் துரத்துற ஒரு பொருள். ஆனா கதை, துரத்துறவங்க பத்தி.",
+      "voice_tg": "Indha thiraikkadhai technique peru, MacGuffin. Ellaarum thurathura oru porul. Aana kadhai, thurathuravanga pathi.",
+      "cues": {
+        "name": {
+          "word": "மெக்கஃபின்"
+        },
+        "outer": {
+          "word": "பொருள்"
+        },
+        "inner": {
+          "word": "துரத்துறவங்க"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "மெக்கஃபின்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "பொருள்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "துரத்துறவங்க"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "துரத்துறவங்க",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "துரத்துறவங்க",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "WHERE IT CAME FROM",
+      "center_ta": "ஹிட்ச்காக்",
+      "voice": "இந்த வார்த்தையை பிரபலமாக்கினவர் ஹிட்ச்காக். ரகசியம், பணம், ஒரு பை. அது என்னன்னு முக்கியமில்ல. அதுக்காக மனுஷங்க என்ன பண்றாங்க, அது தான் முக்கியம்.",
+      "voice_tg": "Indha vaarthaiyai prabalamaakkinavar Hitchcock. Ragasiyam, panam, oru pai. Adhu ennannu mukkiyamilla. Adhukkaaga manushanga enna panraanga, adhu thaan mukkiyam.",
+      "nodes": [
+        {
+          "label": "A SECRET",
+          "cue": {
+            "word": "ரகசியம்"
+          }
+        },
+        {
+          "label": "MONEY",
+          "cue": {
+            "word": "பணம்"
+          }
+        },
+        {
+          "label": "A BAG",
+          "cue": {
+            "word": "பை"
+          }
+        },
+        {
+          "label": "THE PEOPLE",
+          "cue": {
+            "word": "மனுஷங்க"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "ரகசியம்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பணம்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மனுஷங்க"
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "ONE BAG. 3 MEANINGS.",
+      "heading_ta": "ஒரு பை, மூணு அர்த்தம்",
+      "voice": "தாதாவுக்கு அது கௌரவம். பசுபதிக்கு அது உயிர். காளையனுக்கு, மகனோட எதிர்காலம்.",
+      "voice_tg": "Dhaadhaavukku adhu gauravam. Pasupathikku adhu uyir. Kaalaiyanukku, maganoda edhirkaalam.",
+      "cards": [
+        {
+          "lines": [
+            "THE DON:",
+            "PRIDE"
+          ],
+          "image": "don",
+          "fx": 0.5,
+          "cue": {
+            "word": "தாதாவுக்கு"
+          }
+        },
+        {
+          "lines": [
+            "PASUPATHY:",
+            "SURVIVAL"
+          ],
+          "image": "car",
+          "fx": 0.4,
+          "cue": {
+            "word": "பசுபதிக்கு"
+          }
+        },
+        {
+          "lines": [
+            "THE FATHER:",
+            "HIS SON"
+          ],
+          "image": "son",
+          "fx": 0.5,
+          "cue": {
+            "word": "காளையனுக்கு"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "தாதாவுக்கு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பசுபதிக்கு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "காளையனுக்கு"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "gang",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "HUNTER",
+      "right": "HUNTED",
+      "left_ta": "வேட்டைக்காரன்",
+      "right_ta": "இரை",
+      "slam_text": [
+        "POWER",
+        "MOVES."
+      ],
+      "voice": "ஆரண்ய காண்டம்னா காட்டு அத்தியாயம். இங்க வேட்டைக்காரன் யாரு, இரை யாருன்னு மாறிக்கிட்டே இருக்கு. பை கை மாறும்போதெல்லாம், அதிகாரமும் கை மாறுது.",
+      "voice_tg": "Aaranya Kaandamnaa kaattu athiyaayam. Inga vettaikkaaran yaaru, irai yaarunnu maarikitte irukku. Pai kai maarumbodhellaam, adhigaaramum kai maarudhu.",
+      "cues": {
+        "line": {
+          "word": "வேட்டைக்காரன்"
+        },
+        "bleed": {
+          "word": "மாறிக்கிட்டே"
+        },
+        "crack": {
+          "word": "மாறும்போதெல்லாம்"
+        },
+        "slam": {
+          "word": "அதிகாரமும்"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "வேட்டைக்காரன்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "மாறும்போதெல்லாம்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "அதிகாரமும்"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "car",
+      "fy": 0.45,
+      "fx": 0.4,
+      "slam_text": "WHO GETS THE BAG?",
+      "voice": "கடைசியில அந்த பை யார் கையில போகுது? நாங்க சொல்ல மாட்டோம். பார்த்தா புரியும், பை முக்கியமே இல்லன்னு.",
+      "voice_tg": "Kadaisiyila andha pai yaar kaiyila pogudhu? Naanga solla maattom. Paarthaa puriyum, pai mukkiyame illannu.",
+      "q_cue": {
+        "word": "யார்"
+      },
+      "slam_cue": {
+        "word": "மாட்டோம்"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "யார்"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மாட்டோம்",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "AARANYA KAANDAM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHO WOULD YOU",
+          "size": 125
+        },
+        {
+          "text": "TRUST WITH THE BAG?",
+          "size": 105,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "பையை யார்கிட்ட கொடுப்பீங்க?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் மெக்கஃபின். பையை யார்கிட்ட கொடுப்பீங்க? கமெண்ட்ல சொல்லுங்க. சினிமா நண்பனுக்கு அனுப்புங்க.",
+      "voice_tg": "Idhu thaan MacGuffin. Paiyai yaarkitta koduppeenga? Comment-la sollunga. Cinema nanbanukku anuppunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: MACGUFFIN"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Everyone in Aaranya Kaandam chases one bag. The story is not about the bag.",
+      "The technique is called a MacGuffin, a word Hitchcock made famous: the thing everyone chases. To the don it is pride, to Pasupathy survival, to Kaalayan his son's future. Every time the bag changes hands, power does too.",
+      "Who would you trust with the bag? Tell us.",
+      "Send this to the friend who still quotes Singaperumal.",
+      "பை இல்ல, கதை."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "AARANYA KAANDAM · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Best character in the film: Singaperumal, Pasupathy, Subbu or Kodukapuli?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 73,
+    "weakest": {
+      "loop": "end card returns to the poster faces of the title",
+      "send_trigger": "caption names who to send it to"
+    }
+  }
+}

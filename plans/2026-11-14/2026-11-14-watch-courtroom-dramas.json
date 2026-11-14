@@ -1,0 +1,365 @@
+{
+  "id": "2026-11-14-watch-courtroom-dramas",
+  "series": "movie-recommendations",
+  "template": "poster-wall",
+  "fps": 30,
+  "length_s": [
+    25,
+    45
+  ],
+  "length_reason": "Harish (13 Nov): slightly longer, at reading pace, so each film's plot line can be read. 7.6 s per film instead of 5.8 s.",
+  "lead": {
+    "topic": "Before Sathyavan Savithiri (20 Nov): 4 courtroom dramas you probably missed",
+    "films": [
+      {
+        "film": "Neru",
+        "year": 2023,
+        "language": "Malayalam",
+        "country": "India",
+        "director": "Jeethu Joseph",
+        "letterboxd": "3.30/5 (15,530 ratings)",
+        "proof": "By Jeethu Joseph, director of Drishyam",
+        "watch_india": "JioHotstar (JustWatch India, 14 Nov 2026)",
+        "premise": "A lawyer who quit court takes one last case: a young blind woman's."
+      },
+      {
+        "film": "Shahid",
+        "year": 2012,
+        "language": "Hindi",
+        "country": "India",
+        "director": "Hansal Mehta",
+        "letterboxd": "3.85/5 (4,721 ratings)",
+        "proof": "National Awards: Best Director, Best Actor (Rajkummar Rao)",
+        "watch_india": "Prime Video (JustWatch India, 14 Nov 2026)",
+        "premise": "The true story of Shahid Azmi, who defended people nobody would."
+      },
+      {
+        "film": "Anatomy of a Fall",
+        "year": 2023,
+        "language": "French",
+        "country": "France",
+        "director": "Justine Triet",
+        "letterboxd": "4.12/5 (1,592,233 ratings)",
+        "proof": "Palme d'Or, Cannes 2023; Oscar for Best Original Screenplay",
+        "watch_india": "Prime Video (JustWatch India, 14 Nov 2026)",
+        "premise": "A man is found dead in the snow. His wife is put on trial."
+      },
+      {
+        "film": "The Trial of the Chicago 7",
+        "year": 2020,
+        "language": "English",
+        "country": "USA",
+        "director": "Aaron Sorkin",
+        "letterboxd": "3.78/5 (437,406 ratings)",
+        "proof": "6 Oscar nominations incl. Best Picture",
+        "watch_india": "Netflix (JustWatch India, 14 Nov 2026)",
+        "premise": "Protest leaders are charged after the 1968 Chicago riots. A true trial."
+      }
+    ],
+    "why_now": "Sathyavan Savithiri, a Keerthy Suresh-Mysskin courtroom drama, opens 20 Nov; its trailer is in the news. Saturday watch list.",
+    "dropped": "Court (2014) and Jana Gana Mana (2022): not streaming in India (JustWatch India, 14 Nov 2026)",
+    "sources": [
+      "https://www.justwatch.com/in",
+      "https://letterboxd.com/film/anatomy-of-a-fall/",
+      "https://en.wikipedia.org/wiki/Shahid_(film)"
+    ]
+  },
+  "worth_it": {
+    "seen_by_most": "No: two Indian films most Tamil viewers skipped, and two world films that never released in Tamil Nadu.",
+    "tell_a_friend": "Yes: each is a tense case you follow like a thriller.",
+    "spoilers": "Premise only; no verdicts.",
+    "where_to_watch": "Checked on JustWatch India today: JioHotstar, Prime Video, Netflix.",
+    "proof": "Letterboxd ratings and one award or famous fact per film."
+  },
+  "harish_rule_note": "Plot motion graphic per film (Harish, 13 Nov): each film screen carries 'plot' (one spoiler-free line). The Poster Wall look does not draw it yet; a Workshop change is needed (alert written).",
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation, bold and catchy from frame 1 (a hook)"
+      },
+      {
+        "track": "villains_strategy",
+        "from": 4.0,
+        "screen": 3,
+        "mood": "tension builds into the big two"
+      }
+    ],
+    "xfade": 0.8,
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "neru": {
+      "src": "engine/.cache/stills/neru/abuLOH7xs8I_maxres3.jpg"
+    },
+    "shahid": {
+      "src": "engine/.cache/stills/shahid/GWljAibh1R0_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.08,
+        1.0,
+        0.82
+      ]
+    },
+    "anatomy": {
+      "src": "engine/.cache/stills/anatomy_of_a_fall/FUXawkH-ONM_maxres1.jpg"
+    },
+    "chicago7": {
+      "src": "engine/.cache/stills/the_trial_of_the_chicago_7/FVb6EdKDBfU_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.86,
+        0.88
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.6,
+      "posters": [
+        "neru",
+        "shahid",
+        "anatomy",
+        "chicago7"
+      ],
+      "fx": [
+        0.5,
+        0.45,
+        0.5,
+        0.45
+      ],
+      "lines": [
+        "COURTROOM DRAMAS",
+        "WATCH THESE 4"
+      ],
+      "sfx": [
+        {
+          "at": 0.15,
+          "type": "impact"
+        },
+        {
+          "at": 0.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "in": "push",
+      "dur": 7.6,
+      "image": "neru",
+      "fx": 0.5,
+      "num": "01",
+      "title": "NERU",
+      "meta": [
+        "2023",
+        "MALAYALAM",
+        "INDIA"
+      ],
+      "director": "DIR. JEETHU JOSEPH",
+      "reason": "A lawyer returns to court. Once.",
+      "plot": "A lawyer who quit court takes one last case: a young blind woman's.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.3,
+      "proof": "FROM DRISHYAM'S DIRECTOR",
+      "watch": "JIOHOTSTAR"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.6,
+      "image": "shahid",
+      "fx": 0.45,
+      "num": "02",
+      "title": "SHAHID",
+      "meta": [
+        "2012",
+        "HINDI",
+        "INDIA"
+      ],
+      "director": "DIR. HANSAL MEHTA",
+      "reason": "A real lawyer. Unpopular clients.",
+      "plot": "The true story of Shahid Azmi, who defended people nobody would.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.9,
+      "proof": "2 NATIONAL AWARDS",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.6,
+      "image": "anatomy",
+      "fx": 0.5,
+      "num": "03",
+      "title": "ANATOMY OF A FALL",
+      "meta": [
+        "2023",
+        "FRENCH",
+        "FRANCE"
+      ],
+      "director": "DIR. JUSTINE TRIET",
+      "reason": "A fall. A wife on trial.",
+      "plot": "A man is found dead in the snow. His wife is put on trial.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.1,
+      "proof": "PALME D'OR 2023",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.6,
+      "image": "chicago7",
+      "fx": 0.45,
+      "num": "04",
+      "title": "THE TRIAL OF THE CHICAGO 7",
+      "meta": [
+        "2020",
+        "ENGLISH",
+        "USA"
+      ],
+      "director": "DIR. AARON SORKIN",
+      "reason": "Seven protesters. One rigged trial.",
+      "plot": "Protest leaders are charged after the 1968 Chicago riots. A true trial.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.8,
+      "proof": "6 OSCAR NOMINATIONS",
+      "watch": "NETFLIX"
+    },
+    {
+      "kind": "recap",
+      "in": "zoom",
+      "dur": 6.0,
+      "heading": "YOUR WEEKEND CASE FILE",
+      "items": [
+        {
+          "image": "neru",
+          "title": "NERU",
+          "fx": 0.5,
+          "watch": "JIOHOTSTAR"
+        },
+        {
+          "image": "shahid",
+          "title": "SHAHID",
+          "fx": 0.45,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "anatomy",
+          "title": "ANATOMY OF A FALL",
+          "fx": 0.5,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "chicago7",
+          "title": "THE TRIAL OF THE CHICAGO 7",
+          "fx": 0.45,
+          "watch": "NETFLIX"
+        }
+      ],
+      "cta": "SAVE FOR THE WEEKEND",
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Before Sathyavan Savithiri hits theatres: 4 courtroom dramas you probably missed.",
+      "Neru (JioHotstar), Shahid (Prime Video), Anatomy of a Fall (Prime Video), The Trial of the Chicago 7 (Netflix). Letterboxd 3.3 to 4.1; a Palme d'Or, 2 National Awards, 6 Oscar nominations and Drishyam's director.",
+      "Which case are you opening first?",
+      "Save this for the weekend. Send it to your movie-night friend.",
+      "இந்த வாரம், நாலு கோர்ட் படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "COURTROOM DRAMAS · WATCH THESE 4",
+    "slot": "15:30",
+    "first_comment": "Seen any of these? Which one first?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 7,
+    "send_trigger": 8,
+    "comment_trigger": 6,
+    "save_value": 9,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 74,
+    "weakest": {
+      "hook": "title names the Sathyavan Savithiri tie-in in the caption's first line",
+      "comment_trigger": "first comment asks which they have seen"
+    }
+  }
+}
