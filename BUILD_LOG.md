@@ -22,6 +22,10 @@ Harish asked for: a far better Control Room (series as a framework, easy small c
 | Fixed in passing | `.github/workflows/render.yml` | The render workflow could not make the approved looks (the drawing tools were not installed there) |
 | Tests | `tests/test_control_room.py`, `test_voice.py`, `test_watch.py` | 41 + 10 + 8 checks, no keys needed |
 
+**Checked on GitHub (14 Nov, branch run, nothing posted):** the Vikram Vedha breakdown and Watch This Next reference reels were made with the new code and passed every inspection (54 s and 33 s), into Drive `rehearsal/workshop-14nov`. ElevenLabs spoke the whole breakdown in one take: 325 credits for about 814 Tamil characters (about 0.42 credits a character), so a 1-minute breakdown costs about 325 credits. The news watch read @chennaiist through Instagram (12 posts). Health: every check green; 502 of 2,000 runner minutes used, heading for about 1,721 by month end.
+
+**Changed after review:** a series added on the page starts as a **draft** (one reel every other day into Drive `rehearsal/drafts`, never posted), because "trial" already means posting to non-followers. Watch This Next films are 7.4 s at most including the plot beat (Harish's reading-pace rule of 13 Nov, a little faster per 14 Nov). The plan check and the voice read a series with the Control Room's changes (through the mirrored `data/control/overrides.yaml`).
+
 **Not done / to watch:** a real ElevenLabs reel should be listened to once (speed 1.1, voice Ashwin; both are switches). The first plans under the new rules are written on 15 Nov: watch that morning's Plan run. The page must be published again from `control-room/page.html` to the same link. Sample reels and "train" still need the weekly run or a chat: studying a reel cannot be done without AI.
 
 ## 14 Nov 2026 — Cheaper session starts, missed runs catch up
