@@ -1,0 +1,548 @@
+{
+  "id": "2026-11-14-breakdown-super-deluxe",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "length_reason": "Name the technique, show the four stories and what links them, the shared question, why it works: about a minute (Harish: 1 minute is the safe spot).",
+  "lead": {
+    "topic": "Super Deluxe (2019): four stories, one day, one city, secretly linked",
+    "angle": "screenplay",
+    "insight": "Super Deluxe is hyperlink cinema: four separate stories over one day in Chennai, tied by small links (one cop, one broken TV). Alone, each story looks strange; together they ask one question, 'what is normal?', and the answer is that nothing is.",
+    "why_now": "Cult classic: still quoted, memed and argued about; Thiagarajan Kumararaja's films keep trending.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Super_Deluxe_(film) (plot: 'four parallel, interconnected stories taking place over a single day in Chennai')"
+    ],
+    "technique": "Hyperlink cinema (separate stories that turn out to be connected)"
+  },
+  "worth_it": {
+    "learn": "The structure has a name, hyperlink cinema, and the links between the stories are planted on purpose.",
+    "stop": "Four stories that look unrelated, and a cop who walks through two of them.",
+    "why_now": "Cult classic people still rewatch.",
+    "send_to": "The friend who says Super Deluxe was 'too confusing'.",
+    "best_angle": "Yes: the structure is the film's big idea; most viewers felt it but never named it."
+  },
+  "voice": {
+    "on": true,
+    "voice": "ta-IN-ValluvarNeural",
+    "rate": "+18%",
+    "pitch": "-2Hz"
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 2.0,
+        "screen": 0,
+        "mood": "intrigue"
+      },
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "connecting the clues"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 6,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/super_deluxe/J24-cDVT_To_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.62
+      ]
+    },
+    "vm": {
+      "src": "engine/.cache/stills/super_deluxe/8NCq6qS7KMk_maxres1.jpg"
+    },
+    "shilpa": {
+      "src": "engine/.cache/stills/super_deluxe/8NCq6qS7KMk_maxresdefault.jpg",
+      "crop": [
+        0.6,
+        0.0,
+        0.4,
+        1.0
+      ]
+    },
+    "shilpa_shop": {
+      "src": "engine/.cache/stills/super_deluxe/J24-cDVT_To_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.8
+      ]
+    },
+    "leela": {
+      "src": "engine/.cache/stills/super_deluxe/J24-cDVT_To_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.2,
+        0.62
+      ]
+    },
+    "vaembu": {
+      "src": "engine/.cache/stills/super_deluxe/8NCq6qS7KMk_maxres2.jpg"
+    },
+    "arputham": {
+      "src": "engine/.cache/stills/super_deluxe/8NCq6qS7KMk_maxres3.jpg"
+    },
+    "mugil": {
+      "src": "engine/.cache/stills/super_deluxe/3-Xq_Zz3nPA_maxres1.jpg"
+    },
+    "kid": {
+      "src": "engine/.cache/stills/super_deluxe/3-Xq_Zz3nPA_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "SUPER DELUXE",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ஒரே நாள். நாலு கதை. எல்லாமே இணைஞ்சிருக்கு.",
+      "voice_tg": "Ore naal. Naalu kadhai. Ellaame inainjirukku.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "pins",
+      "image": "vm",
+      "in": "zoom",
+      "voice": "வேம்பு, முகில் வீட்டுல ஒரு பிணம். ஷில்பா, ஏழு வருஷம் கழிச்சு வீட்டுக்கு வர்றாங்க. நாலு பசங்க, ஒரு உடைஞ்ச டிவி. அற்புதம், ஒரு அதிசயத்துக்காக காத்திருக்கார்.",
+      "voice_tg": "Vembu, Mugil veettula oru pinam. Shilpa, ezhu varusham kazhichu veettukku varraanga. Naalu pasanga, oru udainja TV. Arputham, oru adhisayathukkaaga kaathirukkaar.",
+      "pins": [
+        {
+          "x": 0.33,
+          "y": 0.42,
+          "lx": 80,
+          "ly": 318,
+          "text": "MUGIL",
+          "cue": {
+            "word": "முகில்"
+          }
+        },
+        {
+          "x": 0.86,
+          "y": 0.45,
+          "lx": 905,
+          "ly": 318,
+          "text": "VAEMBU",
+          "align": "right",
+          "cue": {
+            "word": "வேம்பு"
+          }
+        }
+      ],
+      "extra": {
+        "image": "shilpa",
+        "cue": {
+          "word": "ஷில்பா"
+        },
+        "label": "SHILPA RETURNS",
+        "fx": 0.5
+      },
+      "slam": {
+        "cue": {
+          "word": "காத்திருக்கார்"
+        },
+        "lines": [
+          {
+            "text": "4 STORIES.",
+            "size": 140,
+            "color": "#ffffff"
+          },
+          {
+            "text": "1 DAY.",
+            "size": 158,
+            "color": "#F8C868",
+            "glow": "rgba(248,200,104,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "வேம்பு"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "முகில்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ஷில்பா"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "டிவி"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "காத்திருக்கார்"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "HYPERLINK CINEMA",
+      "definition": "SEPARATE STORIES, SECRETLY CONNECTED",
+      "outer_label": "ONE DAY · CHENNAI",
+      "inner": [
+        "SHILPA",
+        "VAEMBU · MUGIL",
+        "THE BOYS"
+      ],
+      "voice": "இந்த திரைக்கதை டெக்னிக் பேரு, ஹைப்பர்லிங்க் சினிமா. தனித்தனி கதைகள், ஆனா ரகசியமா இணைஞ்சிருக்கும்.",
+      "voice_tg": "Indha thiraikkadhai technique peru, hyperlink cinema. Thanithani kadhaigal, aana ragasiyamaa inainjirukkum.",
+      "cues": {
+        "name": {
+          "word": "ஹைப்பர்லிங்க்"
+        },
+        "outer": {
+          "word": "தனித்தனி"
+        },
+        "inner": {
+          "word": "ரகசியமா"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "ஹைப்பர்லிங்க்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "தனித்தனி"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ரகசியமா"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ரகசியமா",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ரகசியமா",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "THE LINKS",
+      "center_ta": "இணைக்கும் நூல்",
+      "voice": "ஒரு போலீஸ்காரன், ரெண்டு கதைகளுக்குள்ள நடந்து போறான். ஒரு டிவி, இன்னொரு ரெண்டு கதைகளை இணைக்குது. எல்லாமே ஒரே நாள்ல மோதுது.",
+      "voice_tg": "Oru policekaaran, rendu kadhaigalukkulla nadandhu poraan. Oru TV, innoru rendu kadhaigalai inaikkudhu. Ellaame ore naalla modhudhu.",
+      "nodes": [
+        {
+          "label": "ONE COP",
+          "cue": {
+            "word": "போலீஸ்காரன்"
+          }
+        },
+        {
+          "label": "2 STORIES",
+          "cue": {
+            "word": "நடந்து"
+          }
+        },
+        {
+          "label": "ONE TV",
+          "cue": {
+            "word": "டிவி"
+          }
+        },
+        {
+          "label": "ONE DAY",
+          "cue": {
+            "word": "மோதுது"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "போலீஸ்காரன்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "டிவி"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மோதுது"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "1 QUESTION. WHAT IS NORMAL?",
+      "heading_ta": "எது சாதாரணம்?",
+      "voice": "ஒவ்வொரு கதையும் ஒரே கேள்வி கேக்குது. எது நார்மல்? ஒரு அப்பா, பெண்ணா திரும்பி வந்தா? ஒரு அம்மாவோட பழைய வாழ்க்கை? ஒரு மனைவியோட ரகசியம்?",
+      "voice_tg": "Ovvoru kadhaiyum ore kelvi kekkudhu. Edhu normal? Oru appa, pennaa thirumbi vandhaa? Oru ammaavoda pazhaiya vaazhkkai? Oru manaiviyoda ragasiyam?",
+      "cards": [
+        {
+          "lines": [
+            "A FATHER",
+            "COMES BACK"
+          ],
+          "image": "shilpa_shop",
+          "fx": 0.6,
+          "cue": {
+            "word": "அப்பா"
+          }
+        },
+        {
+          "lines": [
+            "A MOTHER'S",
+            "PAST"
+          ],
+          "image": "leela",
+          "fx": 0.5,
+          "cue": {
+            "word": "அம்மாவோட"
+          }
+        },
+        {
+          "lines": [
+            "A WIFE'S",
+            "SECRET"
+          ],
+          "image": "vaembu",
+          "fx": 0.45,
+          "cue": {
+            "word": "மனைவியோட"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "அப்பா"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அம்மாவோட"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "மனைவியோட"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "title",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "NORMAL",
+      "right": "STRANGE",
+      "left_ta": "சாதாரணம்",
+      "right_ta": "விசித்திரம்",
+      "slam_text": [
+        "NO SUCH",
+        "THING."
+      ],
+      "voice": "தனியா பார்த்தா, ஒவ்வொரு கதையும் ஒரு விசித்திரம். சேர்த்து பார்த்தா தான் புரியும். சாதாரணம்னு ஒண்ணு, இல்லவே இல்ல.",
+      "voice_tg": "Thaniyaa paarthaa, ovvoru kadhaiyum oru visithiram. Serthu paarthaa thaan puriyum. Saadhaaranamnu onnu, illave illa.",
+      "cues": {
+        "line": {
+          "word": "தனியா"
+        },
+        "bleed": {
+          "word": "சேர்த்து"
+        },
+        "crack": {
+          "word": "சாதாரணம்னு"
+        },
+        "slam": {
+          "word": "இல்லவே"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "தனியா"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சேர்த்து"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "இல்லவே"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "arputham",
+      "fy": 0.45,
+      "fx": 0.45,
+      "slam_text": "CHANCE OR FATE?",
+      "voice": "அற்புதம் அதிசயத்தை நம்புறார். படம் நம்மகிட்ட கேக்குது: இதெல்லாம் தற்செயலா, இல்ல விதியா?",
+      "voice_tg": "Arputham adhisayathai namburaar. Padam nammakitta kekkudhu: idhellaam tharseyalaa, illa vidhiyaa?",
+      "q_cue": {
+        "word": "தற்செயலா"
+      },
+      "slam_cue": {
+        "word": "விதியா"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "தற்செயலா"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "விதியா",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "SUPER DELUXE · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHICH STORY",
+          "size": 130
+        },
+        {
+          "text": "STAYED WITH YOU?",
+          "size": 115,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "உங்களுக்கு பிடிச்ச கதை எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ஹைப்பர்லிங்க் சினிமா. உங்களுக்கு பிடிச்ச கதை எது? கமெண்ட்ல சொல்லுங்க. சினிமா நண்பனுக்கு அனுப்புங்க.",
+      "voice_tg": "Idhu thaan hyperlink cinema. Ungalukku pidicha kadhai edhu? Comment-la sollunga. Cinema nanbanukku anuppunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: HYPERLINK CINEMA"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Super Deluxe: one day, four stories, all secretly connected.",
+      "The technique is called hyperlink cinema: separate stories that turn out to be linked. One cop walks through two of them; one broken TV ties two more. Together they ask one question: what is normal?",
+      "Which story stayed with you? Tell us.",
+      "Send this to the friend who called it 'too confusing'.",
+      "ஒரே நாள், நாலு கதை."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SUPER DELUXE · SCREENPLAY BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "Shilpa, Vaembu, the boys or Leela: whose story hit hardest?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 7,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 73,
+    "weakest": {
+      "hook": "the title line says 'all connected' in the first 2 seconds",
+      "loop": "end card returns to the four faces of the title"
+    }
+  }
+}

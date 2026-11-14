@@ -1,0 +1,182 @@
+{
+  "id": "2026-11-14-watch-missed-amores-perros",
+  "series": "movie-recommendations",
+  "template": "poster-wall",
+  "fps": 30,
+  "reserve": true,
+  "length_s": [
+    20,
+    30
+  ],
+  "lead": {
+    "topic": "One film you missed: Amores Perros (for fans of Super Deluxe's linked stories)",
+    "films": [
+      {
+        "film": "Amores Perros",
+        "year": 2000,
+        "language": "Spanish",
+        "country": "Mexico",
+        "director": "Alejandro González Iñárritu",
+        "premise": "One car crash in Mexico City ties three strangers' lives together.",
+        "letterboxd": "4.19/5",
+        "proof": "Oscar nomination, Best Foreign Language Film; Critics' Week Grand Prize, Cannes 2000",
+        "watch_india": "MUBI (JustWatch India, 14 Nov 2026)"
+      }
+    ],
+    "why_now": "Rides today's Super Deluxe breakdown (hyperlink cinema); MUBI's 25th-anniversary trailer."
+  },
+  "worth_it": {
+    "seen_by_most": "No: never released in Tamil Nadu.",
+    "tell_a_friend": "Yes: if you loved Super Deluxe, this is where the style grew up.",
+    "spoilers": "Premise only.",
+    "where_to_watch": "MUBI, checked on JustWatch India today.",
+    "proof": "Letterboxd 4.2 and an Oscar nomination."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "lone_wolf",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cool, moody, bold from frame 1"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "amores": {
+      "src": "engine/.cache/stills/amores_perros/_P29GF_NbDc_maxres2.jpg"
+    },
+    "amores_car": {
+      "src": "engine/.cache/stills/amores_perros/_P29GF_NbDc_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.5,
+        0.55
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.4,
+      "posters": [
+        "amores",
+        "amores_car"
+      ],
+      "fx": [
+        0.45,
+        0.4
+      ],
+      "lines": [
+        "LOVED SUPER DELUXE?",
+        "WATCH THIS ONE"
+      ],
+      "sfx": [
+        {
+          "at": 0.15,
+          "type": "impact"
+        },
+        {
+          "at": 0.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "in": "push",
+      "dur": 12.0,
+      "image": "amores",
+      "fx": 0.45,
+      "num": "01",
+      "title": "AMORES PERROS",
+      "meta": [
+        "2000",
+        "SPANISH",
+        "MEXICO"
+      ],
+      "director": "DIR. ALEJANDRO G. IÑÁRRITU",
+      "reason": "One crash. Three lives collide.",
+      "plot": "One car crash in Mexico City ties three strangers together.",
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.2,
+      "proof": "OSCAR NOMINATION",
+      "watch": "MUBI"
+    },
+    {
+      "kind": "recap",
+      "in": "zoom",
+      "dur": 5.6,
+      "heading": "TONIGHT'S PICK",
+      "items": [
+        {
+          "image": "amores",
+          "title": "AMORES PERROS",
+          "fx": 0.45,
+          "watch": "MUBI"
+        }
+      ],
+      "cta": "SAVE FOR TONIGHT",
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Loved Super Deluxe? Watch Amores Perros.",
+      "Alejandro G. Iñárritu's first film: one car crash in Mexico City links three lives. Letterboxd 4.2, an Oscar nomination. Streaming on MUBI.",
+      "Seen it?",
+      "Save it for tonight.",
+      "சூப்பர் டீலக்ஸ் பிடிச்சிருந்தா, இந்த படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "LOVED SUPER DELUXE? WATCH AMORES PERROS",
+    "slot": "reserve",
+    "first_comment": "Another film with linked stories you loved?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 6,
+    "save_value": 8,
+    "pacing": 7,
+    "loop": 5,
+    "timely_original": 6,
+    "total_100": 65,
+    "weakest": {
+      "timely_original": "post it the day after the Super Deluxe breakdown",
+      "loop": "recap returns to the title still"
+    }
+  }
+}

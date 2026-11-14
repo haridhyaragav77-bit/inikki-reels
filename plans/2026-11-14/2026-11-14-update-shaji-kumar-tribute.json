@@ -1,0 +1,198 @@
+{
+  "id": "2026-11-14-update-shaji-kumar-tribute",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "reserve": true,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 14 NOV 2026",
+  "lead": {
+    "topic": "Cinematographer Shaji Kumar (Pulimurugan) passes away at 57",
+    "facts": [
+      "Died in Kochi on 10 Nov 2026 after cardiac failure, aged 57 (The News Minute; Bombay Samachar)",
+      "Shot Pulimurugan, Naran and Thudarum; Mohanlal paid his last respects (The News Minute; Bombay Samachar)"
+    ],
+    "sources": [
+      "https://www.thenewsminute.com/kerala/kerala-cinematographer-shaji-kumar-passes-away-at-57",
+      "https://english.bombaysamachar.com/entertainment/malayalam-cinematographer-shaji-kumar-dies-at-57-mohanlal-pays-last-respects/",
+      "https://en.wikipedia.org/wiki/Shaji_Kumar"
+    ]
+  },
+  "worth_it": {
+    "fan_opens_because": "Pulimurugan was a hit in Tamil too; fans of its jungle visuals will want to know the man behind them.",
+    "spoilers": "None.",
+    "voice": "Off: music-only, quiet respect.",
+    "tone": "A tribute: no jokes, no meme, no sales push."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "giant_emerges",
+        "from": 6.0,
+        "screen": 0,
+        "mood": "epic, respectful (starts after its quiet opening)"
+      }
+    ],
+    "level_db": -13,
+    "fade_out": 1.5
+  },
+  "assets": {
+    "moon": {
+      "src": "engine/.cache/stills/pulimurugan/blQUlD8g4Pk_maxres1.jpg"
+    },
+    "mohanlal": {
+      "src": "engine/.cache/stills/pulimurugan/blQUlD8g4Pk_maxres2.jpg"
+    },
+    "faces": {
+      "src": "engine/.cache/stills/pulimurugan/blQUlD8g4Pk_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "moon",
+      "fx": 0.55,
+      "fy": 0.45,
+      "dur": 3.4,
+      "lines": [
+        {
+          "text": "SHAJI KUMAR",
+          "size": 220,
+          "y": 1310
+        },
+        {
+          "text": "CINEMATOGRAPHER · 57",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "push",
+      "image": "mohanlal",
+      "fx": 0.4,
+      "fy": 0.4,
+      "dur": 4.6,
+      "lines": [
+        {
+          "text": "HIS FRAMES",
+          "size": 180,
+          "y": 1300
+        },
+        {
+          "text": "PULIMURUGAN · NARAN · THUDARUM",
+          "size": 80,
+          "y": 1440,
+          "color": "#78E0D0"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "wipe",
+      "image": "faces",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.2,
+      "lines": [
+        {
+          "text": "MOHANLAL",
+          "size": 170,
+          "y": 1300
+        },
+        {
+          "text": "PAID HIS LAST RESPECTS",
+          "size": 95,
+          "y": 1440,
+          "color": "#F8C028"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "moon",
+      "dur": 4.2,
+      "echo": "SHAJI KUMAR · CINEMATOGRAPHER",
+      "question": [
+        {
+          "text": "A FRAME OF HIS",
+          "size": 120
+        },
+        {
+          "text": "YOU REMEMBER?",
+          "size": 120
+        }
+      ],
+      "sub": "Rest in peace.",
+      "cta": "SHARE WITH A CINEMA LOVER",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Cinematographer Shaji Kumar has passed away at 57.",
+      "He shot Pulimurugan, Naran and Thudarum. Mohanlal paid his last respects in Kochi.",
+      "Which of his frames stays with you?",
+      "Rest in peace.",
+      "ஒளிப்பதிவாளர் ஷாஜி குமார் — அஞ்சலி."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SHAJI KUMAR · TRIBUTE",
+    "slot": "reserve",
+    "first_comment": "Rest in peace, Shaji Kumar."
+  },
+  "drive_folder": "finished",
+  "expires": "2026-11-15",
+  "virality": {
+    "value": 6,
+    "hook": 6,
+    "send_trigger": 5,
+    "comment_trigger": 6,
+    "save_value": 3,
+    "pacing": 7,
+    "loop": 4,
+    "timely_original": 7,
+    "total_100": 55,
+    "weakest": {
+      "send_trigger": "use only if a reel is held today; stale after tomorrow",
+      "save_value": "a tribute is not saved; keep it short"
+    }
+  }
+}

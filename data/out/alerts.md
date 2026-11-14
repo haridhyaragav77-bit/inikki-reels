@@ -3,3 +3,6 @@
 - 13 Nov 16:40 IST · The brief (data/brief.md) is from 12:25 and still says "rehearsal", but main says we went live today. The Refresh run used it as it is.
 - 13 Nov 16:40 IST · News websites (The Hindu, Times of India, Sacnilk and others) are blocked in the Brain's cloud computer. Only Wikipedia, Letterboxd, JustWatch and YouTube open. The Brain checks news through web search and the sources Wikipedia cites. To open news sites directly, add them to the environment's allowed websites.
 - 13 Nov 16:40 IST · The breakdown bank was empty; the Brain added 1 (Kaithi). The bank should hold 3 to 4.
+- 14 Nov 05:40 IST · Watch This Next: Harish asked for a moving plot graphic for each film. The Poster Wall look cannot draw it yet. Today's plan carries each film's plot line ("plot") and longer screens; the look needs a Workshop change to show it.
+- 14 Nov 05:40 IST · No trailer breakdown today: none of the new trailers in the library (Lubber Pandhu, Master, Maaveeran, Amaran, Jailer, Leo) is a new release. The flex slot stays empty.
+- 14 Nov 05:40 IST · Jail Mates: the only teaser upload found is on Behindwoods TV, not a studio channel. The 21:30 update uses its frames; swap for a studio upload if one appears.

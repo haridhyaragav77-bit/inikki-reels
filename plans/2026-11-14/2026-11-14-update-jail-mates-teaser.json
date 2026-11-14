@@ -1,0 +1,228 @@
+{
+  "id": "2026-11-14-update-jail-mates-teaser",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 14 NOV 2026",
+  "lead": {
+    "topic": "Jail Mates title teaser: K.P. Jagan directs and stars in what the makers call Tamil cinema's first meta film",
+    "facts": [
+      "Title teaser out on 12-13 Nov; makers call it Tamil cinema's first meta film (Telangana Today; The Hawk)",
+      "Directed by K.P. Jagan, who also acts; music by Srikanth Deva (Telangana Today; Cinemapluz)",
+      "Pasanga Productions and The Rowdy Pictures (teaser title and poster)"
+    ],
+    "sources": [
+      "https://telanganatoday.com/tamil-cinemas-first-meta-film-titled-jail-mates-k-p-jagan-unveils-teaser",
+      "https://www.thehawk.in/news/showbiz/tollywood/tamil-cinemas-first-meta-film-titled-jail-mates-title-teaser-out",
+      "https://www.cinemapluz.com/jail-mates-title-teaser-out-director-k-p-jegan-brings-a-unique-meta-cinema-experience-to-south-indian-cinema/",
+      "https://www.youtube.com/watch?v=JbzG65fILLM"
+    ],
+    "pictures_note": "Frames from the title teaser as uploaded by Behindwoods TV (the only upload found; no studio channel upload yet)."
+  },
+  "worth_it": {
+    "fan_opens_because": "'First meta film' is a new idea for Tamil cinema: a director playing himself in jail.",
+    "spoilers": "None. Title, team and idea only.",
+    "voice": "Off: a first look is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "heist, fun, bold from frame 1"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "gang": {
+      "src": "engine/.cache/stills/jail_mates/JbzG65fILLM_maxresdefault.jpg",
+      "crop": [
+        0.17,
+        0.08,
+        0.38,
+        0.8
+      ]
+    },
+    "cell": {
+      "src": "engine/.cache/stills/jail_mates/JbzG65fILLM_maxres2.jpg"
+    },
+    "gang_right": {
+      "src": "engine/.cache/stills/jail_mates/JbzG65fILLM_maxresdefault.jpg",
+      "crop": [
+        0.32,
+        0.08,
+        0.36,
+        0.8
+      ]
+    },
+    "scene": {
+      "src": "engine/.cache/stills/jail_mates/JbzG65fILLM_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "gang",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "JAIL MATES",
+          "size": 240,
+          "y": 1310
+        },
+        {
+          "text": "TITLE TEASER OUT",
+          "size": 115,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "glitch",
+      "image": "cell",
+      "fx": 0.4,
+      "fy": 0.4,
+      "dur": 4.4,
+      "lines": [
+        {
+          "text": "TAMIL CINEMA'S",
+          "size": 120,
+          "y": 1300
+        },
+        {
+          "text": "FIRST META FILM",
+          "size": 140,
+          "y": 1450,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "glitch"
+        },
+        {
+          "at": 1.0,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "whip",
+      "image": "gang_right",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.2,
+      "lines": [
+        {
+          "text": "K.P. JAGAN",
+          "size": 170,
+          "y": 1310
+        },
+        {
+          "text": "DIRECTS · ACTS",
+          "size": 115,
+          "y": 1460,
+          "color": "#78E0D0"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "scene",
+      "dur": 4.0,
+      "echo": "JAIL MATES · TITLE TEASER",
+      "question": [
+        {
+          "text": "A FILM ABOUT",
+          "size": 120
+        },
+        {
+          "text": "MAKING FILMS?",
+          "size": 120
+        }
+      ],
+      "sub": "Would you watch it?",
+      "cta": "SEND TO A CINEMA NERD",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Jail Mates: the title teaser is out.",
+      "K.P. Jagan directs and stars in what the makers call Tamil cinema's first meta film. Music by Srikanth Deva; Pasanga Productions and The Rowdy Pictures.",
+      "A film that knows it is a film: in or out?",
+      "Send this to the cinema nerd in your group.",
+      "ஜெயில் மேட்ஸ் — டைட்டில் டீசர்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "JAIL MATES · TITLE TEASER",
+    "slot": "21:30",
+    "first_comment": "Name a Tamil film that already felt a little meta."
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 8,
+    "total_100": 64,
+    "weakest": {
+      "save_value": "nothing to save in a first look; keep it short",
+      "loop": "end card echoes the title"
+    }
+  }
+}

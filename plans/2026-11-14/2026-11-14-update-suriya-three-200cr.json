@@ -1,0 +1,235 @@
+{
+  "id": "2026-11-14-update-suriya-three-200cr",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 14 NOV 2026",
+  "lead": {
+    "topic": "Scene crosses ₹200 Cr worldwide: Suriya's third ₹200 Cr film of 2026, after Karuppu and Vishwanath & Sons",
+    "facts": [
+      "Scene (Jithu Madhavan) crossed ₹200 Cr worldwide in its first week (ThePrint; Koimoi: ₹202.36 Cr worldwide, 7 days)",
+      "Karuppu ₹310 Cr and Vishwanath & Sons ₹209 Cr worldwide earlier in 2026 (ThePrint)",
+      "Reportedly the third actor with three ₹200 Cr films in one year (Koimoi; one source, so not on screen)"
+    ],
+    "sources": [
+      "https://theprint.in/entertainment/suriya-tamil-box-office-hattrick-scene-karuppu-rs-200-crore-2026/3097753/",
+      "https://www.koimoi.com/box-office/box-office-suriya-registers-new-record-with-three-200-crore-grossers-worldwide-in-a-single-year/",
+      "https://www.onlykollywood.com/suriyas-scene-joins-the-200-crore-club-setting-a-new-industry-record/"
+    ]
+  },
+  "worth_it": {
+    "fan_opens_because": "A record: three ₹200 Cr films in one year, after the Kanguva flop. Fans want the three numbers side by side.",
+    "spoilers": "None. Numbers only.",
+    "voice": "Off: box office is music-only (series rule).",
+    "not_a_repeat": "The Scene week-1 reel covered one film; this is the year record across three films."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.3,
+        "screen": 0,
+        "mood": "bold mass theme, loud from frame 1 (a hook)"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "scene": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+      "crop": [
+        0.1,
+        0.0,
+        0.55,
+        0.62
+      ]
+    },
+    "karuppu": {
+      "src": "engine/.cache/stills/karuppu/JpVl_-1YgIo_maxresdefault.jpg",
+      "crop": [
+        0.18,
+        0.15,
+        0.42,
+        0.85
+      ]
+    },
+    "vishwa": {
+      "src": "engine/.cache/stills/vishwanath_and_sons/jZHoM2YhFCY_maxres3.jpg"
+    },
+    "vishwa_stage": {
+      "src": "engine/.cache/stills/vishwanath_and_sons/jZHoM2YhFCY_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "scene",
+      "fx": 0.45,
+      "fy": 0.4,
+      "dur": 3.0,
+      "lines": [
+        {
+          "text": "SURIYA",
+          "size": 250,
+          "y": 1310
+        },
+        {
+          "text": "3 × ₹200 CR IN 2026",
+          "size": 112,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "bars",
+      "in": "whip",
+      "image": "karuppu",
+      "fx": 0.5,
+      "fy": 0.35,
+      "dur": 5.2,
+      "kicker": "WORLDWIDE · ₹ CR",
+      "items": [
+        {
+          "label": "KARUPPU",
+          "value": 310,
+          "color": "#F8C028"
+        },
+        {
+          "label": "VISHWANATH & SONS",
+          "value": 209,
+          "color": "#78E0D0"
+        },
+        {
+          "label": "SCENE · 7 DAYS",
+          "value": 202,
+          "color": "#F07858"
+        }
+      ],
+      "note": "Sources: ThePrint, Koimoi",
+      "sfx": [
+        {
+          "at": 0.35,
+          "type": "whoosh"
+        },
+        {
+          "at": 0.7,
+          "type": "whoosh"
+        },
+        {
+          "at": 1.05,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "vishwa",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "₹200 CR FILMS · ONE YEAR",
+      "value": 3,
+      "unit": " FILMS",
+      "land": 1.5,
+      "tag": [
+        "AFTER KANGUVA",
+        "THE COMEBACK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "vishwa_stage",
+      "dur": 3.8,
+      "echo": "SURIYA · 3 × ₹200 CR IN 2026",
+      "question": [
+        {
+          "text": "YOUR FAVOURITE",
+          "size": 120
+        },
+        {
+          "text": "OF THE THREE?",
+          "size": 120
+        }
+      ],
+      "sub": "Karuppu, Vishwanath or Scene?",
+      "cta": "SEND TO A SURIYA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Suriya now has three ₹200 Cr films in 2026.",
+      "Karuppu ₹310 Cr, Vishwanath & Sons ₹209 Cr, and now Scene ₹202 Cr worldwide in 7 days (ThePrint, Koimoi). Two years after Kanguva, a full comeback.",
+      "Which one is your favourite?",
+      "Send this to the Suriya fan in your group.",
+      "ஒரே வருஷம், மூணு 200 கோடி படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SURIYA · 3 × ₹200 CR IN 2026",
+    "slot": "08:30",
+    "first_comment": "Karuppu, Vishwanath & Sons or Scene: pick one."
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 8,
+    "total_100": 70,
+    "weakest": {
+      "save_value": "keep the three totals on screen together long enough to screenshot",
+      "loop": "end card echoes the title line"
+    }
+  }
+}
