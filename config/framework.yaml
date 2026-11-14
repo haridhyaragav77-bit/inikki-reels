@@ -1,0 +1,82 @@
+# The series framework (AGENT.md 6.1). Every series is the same 7 blocks, in this order. The Control Room draws a series'
+# editor and the "add a series" questions from this file, and the relay accepts only the fields listed here.
+# type: text | long | number | bool | choice | list (one item per line) | times (HH:MM) | days | range (from, to) | any
+blocks:
+  - id: basics
+    name: Basics
+    about: "What the series is and when it posts."
+    fields:
+      - { key: name, label: "Name", type: text, ask: "What is the series called?", required: true }
+      - { key: promise, label: "The promise", type: text, ask: "In one sentence: what does a viewer get from every reel?", required: true }
+      - { key: status, label: "Stage", type: choice, options: [draft, trial, live, paused, retired], help: "draft = one reel every other day for you to watch, never posted · trial = 2 weeks on the page · live · paused · retired = never planned again" }
+      - { key: slots, label: "Post times", type: times, ask: "At what time(s) should it post? (India time, e.g. 15:30)", required: true }
+      - { key: days, label: "Days", type: days, help: "Empty = every day." }
+      - { key: per_day, label: "Reels a day", type: number }
+      - { key: per_week, label: "Reels a week", type: number, ask: "How many reels a week?" }
+      - { key: length_s, label: "Length in seconds (from, to)", type: range, ask: "How long is a reel, in seconds? (from, to)", required: true }
+      - { key: success_metric, label: "What success means", type: choice, options: [saves_and_sends, sends_per_reach, comments_and_sends, watch_through, reach, comments, follows] }
+  - id: structure
+    name: Structure
+    about: "The reel, section by section. Add, remove or reorder lines to change the build of every future reel."
+    fields:
+      - { key: title_screen, label: "Hook frame (title screen)", type: text, ask: "What does the first frame say? Write the pattern, e.g. {FILM} · {WHAT}", required: true }
+      - { key: hook_style, label: "Hook style", type: text, help: "How the first line grabs: a question, a number, a promise." }
+      - { key: hook_examples, label: "Hook examples", type: list }
+      - { key: story_shape, label: "Sections, in order (one per line)", type: list, ask: "List the sections of a reel in order, one per line (e.g. title screen, the news, 2 facts, what next, question).", required: true }
+      - { key: formats, label: "Formats it can take", type: list }
+      - { key: timely_titles, label: "Tie titles to the day, hour and season", type: bool }
+  - id: visuals
+    name: Visuals
+    about: "The look, where pictures come from, and the motion graphics."
+    fields:
+      - { key: template, label: "Look", type: choice, options_from: templates, ask: "Which look should it use?", required: true, workshop: true, help: "A new look is built in the Workshop." }
+      - { key: visuals, label: "Pictures come from", type: choice, options: [official, stills_first, clips, mixed, motion_graphics_first, ai_images], ask: "Where do its pictures come from?" }
+      - { key: motion_presets, label: "Motion graphics", type: list }
+      - { key: graphics, label: "Screens it is built from", type: list }
+      - { key: image_cap_per_reel, label: "AI pictures per reel, at most", type: number }
+      - { key: unique_design, label: "A different design every reel", type: any }
+      - { key: pace, label: "Pace (seconds per screen, at most)", type: any }
+  - id: voice
+    name: Voice
+    about: "Who speaks, how fast, and the subtitles."
+    fields:
+      - { key: voice, label: "Voice", type: choice, options: ["true", "false", "case_by_case"], ask: "Does it have a voice? (true, false, case_by_case)" }
+      - { key: voice_cfg.provider, label: "Voice provider", type: choice, options_from: voice_providers, help: "Empty = the page's main voice (Setup)." }
+      - { key: voice_cfg.elevenlabs_voice, label: "ElevenLabs voice", type: choice, options_from: elevenlabs_voices }
+      - { key: voice_cfg.speed, label: "Speed (0.7 to 1.2)", type: number }
+      - { key: captions, label: "Subtitles", type: choice, options: [none, none_when_music_only, tamil_tanglish_subtitles] }
+  - id: music
+    name: Music
+    about: "The mood and how the music moves with the story."
+    fields:
+      - { key: music, label: "Music mood", type: any, ask: "What should the music feel like? (e.g. bold and catchy, tension, soft and warm)" }
+      - { key: music_arc, label: "How it moves", type: list }
+  - id: caption
+    name: Caption and hashtags
+    about: "The words under the reel."
+    fields:
+      - { key: caption_style, label: "Caption style", type: long, ask: "How should the caption read? (length, tone, the question it ends on)" }
+      - { key: hashtags, label: "Hashtags (3 to 5)", type: list }
+      - { key: first_comment, label: "First comment", type: text }
+      - { key: cta, label: "What we ask the viewer to do", type: text }
+  - id: rules
+    name: Rules
+    about: "What every reel of this series must and must not do."
+    fields:
+      - { key: rules, label: "Rules (one per line)", type: list, ask: "Any rules it must always follow? One per line." }
+      - { key: worth_it_extra, label: "Worth-it questions", type: list }
+      - { key: meme_use, label: "Memes", type: choice, options: [never, ending_only, allowed] }
+# Global switches shown under Setup. Each is one key of config/agent.yaml (dots go into it).
+switches:
+  - { key: voice.provider, label: "Main voice", type: choice, options_from: voice_providers, help: "The other one is always the backup." }
+  - { key: voice.elevenlabs_voice, label: "ElevenLabs voice", type: choice, options_from: elevenlabs_voices }
+  - { key: voice.quality, label: "Voice quality", type: choice, options: [best, economy], help: "Economy uses about half the credits per reel." }
+  - { key: voice.speed, label: "Voice speed", type: choice, options: [1.0, 1.05, 1.1, 1.15, 1.2] }
+  - { key: breaking.enabled, label: "Breaking news", type: bool, help: "Off: news still shows on the radar, but nothing wakes the Breaking run." }
+  - { key: budgets.breaking_per_day, label: "Breaking reels a day, at most", type: choice, options: [0, 1, 2, 3] }
+  - { key: calendar.enabled, label: "Calendar awareness", type: bool, help: "Day, hour, season and festivals in hooks and titles." }
+  - { key: scouts.enabled, label: "Watch fast pages (Chennaiist)", type: bool }
+  - { key: unique_designs.enabled, label: "A different design for every breakdown", type: bool }
+  - { key: saver.enabled, label: "Saver mode", type: bool, help: "Fewer runner minutes: no reserve reels, no bank reels." }
+  - { key: approval, label: "Approval", type: choice, options: [autopilot, check_in, hands_on] }
+  - { key: away_mode, label: "Away mode", type: bool }

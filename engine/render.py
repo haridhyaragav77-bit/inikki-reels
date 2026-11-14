@@ -78,6 +78,8 @@ def render_look(plan_path, plan, to_drive=None, drive=None, snap=None):
     report = {"pass": bool(checks.get("pass")), "problems": problems, "warnings": [], "checks": checks["checks"]}
     with open(outdir / "qc.json", "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=1)
+    if tl.get("voice_note"):
+        notes.append(tl["voice_note"])
     title = tl["screens"][0]                                # the cover: the title screen once everything has landed
     cover_t = round(title["start"] + (title["end"] - title["start"]) * 0.86, 2)
     subprocess.run([_ffmpeg(), "-y", "-v", "error", "-ss", str(cover_t), "-i", str(final), "-frames:v", "1", "-q:v", "2",
@@ -183,7 +185,7 @@ def encode_video(frames, total_s, out_mp4):
 
 
 # ---------------------------------------------------------------- resolving a plan
-def _voice(res, plan, series, work, local, notes):
+def _voice(res, plan, series, work, local, notes, drive=None):
     """Record the voice lines. Real line lengths decide the screen lengths (AGENT.md 4.4)."""
     v = plan.get("voice")
     voice_on = v.get("on", True) if isinstance(v, dict) else (bool(v) if v is not None else bool(series.get("voice")))
@@ -214,17 +216,17 @@ def _voice(res, plan, series, work, local, notes):
             clips.append({"file": f, "seconds": secs})
     else:
         from . import voice as V
-        cfg = {k: val for k, val in (v or {}).items() if k in ("voice", "rate", "pitch")} if isinstance(v, dict) else {}
+        cfg = {k: val for k, val in (v or {}).items() if k in ("voice", "rate", "pitch", "provider", "elevenlabs_voice", "speed")} if isinstance(v, dict) else {}
+        for k, val in (V.series_voice(drive, plan.get("series")) or series.get("voice_cfg") or {}).items():   # the series' Voice block, with Control Room changes
+            if k in ("provider", "elevenlabs_voice", "speed"):
+                cfg.setdefault(k, val)
         cfg["lines"] = [{"text": spoken(txt)} for _, txt in lines]
-        r = V.batch(cfg, vdir)
-        for wait in (10, 30):  # two fresh retries, then the silent version (fail soft)
-            if r.get("ok"):
-                break
-            print("voice attempt failed:", r.get("error"), "| retrying in", wait, "s", file=sys.stderr)
-            time.sleep(wait)
-            r = V.batch(cfg, vdir, fresh=True)
+        r = V.batch(cfg, vdir, drive=drive, reel_id=plan.get("reel_id"))      # main voice once, then the backup voice (AGENT.md 4.4)
         if r.get("ok"):
             clips = r["clips"]
+            res["voice_provider"] = r.get("provider")
+            if r.get("note"):
+                notes.append(r["note"])
         else:
             notes.append(f"Voice could not be recorded ({r.get('error')}). This reel is the silent version with music and full on-screen text.")
             res["voice_failed"] = True
@@ -271,7 +273,7 @@ def resolve(plan, work, local, drive=None, budget=None):
     res["hook"] = plan.get("hook") or series.get("hook") or "impact"      # the visual hook for the first second (AGENT.md 5.14)
     for s in res["screens"]:
         s.setdefault("dur", 3.0)
-    _voice(res, plan, series, work, local, A.notes)
+    _voice(res, plan, series, work, local, A.notes, drive)
 
     counter = {"img": 0, "n": 0}
 

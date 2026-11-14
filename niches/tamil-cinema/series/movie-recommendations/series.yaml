@@ -4,7 +4,7 @@ id: movie-recommendations
 name: Watch This Next (Movie Recommendations)
 status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3); replaces Viral Story in the story slot
 badge: { text: "WATCH THIS NEXT", alt_texts: ["THEY RECOMMEND", "LETTERBOXD PICKS"], color: sky }
-title_screen: "{THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "LOKESH'S 5 FAVOURITES"
+title_screen: "{KICKER FOR TODAY} + {THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "LOKESH'S 5 FAVOURITES"
 per_week: 3
 days: [fri, sat, sun]
 slots: ["15:30"]        # the story slot keeps one time every day (change #9)
@@ -21,13 +21,17 @@ formats:
   - "One film you missed: a single hidden gem, longer look"
   - "Around the world: one film each from different countries"
   - "Director set (sometimes): the lesser-seen films of one director"
-per_film_screen: [poster_still, title, year_country, reason_6_words_max, letterboxd_rating, proof_award_or_fact, where_to_watch_india]
+per_film_screen: [poster_still, title, year_country, reason_6_words_max, letterboxd_rating, proof_award_or_fact, where_to_watch_india, plot_beat]
+# Harish, 14 Nov 2026: a grander hook frame with a timely title, a plot beat after every film card, and a faster pace.
+timely_titles: true     # the title and its kicker come from the brief's Today lines (day, hour, season, a film in the news)
+pace: { since: "2026-11-15", title_s: 3.2, film_s: 7.4, single_film_s: 12.0, recap_s: 5.0 }   # seconds at most per screen; a film is its card (about 3.4 s) then its plot beat (Harish: reading pace, 13 Nov; a little faster, 14 Nov)
+plot_beat: { words_max: 16, beats: "2-3 short beats in plot_beats, 6 words or fewer each; premise only, never a spoiler" }
 proof_sources: [letterboxd, justwatch_india, wikipedia_awards]
 proof_required: 2       # for "They recommend": the interview, list or post must be real and found in 2 places
 lead_sources: [watch_lists, festival_lineups, critics_lists, ott_new_arrivals, interviews, letterboxd_lists, director_lists, musician_interviews, anniversaries, film_bank, comments]
-story_shape: [title_screen, film_by_film, recap_grid, save_and_send]
+story_shape: [title_screen, film_by_film_card_then_plot_beat, recap_grid, save_and_send]
 music: bold_catchy_punchy   # a hook, never subtle (change #6)
-motion_presets: [poster_stack, meta_badges, still_reframe, ott_tag, recap_grid]
+motion_presets: [poster_wall_hook, meta_badges, plot_thread, still_reframe, ott_tag, recap_grid]
 recommended_log: "../../knowledge/recommended_log.csv"
 meme_use: never
 success_metric: saves_and_sends

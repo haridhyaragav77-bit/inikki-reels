@@ -8,6 +8,16 @@ Short format for small changes:
 
 ---
 
+`#14 · 14 Nov 2026 · rule (news watch) · a small film's trailer could not reach the score that wakes the Breaking run → fast pages (@chennaiist) are read at every pass; a trailer, teaser, first look or release date wakes it with 2 trusted sources, or one fast page naming the official account · Harish: the Ohm trailer was out and the page had nothing · rule · undo: Setup → "Watch fast pages" off, or `fire_score_drop: 8` in sources.yaml`
+
+`#13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must use it · Harish: "Friday night, date night movies; midweek solo night" · rule · undo: Setup → "Calendar awareness" off`
+
+`#12 · 14 Nov 2026 · rule (film-breakdown, trailer-breakdown) · every breakdown had the same gold stage and the same six screens in the same order → each names a design kit not used in the last 3 and a build not used in the last 2; 4 new graphics (timeline, meter, versus, web) · Harish: "repetitive pattern; unique motion graphics are the USP of the page" · rule from 15 Nov · undo: remove `unique_design` from the two series cards`
+
+`#11 · 14 Nov 2026 · series (movie-recommendations) · weak hook frame, 7.6 s per film, plot never shown → title big in the middle of a moving poster wall with a timely kicker; a plot beat (2-3 beats, no spoilers) after each film card; title 3.2 s, film 7.4 s with the plot beat inside, recap 5 s at most · Harish: "people look at the centre of the screen; add the plot; move faster" · rule from 15 Nov · undo: remove `pace` from the series card (the look itself: revert templates/poster-wall/template.js)`
+
+`#10 · 14 Nov 2026 · rule (voice) · Microsoft voice on every reel → ElevenLabs is the main voice (Ashwin, speed 1.1), Microsoft the backup; one take per line, kept and reused · Harish: "ElevenLabs was connected but not used; do not do 2 drafts" · rule · undo: Setup → Main voice → Microsoft`
+
 `#9 · 13 Nov 2026 · schedule (movie-recommendations) · Watch This Next 17:00 → 15:30, Fri–Sun · the story slot keeps one time every day; 17:00 is a flex slot and would clash with release-day reviews on Fridays · rule · undo: slots back to ["17:00"] in the series card`
 
 ## #8 · 13 Nov 2026 · Harish's feedback, round 5 · set by Harish (hard rules)

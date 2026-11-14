@@ -1,7 +1,7 @@
 # iNiKKi Reels · Your guidebook
 
 How to run the agent without reading code. Every control, every loop, and the exact words to use.
-Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short version you actually use.
+Last updated 14 Nov 2026. The full design is `AGENT.md`; this guide is the short version you actually use.
 
 ## 1. The whole thing in one minute
 
@@ -59,6 +59,9 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 **What it only proposes:** brand, niche, safety rules, budgets, daily volume, pausing or adding a series.
 **Guard rails:** no rule changes until 10 reels have been measured over 14 days. One thing changed per test. A change that hurts is undone by itself.
 
+**The loop in one line:** post → measure (every night) → **Insights** (worked out by code, no tokens) → decide → change → post.
+Open the page's **Insights** tab any day: it says which series earn their slot, which hour works, which first frames lose people, and gives a short "do next" list with the number behind each line. Tap **Send to the agent** on a line you agree with. The Sunday run starts from the same findings, so it thinks less and decides better. With fewer than 10 measured reels, every line is marked as an early signal.
+
 **Where you fit in the loop:**
 - Your **feedback** on a reel becomes a soft rule, tried on the next 5 reels. If the numbers disagree, you see both and choose.
 - Your **standing rule** applies from the next Plan run and is never undone by numbers.
@@ -72,8 +75,8 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 | Watch a reel before it posts | Today → **Watch** | `preview 2` |
 | See what runs next and when | The countdown at the top, and the **Next** tab | `next` |
 | See tomorrow's slots | **Next** tab | `tomorrow` |
-| See numbers | **Numbers** tab | `numbers` |
-| See costs and limits | **Money** tab | `money` |
+| See numbers and what they mean | **Insights** tab | `numbers` · `insights` |
+| See costs, limits and voice credits | **Usage** tab | `money` |
 | Stop everything now | **Sleep** | `stop everything` |
 | Keep making reels but post nothing | **Hold posts** | `hold posts` |
 | Start again | **Run** | `resume` |
@@ -86,9 +89,14 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 | Set a habit for a series | **Series** → **Add a rule** | `rule for watch this next: …` |
 | Pause or resume a series | **Series** → **Pause / Resume** | `pause guess the movie` |
 | Suggest a topic | **Today** → idea box | `cover this: …` |
-| Change reels per day, slot times, budgets | **Settings** tab | `post 5 a day` |
-| Take something back | **Actions** → **Undo** | `undo` |
-| Clear the alerts | **Alerts** → **Mark all read** | `clear alerts` |
+| Change reels per day, slot times, budgets, switches | **Setup** tab | `post 5 a day` |
+| Take something back | **Setup** → Your last actions → **Undo** | `undo` |
+| Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
+
+### Switches and usage (page → Setup, page → Usage)
+- **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
+- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage, and the two times of day to keep Claude free for the runs.
+- **If the runner minutes run out:** GitHub stops every job until the 1st. Nothing moves to Claude. The Engine slows down by itself before that (fewer extras, then 3 new reels a day) so posting does not stop. Saver mode and "one fewer reel a day" are your two levers.
 
 ## 6. Refinement loops: making it better
 
@@ -109,7 +117,7 @@ It has already posted, so:
    *"Open with a promise and a number, then who it is for: 4 FILMS TO WATCH TONIGHT / IF YOU LOVED JAILER 2. Never open with a question about the last film."*
    Tomorrow's 05:37 plan follows it. Sunday's Weekly run writes it into the playbook.
 3. **Optional: re-post a stronger version.** The reel → **New version** → type the new hook. It is made as a new reel and waits. Preview it, press **Post now**, and delete the old one in the Instagram app if you want only one.
-4. **Check it worked.** Numbers tab: the skip rate of the next 5 Watch This Next reels against the series' middle value.
+4. **Check it worked.** Insights tab: the skip rate of the next 5 Watch This Next reels against the series' middle value.
 
 If the words are fine but the title screen needs a stronger *picture*, that is the look: use the Workshop prompt "Change a look" in section 14.
 
@@ -129,16 +137,26 @@ If the words are fine but the title screen needs a stronger *picture*, that is t
 
 A series is one settings card (name, look, slot, length, rules). A lineup says which series fill the day. Nothing about a series lives in code.
 
+Every series is the same **7 blocks**: Basics → Structure → Visuals → Voice → Music → Caption and hashtags → Rules. Open a series on the page to see them.
+
 | I want to… | How | Where |
 | --- | --- | --- |
 | Pause or resume | **Series** → Pause / Resume | Page |
-| Change its habits | **Add a rule** | Page |
-| Change its time or length | Chat: `move watch this next to 17:00` or `make updates 12 to 20 seconds` | Chat |
-| See how it is doing | **Series** tab: views against the page's middle value | Page |
-| **Add** a new series | Workshop prompt "Add a series" (section 14). It starts as a trial for 2 weeks. | Workshop |
-| **Replace** one with another | Workshop prompt "Replace a series" | Workshop |
-| **Retire** one | Workshop prompt "Retire a series" (its history is kept) | Workshop |
-| Let the agent suggest one | Every second Sunday it pitches up to 3, with evidence and cost. You tap Run it, Tweak or Veto. | Weekly report |
+| Change anything about it | **Series** → open it → open a block → **Edit** → **Save this block** | Page |
+| Add a section after another one | **Structure** → Edit → press **＋** on the line above, type it, Save | Page |
+| Reorder or remove sections | **Structure** → Edit → **↑ ↓ ✕** | Page |
+| Change its voice | **Voice** → Edit → provider (ElevenLabs or Microsoft), voice, speed | Page |
+| Change hashtags or caption style | **Caption and hashtags** → Edit | Page |
+| Add a habit | **Rules** → Add a rule | Page |
+| Test it | **Make a test reel**: its reference reel, made with today's settings, lands in Drive `rehearsal/tests`. Never posted. | Page |
+| Improve it with sample reels | **Train with samples**: paste a link and one line on what to learn. The Sunday run studies them. Or copy the training prompt and train it now in a chat. | Page (or Workshop) |
+| **Add** a new series | **Add a series**: 7 short steps of questions, or start from a copy. It starts as a **draft**: one reel every other day lands in Drive for you to watch, and nothing posts until you press **Move to trial**. | Page |
+| Move it forward | **Move to trial** → **Make it live** | Page |
+| **Retire** one | **Retire** (its history is kept; Undo brings it back) | Page |
+| A brand-new look | Workshop prompt "Add a series" (section 14) | Workshop |
+| Let the agent suggest one | Every second Sunday it pitches up to 3, with evidence and cost. | Weekly report |
+
+A change you make shows a small gold dot until it is undone. Everything here costs no tokens; it counts from the next Plan run.
 
 **Life of a series:** pitch → trial (2 weeks, Trial Reels) → live → reworked or retired. A new series needs its own title screen, look, music and rules before its first reel.
 
@@ -146,8 +164,8 @@ A series is one settings card (name, look, slot, length, rules). A lineup says w
 
 | Change | Where | How |
 | --- | --- | --- |
-| Reels per day, slot times, budgets | Page → Settings | Counts from the next plan |
-| Go live / back to rehearsal | Page → Settings (asks you to confirm) | Rehearsal makes everything but posts nothing |
+| Reels per day, slot times, budgets, switches | Page → Setup | Counts from the next plan |
+| Go live / back to rehearsal | Page → Setup (asks you to confirm) | Rehearsal makes everything but posts nothing |
 | A habit for the whole page | Page → Series → **Rule for every series** | Next plan |
 | What a thinking run does | Workshop: "Change a run" | Each run has a one-page card in `runs/` |
 | A look, animation, music handling | Workshop: "Change a look" | Tested against the reference reels first |

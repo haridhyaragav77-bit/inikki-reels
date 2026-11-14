@@ -19,6 +19,10 @@ drive:
 runner:
   minutes_month: 2000         # GitHub's free minutes for a private repository
   tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
+  save_forecast: 1.0          # the month is heading past the limit at today's pace: the same savings start early
+  last_share: 0.95            # above this: at most `last_reels_day` new reels a day, so posting never stops before the 1st
+  last_reels_day: 3
+  usd_per_minute_over: 0.008  # what GitHub charges per extra minute, only if a spending limit is set (default: none, jobs stop)
 # Jobs the Claude clock tasks start on time (AGENT.md 4.3; times are IST: "05:12" daily, "sun 22:12", "1 22:42" on that
 # day of the month). Post is started at every slot of config/agent.yaml. The Control Room's "next runs" list reads this.
 clock:
@@ -67,11 +71,32 @@ instagram:
   reel_metrics_wanted: [views, reach, likes, comments, shares, saved, reposts, total_interactions, ig_reels_avg_watch_time, ig_reels_video_view_total_time, reels_skip_rate, ig_reels_skip_rate, skip_rate]
 
 voice:
+  # Main voice and backup (AGENT.md 4.4). Harish's live choice is config/agent.yaml `voice` (Control Room → Setup).
+  provider: elevenlabs
+  backup: microsoft
+  # Microsoft (free, the backup), through tools/voice_tool.py
   tool: tools/voice_tool.py
   voice: ta-IN-ValluvarNeural
   rate: "+35%"
   pitch: "-2Hz"
+  microsoft_prefixes: ["ta-", "en-", "hi-"]          # a voice name that starts like this is a Microsoft voice
   smoke_text: "வணக்கம். இது iNiKKi Reels குரல் சோதனை."
+  elevenlabs:
+    base: "https://api.elevenlabs.io"
+    key_names: [ELEVENLABS_API_KEY, ELEVEN_LABS_API_KEY, ELEVENLABS_KEY, ELEVEN_API_KEY, XI_API_KEY]   # the first one set is used
+    voice: ashwin                                    # the default; a series or a plan may name another from this list
+    voices:                                          # short name → ElevenLabs voice (shown as a pick-list in the Control Room)
+      ashwin:    { id: OP382u5y4MvFmE1mReFV, label: "Ashwin · casual Tamil creator (young, energetic)" }
+      bharadwaj: { id: msoKpYddp2Iy2G7DJ3dc, label: "Bharadwaj · deep suspense storyteller" }
+      prashant:  { id: yIFUVClxedWzoMYhk15k, label: "Prashant · calm, friendly, Chennai accent" }
+    models: [eleven_multilingual_v2, eleven_v3]      # first that works is used (best quality first)
+    economy_models: [eleven_flash_v2_5, eleven_multilingual_v2]   # "economy" quality: about half the credits per line
+    context_models: [eleven_multilingual_v2, eleven_flash_v2_5, eleven_turbo_v2_5]   # these read the lines before and after
+    language_code: ta
+    language_code_models: [eleven_flash_v2_5, eleven_turbo_v2_5, eleven_v3]
+    output_format: mp3_44100_128
+    settings: { stability: 0.45, similarity_boost: 0.8, style: 0.2, use_speaker_boost: true, speed: 1.1 }
+    reserve_credits: 1000                            # below this the backup voice speaks until the credits renew
 
 clips:
   max_height: 720

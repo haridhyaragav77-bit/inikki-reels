@@ -1,331 +1,356 @@
 {
-  "id": "2026-11-13-watch-loved-vikram-vedha",
-  "series": "movie-recommendations",
-  "template": "poster-wall",
-  "fps": 30,
-  "length_s": [
-    20,
-    40
+ "id": "2026-11-13-watch-loved-vikram-vedha",
+ "series": "movie-recommendations",
+ "template": "poster-wall",
+ "fps": 30,
+ "length_s": [
+  20,
+  40
+ ],
+ "lead": {
+  "topic": "Loved Vikram Vedha? 4 films where nobody is fully good",
+  "films": [
+   {
+    "film": "Nayattu",
+    "year": 2021,
+    "language": "Malayalam",
+    "country": "India",
+    "director": "Martin Prakkat",
+    "premise": "Three police officers on the run from their own department.",
+    "letterboxd": "3.69/5 (9,317 ratings)",
+    "proof": "3 Kerala State Film Awards (Best Actor, Best Story, Best Editor)",
+    "watch_india": "Netflix (JustWatch India, 13 Nov 2026)"
+   },
+   {
+    "film": "The Chaser",
+    "year": 2008,
+    "language": "Korean",
+    "country": "South Korea",
+    "director": "Na Hong-jin",
+    "premise": "An ex-cop turned pimp hunts the man taking his women.",
+    "letterboxd": "4.02/5 (110,159 ratings)",
+    "proof": "Best Film, 45th Grand Bell Awards; Cannes 2008 selection",
+    "watch_india": "Prime Video (JustWatch India, 13 Nov 2026)"
+   },
+   {
+    "film": "Hell or High Water",
+    "year": 2016,
+    "language": "English",
+    "country": "USA",
+    "director": "David Mackenzie",
+    "premise": "Two brothers rob banks; an ageing Texas Ranger hunts them.",
+    "letterboxd": "3.93/5 (383,465 ratings)",
+    "proof": "4 Oscar nominations incl. Best Picture",
+    "watch_india": "Prime Video (JustWatch India, 13 Nov 2026)"
+   },
+   {
+    "film": "Infernal Affairs",
+    "year": 2002,
+    "language": "Cantonese",
+    "country": "Hong Kong",
+    "director": "Andrew Lau, Alan Mak",
+    "premise": "An undercover cop inside a gang, a gang's mole inside the police.",
+    "letterboxd": "4.06/5 (124,884 ratings)",
+    "proof": "Remade by Martin Scorsese as The Departed",
+    "watch_india": "Netflix (JustWatch India, 13 Nov 2026)"
+   }
   ],
-  "lead": {
-    "topic": "Loved Vikram Vedha? 4 films where nobody is fully good",
-    "films": [
-      {
-        "film": "Nayattu",
-        "year": 2021,
-        "language": "Malayalam",
-        "country": "India",
-        "director": "Martin Prakkat",
-        "premise": "Three police officers on the run from their own department.",
-        "letterboxd": "3.69/5 (9,317 ratings)",
-        "proof": "3 Kerala State Film Awards (Best Actor, Best Story, Best Editor)",
-        "watch_india": "Netflix (JustWatch India, 13 Nov 2026)"
-      },
-      {
-        "film": "The Chaser",
-        "year": 2008,
-        "language": "Korean",
-        "country": "South Korea",
-        "director": "Na Hong-jin",
-        "premise": "An ex-cop turned pimp hunts the man taking his women.",
-        "letterboxd": "4.02/5 (110,159 ratings)",
-        "proof": "Best Film, 45th Grand Bell Awards; Cannes 2008 selection",
-        "watch_india": "Prime Video (JustWatch India, 13 Nov 2026)"
-      },
-      {
-        "film": "Hell or High Water",
-        "year": 2016,
-        "language": "English",
-        "country": "USA",
-        "director": "David Mackenzie",
-        "premise": "Two brothers rob banks; an ageing Texas Ranger hunts them.",
-        "letterboxd": "3.93/5 (383,465 ratings)",
-        "proof": "4 Oscar nominations incl. Best Picture",
-        "watch_india": "Prime Video (JustWatch India, 13 Nov 2026)"
-      },
-      {
-        "film": "Infernal Affairs",
-        "year": 2002,
-        "language": "Cantonese",
-        "country": "Hong Kong",
-        "director": "Andrew Lau, Alan Mak",
-        "premise": "An undercover cop inside a gang, a gang's mole inside the police.",
-        "letterboxd": "4.06/5 (124,884 ratings)",
-        "proof": "Remade by Martin Scorsese as The Departed",
-        "watch_india": "Netflix (JustWatch India, 13 Nov 2026)"
-      }
-    ],
-    "why_now": "Rides the Vikram Vedha breakdown; weekend watch list.",
-    "dropped": "A Separation: not streaming in India (JustWatch, 13 Nov 2026)"
-  },
-  "worth_it": {
-    "seen_by_most": "No: none were mainstream releases in Tamil Nadu.",
-    "tell_a_friend": "Yes: each is a morally grey cop-and-crook story, like Vikram Vedha.",
-    "spoilers": "Premise only.",
-    "where_to_watch": "Checked on JustWatch India today: Netflix or Prime Video for all four.",
-    "proof": "Letterboxd ratings and one award or famous fact per film."
-  },
-  "voice": {
-    "on": false
-  },
-  "music": {
-    "sections": [
-      {
-        "track": "varun_intro",
-        "from": 0.4,
-        "screen": 0,
-        "mood": "bold, catchy, punchy (a hook)"
-      }
-    ],
-    "level_db": -12.5,
-    "fade_out": 1.2
-  },
-  "assets": {
-    "nayattu": {
-      "src": "engine/.cache/stills/nayattu/6MZb0KOqbAo_maxres3.jpg",
-      "crop": [
-        0.0,
-        0.0,
-        0.84,
-        1.0
-      ]
-    },
-    "hellhigh": {
-      "src": "engine/.cache/stills/hell_or_high_water/JQoqsKoJVDw_maxres2.jpg"
-    },
-    "infernal": {
-      "src": "engine/.cache/stills/infernal_affairs/3lLaYujX6lA_maxresdefault.jpg",
-      "crop": [
-        0.0,
-        0.0,
-        0.74,
-        0.78
-      ]
-    },
-    "chaser": {
-      "src": "engine/.cache/stills/the_chaser/0FI9-4zgq4w_maxres3.jpg"
-    }
-  },
-  "screens": [
-    {
-      "kind": "title",
-      "dur": 3.2,
-      "posters": [
-        "nayattu",
-        "chaser",
-        "hellhigh",
-        "infernal"
-      ],
-      "fx": [
-        0.56,
-        0.52,
-        0.42,
-        0.55
-      ],
-      "lines": [
-        "LOVED VIKRAM VEDHA?",
-        "WATCH THESE 4"
-      ],
-      "sfx": [
-        {
-          "at": 0.15,
-          "type": "impact"
-        },
-        {
-          "at": 0.7,
-          "type": "impact"
-        }
-      ]
-    },
-    {
-      "kind": "film",
-      "in": "push",
-      "dur": 5.8,
-      "image": "nayattu",
-      "fx": 0.56,
-      "num": "01",
-      "title": "NAYATTU",
-      "meta": [
-        "2021",
-        "MALAYALAM",
-        "INDIA"
-      ],
-      "director": "DIR. MARTIN PRAKKAT",
-      "reason": "Three cops. Hunted by their own.",
-      "sfx": [
-        {
-          "at": 0.75,
-          "type": "pop"
-        },
-        {
-          "at": 1.6,
-          "type": "tick"
-        },
-        {
-          "at": 2.15,
-          "type": "pop"
-        }
-      ],
-      "rating": 3.7,
-      "proof": "3 KERALA STATE AWARDS",
-      "watch": "NETFLIX"
-    },
-    {
-      "kind": "film",
-      "in": "whip",
-      "dur": 5.8,
-      "image": "chaser",
-      "fx": 0.52,
-      "num": "02",
-      "title": "THE CHASER",
-      "meta": [
-        "2008",
-        "KOREAN",
-        "SOUTH KOREA"
-      ],
-      "director": "DIR. NA HONG-JIN",
-      "reason": "Bad man hunts a worse one.",
-      "sfx": [
-        {
-          "at": 0.75,
-          "type": "pop"
-        },
-        {
-          "at": 1.6,
-          "type": "tick"
-        },
-        {
-          "at": 2.15,
-          "type": "pop"
-        }
-      ],
-      "rating": 4.0,
-      "proof": "GRAND BELL: BEST FILM",
-      "watch": "PRIME VIDEO"
-    },
-    {
-      "kind": "film",
-      "in": "whip",
-      "dur": 5.8,
-      "image": "hellhigh",
-      "fx": 0.42,
-      "num": "03",
-      "title": "HELL OR HIGH WATER",
-      "meta": [
-        "2016",
-        "ENGLISH",
-        "USA"
-      ],
-      "director": "DIR. DAVID MACKENZIE",
-      "reason": "Two robber brothers. One tired lawman.",
-      "sfx": [
-        {
-          "at": 0.75,
-          "type": "pop"
-        },
-        {
-          "at": 1.6,
-          "type": "tick"
-        },
-        {
-          "at": 2.15,
-          "type": "pop"
-        }
-      ],
-      "rating": 3.9,
-      "proof": "4 OSCAR NOMINATIONS",
-      "watch": "PRIME VIDEO"
-    },
-    {
-      "kind": "film",
-      "in": "whip",
-      "dur": 5.8,
-      "image": "infernal",
-      "fx": 0.55,
-      "num": "04",
-      "title": "INFERNAL AFFAIRS",
-      "meta": [
-        "2002",
-        "CANTONESE",
-        "HONG KONG"
-      ],
-      "director": "DIR. ANDREW LAU · ALAN MAK",
-      "reason": "Undercover cop. Gangster's mole. Same game.",
-      "sfx": [
-        {
-          "at": 0.75,
-          "type": "pop"
-        },
-        {
-          "at": 1.6,
-          "type": "tick"
-        },
-        {
-          "at": 2.15,
-          "type": "pop"
-        }
-      ],
-      "rating": 4.1,
-      "proof": "REMADE AS THE DEPARTED",
-      "watch": "NETFLIX"
-    },
-    {
-      "kind": "recap",
-      "in": "zoom",
-      "dur": 5.2,
-      "heading": "YOUR WEEKEND LIST",
-      "items": [
-        {
-          "image": "nayattu",
-          "title": "NAYATTU",
-          "fx": 0.56,
-          "watch": "NETFLIX"
-        },
-        {
-          "image": "chaser",
-          "title": "THE CHASER",
-          "fx": 0.52,
-          "watch": "PRIME VIDEO"
-        },
-        {
-          "image": "hellhigh",
-          "title": "HELL OR HIGH WATER",
-          "fx": 0.42,
-          "watch": "PRIME VIDEO"
-        },
-        {
-          "image": "infernal",
-          "title": "INFERNAL AFFAIRS",
-          "fx": 0.55,
-          "watch": "NETFLIX"
-        }
-      ],
-      "cta": "SAVE FOR THE WEEKEND",
-      "sfx": [
-        {
-          "at": 1.0,
-          "type": "pop"
-        }
-      ]
-    }
+  "why_now": "Rides the Vikram Vedha breakdown; weekend watch list.",
+  "dropped": "A Separation: not streaming in India (JustWatch, 13 Nov 2026)"
+ },
+ "worth_it": {
+  "seen_by_most": "No: none were mainstream releases in Tamil Nadu.",
+  "tell_a_friend": "Yes: each is a morally grey cop-and-crook story, like Vikram Vedha.",
+  "spoilers": "Premise only.",
+  "where_to_watch": "Checked on JustWatch India today: Netflix or Prime Video for all four.",
+  "proof": "Letterboxd ratings and one award or famous fact per film."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "varun_intro",
+    "from": 0.4,
+    "screen": 0,
+    "mood": "bold, catchy, punchy (a hook)"
+   }
   ],
-  "package": {
-    "caption": [
-      "Loved Vikram Vedha? 4 films where nobody is fully good.",
-      "Nayattu (Netflix), The Chaser (Prime Video), Hell or High Water (Prime Video), Infernal Affairs (Netflix). Letterboxd 3.7 to 4.1; Oscar nominations, Korea's best film, and the original of The Departed.",
-      "Which one are you starting with?",
-      "Save this for the weekend. Send it to your movie-night friend.",
-      "இந்த வாரம் பார்க்க நாலு படம்."
-    ],
-    "hashtags": [
-      "#MovieRecommendations",
-      "#VikramVedha",
-      "#WorldCinema",
-      "#iNiKKiWatchNext"
-    ],
-    "cover": "LOVED VIKRAM VEDHA? WATCH THESE 4",
-    "slot": "17:00 (Friday)",
-    "first_comment": "Seen any of these? Which one first?"
+  "level_db": -12.5,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "nayattu": {
+   "src": "engine/.cache/stills/nayattu/6MZb0KOqbAo_maxres3.jpg",
+   "crop": [
+    0.0,
+    0.0,
+    0.84,
+    1.0
+   ]
   },
-  "drive_folder": "reference-reels"
+  "hellhigh": {
+   "src": "engine/.cache/stills/hell_or_high_water/JQoqsKoJVDw_maxres2.jpg"
+  },
+  "infernal": {
+   "src": "engine/.cache/stills/infernal_affairs/3lLaYujX6lA_maxresdefault.jpg",
+   "crop": [
+    0.0,
+    0.0,
+    0.74,
+    0.78
+   ]
+  },
+  "chaser": {
+   "src": "engine/.cache/stills/the_chaser/0FI9-4zgq4w_maxres3.jpg"
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "dur": 3.0,
+   "posters": [
+    "nayattu",
+    "chaser",
+    "hellhigh",
+    "infernal"
+   ],
+   "fx": [
+    0.56,
+    0.52,
+    0.42,
+    0.55
+   ],
+   "lines": [
+    "LOVED VIKRAM VEDHA?",
+    "WATCH THESE 4"
+   ],
+   "sfx": [
+    {
+     "at": 0.15,
+     "type": "impact"
+    },
+    {
+     "at": 0.7,
+     "type": "impact"
+    }
+   ],
+   "kicker": "SATURDAY NIGHT WATCHLIST"
+  },
+  {
+   "kind": "film",
+   "in": "push",
+   "dur": 7.2,
+   "image": "nayattu",
+   "fx": 0.56,
+   "num": "01",
+   "title": "NAYATTU",
+   "meta": [
+    "2021",
+    "MALAYALAM",
+    "INDIA"
+   ],
+   "director": "DIR. MARTIN PRAKKAT",
+   "reason": "Three cops. Hunted by their own.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 3.7,
+   "proof": "3 KERALA STATE AWARDS",
+   "watch": "NETFLIX",
+   "plot": "Three police officers, framed for a death, run from their own force.",
+   "plot_beats": [
+    "THREE COPS",
+    "FRAMED FOR A DEATH",
+    "HUNTED BY THEIR OWN FORCE"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.2,
+   "image": "chaser",
+   "fx": 0.52,
+   "num": "02",
+   "title": "THE CHASER",
+   "meta": [
+    "2008",
+    "KOREAN",
+    "SOUTH KOREA"
+   ],
+   "director": "DIR. NA HONG-JIN",
+   "reason": "Bad man hunts a worse one.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 4.0,
+   "proof": "GRAND BELL: BEST FILM",
+   "watch": "PRIME VIDEO",
+   "plot": "An ex-cop has one night to find a missing woman.",
+   "plot_beats": [
+    "AN EX-COP",
+    "A MISSING WOMAN",
+    "ONE NIGHT TO FIND HER"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.2,
+   "image": "hellhigh",
+   "fx": 0.42,
+   "num": "03",
+   "title": "HELL OR HIGH WATER",
+   "meta": [
+    "2016",
+    "ENGLISH",
+    "USA"
+   ],
+   "director": "DIR. DAVID MACKENZIE",
+   "reason": "Two robber brothers. One tired lawman.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 3.9,
+   "proof": "4 OSCAR NOMINATIONS",
+   "watch": "PRIME VIDEO",
+   "plot": "Two brothers rob the bank that is taking their ranch; one old ranger follows.",
+   "plot_beats": [
+    "TWO BROTHERS",
+    "ROB THE BANK TAKING THEIR RANCH",
+    "ONE OLD RANGER FOLLOWS"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.2,
+   "image": "infernal",
+   "fx": 0.55,
+   "num": "04",
+   "title": "INFERNAL AFFAIRS",
+   "meta": [
+    "2002",
+    "CANTONESE",
+    "HONG KONG"
+   ],
+   "director": "DIR. ANDREW LAU · ALAN MAK",
+   "reason": "Undercover cop. Gangster's mole. Same game.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 4.1,
+   "proof": "REMADE AS THE DEPARTED",
+   "watch": "NETFLIX",
+   "plot": "A cop inside a gang and a gangster inside the police hunt each other.",
+   "plot_beats": [
+    "A COP INSIDE THE GANG",
+    "A GANGSTER INSIDE THE POLICE",
+    "EACH HUNTS THE OTHER"
+   ]
+  },
+  {
+   "kind": "recap",
+   "in": "zoom",
+   "dur": 4.6,
+   "heading": "YOUR WEEKEND LIST",
+   "items": [
+    {
+     "image": "nayattu",
+     "title": "NAYATTU",
+     "fx": 0.56,
+     "watch": "NETFLIX"
+    },
+    {
+     "image": "chaser",
+     "title": "THE CHASER",
+     "fx": 0.52,
+     "watch": "PRIME VIDEO"
+    },
+    {
+     "image": "hellhigh",
+     "title": "HELL OR HIGH WATER",
+     "fx": 0.42,
+     "watch": "PRIME VIDEO"
+    },
+    {
+     "image": "infernal",
+     "title": "INFERNAL AFFAIRS",
+     "fx": 0.55,
+     "watch": "NETFLIX"
+    }
+   ],
+   "cta": "SAVE FOR THE WEEKEND",
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Loved Vikram Vedha? 4 films where nobody is fully good.",
+   "Nayattu (Netflix), The Chaser (Prime Video), Hell or High Water (Prime Video), Infernal Affairs (Netflix). Letterboxd 3.7 to 4.1; Oscar nominations, Korea's best film, and the original of The Departed.",
+   "Which one are you starting with?",
+   "Save this for the weekend. Send it to your movie-night friend.",
+   "இந்த வாரம் பார்க்க நாலு படம்."
+  ],
+  "hashtags": [
+   "#MovieRecommendations",
+   "#VikramVedha",
+   "#WorldCinema",
+   "#iNiKKiWatchNext"
+  ],
+  "cover": "LOVED VIKRAM VEDHA? WATCH THESE 4",
+  "slot": "17:00 (Friday)",
+  "first_comment": "Seen any of these? Which one first?"
+ },
+ "drive_folder": "reference-reels"
 }

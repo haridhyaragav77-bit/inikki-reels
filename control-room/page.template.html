@@ -58,7 +58,7 @@ h3{font-size:15px;margin:0}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 button,a.btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--fg);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 button:hover,a.btn:hover{border-color:var(--muted)}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 button.go{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
 button.warn{color:var(--red)} button.quiet{background:transparent}
 button:disabled{opacity:.5;cursor:default}
@@ -97,7 +97,46 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .guide blockquote{margin:8px 0;border:1px solid var(--line);border-left:4px solid var(--gold);background:var(--panel);border-radius:4px;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
 .guide blockquote p{margin:0} .guide .tablewrap{margin:8px 0}
 .toc{display:flex;flex-wrap:wrap;gap:6px}
-@media (max-width:520px){ .reel{grid-template-columns:58px minmax(0,1fr)} .time{font-size:22px} .next .count{font-size:24px} .brand{font-size:22px} }
+select,input[type=number]{font:inherit;font-size:15px;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px 10px;width:100%;text-transform:none;letter-spacing:0;font-weight:400}
+a.btn.go{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
+a.back{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;align-self:flex-start}
+.srow{display:flex;gap:10px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.srow:first-child{border-top:0}
+.srow .nm{font-weight:700;flex:1 1 220px;min-width:0;color:inherit;text-decoration:none}
+.srow .nm .sub{font-weight:400}
+details.blk{border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+details.blk>summary{list-style:none;cursor:pointer;padding:12px 14px;display:flex;gap:10px;align-items:center}
+details.blk>summary::-webkit-details-marker{display:none}
+details.blk>summary .n{font-family:var(--display);font-size:20px;line-height:1;color:var(--gold);width:22px}
+details.blk>summary .t{font-weight:700;flex:0 0 auto}
+details.blk>summary .peek{color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;text-align:right}
+details.blk[open]>summary{border-bottom:1px solid var(--line)}
+details.blk[open]>summary .peek{visibility:hidden}
+.blkbody{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.kv{display:grid;grid-template-columns:minmax(110px,30%) minmax(0,1fr);gap:2px 14px;font-size:14px;padding:7px 0;border-top:1px dashed var(--line)}
+.kv:first-child{border-top:0;padding-top:0}
+.kv .k{color:var(--muted);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.kv .v{overflow-wrap:anywhere} .kv ol{margin:0;padding-left:20px}
+.chg{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-left:6px;vertical-align:middle}
+.lst{display:flex;flex-direction:column;gap:6px}
+.li{display:flex;gap:6px;align-items:center}
+.li .n{width:20px;color:var(--muted);font-variant-numeric:tabular-nums;font-size:13px;text-align:right;flex:0 0 auto}
+.li input{flex:1;min-width:0} .li button{padding:6px 9px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;border-radius:0;background:var(--panel2);padding:6px 11px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold)}
+.steps{display:flex;gap:6px;flex-wrap:wrap}
+.steps span{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.steps span.on{background:var(--gold);color:var(--on-gold);border-color:var(--gold)} .steps span.done{color:var(--teal);border-color:var(--teal)}
+.barw{position:relative} .barw b{position:absolute;top:-4px;width:3px;height:16px;border-radius:2px;background:var(--fg)}
+.do{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line);flex-wrap:wrap}
+.do .w{flex:1 1 240px;min-width:0}
+.sw{display:flex;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.sw:first-child{border-top:0} .sw .w{flex:1 1 220px;min-width:0;font-weight:600}
+.sw .w .sub{font-weight:400}
+ul.plain{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted)}
+@media (max-width:520px){ .kv{grid-template-columns:1fr} details.blk>summary .peek{display:none} .reel{grid-template-columns:58px minmax(0,1fr)} .time{font-size:22px} .next .count{font-size:24px} .brand{font-size:22px} }
 @media (prefers-reduced-motion:no-preference){ button,a.btn{transition:border-color .12s} }
 </style>
 
@@ -115,7 +154,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
     </div>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a href="#today">Today</a><a href="#next">Next</a><a href="#numbers">Numbers</a><a href="#series">Series</a><a href="#money">Money</a><a href="#setup">Setup</a><a href="#guide">Guide</a>
+    <a href="#today">Today</a><a href="#next">Next</a><a href="#series">Series</a><a href="#insights">Insights</a><a href="#usage">Usage</a><a href="#setup">Setup</a><a href="#guide">Guide</a>
   </nav>
 </div></header>
 <main><div class="wrap" id="view"></div></main>
@@ -133,7 +172,9 @@ const FIELD = { "screens.0.lines": "Title lines (put / between lines)", "screens
   "screens.0.tamil": "Tamil line", "screens.0.poster_tag": "Poster tag", "package.caption": "Caption (blank line between paragraphs)", "package.hashtags": "Hashtags", "package.cover": "Cover title", "package.first_comment": "First comment" };
 
 /* Example data, shown only until the live panel loads or when Google Drive is not connected. Not your numbers. */
-function sample() {
+const EXAMPLE = __EXAMPLE_JSON__;
+function sample() { return Object.assign(sample0(), EXAMPLE); }
+function sample0() {
   const now = Date.now(), at = h => new Date(now + h * 3600e3).toISOString();
   return { example: true, updated: "example", updated_iso: new Date(now).toISOString(), switch: "run", phase: "live", approval: "autopilot",
     today: { date: "example day", reels: [
@@ -179,8 +220,15 @@ function unpack(result) {
   if (!b) throw new Error("The Engine has not written the status file yet. It does so after its next job.");
   return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0))));
 }
+/* A status file from before 14 Nov has no framework or series values yet: use the copy built into this page from the same files. */
+function fill(p) {
+  if (!p.framework && EXAMPLE.framework) { p.framework = JSON.parse(JSON.stringify(EXAMPLE.framework));
+    (p.framework.switches || []).forEach(x => { if (x.key === "approval" && p.approval) x.value = p.approval; if (x.key === "away_mode") x.value = !!p.away; }); }
+  (p.series || []).forEach(s => { const e = (EXAMPLE.series || []).find(x => x.id === s.id); if (e && !s.values) { s.values = e.values; s.has_reference = e.has_reference; s.look = s.look || e.look; } });
+  return p;
+}
 function onData(result) {
-  try { P = unpack(result); live = true; problem = ""; } catch (e) { problem = e.message; }
+  try { P = fill(unpack(result)); live = true; problem = ""; } catch (e) { problem = e.message; }
   asked = asked.filter(a => a.at > Date.parse(P.updated_iso || 0) - 60000 && Date.now() - a.at < 36 * 3600e3); save("asked", asked);
   render();
 }
@@ -281,9 +329,16 @@ function reelRow(r) {
       <span>${esc(r.series || "")}</span>${r.seconds ? `<span>${esc(r.seconds)} s</span>` : ""}${r.score ? `<span>score ${esc(r.score)}</span>` : ""}</div>
     ${r.why ? `<div class="why">${esc(r.why)}</div>` : ""}<div class="acts">${acts}</div></div>${drawer}</div>`;
 }
+function calCard() {
+  const c = P.calendar; if (!c || !c.day) return "";
+  const bits = [c.mood, ...(c.events || []), ...(c.seasons || [])].filter(Boolean);
+  return `<div class="banner" style="border-left-color:var(--gold)"><b>${esc(c.day)}</b>${bits.length ? " · " + esc(bits.join(" · ")) : ""}
+    ${(c.coming || []).length ? `<div class="sub">Coming up: ${c.coming.map(x => esc(x.name) + " (" + esc(x.day) + ")").join(" · ")}</div>` : ""}
+    ${(c.angles || []).length ? `<div class="sub">Title angles the agent is given today: ${c.angles.slice(0, 4).map(esc).join(" · ")}</div>` : ""}</div>`;
+}
 function vToday() {
   const rs = P.today.reels || [], c = s => rs.filter(r => r.state === s).length;
-  let h = banners();
+  let h = banners() + calCard();
   if ((P.alerts || []).length) h += `<div class="card"><div class="inline" style="align-items:center"><h3 style="flex:1">${P.alerts.length} alert${P.alerts.length > 1 ? "s" : ""}</h3><button type="button" data-act="ack">Mark all read</button></div>` +
     P.alerts.map(a => `<div class="rule" style="border-left-color:var(--${a.level === "warn" ? "amber" : "sky"})"><span><b>${esc(a.title)}</b><br><span class="sub">${esc(a.what_happened || "")} ${esc(a.what_was_done || "")} <b>You:</b> ${esc(a.what_you_do || "nothing")}</span></span></div>`).join("") + `</div>`;
   h += `<div><h2>Today's shows · ${esc(P.today.date)}</h2><div class="sub">${c("posted")} posted · ${c("ready")} ready · ${c("held") + c("failed")} held · ${c("skipped")} skipped · breakdown bank ${esc((P.bank || {}).ready ?? "—")}</div></div>`;
@@ -316,29 +371,175 @@ function vNumbers() {
   return h;
 }
 function ruleRows(rules) { return (rules || []).map(x => `<div class="rule"><span>${esc(x.text)} <span class="sub">${esc(x.at || "")}</span></span><button type="button" class="quiet" data-act="undo" data-id="${esc(x.id)}">Remove</button></div>`).join(""); }
-function vSeries() {
-  let h = banners() + `<div><h2>Series</h2><div class="sub">A rule is one sentence the agent follows in every plan from the next Plan run. It stays until you remove it.</div></div>`;
-  h += `<div class="card"><h3>Rules for every series</h3>${ruleRows(P.page_rules)}<div class="inline"><input type="text" id="rule-all" placeholder="Never open with a question."><button type="button" data-act="rule" data-id="all">Add a rule</button></div></div>`;
-  h += (P.series || []).map((s, i) => `<div class="card"><div class="inline" style="align-items:center"><h3 style="flex:1">${esc(s.name || s.id)}</h3>
-      <span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" ? "planned" : "ready"}">${s.paused ? "paused" : esc(s.status || "live")}</span>${askedFor(s.id).map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
-      <button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button></div>
-    <div class="sub">${esc((s.slots || []).join(" · ") || "flex slot")}${s.length_s ? " · " + esc(s.length_s.join("–")) + " s" : ""}${s.median_views != null ? ` · middle value ${num(s.median_views)} views (page ${num(s.page_views)})` : ""}</div>
-    ${ruleRows(s.rules)}<div class="inline"><input type="text" id="rule-${i}" placeholder="Open with a promise and a number: 4 FILMS TO WATCH TONIGHT"><button type="button" data-act="rule" data-id="${esc(s.id)}" data-input="rule-${i}">Add a rule</button></div></div>`).join("");
+/* ---------- series: the list, one series as 7 blocks, add / test / train / retire ---------- */
+/* Views are plain #names (the host passes only those): #series, #add-series, #s-<series id> for one series. */
+const route = () => { const h = location.hash.slice(1); return h === "add-series" ? ["series", "new"] : h.startsWith("s-") ? ["series", h.slice(2)] : [h]; };
+const FW = () => P.framework || { blocks: [], switches: [] };
+const ser = id => (P.series || []).find(s => s.id === id) || { id, values: {} };
+const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], LISTS = ["list", "times", "days"];
+let ed = null, wiz = null;                       // the block being edited · the answers of "add a series"
+const openBlk = new Set(store("blk", ["structure"]));
+const show = v => v === true ? "on" : v === false ? "off" : Array.isArray(v) ? v.join(" · ") : v && typeof v === "object" ? Object.entries(v).map(([k, x]) => `${k}: ${typeof x === "object" ? JSON.stringify(x) : x}`).join(" · ") : v == null || v === "" ? "—" : String(v);
+const raw = v => v == null ? "" : Array.isArray(v) ? v.join("\n") : typeof v === "object" ? JSON.stringify(v) : String(v);
+const rawf = (f, v) => f.type === "range" && Array.isArray(v) ? v.join(", ") : raw(v);
+const NICE = { elevenlabs: "ElevenLabs", microsoft: "Microsoft", autopilot: "Autopilot", check_in: "Check-in", hands_on: "Hands-on", best: "Best", economy: "Economy",
+  draft: "Draft", trial: "Trial", live: "Live", retired: "Retired", case_by_case: "Case by case", none_when_music_only: "None when music only", tamil_tanglish_subtitles: "Tamil + Tanglish" };
+const nice = (o, key) => NICE[o] || (key === "voice.speed" || (key || "").endsWith("speed") ? o + "×" : String(o));
+const voiceName = v => (FW().voice_labels || {})[v] || v;
+const sPill = s => `<span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" || s.status === "draft" ? "planned" : "ready"}">${s.paused && s.status !== "retired" ? "paused" : esc(s.status || "live")}</span>`;
+const sLine = s => [(s.slots || []).join(" · ") || "flex slot", s.look, s.length_s ? s.length_s.join("–") + " s" : "", (s.values || {}).voice === true ? "voice" : (s.values || {}).voice === false ? "music only" : ""].filter(Boolean).join(" · ");
+function valHtml(f, v) {
+  if (v == null || v === "" || (Array.isArray(v) && !v.length)) return `<span class="sub">not set</span>`;
+  if (f.type === "list" && Array.isArray(v)) return `<ol>${v.map(x => `<li>${esc(String(x).replace(/_/g, " "))}</li>`).join("")}</ol>`;
+  if (f.key.endsWith("elevenlabs_voice")) return esc(voiceName(v));
+  if (typeof v === "string" && NICE[v]) return esc(NICE[v]);
+  return esc(show(v));
+}
+function listEditor(key) {
+  const items = ed.lists[key], btn = (op, i, text, label, off) => `<button type="button" class="quiet${op === "del" ? " warn" : ""}" data-act="li" data-op="${op}" data-key="${key}" data-i="${i}" aria-label="${label}" ${off ? "disabled" : ""}>${text}</button>`;
+  return `<div class="lst">${items.map((x, i) => `<div class="li"><span class="n">${i + 1}</span><input type="text" data-l="${key}:${i}" id="l-${key.replace(/\W/g, "_")}-${i}" value="${esc(x)}" aria-label="Line ${i + 1}">${btn("up", i, "↑", "Move up", !i)}${btn("down", i, "↓", "Move down", i === items.length - 1)}${btn("add", i, "＋", "Add a line below")}${btn("del", i, "✕", "Remove this line")}</div>`).join("")}
+    ${items.length ? "" : `<div><button type="button" data-act="li" data-op="add" data-key="${key}" data-i="-1">Add a line</button></div>`}</div>`;
+}
+function fieldInput(f, s) {
+  const k = f.key, id = "f-" + k.replace(/\W/g, "_"), v = k in ed.draft ? ed.draft[k] : rawf(f, s.values[k]);
+  if (f.type === "list" || f.type === "times") return listEditor(k);
+  if (f.type === "days") return `<div class="chips">${DAYS.map(d => `<button type="button" data-act="day" data-key="${k}" data-id="${d}" aria-pressed="${ed.lists[k].includes(d)}">${d}</button>`).join("")}</div>`;
+  if (f.type === "choice" || f.type === "bool") { const o0 = f.type === "bool" ? ["true", "false"] : f.options || [], opts = v !== "" && !o0.map(String).includes(String(v)) ? [v, ...o0] : o0;
+    return `<select id="${id}" data-key="${k}"><option value="">(not set)</option>${opts.map(o => `<option value="${esc(o)}" ${String(o) === String(v) ? "selected" : ""}>${esc(k.endsWith("elevenlabs_voice") ? voiceName(o) : f.type === "bool" ? (o === "true" ? "on" : "off") : NICE[o] || o)}</option>`).join("")}</select>`; }
+  if (f.type === "long" || f.type === "any") return `<textarea id="${id}" data-key="${k}">${esc(v)}</textarea>`;
+  return `<input type="text" id="${id}" data-key="${k}" value="${esc(v)}" ${f.type === "number" ? 'inputmode="decimal"' : ""} ${f.type === "range" ? 'placeholder="20, 45"' : ""}>`;
+}
+function blockChanges(s, b) {
+  const set = {};
+  b.fields.forEach(f => { const k = f.key, old = s.values[k];
+    if (LISTS.includes(f.type)) { const nv = (ed.lists[k] || []).map(x => x.trim()).filter(Boolean); if (JSON.stringify(nv) !== JSON.stringify((old || []).map(String))) set[k] = nv.length ? nv : ""; }
+    else if (k in ed.draft) { const nv = ed.draft[k].trim(), was = rawf(f, old).trim(); if (nv !== was) set[k] = nv; } });
+  return set;
+}
+function blockHtml(s, b, n) {
+  const editing = ed && ed.sid === s.id && ed.block === b.id, vals = s.values || {}, changed = s.changed || [];
+  const set = b.fields.filter(f => vals[f.key] != null && vals[f.key] !== ""), unset = b.fields.filter(f => !set.includes(f));
+  const peek = set.slice(0, 2).map(f => show(vals[f.key])).join(" · ");
+  let body;
+  if (editing) body = b.fields.map(f => `<label>${esc(f.label)}${fieldInput(f, s)}${f.help ? `<span class="sub" style="text-transform:none;letter-spacing:0;font-weight:400">${esc(f.help)}</span>` : ""}</label>`).join("") +
+    `<div class="acts"><button type="button" class="go" data-act="save-blk" data-id="${esc(s.id)}">Save this block</button><button type="button" class="quiet" data-act="cancel-blk">Cancel</button></div><div class="sub">Counts from the next Plan run. Leave a field empty to go back to the series' own value.</div>`;
+  else body = (set.map(f => `<div class="kv"><div class="k">${esc(f.label)}${changed.some(c => c === f.key.split(".")[0]) ? `<span class="chg" title="Changed in the Control Room"></span>` : ""}</div><div class="v">${valHtml(f, vals[f.key])}</div></div>`).join("") || `<div class="sub">Nothing set yet.</div>`) +
+    (unset.length ? `<div class="sub">Not set: ${unset.map(f => esc(f.label)).join(" · ")}</div>` : "") +
+    (b.id === "rules" ? `<div><div class="k sub" style="margin:6px 0">Your standing rules for this series</div>${ruleRows(s.rules)}<div class="inline" style="margin-top:8px"><input type="text" id="rule-${esc(s.id)}" placeholder="Open with a promise and a number"><button type="button" data-act="rule" data-id="${esc(s.id)}" data-input="rule-${esc(s.id)}">Add a rule</button></div></div>` : "") +
+    `<div class="acts"><button type="button" data-act="edit-blk" data-id="${esc(s.id)}" data-key="${b.id}">Edit ${esc(b.name.toLowerCase())}</button></div>`;
+  return `<details class="blk" data-b="${b.id}" ${openBlk.has(b.id) || editing ? "open" : ""}><summary><span class="n">${n}</span><span class="t">${esc(b.name)}</span><span class="peek">${esc(peek)}</span></summary><div class="blkbody"><div class="sub">${esc(b.about || "")}</div>${body}</div></details>`;
+}
+const trainPrompt = s => `Workshop: train the series "${s.id}" on inikki-reels. Start with skill workshop, then skill series-change. I will give you sample reels (links or files). For each one, tell me in 3 lines what makes it work (first frame, structure, pace, sound). Then ask me up to 5 short questions, one at a time, about what to keep. Turn my answers into changes to the 7 blocks of the series card (config/framework.yaml): structure, visuals, voice, music, caption, rules. Show before and after for each change, apply the ones I approve to niches/${(P.active || {}).niche || "tamil-cinema"}/series/${s.id}/series.yaml, run the tests, and make one test reel.`;
+function sDrawer(s) {
+  const d = openDrawer; if (!d || d.id !== "s:" + s.id) return "";
+  if (d.kind === "confirm") return `<div class="drawer"><div>${esc(d.text)}</div><div class="acts"><button type="button" class="go" data-act="yes">${esc(d.yes)}</button><button type="button" class="quiet" data-act="close">Cancel</button></div></div>`;
+  return `<div class="drawer"><div><b>Train this series with sample reels.</b> Add reels that do it well; the weekly run studies them and comes back with numbered changes.</div>
+    <label>Link to a reel<input type="text" id="tr-url" placeholder="https://www.instagram.com/reel/..."></label>
+    <label>What to learn from it, in one line<input type="text" id="tr-note" placeholder="The first frame: a face, a number, 4 words"></label>
+    <div class="acts"><button type="button" class="go" data-act="send-sample" data-id="${esc(s.id)}">Add this sample</button><button type="button" data-copy="${esc(trainPrompt(s))}">Copy the training chat prompt</button><button type="button" class="quiet" data-act="close">Close</button></div>
+    <div class="sub">To train right now instead: paste the copied prompt into a new Claude Code session on inikki-reels. It asks you a few questions and updates the series.</div></div>`;
+}
+function vSeriesOne(id) {
+  const s = ser(id), back = `<a class="back" href="#series">← All series</a>`;
+  if (!s.name) return banners() + back + `<div class="card">This series is not in the status file yet. A series you just added appears after the Engine's next job.</div>`;
+  const t = s.test;
+  let h = banners() + back + `<div class="card"><div class="inline" style="align-items:center"><h2 style="flex:1;min-width:0">${esc(s.name)}</h2>${sPill(s)}${askedFor(s.id).map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}</div>
+    ${(s.values || {}).promise ? `<div>${esc(s.values.promise)}</div>` : ""}<div class="sub">${esc(sLine(s))}${s.median_views != null ? ` · middle value ${num(s.median_views)} views (page ${num(s.page_views)})` : ""}</div>
+    <div class="acts"><button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button>
+      <button type="button" data-act="test" data-id="${esc(s.id)}" ${s.has_reference ? "" : "disabled"}>Make a test reel</button>
+      <button type="button" data-act="train" data-id="${esc(s.id)}">Train with samples</button>
+      ${s.status === "draft" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="trial">Move to trial</button>` : s.status === "trial" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="live">Make it live</button>` : ""}
+      <button type="button" class="warn" data-act="retire" data-id="${esc(s.id)}" ${s.status === "retired" ? "disabled" : ""}>Retire</button></div>
+    ${s.has_reference ? "" : `<div class="sub">No reference reel yet, so there is nothing to test: its first planned reel becomes the reference.</div>`}
+    ${t ? `<div class="sub"><span class="dot ${t.ok ? "green" : "amber"}"></span>Last test ${esc(t.at || "")}: ${esc(t.note || "")} ${t.link ? `<a href="${esc(t.link)}" target="_blank" rel="noopener" style="color:var(--sky)">Open in Drive</a>` : ""}</div>` : ""}${sDrawer(s)}</div>`;
+  h += FW().blocks.map((b, i) => blockHtml(s, b, i + 1)).join("");
   return h;
 }
+function vSeriesList() {
+  let h = banners() + `<div class="inline" style="align-items:flex-end"><div style="flex:1 1 260px"><h2>Series</h2><div class="sub">Every series is the same 7 blocks: basics, structure, visuals, voice, music, caption, rules. Open one to change any of them.</div></div><a class="btn go" href="#add-series">Add a series</a></div>`;
+  h += `<div class="list">${(P.series || []).map(s => `<div class="srow"><a class="nm" href="#s-${esc(s.id)}">${esc(s.name || s.id)}${(s.changed || []).length ? `<span class="chg" title="Changed in the Control Room"></span>` : ""}<div class="sub">${esc(sLine(s))}</div></a>
+      ${sPill(s)}${askedFor(s.id).map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
+      <button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button><a class="btn" href="#s-${esc(s.id)}">Open</a></div>`).join("") || `<div class="srow sub">No series listed yet.</div>`}</div>`;
+  h += `<div class="card"><h3>Rules for every series</h3><div class="sub">A rule is one sentence the agent follows in every plan from the next Plan run. It stays until you remove it.</div>${ruleRows(P.page_rules)}<div class="inline"><input type="text" id="rule-all" placeholder="Never open with a question."><button type="button" data-act="rule" data-id="all">Add a rule</button></div></div>`;
+  return h;
+}
+/* add a series: the framework's own questions, one block per step; nothing is sent until the review */
+const wizSteps = () => FW().blocks.map(b => ({ ...b, fields: b.fields.filter(f => f.ask) })).filter(b => b.fields.length);
+const wizVal = f => { if (f.key in wiz.card) return wiz.card[f.key]; const s = wiz.from && ser(wiz.from); return s && !["name", "promise", "status"].includes(f.key) ? rawf(f, (s.values || {})[f.key]) : ""; };
+function wizInput(f) {
+  const v = wizVal(f), id = "w-" + f.key.replace(/\W/g, "_");
+  if (f.type === "choice") return `<select id="${id}" data-wiz="${f.key}"><option value="">Choose…</option>${(f.options || []).map(o => `<option value="${esc(o)}" ${String(o) === String(v) ? "selected" : ""}>${esc(o)}</option>`).join("")}</select>`;
+  if (LISTS.includes(f.type) || f.type === "long" || f.type === "any") return `<textarea id="${id}" data-wiz="${f.key}" placeholder="${LISTS.includes(f.type) ? "One per line" : ""}">${esc(v)}</textarea>`;
+  return `<input type="text" id="${id}" data-wiz="${f.key}" value="${esc(v)}">`;
+}
+function wizCard() { const card = {}; FW().blocks.forEach(b => b.fields.forEach(f => { const v = String(wizVal(f) || "").trim(); if (v) card[f.key] = v; })); return card; }
+function vSeriesNew() {
+  if (!wiz) wiz = { step: 0, card: {}, from: "" };
+  const steps = wizSteps(), n = steps.length, i = Math.min(wiz.step, n), back = `<a class="back" href="#series">← All series</a>`;
+  let h = banners() + back + `<div><h2>Add a series</h2><div class="sub">${n} short steps, then a review. It starts as a draft: one reel every other day lands in Drive for you to watch. Nothing posts until you move it to trial.</div></div>
+    <div class="steps">${steps.map((b, k) => `<span class="${k === i ? "on" : k < i ? "done" : ""}">${k + 1} ${esc(b.name)}</span>`).join("")}<span class="${i === n ? "on" : ""}">Review</span></div>`;
+  if (!n) return h + `<div class="card">The questions load with the live status. Open this page in Claude with Google Drive connected.</div>`;
+  if (i < n) { const b = steps[i];
+    h += `<div class="card"><h3>${esc(b.name)}</h3><div class="sub">${esc(b.about || "")}</div>
+      ${i === 0 ? `<label>Start from a series you already have (optional)<select id="w-from" data-wiz="from"><option value="">A blank series</option>${(P.series || []).map(x => `<option value="${esc(x.id)}" ${wiz.from === x.id ? "selected" : ""}>${esc(x.name || x.id)}</option>`).join("")}</select></label>` : ""}
+      ${b.fields.map(f => `<label>${esc(f.ask)}${wizInput(f)}${f.help ? `<span class="sub" style="text-transform:none;letter-spacing:0;font-weight:400">${esc(f.help)}</span>` : ""}</label>`).join("")}
+      <div class="acts">${i ? `<button type="button" data-act="wiz" data-op="back">Back</button>` : ""}<button type="button" class="go" data-act="wiz" data-op="next">${i === n - 1 ? "Review" : "Next"}</button></div></div>`;
+  } else { const card = wizCard(), miss = FW().blocks.flatMap(b => b.fields).filter(f => f.required && !card[f.key]);
+    h += `<div class="card"><h3>Review</h3>${FW().blocks.map(b => { const fs = b.fields.filter(f => card[f.key]); return fs.length ? `<div class="k sub" style="margin-top:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">${esc(b.name)}</div>` + fs.map(f => `<div class="kv"><div class="k">${esc(f.label)}</div><div class="v" style="white-space:pre-wrap">${esc(card[f.key])}</div></div>`).join("") : ""; }).join("")}
+      ${miss.length ? `<div class="banner bad">Still needed: ${miss.map(f => esc(f.label)).join(" · ")}</div>` : ""}
+      <div class="acts"><button type="button" data-act="wiz" data-op="back">Back</button><button type="button" class="go" data-act="wiz" data-op="create" ${miss.length ? "disabled" : ""}>Create the series</button></div>
+      <div class="sub">The Engine adds it at its next job. It then shows in the list as a draft: watch its reels in Drive, rate them, edit, test and train it like any other.</div></div>`;
+  }
+  return h;
+}
+function vSeries() { const [, id] = route(); return id === "new" ? vSeriesNew() : id ? vSeriesOne(decodeURIComponent(id)) : vSeriesList(); }
 function meter(label, used, cap, unit, note) {
   const p = cap ? Math.min(100, used / cap * 100) : 0;
   return `<div class="card"><div class="sub">${label}</div><div class="big">${used == null ? "—" : unit === "₹" ? "₹" + num(Math.round(used)) : num(used)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${unit === "₹" ? "₹" : ""}${num(cap)}${unit && unit !== "₹" ? " " + unit : ""}</span></div><div class="bar"><i class="${p >= 100 ? "over" : p >= 75 ? "hot" : ""}" style="width:${p}%"></i></div><div class="sub">${note}</div></div>`;
 }
-function vMoney() {
-  const m = P.money || {}, pr = m.per_reel || {}, t = m.thinking || {};
-  return banners() + `<div><h2>Money and limits</h2><div class="sub">This month. Every limit is enforced by the Engine, not by good intentions.</div></div><div class="grid">
-    ${meter("AI pictures", m.images_inr, m.images_cap, "₹", "At the cap no new pictures are made until the 1st.")}
-    ${meter("GitHub runner minutes", m.runner_min, m.runner_limit, "min", "Near the limit, reserves and bank reels wait.")}
-    ${meter("Drive storage", m.storage_gb, m.storage_cap, "GB", "Old working files are binned every night.")}</div>
-    <div class="grid"><div class="card"><div class="sub">Per posted reel this month (${num(m.posted_month)} reels)</div><div class="big">${pr.images_inr == null ? "—" : "₹" + pr.images_inr}</div><div class="sub">pictures · ${pr.runner_min == null ? "—" : pr.runner_min + " runner minutes"}</div></div>
-    <div class="card"><div class="sub">Thinking runs (Claude tokens)</div><div>${esc(t.line || "Not measured yet. In a Workshop session say: measure thinking cost.")}</div><div class="sub">${esc(t.measured ? "Measured " + t.measured : "")}</div></div>
-    <div class="card"><div class="sub">This page</div><div class="big">0</div><div class="sub">tokens. It reads one small file from your Drive and writes one small note per button.</div></div></div>`;
+const bar2 = (pc, mark) => `<div class="barw"><div class="bar"><i class="${pc >= 100 ? "over" : pc >= 75 ? "hot" : ""}" style="width:${Math.min(100, pc || 0)}%"></i></div>${mark != null ? `<b style="left:calc(${Math.min(100, mark)}% - 1px)" title="Where the month is heading"></b>` : ""}</div>`;
+function vUsage() {
+  const u = P.usage || {}, m = P.money || {}, pr = m.per_reel || {}, v = u.voice || {}, c = u.claude || {},
+    r = u.runner || { minutes: m.runner_min, limit: m.runner_limit, pct: m.runner_limit ? Math.round(100 * (m.runner_min || 0) / m.runner_limit) : null, stage: "normal" };
+  const STAGE = { normal: ["On track", "green"], saver: ["Saver mode is on", "amber"], save: ["Saving early: the month is heading past the limit", "amber"], tight: ["Tight: extras are paused", "amber"], last: ["Last minutes: only a few new reels a day", "red"] };
+  const st = STAGE[r.stage] || STAGE.normal, big = (a, b2, unit) => `<div class="big">${num(a)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${num(b2)} ${unit}</span></div>`;
+  let h = banners() + `<div><h2>Usage and limits</h2><div class="sub">This month. Every limit is enforced by the Engine's code. The mark on a bar shows where the month is heading.</div></div><div class="grid">
+    <div class="card"><div class="sub">GitHub runner minutes${r.month ? " · " + esc(r.month) : ""}</div>${big(r.minutes, r.limit, "min")}${bar2(r.pct, r.forecast_pct)}
+      <div><span class="dot ${st[1]}"></span>${esc(st[0])}</div>
+      <div class="sub">${r.forecast != null ? `At this week's pace (${num(r.per_day)} a day): <b>${num(r.forecast)}</b> by month end, ${num(r.forecast_pct)}% of the limit.` : "The forecast appears after 3 counted days."} ${r.runs_out ? `It would run out on <b>${esc(r.runs_out)}</b>.` : ""}</div>
+      <ul class="plain">${(r.ladder || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="sub">To use less: Saver mode or fewer reels a day (Setup). To never stop: a small spending limit on GitHub buys extra minutes.</div></div>
+    <div class="card"><div class="sub">Voice · ElevenLabs credits${v.tier ? " · " + esc(v.tier) + " plan" : ""}</div>${big(v.used, v.limit, "credits")}${bar2(v.limit ? v.used / v.limit * 100 : 0)}
+      <div><span class="dot ${v.now === "microsoft" ? "amber" : "green"}"></span>Main voice: ${esc(v.main || "—")}${v.now ? ` · last reel spoken by ${esc(v.now)}` : ""}</div>
+      <div class="sub">${v.resets ? `New credits on ${esc(v.resets)}. ` : ""}This month: ${num(v.reels_elevenlabs || 0)} reel${v.reels_elevenlabs === 1 ? "" : "s"} with ElevenLabs${v.per_reel ? ` (about ${num(v.per_reel)} credits each)` : ""}, ${num(v.reels_microsoft || 0)} with the Microsoft backup.${v.covers_reels != null ? ` The credits left cover about <b>${num(v.covers_reels)}</b> more reels.` : ""}</div>
+      ${v.enough === false ? `<div class="banner bad">At this pace the credits end before ${esc(v.resets)}; the rest of the reels would use the Microsoft voice. Economy quality (Setup) uses about half.</div>` : ""}
+      ${v.last_backup ? `<div class="sub">Last time the backup spoke: ${esc(v.last_backup.at || "")} · ${esc(v.last_backup.why || "")}</div>` : ""}
+      <div class="sub">Every line is recorded once and kept${v.reused_lines ? ` (${num(v.reused_lines)} lines reused, free)` : ""}: a retry or a word change never pays twice.</div></div></div>
+    <div class="grid">${meter("AI pictures", m.images_inr, m.images_cap, "₹", "At the cap no new pictures are made until the 1st.")}
+    ${meter("Drive storage", m.storage_gb, m.storage_cap, "GB", "Old working files are binned every night.")}
+    <div class="card"><div class="sub">Per posted reel this month (${num(m.posted_month)} reels)</div><div class="big">${pr.runner_min == null ? "—" : pr.runner_min}<span class="sub" style="font-family:var(--text);font-size:14px"> runner min</span></div><div class="sub">pictures ${pr.images_inr == null ? "—" : "₹" + pr.images_inr} a reel</div></div></div>
+    <div class="card"><h3>Claude (the thinking runs)</h3>
+      <div class="sub">Runs each day: ${(c.runs || []).map(x => esc(x.name) + " " + esc(x.at)).join(" · ") || "—"} (India time).</div>
+      ${(c.quiet || []).length ? `<div>Keep Claude free around <b>${c.quiet.map(esc).join("</b> and <b>")}</b>: a heavy chat just before a run can use up the limit the run needs.</div>` : ""}
+      <div class="sub">${esc(c.note || "")}</div>
+      <div class="sub">${esc(c.line || "Not measured yet. In a Workshop session say: measure thinking cost.")}</div>
+      <div class="sub">This page uses 0 tokens: it reads one small file from your Drive and writes one small note per button.</div></div>`;
+  return h;
+}
+/* ---------- insights: what the numbers say, then the numbers ---------- */
+function vInsights() {
+  const b = banners(), n = vNumbers(), I = P.insights || {}, pc = x => x == null ? "—" : (x >= 0 ? "+" : "") + Math.round(x * 100) + "%";
+  const row = x => `<tr><td>${esc(x.name)}</td><td class="num">${num(x.reels)}</td><td class="num">${num(x.views)}</td><td class="num">${pc(x.vs_page)}</td><td class="num">${pct(x.skip)}</td><td class="num">${pct(x.share)}</td></tr>`;
+  const head = t => `<tr><th>${t}</th><th>Reels</th><th>Middle views</th><th>vs page</th><th>Skip</th><th>Share</th></tr>`;
+  let h = `<div><h2>Insights</h2><div class="sub">Worked out by code from the last ${num(I.days || 14)} days · ${num(I.reels || 0)} measured reels${I.solid ? "" : ` · early signals until ${num(I.need || 10)} reels`}. No tokens.</div></div>
+    <div class="card"><h3>${esc(I.headline || "No numbers yet. They arrive the night after a reel posts.")}</h3>
+      ${(I.do_next || []).map((d, k) => `<div class="do"><div class="w"><b>${esc(d.do)}</b><div class="sub">${esc(d.why)}</div></div><button type="button" data-act="do-next" data-id="${k}">Send to the agent</button>${d.series ? `<a class="btn" href="#s-${esc(d.series)}">Open series</a>` : ""}</div>`).join("")}</div>`;
+  if ((I.series || []).length) h += `<div class="tablewrap"><table>${head("Series")}${I.series.map(row).join("")}</table></div>`;
+  if ((I.slots || []).length > 1) h += `<div class="tablewrap"><table>${head("Posted around")}${I.slots.map(row).join("")}</table></div>`;
+  const sc = P.scouts, rd = P.radar || [];
+  if (sc || rd.length) h += `<div class="grid">${rd.length ? `<div class="card"><h3>News radar now</h3>${rd.map(x => `<div class="sub"><span class="dot ${x.fired ? "green" : ""}"></span>${esc(x.title)} · ${num(x.sources)} source${x.sources === 1 ? "" : "s"}${x.fired ? " · sent to the Breaking run" : ""}</div>`).join("")}</div>` : ""}
+    ${sc ? `<div class="card"><h3>Fast pages study</h3><div class="sub">Since ${esc(sc.since || "")}. Which pages are early, and which official accounts they name.</div>${sc.pages.map(x => `<div><b>@${esc(x.page)}</b> · ${num(x.film_posts)} film posts of ${num(x.posts)} · first with a story ${num(x.first)} times${x.lead_min != null ? ` · middle lead ${num(x.lead_min)} min` : ""}<div class="sub">${(x.names || []).map(a => "@" + esc(a[0]) + " (" + a[1] + ")").join(" · ") || "No accounts named yet."}</div></div>`).join("")}${(sc.learned || []).length ? `<div class="sub">Learned accounts (the trailer search looks there first): ${sc.learned.map(esc).join(" · ")}</div>` : ""}</div>` : ""}</div>`;
+  return b + h + n.slice(b.length);
 }
 function vSetup() {
   const base = (P.volume || {}).base, acts = P.actions || [];
@@ -346,6 +547,9 @@ function vSetup() {
     <div class="card"><div class="sub">Reels per day</div><div class="big">${num(base)}</div><div class="inline"><button type="button" data-act="vol" data-id="-1" ${base <= 3 ? "disabled" : ""}>One fewer</button><button type="button" data-act="vol" data-id="1" ${base >= 8 ? "disabled" : ""}>One more</button></div><div class="sub">Slots: ${esc((P.slots || []).join(" · "))}</div></div>
     <div class="card"><div class="sub">Phase</div><div class="big">${esc(P.phase || "—")}</div><div class="inline"><button type="button" data-act="phase" data-id="${P.phase === "live" ? "rehearsal" : "live"}">${P.phase === "live" ? "Back to rehearsal" : "Go live"}</button></div><div class="sub">Rehearsal makes every reel and posts nothing.</div></div>
     <div class="card"><div class="sub">Lineup</div><div style="font-weight:700">${esc(P.lineup || "—")}</div><div class="sub">Approval: ${esc(P.approval || "—")}. Use Hold posts to approve each reel yourself.</div></div></div>`;
+  const sws = FW().switches || [], swHtml = x => { const cur = x.value, opts = x.type === "bool" ? [true, false] : x.options || [], name = o => x.type === "bool" ? (o ? "On" : "Off") : x.key.endsWith("elevenlabs_voice") ? voiceName(o).split(" · ")[0] : nice(o, x.key);
+    return `<div class="sw"><div class="w">${esc(x.label)}${askedFor("sw:" + x.key).map(mm => ` <span class="pill asked">asked: ${esc(mm)}</span>`).join("")}${x.help ? `<div class="sub">${esc(x.help)}</div>` : ""}</div><div class="seg" role="group" aria-label="${esc(x.label)}">${opts.map(o => `<button type="button" data-act="sw" data-key="${esc(x.key)}" data-id="${esc(o)}" aria-pressed="${String(o) === String(cur)}">${esc(name(o))}</button>`).join("")}</div></div>`; };
+  if (sws.length) h += `<div><h2>Switches</h2><div class="sub">Each one is taken in by the Engine's next job and can be undone under "Your last actions".</div></div><div class="list">${sws.map(swHtml).join("")}</div>`;
   h += `<div><h2>Your last actions</h2><div class="sub">What you asked for and what became of it.</div></div><div class="list rows">${acts.map(a => `<div class="row"><span class="t">${esc(String(a.at || "").replace(/^\d{4}-\d{2}-\d{2} /, "").replace(" IST", ""))}</span><span class="w" style="flex:1;min-width:0;overflow-wrap:anywhere">${esc(a.what || "")}<div class="sub">${esc(a.outcome || a.result || "")}${a.why ? " · " + esc(a.why) : ""}${a.undone ? " · undone" : ""}</div></span>${a.can_undo ? `<button type="button" class="quiet" data-act="undo" data-id="${esc(a.id)}">Undo</button>` : ""}</div>`).join("") || `<div class="row sub">Nothing yet. Every button you press is listed here once the Engine has picked it up.</div>`}</div>`;
   h += `<div><h2>Jobs</h2></div><div class="list rows">${Object.entries(P.jobs || {}).map(([k, v]) => `<div class="row"><span class="t">${esc(k)}</span><span class="w"><span class="dot ${v.result === "success" ? "green" : "red"}"></span>${esc(v.result)}</span><span class="in">${esc(v.at || "")}</span></div>`).join("") || `<div class="row sub">No job results listed.</div>`}</div>`;
   return h;
@@ -384,10 +588,12 @@ function md(src) {
   return `<div class="toc">${toc.map(([id, t]) => `<button type="button" class="quiet" data-jump="${id}">${esc(t.replace(/^\d+\.\s*/, ""))}</button>`).join("")}</div><div class="guide">${h}</div>`;
 }
 let guideHtml = "";
-const VIEWS = { today: vToday, next: vNext, numbers: vNumbers, series: vSeries, money: vMoney, setup: vSetup, guide: () => guideHtml || (guideHtml = md(GUIDE)) };
-const tab = () => VIEWS[location.hash.slice(1)] ? location.hash.slice(1) : "today";
+const VIEWS = { today: vToday, next: vNext, series: vSeries, insights: vInsights, usage: vUsage, setup: vSetup, guide: () => guideHtml || (guideHtml = md(GUIDE)) };
+const ALIAS = { numbers: "insights", money: "usage" };
+const tab = () => { const r = route()[0]; return VIEWS[r] ? r : ALIAS[r] || "today"; };
 function render() {
-  const keep = {}; document.querySelectorAll("#view input, #view textarea").forEach(el => { if (el.id && el.value) keep[el.id] = el.value; });
+  const keep = {}; if (!render.fresh) document.querySelectorAll("#view input, #view textarea").forEach(el => { if (el.id && el.value && !el.dataset.l) keep[el.id] = el.value; });
+  render.fresh = false;
   const focus = document.activeElement && document.activeElement.id;
   $("#view").innerHTML = VIEWS[tab()]();
   Object.entries(keep).forEach(([id, v]) => { const el = document.getElementById(id); if (el) el.value = v; });
@@ -406,7 +612,7 @@ document.addEventListener("click", e => {
     scrollTo(0, 0); return render(); }
   if (e.target.id === "refresh") return refresh();
   const cp = e.target.closest("[data-copy]");
-  if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Copied. Paste it into a Claude Code session."), () => { const r = document.createRange(); r.selectNodeContents(cp.closest("blockquote").querySelector("p")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it with your keyboard."); }); return; }
+  if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Copied. Paste it into a Claude Code session."), () => { const q = cp.closest("blockquote"); if (!q) return toast("Could not copy here. The same prompt is in the guide, under Ready prompts."); const r = document.createRange(); r.selectNodeContents(q.querySelector("p")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it with your keyboard."); }); return; }
   const j = e.target.closest("[data-jump]"); if (j) { const el = document.getElementById(j.dataset.jump); if (el) el.scrollIntoView({ block: "start" }); return; }
   const chip = e.target.closest("[data-chip]"); if (chip) return chip.setAttribute("aria-pressed", String(chip.getAttribute("aria-pressed") !== "true"));
   const b = e.target.closest("[data-act]"); if (!b) return;
@@ -428,10 +634,42 @@ document.addEventListener("click", e => {
   if (act === "rule") { const el = document.getElementById(b.dataset.input || "rule-all"), text = (el.value || "").trim(); if (!text) return toast("Type the rule first."); return void send({ do: "note", series: id, text }, "new rule", id === "all" ? "" : id).then(ok => { const x = document.getElementById(b.dataset.input || "rule-all"); if (ok && x) x.value = ""; }); }
   if (act === "pause" || act === "resume") return void send({ do: "series", id, set: { paused: act === "pause" } }, act, id);
   if (act === "undo") return void send({ do: "undo", id }, "undo");
+  /* series: one block at a time */
+  const key = b.dataset.key, s = ser(id);
+  if (act === "edit-blk") { const blk = FW().blocks.find(x => x.id === key); ed = { sid: id, block: key, draft: {}, lists: {} };
+    blk.fields.filter(f => LISTS.includes(f.type)).forEach(f => ed.lists[f.key] = ((s.values || {})[f.key] || []).map(String)); openBlk.add(key); render.fresh = true; return render(); }
+  if (act === "cancel-blk") { ed = null; render.fresh = true; return render(); }
+  if (act === "li" && ed) { const L = ed.lists[key], i = Number(b.dataset.i), op = b.dataset.op;
+    if (op === "add") L.splice(i + 1, 0, ""); if (op === "del") L.splice(i, 1);
+    if (op === "up" && i > 0) [L[i - 1], L[i]] = [L[i], L[i - 1]]; if (op === "down" && i < L.length - 1) [L[i + 1], L[i]] = [L[i], L[i + 1]];
+    render.fresh = true; render(); if (op === "add") { const el = document.querySelector(`[data-l="${key}:${i + 1}"]`); if (el) el.focus(); } return; }
+  if (act === "day" && ed) { const L = ed.lists[key], k = L.indexOf(id); k < 0 ? L.push(id) : L.splice(k, 1); ed.lists[key] = DAYS.filter(d => L.includes(d)); render.fresh = true; return render(); }
+  if (act === "save-blk" && ed) { const blk = FW().blocks.find(x => x.id === ed.block), set = blockChanges(s, blk), n = Object.keys(set).length;
+    if (!n) return toast("Nothing was changed.");
+    return void send({ do: "series", id, set }, `${blk.name.toLowerCase()} (${n} change${n > 1 ? "s" : ""})`, id).then(ok => { if (ok) { ed = null; render.fresh = true; render(); } }); }
+  if (act === "test") return void send({ do: "test", series: id }, "test reel", id);
+  if (act === "train") { openDrawer = { id: "s:" + id, kind: "train" }; return render(); }
+  if (act === "send-sample") { const url = ($("#tr-url").value || "").trim(), note = ($("#tr-note").value || "").trim(); if (!url && !note) return toast("Add a link or a note first.");
+    return void send({ do: "sample", series: id, url, note }, "sample reel", id).then(ok => { if (ok) { $("#tr-url").value = ""; $("#tr-note").value = ""; } }); }
+  if (act === "retire") { openDrawer = { id: "s:" + id, kind: "confirm", text: `Retire "${s.name || id}"? It is not planned any more. You can undo this under Setup, Your last actions.`, yes: "Yes, retire it", action: { do: "series_remove", id }, label: "retire", key: id }; return render(); }
+  if (act === "stage") { openDrawer = { id: "s:" + id, kind: "confirm", text: key === "live" ? `Make "${s.name || id}" a live series? It keeps its slot from now on.` : `Move "${s.name || id}" to trial? Its reels start posting at its times for 2 weeks.`, yes: key === "live" ? "Yes, make it live" : "Yes, start the trial", action: { do: "series", id, set: { status: key } }, label: key, key: id }; return render(); }
+  if (act === "wiz" && wiz) { const op = b.dataset.op, steps = wizSteps();
+    if (op === "back") { wiz.step = Math.max(0, wiz.step - 1); render.fresh = true; scrollTo(0, 0); return render(); }
+    if (op === "next") { const miss = steps[wiz.step].fields.filter(f => f.required && !String(wizVal(f) || "").trim()); if (miss.length) return toast("Please answer: " + miss.map(f => f.label).join(", ") + ".");
+      wiz.step++; render.fresh = true; scrollTo(0, 0); return render(); }
+    if (op === "create") { const card = wizCard(); return void send({ do: "series_add", card }, "new series " + card.name, "").then(ok => { if (ok) { wiz = null; location.hash = "#series"; } }); } }
+  if (act === "sw") { const x = (FW().switches || []).find(q => q.key === key) || {}, val = x.type === "bool" ? id === "true" : (x.options || []).find(o => String(o) === id) ?? id;
+    if (String(val) === String(x.value)) return; return void send({ do: "set", settings: { [key]: val } }, `${x.label || key}: ${x.type === "bool" ? (val ? "on" : "off") : val}`, "sw:" + key); }
+  if (act === "do-next") { const d = ((P.insights || {}).do_next || [])[Number(id)]; if (!d) return; return void send({ do: "idea", text: `From the insights: ${d.do} (${d.why})` }, "insight to the agent"); }
   if (act === "vol") { const n = ((P.volume || {}).base || 6) + Number(id); return void send({ do: "set", settings: { volume: { base: n } } }, n + " reels a day"); }
   if (act === "phase") { scrollTo(0, 0); openDrawer = { id: "setup", kind: "confirm", text: id === "live" ? "Go live? Reels will post to Instagram at their slots." : "Back to rehearsal? Reels are still made, nothing posts.", yes: id === "live" ? "Yes, go live" : "Yes, rehearsal", action: { do: "set", settings: { phase: id } }, label: id }; return render(); }
 });
-addEventListener("hashchange", () => { openDrawer = null; render(); scrollTo(0, 0); });
+addEventListener("hashchange", () => { openDrawer = null; ed = null; if (route()[1] !== "new") wiz = null; render.fresh = true; render(); scrollTo(0, 0); });
+document.addEventListener("input", e => { const t = e.target;
+  if (ed && t.dataset.l) { const [k, i] = t.dataset.l.split(":"); ed.lists[k][Number(i)] = t.value; }
+  else if (ed && t.dataset.key && t.closest(".blkbody")) ed.draft[t.dataset.key] = t.value;
+  else if (wiz && t.dataset.wiz) { if (t.dataset.wiz === "from") { wiz.from = t.value; render.fresh = true; render(); } else wiz.card[t.dataset.wiz] = t.value; } });
+document.addEventListener("toggle", e => { const d = e.target; if (d.matches && d.matches("details.blk")) { d.open ? openBlk.add(d.dataset.b) : openBlk.delete(d.dataset.b); save("blk", [...openBlk]); } }, true);
 setInterval(tick, 1000);
 render(); connect();
 </script>

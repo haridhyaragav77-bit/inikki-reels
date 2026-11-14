@@ -36,6 +36,9 @@ default_tier: 3
 official:            # verified accounts of production houses and stars (signals; Researcher proposes, Harish confirms)
   - { name: "Production houses and stars' verified accounts", tier: 1, note: "add handles here" }
 youtube_channels: [] # official channels: { name, channel_id }; their trailer and song drops are read from YouTube's free feed
+scouts:              # fast pages the news watch reads at every pass, through Instagram's own API (signals, never proof).
+  # The watch also studies them (Drive status/scouts.json): what they post, which official accounts they name, how early they are.
+  - { account: chennaiist, tier: 2, posts: 12, note: "Chennai city page; quick with trailers, teasers and release news (Harish, 14 Nov 2026)" }
 audience_signal:     # never proof, only trend signal
   - { name: "r/kollywood", url: "https://www.reddit.com/r/kollywood/", tier: 3 }
 
@@ -80,6 +83,10 @@ watch:
           Shankar, Atlee, Nelson, Karthik Subbaraj, Pa. Ranjith, Mari Selvaraj, Anirudh, A.R. Rahman, AR Rahman, Yuvan, Ilaiyaraaja,
           Santhosh Narayanan, G.V. Prakash, Harris Jayaraj, Lyca, Sun Pictures, Red Giant]
   name_bonus: 2
+  drop_words: [trailer, teaser, first look, glimpse, release date, postponed, டிரெய்லர், டீசர், ரிலீஸ்]   # news that is worth minutes
+  fire_score_drop: 2     # a drop wakes the Breaking run with 2 trusted sources, or one scout that names the film's official account
+  max_wakes_per_day: 2
+  learn_after_mentions: 3   # an account a scout names this often in film posts is learned: the trailer search looks there first
   fire_score: 8          # a story at or above this, confirmed by 2 trusted publishers, wakes the Breaking run
   fresh_hours: 6         # only stories first published in the last 6 hours can wake it
   breaking_min_keyword: 3   # and only with a breaking word (trailer, release date, passes away ...), not just "box office"

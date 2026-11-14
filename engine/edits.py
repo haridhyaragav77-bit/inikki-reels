@@ -238,6 +238,15 @@ def main(drive=None):
     status.write(drive, "edits.json", book)
     if make and os.environ.get("GITHUB_ACTIONS"):
         ship(list(dict.fromkeys(make)), day.date, retry)
+    elif os.environ.get("GITHUB_ACTIONS"):
+        try:                                           # "Test this series": start Make now instead of waiting for 17:22
+            from .make import pending_tests
+            if pending_tests(drive, ctl)[0]:
+                import subprocess
+                r = subprocess.run(["gh", "workflow", "run", "make.yml", "--ref", os.environ.get("GITHUB_REF_NAME", "main")], capture_output=True, text=True)
+                print("Make started for a test reel" if r.returncode == 0 else f"Make could not be started ({r.stderr.strip()[:120]})")
+        except Exception as e:
+            print("test reels wait for the next Make run:", str(e)[:120])
 
 
 def ship(ids, date, retry):
