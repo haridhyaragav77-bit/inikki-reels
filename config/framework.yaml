@@ -8,7 +8,7 @@ blocks:
     fields:
       - { key: name, label: "Name", type: text, ask: "What is the series called?", required: true }
       - { key: promise, label: "The promise", type: text, ask: "In one sentence: what does a viewer get from every reel?", required: true }
-      - { key: status, label: "Stage", type: choice, options: [lab, trial, live, retired], help: "lab = test reels only · trial = 2 weeks on the page · live · retired = never planned again" }
+      - { key: status, label: "Stage", type: choice, options: [draft, trial, live, retired], help: "draft = one reel every other day for you to watch, never posted · trial = 2 weeks on the page · live · retired = never planned again" }
       - { key: slots, label: "Post times", type: times, ask: "At what time(s) should it post? (India time, e.g. 15:30)", required: true }
       - { key: days, label: "Days", type: days, help: "Empty = every day." }
       - { key: per_day, label: "Reels a day", type: number }

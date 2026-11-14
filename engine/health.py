@@ -62,7 +62,8 @@ def runner_minutes(drive):
     passed = max((int(d[-2:]) for d in led["days"]), default=0)
     forecast = round(led["minutes"] + pace * max(0, days_in - passed))
     led.update(per_day=round(per_day), pace_per_day=round(pace), forecast=forecast, days_in_month=days_in,
-               runs_out=None if forecast <= limit or pace <= 0 else f"{month}-{min(days_in, passed + int((limit - led['minutes']) / pace)):02d}")
+               runs_out=None if forecast <= limit or pace <= 0 else "now" if led["minutes"] >= limit
+               else f"{month}-{min(days_in, max(passed + 1, passed + int((limit - led['minutes']) / pace))):02d}")
     # normal → save (heading over the limit) → tight (85%) → last (95%: only a few new reels a day, so posting never stops)
     share = led["minutes"] / limit if limit else 0
     led["stage"] = ("last" if share >= float(R.get("last_share", 0.95)) else "tight" if share >= float(R.get("tight_share", 0.85))

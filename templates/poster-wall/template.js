@@ -94,7 +94,7 @@ const KINDS = {
   film(env, s, i, T) {
     const OTT = { NETFLIX: ['#E50914', '#fff'], 'PRIME VIDEO': ['#00A8E1', '#fff'], 'JIOHOTSTAR': ['#1F80E0', '#fff'], 'SONYLIV': ['#F5A623', INK], 'ZEE5': ['#8230C6', '#fff'] };
     const beats = beatsOf(s), len = T.end - T.start;
-    const pa = beats.length ? (s.plot_at ?? Math.min(3.1, len * .5)) : 1e9;       // when the plot beat begins
+    const pa = beats.length ? (s.plot_at ?? Math.min(3.4, len * .46)) : 1e9;       // when the plot beat begins
     return (ctx, lt, t) => {
       blurBg(env, ctx, s.image, lt, { fx: s.fx });
       dust(env, ctx, t, { n: 24, color: CREAM, alpha: .22, min: 2, max: 7, seed: 8 + i });

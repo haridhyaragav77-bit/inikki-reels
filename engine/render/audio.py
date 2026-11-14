@@ -189,12 +189,7 @@ def main(plan_path, work):
             from engine import voice as V
             drive = V.job_drive()
             cfg = {k: vcfg[k] for k in ("provider", "voice", "elevenlabs_voice", "speed", "settings") if vcfg.get(k)}
-            series_cfg = {}
-            try:
-                from engine.render import series_for
-                series_cfg = series_for(plan).get("voice_cfg") or {}
-            except Exception:
-                pass
+            series_cfg = V.series_voice(drive, plan.get("series"))    # the series' Voice block, with Control Room changes
             for k in ("provider", "elevenlabs_voice", "speed"):
                 if series_cfg.get(k):
                     cfg.setdefault(k, series_cfg[k])

@@ -18,7 +18,7 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
   meter (a dial that climbs), versus (two stills, a moving cut), web (who is tied to whom). Fields: templates/README.md.
 - Watch This Next, from 15 Nov: the title screen has a "kicker" (2-4 words tying the list to today, from the brief's
   Today lines) and 2 lines that fit the day; each film has "plot" (one sentence, 16 words or fewer, no spoilers) and
-  "plot_beats" (2-3 beats, 6 words or fewer each); title 3.2 s, film 6.6 s, recap 5 s at most.
+  "plot_beats" (2-3 beats, 6 words or fewer each); title 3.2 s, film 7.4 s (card, then plot), recap 5 s at most.
 - Watch This Next: every film screen has rating (Letterboxd), proof (one award, festival or famous fact), watch
   (where to watch in India, checked on JustWatch today) and a reason of 6 words or fewer. Add each film to
   niches/tamil-cinema/knowledge/recommended_log.csv.

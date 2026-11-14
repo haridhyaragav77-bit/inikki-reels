@@ -399,7 +399,7 @@ Rules:
 - **Pictures:** the recommended films' own official material (5.11).
 - **Hook frame (Harish, 14 Nov):** the eye rests on the middle of the screen, so the title lives there, as big as the width allows, between two moving rows of the films' posters. Above it sits a **kicker**: 2 to 4 words that tie the list to today (the day, the hour, the season, or a film in the news: "FRIDAY NIGHT WATCHLIST", "BEFORE JAILER 2"), taken from the brief's Today lines (10.5).
 - **Plot beat:** after each film's card, the card lifts into a film strip and the plot is told in 2 to 3 short beats on a drawn thread. Premise only, never a spoiler.
-- **Pace:** title 3.2 s at most, a film 6.6 s at most (card, then plot beat), recap 5 s at most. The limits are settings in the series card (`pace`) and the plan check enforces them.
+- **Pace:** title 3.2 s at most, a film 7.4 s at most (its card for about 3.4 s, then the plot beat; the old card alone was 7.6 s), recap 5 s at most. The limits are settings in the series card (`pace`) and the plan check enforces them.
 
 ### 5.13 Trailer breakdowns
 When a new trailer lands in the library, one 40 to 50 second reel on what the trailer shows: 3 things noticed (a shot, a line, a detail), each on its exact shot, then what they might mean (as questions, never as facts or leaks), and a send-off. Only that trailer's clips. At most 1 a day, in the flex slot. Stage look, with the standard for every reel (5.10): sound-on, subtitles, a named technique when there is one.
@@ -451,7 +451,7 @@ A folder with one settings card (`series.yaml`) and 2–3 example reels. The Eng
 Base 6 a day, never more than 8. Breakdowns keep a bank of 3–4 finished reels.
 
 ### 6.3 Life of a series
-draft → **trial** (2 weeks, about 3 a week) → **live** → paused → retired. A live series in the bottom quarter for 4 straight weeks gets a "rework or retire" proposal.
+draft → **trial** (2 weeks, about 3 a week) → **live** → paused → retired. **Draft (14 Nov):** one reel every other day, made into Drive `rehearsal/drafts/<series>` for Harish to watch and rate; a draft never posts. A series added in the Control Room always starts as a draft. A live series in the bottom quarter for 4 straight weeks gets a "rework or retire" proposal.
 
 ### 6.4 Lineups
 A lineup is a saved list of series and slots. You can keep several (for example `cinema-core`, `festival-week`, `low-budget-week`) and switch with one tap. This is also how the whole series set is swapped.
@@ -501,7 +501,7 @@ A pitch that needs a **new template** becomes a build request. The pilot waits u
 
 ---
 
-**From the Control Room, with no tokens (14 Nov).** "Add a series" asks the framework's own questions block by block (it can start from a copy of a series you have), then sends one note. The Engine adds it as a **lab** series (test reels only); the next brief turns it into a real series file and lists it for planning at its times. From its page you can then: **make a test reel** (its reference reel, made with today's settings, into Drive `rehearsal/tests`), **train it with sample reels** (links and one line on what to learn; the weekly run studies them, or a ready prompt opens a training chat now), **move it to trial or live**, **pause** or **retire** it. Every one of these can be undone.
+**From the Control Room, with no tokens (14 Nov).** "Add a series" asks the framework's own questions block by block (it can start from a copy of a series you have), then sends one note. The Engine adds it as a **draft** (6.3): one reel every other day for you to watch in Drive, never posted; the next brief turns it into a real series file and lists it for planning at its times. From its page you can then: **make a test reel** (its reference reel, made with today's settings, into Drive `rehearsal/tests`), **train it with sample reels** (links and one line on what to learn; the weekly run studies them, or a ready prompt opens a training chat now), **move it to trial or live**, **pause** or **retire** it. Every one of these can be undone.
 
 ## 8. Refining things, and your feedback
 
@@ -746,7 +746,7 @@ The Control Room never edits the Engine's files. For each thing you ask, it **cr
 
 ---
 
-**Actions added on 14 Nov:** `series` now takes any field of the series framework (dots go into a block: `voice_cfg.provider`); `series_add` (a new lab series), `series_remove` (retire), `test` (a test reel into Drive `rehearsal/tests`), `sample` (a reel to learn from). `set` takes dotted keys for the switches. All but `test` and `sample` can be undone, and an undo leaves nothing behind.
+**Actions added on 14 Nov:** `series` now takes any field of the series framework (dots go into a block: `voice_cfg.provider`); `series_add` (a new series, as a draft), `series_remove` (retire), `test` (a test reel into Drive `rehearsal/tests`), `sample` (a reel to learn from). `set` takes dotted keys for the switches. All but `test` and `sample` can be undone, and an undo leaves nothing behind.
 
 ## 13. Dashboard
 

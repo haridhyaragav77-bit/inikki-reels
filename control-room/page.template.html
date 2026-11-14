@@ -58,7 +58,7 @@ h3{font-size:15px;margin:0}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 button,a.btn{font:inherit;font-size:13.5px;font-weight:600;color:var(--fg);background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:7px 12px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 button:hover,a.btn:hover{border-color:var(--muted)}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 button.go{background:var(--gold);color:var(--on-gold);border-color:var(--gold)}
 button.warn{color:var(--red)} button.quiet{background:transparent}
 button:disabled{opacity:.5;cursor:default}
@@ -220,8 +220,15 @@ function unpack(result) {
   if (!b) throw new Error("The Engine has not written the status file yet. It does so after its next job.");
   return JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b), c => c.charCodeAt(0))));
 }
+/* A status file from before 14 Nov has no framework or series values yet: use the copy built into this page from the same files. */
+function fill(p) {
+  if (!p.framework && EXAMPLE.framework) { p.framework = JSON.parse(JSON.stringify(EXAMPLE.framework));
+    (p.framework.switches || []).forEach(x => { if (x.key === "approval" && p.approval) x.value = p.approval; if (x.key === "away_mode") x.value = !!p.away; }); }
+  (p.series || []).forEach(s => { const e = (EXAMPLE.series || []).find(x => x.id === s.id); if (e && !s.values) { s.values = e.values; s.has_reference = e.has_reference; s.look = s.look || e.look; } });
+  return p;
+}
 function onData(result) {
-  try { P = unpack(result); live = true; problem = ""; } catch (e) { problem = e.message; }
+  try { P = fill(unpack(result)); live = true; problem = ""; } catch (e) { problem = e.message; }
   asked = asked.filter(a => a.at > Date.parse(P.updated_iso || 0) - 60000 && Date.now() - a.at < 36 * 3600e3); save("asked", asked);
   render();
 }
@@ -365,7 +372,8 @@ function vNumbers() {
 }
 function ruleRows(rules) { return (rules || []).map(x => `<div class="rule"><span>${esc(x.text)} <span class="sub">${esc(x.at || "")}</span></span><button type="button" class="quiet" data-act="undo" data-id="${esc(x.id)}">Remove</button></div>`).join(""); }
 /* ---------- series: the list, one series as 7 blocks, add / test / train / retire ---------- */
-const route = () => location.hash.slice(1).split("/");
+/* Views are plain #names (the host passes only those): #series, #add-series, #s-<series id> for one series. */
+const route = () => { const h = location.hash.slice(1); return h === "add-series" ? ["series", "new"] : h.startsWith("s-") ? ["series", h.slice(2)] : [h]; };
 const FW = () => P.framework || { blocks: [], switches: [] };
 const ser = id => (P.series || []).find(s => s.id === id) || { id, values: {} };
 const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"], LISTS = ["list", "times", "days"];
@@ -375,7 +383,7 @@ const show = v => v === true ? "on" : v === false ? "off" : Array.isArray(v) ? v
 const raw = v => v == null ? "" : Array.isArray(v) ? v.join("\n") : typeof v === "object" ? JSON.stringify(v) : String(v);
 const rawf = (f, v) => f.type === "range" && Array.isArray(v) ? v.join(", ") : raw(v);
 const voiceName = v => (FW().voice_labels || {})[v] || v;
-const sPill = s => `<span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" || s.status === "lab" ? "planned" : "ready"}">${s.paused && s.status !== "retired" ? "paused" : esc(s.status || "live")}</span>`;
+const sPill = s => `<span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" || s.status === "draft" ? "planned" : "ready"}">${s.paused && s.status !== "retired" ? "paused" : esc(s.status || "live")}</span>`;
 const sLine = s => [(s.slots || []).join(" · ") || "flex slot", s.look, s.length_s ? s.length_s.join("–") + " s" : "", (s.values || {}).voice === true ? "voice" : (s.values || {}).voice === false ? "music only" : ""].filter(Boolean).join(" · ");
 function valHtml(f, v) {
   if (v == null || v === "" || (Array.isArray(v) && !v.length)) return `<span class="sub">not set</span>`;
@@ -436,7 +444,7 @@ function vSeriesOne(id) {
     <div class="acts"><button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button>
       <button type="button" data-act="test" data-id="${esc(s.id)}" ${s.has_reference ? "" : "disabled"}>Make a test reel</button>
       <button type="button" data-act="train" data-id="${esc(s.id)}">Train with samples</button>
-      ${s.status === "lab" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="trial">Move to trial</button>` : s.status === "trial" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="live">Make it live</button>` : ""}
+      ${s.status === "draft" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="trial">Move to trial</button>` : s.status === "trial" ? `<button type="button" data-act="stage" data-id="${esc(s.id)}" data-key="live">Make it live</button>` : ""}
       <button type="button" class="warn" data-act="retire" data-id="${esc(s.id)}" ${s.status === "retired" ? "disabled" : ""}>Retire</button></div>
     ${s.has_reference ? "" : `<div class="sub">No reference reel yet, so there is nothing to test: its first planned reel becomes the reference.</div>`}
     ${t ? `<div class="sub"><span class="dot ${t.ok ? "green" : "amber"}"></span>Last test ${esc(t.at || "")}: ${esc(t.note || "")} ${t.link ? `<a href="${esc(t.link)}" target="_blank" rel="noopener" style="color:var(--sky)">Open in Drive</a>` : ""}</div>` : ""}${sDrawer(s)}</div>`;
@@ -444,10 +452,10 @@ function vSeriesOne(id) {
   return h;
 }
 function vSeriesList() {
-  let h = banners() + `<div class="inline" style="align-items:flex-end"><div style="flex:1 1 260px"><h2>Series</h2><div class="sub">Every series is the same 7 blocks: basics, structure, visuals, voice, music, caption, rules. Open one to change any of them.</div></div><a class="btn go" href="#series/new">Add a series</a></div>`;
-  h += `<div class="list">${(P.series || []).map(s => `<div class="srow"><a class="nm" href="#series/${encodeURIComponent(s.id)}">${esc(s.name || s.id)}${(s.changed || []).length ? `<span class="chg" title="Changed in the Control Room"></span>` : ""}<div class="sub">${esc(sLine(s))}</div></a>
+  let h = banners() + `<div class="inline" style="align-items:flex-end"><div style="flex:1 1 260px"><h2>Series</h2><div class="sub">Every series is the same 7 blocks: basics, structure, visuals, voice, music, caption, rules. Open one to change any of them.</div></div><a class="btn go" href="#add-series">Add a series</a></div>`;
+  h += `<div class="list">${(P.series || []).map(s => `<div class="srow"><a class="nm" href="#s-${esc(s.id)}">${esc(s.name || s.id)}${(s.changed || []).length ? `<span class="chg" title="Changed in the Control Room"></span>` : ""}<div class="sub">${esc(sLine(s))}</div></a>
       ${sPill(s)}${askedFor(s.id).map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
-      <button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button><a class="btn" href="#series/${encodeURIComponent(s.id)}">Open</a></div>`).join("") || `<div class="srow sub">No series listed yet.</div>`}</div>`;
+      <button type="button" data-act="${s.paused ? "resume" : "pause"}" data-id="${esc(s.id)}">${s.paused ? "Resume" : "Pause"}</button><a class="btn" href="#s-${esc(s.id)}">Open</a></div>`).join("") || `<div class="srow sub">No series listed yet.</div>`}</div>`;
   h += `<div class="card"><h3>Rules for every series</h3><div class="sub">A rule is one sentence the agent follows in every plan from the next Plan run. It stays until you remove it.</div>${ruleRows(P.page_rules)}<div class="inline"><input type="text" id="rule-all" placeholder="Never open with a question."><button type="button" data-act="rule" data-id="all">Add a rule</button></div></div>`;
   return h;
 }
@@ -464,7 +472,7 @@ function wizCard() { const card = {}; FW().blocks.forEach(b => b.fields.forEach(
 function vSeriesNew() {
   if (!wiz) wiz = { step: 0, card: {}, from: "" };
   const steps = wizSteps(), n = steps.length, i = Math.min(wiz.step, n), back = `<a class="back" href="#series">← All series</a>`;
-  let h = banners() + back + `<div><h2>Add a series</h2><div class="sub">${n} short steps, then a review. It starts as a lab series: test reels only. Nothing posts until you move it to trial.</div></div>
+  let h = banners() + back + `<div><h2>Add a series</h2><div class="sub">${n} short steps, then a review. It starts as a draft: one reel every other day lands in Drive for you to watch. Nothing posts until you move it to trial.</div></div>
     <div class="steps">${steps.map((b, k) => `<span class="${k === i ? "on" : k < i ? "done" : ""}">${k + 1} ${esc(b.name)}</span>`).join("")}<span class="${i === n ? "on" : ""}">Review</span></div>`;
   if (!n) return h + `<div class="card">The questions load with the live status. Open this page in Claude with Google Drive connected.</div>`;
   if (i < n) { const b = steps[i];
@@ -476,7 +484,7 @@ function vSeriesNew() {
     h += `<div class="card"><h3>Review</h3>${FW().blocks.map(b => { const fs = b.fields.filter(f => card[f.key]); return fs.length ? `<div class="k sub" style="margin-top:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">${esc(b.name)}</div>` + fs.map(f => `<div class="kv"><div class="k">${esc(f.label)}</div><div class="v" style="white-space:pre-wrap">${esc(card[f.key])}</div></div>`).join("") : ""; }).join("")}
       ${miss.length ? `<div class="banner bad">Still needed: ${miss.map(f => esc(f.label)).join(" · ")}</div>` : ""}
       <div class="acts"><button type="button" data-act="wiz" data-op="back">Back</button><button type="button" class="go" data-act="wiz" data-op="create" ${miss.length ? "disabled" : ""}>Create the series</button></div>
-      <div class="sub">The Engine adds it at its next job. It then shows in the list as a lab series, where you can test, train and edit it like any other.</div></div>`;
+      <div class="sub">The Engine adds it at its next job. It then shows in the list as a draft: watch its reels in Drive, rate them, edit, test and train it like any other.</div></div>`;
   }
   return h;
 }
@@ -487,7 +495,8 @@ function meter(label, used, cap, unit, note) {
 }
 const bar2 = (pc, mark) => `<div class="barw"><div class="bar"><i class="${pc >= 100 ? "over" : pc >= 75 ? "hot" : ""}" style="width:${Math.min(100, pc || 0)}%"></i></div>${mark != null ? `<b style="left:calc(${Math.min(100, mark)}% - 1px)" title="Where the month is heading"></b>` : ""}</div>`;
 function vUsage() {
-  const u = P.usage || {}, r = u.runner || {}, v = u.voice || {}, c = u.claude || {}, m = P.money || {}, pr = m.per_reel || {};
+  const u = P.usage || {}, m = P.money || {}, pr = m.per_reel || {}, v = u.voice || {}, c = u.claude || {},
+    r = u.runner || { minutes: m.runner_min, limit: m.runner_limit, pct: m.runner_limit ? Math.round(100 * (m.runner_min || 0) / m.runner_limit) : null, stage: "normal" };
   const STAGE = { normal: ["On track", "green"], saver: ["Saver mode is on", "amber"], save: ["Saving early: the month is heading past the limit", "amber"], tight: ["Tight: extras are paused", "amber"], last: ["Last minutes: only a few new reels a day", "red"] };
   const st = STAGE[r.stage] || STAGE.normal, big = (a, b2, unit) => `<div class="big">${num(a)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${num(b2)} ${unit}</span></div>`;
   let h = banners() + `<div><h2>Usage and limits</h2><div class="sub">This month. Every limit is enforced by the Engine's code. The mark on a bar shows where the month is heading.</div></div><div class="grid">
@@ -520,7 +529,7 @@ function vInsights() {
   const head = t => `<tr><th>${t}</th><th>Reels</th><th>Middle views</th><th>vs page</th><th>Skip</th><th>Share</th></tr>`;
   let h = `<div><h2>Insights</h2><div class="sub">Worked out by code from the last ${num(I.days || 14)} days · ${num(I.reels || 0)} measured reels${I.solid ? "" : ` · early signals until ${num(I.need || 10)} reels`}. No tokens.</div></div>
     <div class="card"><h3>${esc(I.headline || "No numbers yet. They arrive the night after a reel posts.")}</h3>
-      ${(I.do_next || []).map((d, k) => `<div class="do"><div class="w"><b>${esc(d.do)}</b><div class="sub">${esc(d.why)}</div></div><button type="button" data-act="do-next" data-id="${k}">Send to the agent</button>${d.series ? `<a class="btn" href="#series/${encodeURIComponent(d.series)}">Open series</a>` : ""}</div>`).join("")}</div>`;
+      ${(I.do_next || []).map((d, k) => `<div class="do"><div class="w"><b>${esc(d.do)}</b><div class="sub">${esc(d.why)}</div></div><button type="button" data-act="do-next" data-id="${k}">Send to the agent</button>${d.series ? `<a class="btn" href="#s-${esc(d.series)}">Open series</a>` : ""}</div>`).join("")}</div>`;
   if ((I.series || []).length) h += `<div class="tablewrap"><table>${head("Series")}${I.series.map(row).join("")}</table></div>`;
   if ((I.slots || []).length > 1) h += `<div class="tablewrap"><table>${head("Posted around")}${I.slots.map(row).join("")}</table></div>`;
   const sc = P.scouts, rd = P.radar || [];

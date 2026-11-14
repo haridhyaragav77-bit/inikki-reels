@@ -141,7 +141,7 @@
   {
    "kind": "film",
    "in": "push",
-   "dur": 6.4,
+   "dur": 7.2,
    "image": "nayattu",
    "fx": 0.56,
    "num": "01",
@@ -180,7 +180,7 @@
   {
    "kind": "film",
    "in": "whip",
-   "dur": 6.4,
+   "dur": 7.2,
    "image": "chaser",
    "fx": 0.52,
    "num": "02",
@@ -219,7 +219,7 @@
   {
    "kind": "film",
    "in": "whip",
-   "dur": 6.4,
+   "dur": 7.2,
    "image": "hellhigh",
    "fx": 0.42,
    "num": "03",
@@ -258,7 +258,7 @@
   {
    "kind": "film",
    "in": "whip",
-   "dur": 6.4,
+   "dur": 7.2,
    "image": "infernal",
    "fx": 0.55,
    "num": "04",

@@ -132,6 +132,9 @@ def todo(day, bank, date, only=(), retry=False):
     return out
 
 
+DRAFT_NOTE = "Draft series: made for you to watch; it is never posted. Move the series to trial in the Control Room to post it."
+
+
 def pending_tests(drive, ctl):
     done = {}
     try:
@@ -235,7 +238,8 @@ def main():
             skipped.append(rid)
             continue
         errors, _ = plancheck.check(plan)
-        visuals = ctl.series(series, niche_dir()).get("visuals")
+        card = ctl.series(series, niche_dir())
+        visuals, draft = card.get("visuals"), card.get("status") == "draft"
         missing = need_trailers(drive, plan, visuals)       # asked for even when the plan still needs its moments picked
         if missing and visuals in ("clips", "official"):
             films = [m.split("@")[0] for m in missing]
@@ -250,7 +254,7 @@ def main():
         ledger.upsert(rid, **base, state="rendering", reason=None, waiting_for=[])
         ledger.save()
         try:
-            r = render.render(str(path), drive=drive, to_drive=f"{out_root}/{'bank' if is_bank else date}")
+            r = render.render(str(path), drive=drive, to_drive=f"rehearsal/drafts/{series}" if draft else f"{out_root}/{'bank' if is_bank else date}")
         except Exception as e:
             traceback.print_exc()
             ledger.upsert(rid, state="failed", reason=f"Could not be made: {str(e)[:160]}")
@@ -259,14 +263,14 @@ def main():
             continue
         cap, comment = caption_of(plan)
         ok = r["ok"] and r["ids"].get("reel")
-        ledger.upsert(rid, state="ready" if ok else "held",
-                      reason=None if ok else held_reason(r["qc"].get("problems") or ["not uploaded"]),
+        ledger.upsert(rid, state=("rehearsed" if draft else "ready") if ok else "held",
+                      reason=(DRAFT_NOTE if draft else None) if ok else held_reason(r["qc"].get("problems") or ["not uploaded"]),
                       seconds=round(r["total_s"], 1), cover_t=r["cover_t"], music=r["music"], drive_reel=r["ids"].get("reel"),
                       drive_cover=r["ids"].get("cover"), link=r["link"], caption=cap, first_comment=comment,
                       images_made=r["images_made"], made_at=status.now().isoformat(timespec="seconds"))
         ledger.save()
         (made if ok else held).append(rid)
-        if ok and not is_bank and series == "breaking-news" and ctl.can_post:     # cannot wait for a slot
+        if ok and not draft and not is_bank and series == "breaking-news" and ctl.can_post:     # cannot wait for a slot
             from . import post
             post.breaking_now(drive, day, rid, ctl)
     day.save()

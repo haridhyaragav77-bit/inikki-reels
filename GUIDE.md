@@ -150,7 +150,7 @@ Every series is the same **7 blocks**: Basics → Structure → Visuals → Voic
 | Add a habit | **Rules** → Add a rule | Page |
 | Test it | **Make a test reel**: its reference reel, made with today's settings, lands in Drive `rehearsal/tests`. Never posted. | Page |
 | Improve it with sample reels | **Train with samples**: paste a link and one line on what to learn. The Sunday run studies them. Or copy the training prompt and train it now in a chat. | Page (or Workshop) |
-| **Add** a new series | **Add a series**: 7 short steps of questions, or start from a copy. It starts as a lab series. | Page |
+| **Add** a new series | **Add a series**: 7 short steps of questions, or start from a copy. It starts as a **draft**: one reel every other day lands in Drive for you to watch, and nothing posts until you press **Move to trial**. | Page |
 | Move it forward | **Move to trial** → **Make it live** | Page |
 | **Retire** one | **Retire** (its history is kept; Undo brings it back) | Page |
 | A brand-new look | Workshop prompt "Add a series" (section 14) | Workshop |

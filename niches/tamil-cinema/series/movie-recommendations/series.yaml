@@ -24,7 +24,7 @@ formats:
 per_film_screen: [poster_still, title, year_country, reason_6_words_max, letterboxd_rating, proof_award_or_fact, where_to_watch_india, plot_beat]
 # Harish, 14 Nov 2026: a grander hook frame with a timely title, a plot beat after every film card, and a faster pace.
 timely_titles: true     # the title and its kicker come from the brief's Today lines (day, hour, season, a film in the news)
-pace: { since: "2026-11-15", title_s: 3.2, film_s: 6.6, single_film_s: 11.0, recap_s: 5.0 }   # seconds at most per screen
+pace: { since: "2026-11-15", title_s: 3.2, film_s: 7.4, single_film_s: 12.0, recap_s: 5.0 }   # seconds at most per screen; a film is its card (about 3.4 s) then its plot beat (Harish: reading pace, 13 Nov; a little faster, 14 Nov)
 plot_beat: { words_max: 16, beats: "2-3 short beats in plot_beats, 6 words or fewer each; premise only, never a spoiler" }
 proof_sources: [letterboxd, justwatch_india, wikipedia_awards]
 proof_required: 2       # for "They recommend": the interview, list or post must be real and found in 2 places

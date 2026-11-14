@@ -117,9 +117,16 @@ def main():
           "a series' structure, voice and length are changed from the Control Room")
     check(ctl.series_changes("movie-recommendations").keys() == {"story_shape", "voice_cfg", "length_s"}, "the brief is told exactly what changed")
     new = ctl.series("song-stories", nd)
-    check(new.get("status") == "lab" and new["slots"] == ["17:00", "21:00"] and new["voice"] is False and new["music"] == {"default": "soft_warm"} and "song-stories" in ctl.series_ids(nd),
-          "a new series is added as a lab series, in the framework's shape")
+    check(new.get("status") == "draft" and new["slots"] == ["17:00", "21:00"] and new["voice"] is False and new["music"] == {"default": "soft_warm"} and "song-stories" in ctl.series_ids(nd),
+          "a new series is added as a draft, in the framework's shape")
     check(ctl.settings["voice"]["provider"] == "microsoft" and ctl.settings["voice"]["backup"] == "microsoft" and ctl.on("saver", False), "global switches are set")
+    import datetime as _dt
+    from engine.brief import draft_day, lineup_today
+    dd = next(x for x in (_dt.date.today() + _dt.timedelta(days=k) for k in range(2)) if draft_day(x.isoformat())).isoformat()
+    off = (_dt.date.fromisoformat(dd) + _dt.timedelta(days=1)).isoformat()
+    rows = [r for r in lineup_today(ctl, dd)[0] if r[1] == "song-stories"]
+    check(len(rows) == 1 and rows[0][3].startswith("DRAFT") and not [r for r in lineup_today(ctl, off)[0] if r[1] == "song-stories"],
+          "a draft series gets one reel every other day, marked as never posted")
     from engine import voice as V
     check(V.order(None, d)[0] == "microsoft", "the voice follows the switch")
     cmds = d.read_text("control", "commands.jsonl")

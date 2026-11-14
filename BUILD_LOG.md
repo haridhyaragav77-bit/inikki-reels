@@ -9,7 +9,7 @@ Harish asked for: a far better Control Room (series as a framework, easy small c
 | --- | --- | --- |
 | ElevenLabs is the main voice | `engine/voice.py`, `engine/render/audio.py`, `config/engine.yaml` `voice` | ElevenLabs with word timings, Microsoft as the backup for the whole reel; one take per line, kept in Drive `work/voice-cache` and reused; credits read before each reel. Checked on GitHub: the key works (smoke test). |
 | Series framework | `config/framework.yaml` | Every series is 7 blocks; the page's editor, the add-a-series questions and the relay's checks all come from this one file |
-| Relay actions | `engine/relay.py`, `engine/control.py` | `series` (any framework field), `series_add`, `series_remove`, `test`, `sample`, dotted `set` for switches; undo leaves nothing behind |
+| Relay actions | `engine/relay.py`, `engine/control.py` | `series` (any framework field), `series_add` (a draft: watched, never posted), `series_remove`, `test`, `sample`, dotted `set` for switches; undo leaves nothing behind |
 | Control Room page | `control-room/page.template.html`, `build.py` | Tabs Today · Next · Series · Insights · Usage · Setup · Guide; a series opens as its 7 blocks with Edit; sections reorder with ↑ ↓ ＋ ✕ |
 | Test reels | `engine/make.py` `tests`, `engine/edits.py` | "Make a test reel" renders the series' reference plan into Drive `rehearsal/tests` and starts Make at once |
 | New series become files | `engine/brief.py` `series_files`, `daily.yml` | A series added on the page is written to `niches/<niche>/series/<id>/series.yaml` by the next brief job and planned at its times |

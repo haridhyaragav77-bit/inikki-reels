@@ -46,6 +46,18 @@ def live(drive=None):
     return out
 
 
+def series_voice(drive, sid):
+    """A series' own voice choice (its Voice block: provider, ElevenLabs voice, speed), with the Control Room's changes."""
+    if not sid:
+        return {}
+    try:
+        from .control import Control
+        from .settings import niche_dir
+        return dict(Control(drive, relay=False).series(str(sid), niche_dir()).get("voice_cfg") or {})
+    except Exception:
+        return {}
+
+
 def key():
     for n in eleven().get("key_names") or ["ELEVENLABS_API_KEY"]:
         if secret(n):

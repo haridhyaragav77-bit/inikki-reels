@@ -9,6 +9,8 @@ import json
 import re
 import sys
 
+import yaml
+
 from .settings import ROOT, load_yaml, niche_dir
 
 TAMIL = re.compile(r"[஀-௿]")
@@ -41,9 +43,28 @@ SOUNDS = {"whoosh", "impact", "stamp", "tick", "pop", "glitch", "riser"}
 DATED_ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")
 
 
+def mirror():
+    """The Control Room's settings as the last brief copied them (data/control/overrides.yaml). The plan check reads them so a
+    series changed on the page is checked as it now is, both here and in the Brain's session (which has no Drive)."""
+    p = ROOT / "data" / "control" / "overrides.yaml"
+    try:
+        return (yaml.safe_load(p.read_text(encoding="utf-8")) or {}) if p.exists() else {}
+    except Exception:
+        return {}
+
+
 def series_of(plan):
-    p = niche_dir() / "series" / str(plan.get("series")) / "series.yaml"
-    return (load_yaml(p.relative_to(ROOT)) or {}) if plan.get("series") and p.exists() else {}
+    """A series card as it stands: its file (or, for a series just added on the page, its Control Room card) with the
+    Control Room's changes on top (AGENT.md 6.1)."""
+    sid = str(plan.get("series") or "")
+    p = niche_dir() / "series" / sid / "series.yaml"
+    o = mirror()
+    base = (load_yaml(p.relative_to(ROOT)) or {}) if sid and p.exists() else dict((o.get("new_series") or {}).get(sid) or {})
+    extra = {k: v for k, v in ((o.get("series") or {}).get(sid) or {}).items() if k not in ("notes", "paused")}
+    if extra:
+        from .control import deep_merge
+        base = deep_merge(base, extra)
+    return base
 
 
 def _label_words(t):
@@ -105,6 +126,8 @@ def check_unique(plan, series, tpl, rid, E, W):
     u = series.get("unique_design") or {}
     if not u or not DATED_ID.match(rid) or rid[:10] < str(u.get("since", "")):
         return
+    if not ((mirror().get("settings") or {}).get("unique_designs") or {}).get("enabled", True):
+        return                                          # switched off in the Control Room (Setup)
     kits, last = list(u.get("kits") or []), recent_plans(tpl, rid, int(u.get("window", 3)))
     d = plan.get("design")
     used = [x.get("design") for x in last if x.get("design")]
@@ -270,7 +293,7 @@ def check_look(plan, series):
         since = str(pace.get("since", "9999"))
         t0 = screens[0]
         if rid[:10] >= since:
-            if not t0.get("kicker"):
+            if series.get("timely_titles", True) and not t0.get("kicker"):
                 E.append("The title screen needs a 'kicker': 2-4 words that tie the list to today (the day, the hour, the season or a film in "
                          "the news), from the brief's Today lines, e.g. FRIDAY NIGHT WATCHLIST.")
             for n, s in enumerate(screens, 1):

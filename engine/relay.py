@@ -19,7 +19,7 @@ One action is one JSON object:
     {"do": "undo", "id": "<id of an earlier action>"}        switch, set, series and note can be undone
     {"do": "series", "id": "<series>", "set": {"story_shape": [...], "voice_cfg.provider": "microsoft"}}
                                                              any field of the series framework (config/framework.yaml)
-    {"do": "series_add", "card": {"name": "...", "template": "...", "slots": ["17:00"], ...}}     a new series, as a lab series
+    {"do": "series_add", "card": {"name": "...", "template": "...", "slots": ["17:00"], ...}}     a new series; it starts as a draft (watched, never posted)
     {"do": "series_remove", "id": "<series>"}                retired: never planned again (undo brings it back)
     {"do": "test", "series": "<series>"}                     make the series' reference reel into Drive rehearsal/tests (never posted)
     {"do": "sample", "series": "<series>", "url": "...", "note": "what to learn from it"}   a reel to learn from, for the weekly run
@@ -343,11 +343,11 @@ def apply_one(st, a, aid, at):
                     _put(out, tuple(k.split(".")), v)
             elif spec.get("required"):
                 raise ValueError(f"a new series needs: {spec.get('label', k)}")
-        out["status"] = out.get("status") if out.get("status") in ("lab", "trial") else "lab"     # never live at once (AGENT.md 6.3)
+        out["status"] = "draft"          # watched, never posted, until Harish moves it to trial (AGENT.md 6.3, 7)
         out.setdefault("image_cap_per_reel", 0)
         out["added"] = {"by": "Control Room", "at": at[:10]}
         before = _patch(st, ("new_series",), {sid: out})
-        return f"New series '{out['name']}' ({sid}) added as a {out['status']} series, look {out.get('template')}, at {', '.join(out.get('slots', []))}", {"overrides": before}
+        return f"New series '{out['name']}' ({sid}) added as a draft (one reel every other day for you to watch, never posted), look {out.get('template')}, at {', '.join(out.get('slots', []))}", {"overrides": before}
     if do == "series_remove":
         sid = str(a.get("id") or a.get("series") or "")
         if not series_exists(st, sid):

@@ -217,7 +217,7 @@ def _voice(res, plan, series, work, local, notes, drive=None):
     else:
         from . import voice as V
         cfg = {k: val for k, val in (v or {}).items() if k in ("voice", "rate", "pitch", "provider", "elevenlabs_voice", "speed")} if isinstance(v, dict) else {}
-        for k, val in (series.get("voice_cfg") or {}).items():       # the series' own voice choice (Control Room → Series → Voice)
+        for k, val in (V.series_voice(drive, plan.get("series")) or series.get("voice_cfg") or {}).items():   # the series' Voice block, with Control Room changes
             if k in ("provider", "elevenlabs_voice", "speed"):
                 cfg.setdefault(k, val)
         cfg["lines"] = [{"text": spoken(txt)} for _, txt in lines]

@@ -71,23 +71,46 @@ def lineup_today(ctl, date):
         if ctl.series_paused(sid):
             rows.append(("-", sid, "paused", ""))
             continue
-        n = int(s.get("per_day", 1))
+        if card.get("status") == "retired":
+            rows.append(("-", sid, "retired", ""))
+            continue
+        draft = card.get("status") == "draft"
+        if draft and not draft_day(date):
+            rows.append(("-", sid, "draft: next reel tomorrow", ""))
+            continue
+        n = 1 if draft else int(s.get("per_day", 1))
         for t in (card.get("slots") or [])[:n]:
             v = card.get("voice")
             voice = ("voice: " + v.replace("_", " ")) if isinstance(v, str) else ("voice" if v else "no voice")
-            rows.append((t, sid, card.get("template", "?"), f"{voice}, {'-'.join(map(str, card.get('length_s', [])))} s"))
-    day = DOW3[dt.date.fromisoformat(date).weekday()]
-    for sid, card in ctl.new_series().items():          # series added in the Control Room run beside the lineup (AGENT.md 7)
-        card = ctl.series(sid, nd)
-        if ctl.series_paused(sid) or card.get("status") not in ("lab", "trial", "live") or (card.get("days") and day not in card["days"]):
+            rows.append((t, sid, card.get("template", "?"), (DRAFT_ROW if draft else "") + f"{voice}, {'-'.join(map(str, card.get('length_s', [])))} s"))
+    d0 = dt.date.fromisoformat(date)
+    day, in_lineup = DOW3[d0.weekday()], {r[1] for r in rows}
+    for sid in ctl.new_series():                        # series added in the Control Room run beside the lineup (AGENT.md 7)
+        if sid in in_lineup:
             continue
-        for t in (card.get("slots") or [])[:int(card.get("per_day") or 1)]:
-            rows.append((t, sid, card.get("template", "?"), f"{card.get('status')} series, {'voice' if card.get('voice') is True else 'no voice'}, {'-'.join(map(str, card.get('length_s', [])))} s"))
+        card = ctl.series(sid, nd)
+        st = card.get("status")
+        if ctl.series_paused(sid) or st not in ("draft", "trial", "live") or (card.get("days") and day not in card["days"]):
+            continue
+        if st == "draft" and not draft_day(date):
+            continue
+        if st != "draft" and card.get("per_week") and not card.get("days") and d0.toordinal() % 7 >= int(card["per_week"]):
+            continue                                    # "3 a week" with no days named: 3 days in every 7
+        n = 1 if st == "draft" else int(card.get("per_day") or 1)
+        for t in (card.get("slots") or [])[:n]:
+            rows.append((t, sid, card.get("template", "?"), (DRAFT_ROW if st == "draft" else f"{st} series, ")
+                         + f"{'voice' if card.get('voice') is True else 'no voice'}, {'-'.join(map(str, card.get('length_s', [])))} s"))
     bank_target = next((int(s.get("bank_target", 0)) for s in lineup.get("slots", []) if s.get("bank_target")), 0)
     return sorted(rows), lineup, bank_target
 
 
 DOW3 = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+DRAFT_ROW = "DRAFT: made for Harish to watch in Drive, never posted; "
+
+
+def draft_day(date):
+    """A draft series is made every other day: enough to judge it, without spending the month's runner minutes."""
+    return dt.date.fromisoformat(date).toordinal() % 2 == 0
 
 
 def series_files(ctl):
@@ -343,8 +366,10 @@ def build(drive, run, date):
     if changed or new_files:
         L += ["", "## Series settings changed in the Control Room (these win over the series file; AGENT.md 6.5)"]
         L += [f"- {sid}: " + "; ".join(f"{k} = {json.dumps(v, ensure_ascii=False)}" for k, v in c.items())[:600] for sid, c in changed]
-        L += [f"- NEW series {sid}: its card is niches/{AGENT['active']['niche']}/series/{sid}/series.yaml. Plan it at its slot as a {ctl.series(sid, niche_dir()).get('status')} series."
-              for sid in ctl.new_series()]
+        recent = (dt.date.fromisoformat(date) - dt.timedelta(days=14)).isoformat()
+        L += [f"- NEW series {sid} ({ctl.series(sid, niche_dir()).get('status')}): its card is niches/{AGENT['active']['niche']}/series/{sid}/series.yaml. "
+              "A draft is made for Harish to watch and is never posted; it still follows the standard (AGENT.md 5.10)."
+              for sid, card in ctl.new_series().items() if str((card.get("added") or {}).get("at", "")) >= recent]
     if run in ("plan", "refresh") and ctl.on("unique_designs"):
         try:
             recent = looks_lately()
