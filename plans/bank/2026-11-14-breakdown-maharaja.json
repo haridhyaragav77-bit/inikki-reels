@@ -1,0 +1,403 @@
+{
+  "id": "2026-11-14-breakdown-maharaja",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "design": "noir",
+  "length_s": [
+    40,
+    62
+  ],
+  "length_reason": "Hook, the strange complaint, the technique named, seen order vs real order, how doubt climbs, why it works, recap: about a minute.",
+  "lead": {
+    "topic": "Maharaja (2024): how the order of scenes hides the truth",
+    "angle": "screenplay",
+    "insight": "Maharaja is a non-linear screenplay: the film shows its scenes out of order, so a barber's complaint about a stolen dustbin looks absurd. Every odd detail is a clue in plain sight; when the real order clicks into place at the end, the twist lands as a feeling, not just a fact.",
+    "why_now": "Vijay Sethupathi's 50th film, a Netflix favourite and one of the highest-grossing Indian films in China; still the film people argue about.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Maharaja_(2024_film) (plot: Maharaja reports that 'Lakshmi', his dustbin, was stolen; Sethupathi's 50th film; highest-grossing in China)",
+      "https://www.indiaglitz.com/maharaja-review-tamil-movie-35008 (the non-linear narrative is the film's added advantage)",
+      "https://www.thenewsminute.com/tamil-nadu/maharaja-review-vijay-sethupathis-50th-is-an-intriguing-thriller-though-flawed (clever screenplay)"
+    ],
+    "technique": "Non-linear screenplay (scenes shown out of time order)",
+    "spoilers": "None: the twist itself is never told; the reel explains how the order hides it."
+  },
+  "worth_it": {
+    "learn": "The structure has a name, non-linear screenplay, and the scene order itself is what hides the twist.",
+    "stop": "A man goes to the police because his dustbin was stolen. Why so much rage?",
+    "why_now": "One of the most talked-about Tamil films of the decade; on Netflix, so anyone can rewatch tonight.",
+    "send_to": "The friend who says they guessed the twist.",
+    "best_angle": "Yes: everyone felt the shock; few noticed it was the scene order that set it up."
+  },
+  "voice": {
+    "on": true,
+    "voice": "ta-IN-ValluvarNeural",
+    "rate": "+18%",
+    "pitch": "-2Hz"
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 2.0,
+        "screen": 0,
+        "mood": "noir intrigue"
+      },
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "pieces moving"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxresdefault.jpg",
+      "crop": [
+        0.46,
+        0.2,
+        0.32,
+        0.8
+      ]
+    },
+    "cop": {
+      "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.25,
+        1.0,
+        0.63
+      ]
+    },
+    "stone": {
+      "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.25,
+        1.0,
+        0.63
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "MAHARAJA",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ஒரு குப்பைத் தொட்டி காணாமப் போச்சு. அதுக்கு ஏன் இவ்வளவு கோபம்?",
+      "voice_tg": "Oru kuppai thotti kaanaama pochu. Adhukku yen ivlo kobam?",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "voice": "மகாராஜா ஒரு சலூன்காரர். போலீஸ் ஸ்டேஷன்ல ஒரு புகார். லட்சுமியைக் காணோம். லட்சுமி, ஒரு குப்பைத் தொட்டி.",
+      "voice_tg": "Maharaja oru saloonkaarar. Police station-la oru pugaar. Lakshmiya kaanom. Lakshmi, oru kuppai thotti.",
+      "left": {
+        "image": "title",
+        "label": "MAHARAJA",
+        "sub": "THE BARBER",
+        "cue": {
+          "word": "மகாராஜா"
+        }
+      },
+      "right": {
+        "image": "cop",
+        "label": "THE POLICE",
+        "sub": "NOT BUYING IT",
+        "cue": {
+          "word": "போலீஸ்"
+        }
+      },
+      "tilt": -1,
+      "tilt_cue": {
+        "word": "லட்சுமியைக்"
+      },
+      "slam_text": "A DUSTBIN?",
+      "slam_cue": {
+        "word": "குப்பைத்"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "குப்பைத்",
+            "off": 0.2
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "NON-LINEAR SCREENPLAY",
+      "definition": "SCENE ORDER HIDES THE TRUTH",
+      "outer_label": "MAHARAJA",
+      "inner": [
+        "THE COMPLAINT",
+        "THE PAST",
+        "THE TRUTH"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, நான் லீனியர் திரைக்கதை. காட்சிகள் வர்ற வரிசையே ஒரு ரகசியத்தை மறைக்குது.",
+      "voice_tg": "Indha technique peru, non linear thiraikkadhai. Kaatchigal varra varisaiye oru ragasiyatha maraikkudhu.",
+      "cues": {
+        "name": {
+          "word": "லீனியர்"
+        },
+        "outer": {
+          "word": "காட்சிகள்"
+        },
+        "inner": {
+          "word": "ரகசியத்தை"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "லீனியர்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "காட்சிகள்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ரகசியத்தை"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ரகசியத்தை",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ரகசியத்தை",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "wipe",
+      "heading": "SEEN ORDER ≠ REAL ORDER",
+      "voice": "நாம பார்க்குற வரிசை ஒண்ணு. நடந்த வரிசை வேற. ஒவ்வொரு சின்ன விஷயமும் ஒரு க்ளூ.",
+      "voice_tg": "Naama paarkura varisai onnu. Nadandha varisai vera. Ovvoru chinna vishayamum oru clue.",
+      "events": [
+        {
+          "label": "THE COMPLAINT",
+          "sub": "SETUP",
+          "cue": {
+            "word": "பார்க்குற"
+          }
+        },
+        {
+          "label": "THE WOUND",
+          "cue": {
+            "word": "நடந்த"
+          }
+        },
+        {
+          "label": "SMALL CLUES",
+          "cue": {
+            "word": "சின்ன"
+          }
+        },
+        {
+          "label": "THE TRUTH",
+          "sub": "PAYOFF",
+          "cue": {
+            "word": "விஷயமும்"
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "THE ORDER IS THE TWIST",
+      "footer_cue": {
+        "word": "க்ளூ."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "சின்ன"
+          },
+          "type": "tick"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "HOW THE DOUBT CLIMBS",
+      "label": "DOUBT",
+      "voice": "ஒவ்வொரு காட்சியும் சந்தேகத்தை ஏத்துது. எதுவுமே பொருந்தல. கடைசியில எல்லா துண்டும் ஒண்ணா சேருது.",
+      "voice_tg": "Ovvoru kaatchiyum sandhegatha yethudhu. Edhuvume porundhala. Kadaisiyila ella thundum onna serudhu.",
+      "levels": [
+        {
+          "label": "A STRANGE CASE",
+          "value": 30,
+          "cue": {
+            "word": "சந்தேகத்தை"
+          }
+        },
+        {
+          "label": "NOTHING FITS",
+          "value": 65,
+          "cue": {
+            "word": "பொருந்தல."
+          }
+        },
+        {
+          "label": "IT ALL CLICKS",
+          "value": 100,
+          "cue": {
+            "word": "சேருது."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "சேருது.",
+            "off": 0.2
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "stone",
+      "fy": 0.45,
+      "fx": 0.45,
+      "slam_text": "STORY OR PUZZLE?",
+      "voice": "ஏன் இது வேலை செய்யுது? நாம ஒரு கதையை மட்டும் பார்க்கல. ஒரு புதிரை சேர்க்கிறோம். அதனால தான் அடி இவ்வளவு வலிக்குது.",
+      "voice_tg": "Yen idhu velai seyyudhu? Naama oru kadhaiya mattum paarkkala. Oru pudhira serkkurom. Adhanaala thaan adi ivlo valikkudhu.",
+      "q_cue": {
+        "word": "புதிரை"
+      },
+      "slam_cue": {
+        "word": "வலிக்குது."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "புதிரை"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "வலிக்குது.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "MAHARAJA · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHICH CLUE",
+          "size": 130
+        },
+        {
+          "text": "DID YOU MISS?",
+          "size": 120,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "நீங்க மிஸ் பண்ண க்ளூ எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் நான் லீனியர் திரைக்கதை. முதல் தடவை நீங்க மிஸ் பண்ண க்ளூ எது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan non linear thiraikkadhai. Mudhal thadavai neenga miss panna clue edhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: NON-LINEAR SCREENPLAY"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Maharaja: a barber reports a stolen dustbin. Why does it feel so big?",
+      "The technique is called a non-linear screenplay: the film shows its scenes out of time order, so every odd detail is a clue in plain sight. When the real order clicks, the twist hits as a feeling, not just a fact.",
+      "Which clue did you miss the first time? Tell us.",
+      "Send this to the friend who says they guessed the twist.",
+      "காட்சிகளின் வரிசையே ரகசியம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "MAHARAJA · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "No spoilers in the comments: name the clue, not the twist."
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 73,
+    "weakest": {
+      "timely_original": "bank reel, not tied to today's news",
+      "loop": "end card returns to the title still"
+    }
+  }
+}
