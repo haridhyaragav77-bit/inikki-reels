@@ -1,7 +1,7 @@
 # iNiKKi Reels · Your guidebook
 
 How to run the agent without reading code. Every control, every loop, and the exact words to use.
-Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short version you actually use.
+Last updated 14 Nov 2026. The full design is `AGENT.md`; this guide is the short version you actually use.
 
 ## 1. The whole thing in one minute
 
@@ -75,8 +75,8 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 | Watch a reel before it posts | Today → **Watch** | `preview 2` |
 | See what runs next and when | The countdown at the top, and the **Next** tab | `next` |
 | See tomorrow's slots | **Next** tab | `tomorrow` |
-| See numbers | **Numbers** tab | `numbers` |
-| See costs and limits | **Money** tab | `money` |
+| See numbers and what they mean | **Insights** tab | `numbers` · `insights` |
+| See costs, limits and voice credits | **Usage** tab | `money` |
 | Stop everything now | **Sleep** | `stop everything` |
 | Keep making reels but post nothing | **Hold posts** | `hold posts` |
 | Start again | **Run** | `resume` |
@@ -89,9 +89,9 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 | Set a habit for a series | **Series** → **Add a rule** | `rule for watch this next: …` |
 | Pause or resume a series | **Series** → **Pause / Resume** | `pause guess the movie` |
 | Suggest a topic | **Today** → idea box | `cover this: …` |
-| Change reels per day, slot times, budgets | **Settings** tab | `post 5 a day` |
-| Take something back | **Actions** → **Undo** | `undo` |
-| Clear the alerts | **Alerts** → **Mark all read** | `clear alerts` |
+| Change reels per day, slot times, budgets, switches | **Setup** tab | `post 5 a day` |
+| Take something back | **Setup** → Your last actions → **Undo** | `undo` |
+| Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 
 ### Switches and usage (page → Setup, page → Usage)
 - **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
@@ -117,7 +117,7 @@ It has already posted, so:
    *"Open with a promise and a number, then who it is for: 4 FILMS TO WATCH TONIGHT / IF YOU LOVED JAILER 2. Never open with a question about the last film."*
    Tomorrow's 05:37 plan follows it. Sunday's Weekly run writes it into the playbook.
 3. **Optional: re-post a stronger version.** The reel → **New version** → type the new hook. It is made as a new reel and waits. Preview it, press **Post now**, and delete the old one in the Instagram app if you want only one.
-4. **Check it worked.** Numbers tab: the skip rate of the next 5 Watch This Next reels against the series' middle value.
+4. **Check it worked.** Insights tab: the skip rate of the next 5 Watch This Next reels against the series' middle value.
 
 If the words are fine but the title screen needs a stronger *picture*, that is the look: use the Workshop prompt "Change a look" in section 14.
 
@@ -164,8 +164,8 @@ A change you make shows a small gold dot until it is undone. Everything here cos
 
 | Change | Where | How |
 | --- | --- | --- |
-| Reels per day, slot times, budgets | Page → Settings | Counts from the next plan |
-| Go live / back to rehearsal | Page → Settings (asks you to confirm) | Rehearsal makes everything but posts nothing |
+| Reels per day, slot times, budgets, switches | Page → Setup | Counts from the next plan |
+| Go live / back to rehearsal | Page → Setup (asks you to confirm) | Rehearsal makes everything but posts nothing |
 | A habit for the whole page | Page → Series → **Rule for every series** | Next plan |
 | What a thinking run does | Workshop: "Change a run" | Each run has a one-page card in `runs/` |
 | A look, animation, music handling | Workshop: "Change a look" | Tested against the reference reels first |
