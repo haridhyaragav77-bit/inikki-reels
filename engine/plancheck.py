@@ -28,7 +28,7 @@ def _words(t):
 
 # ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
 LOOK_KINDS = {
-    "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "end"},
+    "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
     "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
@@ -75,6 +75,52 @@ def _walk(v, key):
     elif isinstance(v, list):
         for x in v:
             yield from _walk(x, key)
+
+
+def recent_plans(template, rid, n=3):
+    """The last `n` plans in the same look before this one (by their dated id), for the no-repeat rule (AGENT.md 5.8)."""
+    out = []
+    for p in (ROOT / "plans").glob("*/*.json"):
+        if p.parent.name == "reference" or p.name == "respect.json":
+            continue
+        try:
+            d = json.loads(p.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        i = d.get("id") or d.get("reel_id") or ""
+        if d.get("template") == template and DATED_ID.match(i) and i != rid and i[:10] <= rid[:10]:
+            out.append(d)
+    out.sort(key=lambda d: (d.get("id") or d.get("reel_id")), reverse=True)
+    return out[:n]
+
+
+def shape(plan):
+    """A reel's build: its screens between the title and the end, in order."""
+    return [s.get("kind") for s in (plan.get("screens") or [])[1:-1]]
+
+
+def check_unique(plan, series, tpl, rid, E, W):
+    """Every breakdown has its own design (AGENT.md 5.8): a design kit and a build the last reels did not use.
+    Counts from the date in the series card (`unique_design.since`), so older plans are not held by a newer rule."""
+    u = series.get("unique_design") or {}
+    if not u or not DATED_ID.match(rid) or rid[:10] < str(u.get("since", "")):
+        return
+    kits, last = list(u.get("kits") or []), recent_plans(tpl, rid, int(u.get("window", 3)))
+    d = plan.get("design")
+    used = [x.get("design") for x in last if x.get("design")]
+    free = [k for k in kits if k not in used]
+    if not d or d not in kits:
+        E.append(f"Name this reel's design kit in \"design\". Not used lately: {', '.join(free or kits)}.")
+    elif d in used:
+        E.append(f"The design kit '{d}' was used in the last {len(last)} breakdowns. Pick another: {', '.join(free)}.")
+    mine = shape(plan)
+    for x in last[:int(u.get("shape_window", 2))]:
+        if shape(x) == mine:
+            E.append(f"This reel is built from the same screens in the same order as {x.get('id')} ({' → '.join(mine)}). "
+                     f"Change the build: other graphics that fit this film's idea ({', '.join(sorted(LOOK_KINDS[tpl] - {'title', 'end'}))}).")
+            break
+    if last and not (set(mine) - set(shape(last[0]))):
+        W.append(f"Every graphic in this reel was also in the last one ({last[0].get('id')}). One fresh graphic keeps the page from looking the same.")
 
 
 def check_look(plan, series):
@@ -208,7 +254,39 @@ def check_look(plan, series):
                 W.append(f"The definition '{t['definition']}' is long; 6 words or fewer read best.")
             if t.get("name") and str(t["name"]).lower() not in str(screens[-1].get("recap", "")).lower():
                 E.append(f"The end card must recap the technique, e.g. \"recap\": \"TECHNIQUE: {t['name']}\".")
+    if tpl == "stage":
+        check_unique(plan, series, tpl, rid, E, W)
+        need = {"timeline": ("heading", "events"), "meter": ("heading", "levels"), "versus": ("left", "right"), "web": ("center", "nodes")}
+        for n, s in enumerate(screens, 1):
+            for f in need.get(s.get("kind"), ()):
+                if not s.get(f):
+                    E.append(f"Screen {n} ({s['kind']}): '{f}' is missing (templates/README.md).")
+            if s.get("kind") == "web" and not 3 <= len(s.get("nodes") or []) <= 6:
+                E.append(f"Screen {n} (web): 3 to 6 people or things around the centre.")
+            if s.get("kind") == "timeline" and not 2 <= len(s.get("events") or []) <= 5:
+                E.append(f"Screen {n} (timeline): 2 to 5 moments.")
     if tpl == "poster-wall":
+        pace = series.get("pace") or {}
+        since = str(pace.get("since", "9999"))
+        t0 = screens[0]
+        if rid[:10] >= since:
+            if not t0.get("kicker"):
+                E.append("The title screen needs a 'kicker': 2-4 words that tie the list to today (the day, the hour, the season or a film in "
+                         "the news), from the brief's Today lines, e.g. FRIDAY NIGHT WATCHLIST.")
+            for n, s in enumerate(screens, 1):
+                lim = pace.get("title_s") if s.get("kind") == "title" else pace.get("film_s") if s.get("kind") == "film" else pace.get("recap_s")
+                if len([x for x in screens if x.get("kind") == "film"]) == 1 and s.get("kind") == "film":
+                    lim = pace.get("single_film_s")
+                if lim and float(s.get("dur", 0)) > float(lim):
+                    E.append(f"Screen {n} ({s.get('kind')}) runs {s.get('dur')} s; this series moves fast: {lim} s at most.")
+                if s.get("kind") == "film":
+                    if not s.get("plot"):
+                        E.append(f"{s.get('title') or 'Screen ' + str(n)}: no 'plot' (one sentence, no spoilers; it becomes the plot beat after the card).")
+                    elif _label_words(s["plot"]) > 16:
+                        E.append(f"{s.get('title')}: the plot has {_label_words(s['plot'])} words; 16 or fewer.")
+                    for b in s.get("plot_beats") or []:
+                        if _label_words(b) > 6:
+                            E.append(f"{s.get('title')}: the plot beat '{b}' is long; 6 words or fewer.")
         films = [(n, s) for n, s in enumerate(screens, 1) if s.get("kind") == "film"]
         if len(films) not in (1, 3, 4, 5):
             W.append(f"{len(films)} films; a list is 3 to 5 (or one film you missed).")

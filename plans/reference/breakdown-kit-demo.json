@@ -1,0 +1,383 @@
+{
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "length_s": [
+  20,
+  62
+ ],
+ "length_reason": "Name the technique, show where it came from, three stories, why it works, the ending: about a minute (Harish: 1 minute is the safe spot).",
+ "lead": {
+  "topic": "Vikram Vedha (2017): how the screenplay borrows the Vikramadithyan-Vetal tale",
+  "angle": "screenplay",
+  "insight": "Vikram Vedha is a frame story: the hunt for Vedha holds three smaller stories, each ending in a question like the Vetal's. Each answer tests Vikram and breaks his black-and-white view; the film leaves the last question to us.",
+  "why_now": "Cult classic: still quoted, rewatched and remade (Hindi, 2022).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vikram_Vedha (plot; 'inspired from Vikramaditya-Vetala tales', Sify)"
+  ],
+  "technique": "Frame story (story within a story), borrowed from the Vikramadithyan-Vetal tales"
+ },
+ "worth_it": {
+  "learn": "The technique has a name, frame story, and this film borrows it from the Vikram-Vetal tale.",
+  "stop": "A villain who wins an interrogation with stories, not guns.",
+  "why_now": "Cult classic people still argue about.",
+  "send_to": "The friend who still says Vikram was right.",
+  "best_angle": "Yes: the story structure is what people felt but never named."
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 2.0,
+    "screen": 0,
+    "mood": "intrigue"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxresdefault.jpg",
+   "crop": [
+    0.1,
+    0.075,
+    0.8,
+    0.795
+   ]
+  },
+  "interrogation": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres1.jpg",
+   "crop": [
+    0.06,
+    0.05,
+    0.94,
+    0.9
+   ]
+  },
+  "pulli": {
+   "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxres3.jpg",
+   "crop": [
+    0.0,
+    0.08,
+    0.86,
+    0.9
+   ]
+  },
+  "chandra": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres2.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.88
+   ]
+  },
+  "vikram_gun": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.88
+   ]
+  },
+  "faces": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxresdefault.jpg",
+   "crop": [
+    0.42,
+    0.0,
+    0.58,
+    0.86
+   ]
+  },
+  "surrender": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres2.jpg",
+   "crop": [
+    0.06,
+    0.06,
+    0.94,
+    0.88
+   ]
+  },
+  "gun_full": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.8
+   ]
+  }
+ },
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "reference-reels",
+ "id": "2026-11-14-breakdown-kit-demo",
+ "design": "blueprint",
+ "voice": {
+  "on": false
+ },
+ "subtitles": false,
+ "screens": [
+  {
+   "kind": "title",
+   "image": "title",
+   "film": "VIKRAM VEDHA",
+   "type": "SCREENPLAY BREAKDOWN",
+   "fy": 0.5,
+   "slam_at": 0.12,
+   "min": 3.2,
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    }
+   ],
+   "dur": 3.0
+  },
+  {
+   "kind": "timeline",
+   "in": "whip",
+   "dur": 6.0,
+   "heading": "THE STORY, OUT OF ORDER",
+   "events": [
+    {
+     "label": "THE CRIME",
+     "sub": "SETUP",
+     "cue": {
+      "at": 0.8
+     }
+    },
+    {
+     "label": "THE CHASE",
+     "cue": {
+      "at": 1.9
+     }
+    },
+    {
+     "label": "THE STORY",
+     "cue": {
+      "at": 3.0
+     }
+    },
+    {
+     "label": "THE TRUTH",
+     "sub": "PAYOFF",
+     "cue": {
+      "at": 4.2
+     }
+    }
+   ],
+   "links": [
+    [
+     0,
+     3
+    ]
+   ],
+   "footer": "ONE STORY PAYS OFF ANOTHER",
+   "footer_cue": {
+    "at": 4.8
+   }
+  },
+  {
+   "kind": "technique",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "FRAME STORY",
+   "definition": "A STORY THAT HOLDS STORIES",
+   "outer_label": "VIKRAM vs VEDHA",
+   "inner": [
+    "STORY 1",
+    "STORY 2",
+    "STORY 3"
+   ],
+   "tail": 0.6,
+   "sfx": [
+    {
+     "at": {
+      "word": "ஃப்ரேம்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "பெரிய"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "சின்ன"
+     },
+     "type": "pop"
+    },
+    {
+     "at": {
+      "word": "சின்ன",
+      "off": 0.3
+     },
+     "type": "pop"
+    },
+    {
+     "at": {
+      "word": "சின்ன",
+      "off": 0.6
+     },
+     "type": "pop"
+    }
+   ],
+   "dur": 4.6,
+   "cues": {
+    "name": {
+     "at": 0.5
+    },
+    "outer": {
+     "at": 1.6
+    },
+    "inner": {
+     "at": 2.6
+    }
+   }
+  },
+  {
+   "kind": "meter",
+   "in": "push",
+   "dur": 5.6,
+   "heading": "HOW THE TENSION CLIMBS",
+   "label": "TENSION",
+   "levels": [
+    {
+     "label": "A QUESTION",
+     "value": 30,
+     "cue": {
+      "at": 0.9
+     }
+    },
+    {
+     "label": "A DOUBT",
+     "value": 62,
+     "cue": {
+      "at": 2.2
+     }
+    },
+    {
+     "label": "NO WAY BACK",
+     "value": 100,
+     "cue": {
+      "at": 3.8
+     }
+    }
+   ]
+  },
+  {
+   "kind": "versus",
+   "in": "zoom",
+   "dur": 5.4,
+   "left": {
+    "image": "interrogation",
+    "label": "THE COP",
+    "sub": "RULES",
+    "cue": {
+     "at": 0.5
+    }
+   },
+   "right": {
+    "image": "pulli",
+    "label": "THE GANGSTER",
+    "sub": "STORIES",
+    "cue": {
+     "at": 1.2
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "at": 2.8
+   },
+   "slam_text": "WHO IS RIGHT?",
+   "slam_cue": {
+    "at": 3.6
+   }
+  },
+  {
+   "kind": "web",
+   "in": "whip",
+   "dur": 6.0,
+   "heading": "EVERYONE IS TIED TO ONE MAN",
+   "center": {
+    "label": "VEDHA",
+    "image": "pulli"
+   },
+   "nodes": [
+    {
+     "label": "VIKRAM",
+     "image": "interrogation",
+     "link": "HUNTS",
+     "cue": {
+      "at": 0.8
+     }
+    },
+    {
+     "label": "PULLI",
+     "link": "BROTHER",
+     "cue": {
+      "at": 1.8
+     }
+    },
+    {
+     "label": "CHANDRA",
+     "link": "LOVES",
+     "cue": {
+      "at": 2.8
+     }
+    },
+    {
+     "label": "SIMON",
+     "link": "FRIEND",
+     "cue": {
+      "at": 3.8
+     }
+    }
+   ],
+   "footer": "PULL ONE THREAD, ALL MOVE",
+   "footer_cue": {
+    "at": 4.6
+   }
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "echo": "VIKRAM VEDHA · SCREENPLAY BREAKDOWN",
+   "question": [
+    {
+     "text": "ARREST HIM",
+     "size": 130
+    },
+    {
+     "text": "OR LET HIM GO?",
+     "size": 120,
+     "color": "#F8C868"
+    }
+   ],
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.6,
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: FRAME STORY",
+   "dur": 4.0
+  }
+ ],
+ "package": {
+  "caption": [
+   "A demo of the breakdown design kits and motion graphics. Never posted."
+  ],
+  "hashtags": [],
+  "cover": "KIT DEMO",
+  "slot": "reserve"
+ }
+}

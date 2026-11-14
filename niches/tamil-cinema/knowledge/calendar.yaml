@@ -1,0 +1,49 @@
+# Calendar awareness (AGENT.md 10.5). No AI: the Engine reads this file and prints "Today" at the top of every brief,
+# so hooks and titles fit the day, the hour and the season. Edit freely; the monthly run adds the moving dates.
+# In angles, {N} is the number of films, {FILM} a film in the news today, {YEAR} the year.
+weekdays:
+  mon: { mood: "back to work, short attention", angles: ["ONE FILM TO FIX YOUR MONDAY", "MONDAY NIGHT: {N} EASY WATCHES"] }
+  tue: { mood: "quiet weeknight", angles: ["{N} FILMS UNDER 2 HOURS", "WEEKNIGHT WATCH: {N} PICKS"] }
+  wed: { mood: "midweek, solo evening", angles: ["SOLO NIGHT: {N} FILMS", "MIDWEEK ESCAPE: {N} FILMS"] }
+  thu: { mood: "release eve, weekend plans start", angles: ["BEFORE {FILM}: WATCH THESE {N}", "PLAN YOUR WEEKEND: {N} FILMS"] }
+  fri: { mood: "Friday night, date night, new releases in theatres", angles: ["FRIDAY NIGHT: {N} FILMS", "DATE NIGHT: {N} FILMS", "LOVED {FILM}? WATCH THESE {N}"] }
+  sat: { mood: "weekend binge, friends over", angles: ["SATURDAY NIGHT: {N} FILMS", "WEEKEND BINGE: {N} FILMS", "LOVED {FILM}? WATCH THESE {N}"] }
+  sun: { mood: "lazy Sunday, family at home", angles: ["LAZY SUNDAY: {N} FEEL-GOOD FILMS", "SUNDAY FAMILY WATCH: {N} FILMS"] }
+day_parts:               # the slot's time decides the word: a reel at 21:30 says LATE NIGHT, never THIS MORNING
+  - { until: "11:30", name: morning, words: ["TODAY", "THIS WEEK"] }
+  - { until: "16:30", name: afternoon, words: ["TONIGHT", "AFTER WORK"] }
+  - { until: "20:30", name: evening, words: ["TONIGHT"] }
+  - { until: "23:59", name: late night, words: ["LATE NIGHT", "BEFORE YOU SLEEP"] }
+seasons:                 # MM-DD to MM-DD, every year
+  - { name: "Pongal holidays", from: "01-13", to: "01-18", angles: ["PONGAL WATCHLIST: {N} FILMS", "PONGAL HOLIDAY BINGE"] }
+  - { name: "Exam season", from: "03-01", to: "04-10", angles: ["STUDY BREAK: ONE SHORT FILM", "AFTER EXAMS: {N} FILMS"] }
+  - { name: "Summer holidays", from: "04-15", to: "05-31", angles: ["SUMMER HOLIDAY BINGE: {N} FILMS"] }
+  - { name: "Chennai rains (north-east monsoon)", from: "10-15", to: "12-15", angles: ["RAINY NIGHT: {N} FILMS", "MAZHAI + MOVIE: {N} PICKS"] }
+  - { name: "Year end", from: "12-20", to: "12-31", angles: ["BEST OF {YEAR}: {N} FILMS", "{N} FILMS YOU MISSED IN {YEAR}"] }
+dates:                   # the same day every year (MM-DD)
+  - { date: "01-01", name: "New Year's Day", angles: ["START {YEAR} WITH THESE {N} FILMS"] }
+  - { date: "01-06", name: "A.R. Rahman's birthday" }
+  - { date: "01-16", name: "Vijay Sethupathi's birthday" }
+  - { date: "02-14", name: "Valentine's Day", angles: ["VALENTINE'S NIGHT: {N} LOVE STORIES", "NOT A LOVE STORY: {N} FILMS FOR SINGLES"] }
+  - { date: "02-17", name: "Sivakarthikeyan's birthday" }
+  - { date: "03-08", name: "Women's Day", angles: ["{N} FILMS LED BY WOMEN"] }
+  - { date: "03-14", name: "Lokesh Kanagaraj's birthday" }
+  - { date: "04-14", name: "Tamil New Year (Puthandu)", angles: ["PUTHANDU WATCHLIST: {N} TAMIL GEMS"] }
+  - { date: "04-17", name: "Vikram's birthday" }
+  - { date: "05-01", name: "Ajith Kumar's birthday" }
+  - { date: "05-25", name: "Karthi's birthday" }
+  - { date: "06-02", name: "Mani Ratnam's birthday" }
+  - { date: "06-22", name: "Vijay's birthday" }
+  - { date: "07-23", name: "Suriya's birthday" }
+  - { date: "07-28", name: "Dhanush's birthday" }
+  - { date: "08-15", name: "Independence Day", angles: ["{N} FILMS FOR INDEPENDENCE DAY"] }
+  - { date: "10-16", name: "Anirudh's birthday" }
+  - { date: "11-07", name: "Kamal Haasan's birthday" }
+  - { date: "11-14", name: "Children's Day", angles: ["{N} FILMS TO WATCH WITH KIDS", "FILMS THAT MADE US KIDS AGAIN"] }
+  - { date: "11-18", name: "Nayanthara's birthday" }
+  - { date: "12-12", name: "Rajinikanth's birthday" }
+  - { date: "12-25", name: "Christmas", angles: ["CHRISTMAS NIGHT: {N} FILMS"] }
+  - { date: "12-31", name: "New Year's Eve", angles: ["LAST WATCH OF {YEAR}"] }
+moving:                  # days that move every year (YYYY-MM-DD). The monthly run checks and adds the next ones.
+  - { date: "2027-10-29", name: "Deepavali", angles: ["DEEPAVALI WATCHLIST: {N} FILMS", "DEEPAVALI RELEASES, RANKED"] }
+look_ahead_days: 7       # days ahead listed under "Coming up", so a reel can be planned for the day itself
