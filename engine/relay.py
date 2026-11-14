@@ -103,6 +103,15 @@ def _put(d, path, value):
         d[path[-1]] = value
 
 
+def _prune(d):
+    """Drop the empty shells an undo leaves behind, so an undone change is truly gone."""
+    for k, v in list(d.items()):
+        if isinstance(v, dict):
+            _prune(v)
+            if not v:
+                del d[k]
+
+
 def _leaves(patch, base=()):
     for k, v in patch.items():
         if isinstance(v, dict) and v:
@@ -412,6 +421,7 @@ def apply_one(st, a, aid, at):
         for dotted, value in (u.get("overrides") or {}).items():
             _put(st.overrides, tuple(dotted.split(".")), value)
             st.dirty.add("overrides")
+        _prune(st.overrides)
         if u.get("note"):
             for home in [st.overrides] + list((st.overrides.get("series") or {}).values()):
                 if isinstance(home, dict) and home.get("notes"):

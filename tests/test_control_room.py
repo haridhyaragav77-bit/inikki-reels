@@ -99,6 +99,45 @@ def main():
     check(ctl.mode == "run" and not ctl.series_paused("movie-updates") and not ctl.notes("movie-recommendations")
           and ctl.settings["volume"]["base"] == 6, "undo restores the switch, the series, the rule and the setting")
 
+    # 2b. the series framework: edit any block, add a series, test, sample, retire, global switches (AGENT.md 6.1, 12.3)
+    nd = ROOT / "niches" / "tamil-cinema"
+    d.drop("20-shape.json", {"do": "series", "id": "movie-recommendations", "set": {"story_shape": ["title_screen", "plot beat", "recap_grid"], "voice_cfg.provider": "microsoft", "length_s": "20, 40"}})
+    d.drop("21-add.json", {"do": "series_add", "card": {"name": "Song Stories", "promise": "The story behind one famous song.", "slots": "17:00\n21:00", "length_s": "15, 30",
+                                                         "title_screen": "{SONG} · THE STORY", "story_shape": "title\nthe story\nquestion", "template": "bulletin", "music": '{"default":"soft_warm"}', "voice": "false"}})
+    d.drop("22-sw.json", {"do": "set", "settings": {"voice.provider": "microsoft"}})
+    d.drop("23-sw.json", {"do": "set", "settings": {"saver.enabled": True}})
+    d.drop("24-test.json", {"do": "test", "series": "movie-recommendations"})
+    d.drop("25-sample.json", {"do": "sample", "series": "film-breakdown", "url": "https://www.instagram.com/reel/x/", "note": "the first frame"})
+    d.drop("26-bad.json", {"do": "series", "id": "movie-updates", "set": {"template": "no-such-look"}})
+    d.drop("27-bad.json", {"do": "set", "settings": {"voice.provider": "robot"}})
+    d.drop("28-bad.json", {"do": "series_add", "card": {"name": "Movie Updates"}})
+    ctl = Control(d)
+    card = ctl.series("movie-recommendations", nd)
+    check(card["story_shape"] == ["title_screen", "plot beat", "recap_grid"] and card["voice_cfg"]["provider"] == "microsoft" and card["length_s"] == [20, 40],
+          "a series' structure, voice and length are changed from the Control Room")
+    check(ctl.series_changes("movie-recommendations").keys() == {"story_shape", "voice_cfg", "length_s"}, "the brief is told exactly what changed")
+    new = ctl.series("song-stories", nd)
+    check(new.get("status") == "lab" and new["slots"] == ["17:00", "21:00"] and new["voice"] is False and new["music"] == {"default": "soft_warm"} and "song-stories" in ctl.series_ids(nd),
+          "a new series is added as a lab series, in the framework's shape")
+    check(ctl.settings["voice"]["provider"] == "microsoft" and ctl.settings["voice"]["backup"] == "microsoft" and ctl.on("saver", False), "global switches are set")
+    from engine import voice as V
+    check(V.order(None, d)[0] == "microsoft", "the voice follows the switch")
+    cmds = d.read_text("control", "commands.jsonl")
+    check('"cmd": "test"' in cmds and '"cmd": "sample"' in cmds, "a test reel and a sample reel are queued")
+    log = [json.loads(l) for l in d.read_text("control", "log.jsonl").splitlines()]
+    check([x["result"] for x in log[-9:]] == ["applied"] * 6 + ["refused"] * 3, "a look that does not exist, a wrong choice and a duplicate series are refused")
+    d.drop("29-retire.json", {"do": "series_remove", "id": "song-stories"})
+    ctl = Control(d)
+    check(ctl.series_paused("song-stories") and ctl.series("song-stories", nd)["status"] == "retired", "a series is retired")
+    log = [json.loads(l) for l in d.read_text("control", "log.jsonl").splitlines()]
+    for n, what in enumerate(("series_remove", "series_add", "series"), 30):
+        d.drop(f"{n}-undo.json", {"do": "undo", "id": next(x["id"] for x in reversed(log) if x["do"] == what and x["result"] == "applied")})
+    for n, x in enumerate([x for x in log if x["do"] == "set" and x["result"] == "applied"][-2:], 40):
+        d.drop(f"{n}-undo.json", {"do": "undo", "id": x["id"]})
+    ctl = Control(d)
+    check("song-stories" not in ctl.series_ids(nd) and not ctl.series_changes("movie-recommendations") and ctl.settings["voice"]["provider"] == "elevenlabs" and not ctl.on("saver", False),
+          "undo takes back the new series, the series changes and the switches")
+
     # 3. a Google-Doc style or sloppy file still parses; several actions in one file
     check(len(relay.parse('{do: hold, reel_id: x}')) == 1 and len(relay.parse('{"do":"hold","reel_id":"a"}\n{"do":"skip","reel_id":"b"}')) == 2, "forgiving reader")
 
@@ -154,6 +193,12 @@ def main():
               "panel lists the next Engine jobs and thinking runs")
         check(len(P["tomorrow"]["slots"]) >= 4, "panel shows tomorrow's slots")
         check(len(P["series"]) >= 8, "panel lists every series")
+        fw = P["framework"]
+        check(len(fw["blocks"]) == 7 and any(x["key"] == "voice.provider" for x in fw["switches"]) and "stage" in next(f for b in fw["blocks"] for f in b["fields"] if f["key"] == "template")["options"],
+              "panel carries the series framework: 7 blocks, the switches, the looks that exist")
+        rec = next(x for x in P["series"] if x["id"] == "movie-recommendations")
+        check(rec["values"]["story_shape"] and rec["values"]["template"] == "poster-wall" and rec.get("has_reference"), "each series comes with its values, block by block")
+        check({"runner", "voice", "claude"} <= set(P["usage"]) and P["insights"].get("headline") and P["calendar"].get("day"), "panel carries usage, insights and today's calendar")
         txt = d.read_text("status", "panel.txt")
         back = json.loads(base64.b64decode("".join(c for c in txt.split("\n", 1)[1] if c.isalnum() or c in "+/=")))
         check(txt.startswith(panel.MARK) and back["updated"] == P["updated"], "page data unpacks to the same panel")
