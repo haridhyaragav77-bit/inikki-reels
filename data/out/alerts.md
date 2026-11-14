@@ -6,3 +6,6 @@
 - 14 Nov 05:40 IST · Watch This Next: Harish asked for a moving plot graphic for each film. The Poster Wall look cannot draw it yet. Today's plan carries each film's plot line ("plot") and longer screens; the look needs a Workshop change to show it.
 - 14 Nov 05:40 IST · No trailer breakdown today: none of the new trailers in the library (Lubber Pandhu, Master, Maaveeran, Amaran, Jailer, Leo) is a new release. The flex slot stays empty.
 - 14 Nov 05:40 IST · Jail Mates: the only teaser upload found is on Behindwoods TV, not a studio channel. The 21:30 update uses its frames; swap for a studio upload if one appears.
+- 14 Nov 18:45 IST · The refresh run started before today's refresh brief was written (it still held the morning plan brief). The Brain started the brief job itself and carried on. The clock task for the refresh brief may be late.
+- 14 Nov 18:45 IST · The trailer list has OM three times ("OM: Chapter One", "OM", "Om"). It is one film; one download is enough (official trailer link added to the trailer links note).
+- 14 Nov 18:45 IST · Tonight 21:30: the OM trailer update replaces the Jail Mates teaser (OM: 8+ outlets and an official upload; Jail Mates: 1 outlet). Jail Mates is now a reserve. If OM is not made in time, Jail Mates can still post.

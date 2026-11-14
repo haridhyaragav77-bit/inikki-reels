@@ -1,0 +1,244 @@
+{
+  "id": "2026-11-14-update-om-trailer",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 14 NOV 2026",
+  "lead": {
+    "topic": "OM trailer out: Dhanush as an undercover cop, Mammootty as the villain; in cinemas 20 Nov",
+    "facts": [
+      "Trailer released 13 Nov, a week before release (Filmverse; Telangana Today; Newkerala)",
+      "Dhanush plays D 402 of the Tamil Nadu Police Organised Crime Intelligence Unit; Mammootty plays the antagonist, Red Hills Karthikeyan (Telangana Today; Newkerala)",
+      "Sai Pallavi plays IPS officer Nithya Reddy; directed by Rajkumar Periasamy, music by Sai Abhyankkar, Wunderbar Films (Onmanorama; Box Office Worldwide)",
+      "Worldwide theatrical release 20 Nov 2026 (Box Office Worldwide; Deccan Chronicle)"
+    ],
+    "sources": [
+      "https://telanganatoday.com/om-trailer-mammoottys-antagonist-role-and-dhanushs-cop-avatar-surprise-fans",
+      "https://www.newkerala.com/news/a/dhanush-mammootty-starrer-oms-trailer-springs-surprise-reveals-dhanush-257.htm",
+      "https://boxofficeworldwide.com/movies-latest-news/om-trailer-dhanush-mammootty-rajkumar-periasamy-20-november-release/",
+      "https://filmverse.in/om-trailer-release-today-dhanush-mammootty-sai-pallavi-november-13/",
+      "https://www.onmanorama.com/entertainment/entertainment-news/2026/10/27/sai-pallavi-character-post-om-movie-dhanush-mammootty.html",
+      "https://www.youtube.com/watch?v=aGSOpb_6kv8"
+    ],
+    "pictures_note": "Official trailer upload on Divo Music (the film's music label), checked by eye: maxresdefault is the trailer card (Dhanush left, Mammootty right; crops keep out the TRAILER word and date); maxres2/maxres3 are Dhanush at night. maxres1 (a side character) is not used.",
+    "replaces": "2026-11-14-update-jail-mates-teaser at 21:30 (now a reserve): OM is reported by 8+ outlets, 3 trusted, and has an official upload; Jail Mates had 1 outlet and an unofficial upload."
+  },
+  "worth_it": {
+    "fan_opens_because": "Dhanush and Mammootty face each other for the first time, and the trailer flips who is the cop.",
+    "spoilers": "None beyond what the official trailer shows.",
+    "voice": "Off: a trailer drop is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "dark, heavy, slow build then hit"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.07,
+        0.06,
+        0.34,
+        0.88
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.57,
+        0.1,
+        0.27,
+        0.82
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.12,
+        1.0,
+        0.76
+      ]
+    },
+    "dhanush_smile": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.12,
+        1.0,
+        0.76
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.4,
+      "lines": [
+        {
+          "text": "OM",
+          "size": 280,
+          "y": 1310
+        },
+        {
+          "text": "TRAILER OUT",
+          "size": 115,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "glitch",
+      "image": "mammootty_card",
+      "fx": 0.4,
+      "fy": 0.4,
+      "dur": 4.4,
+      "lines": [
+        {
+          "text": "MAMMOOTTY",
+          "size": 150,
+          "y": 1300
+        },
+        {
+          "text": "PLAYS THE VILLAIN",
+          "size": 115,
+          "y": 1450,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "glitch"
+        },
+        {
+          "at": 1.0,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "whip",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "lines": [
+        {
+          "text": "DHANUSH",
+          "size": 170,
+          "y": 1310
+        },
+        {
+          "text": "UNDERCOVER COP",
+          "size": 115,
+          "y": 1460,
+          "color": "#78E0D0"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_smile",
+      "dur": 4.4,
+      "echo": "OM · IN CINEMAS 20 NOV",
+      "question": [
+        {
+          "text": "DHANUSH VS",
+          "size": 120
+        },
+        {
+          "text": "MAMMOOTTY?",
+          "size": 120
+        }
+      ],
+      "sub": "Who wins this face-off?",
+      "cta": "SEND TO YOUR MOVIE BUDDY",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "OM: the trailer is out.",
+      "Dhanush goes undercover with the Tamil Nadu Police intelligence unit, and Mammootty is the villain. Sai Pallavi plays IPS officer Nithya Reddy. Directed by Rajkumar Periasamy, music by Sai Abhyankkar.",
+      "In cinemas 20 Nov.",
+      "Send this to the friend you are watching it with.",
+      "ஓம் — ட்ரெய்லர் வெளியானது."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "OM · TRAILER OUT",
+    "slot": "21:30",
+    "first_comment": "Dhanush or Mammootty: who owns this trailer?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 9,
+    "total_100": 70,
+    "weakest": {
+      "save_value": "news, not a keeper; the date is the save",
+      "loop": "end card returns to the face-off"
+    }
+  }
+}

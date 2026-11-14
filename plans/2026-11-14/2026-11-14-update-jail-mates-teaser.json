@@ -2,6 +2,7 @@
   "id": "2026-11-14-update-jail-mates-teaser",
   "series": "movie-updates",
   "template": "bulletin",
+  "reserve": true,
   "fps": 30,
   "length_s": [
     15,
@@ -206,7 +207,7 @@
       "#reels"
     ],
     "cover": "JAIL MATES · TITLE TEASER",
-    "slot": "21:30",
+    "slot": "reserve",
     "first_comment": "Name a Tamil film that already felt a little meta."
   },
   "drive_folder": "finished",
