@@ -215,7 +215,11 @@ def usage(ctl, drive, money_card):
                          f"At {int(float(R.get('last_share', .95)) * 100)}%: only {R.get('last_reels_day', 3)} new reels a day, so posting never stops",
                          "At 100%: GitHub stops every job until the 1st. Nothing moves to Claude: the Brain cannot make or post reels."]}
     v = _safe(lambda: drive.read_json("status", "voice.json"), {}) or {}
-    sub, reels = v.get("subscription") or {}, v.get("reels") or {}
+    sub, reels = v.get("subscription") or {}, dict(v.get("reels") or {})
+    from .voice import NO_KEY
+    real = [r for r in v.get("recent") or [] if r.get("why") != NO_KEY]        # the automatic look check runs without the key: not a reel
+    if v.get("recent"):
+        reels = {p: len({r.get("reel_id") for r in real if r.get("voice") == p}) for p in ("elevenlabs", "microsoft")}
     el = reels.get("elevenlabs", 0)
     per_reel = round(v.get("credits_by_engine", 0) / el) if el else None
     now = status.now()
@@ -223,7 +227,7 @@ def usage(ctl, drive, money_card):
              "left": sub.get("left"), "resets": sub.get("resets"), "tier": sub.get("tier"), "read": sub.get("read"),
              "reels_elevenlabs": el, "reels_microsoft": reels.get("microsoft", 0), "per_reel": per_reel,
              "covers_reels": int(sub["left"] / per_reel) if per_reel and sub.get("left") is not None else None,
-             "reused_lines": v.get("lines_reused"), "last_backup": next((r for r in v.get("recent", []) if r.get("voice") == "microsoft" and r.get("why")), None)}
+             "reused_lines": v.get("lines_reused"), "last_backup": next((r for r in real if r.get("voice") == "microsoft" and r.get("why")), None)}
     try:
         if per_reel and sub.get("resets") and sub.get("left") is not None:
             days_left = max(1, (dt.date.fromisoformat(sub["resets"]) - now.date()).days)
@@ -397,7 +401,8 @@ def text(P):
     if r.get("forecast"):
         L.append(f"Runner minutes are heading for {r['forecast']} of {r.get('limit')} by month end ({r.get('stage')})." + (f" At this pace they run out on {r['runs_out']}." if r.get("runs_out") else ""))
     if v.get("limit"):
-        L.append(f"Voice: ElevenLabs {v.get('used')} of {v.get('limit')} credits used, new credits on {v.get('resets')} · this month {v.get('reels_elevenlabs', 0)} reels with ElevenLabs, {v.get('reels_microsoft', 0)} with the Microsoft backup")
+        n_el, n_ms = v.get("reels_elevenlabs", 0), v.get("reels_microsoft", 0)
+        L.append(f"Voice: ElevenLabs {v.get('used')} of {v.get('limit')} credits used, new credits on {v.get('resets')} · this month {n_el} reel{'s' if n_el != 1 else ''} with ElevenLabs, {n_ms} with the Microsoft backup")
     if m.get("per_reel"):
         L.append(f"Per posted reel this month ({m.get('posted_month')} reels): ₹{m['per_reel'].get('images_inr')} images · {m['per_reel'].get('runner_min', '?')} runner minutes")
     t = m.get("thinking") or {}

@@ -22,6 +22,7 @@ from . import status
 
 TOOL = str(ROOT / ENGINE["voice"]["tool"])
 CACHE_FOLDER = "work/voice-cache"
+NO_KEY = "no ElevenLabs key on this job"        # only test runs (the automatic look check) render without the key
 PROVIDERS = ("elevenlabs", "microsoft")
 
 
@@ -174,7 +175,7 @@ def note_use(drive, provider, reel_id, credits=0, reused=0, why=None, sub=None):
     led["reels"][provider] = led["reels"].get(provider, 0) + 1
     led["credits_by_engine"] = led.get("credits_by_engine", 0) + int(credits)
     led["lines_reused"] = led.get("lines_reused", 0) + int(reused)
-    led["recent"] = ([{"at": status.stamp(), "reel_id": reel_id, "voice": provider, "credits": int(credits), "why": why}] + led.get("recent", []))[:40]
+    led["recent"] = ([{"at": status.stamp(), "reel_id": reel_id, "voice": provider, "credits": int(credits), "why": why}] + led.get("recent", []))[:300]
     sub = sub or subscription()
     if sub:
         led["subscription"] = {**sub, "read": status.stamp()}
@@ -275,7 +276,7 @@ def elevenlabs_batch(plan, outdir, drive=None, reel_id=None, sub=None):
     """Every line once. Lines already recorded (this run, or kept in Drive) are reused and cost nothing."""
     e = eleven()
     if not key():
-        return {"ok": False, "error": "no ElevenLabs key on this job", "skipped": True}
+        return {"ok": False, "error": NO_KEY, "skipped": True}
     os.makedirs(outdir, exist_ok=True)
     vid = voice_id(plan.get("voice"))
     vs = {**(e.get("settings") or {}), **{k: v for k, v in (plan.get("settings") or {}).items() if k in ("stability", "similarity_boost", "style", "speed", "use_speaker_boost")}}

@@ -85,8 +85,13 @@ def build(metrics, now=None, days=14):
     if not out["solid"]:
         do.append({"do": f"Keep posting: {need - len(reels)} more measured reels before the numbers are solid", "why": f"{len(reels)} reels in {days} days is a small sample; one lucky reel can move every line above"})
     lead = strong[0] if strong else (series[0] if series else None)
-    out["headline"] = (f"{lead['name']} leads with {int(lead['views'])} views in the middle" + (f" ({int(lead['vs_page'] * 100):+d}% vs the page)" if lead.get("vs_page") else "")
-                       + f"; the page's middle reel gets {int(page)} views over {len(reels)} reels{early}.") if lead and lead.get("views") is not None else f"{len(reels)} reels measured."
+    if lead and lead.get("views") is not None:
+        vs = f" ({int(lead['vs_page'] * 100):+d}% against the page)" if lead.get("vs_page") else ""
+        said = (f"{lead['name']} leads with {int(lead['views'])} views on its one measured reel{vs}" if lead["reels"] == 1
+                else f"{lead['name']} leads: its middle reel gets {int(lead['views'])} views{vs}")
+        out["headline"] = f"{said}. The page's middle reel gets {int(page)} views over {len(reels)} reels{early}."
+    else:
+        out["headline"] = f"{len(reels)} reels measured."
     return out
 
 
