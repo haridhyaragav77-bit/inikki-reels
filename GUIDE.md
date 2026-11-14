@@ -59,6 +59,9 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 **What it only proposes:** brand, niche, safety rules, budgets, daily volume, pausing or adding a series.
 **Guard rails:** no rule changes until 10 reels have been measured over 14 days. One thing changed per test. A change that hurts is undone by itself.
 
+**The loop in one line:** post → measure (every night) → **Insights** (worked out by code, no tokens) → decide → change → post.
+Open the page's **Insights** tab any day: it says which series earn their slot, which hour works, which first frames lose people, and gives a short "do next" list with the number behind each line. Tap **Send to the agent** on a line you agree with. The Sunday run starts from the same findings, so it thinks less and decides better. With fewer than 10 measured reels, every line is marked as an early signal.
+
 **Where you fit in the loop:**
 - Your **feedback** on a reel becomes a soft rule, tried on the next 5 reels. If the numbers disagree, you see both and choose.
 - Your **standing rule** applies from the next Plan run and is never undone by numbers.
@@ -89,6 +92,11 @@ Last updated 13 Nov 2026. The full design is `AGENT.md`; this guide is the short
 | Change reels per day, slot times, budgets | **Settings** tab | `post 5 a day` |
 | Take something back | **Actions** → **Undo** | `undo` |
 | Clear the alerts | **Alerts** → **Mark all read** | `clear alerts` |
+
+### Switches and usage (page → Setup, page → Usage)
+- **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
+- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage, and the two times of day to keep Claude free for the runs.
+- **If the runner minutes run out:** GitHub stops every job until the 1st. Nothing moves to Claude. The Engine slows down by itself before that (fewer extras, then 3 new reels a day) so posting does not stop. Saver mode and "one fewer reel a day" are your two levers.
 
 ## 6. Refinement loops: making it better
 
@@ -129,16 +137,26 @@ If the words are fine but the title screen needs a stronger *picture*, that is t
 
 A series is one settings card (name, look, slot, length, rules). A lineup says which series fill the day. Nothing about a series lives in code.
 
+Every series is the same **7 blocks**: Basics → Structure → Visuals → Voice → Music → Caption and hashtags → Rules. Open a series on the page to see them.
+
 | I want to… | How | Where |
 | --- | --- | --- |
 | Pause or resume | **Series** → Pause / Resume | Page |
-| Change its habits | **Add a rule** | Page |
-| Change its time or length | Chat: `move watch this next to 17:00` or `make updates 12 to 20 seconds` | Chat |
-| See how it is doing | **Series** tab: views against the page's middle value | Page |
-| **Add** a new series | Workshop prompt "Add a series" (section 14). It starts as a trial for 2 weeks. | Workshop |
-| **Replace** one with another | Workshop prompt "Replace a series" | Workshop |
-| **Retire** one | Workshop prompt "Retire a series" (its history is kept) | Workshop |
-| Let the agent suggest one | Every second Sunday it pitches up to 3, with evidence and cost. You tap Run it, Tweak or Veto. | Weekly report |
+| Change anything about it | **Series** → open it → open a block → **Edit** → **Save this block** | Page |
+| Add a section after another one | **Structure** → Edit → press **＋** on the line above, type it, Save | Page |
+| Reorder or remove sections | **Structure** → Edit → **↑ ↓ ✕** | Page |
+| Change its voice | **Voice** → Edit → provider (ElevenLabs or Microsoft), voice, speed | Page |
+| Change hashtags or caption style | **Caption and hashtags** → Edit | Page |
+| Add a habit | **Rules** → Add a rule | Page |
+| Test it | **Make a test reel**: its reference reel, made with today's settings, lands in Drive `rehearsal/tests`. Never posted. | Page |
+| Improve it with sample reels | **Train with samples**: paste a link and one line on what to learn. The Sunday run studies them. Or copy the training prompt and train it now in a chat. | Page (or Workshop) |
+| **Add** a new series | **Add a series**: 7 short steps of questions, or start from a copy. It starts as a lab series. | Page |
+| Move it forward | **Move to trial** → **Make it live** | Page |
+| **Retire** one | **Retire** (its history is kept; Undo brings it back) | Page |
+| A brand-new look | Workshop prompt "Add a series" (section 14) | Workshop |
+| Let the agent suggest one | Every second Sunday it pitches up to 3, with evidence and cost. | Weekly report |
+
+A change you make shows a small gold dot until it is undone. Everything here costs no tokens; it counts from the next Plan run.
 
 **Life of a series:** pitch → trial (2 weeks, Trial Reels) → live → reworked or retired. A new series needs its own title screen, look, music and rules before its first reel.
 

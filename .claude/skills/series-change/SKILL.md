@@ -8,6 +8,15 @@ series fill the day. Nothing about a series lives in code (CLAUDE.md rule 1).
 
 Pause or resume (no build needed): the Control Room does it: {"do":"series","id":"<id>","set":{"paused":true}}.
 
+Every series card is the same 7 blocks (config/framework.yaml): basics, structure, visuals, voice, music, caption,
+rules. Harish can change any field, add a series (it starts as lab), test, feed sample reels and retire from the
+Control Room page with no tokens; those changes live in Drive control/overrides.yaml and the brief lists them.
+In the Workshop, fold them into the series file when asked ("make the Control Room changes permanent").
+
+Train a series from sample reels: say in 3 lines what makes each sample work, ask up to 5 short questions one at a
+time, turn the answers into block-by-block changes (before → after), apply the approved ones, run the tests, make one
+test reel (python -m engine.render <its reference plan> --to-drive rehearsal/tests/<id>).
+
 Change a series (times, length, rules, title screen): edit its series.yaml. Log one line in rules/changes.md.
 
 Add a series:

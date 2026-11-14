@@ -199,7 +199,18 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 **The clock (14 Nov 2026).** GitHub's own timer delivered this repository's scheduled jobs about 7 hours late. So the jobs that must be on time are started by Claude scheduled tasks: each sends `TICK <job>` to a small **clock** chat on the cheapest model, which starts that one GitHub job and does nothing else. Started this way: Post at each of the 8 slots (it posts at once, with no waiting on the runner), the briefs before the Plan, Refresh, Weekly and Monthly runs, and the Nightly job. GitHub's own timer stays in the job files as a late backstop for the rest (health, trailers, the Make safety nets, music). If GitHub's timer becomes punctual, or a free outside pinger is set up (`GUIDE.md` section 12), the clock tasks are switched off.
 
 ### 4.4 Voice
-Your `tools/voice_tool.py` (Microsoft Tamil voices). Order of preference: cloud runner → retry after 10 minutes → a cloud Claude session → music-only version with short key-line captions (the motion graphics still carry the ideas). **Voice and rendering always run in the cloud, never on your laptop.**
+**Main voice: ElevenLabs. Backup, always kept: Microsoft** (your `tools/voice_tool.py`). Which one speaks is a setting: the page's main voice (Control Room → Setup), a series' own choice (its Voice block), or one plan.
+
+| Rule | Detail |
+| --- | --- |
+| One take, never two drafts | Every line is recorded once and kept by its exact words (Drive `work/voice-cache`). A retry, a word change or a re-made reel reuses it and costs nothing. |
+| One voice per reel | If the main voice fails part-way, the whole reel is recorded with the backup. The reel's notes and the Control Room say so, with the reason. |
+| Word timings | Both voices give a time for every word, so subtitles light up and graphics land on the word. |
+| Fits the length | A reel that would run past its series' longest length is spoken a little faster (never above 1.15×) instead of being held. |
+| Credits are a cost guard | The month's ElevenLabs credits are read before each reel. Below the reserve (`config/engine.yaml`), or with no key, the backup speaks until the credits renew. |
+| Order of fallbacks | ElevenLabs → Microsoft → music-only version with short key-line captions. |
+
+Settings: `config/engine.yaml` `voice` (voices, models, reserve) and `config/agent.yaml` `voice` (provider, voice, quality best/economy, speed). The key is the GitHub secret `ELEVENLABS_API_KEY`. **Voice and rendering always run in the cloud, never on your laptop.**
 
 ### 4.5 Rehearsal, then live
 | Phase | What happens |
@@ -316,7 +327,7 @@ Motion graphics exist to **show the idea the voice is saying, at the moment it i
 | Show, don't write | Arrows, timelines, meters, maps, camera paths, moving figures. Labels of 3 words or fewer (names, numbers). Sentences belong in the voice. |
 | On pace | Each graphic appears on the word it explains and leaves when that idea ends. Timed from the voice timestamps. |
 | No repeats in a reel | Each idea gets its own visual. The same graphic may come back once, only as a callback at the end. |
-| Reuse across reels | The same idea always gets the same graphic, from the **motion library** (`niches/tamil-cinema/motion_library.md`). Over time this becomes the page's visual language. |
+| **A different design every reel** (Harish, 14 Nov) | Unique motion graphics are the page's selling point. Every breakdown names a **design kit** (colours and backdrop: spotlight, blueprint, noir, neon, paper, forest, royal) and is **built from the graphics that fit that film's idea** (pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web). The plan check refuses a kit used in the last 3 breakdowns and a build identical to the last 2 (`unique_design` in the series card). The brief lists what was used lately. |
 | One hero moment | Every reel has one rich graphic people remember: layered, with depth, light and movement. Example: a fight drawn as moving figures on a top-down map. |
 | Takes over when visuals don't fit | If no clip or still matches a beat, the graphic goes full-screen and leads that beat. |
 | Uses the space | Graphics can use the whole frame, not just a strip at the bottom. |
@@ -386,6 +397,9 @@ Rules:
 - **Proof:** every "X recommends Y" comes from a real interview, list or post, named in the plan's sources (2 trusted sources, as for news). No source, no film on the list.
 - **Shape (20 to 45 seconds), Poster Wall look:** title (the person or the theme) → 3 to 5 films, one per screen: the film's picture, Letterboxd rating, one award or famous fact, a reason of 6 words or fewer (in the person's words when there is a quote), where to watch in India → recap list → save prompt.
 - **Pictures:** the recommended films' own official material (5.11).
+- **Hook frame (Harish, 14 Nov):** the eye rests on the middle of the screen, so the title lives there, as big as the width allows, between two moving rows of the films' posters. Above it sits a **kicker**: 2 to 4 words that tie the list to today (the day, the hour, the season, or a film in the news: "FRIDAY NIGHT WATCHLIST", "BEFORE JAILER 2"), taken from the brief's Today lines (10.5).
+- **Plot beat:** after each film's card, the card lifts into a film strip and the plot is told in 2 to 3 short beats on a drawn thread. Premise only, never a spoiler.
+- **Pace:** title 3.2 s at most, a film 6.6 s at most (card, then plot beat), recap 5 s at most. The limits are settings in the series card (`pace`) and the plan check enforces them.
 
 ### 5.13 Trailer breakdowns
 When a new trailer lands in the library, one 40 to 50 second reel on what the trailer shows: 3 things noticed (a shot, a line, a detail), each on its exact shot, then what they might mean (as questions, never as facts or leaks), and a send-off. Only that trailer's clips. At most 1 a day, in the flex slot. Stage look, with the standard for every reel (5.10): sound-on, subtitles, a named technique when there is one.
@@ -405,6 +419,8 @@ They keep their earlier looks until rebuilt in the new style:
 
 ### 6.1 What a series is
 A folder with one settings card (`series.yaml`) and 2–3 example reels. The Engine runs whatever is switched on.
+
+**The series framework (Harish, 14 Nov).** Every series card is the same **7 blocks**, in this order: **Basics** (name, promise, stage, times, length) → **Structure** (hook frame, sections in order) → **Visuals** (look, picture sources, motion graphics) → **Voice** (on/off, provider, voice, speed, subtitles) → **Music** → **Caption and hashtags** → **Rules**. The blocks and their fields are listed in one file, `config/framework.yaml`. The Control Room draws each series' editor and the "add a series" questions from that file, and the relay accepts only those fields, so the smallest change (one section added after another, another voice, a new hashtag) is a few taps and no tokens.
 
 | Setting | Example (Film Breakdown) |
 | --- | --- |
@@ -484,6 +500,8 @@ Series must not look alike. Each has its own template, background and use of spa
 A pitch that needs a **new template** becomes a build request. The pilot waits until the template passes tests. Seed ideas are in `lab/backlog.md`.
 
 ---
+
+**From the Control Room, with no tokens (14 Nov).** "Add a series" asks the framework's own questions block by block (it can start from a copy of a series you have), then sends one note. The Engine adds it as a **lab** series (test reels only); the next brief turns it into a real series file and lists it for planning at its times. From its page you can then: **make a test reel** (its reference reel, made with today's settings, into Drive `rehearsal/tests`), **train it with sample reels** (links and one line on what to learn; the weekly run studies them, or a ready prompt opens a training chat now), **move it to trial or live**, **pause** or **retire** it. Every one of these can be undone.
 
 ## 8. Refining things, and your feedback
 
@@ -566,6 +584,13 @@ A sentence you set for one series or for the whole page, for example "Watch This
 
 ---
 
+### 9.4 Insights by code (the simple outer loop)
+The loop is: **post → measure → insights → decide → change → post**. The middle step costs no tokens.
+
+1. **Measure:** the nightly job reads Instagram's numbers for every posted reel (as before).
+2. **Insights:** `engine/insights.py` turns them into findings in plain words: which series earn their slot (against the page's middle reel), which hour works, which first frames lose people, what gets sent to friends, and a short **"do next"** list with the number behind each line. With fewer than 10 measured reels every line is called an early signal.
+3. **Decide:** the Control Room's Insights tab shows it. One tap sends a line to the agent; the weekly brief carries the same lines, so the weekly run starts from findings, checks them, and outputs at most 5 numbered changes (9.1 to 9.3 still apply).
+
 ## 10. Radar: trends, breaking news, competitors
 
 ### 10.1 Trend radar
@@ -588,6 +613,8 @@ Each trend gets a speed (rising / peak / fading), a risk (none / fan war / sensi
 2. A strong signal fires the Breaking run.
 3. The Researcher confirms with 2 trusted sources. Unconfirmed items are logged, not posted.
 4. One short reel (Flash template, no voice) posts as soon as it renders. Max 2 a day.
+6. **Scouts (14 Nov, after the missed "Ohm" trailer):** fast pages that are quick with film news (first: @chennaiist, `sources.yaml` `scouts`) are read at every pass through Instagram's own API. A scout is a signal, never proof.
+7. **Drops are worth minutes:** a trailer, teaser, first look or release date wakes the Breaking run with 2 trusted sources, **or** with one scout that names the film's official account. (Before, a small film's trailer could never reach the score needed.) A film's trailer is one story whoever reports it, and the film goes on the trailer wanted list with the accounts the scout named.
 5. **Respect mode:** a death or tragedy pauses hype reels, memes and jokes for the day. Only a fitting tribute may post. The Breaking run turns it on (`plans/<date>/respect.json`). The watcher turns it on by itself only when two trusted publishers report the same death. Series that may still post are set in `config/agent.yaml` (`respect.allow_series`).
 
 ### 10.3 Competitors and what already works
@@ -600,6 +627,8 @@ Each trend gets a speed (rising / peak / fading), a risk (none / fan war / sensi
 
 Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook types, formats, endings and topics, each with how many times it won or lost. The Script Writer and Series Maker read this list, never the raw data. The agent borrows formats and ideas, never another page's footage or designs.
 
+**Source study (no AI).** The watch keeps, per scout, how many film posts it makes, which kinds, which official accounts it names, and how many minutes it was ahead of our news feeds (Drive `status/scouts.json`). Accounts named again and again are learned: the trailer search looks there first. The weekly brief prints the study so the Researcher can add the best ones to `sources.yaml`; the Control Room shows it under Insights.
+
 ### 10.4 Adapting to challenges
 | Challenge | Response |
 | --- | --- |
@@ -609,6 +638,9 @@ Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook t
 | Instagram changes its rules or API | Health check flags it. A build request is raised. Posting falls back to bank reels. |
 
 ---
+
+### 10.5 Calendar awareness
+The agent knows what day it is. No AI: `engine/almanac.py` reads `niches/<niche>/knowledge/calendar.yaml` and prints **Today** at the top of every brief: the day and its mood (Friday night, lazy Sunday, midweek), the season (Pongal holidays, Chennai rains, exam season), festivals and birthdays today and in the next 7 days, the words that fit each slot's hour (a 21:30 reel says LATE NIGHT), and title angles for the day ("FRIDAY NIGHT: {N} FILMS", "LOVED {FILM}? WATCH THESE {N}"). A series with `timely_titles: true` (Watch This Next) must use it. The monthly run adds the dates that move each year.
 
 ## 11. Brand kit and the rebrand switch
 
@@ -680,6 +712,8 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Away mode | On / off | Off |
 | Safety rules | View. Edits need a typed confirmation. | Section 12.4 |
 
+**More switches (14 Nov), all under Control Room → Setup:** main voice (ElevenLabs or Microsoft), ElevenLabs voice, voice quality (best or economy), voice speed, breaking news on/off and its daily cap, calendar awareness, fast-page scouts, a different design for every breakdown, saver mode (fewer runner minutes), approval level, away mode. Each is one key of `config/agent.yaml`, listed with its allowed choices in `config/framework.yaml`; the relay refuses anything else.
+
 ### 12.4 Safety rules (only you change these)
 1. No rumours as fact. Unconfirmed is labelled or skipped.
 2. No fan-war bait. No insults to people or films. Comparisons are about craft.
@@ -711,6 +745,8 @@ The Control Room never edits the Engine's files. For each thing you ask, it **cr
 **When it counts:** at the next Engine job (the panel lists them; by day that is at most about 2.5 hours). The Post job reads the inbox again right before it publishes, so Hold and Sleep always count before the next post. To apply at once: GitHub → Actions → daily → Run workflow → `control`, or say "apply now" in a Workshop session.
 
 ---
+
+**Actions added on 14 Nov:** `series` now takes any field of the series framework (dots go into a block: `voice_cfg.provider`); `series_add` (a new lab series), `series_remove` (retire), `test` (a test reel into Drive `rehearsal/tests`), `sample` (a reel to learn from). `set` takes dotted keys for the switches. All but `test` and `sample` can be undone, and an undo leaves nothing behind.
 
 ## 13. Dashboard
 
@@ -747,6 +783,8 @@ After every job the Engine writes one small status file, the **panel**, in two f
 The **Control Room page** is a saved page of cards and buttons. It reads the panel straight from Drive through your Google Drive connection and writes actions to the inbox (12.5). Opening it, refreshing it and pressing its buttons use **no Claude tokens**. It counts down to the next run. The chat is for what buttons cannot do: wording a new hook together, questions, wizards.
 
 ---
+
+**The page since 14 Nov.** Tabs: **Today** (with the calendar line) · **Next** · **Series** (the list → one series as its 7 blocks, each with Edit; sections are reordered with ↑ ↓, added with ＋, removed with ✕; buttons to pause, test, train, move stage, retire; "Add a series") · **Insights** (findings and "do next", then the numbers, the news radar and the source study) · **Usage** (runner minutes with the month-end forecast, voice credits, pictures, storage, Claude) · **Setup** (reels a day, phase, the switches, your last actions with Undo) · **Guide**. Still no tokens: it reads one file and writes one small note per button.
 
 ## 14. Data, files and storage
 
@@ -861,6 +899,12 @@ The Series Maker adds a skill whenever the same job has been done by hand 3 time
 | Claude Pro | Shared with your own use | Step-down ladder above |
 
 ---
+
+**Runner minutes: what happens near 2,000 (14 Nov).** GitHub gives a private repository 2,000 free minutes a month. At 100% GitHub stops every job until the 1st, and **nothing moves to Claude**: the Brain cannot make or post reels. So the Engine slows down first, in code: (1) the month is heading past the limit at this week's pace, or Saver mode is on → reserve and bank reels wait; (2) 85% used → the same, and no extra news checks; (3) 95% used → at most 3 new reels a day, so posting never stops before the 1st. The Usage tab shows minutes used, the forecast for month end and the day they would run out. To never stop: a small spending limit in GitHub's billing settings buys extra minutes. The repository stays private: the keys in GitHub Secrets are not readable from a public repository either, but a public one shows every plan, rule and log to anyone and lets strangers send pull requests at workflows that hold keys, for no gain worth that risk.
+
+**Voice credits.** The Usage tab shows ElevenLabs credits used and left, credits per reel, how many more reels they cover, and whether they last until they renew. Economy quality (Setup) uses about half the credits per line.
+
+**Claude tokens.** Claude has no way to set tokens aside for the agent or to block other chats. What protects the runs: every run starts in a clean chat (15.1), a run that was blocked is started again by the catch-up check (4.2), and the Usage tab names the two times of day to keep Claude free.
 
 ## 16. Control Room UX
 
