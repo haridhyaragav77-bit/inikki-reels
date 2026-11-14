@@ -382,6 +382,9 @@ const openBlk = new Set(store("blk", ["structure"]));
 const show = v => v === true ? "on" : v === false ? "off" : Array.isArray(v) ? v.join(" · ") : v && typeof v === "object" ? Object.entries(v).map(([k, x]) => `${k}: ${typeof x === "object" ? JSON.stringify(x) : x}`).join(" · ") : v == null || v === "" ? "—" : String(v);
 const raw = v => v == null ? "" : Array.isArray(v) ? v.join("\n") : typeof v === "object" ? JSON.stringify(v) : String(v);
 const rawf = (f, v) => f.type === "range" && Array.isArray(v) ? v.join(", ") : raw(v);
+const NICE = { elevenlabs: "ElevenLabs", microsoft: "Microsoft", autopilot: "Autopilot", check_in: "Check-in", hands_on: "Hands-on", best: "Best", economy: "Economy",
+  draft: "Draft", trial: "Trial", live: "Live", retired: "Retired", case_by_case: "Case by case", none_when_music_only: "None when music only", tamil_tanglish_subtitles: "Tamil + Tanglish" };
+const nice = (o, key) => NICE[o] || (key === "voice.speed" || (key || "").endsWith("speed") ? o + "×" : String(o));
 const voiceName = v => (FW().voice_labels || {})[v] || v;
 const sPill = s => `<span class="pill ${s.paused ? "held" : s.status === "retired" ? "skipped" : s.status === "trial" || s.status === "draft" ? "planned" : "ready"}">${s.paused && s.status !== "retired" ? "paused" : esc(s.status || "live")}</span>`;
 const sLine = s => [(s.slots || []).join(" · ") || "flex slot", s.look, s.length_s ? s.length_s.join("–") + " s" : "", (s.values || {}).voice === true ? "voice" : (s.values || {}).voice === false ? "music only" : ""].filter(Boolean).join(" · ");
@@ -389,6 +392,7 @@ function valHtml(f, v) {
   if (v == null || v === "" || (Array.isArray(v) && !v.length)) return `<span class="sub">not set</span>`;
   if (f.type === "list" && Array.isArray(v)) return `<ol>${v.map(x => `<li>${esc(String(x).replace(/_/g, " "))}</li>`).join("")}</ol>`;
   if (f.key.endsWith("elevenlabs_voice")) return esc(voiceName(v));
+  if (typeof v === "string" && NICE[v]) return esc(NICE[v]);
   return esc(show(v));
 }
 function listEditor(key) {
@@ -401,7 +405,7 @@ function fieldInput(f, s) {
   if (f.type === "list" || f.type === "times") return listEditor(k);
   if (f.type === "days") return `<div class="chips">${DAYS.map(d => `<button type="button" data-act="day" data-key="${k}" data-id="${d}" aria-pressed="${ed.lists[k].includes(d)}">${d}</button>`).join("")}</div>`;
   if (f.type === "choice" || f.type === "bool") { const opts = f.type === "bool" ? ["true", "false"] : f.options || [];
-    return `<select id="${id}" data-key="${k}"><option value="">(not set)</option>${opts.map(o => `<option value="${esc(o)}" ${String(o) === String(v) ? "selected" : ""}>${esc(k.endsWith("elevenlabs_voice") ? voiceName(o) : f.type === "bool" ? (o === "true" ? "on" : "off") : o)}</option>`).join("")}</select>`; }
+    return `<select id="${id}" data-key="${k}"><option value="">(not set)</option>${opts.map(o => `<option value="${esc(o)}" ${String(o) === String(v) ? "selected" : ""}>${esc(k.endsWith("elevenlabs_voice") ? voiceName(o) : f.type === "bool" ? (o === "true" ? "on" : "off") : NICE[o] || o)}</option>`).join("")}</select>`; }
   if (f.type === "long" || f.type === "any") return `<textarea id="${id}" data-key="${k}">${esc(v)}</textarea>`;
   return `<input type="text" id="${id}" data-key="${k}" value="${esc(v)}" ${f.type === "number" ? 'inputmode="decimal"' : ""} ${f.type === "range" ? 'placeholder="20, 45"' : ""}>`;
 }
@@ -543,7 +547,7 @@ function vSetup() {
     <div class="card"><div class="sub">Reels per day</div><div class="big">${num(base)}</div><div class="inline"><button type="button" data-act="vol" data-id="-1" ${base <= 3 ? "disabled" : ""}>One fewer</button><button type="button" data-act="vol" data-id="1" ${base >= 8 ? "disabled" : ""}>One more</button></div><div class="sub">Slots: ${esc((P.slots || []).join(" · "))}</div></div>
     <div class="card"><div class="sub">Phase</div><div class="big">${esc(P.phase || "—")}</div><div class="inline"><button type="button" data-act="phase" data-id="${P.phase === "live" ? "rehearsal" : "live"}">${P.phase === "live" ? "Back to rehearsal" : "Go live"}</button></div><div class="sub">Rehearsal makes every reel and posts nothing.</div></div>
     <div class="card"><div class="sub">Lineup</div><div style="font-weight:700">${esc(P.lineup || "—")}</div><div class="sub">Approval: ${esc(P.approval || "—")}. Use Hold posts to approve each reel yourself.</div></div></div>`;
-  const sws = FW().switches || [], swHtml = x => { const cur = x.value, opts = x.type === "bool" ? [true, false] : x.options || [], name = o => x.type === "bool" ? (o ? "On" : "Off") : x.key.endsWith("elevenlabs_voice") ? voiceName(o).split(" · ")[0] : String(o);
+  const sws = FW().switches || [], swHtml = x => { const cur = x.value, opts = x.type === "bool" ? [true, false] : x.options || [], name = o => x.type === "bool" ? (o ? "On" : "Off") : x.key.endsWith("elevenlabs_voice") ? voiceName(o).split(" · ")[0] : nice(o, x.key);
     return `<div class="sw"><div class="w">${esc(x.label)}${askedFor("sw:" + x.key).map(mm => ` <span class="pill asked">asked: ${esc(mm)}</span>`).join("")}${x.help ? `<div class="sub">${esc(x.help)}</div>` : ""}</div><div class="seg" role="group" aria-label="${esc(x.label)}">${opts.map(o => `<button type="button" data-act="sw" data-key="${esc(x.key)}" data-id="${esc(o)}" aria-pressed="${String(o) === String(cur)}">${esc(name(o))}</button>`).join("")}</div></div>`; };
   if (sws.length) h += `<div><h2>Switches</h2><div class="sub">Each one is taken in by the Engine's next job and can be undone under "Your last actions".</div></div><div class="list">${sws.map(swHtml).join("")}</div>`;
   h += `<div><h2>Your last actions</h2><div class="sub">What you asked for and what became of it.</div></div><div class="list rows">${acts.map(a => `<div class="row"><span class="t">${esc(String(a.at || "").replace(/^\d{4}-\d{2}-\d{2} /, "").replace(" IST", ""))}</span><span class="w" style="flex:1;min-width:0;overflow-wrap:anywhere">${esc(a.what || "")}<div class="sub">${esc(a.outcome || a.result || "")}${a.why ? " · " + esc(a.why) : ""}${a.undone ? " · undone" : ""}</div></span>${a.can_undo ? `<button type="button" class="quiet" data-act="undo" data-id="${esc(a.id)}">Undo</button>` : ""}</div>`).join("") || `<div class="row sub">Nothing yet. Every button you press is listed here once the Engine has picked it up.</div>`}</div>`;
