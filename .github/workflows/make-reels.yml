@@ -30,6 +30,8 @@ jobs:
       GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
       GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
       GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+      # The main voice only on a run started by hand; the automatic re-render after a change uses the free backup voice.
+      ELEVENLABS_API_KEY: ${{ github.event_name == 'workflow_dispatch' && (secrets.ELEVENLABS_API_KEY || secrets.ELEVEN_LABS_API_KEY || secrets.ELEVENLABS_KEY || secrets.ELEVEN_API_KEY || secrets.XI_API_KEY) || '' }}
       FOLDER: ${{ github.event_name == 'push' && 'rehearsal/golden-check' || inputs.drive_folder }}
     steps:
       - uses: actions/checkout@v4

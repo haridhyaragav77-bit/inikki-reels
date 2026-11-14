@@ -29,6 +29,7 @@ jobs:
     timeout-minutes: 50
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY || secrets.ELEVEN_LABS_API_KEY || secrets.ELEVENLABS_KEY || secrets.ELEVEN_API_KEY || secrets.XI_API_KEY }}
       GDRIVE_ROOT_FOLDER_ID: ${{ secrets.GDRIVE_ROOT_FOLDER_ID }}
       GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
       GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
@@ -43,19 +44,22 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
       - name: Keep the depth model and the browser between runs
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/inikki
             ~/.cache/ms-playwright
-          key: render-tools-v1
+          key: render-tools-v2
       - name: Install ffmpeg, the Engine's libraries and the browser that draws the templates
         run: |
           sudo apt-get update -qq >/dev/null
           sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -r requirements.txt
           python -m playwright install --with-deps chromium >/dev/null
+          cd engine && npm install --no-audit --no-fund --silent && npx playwright install chromium >/dev/null   # the approved looks
       - name: Check the plans against the rules
         run: python -m engine.plancheck --selftest $PLANS
       - name: Same plan, same picture (only on the test run after a template change)

@@ -137,6 +137,22 @@ def t_sheet():
            + (f", added tabs {', '.join(added)}" if added else "") + f", wrote one row. {db.link()}")
 
 
+def t_voice_main():
+    """The main voice (ElevenLabs): the key, the voice, and one short real line (about 40 credits)."""
+    from . import voice
+    ok, detail = voice.check()
+    if not ok:
+        return result("Main voice (ElevenLabs)", False, detail, "Reels use the Microsoft backup voice until the key works.")
+    out = str(OUTDIR / "voice_elevenlabs")
+    r = voice.elevenlabs_batch({"lines": [{"text": ENGINE["voice"]["smoke_text"]}]}, out, reel_id="smoke")
+    if r.get("ok"):
+        c = r["clips"][0]
+        CTX["voice_main_file"] = c["file"]
+        result("Main voice (ElevenLabs)", True, f"{detail}. One Tamil line recorded: {c['seconds']} s with {r.get('model')}, {r.get('credits')} credits.")
+    else:
+        result("Main voice (ElevenLabs)", False, f"{detail}, but the test line failed: {r.get('error')}", "Reels use the Microsoft backup voice until this works.")
+
+
 def t_voice():
     from . import voice
     out = str(OUTDIR / "voice_hello.mp3")
@@ -327,6 +343,7 @@ def main():
     order = [("secrets", "Keys in GitHub", t_secrets, ()), ("runner", "Runner tools", t_runner, ()),
              ("drive", "Drive: read", t_drive_read, ()), ("drive", "Drive: write", t_drive_write, ()),
              ("sheet", "Dashboard sheet", t_sheet, ()), ("voice", "Voice from the cloud (Microsoft)", t_voice, ()),
+             ("voice", "Main voice (ElevenLabs)", t_voice_main, ()),
              ("image", "One AI image (OpenAI)", t_image, (spend,)), ("clip", "One trailer clip (YouTube)", t_clip, ()),
              ("instagram", "Instagram numbers (read only)", t_instagram, ()), ("pictures", "Free pictures from the web", t_pictures, ())]
     ran = []

@@ -2,6 +2,32 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 14 Nov 2026, later — Control Room v2, ElevenLabs voice, unique designs, calendar, scouts
+Harish asked for: a far better Control Room (series as a framework, easy small changes, add/test/train/retire a series, more switches, usage), ElevenLabs actually used, a stronger Watch This Next, unique breakdown designs, calendar awareness, the missed "Ohm" trailer fixed, and a simple outer loop with insights.
+
+| Piece | Where | In one line |
+| --- | --- | --- |
+| ElevenLabs is the main voice | `engine/voice.py`, `engine/render/audio.py`, `config/engine.yaml` `voice` | ElevenLabs with word timings, Microsoft as the backup for the whole reel; one take per line, kept in Drive `work/voice-cache` and reused; credits read before each reel. Checked on GitHub: the key works (smoke test). |
+| Series framework | `config/framework.yaml` | Every series is 7 blocks; the page's editor, the add-a-series questions and the relay's checks all come from this one file |
+| Relay actions | `engine/relay.py`, `engine/control.py` | `series` (any framework field), `series_add` (a draft: watched, never posted), `series_remove`, `test`, `sample`, dotted `set` for switches; undo leaves nothing behind |
+| Control Room page | `control-room/page.template.html`, `build.py` | Tabs Today · Next · Series · Insights · Usage · Setup · Guide; a series opens as its 7 blocks with Edit; sections reorder with ↑ ↓ ＋ ✕ |
+| Test reels | `engine/make.py` `tests`, `engine/edits.py` | "Make a test reel" renders the series' reference plan into Drive `rehearsal/tests` and starts Make at once |
+| New series become files | `engine/brief.py` `series_files`, `daily.yml` | A series added on the page is written to `niches/<niche>/series/<id>/series.yaml` by the next brief job and planned at its times |
+| Usage | `engine/health.py`, `engine/panel.py` `usage` | Runner minutes with month-end forecast and stages (save → tight → last), voice credits, Claude's quiet times |
+| Insights | `engine/insights.py` | No-AI findings and a "do next" list from the nightly numbers; in the page and in the weekly brief |
+| News watch | `engine/watch.py`, `sources.yaml` `scouts` | Fast pages (@chennaiist) read through Instagram's API; a trailer is one story across sources and wakes the Breaking run with 2 trusted sources or a scout naming the official account; source study in `status/scouts.json` |
+| Calendar | `engine/almanac.py`, `knowledge/calendar.yaml` | Day, mood, season, festivals, slot-hour words and title angles at the top of every brief |
+| Watch This Next | `templates/poster-wall/template.js`, its series card `pace` | Centre-weighted hook frame with a moving poster wall and a timely kicker; a plot beat after each film card; faster pace enforced by the plan check from 15 Nov |
+| Unique breakdowns | `templates/stage/template.js`, series cards `unique_design` | 7 design kits and 4 new graphics (timeline, meter, versus, web); the plan check refuses a repeated kit or build from 15 Nov |
+| Fixed in passing | `.github/workflows/render.yml` | The render workflow could not make the approved looks (the drawing tools were not installed there) |
+| Tests | `tests/test_control_room.py`, `test_voice.py`, `test_watch.py` | 41 + 10 + 8 checks, no keys needed |
+
+**Checked on GitHub (14 Nov, branch run, nothing posted):** the Vikram Vedha breakdown and Watch This Next reference reels were made with the new code and passed every inspection (54 s and 33 s), into Drive `rehearsal/workshop-14nov`. ElevenLabs spoke the whole breakdown in one take: 325 credits for about 814 Tamil characters (about 0.42 credits a character), so a 1-minute breakdown costs about 325 credits. The news watch read @chennaiist through Instagram (12 posts). Health: every check green; 502 of 2,000 runner minutes used, heading for about 1,721 by month end.
+
+**Changed after review:** a series added on the page starts as a **draft** (one reel every other day into Drive `rehearsal/drafts`, never posted), because "trial" already means posting to non-followers. Watch This Next films are 7.4 s at most including the plot beat (Harish's reading-pace rule of 13 Nov, a little faster per 14 Nov). The plan check and the voice read a series with the Control Room's changes (through the mirrored `data/control/overrides.yaml`).
+
+**Not done / to watch:** a real ElevenLabs reel should be listened to once (speed 1.1, voice Ashwin; both are switches). The first plans under the new rules are written on 15 Nov: watch that morning's Plan run. The page must be published again from `control-room/page.html` to the same link. Sample reels and "train" still need the weekly run or a chat: studying a reel cannot be done without AI.
+
 ## 14 Nov 2026 — Cheaper session starts, missed runs catch up
 Harish: every session burned half the usage limit just reading context, and a missed run never happened later.
 | Piece | Where | In one line |
