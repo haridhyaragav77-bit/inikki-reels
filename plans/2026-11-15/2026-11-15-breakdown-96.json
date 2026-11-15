@@ -1,0 +1,447 @@
+{
+  "id": "2026-11-15-breakdown-96",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "paper",
+  "length_reason": "Name the technique, show the 22-year gap, what is said versus meant, why it hurts: about a minute.",
+  "lead": {
+    "topic": "96 (2018): one night of talking, and the one thing never said",
+    "angle": "screenplay",
+    "insight": "Ram and Jaanu meet after 22 years and spend one night talking about everything except the one thing. That gap is subtext, the meaning under the words. Because they never say it, we say it in our heads, so the ache is ours.",
+    "why_now": "Cult classic: still quoted and rewatched; a rainy lazy Sunday is the 96 mood (brief, Today).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/96_(film) (plot: school sweethearts Ram and Jaanu meet at a reunion 22 years later and spend one night together talking; dir. C. Prem Kumar)",
+      "https://en.wikipedia.org/wiki/Subtext (the unspoken meaning under dialogue)"
+    ],
+    "technique": "Subtext (the meaning under the words)",
+    "pictures_note": "Official trailer frames (r0synl-lI4I), checked by eye: maxresdefault is the poster (Jaanu left, Ram right; crop keeps out the TRAILER word), maxres2 a school classroom, maxres3 Jaanu today. maxres1 (an unclear moment) is not used."
+  },
+  "worth_it": {
+    "learn": "What you felt in 96 has a name, subtext: the film's power is in what Ram and Jaanu never say.",
+    "stop": "A whole night of talking, and the one line never comes.",
+    "why_now": "Cult classic people rewatch on rainy days; today is a rainy Sunday.",
+    "send_to": "Their own Jaanu, or the friend who cried at 96.",
+    "best_angle": "Yes: the screenplay's silence is what people remember but never named."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "feeling_of_love",
+        "from": 1.0,
+        "screen": 0,
+        "mood": "romance, gentle"
+      },
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "ache builds"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/96/r0synl-lI4I_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.86
+      ]
+    },
+    "ram": {
+      "src": "engine/.cache/stills/96/r0synl-lI4I_maxresdefault.jpg",
+      "crop": [
+        0.52,
+        0.0,
+        0.48,
+        0.9
+      ]
+    },
+    "jaanu_poster": {
+      "src": "engine/.cache/stills/96/r0synl-lI4I_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.45,
+        0.9
+      ]
+    },
+    "school": {
+      "src": "engine/.cache/stills/96/r0synl-lI4I_maxres2.jpg"
+    },
+    "jaanu": {
+      "src": "engine/.cache/stills/96/r0synl-lI4I_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "96",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ஒரு இரவு முழுக்க பேசுறாங்க. ஆனா ஒரு வார்த்தை மட்டும் சொல்லவே இல்ல.",
+      "voice_tg": "Oru iravu muzhukka pesuraanga. Aana oru vaarthai mattum sollave illa.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "22 YEARS, ONE NIGHT",
+      "voice": "ஸ்கூல்ல ராமும் ஜானுவும். அப்புறம் இருபத்திரெண்டு வருஷம் பிரிவு. ஒரு ரீயூனியன். அப்புறம் ஒரே ஒரு இரவு.",
+      "voice_tg": "Schoolla Raamum Jaanuvum. Appuram irubathirendu varusham pirivu. Oru reunion. Appuram ore oru iravu.",
+      "events": [
+        {
+          "label": "1996 · SCHOOL",
+          "sub": "SETUP",
+          "cue": {
+            "word": "ஸ்கூல்ல"
+          }
+        },
+        {
+          "label": "22 YEARS APART",
+          "cue": {
+            "word": "இருபத்திரெண்டு"
+          }
+        },
+        {
+          "label": "THE REUNION",
+          "cue": {
+            "word": "ரீயூனியன்."
+          }
+        },
+        {
+          "label": "ONE NIGHT",
+          "sub": "PAYOFF",
+          "cue": {
+            "word": "இரவு."
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "THE PAST IN EVERY LINE",
+      "footer_cue": {
+        "word": "இரவு.",
+        "off": 0.4
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "ஸ்கூல்ல"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "இருபத்திரெண்டு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ரீயூனியன்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "இரவு."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "SUBTEXT",
+      "definition": "THE MEANING UNDER THE WORDS",
+      "outer_label": "WHAT THEY SAY",
+      "inner": [
+        "THE PAST",
+        "THE HURT",
+        "THE LOVE"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, சப்டெக்ஸ்ட். வார்த்தைக்கு கீழ ஒளிஞ்சிருக்கிற அர்த்தம். அவங்க பேசுறது பழைய கதை. சொல்லாம விடுறது காதல்.",
+      "voice_tg": "Indha technique peru, subtext. Vaarthaikku keezha olinjirukkira arththam. Avanga pesuradhu pazhaya kadhai. Sollaama vidradhu kaadhal.",
+      "cues": {
+        "name": {
+          "word": "சப்டெக்ஸ்ட்."
+        },
+        "outer": {
+          "word": "பேசுறது"
+        },
+        "inner": {
+          "word": "சொல்லாம"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "சப்டெக்ஸ்ட்."
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "பேசுறது"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சொல்லாம"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சொல்லாம",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சொல்லாம",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {
+        "image": "jaanu",
+        "label": "WHAT THEY SAY",
+        "sub": "SMALL TALK",
+        "cue": {
+          "word": "பேச்சு."
+        }
+      },
+      "right": {
+        "image": "school",
+        "label": "WHAT THEY MEAN",
+        "sub": "22 YEARS",
+        "cue": {
+          "word": "ஏக்கம்."
+        }
+      },
+      "tilt": 1,
+      "tilt_cue": {
+        "word": "உள்ள,"
+      },
+      "slam_text": "NEVER SAID.",
+      "slam_cue": {
+        "word": "வரவே"
+      },
+      "voice": "வெளியே சின்ன பேச்சு. சாப்டியா, எப்படி இருக்க. உள்ள, இருபத்திரெண்டு வருஷ ஏக்கம். அந்த வார்த்தை மட்டும் வரவே இல்ல.",
+      "voice_tg": "Veliye chinna pechu. Saapdiyaa, eppadi irukka. Ulla, irubathirendu varusha ekkam. Andha vaarthai mattum varave illa.",
+      "sfx": [
+        {
+          "at": {
+            "word": "பேச்சு."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ஏக்கம்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வரவே",
+            "off": 0.3
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "WHY IT HURTS",
+      "label": "THE ACHE",
+      "voice": "அவங்க சொல்லல. அதனால நாம மனசுக்குள்ள சொல்றோம். ஒரு பார்வை. ஒரு மௌனம். வலி ஏறிக்கிட்டே போகுது.",
+      "voice_tg": "Avanga sollala. Adhanaala naama manasukkulla solrom. Oru paarvai. Oru maunam. Vali erikitte pogudhu.",
+      "levels": [
+        {
+          "label": "A GLANCE",
+          "value": 35,
+          "cue": {
+            "word": "பார்வை."
+          }
+        },
+        {
+          "label": "A SILENCE",
+          "value": 68,
+          "cue": {
+            "word": "மௌனம்."
+          }
+        },
+        {
+          "label": "YOU SAY IT",
+          "value": 100,
+          "cue": {
+            "word": "ஏறிக்கிட்டே"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "பார்வை."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மௌனம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "ஏறிக்கிட்டே"
+          },
+          "type": "riser"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "ram",
+      "fy": 0.4,
+      "fx": 0.5,
+      "slam_text": "WOULD YOU SAY IT?",
+      "voice": "நீங்க ராம் இடத்துல இருந்தா, சொல்லியிருப்பீங்களா? இல்ல, அவன் மாதிரி மௌனமா இருப்பீங்களா?",
+      "voice_tg": "Neenga Raam idathula irundhaa, solliyiruppeengalaa? Illa, avan maadhiri maunamaa iruppeengalaa?",
+      "q_cue": {
+        "word": "சொல்லியிருப்பீங்களா?"
+      },
+      "slam_cue": {
+        "word": "மௌனமா"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "சொல்லியிருப்பீங்களா?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மௌனமா",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "96 · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "SAY IT",
+          "size": 140
+        },
+        {
+          "text": "OR KEEP IT?",
+          "size": 125,
+          "color": "#F8C868"
+        }
+      ],
+      "sub": "சொல்லுவீங்களா, சொல்லாம விடுவீங்களா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் சப்டெக்ஸ்ட். உங்க ஜானு யாரு? இதை அவங்களுக்கு அனுப்புங்க.",
+      "voice_tg": "Idhu thaan subtext. Unga Jaanu yaaru? Idhai avangalukku anuppunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: SUBTEXT"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Ram and Jaanu talk all night in 96. The one line never comes.",
+      "The technique is called subtext: the meaning under the words. They talk about school, the past, small things. What they leave unsaid is the love, so we say it for them, in our heads. That is why it hurts.",
+      "Would you have said it?",
+      "Send this to your Jaanu.",
+      "சொல்லாத வார்த்தை."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "96 · SCREENPLAY BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "The 96 moment that broke you?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 9,
+    "comment_trigger": 8,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 74,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "end card returns to the title poster"
+    }
+  }
+}

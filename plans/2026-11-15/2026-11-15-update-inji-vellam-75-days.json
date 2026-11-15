@@ -1,0 +1,260 @@
+{
+  "id": "2026-11-15-update-inji-vellam-75-days",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 15 NOV 2026",
+  "lead": {
+    "topic": "Mani Ratnam's Inji Vellam (Vijay Sethupathi, Sai Pallavi) releases on 29 January 2027: 75 days to go",
+    "facts": [
+      "Worldwide theatrical release 29 Jan 2027, announced 11 Nov by Madras Talkies and Lyca Productions (DT Next; Telangana Today/IANS; Hollywood Reporter India)",
+      "Vijay Sethupathi and Sai Pallavi's first film together; A.R. Rahman composes (Hollywood Reporter India; Khaleej Times)",
+      "Cinematography Avik Mukhopadhyay, editing Sreekar Prasad (Hollywood Reporter India)",
+      "75 days from 15 Nov 2026",
+      "News watch today: 'Mani Ratnam returns to romance', score 8.8, 4 publishers (2 trusted)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/mani-ratnams-inji-vellam-to-release-worldwide-on-january-29",
+      "https://www.khaleejtimes.com/entertainment/inji-vellam-vijay-sethupathi-sai-pallavi-mani-ratnam",
+      "https://www.hollywoodreporterindia.com/features/insight/inji-vellam-mani-ratnams-vijay-sethupathi-sai-pallavi-romance-drama-locks-january-2027-release",
+      "https://telanganatoday.com/mani-ratnam-announces-january-29-release-for-vijay-sethupathi-sai-pallavi-film"
+    ],
+    "pictures_note": "Same official first-look frames and poster as the 13 Nov reserve (5i73lHN4Bpw), checked then. The 13 Nov reserve was never posted, so this news is new on the page.",
+    "replaces": "2026-11-13-update-inji-vellam-date (reserve, not posted): same news, new count and today's hook."
+  },
+  "worth_it": {
+    "fan_opens_because": "When is the new Mani Ratnam love story out? The date, on screen 1.",
+    "spoilers": "None: date, cast and team only.",
+    "voice": "Off: a release date is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "feeling_of_love",
+        "from": 1.0,
+        "screen": 0,
+        "mood": "romance, warm, for a late-night love story"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "eye": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres3.jpg",
+      "crop": [
+        0.25,
+        0.0,
+        0.75,
+        1.0
+      ]
+    },
+    "painter": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres2.jpg"
+    },
+    "orange": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres1.jpg"
+    },
+    "poster": {
+      "src": "engine/.cache/stills/inji_vellam/poster_up.jpg",
+      "fetch": {
+        "url": "https://upload.wikimedia.org/wikipedia/en/a/ad/Inji_Vellam.jpg"
+      },
+      "prep": {
+        "resize": [
+          900,
+          900
+        ],
+        "sharpen": true
+      }
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "eye",
+      "fx": 0.5,
+      "fy": 0.5,
+      "dur": 3.0,
+      "lines": [
+        {
+          "text": "INJI VELLAM",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "RELEASE DATE",
+          "size": 165,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "painter",
+      "fx": 0.55,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "IN THEATRES · 29 JAN 2027",
+      "value": 75,
+      "unit": " DAYS",
+      "land": 1.7,
+      "tag": [
+        "TO GO",
+        "FROM TONIGHT"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "push",
+      "image": "orange",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "lines": [
+        {
+          "text": "MANI RATNAM",
+          "size": 170,
+          "y": 1300
+        },
+        {
+          "text": "+ A.R. RAHMAN",
+          "size": 120,
+          "y": 1450,
+          "color": "#78E0D0"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "whoosh"
+        },
+        {
+          "at": 1.0,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "eye",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "VIJAY SETHUPATHI × SAI PALLAVI",
+      "value": 1,
+      "unit": "ST FILM",
+      "land": 1.7,
+      "tag": [
+        "FIRST TIME",
+        "TOGETHER"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "poster",
+      "dur": 4.0,
+      "echo": "INJI VELLAM · 29 JAN 2027",
+      "question": [
+        {
+          "text": "FIRST DAY,",
+          "size": 140
+        },
+        {
+          "text": "FIRST SHOW?",
+          "size": 140,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Save this for 29 Jan",
+      "cta": "SEND TO YOUR MANI RATNAM FRIEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Mani Ratnam's Inji Vellam is in theatres on 29 January 2027. 75 days to go.",
+      "Vijay Sethupathi and Sai Pallavi, together for the first time. Music by A.R. Rahman.",
+      "First day, first show?",
+      "Save this for 29 Jan, and send it to your Mani Ratnam friend before you sleep.",
+      "இஞ்சி வெல்லம் — ஜனவரி 29."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "INJI VELLAM · RELEASE DATE",
+    "slot": "21:30",
+    "first_comment": "Mani Ratnam's best love story so far: Alaipayuthey, Mouna Ragam or OK Kanmani?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 5,
+    "timely_original": 7,
+    "total_100": 66,
+    "weakest": {
+      "loop": "end card poster echoes the title line",
+      "value": "adds the team (Rahman, first pairing) so it is more than a date"
+    }
+  }
+}

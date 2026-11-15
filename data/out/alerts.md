@@ -9,3 +9,4 @@
 - 14 Nov 18:45 IST · The refresh run started before today's refresh brief was written (it still held the morning plan brief). The Brain started the brief job itself and carried on. The clock task for the refresh brief may be late.
 - 14 Nov 18:45 IST · The trailer list has OM three times ("OM: Chapter One", "OM", "Om"). It is one film; one download is enough (official trailer link added to the trailer links note).
 - 14 Nov 18:45 IST · Tonight 21:30: the OM trailer update replaces the Jail Mates teaser (OM: 8+ outlets and an official upload; Jail Mates: 1 outlet). Jail Mates is now a reserve. If OM is not made in time, Jail Mates can still post.
+- 15 Nov 05:45 IST · 6 reels planned, not 7: no flex reel today. None of the new library trailers is a new release (no trailer breakdown), and Sunday is not a release day (no review).
