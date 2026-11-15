@@ -1,6 +1,8 @@
 settings:
   volume:
-    base: 7
+    base: 6
+  reserves:
+    per_day: 0
 series:
   movie-recommendations:
     notes:
@@ -38,6 +40,8 @@ series:
     paused: true
   trailer-breakdown:
     status: live
+  artwork-quote:
+    per_day: 0
 notes:
 - id: 5be8dd
   at: '2026-11-13'
