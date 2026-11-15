@@ -17,11 +17,17 @@ def _day_minutes(repo, h, day):
     """GitHub counts each job rounded up to a whole minute; skipped jobs cost nothing."""
     api = f"https://api.github.com/repos/{repo}/actions/runs"
     mins, page = 0, 1
+
+    def get(url, params):
+        r = requests.get(url, headers=h, params=params, timeout=30)
+        if r.status_code != 200:             # a refused or failed call must never be counted as "0 minutes"
+            raise RuntimeError(f"GitHub answered {r.status_code} while counting {day}")
+        return r.json()
+
     while True:
-        j = requests.get(api, headers=h, params={"created": day, "per_page": 100, "page": page}, timeout=30).json()
-        runs = j.get("workflow_runs", [])
+        runs = get(api, {"created": day, "per_page": 100, "page": page}).get("workflow_runs", [])
         for r in runs:
-            jobs = requests.get(f"{api}/{r['id']}/jobs", headers=h, params={"per_page": 100}, timeout=30).json().get("jobs", [])
+            jobs = get(f"{api}/{r['id']}/jobs", {"per_page": 100, "filter": "all"}).get("jobs", [])
             for jb in jobs:
                 if jb.get("started_at") and jb.get("completed_at") and jb.get("conclusion") != "skipped":
                     a = dt.datetime.fromisoformat(jb["started_at"].replace("Z", "+00:00"))
@@ -44,12 +50,19 @@ def runner_minutes(drive):
         return led, "not counted (runs only on GitHub)"
     today = dt.datetime.now(dt.timezone.utc).date()
     month = (today - dt.timedelta(days=1)).strftime("%Y-%m")
-    if led.get("month") != month:
-        led = {"month": month, "days": {}}
+    if led.get("month") != month or led.get("v") != 2:     # v2 (15 Nov 2026): days that failed to count were saved as 0
+        led = {"month": month, "days": {}, "v": 2}
     h = {"Authorization": f"Bearer {tok}", "Accept": "application/vnd.github+json"}
     todo = [d for d in ((today - dt.timedelta(days=k)).isoformat() for k in range(1, 32)) if d.startswith(month) and d not in led["days"]]
-    for d in todo[:4]:                       # newest first; earlier days are filled in on the next runs
-        led["days"][d] = _day_minutes(repo, h, d)
+    t0 = dt.datetime.now()
+    for d in todo:                           # newest first; a day that cannot be counted now is tried again on the next run
+        if (dt.datetime.now() - t0).total_seconds() > 150:
+            break
+        try:
+            led["days"][d] = _day_minutes(repo, h, d)
+        except Exception as e:
+            print("runner minutes:", str(e)[:120])
+            break
     R = ENGINE.get("runner", {})
     limit = int(R.get("minutes_month", 2000))
     led.update(minutes=sum(led["days"].values()), limit=limit, counted_days=len(led["days"]))
@@ -70,7 +83,7 @@ def runner_minutes(drive):
                     else "save" if forecast > limit * float(R.get("save_forecast", 1.0)) and led["counted_days"] >= 3 else "normal")
     led["tight"] = led["stage"] in ("save", "tight", "last")
     drive.write_json("status", "minutes.json", led)
-    left = len(todo) - min(len(todo), 4)
+    left = len([d for d in todo if d not in led["days"]])
     return led, f"{led['minutes']} of {limit} minutes used this month" + (f" ({left} earlier days still to count)" if left else "") + \
         (f" · heading for {led['forecast']} by month end" if led.get("forecast") else "") + (f" ({led['stage']}: extras paused)" if led["tight"] else "")
 
