@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 15 Nov 2026, later — Moving work from GitHub to Claude: checked, not done
+Harish asked to move part of the work to Claude near the limit. Checked: Claude already does the thinking and the clock; making and posting need keys and a strong machine; only about 4 minutes a day could move (two briefs, two flex-slot checks), for more Claude usage and a new way to fail. Decision and reasons are in AGENT.md 15.3. Nothing in the Engine changed. The weekly renewal of the clock and dispatcher chats is a separate task already set for 16 Nov.
+
 ## 15 Nov 2026 — Runner minutes: the same day for about half the minutes
 Harish: 5 reels a day plus news and reviews inside 2,000 minutes, with no saver, no loss of quality, and reels must still post when Claude has no usage left.
 
