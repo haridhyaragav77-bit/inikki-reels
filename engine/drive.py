@@ -89,7 +89,7 @@ class Drive:
                     return d
             except ValueError:
                 pass
-        shape = f"{len(tok)} characters, starts with '{tok[:4]}'"
+        shape = f"{len(tok)} characters"
         if tok.startswith("1//"):
             hint = "This looks like only the refresh token. The secret must be the whole line the script prints, which also holds client_id and client_secret."
         elif '"installed"' in tok or '"web"' in tok:

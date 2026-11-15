@@ -2,6 +2,22 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 15 Nov 2026 — Ready to go public: audit and the Guard
+Harish asked to make the repository public (free runner minutes) with security designed in. Design: AGENT.md 21.
+
+**Audit (every branch, full history):** no key anywhere; Drive folders shared only with Harish and the robot account; no job runs for a stranger. Found and fixed: the smoke test printed the Drive sign-in email into job logs (old logs must be deleted before the switch); an error message showed the first 4 characters of a secret; typed job inputs were pasted into commands; actions were not fixed to exact versions; finished reels were kept with public runs; preview branches were never deleted.
+
+| Piece | Where | In one line |
+| --- | --- | --- |
+| Masking | `engine/mask.py`, on from `engine/__init__.py` | Keys, key-shaped strings and emails become `[hidden]` in everything printed or saved |
+| Key check | `engine/guard.py` `scan` / `staged` / `preview`, `.github/workflows/guard.yml` | Every push and pull request (no keys, read-only), every Engine commit, every preview branch, every Brain file |
+| Only Harish's commands | `engine/relay.py`, `guard.trusted_people` | An inbox file from another account is refused, binned, and posting goes on hold |
+| Daily look-around | `guard.watch` inside `engine/health.py` | Keys in files, Drive sharing (an open link is closed), who started jobs, posts not made by the Engine, voice credits; old preview branches deleted; Drive `status/security.json` |
+| Job files | all of `.github/workflows/` | Exact action versions, inputs never inside a command, least permissions, reel copies only while private |
+| Free minutes | `engine/health.py` | The health job sees the repository is public and stops the runner-minute slow-down |
+| Tests | `python -m tests.test_guard` | 70 checks with made-up keys and a pretend Drive, including the job-file rules |
+
+**Left for Harish (GitHub settings, AGENT.md 21.6):** secret scanning + push protection, outside-contributor approval, delete old job logs, Issues off, a spending limit at OpenAI, then flip to public. **Not done:** his Gmail is still in 7 early commits (needs a rewrite of `main`, only if he asks).
 ## 15 Nov 2026, night — Reserves control, clearer series names
 Harish saw a reserve (Watch This Next, "Sudani from Nigeria") listed as an 8th reel and could not control reserves. Added Reserves Off/1/2/3 to Setup → Reels per day (`reserves.per_day`, default 2; the brief asks for that many, Make skips any extra). Every row now shows the full series name and a one-line promise (new `promise:` in each series file). The page also fills the day plan from its built-in copy when the status file is older.
 

@@ -240,6 +240,22 @@ Every alert says: what happened → what the system already did → what you nee
 
 **Emergency:** press **Sleep**. Nothing posts until you press **Run**.
 
+### Security (the repository is public)
+Anyone can read the files and the job logs. Nobody else can change anything, start a job, or see a key. The Engine masks keys and your email before it prints or saves anything, takes commands only from your own Drive account, and looks around once a day (04:01, with the health check).
+
+| You see | It means | You do |
+| --- | --- | --- |
+| "Security: a command came from an account that is not yours" | Someone else put a file in the Control Room inbox. It was refused. Posting is on hold. | Drive → iNiKKi Reels → Share: remove anyone you do not know. Then **Resume**. |
+| "Security: a Drive folder was open to anyone with the link" | The Engine has closed it again. | If you did not open it: change your Google password. |
+| "Security: a job was started by someone who is not you" | Someone else used your GitHub account. Posting is on hold. | "If someone gets in", below. |
+| "Security: a key may be visible in the repository" | A file holds something shaped like a key. | "If a key leaks", below. |
+| "Security: a post appeared that the Engine did not make" | A reel or post is on the page that the Engine did not publish. | If it was you: nothing. If not: "If a key leaks" for Instagram. |
+| "Security: voice credits were used outside the Engine" | ElevenLabs credits went down more than the Engine used. | If it was you or a test: nothing. If not: make a new ElevenLabs key. |
+
+**If a key leaks (5 minutes).** 1. Make a new key on that service's own site and delete the old one there (the list of sites is in AGENT.md 21.4; for Instagram, change your password first). 2. GitHub → Settings → Secrets and variables → Actions → click the secret → **Update**. 3. Press **Resume** if posting was on hold. The old key is dead the moment you delete it, so nothing more is needed.
+
+**If someone gets in to GitHub.** 1. Press **Sleep**. 2. GitHub → Settings → Password: change it; Settings → Sessions: sign out everything else; Settings → Applications: remove anything you do not know. 3. Replace every key (the list above), because a job could have read them. 4. Press **Run**.
+
 ### A free clock, if you want one (10 minutes, once)
 The Claude clock works, but it spends a few tokens every day. A free outside pinger does the same job with none:
 1. On GitHub: Settings → Developer settings → Fine-grained tokens → new token for `inikki-reels` only, permission **Actions: Read and write**.

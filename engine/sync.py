@@ -55,6 +55,10 @@ def verdict(path, new_text, old_text):
         return None
     if len(new_text.encode("utf-8")) > MAX_BYTES:
         return "too big for a text note"
+    from .guard import scan_text
+    hit = scan_text(new_text)
+    if hit:                                                # the repository is public: nothing key-shaped comes in (AGENT.md 21)
+        return f"line {hit[0][1]} looks like {hit[0][0]}"
     try:
         if path.endswith(".json"):
             json.loads(new_text)
@@ -93,7 +97,8 @@ def run(branch, dry=False):
                 f.write(new)
             git("add", path)
         taken.append(path)
-    plans = sorted({p.split("/")[1] for p in taken if p.startswith("plans/")})
+    import re
+    plans = sorted({p.split("/")[1] for p in taken if p.startswith("plans/") and re.fullmatch(r"20\d\d-\d\d-\d\d|bank", p.split("/")[1])})
     notes = [p for p in taken if p.startswith("data/out/") and os.path.exists(p)]
     if not dry and git("diff", "--cached", "--name-only").strip():
         git("commit", "-q", "-m", f"brain: {head_msg[:80]}")

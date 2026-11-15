@@ -17,12 +17,23 @@ drive:
   dashboard_sheet_name: "iNiKKi Dashboard"
   dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
 runner:
-  minutes_month: 2000         # GitHub's free minutes for a private repository
+  minutes_month: 2000         # GitHub's free minutes for a private repository (a public one has no limit: the health job sees which it is)
   tight_share: 0.85           # above this: no reserves, no bank reels, no extra news checks
   save_forecast: 1.0          # the month is heading past the limit at today's pace: the same savings start early
   last_share: 0.95            # above this: at most `last_reels_day` new reels a day, so posting never stops before the 1st
   last_reels_day: 3
   usd_per_minute_over: 0.008  # what GitHub charges per extra minute, only if a spending limit is set (default: none, jobs stop)
+# The Guard (AGENT.md 21, engine/guard.py): what keeps a public repository safe. The daily health job runs the look-around.
+guard:
+  trusted_actors: []          # GitHub names (besides the owner and GitHub's own clock) allowed to start jobs
+  extra_people: []            # Google accounts (besides the folder's owner and the Engine) allowed in the Drive folder
+  drive_folders: [control, control/inbox, status]   # checked every day for "anyone with the link" (the main folder always is)
+  preview_branches: [peek, review, "review-*"]      # build previews: deleted a day after their last change
+  preview_hours: 24
+  posts_checked: 30           # newest posts on the page compared with what the Engine posted
+  voice_margin: 6000          # voice credits used outside the Engine in a day before it is mentioned
+  mask_in: ["data/*"]         # files the Engine writes and commits: keys and emails are masked before saving
+  scan_skip: ["tests/test_guard.py"]                # holds made-up keys for the Guard's own test
 # Posting with fewer runner minutes (AGENT.md 15.3). Nothing here changes what is posted or when.
 post:
   early_upload: true          # a made reel is uploaded to Instagram at once, unpublished; its slot's run only publishes it

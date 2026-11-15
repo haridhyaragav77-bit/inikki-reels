@@ -82,7 +82,13 @@ def runner_minutes(drive):
     led["stage"] = ("last" if share >= float(R.get("last_share", 0.95)) else "tight" if share >= float(R.get("tight_share", 0.85))
                     else "save" if forecast > limit * float(R.get("save_forecast", 1.0)) and led["counted_days"] >= 3 else "normal")
     led["tight"] = led["stage"] in ("save", "tight", "last")
+    from . import guard
+    led["free"] = guard.repo_is_public() is True          # a public repository has no monthly limit: nothing is slowed down
+    if led["free"]:
+        led.update(stage="normal", tight=False, runs_out=None)
     drive.write_json("status", "minutes.json", led)
+    if led["free"]:
+        return led, f"{led['minutes']} minutes used this month (free: the repository is public, so there is no monthly limit)"
     left = len([d for d in todo if d not in led["days"]])
     return led, f"{led['minutes']} of {limit} minutes used this month" + (f" ({left} earlier days still to count)" if left else "") + \
         (f" · heading for {led['forecast']} by month end" if led.get("forecast") else "") + (f" ({led['stage']}: extras paused)" if led["tight"] else "")
@@ -160,8 +166,13 @@ def main():
             status.write(drive, "voice.json", led)
         return ok, detail
     check("Main voice (ElevenLabs)", main_voice, "Check the secret ELEVENLABS_API_KEY on GitHub. Until then reels use the Microsoft backup voice.")
-    bad = [c for c in checks if not c["ok"]]
-    res = {"ok": not bad, "checks": checks}
+    bad = [c for c in checks if not c["ok"]]                 # the security look-around raises its own alerts (engine/guard.py)
+    try:
+        from . import guard
+        checks += guard.watch(drive)
+    except Exception as e:
+        print("guard: the security look-around did not run:", str(e)[:160])
+    res = {"ok": not [c for c in checks if not c["ok"]], "checks": checks}
     status.write(drive, "health.json", res)
     if bad and drive:
         status.alert(drive, f"Health check: {len(bad)} thing(s) need a look", "; ".join(f"{c['name']}: {c['detail']}" for c in bad)[:400],

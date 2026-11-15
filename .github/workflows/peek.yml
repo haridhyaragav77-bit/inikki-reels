@@ -26,12 +26,12 @@ jobs:
       GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
       GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
-      - uses: actions/cache@v4
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: ~/.cache/inikki
           key: render-tools-v1
@@ -39,9 +39,14 @@ jobs:
           sudo apt-get update -qq >/dev/null
           sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -r requirements.txt
-      - run: python -m engine.peek --what "${{ inputs.what || 'reference,music,memes,clips' }}" --frames "${{ inputs.frames }}" --depth "${{ inputs.depth }}"
+      - run: python -m engine.peek --what "$WHAT" --frames "$FRAMES" --depth "$DEPTH"
+        env:
+          WHAT: ${{ inputs.what || 'reference,music,memes,clips' }}
+          FRAMES: ${{ inputs.frames }}
+          DEPTH: ${{ inputs.depth }}
       - name: Push out/peek to the 'peek' branch (throwaway, deleted after the build)
         run: |
+          python -m engine.guard preview --dir out/peek     # this branch is public: private details masked, a key stops the push
           cd out/peek
           git init -q
           git checkout -q -b peek

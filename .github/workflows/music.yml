@@ -27,8 +27,8 @@ jobs:
       GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
       GDRIVE_OAUTH_REFRESH_TOKEN: ${{ secrets.GDRIVE_OAUTH_REFRESH_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
@@ -36,11 +36,14 @@ jobs:
           sudo apt-get update -qq >/dev/null
           sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -r requirements.txt
-      - run: python -m engine.music_index ${{ inputs.all && '--all' || '' }}
+      - run: python -m engine.music_index $ALL
+        env:
+          ALL: ${{ inputs.all && '--all' || '' }}
       - name: Summary to the throwaway 'review-music' branch (for the build session)
         if: always()
         run: |
           [ -d out/peek ] || exit 0
+          python -m engine.guard preview --dir out/peek     # this branch is public: private details masked, a key stops the push
           cd out/peek && git init -q && git checkout -q -b review-music && git add -A
           git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "music index $(date -u +%FT%TZ)" || exit 0
           git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" review-music:review-music
