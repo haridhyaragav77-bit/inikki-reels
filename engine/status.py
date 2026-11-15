@@ -81,6 +81,19 @@ def job_end(name, result):
             print("panel not updated:", str(e)[:200])
 
 
+def recent(name, hours):
+    """True when the job `name` ended well within the last `hours` (Drive status/jobs.json). Unknown counts as no."""
+    try:
+        from .drive import Drive
+        j = ((Drive().read_json("status", "jobs.json") or {}).get("jobs") or {}).get(name) or {}
+        at = dt.datetime.strptime(j["at"], "%Y-%m-%d %H:%M IST").replace(tzinfo=IST)
+        return j.get("result") == "success" and dt.timedelta(0) <= now() - at <= dt.timedelta(hours=float(hours))
+    except Exception:
+        return False
+
+
 if __name__ == "__main__":
     import sys
+    if sys.argv[1] == "--recent":            # exit 0 = done a short while ago (the late backstop has nothing to do)
+        sys.exit(0 if recent(sys.argv[2], sys.argv[3]) else 1)
     job_end(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else "success")

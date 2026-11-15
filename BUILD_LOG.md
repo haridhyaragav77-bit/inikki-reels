@@ -2,6 +2,26 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 15 Nov 2026 — Runner minutes: the same day for about half the minutes
+Harish: 5 reels a day plus news and reviews inside 2,000 minutes, with no saver, no loss of quality, and reels must still post when Claude has no usage left.
+
+Measured first (GitHub run history): a live day cost about 115 minutes. Posting was the biggest part: 20 Post runs for 8 reels (the clock and GitHub's late timer both run one per slot), most of them billed 2 to 4 minutes for doing nothing. Building used about three quarters of the month so far.
+
+| Piece | Where | In one line |
+| --- | --- | --- |
+| Cheap empty Post runs | `engine/post.py` `watch_due`, `main` | No second news read within 50 minutes, no Drive writes when nothing changed |
+| Late timer waits only when needed | `engine/post.py` `clock_alive`, `wait_for_slot`; Drive `status/clock.json` | Clock on time → the late run leaves a close slot to it; clock missing → waits and posts on time as before |
+| Upload when made | `engine/post.py` `prepare`, `prep_usable`, `publish`; `engine/make.py` | Unpublished upload at Make; the slot's run publishes; any doubt → uploads then, as before |
+| Quicker status step | `engine/panel.py` `Once` | Each Drive file read once, one listing per folder |
+| Make is one job | `.github/workflows/make.yml` | The check is the first step, not a second billed job |
+| Nightly not doubled | `.github/workflows/daily.yml`, `engine/status.py` `recent` | The late copy stops when the clock already ran it |
+| Golden test once | `.github/workflows/make-reels.yml`, `engine/tools/pick_plans.py` | Branch only, and only the looks a push touched |
+| Honest counter | `engine/health.py` | A day that cannot be counted is tried again, never saved as 0; month recounted |
+| Tests | `tests/test_minutes.py` | 34 checks, no keys |
+
+**Not changed:** encoder, frame rate, voice, music, slot times, the 3-hours-late rule, both timers.
+**To watch:** the first live day's minutes on the Usage tab (expected about 60); the first "using the upload made ahead of the slot" line in a Post run.
+
 ## 14 Nov 2026, later — Control Room v2, ElevenLabs voice, unique designs, calendar, scouts
 Harish asked for: a far better Control Room (series as a framework, easy small changes, add/test/train/retire a series, more switches, usage), ElevenLabs actually used, a stronger Watch This Next, unique breakdown designs, calendar awareness, the missed "Ohm" trailer fixed, and a simple outer loop with insights.
 
