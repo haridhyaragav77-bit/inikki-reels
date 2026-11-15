@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: breaking-news
 name: Breaking
+promise: "Confirmed, time-sensitive film news, posted as soon as it is made."
 status: live
 badge: { text: "BREAKING", color: red }
 title_screen: "BREAKING · {FILM OR PERSON}: {WHAT}"

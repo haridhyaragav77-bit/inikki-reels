@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: guess-the-movie
 name: Guess the Tamil Movie
+promise: "Three picture clues; viewers guess the Tamil film in the comments."
 status: live
 badge: { text: "GUESS THE TAMIL MOVIE", color: ticket_yellow }
 title_screen: "GUESS THE TAMIL MOVIE #{N}"

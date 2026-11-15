@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: movie-review
 name: First Verdict (Movie Review)
+promise: "The first verdict on a new release: what works, what does not, what critics say."
 status: live
 badge: { text: "FIRST VERDICT", color: violet }
 title_screen: "{FILM} · FIRST VERDICT"
