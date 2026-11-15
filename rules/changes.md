@@ -8,6 +8,8 @@ Short format for small changes:
 
 ---
 
+`#15 · 15 Nov 2026 · series (movie-updates) · stills cropped tight and titles that did not say the news → soft rule: keep faces and the key subject whole (crop only to cut baked-in text or channel marks, never into heads), and the title says the news in plain words (who + what, a number if there is one) · why (Harish: "Images cropped too much, poor titles", 2/5 on 2026-11-14-update-shaji-kumar-tribute) · test on 5 reels · undo: delete the movie-updates soft rule in rules/playbook.md`
+
 `#14 · 14 Nov 2026 · rule (news watch) · a small film's trailer could not reach the score that wakes the Breaking run → fast pages (@chennaiist) are read at every pass; a trailer, teaser, first look or release date wakes it with 2 trusted sources, or one fast page naming the official account · Harish: the Ohm trailer was out and the page had nothing · rule · undo: Setup → "Watch fast pages" off, or `fire_score_drop: 8` in sources.yaml`
 
 `#13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must use it · Harish: "Friday night, date night movies; midweek solo night" · rule · undo: Setup → "Calendar awareness" off`

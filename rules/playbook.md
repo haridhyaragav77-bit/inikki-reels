@@ -55,6 +55,7 @@ Every reel in every series is made the same way: worth it → script first → c
 - Each series has its own look: Breakdown = dark stage, graphics lead · Updates = full-bleed stills, big numbers · Recommendations = one film per screen, poster wall · Review = violet scorecard with a verdict stamp · Breaking = red flash, live dot, ticker.
 - Use the whole frame. No small card floating in empty space.
 - Cover title inside the middle 3:4 area of the frame.
+- Soft rule, movie-updates (change #15, test on the next 5 reels from 16 Nov): keep faces and the key subject whole; crop only to cut baked-in text or channel marks, never into heads. The title says the news in plain words: who + what, with a number if there is one.
 
 ## Endings that invite sends
 - "Send this to your cinema friend." · "Know someone starting over?" · "Which scene would you try on mute?" · "Got it at clue 1 or 2? Comment."
