@@ -707,6 +707,7 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Volume | 3–8 regular reels a day, set per series (the day plan below) | 6 |
 | Schedule | Slot times | 08:30, 12:30, 15:30, 18:00, 20:00, 21:30 |
 | Extras | On / off, and "up to N a day" per extra series | On |
+| Reserves | 0–3 back-up reels a day | 2 |
 | Language | Headline and voice language | Tanglish/English + Tamil, Tamil voice |
 | Budgets | Images per month, Lab share, storage cap | ₹500, 20%, 8 GB |
 | Active brand, niche, lineup | Pick from saved | inikki-reels, tamil-cinema, cinema-core |
@@ -715,7 +716,7 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 
 **More switches (14 Nov), all under Control Room → Setup:** main voice (ElevenLabs or Microsoft), ElevenLabs voice, voice quality (best or economy), voice speed, breaking news on/off and its daily cap, calendar awareness, fast-page scouts, a different design for every breakdown, saver mode (fewer runner minutes), approval level, away mode. Each is one key of `config/agent.yaml`, listed with its allowed choices in `config/framework.yaml`; the relay refuses anything else.
 
-**The day plan (15 Nov).** Control Room → Setup → Reels per day. Each regular series gets Off/1/2/3/4 reels a day and a time for each reel; each story series Off/On; each extra (trailer-breakdown, movie-review, artwork-quote, breaking-news) Off/"up to 1–3", plus one Extras On/Off for all of them. The total of the regular rows is the day's volume (3 to 8). Times can only be the 8 posting times that already have timers (more timers would cost runner minutes). Two regular reels at one time are refused. One Save is one action and one Undo. The counts live in `control/overrides.yaml` (`series.<id>.per_day`, `.slots`; breaking-news uses `budgets.breaking_per_day`; `extras.enabled`) and win over the lineup file. A series set to 0 or an extra while Extras are off is not planned, made or posted (`engine/dayplan.py`); "up to N" for an extra is checked at Make.
+**The day plan (15 Nov).** Control Room → Setup → Reels per day. Each regular series gets Off/1/2/3/4 reels a day and a time for each reel; each story series Off/On; each extra (trailer-breakdown, movie-review, artwork-quote, breaking-news) Off/"up to 1–3", plus one Extras On/Off for all of them, and Reserves Off/1/2/3 (back-up reels made each morning; one posts only if a planned reel fails; `reserves.per_day`, default 2, capped at Make). Each row shows the series' promise in one line. The total of the regular rows is the day's volume (3 to 8). Times can only be the 8 posting times that already have timers (more timers would cost runner minutes). Two regular reels at one time are refused. One Save is one action and one Undo. The counts live in `control/overrides.yaml` (`series.<id>.per_day`, `.slots`; breaking-news uses `budgets.breaking_per_day`; `extras.enabled`) and win over the lineup file. A series set to 0 or an extra while Extras are off is not planned, made or posted (`engine/dayplan.py`); "up to N" for an extra is checked at Make.
 
 ### 12.4 Safety rules (only you change these)
 1. No rumours as fact. Unconfirmed is labelled or skipped.

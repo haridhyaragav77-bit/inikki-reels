@@ -153,6 +153,8 @@ def still_waiting(rec, plan, is_bank, h, tight, cap_day, ctl):
         return True
     if cap_day is not None and str(rec.get("reason", "")).startswith("Runner minutes are almost used up"):
         return True
+    if reserve and str(rec.get("reason", "")).startswith("Reserves are set to"):
+        return True                                  # reserves turned down in the Control Room: no heavy tools just to skip it
     from . import dayplan
     return ctl.series_paused(plan.get("series", "")) or bool(dayplan.off(ctl, plan.get("series", "")))
 
@@ -239,6 +241,13 @@ def main():
         elif not plan.get("slot") and pslot:
             plan["slot"] = pslot
         ledger = bank if is_bank else day
+        from . import dayplan
+        if plan.get("reserve") and not is_bank and len([r for r in day.reels("ready", "posted", "rendering")
+                                                         if r.get("reserve") and r["reel_id"] != rid]) >= dayplan.reserves(ctl.settings):
+            ledger.upsert(rid, series=series, hash=plan_hash(path), state="skipped",
+                          reason=f"Reserves are set to {dayplan.reserves(ctl.settings)} a day in the Control Room.")
+            skipped.append(rid)
+            continue
         if tight and (is_bank or plan.get("reserve")):      # cost guard (CLAUDE.md rule 5): main reels first
             ledger.upsert(rid, series=series, hash=plan_hash(path), state="skipped", reason="Saving runner minutes this month: reserves and bank reels wait.")
             skipped.append(rid)

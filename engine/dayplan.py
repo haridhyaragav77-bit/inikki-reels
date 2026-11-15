@@ -40,6 +40,12 @@ def chosen(overrides, sid):
     return None if v is None else int(v)
 
 
+def reserves(settings):
+    """How many back-up reels the plan run makes each day (0 = none)."""
+    v = settings.get("reserves")
+    return int(v.get("per_day", 2)) if isinstance(v, dict) else 2
+
+
 def extras_on(settings):
     v = settings.get("extras")
     return bool(v.get("enabled", True)) if isinstance(v, dict) else True
@@ -78,10 +84,10 @@ def card(ctl):
             n = int((ctl.settings.get("budgets") or {}).get("breaking_per_day", 2)) if (ctl.settings.get("breaking") or {}).get("enabled", True) else 0
         slots = list(c.get("slots") or [])
         rows.append({"id": sid, "name": c.get("name", sid), "role": role, "per_day": default_count(role, entry, c) if n is None else n,
-                     "slots": slots, "days": entry.get("days") or c.get("days") or [], "paused": ctl.series_paused(sid),
+                     "slots": slots, "days": entry.get("days") or c.get("days") or [], "paused": ctl.series_paused(sid), "about": c.get("promise"),
                      "when": entry.get("trigger"), "max": 1 if role == "story" else (3 if role == "extra" else MAX_PER_SERIES)})
     vol = ctl.settings.get("volume") or {}
-    return {"rows": rows, "times": sorted(times), "extras": extras_on(ctl.settings), "base": vol.get("base"),
+    return {"rows": rows, "times": sorted(times), "extras": extras_on(ctl.settings), "reserves": reserves(ctl.settings), "base": vol.get("base"),
             "min": 3, "max": int(vol.get("max", 8))}
 
 

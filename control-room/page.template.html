@@ -568,7 +568,7 @@ function vSetup() {
 /* ---------- reels per day, by series (the day plan) ---------- */
 let dp = null;                                   // the day plan being changed, until Save
 const DPW = { new_trailer: "when a new trailer lands", release_day: "on release days", dull_streak: "after a dull stretch" };
-function dpStart() { const D = P.day_plan || {}; return { extras: D.extras !== false, n: Object.fromEntries((D.rows || []).map(r => [r.id, r.per_day])), slots: Object.fromEntries((D.rows || []).map(r => [r.id, (r.slots || []).slice()])) }; }
+function dpStart() { const D = P.day_plan || {}; return { extras: D.extras !== false, reserves: D.reserves ?? 2, n: Object.fromEntries((D.rows || []).map(r => [r.id, r.per_day])), slots: Object.fromEntries((D.rows || []).map(r => [r.id, (r.slots || []).slice()])) }; }
 function dpCount(d) {                            // the same sums as the Engine (engine/dayplan.py)
   const rows = (P.day_plan || {}).rows || [], used = {}; let total = 0, story = false, clash = "";
   rows.forEach(r => { if (r.role === "extra" || r.paused) return; const n = d.n[r.id] || 0;
@@ -588,20 +588,22 @@ function dpChanges(d) {
 function vDayPlan() {
   const D = P.day_plan || {}, rows = D.rows || [];
   if (!rows.length) return `<div class="card"><div class="sub">Reels per day</div><div class="big">${num((P.volume || {}).base)}</div><div class="sub">The per-series plan shows once the live status loads.</div></div>`;
-  const d = dp || dpStart(), c = dpCount(d), ch = dpChanges(d), dirty = Object.keys(ch).length || d.extras !== (D.extras !== false);
+  const d = dp || dpStart(), c = dpCount(d), ch = dpChanges(d), dirty = Object.keys(ch).length || d.extras !== (D.extras !== false) || d.reserves !== (D.reserves ?? 2);
   const lo = D.min || 3, hi = D.max || 8, bad = c.total < lo ? `At least ${lo} regular reels a day.` : c.total > hi ? `At most ${hi} regular reels a day.` : c.clash ? c.clash + ": pick another time." : "";
-  const seg = (r, opts) => `<div class="seg" role="group" aria-label="${esc(short(r.name))}: reels a day">${opts.map(([v, l]) => `<button type="button" data-act="dp-n" data-id="${esc(r.id)}" data-n="${v}" aria-pressed="${(d.n[r.id] || 0) === v}" ${r.paused ? "disabled" : ""}>${l}</button>`).join("")}</div>`;
+  const seg = (r, opts) => `<div class="seg" role="group" aria-label="${esc(r.name)}: reels a day">${opts.map(([v, l]) => `<button type="button" data-act="dp-n" data-id="${esc(r.id)}" data-n="${v}" aria-pressed="${(d.n[r.id] || 0) === v}" ${r.paused ? "disabled" : ""}>${l}</button>`).join("")}</div>`;
   const times = r => { const n = d.n[r.id] || 0; if (!n || r.role === "extra") return "";
     return `<div class="tm">${d.slots[r.id].slice(0, n).map((t, i) => `<select data-dp="${esc(r.id)}:${i}" aria-label="${esc(short(r.name))}, reel ${i + 1} time">${(D.times || []).map(x => { const who = r.role === "regular" && c.used[x] && c.used[x] !== r.name ? " (taken)" : "";
       return `<option value="${x}" ${x === t ? "selected" : ""} title="${who ? esc("Used by " + short(c.used[x])) : ""}">${x}${who}</option>`; }).join("")}</select>`).join("")}</div>`; };
   const regular = rows.filter(r => r.role !== "extra"), extra = rows.filter(r => r.role === "extra");
   const rowHtml = r => { const n = d.n[r.id] || 0, opts = r.role === "story" ? [[0, "Off"], [1, "On"]] : r.role === "extra" ? [[0, "Off"], ...[1, 2, 3].slice(0, r.max).map(k => [k, "Up to " + k])] : [[0, "Off"], ...[1, 2, 3, 4].slice(0, r.max).map(k => [k, String(k)])];
-    const note = r.paused ? "paused" : r.role === "story" ? "shares the story slot" + ((r.days || []).length ? " · " + r.days.join(" ") : " · other days") : r.role === "extra" ? (DPW[r.when] || (r.id === "breaking-news" ? "when big news breaks" : "when it fits")) : "";
-    return `<div class="dp${n ? "" : " off"}"><div class="nm">${esc(short(r.name))}${note ? `<div class="sub">${esc(note)}</div>` : ""}</div>${seg(r, opts)}${times(r)}</div>`; };
-  let h = `<div class="card" id="dayplan"><div class="dphead"><div class="big">${num(c.total)}</div><div style="flex:1;min-width:0"><b>regular reels a day</b><div class="sub">${d.extras ? `+ extras up to ${num(c.extras)}, only on days their news lands` : "Extras are off"}. Times are the 8 posting times that already have timers.</div></div></div>${askedFor("dayplan").map(mm => `<span class="pill asked">asked: ${esc(mm)}</span>`).join("")}</div>
+    const note = r.paused ? "paused" : r.role === "story" ? "shares the 15:30 story slot · " + ((r.days || []).length ? r.days.join(" ") : "the other days") : r.role === "extra" ? "posts " + (DPW[r.when] || (r.id === "breaking-news" ? "when big news breaks" : "when it fits")) : "every day";
+    return `<div class="dp${n ? "" : " off"}"><div class="nm">${esc(r.name)}<div class="sub">${esc(note)}${r.about ? `<br>${esc(r.about)}` : ""}</div></div>${seg(r, opts)}${times(r)}</div>`; };
+  let h = `<div class="card" id="dayplan"><div class="dphead"><div class="big">${num(c.total)}</div><div style="flex:1;min-width:0"><b>regular reels a day</b><div class="sub">${d.extras ? `+ extras up to ${num(c.extras)}, only on days their news lands` : "Extras are off"} · ${d.reserves ? d.reserves + " reserve" + (d.reserves > 1 ? "s" : "") + " made as back-up" : "no reserves"}. Times are the 8 posting times that already have timers.</div></div></div>${askedFor("dayplan").map(mm => `<span class="pill asked">asked: ${esc(mm)}</span>`).join("")}</div>
     <div><h3>Regular</h3><div class="sub">Tap how many a day, then pick each reel's time.</div></div><div class="list">${regular.map(rowHtml).join("")}</div>
     <div class="dphead"><h3 style="flex:1">Extras</h3><div class="seg" role="group" aria-label="Extras"><button type="button" data-act="dp-ex" data-id="1" aria-pressed="${d.extras}">On</button><button type="button" data-act="dp-ex" data-id="0" aria-pressed="${!d.extras}">Off</button></div></div>
-    <div class="list" ${d.extras ? "" : 'style="opacity:.5;pointer-events:none"'}>${extra.map(rowHtml).join("")}</div>`;
+    <div class="list" ${d.extras ? "" : 'style="opacity:.5;pointer-events:none"'}>${extra.map(rowHtml).join("")}</div>
+    <div class="dphead"><div style="flex:1;min-width:0"><h3>Reserves</h3><div class="sub">Back-up reels made each morning. One posts only if a planned reel fails; otherwise it is never posted. Each one costs runner minutes to make.</div></div>
+      <div class="seg" role="group" aria-label="Reserves a day">${[[0, "Off"], [1, "1"], [2, "2"], [3, "3"]].map(([v, l]) => `<button type="button" data-act="dp-res" data-n="${v}" aria-pressed="${d.reserves === v}">${l}</button>`).join("")}</div></div>`;
   if (dirty) h += `<div class="dpbar"><div class="w"><b>${num(D.base)} → ${num(c.total)} a day</b><div class="sub ${bad ? "dpwarn" : ""}">${esc(bad || "Counts from the next plan (05:37). One Undo brings all of it back.")}</div></div><button type="button" class="go" data-act="dp-save" ${bad ? "disabled" : ""}>Save day plan</button><button type="button" class="quiet" data-act="dp-reset">Reset</button></div>`;
   return h;
 }
@@ -715,11 +717,13 @@ document.addEventListener("click", e => {
   if (act === "dp-n") { dp = dp || dpStart(); const n = Number(b.dataset.n), sl = dp.slots[id], D = P.day_plan || {}, taken = dpCount(dp).used;
     while (sl.length < n) sl.push((D.times || []).find(x => !taken[x] && !sl.includes(x)) || (D.times || [])[0]);
     dp.n[id] = n; return render(); }
+  if (act === "dp-res") { dp = dp || dpStart(); dp.reserves = Number(b.dataset.n); return render(); }
   if (act === "dp-ex") { dp = dp || dpStart(); dp.extras = id === "1"; return render(); }
   if (act === "dp-reset") { dp = null; return render(); }
   if (act === "dp-save" && dp) { const ch = dpChanges(dp), c = dpCount(dp), a = { do: "day_plan", series: ch };
     if (dp.extras !== ((P.day_plan || {}).extras !== false)) a.extras = dp.extras;
-    return void send(a, `${c.total} a day${a.extras !== undefined ? ", extras " + (a.extras ? "on" : "off") : ""}`, "dayplan").then(ok => { if (ok) { dp = null; render(); } }); }
+    if (dp.reserves !== ((P.day_plan || {}).reserves ?? 2)) a.reserves = dp.reserves;
+    return void send(a, `${c.total} a day${a.extras !== undefined ? ", extras " + (a.extras ? "on" : "off") : ""}${a.reserves !== undefined ? ", reserves " + (a.reserves || "off") : ""}`, "dayplan").then(ok => { if (ok) { dp = null; render(); } }); }
   if (act === "vol") { const n = ((P.volume || {}).base || 6) + Number(id); return void send({ do: "set", settings: { volume: { base: n } } }, n + " reels a day"); }
   if (act === "phase") { scrollTo(0, 0); openDrawer = { id: "setup", kind: "confirm", text: id === "live" ? "Go live? Reels will post to Instagram at their slots." : "Back to rehearsal? Reels are still made, nothing posts.", yes: id === "live" ? "Yes, go live" : "Yes, rehearsal", action: { do: "set", settings: { phase: id } }, label: id }; return render(); }
 });

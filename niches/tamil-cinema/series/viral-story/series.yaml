@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: viral-story
 name: Viral Story
+promise: "The untold rise of a film person, named only at the end."
 status: paused         # Harish, 12 Nov 2026: replaced by movie-recommendations (AGENT.md 5.12)
 badge: { text: "UNTOLD", color: amber }
 title_screen: "{PERSON} · THE UNTOLD STORY"   # the badge alone never stands in for the title
