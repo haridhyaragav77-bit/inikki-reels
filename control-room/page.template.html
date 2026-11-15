@@ -234,6 +234,7 @@ function unpack(result) {
 function fill(p) {
   if (!p.framework && EXAMPLE.framework) { p.framework = JSON.parse(JSON.stringify(EXAMPLE.framework));
     (p.framework.switches || []).forEach(x => { if (x.key === "approval" && p.approval) x.value = p.approval; if (x.key === "away_mode") x.value = !!p.away; }); }
+  if (!p.day_plan && EXAMPLE.day_plan) { p.day_plan = JSON.parse(JSON.stringify(EXAMPLE.day_plan)); p.day_plan.base = (p.volume || {}).base ?? p.day_plan.base; }
   (p.series || []).forEach(s => { const e = (EXAMPLE.series || []).find(x => x.id === s.id); if (e && !s.values) { s.values = e.values; s.has_reference = e.has_reference; s.look = s.look || e.look; } });
   return p;
 }
