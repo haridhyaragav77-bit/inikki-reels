@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: movie-updates
 name: Movie Updates
+promise: "The day's film news: dates, box office, trailers, songs, OTT."
 status: live
 badge: { text: "MOVIE UPDATE", color: teal }
 title_screen: "{FILM} · {WHAT}"   # e.g. "COOLIE · WEEK 1 BOX OFFICE", "COOLIE CROSSES ₹100 CR", "JAILER 2 · RELEASE DATE"

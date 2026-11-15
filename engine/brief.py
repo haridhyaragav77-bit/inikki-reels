@@ -338,8 +338,12 @@ def build(drive, run, date):
         if len(main_plans) >= base:
             nothing = f"Nothing to do: today's {len(main_plans)} plans are already in."
         else:
-            todo.append(f"Plan {base - len(main_plans)} reel(s) for {date} at the slots below, plus {max(0, 2 - reserves)} reserve(s) "
-                        f"(\"reserve\": true). Save each to plans/{date}/<reel_id>.json and check it with: python -m engine.plancheck <file>.")
+            from . import dayplan
+            want = dayplan.reserves(ctl.settings)
+            extra = (f", plus {max(0, want - reserves)} reserve(s) (\"reserve\": true)" if want
+                     else ", and NO reserves (Harish turned reserves off in the Control Room)")
+            todo.append(f"Plan {base - len(main_plans)} reel(s) for {date} at the slots below{extra}. "
+                        f"Save each to plans/{date}/<reel_id>.json and check it with: python -m engine.plancheck <file>.")
     elif run == "refresh":
         todo.append("Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.")
         need = max(0, bank_target - len(bank.reels("ready")))
