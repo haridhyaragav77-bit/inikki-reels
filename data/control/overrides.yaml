@@ -3,6 +3,9 @@ settings:
     base: 6
   reserves:
     per_day: 0
+  voice:
+    elevenlabs_voice: bharadwaj
+    quality: economy
 series:
   movie-recommendations:
     notes:
@@ -42,6 +45,7 @@ series:
     status: live
   artwork-quote:
     per_day: 0
+    paused: true
 notes:
 - id: 5be8dd
   at: '2026-11-13'
