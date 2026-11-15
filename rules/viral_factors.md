@@ -3,12 +3,13 @@
 One list of what wins and what loses on this page: hook types, formats, endings and topics.
 The Engine and the weekly review update the counts. The Script Writer and Series Maker read this
 list, never the raw data. Counts start from Harish's 11 sample reels and the page on 10 Nov 2026.
+Won = above the page median views for that week (week of 15 Nov: 599); lost = below. Week of 15 Nov is a small sample (8 reels).
 
 ## Hook types
 | Hook type | Example | Won | Lost | Note |
 | --- | --- | --- | --- | --- |
 | Tanglish question about something felt but not noticed | "Phone-a thoda vidala. Yen?" | 0 | 0 | Breakdown house style |
-| Money or number in the hook | "Why did Suriya need ₹25,000?" | 0 | 0 | Feels concrete |
+| Money or number in the hook | "Why did Suriya need ₹25,000?" | 1 | 0 | Feels concrete; "Suriya three ₹200 cr" 1704 views (2.8× median, wk 15 Nov) |
 | Contradiction in 4 words | "Vikram's breakthrough. No buyers." | 0 | 0 | Viral-story style |
 | Play-along challenge | "Guess the Tamil Movie #3" | 1 | 0 | 104K views, one data point |
 
@@ -16,7 +17,9 @@ list, never the raw data. Counts start from Harish's 11 sample reels and the pag
 | Format | Won | Lost | Note |
 | --- | --- | --- | --- |
 | Guess the Movie (3 clues, countdown, reveal) | 1 | 0 | Travels to non-followers |
-| Card breakdown with real clips | 0 | 0 | The page's identity |
+| Card breakdown with real clips | 1 | 0 | The page's identity; Kaithi 1237 views (2× median, wk 15 Nov) |
+| News update (bulletin) | 2 | 2 | Won: Suriya ₹200 cr, OM trailer. Lost: Jail Mates teaser, Sathyavan Savithiri trailer (small films) |
+| Watch This Next (poster wall) | 0 | 1 | Courtroom dramas: 3 views, barely shown; too early to judge |
 | Cinematic story (6–8 images, 2 beats each) | 0 | 2 | 203 and 17 views on the two newest; too early to judge |
 
 ## Endings
@@ -29,7 +32,10 @@ list, never the raw data. Counts start from Harish's 11 sample reels and the pag
 ## Topics
 | Topic | Won | Lost | Note |
 | --- | --- | --- | --- |
-| Lokesh Kanagaraj films | 1 | 0 | Kaithi (breakdown and Guess #1) |
+| Lokesh Kanagaraj films | 2 | 0 | Kaithi (breakdown and Guess #1; breakdown 1237 views, wk 15 Nov) |
+| Box office of a star in the news | 1 | 0 | Suriya ₹200 cr (1704 views); ₹600 cr had the lowest skip yet (50%) |
+| Big-star trailer on drop day | 1 | 0 | OM (Dhanush, Mammootty): 1101 views |
+| Small film's trailer or teaser | 0 | 2 | Jail Mates 457 views, watch 13.9% (red); Sathyavan Savithiri 119 |
 
 ## Borrowed ideas (from the inspiration inbox)
 _None yet. Harish forwards reels he likes to the Control Room; the Advisor files the format, hook and why it worked here._

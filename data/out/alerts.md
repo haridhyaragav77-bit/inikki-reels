@@ -10,3 +10,4 @@
 - 14 Nov 18:45 IST · The trailer list has OM three times ("OM: Chapter One", "OM", "Om"). It is one film; one download is enough (official trailer link added to the trailer links note).
 - 14 Nov 18:45 IST · Tonight 21:30: the OM trailer update replaces the Jail Mates teaser (OM: 8+ outlets and an official upload; Jail Mates: 1 outlet). Jail Mates is now a reserve. If OM is not made in time, Jail Mates can still post.
 - 15 Nov 05:45 IST · 6 reels planned, not 7: no flex reel today. None of the new library trailers is a new release (no trailer breakdown), and Sunday is not a release day (no review).
+- 15 Nov 22:45 IST · Your standing rule for Movie Review stops mid-sentence ("…interesting visual desings to it make the"). Please finish it in the Control Room so the plans follow all of it.

@@ -4,6 +4,7 @@ These are starting rules taken from Harish's 11 sample reels, the page as it sto
 
 ## What the page has proven so far
 - An interactive guess format (**Guess the Tamil Movie #3**, 3D style) reached **104K views**. The newest cinematic stories got 203 and 17. Early evidence that **play-along formats travel to non-followers**. Treat this as one data point, not a law.
+- Week of 15 Nov (8 reels, median 599 views, small sample): money and big-star news win (Suriya ₹200 cr 1704, OM trailer 1101); the Kaithi breakdown got 1237. Small films' trailers lose (119 and 457). No rule changes until 10 reels over 14 days.
 - Breakdowns are the page's identity (Kaithi, Jigarthanda, Ratsasan). What makes them worth watching is the insight, explained with motion graphics.
 
 ## Approved style (Harish, 13 Nov)
