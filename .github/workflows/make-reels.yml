@@ -15,7 +15,10 @@ on:
         description: "Drive folder inside iNiKKi Reels (e.g. rehearsal). Empty = each plan's own folder"
         required: false
         default: ""
+  # The golden test runs on the build branch, before the merge (CLAUDE.md rule 3). It is not repeated on main: the
+  # merge carries the very files that were just tested, and each run of the whole set is about 17 runner minutes.
   push:
+    branches-ignore: [main]
     paths: ["templates/**", "engine/render/**", "engine/drive.py", "engine/tools/pick_plans.py", ".github/workflows/make-reels.yml"]
 
 concurrency:
@@ -35,6 +38,7 @@ jobs:
       FOLDER: ${{ github.event_name == 'push' && 'rehearsal/golden-check' || inputs.drive_folder }}
     steps:
       - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }      # the golden test asks git which looks a push changed
       - uses: actions/setup-python@v5
         with: { python-version: "3.12", cache: pip }
       - uses: actions/setup-node@v4
@@ -51,7 +55,8 @@ jobs:
           echo "ready=$(echo "$out" | python -c 'import sys,json; print(str(json.load(sys.stdin).get("ready", False)).lower())')" >> "$GITHUB_OUTPUT"
       - name: Which plans
         run: |
-          python engine/tools/pick_plans.py "${{ inputs.plans }}" > plans.txt
+          git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" > changed.txt 2>/dev/null || rm -f changed.txt   # no list = the whole set
+          python engine/tools/pick_plans.py "${{ inputs.plans }}" changed.txt > plans.txt
           echo "Plans to render:"; cat plans.txt
       - name: Music from Drive
         if: steps.drive.outputs.ready == 'true'
