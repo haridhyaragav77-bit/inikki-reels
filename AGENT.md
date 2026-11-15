@@ -185,7 +185,7 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | --- | --- | --- |
 | Sync | When a thinking run saves its work | Checks the Brain's branch, copies only allowed text files (plans, rules, lab, notes) into the live settings, puts the Brain's notes in Drive `status/`, then starts Make. Anything else is refused and reported |
 | Make | When new plans arrive, plus two safety-net times | Plan check → stills → voice → render → inspect → **put the reel in Drive** (full quality; `rehearsal/<date>/<reel>/` until go-live, then `finished/`). GitHub workflow "make". The approved looks are drawn by `engine/render/`. A second workflow, "Make reels", makes chosen plans by hand, and after any change to the looks it re-makes the reference set into Drive `rehearsal/golden-check/` (CLAUDE.md rule 3); it keeps a 7-day copy on GitHub. |
-| Post | At each slot time (8 slots a day), not on a constant timer | Checks the switch, posts, sets cover, caption and first comment. The same run also does the news watch and the 2-hour stats (fewer runner minutes) |
+| Post | At each slot time (8 slots a day), not on a constant timer | Checks the switch, posts, sets cover, caption and first comment. The same run also does the news watch and the 2-hour stats (fewer runner minutes). A reel is uploaded to Instagram when it is made (unpublished), so this run only publishes it; without that upload it uploads the reel itself, as before |
 | Relay | First step of every job | Takes in what you asked for in the Control Room: each action waiting in Drive `control/inbox/` is checked, applied to your settings, logged in plain words and binned (12.5) |
 | Edits | With every Post run, or on demand (daily job `control`) | Your word changes to reels (8.5): changes the plan, checks it, saves it and starts Make for that reel only |
 | Panel | Last step of every job | Rewrites the Control Room's one status file (13.3) |
@@ -704,8 +704,10 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Master switch | Run / Hold posts / Sleep | Run |
 | Approval level | **Autopilot** (content runs alone) · **Check-in** (new series and weekly rule changes wait for a tap) · **Hands-on** (each day's lineup needs a tap by 7 AM, else bank reels post) | Autopilot |
 | Always ask | Brand, niche, safety rules, budget | Fixed in every level |
-| Volume | 3–8 reels a day | 6 |
+| Volume | 3–8 regular reels a day, set per series (the day plan below) | 6 |
 | Schedule | Slot times | 08:30, 12:30, 15:30, 18:00, 20:00, 21:30 |
+| Extras | On / off, and "up to N a day" per extra series | On |
+| Reserves | 0–3 back-up reels a day | 2 |
 | Language | Headline and voice language | Tanglish/English + Tamil, Tamil voice |
 | Budgets | Images per month, Lab share, storage cap | ₹500, 20%, 8 GB |
 | Active brand, niche, lineup | Pick from saved | inikki-reels, tamil-cinema, cinema-core |
@@ -713,6 +715,8 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Safety rules | View. Edits need a typed confirmation. | Section 12.4 |
 
 **More switches (14 Nov), all under Control Room → Setup:** main voice (ElevenLabs or Microsoft), ElevenLabs voice, voice quality (best or economy), voice speed, breaking news on/off and its daily cap, calendar awareness, fast-page scouts, a different design for every breakdown, saver mode (fewer runner minutes), approval level, away mode. Each is one key of `config/agent.yaml`, listed with its allowed choices in `config/framework.yaml`; the relay refuses anything else.
+
+**The day plan (15 Nov).** Control Room → Setup → Reels per day. Each regular series gets Off/1/2/3/4 reels a day and a time for each reel; each story series Off/On; each extra (trailer-breakdown, movie-review, artwork-quote, breaking-news) Off/"up to 1–3", plus one Extras On/Off for all of them, and Reserves Off/1/2/3 (back-up reels made each morning; one posts only if a planned reel fails; `reserves.per_day`, default 2, capped at Make). Each row shows the series' promise in one line. The total of the regular rows is the day's volume (3 to 8). Times can only be the 8 posting times that already have timers (more timers would cost runner minutes). Two regular reels at one time are refused. One Save is one action and one Undo. The counts live in `control/overrides.yaml` (`series.<id>.per_day`, `.slots`; breaking-news uses `budgets.breaking_per_day`; `extras.enabled`) and win over the lineup file. A series set to 0 or an extra while Extras are off is not planned, made or posted (`engine/dayplan.py`); "up to N" for an extra is checked at Make.
 
 ### 12.4 Safety rules (only you change these)
 1. No rumours as fact. Unconfirmed is labelled or skipped.
@@ -732,6 +736,7 @@ The Control Room never edits the Engine's files. For each thing you ask, it **cr
 | --- | --- |
 | Master switch | `{"do":"switch","mode":"run"}` (or `hold_posts`, `sleep`) |
 | A setting | `{"do":"set","settings":{"volume":{"base":5}}}` (any key of `config/agent.yaml`; go live is `{"phase":"live"}`) |
+| Reels a day per series, times, extras | `{"do":"day_plan","series":{"movie-updates":{"per_day":2,"slots":["08:30","21:30"]},"trailer-breakdown":{"per_day":0}},"extras":true}` |
 | Pause or change a series | `{"do":"series","id":"guess-the-movie","set":{"paused":true}}` (also `slots`, `length_s`, `voice`) |
 | Standing rule (8.6) | `{"do":"note","series":"movie-recommendations","text":"…"}` (`"series":"all"` for the whole page) |
 | One reel | `{"do":"hold","reel_id":"…"}` (also `unhold`, `skip`, `post_now`, `retry`) |
@@ -899,6 +904,26 @@ The Series Maker adds a skill whenever the same job has been done by hand 3 time
 | Claude Pro | Shared with your own use | Step-down ladder above |
 
 ---
+
+**Runner minutes: the same day for fewer minutes (15 Nov 2026).** Measured on GitHub: a live day cost about 115 minutes, and posting was the biggest part (20 Post runs for 8 reels, because the Claude clock and GitHub's late timer both start one per slot; GitHub bills every job as at least one whole minute). Nothing was removed: both timers stay, so reels still post when Claude has no usage left. What changed is the cost of each run, and nothing about a reel's picture or sound:
+- **A Post run with nothing to post ends inside one billed minute.** It does not read the news feeds again when they were read less than 50 minutes ago (the slots are at least 60 minutes apart, so every slot still watches), and it writes nothing when nothing changed.
+- **GitHub's late timer waits for a close slot only when the clock is missing.** Each clock-started Post run leaves a note (Drive `status/clock.json`). If the clock was on time for the newest slot, a late-timer run that lands just before a slot leaves that reel to the clock and stops (it never posts a reel early). If the clock missed, it waits up to 15 minutes and posts on time, exactly as before. Unknown counts as "missed".
+- **Upload when made, publish at the slot.** Make uploads each reel to Instagram as an unpublished container (Instagram keeps it 24 hours). The Post run checks it is still this exact reel (same file, same making, same words, cover and trial setting, under 20 hours old) and publishes. Anything else, or any doubt, and it uploads the reel then, as before. Instagram's music check still runs before publishing. Switch: `post.early_upload` in `config/engine.yaml`.
+- **The status step is quicker.** The panel reads each Drive file once and finds a folder's files with one listing.
+- **Make is one job, not two.** The "anything new?" check is its first step; the heavy tools are installed only when there is something to make.
+- **The nightly job is not done twice.** When the clock ran it on time, GitHub's late copy stops at once.
+- **Building costs less.** The golden test runs on the build branch before the merge and is not repeated on main; a change inside one look re-makes only that look's reference reels (shared drawing code still re-makes the whole set).
+- **The counter is honest.** A day GitHub refused to count was saved as 0 minutes; now it is tried again, and the month was recounted once.
+- **Not changed, on purpose:** the video encoder settings, the frame rate, the voice and the music. A faster encoder setting was tested and left out, because it is not a bit-for-bit match.
+
+Expected: about 60 minutes a day for 5 reels plus news and reviews (about 10 a reel, about 1,800 a month). Budget for building: about 200 minutes a month.
+
+**What stays on GitHub and what stays with Claude (checked 15 Nov 2026).** Harish asked whether more work could move to Claude to save runner minutes. Checked against the real runs, the answer is "almost none, and it is not worth the risk":
+- Claude already does all the thinking (plans, rules, learning) and all the time-keeping (the clock). The plan check already runs in every thinking run before plans are saved.
+- What is left on GitHub is making (about 20 minutes a day) and posting (about 22): both need the keys (Instagram, Drive, voice, pictures) that the Brain must never hold, and making needs a strong machine.
+- The only movable jobs are the two daily briefs (about 2 minutes a day) and the two flex-slot post checks (about 2). Moving them saves about 120 minutes a month at most, costs more Claude usage on every run, needs the Brain to read Drive (it has no Drive access on purpose), and makes a brief or a post check depend on Claude having usage left. Not done.
+- Running everything on Claude is not possible without giving Claude every key, and a day with no Claude usage left would then post nothing. GitHub stays the Engine; Claude stays the Brain and the clock; each backs up the other's timer.
+- If minutes ever run short again, the levers in order are: fewer building runs, Saver mode, one reel fewer a day, a small GitHub spending limit.
 
 **Runner minutes: what happens near 2,000 (14 Nov; only while the repository is private).** GitHub gives a private repository 2,000 free minutes a month. At 100% GitHub stops every job until the 1st, and **nothing moves to Claude**: the Brain cannot make or post reels. So the Engine slows down first, in code: (1) the month is heading past the limit at this week's pace, or Saver mode is on → reserve and bank reels wait; (2) 85% used → the same, and no extra news checks; (3) 95% used → at most 3 new reels a day, so posting never stops before the 1st. The Usage tab shows minutes used, the forecast for month end and the day they would run out. To never stop: a small spending limit in GitHub's billing settings buys extra minutes. The repository stays private: the keys in GitHub Secrets are not readable from a public repository either, but a public one shows every plan, rule and log to anyone and lets strangers send pull requests at workflows that hold keys, for no gain worth that risk.
 

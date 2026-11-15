@@ -18,6 +18,34 @@ Harish asked to make the repository public (free runner minutes) with security d
 | Tests | `python -m tests.test_guard` | 70 checks with made-up keys and a pretend Drive, including the job-file rules |
 
 **Left for Harish (GitHub settings, AGENT.md 21.6):** secret scanning + push protection, outside-contributor approval, delete old job logs, Issues off, a spending limit at OpenAI, then flip to public. **Not done:** his Gmail is still in 7 early commits (needs a rewrite of `main`, only if he asks).
+## 15 Nov 2026, night — Reserves control, clearer series names
+Harish saw a reserve (Watch This Next, "Sudani from Nigeria") listed as an 8th reel and could not control reserves. Added Reserves Off/1/2/3 to Setup → Reels per day (`reserves.per_day`, default 2; the brief asks for that many, Make skips any extra). Every row now shows the full series name and a one-line promise (new `promise:` in each series file). The page also fills the day plan from its built-in copy when the status file is older.
+
+## 15 Nov 2026, evening — Reels per day, per series (the day plan)
+Harish asked to set how many reels each series posts a day, pick their times from a list, and switch the extras off, from Setup. Built: Setup → Reels per day (Off/1–4 buttons per series, a time list per reel, Extras On/Off and "up to N" per extra, a live total, one Save, one Undo). Engine: `engine/dayplan.py`, relay action `day_plan`, the plan run, Make and Post follow it (AGENT.md 12.3). Times are only the 8 that already have timers, so no new runner minutes. Tests: `tests/test_control_room.py` 2b. **To watch:** the first plan run after a Save lists the new counts.
+
+## 15 Nov 2026, later — Moving work from GitHub to Claude: checked, not done
+Harish asked to move part of the work to Claude near the limit. Checked: Claude already does the thinking and the clock; making and posting need keys and a strong machine; only about 4 minutes a day could move (two briefs, two flex-slot checks), for more Claude usage and a new way to fail. Decision and reasons are in AGENT.md 15.3. Nothing in the Engine changed. The weekly renewal of the clock and dispatcher chats is a separate task already set for 16 Nov.
+
+## 15 Nov 2026 — Runner minutes: the same day for about half the minutes
+Harish: 5 reels a day plus news and reviews inside 2,000 minutes, with no saver, no loss of quality, and reels must still post when Claude has no usage left.
+
+Measured first (GitHub run history): a live day cost about 115 minutes. Posting was the biggest part: 20 Post runs for 8 reels (the clock and GitHub's late timer both run one per slot), most of them billed 2 to 4 minutes for doing nothing. Building used about three quarters of the month so far.
+
+| Piece | Where | In one line |
+| --- | --- | --- |
+| Cheap empty Post runs | `engine/post.py` `watch_due`, `main` | No second news read within 50 minutes, no Drive writes when nothing changed |
+| Late timer waits only when needed | `engine/post.py` `clock_alive`, `wait_for_slot`; Drive `status/clock.json` | Clock on time → the late run leaves a close slot to it; clock missing → waits and posts on time as before |
+| Upload when made | `engine/post.py` `prepare`, `prep_usable`, `publish`; `engine/make.py` | Unpublished upload at Make; the slot's run publishes; any doubt → uploads then, as before |
+| Quicker status step | `engine/panel.py` `Once` | Each Drive file read once, one listing per folder |
+| Make is one job | `.github/workflows/make.yml`, `engine/make.py` `still_waiting` | The check is the first step, not a second billed job; a reel skipped to save minutes no longer starts the heavy tools on every run |
+| Nightly not doubled | `.github/workflows/daily.yml`, `engine/status.py` `recent` | The late copy stops when the clock already ran it |
+| Golden test once | `.github/workflows/make-reels.yml`, `engine/tools/pick_plans.py` | Branch only, and only the looks a push touched |
+| Honest counter | `engine/health.py` | A day that cannot be counted is tried again, never saved as 0; month recounted |
+| Tests | `tests/test_minutes.py` | 37 checks, no keys |
+
+**Not changed:** encoder, frame rate, voice, music, slot times, the 3-hours-late rule, both timers.
+**To watch:** the first live day's minutes on the Usage tab (expected about 60); the first "using the upload made ahead of the slot" line in a Post run.
 
 ## 14 Nov 2026, later — Control Room v2, ElevenLabs voice, unique designs, calendar, scouts
 Harish asked for: a far better Control Room (series as a framework, easy small changes, add/test/train/retire a series, more switches, usage), ElevenLabs actually used, a stronger Watch This Next, unique breakdown designs, calendar awareness, the missed "Ohm" trailer fixed, and a simple outer loop with insights.

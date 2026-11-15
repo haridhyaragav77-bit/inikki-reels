@@ -63,11 +63,17 @@ def lineup_today(ctl, date):
     name = ctl.settings.get("active", {}).get("lineup", "cinema-core")
     lineup = yaml.safe_load((nd / "lineups" / f"{name}.yaml").read_text(encoding="utf-8")) or {}
     rows = []
+    from . import dayplan
     for s in lineup.get("slots", []):
         sid = s.get("series") or story_series(lineup, date)
+        if not s.get("series") and sid and dayplan.off(ctl, sid):      # the story series of the day is off: another one takes the slot
+            sid = next((o["series"] for o in s.get("story_slot") or [] if not dayplan.off(ctl, o["series"]) and not ctl.series_paused(o["series"])), sid)
         if not sid:
             continue
         card = ctl.series(sid, nd)
+        if dayplan.off(ctl, sid):
+            rows.append(("-", sid, "off: 0 a day (Control Room)", ""))
+            continue
         if ctl.series_paused(sid):
             rows.append(("-", sid, "paused", ""))
             continue
@@ -78,7 +84,7 @@ def lineup_today(ctl, date):
         if draft and not draft_day(date):
             rows.append(("-", sid, "draft: next reel tomorrow", ""))
             continue
-        n = 1 if draft else int(s.get("per_day", 1))
+        n = 1 if draft else (dayplan.chosen(ctl.overrides, sid) if dayplan.chosen(ctl.overrides, sid) is not None else int(s.get("per_day", 1)))
         for t in (card.get("slots") or [])[:n]:
             v = card.get("voice")
             voice = ("voice: " + v.replace("_", " ")) if isinstance(v, str) else ("voice" if v else "no voice")
@@ -102,6 +108,26 @@ def lineup_today(ctl, date):
                          + f"{'voice' if card.get('voice') is True else 'no voice'}, {'-'.join(map(str, card.get('length_s', [])))} s"))
     bank_target = next((int(s.get("bank_target", 0)) for s in lineup.get("slots", []) if s.get("bank_target")), 0)
     return sorted(rows), lineup, bank_target
+
+
+def flex_line(ctl):
+    """The flex series for the plan run, with Harish's caps from the day plan (Control Room → Setup)."""
+    from . import dayplan
+    if not dayplan.extras_on(ctl.settings):
+        return "Extras are OFF (Control Room): plan no flex reels (no trailer-breakdown, movie-review or artwork-quote) today."
+    words = {"trailer-breakdown": "trailer-breakdown when a new trailer lands", "movie-review": "movie-review on release days",
+             "artwork-quote": "artwork-quote after a dull stretch"}
+    on, off = [], []
+    for sid, (role, entry) in dayplan.roles(ctl.settings).items():
+        if role != "extra" or sid == "breaking-news":
+            continue
+        n = dayplan.chosen(ctl.overrides, sid)
+        if n == 0 or ctl.series_paused(sid):
+            off.append(sid)
+        else:
+            on.append(words.get(sid, sid) + (f" (at most {n} today)" if n else ""))
+    return (f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: " + (", ".join(on) or "none") + "."
+            + (f" Turned off by Harish: {', '.join(off)}." if off else ""))
 
 
 DOW3 = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
@@ -312,8 +338,12 @@ def build(drive, run, date):
         if len(main_plans) >= base:
             nothing = f"Nothing to do: today's {len(main_plans)} plans are already in."
         else:
-            todo.append(f"Plan {base - len(main_plans)} reel(s) for {date} at the slots below, plus {max(0, 2 - reserves)} reserve(s) "
-                        f"(\"reserve\": true). Save each to plans/{date}/<reel_id>.json and check it with: python -m engine.plancheck <file>.")
+            from . import dayplan
+            want = dayplan.reserves(ctl.settings)
+            extra = (f", plus {max(0, want - reserves)} reserve(s) (\"reserve\": true)" if want
+                     else ", and NO reserves (Harish turned reserves off in the Control Room)")
+            todo.append(f"Plan {base - len(main_plans)} reel(s) for {date} at the slots below{extra}. "
+                        f"Save each to plans/{date}/<reel_id>.json and check it with: python -m engine.plancheck <file>.")
     elif run == "refresh":
         todo.append("Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.")
         need = max(0, bank_target - len(bank.reels("ready")))
@@ -322,7 +352,10 @@ def build(drive, run, date):
         todo.append("Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.")
     elif run == "breaking":
         cap = int(ctl.settings.get("budgets", {}).get("breaking_per_day", 2))
-        if breaking_today >= cap:
+        from . import dayplan
+        if dayplan.off(ctl, "breaking-news"):
+            nothing = "Nothing to do: " + dayplan.off(ctl, "breaking-news")
+        elif breaking_today >= cap:
             nothing = f"Nothing to do: already {breaking_today} breaking reels today (max {cap})."
         else:
             todo.append(f"Verify the lead in the trigger text with 2 trusted sources (niches/{AGENT['active']['niche']}/knowledge/sources.yaml). "
@@ -447,7 +480,8 @@ def build(drive, run, date):
                and str(t.get("fetched", ""))[:10] >= (dt.date.fromisoformat(date) - dt.timedelta(days=3)).isoformat()]
         if new:
             L += ["", "## New trailers in the library (last 3 days)"] + [f"- {t['film']} ({t['kind']}, grid: clip-library/sheets/{t['sheet']})" for t in new[:6]]
-            L += ["Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release."]
+            if not dayplan.off(ctl, "trailer-breakdown"):
+                L += ["Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release."]
         try:
             from .trailers import index as clip_index, have
             idx = clip_index(drive)
@@ -458,8 +492,7 @@ def build(drive, run, date):
             L += ["", "## Re-pick moments (the trailer has arrived)"] + [
                 f"- {rid}: {f}'s grid is in the library now. Pick the shot for each line, write the start seconds into plans/{date}/{rid}.json, commit."
                 for rid, f in ready]
-        L += [f"Flex slots {', '.join(ctl.settings.get('flex_slots', []))}: trailer-breakdown when a new trailer lands, movie-review on release days, "
-              "artwork-quote after a dull stretch."]
+        L += [flex_line(ctl)]
     if day.reels():
         L += ["", "## Today's reels"] + table([(r.get("slot") or "-", r["reel_id"], r.get("series", ""), r.get("state", ""), (r.get("reason") or "")[:60])
                                                for r in day.reels()], ["slot", "reel", "series", "state", "note"])

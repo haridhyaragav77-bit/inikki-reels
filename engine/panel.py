@@ -319,8 +319,44 @@ def actions(drive):
     return out
 
 
+class Once:
+    """The Drive, read once: the panel is one snapshot, so each file is fetched a single time while it is built, and a
+    folder's files are found with one listing instead of one search per file. Reading only; every write, and anything
+    not found in the listing, goes to the real Drive. (Runner minutes: this step ends every job, AGENT.md 15.3.)"""
+
+    def __init__(self, drive):
+        self._d, self._texts, self._index = drive, {}, {}
+
+    def __getattr__(self, name):
+        return getattr(self._d, name)
+
+    def _find(self, fid, name):
+        if fid not in self._index:
+            by = {}
+            for it in self._d.children(fid):
+                by.setdefault(it["name"], []).append(it)
+            # the same choice as Drive.find_child when two files share a name
+            self._index[fid] = {n: sorted(v, key=lambda x: self._d._is_mine(x))[0] for n, v in by.items()}
+        return self._index[fid].get(name) or self._d.find_child(fid, name)
+
+    def read_text(self, folder_path, name, default=None):
+        key = (folder_path.strip("/"), name)
+        if key not in self._texts:
+            fid = self._d.folder(folder_path, create=False)
+            f = self._find(fid, name) if fid else None
+            self._texts[key] = self._d.read_bytes(f["id"]).decode("utf-8") if f else None
+        t = self._texts[key]
+        return default if t is None else t
+
+    def read_json(self, folder_path, name, default=None):
+        t = self.read_text(folder_path, name)
+        return json.loads(t) if t else default
+
+
 def build(drive, ctl=None):
-    ctl = ctl or Control(drive)
+    ctl = ctl or Control(drive)             # the real Drive: this takes in the Control Room's inbox first
+    if hasattr(drive, "find_child") and hasattr(drive, "_is_mine"):
+        drive = Once(drive)
     now = status.now()
     day, bank = Day(drive), Bank(drive)
     date = today()
@@ -338,6 +374,7 @@ def build(drive, ctl=None):
          "switch": ctl.mode, "phase": ctl.phase, "approval": ctl.settings.get("approval"), "away": bool(ctl.settings.get("away_mode")),
          "respect": (respect or {}).get("why") if respect else None,
          "active": ctl.settings.get("active"), "volume": ctl.settings.get("volume"), "slots": ctl.settings.get("slots"),
+         "day_plan": _safe(lambda: __import__("engine.dayplan", fromlist=["card"]).card(ctl), {}),
          "today": {"date": date, "reels": reels},
          "tomorrow": {"date": nxt, "slots": _safe(lambda: tomorrow(ctl, nxt), [])},
          "bank": {"ready": len(bank.reels("ready"))},

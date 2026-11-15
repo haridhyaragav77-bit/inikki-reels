@@ -132,6 +132,16 @@ details.blk[open]>summary .peek{visibility:hidden}
 .barw{position:relative} .barw b{position:absolute;top:-4px;width:3px;height:16px;border-radius:2px;background:var(--fg)}
 .do{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line);flex-wrap:wrap}
 .do .w{flex:1 1 240px;min-width:0}
+.dp{display:flex;gap:10px 14px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.dp:first-child{border-top:0}
+.dp .nm{flex:1 1 170px;min-width:0;font-weight:600}
+.dp .tm{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 100%}
+.dp .tm select{width:auto;padding:6px 8px;font-size:14px}
+.dp.off .nm{opacity:.55}
+.dphead{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.dpbar{position:sticky;bottom:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 14px;border:1px solid var(--gold);border-radius:6px;background:var(--panel2)}
+.dpbar .w{flex:1 1 180px}
+.dpwarn{color:var(--amber)}
 .sw{display:flex;gap:10px;align-items:center;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
 .sw:first-child{border-top:0} .sw .w{flex:1 1 220px;min-width:0;font-weight:600}
 .sw .w .sub{font-weight:400}
@@ -224,6 +234,7 @@ function unpack(result) {
 function fill(p) {
   if (!p.framework && EXAMPLE.framework) { p.framework = JSON.parse(JSON.stringify(EXAMPLE.framework));
     (p.framework.switches || []).forEach(x => { if (x.key === "approval" && p.approval) x.value = p.approval; if (x.key === "away_mode") x.value = !!p.away; }); }
+  if (!p.day_plan && EXAMPLE.day_plan) { p.day_plan = JSON.parse(JSON.stringify(EXAMPLE.day_plan)); p.day_plan.base = (p.volume || {}).base ?? p.day_plan.base; }
   (p.series || []).forEach(s => { const e = (EXAMPLE.series || []).find(x => x.id === s.id); if (e && !s.values) { s.values = e.values; s.has_reference = e.has_reference; s.look = s.look || e.look; } });
   return p;
 }
@@ -544,14 +555,56 @@ function vInsights() {
 function vSetup() {
   const base = (P.volume || {}).base, acts = P.actions || [];
   let h = banners() + `<div><h2>Setup</h2><div class="sub">Changes count from the next plan. Brand, niche and safety rules are changed in the Workshop.</div></div><div class="grid">
-    <div class="card"><div class="sub">Reels per day</div><div class="big">${num(base)}</div><div class="inline"><button type="button" data-act="vol" data-id="-1" ${base <= 3 ? "disabled" : ""}>One fewer</button><button type="button" data-act="vol" data-id="1" ${base >= 8 ? "disabled" : ""}>One more</button></div><div class="sub">Slots: ${esc((P.slots || []).join(" · "))}</div></div>
     <div class="card"><div class="sub">Phase</div><div class="big">${esc(P.phase || "—")}</div><div class="inline"><button type="button" data-act="phase" data-id="${P.phase === "live" ? "rehearsal" : "live"}">${P.phase === "live" ? "Back to rehearsal" : "Go live"}</button></div><div class="sub">Rehearsal makes every reel and posts nothing.</div></div>
     <div class="card"><div class="sub">Lineup</div><div style="font-weight:700">${esc(P.lineup || "—")}</div><div class="sub">Approval: ${esc(P.approval || "—")}. Use Hold posts to approve each reel yourself.</div></div></div>`;
+  h = h.replace('<div class="grid">', vDayPlan() + '<div class="grid">');
   const sws = FW().switches || [], swHtml = x => { const cur = x.value, opts = x.type === "bool" ? [true, false] : x.options || [], name = o => x.type === "bool" ? (o ? "On" : "Off") : x.key.endsWith("elevenlabs_voice") ? voiceName(o).split(" · ")[0] : nice(o, x.key);
     return `<div class="sw"><div class="w">${esc(x.label)}${askedFor("sw:" + x.key).map(mm => ` <span class="pill asked">asked: ${esc(mm)}</span>`).join("")}${x.help ? `<div class="sub">${esc(x.help)}</div>` : ""}</div><div class="seg" role="group" aria-label="${esc(x.label)}">${opts.map(o => `<button type="button" data-act="sw" data-key="${esc(x.key)}" data-id="${esc(o)}" aria-pressed="${String(o) === String(cur)}">${esc(name(o))}</button>`).join("")}</div></div>`; };
   if (sws.length) h += `<div><h2>Switches</h2><div class="sub">Each one is taken in by the Engine's next job and can be undone under "Your last actions".</div></div><div class="list">${sws.map(swHtml).join("")}</div>`;
   h += `<div><h2>Your last actions</h2><div class="sub">What you asked for and what became of it.</div></div><div class="list rows">${acts.map(a => `<div class="row"><span class="t">${esc(String(a.at || "").replace(/^\d{4}-\d{2}-\d{2} /, "").replace(" IST", ""))}</span><span class="w" style="flex:1;min-width:0;overflow-wrap:anywhere">${esc(a.what || "")}<div class="sub">${esc(a.outcome || a.result || "")}${a.why ? " · " + esc(a.why) : ""}${a.undone ? " · undone" : ""}</div></span>${a.can_undo ? `<button type="button" class="quiet" data-act="undo" data-id="${esc(a.id)}">Undo</button>` : ""}</div>`).join("") || `<div class="row sub">Nothing yet. Every button you press is listed here once the Engine has picked it up.</div>`}</div>`;
   h += `<div><h2>Jobs</h2></div><div class="list rows">${Object.entries(P.jobs || {}).map(([k, v]) => `<div class="row"><span class="t">${esc(k)}</span><span class="w"><span class="dot ${v.result === "success" ? "green" : "red"}"></span>${esc(v.result)}</span><span class="in">${esc(v.at || "")}</span></div>`).join("") || `<div class="row sub">No job results listed.</div>`}</div>`;
+  return h;
+}
+/* ---------- reels per day, by series (the day plan) ---------- */
+let dp = null;                                   // the day plan being changed, until Save
+const DPW = { new_trailer: "when a new trailer lands", release_day: "on release days", dull_streak: "after a dull stretch" };
+function dpStart() { const D = P.day_plan || {}; return { extras: D.extras !== false, reserves: D.reserves ?? 2, n: Object.fromEntries((D.rows || []).map(r => [r.id, r.per_day])), slots: Object.fromEntries((D.rows || []).map(r => [r.id, (r.slots || []).slice()])) }; }
+function dpCount(d) {                            // the same sums as the Engine (engine/dayplan.py)
+  const rows = (P.day_plan || {}).rows || [], used = {}; let total = 0, story = false, clash = "";
+  rows.forEach(r => { if (r.role === "extra" || r.paused) return; const n = d.n[r.id] || 0;
+    if (r.role === "story") { story = story || n > 0; return; } total += n;
+    d.slots[r.id].slice(0, n).forEach(t => { if (used[t] && used[t] !== r.name) clash = `${short(r.name)} and ${short(used[t])} both post at ${t}`; used[t] = r.name; }); });
+  const extras = d.extras ? rows.filter(r => r.role === "extra" && !r.paused).reduce((a, r) => a + (d.n[r.id] || 0), 0) : 0;
+  return { total: total + (story ? 1 : 0), extras, clash, used };
+}
+const short = s => String(s || "").split(" (")[0];
+function dpChanges(d) {
+  const out = {}, rows = (P.day_plan || {}).rows || [];
+  rows.forEach(r => { const n = d.n[r.id], sl = d.slots[r.id].slice(0, n), was = (r.slots || []).slice(0, r.per_day);
+    const c = {}; if (n !== r.per_day) c.per_day = n; if (r.role !== "extra" && n > 0 && sl.join() !== was.join()) c.slots = sl;
+    if (Object.keys(c).length) out[r.id] = Object.assign({ per_day: n }, c); });
+  return out;
+}
+function vDayPlan() {
+  const D = P.day_plan || {}, rows = D.rows || [];
+  if (!rows.length) return `<div class="card"><div class="sub">Reels per day</div><div class="big">${num((P.volume || {}).base)}</div><div class="sub">The per-series plan shows once the live status loads.</div></div>`;
+  const d = dp || dpStart(), c = dpCount(d), ch = dpChanges(d), dirty = Object.keys(ch).length || d.extras !== (D.extras !== false) || d.reserves !== (D.reserves ?? 2);
+  const lo = D.min || 3, hi = D.max || 8, bad = c.total < lo ? `At least ${lo} regular reels a day.` : c.total > hi ? `At most ${hi} regular reels a day.` : c.clash ? c.clash + ": pick another time." : "";
+  const seg = (r, opts) => `<div class="seg" role="group" aria-label="${esc(r.name)}: reels a day">${opts.map(([v, l]) => `<button type="button" data-act="dp-n" data-id="${esc(r.id)}" data-n="${v}" aria-pressed="${(d.n[r.id] || 0) === v}" ${r.paused ? "disabled" : ""}>${l}</button>`).join("")}</div>`;
+  const times = r => { const n = d.n[r.id] || 0; if (!n || r.role === "extra") return "";
+    return `<div class="tm">${d.slots[r.id].slice(0, n).map((t, i) => `<select data-dp="${esc(r.id)}:${i}" aria-label="${esc(short(r.name))}, reel ${i + 1} time">${(D.times || []).map(x => { const who = r.role === "regular" && c.used[x] && c.used[x] !== r.name ? " (taken)" : "";
+      return `<option value="${x}" ${x === t ? "selected" : ""} title="${who ? esc("Used by " + short(c.used[x])) : ""}">${x}${who}</option>`; }).join("")}</select>`).join("")}</div>`; };
+  const regular = rows.filter(r => r.role !== "extra"), extra = rows.filter(r => r.role === "extra");
+  const rowHtml = r => { const n = d.n[r.id] || 0, opts = r.role === "story" ? [[0, "Off"], [1, "On"]] : r.role === "extra" ? [[0, "Off"], ...[1, 2, 3].slice(0, r.max).map(k => [k, "Up to " + k])] : [[0, "Off"], ...[1, 2, 3, 4].slice(0, r.max).map(k => [k, String(k)])];
+    const note = r.paused ? "paused" : r.role === "story" ? "shares the 15:30 story slot · " + ((r.days || []).length ? r.days.join(" ") : "the other days") : r.role === "extra" ? "posts " + (DPW[r.when] || (r.id === "breaking-news" ? "when big news breaks" : "when it fits")) : "every day";
+    return `<div class="dp${n ? "" : " off"}"><div class="nm">${esc(r.name)}<div class="sub">${esc(note)}${r.about ? `<br>${esc(r.about)}` : ""}</div></div>${seg(r, opts)}${times(r)}</div>`; };
+  let h = `<div class="card" id="dayplan"><div class="dphead"><div class="big">${num(c.total)}</div><div style="flex:1;min-width:0"><b>regular reels a day</b><div class="sub">${d.extras ? `+ extras up to ${num(c.extras)}, only on days their news lands` : "Extras are off"} · ${d.reserves ? d.reserves + " reserve" + (d.reserves > 1 ? "s" : "") + " made as back-up" : "no reserves"}. Times are the 8 posting times that already have timers.</div></div></div>${askedFor("dayplan").map(mm => `<span class="pill asked">asked: ${esc(mm)}</span>`).join("")}</div>
+    <div><h3>Regular</h3><div class="sub">Tap how many a day, then pick each reel's time.</div></div><div class="list">${regular.map(rowHtml).join("")}</div>
+    <div class="dphead"><h3 style="flex:1">Extras</h3><div class="seg" role="group" aria-label="Extras"><button type="button" data-act="dp-ex" data-id="1" aria-pressed="${d.extras}">On</button><button type="button" data-act="dp-ex" data-id="0" aria-pressed="${!d.extras}">Off</button></div></div>
+    <div class="list" ${d.extras ? "" : 'style="opacity:.5;pointer-events:none"'}>${extra.map(rowHtml).join("")}</div>
+    <div class="dphead"><div style="flex:1;min-width:0"><h3>Reserves</h3><div class="sub">Back-up reels made each morning. One posts only if a planned reel fails; otherwise it is never posted. Each one costs runner minutes to make.</div></div>
+      <div class="seg" role="group" aria-label="Reserves a day">${[[0, "Off"], [1, "1"], [2, "2"], [3, "3"]].map(([v, l]) => `<button type="button" data-act="dp-res" data-n="${v}" aria-pressed="${d.reserves === v}">${l}</button>`).join("")}</div></div>`;
+  if (dirty) h += `<div class="dpbar"><div class="w"><b>${num(D.base)} → ${num(c.total)} a day</b><div class="sub ${bad ? "dpwarn" : ""}">${esc(bad || "Counts from the next plan (05:37). One Undo brings all of it back.")}</div></div><button type="button" class="go" data-act="dp-save" ${bad ? "disabled" : ""}>Save day plan</button><button type="button" class="quiet" data-act="dp-reset">Reset</button></div>`;
   return h;
 }
 /* ---------- the guide: a small Markdown reader ---------- */
@@ -661,11 +714,22 @@ document.addEventListener("click", e => {
   if (act === "sw") { const x = (FW().switches || []).find(q => q.key === key) || {}, val = x.type === "bool" ? id === "true" : (x.options || []).find(o => String(o) === id) ?? id;
     if (String(val) === String(x.value)) return; return void send({ do: "set", settings: { [key]: val } }, `${x.label || key}: ${x.type === "bool" ? (val ? "on" : "off") : val}`, "sw:" + key); }
   if (act === "do-next") { const d = ((P.insights || {}).do_next || [])[Number(id)]; if (!d) return; return void send({ do: "idea", text: `From the insights: ${d.do} (${d.why})` }, "insight to the agent"); }
+  if (act === "dp-n") { dp = dp || dpStart(); const n = Number(b.dataset.n), sl = dp.slots[id], D = P.day_plan || {}, taken = dpCount(dp).used;
+    while (sl.length < n) sl.push((D.times || []).find(x => !taken[x] && !sl.includes(x)) || (D.times || [])[0]);
+    dp.n[id] = n; return render(); }
+  if (act === "dp-res") { dp = dp || dpStart(); dp.reserves = Number(b.dataset.n); return render(); }
+  if (act === "dp-ex") { dp = dp || dpStart(); dp.extras = id === "1"; return render(); }
+  if (act === "dp-reset") { dp = null; return render(); }
+  if (act === "dp-save" && dp) { const ch = dpChanges(dp), c = dpCount(dp), a = { do: "day_plan", series: ch };
+    if (dp.extras !== ((P.day_plan || {}).extras !== false)) a.extras = dp.extras;
+    if (dp.reserves !== ((P.day_plan || {}).reserves ?? 2)) a.reserves = dp.reserves;
+    return void send(a, `${c.total} a day${a.extras !== undefined ? ", extras " + (a.extras ? "on" : "off") : ""}${a.reserves !== undefined ? ", reserves " + (a.reserves || "off") : ""}`, "dayplan").then(ok => { if (ok) { dp = null; render(); } }); }
   if (act === "vol") { const n = ((P.volume || {}).base || 6) + Number(id); return void send({ do: "set", settings: { volume: { base: n } } }, n + " reels a day"); }
   if (act === "phase") { scrollTo(0, 0); openDrawer = { id: "setup", kind: "confirm", text: id === "live" ? "Go live? Reels will post to Instagram at their slots." : "Back to rehearsal? Reels are still made, nothing posts.", yes: id === "live" ? "Yes, go live" : "Yes, rehearsal", action: { do: "set", settings: { phase: id } }, label: id }; return render(); }
 });
 addEventListener("hashchange", () => { openDrawer = null; ed = null; if (route()[1] !== "new") wiz = null; render.fresh = true; render(); scrollTo(0, 0); });
 document.addEventListener("input", e => { const t = e.target;
+  if (t.dataset.dp) { dp = dp || dpStart(); const [sid, i] = t.dataset.dp.split(":"); dp.slots[sid][Number(i)] = t.value; return render(); }
   if (ed && t.dataset.l) { const [k, i] = t.dataset.l.split(":"); ed.lists[k][Number(i)] = t.value; }
   else if (ed && t.dataset.key && t.closest(".blkbody")) ed.draft[t.dataset.key] = t.value;
   else if (wiz && t.dataset.wiz) { if (t.dataset.wiz === "from") { wiz.from = t.value; render.fresh = true; render(); } else wiz.card[t.dataset.wiz] = t.value; } });

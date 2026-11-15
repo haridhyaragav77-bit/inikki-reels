@@ -20,6 +20,8 @@ One action is one JSON object:
     {"do": "series", "id": "<series>", "set": {"story_shape": [...], "voice_cfg.provider": "microsoft"}}
                                                              any field of the series framework (config/framework.yaml)
     {"do": "series_add", "card": {"name": "...", "template": "...", "slots": ["17:00"], ...}}     a new series; it starts as a draft (watched, never posted)
+    {"do": "day_plan", "series": {"<series>": {"per_day": 2, "slots": ["08:30", "18:00"]}}, "extras": true, "reserves": 1}
+                                                             reels a day per series, their times, extras on/off (engine/dayplan.py)
     {"do": "series_remove", "id": "<series>"}                retired: never planned again (undo brings it back)
     {"do": "test", "series": "<series>"}                     make the series' reference reel into Drive rehearsal/tests (never posted)
     {"do": "sample", "series": "<series>", "url": "...", "note": "what to learn from it"}   a reel to learn from, for the weekly run
@@ -329,6 +331,34 @@ def apply_one(st, a, aid, at):
         before = _patch(st, ("series", sid), nest(flat))
         said = ", ".join(f"{specs.get(k, {}).get('label', k)} = {'(cleared)' if v == ABSENT else json.dumps(v, ensure_ascii=False)[:70]}" for k, v in flat.items())
         return f"Series {sid}: {said}"[:230], {"overrides": before}
+    if do == "day_plan":
+        from . import dayplan
+        from .control import deep_merge
+        settings = deep_merge(AGENT, st.overrides.get("settings") or {})
+
+        def card(sid):
+            p = niche_dir() / "series" / sid / "series.yaml"
+            base = (yaml.safe_load(p.read_text(encoding="utf-8")) or {}) if p.exists() else dict((st.overrides.get("new_series") or {}).get(sid) or {})
+            return deep_merge(base, {k: v for k, v in ((st.overrides.get("series") or {}).get(sid) or {}).items() if k != "notes"})
+        want = a.get("series") or {}
+        if not isinstance(want, dict) or (not want and "extras" not in a and "reserves" not in a):
+            raise ValueError("no change given")
+        patch, sset, said, total = dayplan.check(settings, st.overrides, want, card)
+        if "extras" in a:
+            sset["extras"] = {"enabled": bool(a["extras"])}
+            said.append("extras " + ("on" if a["extras"] else "off"))
+        if "reserves" in a:
+            try:
+                rn = int(a["reserves"])
+            except (TypeError, ValueError):
+                rn = -1
+            if not 0 <= rn <= 3:
+                raise ValueError("reserves can be 0 to 3 a day")
+            sset["reserves"] = {"per_day": rn}
+            said.append(f"reserves {rn or 'off'}")
+        before = _patch(st, ("series",), patch) if patch else {}
+        before.update(_patch(st, ("settings",), sset))
+        return f"Day plan: {total} regular reels a day · " + ", ".join(said)[:180], {"overrides": before}
     if do == "series_add":
         card = a.get("card")
         if not isinstance(card, dict) or not card.get("name"):

@@ -14,7 +14,7 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
    time from the open post times it lists (normal slots first, then flex slots), at least 60 minutes apart, the most valuable
    reels first. A reel that still has no time: if it is evergreen (breakdown, recommendation, review), save it to
    `plans/bank/` so it posts on a later day; if it is time-bound news that would be stale tomorrow, drop it. Keep 1 reserve
-   (2 if 4 or more times are open) and skip the bank top-up.
+   (2 if 4 or more times are open; none if the brief says reserves are off) and skip the bank top-up.
 
 ## The work
 Wear the hats in order (the cards in `team/`): Researcher → Script Writer → Content Specialist → Marketing Expert →
@@ -27,7 +27,7 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
 - Check every plan: `for f in plans/$TODAY/*.json; do python -m engine.plancheck "$f" | tail -n 3; done`. Fix what it reports.
 - For each film under "Trailers to get" in the brief, find its official YouTube trailer and add "Film = link" to
   `data/notes/trailer_links.md`.
-- Keep 2 reserves for the day (`"reserve": true`). Write plans to `plans/$TODAY/`.
+- Make the number of reserves the brief asks for (`"reserve": true`); none when it says reserves are off. Write plans to `plans/$TODAY/`.
 
 ## Always
 - Write only text files. Never call OpenAI or Instagram. You hold no keys.

@@ -1,18 +1,25 @@
 """Post job (AGENT.md 4.3, 12.1): at each slot, post the reel that is due. The switch is checked right before posting.
 
-    python -m engine.post            the slot that is due now (waits up to 15 minutes if the run started early)
+    python -m engine.post            the slot that is due now (GitHub's own timer: waits up to 15 minutes for a slot that is
+                                     close, but only while the Claude clock is missing its times; see wait_for_slot)
     python -m engine.post --dry      upload one made reel as an unpublished container only: tests posting, shows nothing
 
 Rehearsal phase: nothing is posted; the due reel is marked "rehearsed" at its time. Hold posts: the due reel is held.
-The same run also does the news watch and the 2-hour stats (fewer runner minutes than separate jobs)."""
+The same run also does the news watch and the 2-hour stats (fewer runner minutes than separate jobs).
+
+Runner minutes (AGENT.md 15.3): a run with nothing to post ends inside one billed minute. A reel is uploaded to Instagram
+when it is made (unpublished; Instagram keeps it 24 hours), so the run at its slot only has to publish it. If that early
+upload is missing, old or no longer matches the reel, the run uploads it the usual way: nothing is lost either way."""
 import argparse
 import datetime as dt
+import hashlib
 import json
+import os
 import sys
 import time
 import traceback
 
-from .settings import OUT, ROOT, niche_dir
+from .settings import ENGINE, OUT, ROOT, niche_dir
 from . import status
 from .control import Control
 from .day import Bank, Day, today
@@ -47,6 +54,9 @@ def stopper(r, ctl, respect, now):
     series = r.get("series", "")
     if ctl.series_paused(series):
         return "The series is paused."
+    from . import dayplan
+    if dayplan.off(ctl, series) and not r.get("manual"):
+        return dayplan.off(ctl, series)
     if respect and not r.get("tribute"):
         allow = respect.get("allow_series") or ctl.settings.get("respect", {}).get("allow_series", [])
         if series not in allow:
@@ -83,6 +93,51 @@ def retire_track(drive, track_name, why):
         print("could not retire track:", e, file=sys.stderr)
 
 
+def _post_cfg():
+    return ENGINE.get("post") or {}
+
+
+def prep_key(r):
+    """What an early upload was made from. Any change to the reel (made again, new words, new cover) changes the key."""
+    parts = [r.get("drive_reel"), r.get("made_at"), r.get("caption") or "", int(float(r.get("cover_t") or 1) * 1000), r.get("trial")]
+    return hashlib.sha1(json.dumps(parts, ensure_ascii=False, sort_keys=True, default=str).encode("utf-8")).hexdigest()[:16]
+
+
+def prep_usable(r, now):
+    """The early upload of this reel, if it is still this exact reel and young enough for Instagram to publish."""
+    pre = r.get("ig_prepared") or {}
+    try:
+        age = now - dt.datetime.fromisoformat(pre["at"])
+    except Exception:
+        return None
+    ok = pre.get("id") and pre.get("key") == prep_key(r) and dt.timedelta(0) <= age <= dt.timedelta(hours=float(_post_cfg().get("early_upload_max_hours", 20)))
+    return pre["id"] if ok else None
+
+
+def prepare(drive, ledger, rid, local=None, now=None):
+    """Right after a reel is made: upload it to Instagram as an unpublished container, so the Post run at its slot only has
+    to publish it (about a minute less on the runner per post). Nothing is visible to anyone. Fails soft: without it the
+    Post run uploads the reel itself, exactly as before."""
+    r = ledger.get(rid) or {}
+    if not _post_cfg().get("early_upload", True) or not r.get("drive_reel") or not r.get("post_at"):
+        return None
+    now = now or status.now()
+    try:
+        ahead = dt.datetime.fromisoformat(r["post_at"]) - now
+        if not dt.timedelta(hours=-3) <= ahead <= dt.timedelta(hours=float(_post_cfg().get("early_upload_max_hours", 20)) - 1):
+            return None                                   # its slot is beyond Instagram's 24 hours (or long gone)
+        from .instagram import Instagram
+        if not (local and os.path.exists(local)):
+            local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
+        cid = Instagram().create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
+        ledger.upsert(rid, ig_prepared={"id": cid, "at": now.isoformat(timespec="seconds"), "key": prep_key(r)})
+        print(f"[{rid}] uploaded to Instagram ahead of its slot (unpublished)")
+        return cid
+    except Exception as e:
+        print(f"[{rid}] early upload skipped (the Post run uploads it instead): {str(e)[:160]}", file=sys.stderr)
+        return None
+
+
 def publish(drive, day, r, ctl, dry=False, forced=False):
     """Upload and publish one made reel. With dry=True: upload, let Instagram process and check it, never publish."""
     from .instagram import Instagram, InstagramError
@@ -90,9 +145,24 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
     try:
         ig = Instagram()
         ig.me()
-        local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
-        cid = ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
-        ig.wait_ready(cid)
+        cid = None if dry else prep_usable(r, status.now())
+        if cid:                                 # uploaded when it was made: check it is still good, else upload afresh
+            try:
+                st = ig.get(cid, fields="status_code").get("status_code")
+                if st == "PUBLISHED":           # an earlier run published it and stopped before writing that down
+                    day.upsert(rid, state="posted", posted_at=status.now().isoformat(timespec="seconds"),
+                               reason="Instagram already had this reel published; marked as posted.")
+                    print(f"{rid}: already published on Instagram, marked as posted")
+                    return True
+                ig.wait_ready(cid, timeout=40)
+                print(f"{rid}: using the upload made ahead of the slot")
+            except Exception as e:
+                print(f"{rid}: the early upload cannot be used ({str(e)[:120]}); uploading now", file=sys.stderr)
+                cid = None
+        if not cid:
+            local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
+            cid = ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
+            ig.wait_ready(cid)
         cr = {}
         for _ in range(8):                      # Instagram's music/copyright check finishes shortly after processing
             cr = ig.copyright_status(cid) or {}
@@ -166,15 +236,16 @@ def breaking_now(drive, day, rid, ctl):
 
 
 # ---------------------------------------------------------------- what is due
-def choose(day, bank, now, ctl):
+def choose(day, bank, now, ctl, early_min=5):
     """The planned reel whose time has come (up to 3 hours late), one per run. If it is held or failed:
-    a ready reserve (same slot, then same series, then any), then a ready bank reel takes its place."""
+    a ready reserve (same slot, then same series, then any), then a ready bank reel takes its place.
+    early_min=0: only reels whose time has passed (a run that leaves a coming slot to the clock must not post it early)."""
     due = []
     for r in day.reels():
         if r.get("reserve") or not r.get("post_at"):
             continue
         t = dt.datetime.fromisoformat(r["post_at"])
-        if now - dt.timedelta(hours=3) <= t <= now + dt.timedelta(minutes=5) and r.get("state") in ("ready", "held", "failed"):
+        if now - dt.timedelta(hours=3) <= t <= now + dt.timedelta(minutes=early_min) and r.get("state") in ("ready", "held", "failed"):
             due.append(r)
     for r in sorted(due, key=lambda x: x["post_at"]):
         if r.get("state") == "ready":
@@ -201,17 +272,52 @@ def slots(ctl):
     return sorted(set(ctl.settings.get("slots", []) + ctl.settings.get("flex_slots", [])))
 
 
-def wait_for_slot(ctl, max_wait_min=15):
-    """Runs are scheduled a little before each slot (GitHub can start them late); wait so the reel goes out on time."""
+def last_slot_before(ctl, now):
+    """The newest slot time that has passed (yesterday's last slot, early in the morning)."""
+    past = []
+    for back in (0, 1):
+        d = now - dt.timedelta(days=back)
+        for s in slots(ctl):
+            h, m = (int(x) for x in s.split(":"))
+            t = d.replace(hour=h, minute=m, second=0, microsecond=0)
+            if t <= now:
+                past.append(t)
+    return max(past) if past else None
+
+
+def clock_file(drive):
+    try:
+        return drive.read_json("status", "clock.json") or {}
+    except Exception:
+        return {}
+
+
+def clock_alive(ck, ctl, now):
+    """True when the Claude clock started the Post run for the newest slot that has passed (AGENT.md 4.3). Anything
+    unknown or unreadable counts as not alive, so GitHub's own timer then behaves as the full backstop."""
+    try:
+        tick, prev = dt.datetime.fromisoformat(ck["post_tick"]), last_slot_before(ctl, now)
+        return bool(prev) and tick >= prev - dt.timedelta(minutes=2)
+    except Exception:
+        return False
+
+
+def wait_for_slot(ctl, max_wait_min=15, alive=False):
+    """A run from GitHub's own timer can start shortly before a slot. Returns the minutes of "early" posting allowed.
+    Clock missing its times: wait for the slot (up to 15 minutes), so the reel goes out on time: the backstop.
+    Clock alive: do not wait on a paid runner; the clock posts that reel at its time, and this run leaves it alone."""
     now = status.now()
     for s in slots(ctl):
         h, m = (int(x) for x in s.split(":"))
         t = now.replace(hour=h, minute=m, second=0, microsecond=0)
         if dt.timedelta(0) < t - now <= dt.timedelta(minutes=max_wait_min):
+            if alive:
+                print(f"The {s} slot is close and the clock is on time: left to the clock (no waiting on the runner).")
+                return 0
             print(f"Waiting {int((t - now).total_seconds())} s for the {s} slot.")
             time.sleep((t - now).total_seconds())
-            return s
-    return None
+            return 5
+    return 5
 
 
 RELEASABLE = ("Held by Harish.", "Not posted: the master switch was on Hold.")
@@ -235,8 +341,29 @@ def apply_commands(ctl, day):
             day.upsert(r["reel_id"], state="ready", reason=None, post_at=status.now().isoformat(timespec="seconds"), reserve=False, now_done=True)
 
 
-def extras(drive, ctl):
-    for name, mod, fn in (("news watch", "engine.watch", "run"), ("2-hour stats", "engine.measure", "checkpoints")):
+def watch_due(ck, now):
+    """The news watch runs with the Post run at every slot. A second run close behind it (GitHub's late timer, a button)
+    skips it: the same feeds were read minutes ago. The gap is shorter than the shortest gap between two slots."""
+    try:
+        return now - dt.datetime.fromisoformat(ck["watch_at"]) >= dt.timedelta(minutes=float(_post_cfg().get("watch_gap_minutes", 50)))
+    except Exception:
+        return True
+
+
+def extras(drive, ctl, ck=None, tick=False):
+    now, ck = status.now(), dict(ck if ck is not None else clock_file(drive))
+    ck.pop("updated", None)
+    jobs = [("2-hour stats", "engine.measure", "checkpoints")]
+    if watch_due(ck, now):
+        jobs.insert(0, ("news watch", "engine.watch", "run"))
+        ck["watch_at"] = now.isoformat(timespec="seconds")
+    else:
+        print("news watch: read a short while ago, not repeated")
+    if tick:
+        ck["post_tick"] = now.isoformat(timespec="seconds")
+    if tick or jobs[0][0] == "news watch":
+        status.write(drive, "clock.json", ck)
+    for name, mod, fn in jobs:
         try:
             getattr(__import__(mod, fromlist=[fn]), fn)(drive, ctl)
         except Exception as e:
@@ -257,9 +384,13 @@ def main():
         status.write(drive, "post.json", {"state": "asleep"})
         print("Asleep: nothing posted.")
         return
+    ck, early = clock_file(drive), 5
+    tick = a.no_wait and not (a.now or a.dry)   # started on time by the clock (or by hand), not by GitHub's own timer
     if not (a.no_wait or a.dry):
-        wait_for_slot(ctl)
-        ctl = Control(drive)                    # the switch may have changed while waiting
+        t0 = time.time()
+        early = wait_for_slot(ctl, alive=clock_alive(ck, ctl, status.now()))
+        if time.time() - t0 > 5:
+            ctl = Control(drive)                # the switch may have changed while waiting
     day, bank = Day(drive), Bank(drive)
     apply_commands(ctl, day)
     result = "nothing due"
@@ -284,16 +415,20 @@ def main():
         respect, out = respect_today(drive, day.date, ctl), []
         for r in [x for x in day.reels("ready") if x.get("now_done") and x.get("drive_reel")]:      # "post now" from the Control Room
             out.append(f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect, forced=True) + " (post now)")
-        r = choose(day, bank, status.now(), ctl)
+        r = choose(day, bank, status.now(), ctl, early_min=early)
         if r:
             out.append(f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect))
         result = "; ".join(out) or result
-    day.save()
-    bank.save()
+    if day.dirty or not day.data.get("updated"):        # nothing changed: nothing to write (each Drive write is runner time)
+        day.save()
+    if bank.dirty or not bank.data.get("updated"):
+        bank.save()
     status.write(drive, "post.json", {"last": result, "phase": ctl.phase, "switch": ctl.mode})
     print(result)
     if not (a.skip_extras or a.dry):
-        extras(drive, ctl)
+        extras(drive, ctl, ck, tick)
+    elif tick:
+        status.write(drive, "clock.json", {**{k: v for k, v in ck.items() if k != "updated"}, "post_tick": status.now().isoformat(timespec="seconds")})
 
 
 if __name__ == "__main__":

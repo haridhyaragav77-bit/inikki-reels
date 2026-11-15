@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: movie-recommendations
 name: Watch This Next (Movie Recommendations)
+promise: "Films most viewers have not seen yet, with where to watch them in India."
 status: trial           # 2 weeks of trial, then live or reworked (AGENT.md 6.3); replaces Viral Story in the story slot
 badge: { text: "WATCH THIS NEXT", alt_texts: ["THEY RECOMMEND", "LETTERBOXD PICKS"], color: sky }
 title_screen: "{KICKER FOR TODAY} + {THE LIST IN 6 WORDS OR FEWER}"   # e.g. "5 FILMS TO WATCH TONIGHT", "LOVED KAITHI? WATCH THESE 3", "LOKESH'S 5 FAVOURITES"

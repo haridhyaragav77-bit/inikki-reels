@@ -90,12 +90,14 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 | Pause or resume a series | **Series** → **Pause / Resume** | `pause guess the movie` |
 | Suggest a topic | **Today** → idea box | `cover this: …` |
 | Change reels per day, slot times, budgets, switches | **Setup** tab | `post 5 a day` |
+| How many reels each series posts, and at what time; extras on or off; how many reserves | **Setup** → Reels per day: tap a number per series, pick each time, tap Save day plan | `2 movie updates a day, no extras` |
 | Take something back | **Setup** → Your last actions → **Undo** | `undo` |
 | Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 
 ### Switches and usage (page → Setup, page → Usage)
 - **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
 - **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage, and the two times of day to keep Claude free for the runs.
+- **Runner minutes, since 15 Nov:** a normal day (5 reels plus news and reviews) should use about 60 of the 2,000 monthly minutes, with no saver. Both timers still post (the Claude clock on time, GitHub's own timer as the late backstop), so a day when Claude has no usage left still posts. Building and testing in the Workshop is the part to keep small: about 200 minutes a month.
 - **If the runner minutes run out:** GitHub stops every job until the 1st. Nothing moves to Claude. The Engine slows down by itself before that (fewer extras, then 3 new reels a day) so posting does not stop. Saver mode and "one fewer reel a day" are your two levers.
 
 ## 6. Refinement loops: making it better
