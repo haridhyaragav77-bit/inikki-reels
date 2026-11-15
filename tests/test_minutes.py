@@ -110,6 +110,17 @@ def main():
     P1, P2 = panel.build(FakeDrive(), Control(FakeDrive(), relay=False)), panel.build(d2, Control(d2, relay=False))
     check("the panel is built through the read-once Drive and has the same parts", set(P1) == set(P2) and P2["usage"] is not None)
 
+    # --- Make's light check: a reel that was skipped for a reason that still holds does not start the heavy tools again
+    from engine import make
+    rec = {"reel_id": "b", "state": "skipped", "hash": "h1", "reason": "Saving runner minutes this month: reserves and bank reels wait."}
+    plan = {"series": "technical-breakdown", "reserve": True}
+    check("saving minutes, same plan, still a reserve: not counted again", make.still_waiting(rec, plan, False, "h1", True, None, ctl))
+    check("saving is over: it is made", not make.still_waiting(rec, plan, False, "h1", False, None, ctl))
+    check("the plan changed: it is looked at again", not make.still_waiting(rec, plan, False, "h2", True, None, ctl))
+    check("a normal reel is never left out", not make.still_waiting(dict(rec, state="held"), {"series": "x"}, False, "h1", True, None, ctl)
+          and not make.still_waiting(None, {"series": "x"}, False, "h1", True, None, ctl))
+    check("Harish's own skip is not this rule's business", not make.still_waiting(dict(rec, reason="Skipped by Harish."), {"series": "x"}, False, "h1", False, None, ctl))
+
     # --- golden test: only the looks a push touched; anything shared makes the whole set
     def picked(changed):
         with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False) as f:
