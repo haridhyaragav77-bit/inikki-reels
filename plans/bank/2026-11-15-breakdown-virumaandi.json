@@ -1,0 +1,213 @@
+{
+  "id": "2026-11-15-breakdown-virumaandi",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [40, 62],
+  "design": "spotlight",
+  "length_reason": "Two versions, name the technique, show the same events retold, why it hits: about a minute.",
+  "lead": {
+    "topic": "Virumaandi (2004): one story told by two prisoners, and the truth changes with the teller",
+    "angle": "screenplay",
+    "insight": "A journalist interviews two prisoners about the same feud. First Kothala Thevar tells it, then Virumaandi. The same events come back with a different face, so the viewer's judgement is the real target. That is the Rashomon effect, done Madurai style.",
+    "why_now": "Kamal Haasan's own screenplay, still named among the best Tamil scripts; a rainy-night rewatch (brief, Today: Chennai rains).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Virumaandi (plot: journalist Angela interviews death-row prisoners Kothala Thevar and Virumaandi, who give two versions of the same events; written and directed by Kamal Haasan)",
+      "https://en.wikipedia.org/wiki/Rashomon_effect (the same event described in contradictory ways by different witnesses)"
+    ],
+    "technique": "Rashomon effect (one event, told differently by each witness)",
+    "pictures_note": "Official trailer frames (RVN_g9XYUsY), checked by eye: maxresdefault is the poster card with Virumaandi (Kamal) in the middle (crop keeps the face, cuts ONE MILLION VIEWS, OFFICIAL TRAILER and the logo), maxres2 a village scuffle with Virumaandi in the crowd, maxres3 Annalakshmi (Abhirami) at night. maxres1 (a man by a blue car) is not used: who he is could not be confirmed. Bottom 12% cut for the channel mark."
+  },
+  "worth_it": {
+    "learn": "Virumaandi tells one feud twice; who tells it decides who is the villain (the Rashomon effect).",
+    "stop": "Two prisoners. One story. Only one is telling the truth.",
+    "why_now": "A Kamal screenplay people still argue about; rainy nights suit a long rewatch.",
+    "send_to": "The friend who says Kamal's best script is Anbe Sivam.",
+    "best_angle": "Yes: the two-version structure is the film's whole power; no ending given away."
+  },
+  "voice": {"on": true},
+  "music": {
+    "sections": [
+      {"track": "the_story", "from": 2.0, "screen": 0, "mood": "intrigue"},
+      {"track": "villains_strategy", "from": 0.0, "screen": 3, "mood": "two sides"},
+      {"track": "climax_theme", "from": 0.0, "screen": 5, "mood": "release"}
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {"src": "engine/.cache/stills/virumaandi/RVN_g9XYUsY_maxresdefault.jpg", "crop": [0.18, 0.12, 0.42, 0.6]},
+    "riot": {"src": "engine/.cache/stills/virumaandi/RVN_g9XYUsY_maxres2.jpg", "crop": [0.0, 0.0, 1.0, 0.88]},
+    "anna": {"src": "engine/.cache/stills/virumaandi/RVN_g9XYUsY_maxres3.jpg", "crop": [0.0, 0.0, 1.0, 0.88]}
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "VIRUMAANDI",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "விருமாண்டி. ஒரே கதை. ரெண்டு பேர் சொல்றாங்க. ரெண்டும் வேற வேற.",
+      "voice_tg": "Virumaandi. Ore kadhai. Rendu per solraanga. Rendum vera vera.",
+      "sfx": [{"at": 0.12, "type": "impact"}]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {"image": "riot", "label": "VERSION 1", "sub": "KOTHALA TELLS", "cue": {"word": "கொத்தள"}},
+      "right": {"image": "title", "label": "VERSION 2", "sub": "VIRUMAANDI TELLS", "cue": {"word": "விருமாண்டி"}},
+      "tilt": 1,
+      "tilt_cue": {"word": "யார்"},
+      "slam_text": "TRUTH OR LIE?",
+      "slam_cue": {"word": "உண்மை?"},
+      "voice": "ஜெயில்ல ஒரு பத்திரிகையாளர் ரெண்டு கைதிகளை பேட்டி எடுக்கிறாங்க. முதல்ல கொத்தள தேவர் கதை. அப்புறம் விருமாண்டி கதை. யார் சொல்றது உண்மை?",
+      "voice_tg": "Jail-la oru pathirikaiyaalar rendu kaidhigalai petti edukkiraanga. Mudhalla Kothala Thevar kadhai. Appuram Virumaandi kadhai. Yaar solradhu unmai?",
+      "sfx": [
+        {"at": {"word": "கொத்தள"}, "type": "whoosh"},
+        {"at": {"word": "விருமாண்டி"}, "type": "whoosh"},
+        {"at": {"word": "உண்மை?"}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "RASHOMON EFFECT",
+      "definition": "ONE EVENT, TWO TRUTHS",
+      "outer_label": "WHAT HAPPENED",
+      "inner": ["VERSION 1", "VERSION 2", "YOUR VERDICT"],
+      "voice": "இந்த டெக்னிக் பேரு, ரஷோமோன் எஃபெக்ட். ஒரே சம்பவம். சொல்றவர் மாறினா, உண்மையும் மாறுது.",
+      "voice_tg": "Indha technique peru, Rashomon effect. Ore sambavam. Solravar maarinaa, unmaiyum maarudhu.",
+      "cues": {
+        "name": {"word": "ரஷோமோன்"},
+        "outer": {"word": "சம்பவம்."},
+        "inner": {"word": "மாறுது."}
+      },
+      "tail": 0.6,
+      "sfx": [
+        {"at": {"word": "ரஷோமோன்"}, "type": "impact"},
+        {"at": {"word": "சம்பவம்."}, "type": "whoosh"},
+        {"at": {"word": "மாறுது."}, "type": "pop"},
+        {"at": {"word": "மாறுது.", "off": 0.3}, "type": "pop"},
+        {"at": {"word": "மாறுது.", "off": 0.6}, "type": "pop"}
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "SAME EVENTS, RETOLD",
+      "voice": "ஜல்லிக்கட்டு. காதல். கொலைகள். முதல் கதையில விருமாண்டி தான் வில்லன். ரெண்டாவது கதையில, அதே சம்பவங்கள் வேற முகம் காட்டுது.",
+      "voice_tg": "Jallikattu. Kaadhal. Kolaigal. Mudhal kadhaiyila Virumaandi thaan villain. Rendaavadhu kadhaiyila, adhe sambavangal vera mugam kaattudhu.",
+      "events": [
+        {"label": "JALLIKATTU", "sub": "TOLD ONCE", "cue": {"word": "ஜல்லிக்கட்டு."}},
+        {"label": "THE LOVE", "cue": {"word": "காதல்."}},
+        {"label": "THE KILLINGS", "cue": {"word": "கொலைகள்."}},
+        {"label": "SAME EVENTS", "sub": "NEW FACE", "cue": {"word": "ரெண்டாவது"}}
+      ],
+      "links": [[0, 3]],
+      "footer": "THE TELLER IS THE TWIST",
+      "footer_cue": {"word": "காட்டுது."},
+      "sfx": [
+        {"at": {"word": "ஜல்லிக்கட்டு."}, "type": "stamp"},
+        {"at": {"word": "காதல்."}, "type": "tick"},
+        {"at": {"word": "கொலைகள்."}, "type": "impact"},
+        {"at": {"word": "ரெண்டாவது"}, "type": "whoosh"}
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "riot",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "HERO",
+      "right": "VILLAIN",
+      "left_ta": "ஹீரோ",
+      "right_ta": "வில்லன்",
+      "slam_text": ["YOU", "DECIDE."],
+      "voice": "நாம யாரை நம்புறோமோ, அவன் தான் ஹீரோ. ஆனா கதை மாறும் போது, அந்த நம்பிக்கையே உடையுது. தீர்ப்பு நம்ம கையில.",
+      "voice_tg": "Naama yaarai namburomo, avan thaan hero. Aanaa kadhai maarum podhu, andha nambikkaiye udaiyudhu. Theerppu namma kaiyila.",
+      "cues": {
+        "line": {"word": "நம்புறோமோ,"},
+        "bleed": {"word": "ஆனா"},
+        "crack": {"word": "உடையுது."},
+        "slam": {"word": "தீர்ப்பு"}
+      },
+      "tail": 0.6,
+      "sfx": [
+        {"at": {"word": "நம்புறோமோ,"}, "type": "whoosh"},
+        {"at": {"word": "உடையுது."}, "type": "impact"},
+        {"at": {"word": "தீர்ப்பு"}, "type": "stamp"}
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "anna",
+      "fy": 0.45,
+      "fx": 0.5,
+      "slam_text": "WHO LIED?",
+      "voice": "அப்போ பொய் சொன்னது யாரு? நாங்க சொல்ல மாட்டோம். ரெண்டு கதையையும் கேட்டு, நீங்களே முடிவு பண்ணுங்க.",
+      "voice_tg": "Appo poi sonnadhu yaaru? Naanga solla maattom. Rendu kadhaiyaiyum kettu, neengale mudivu pannunga.",
+      "q_cue": {"word": "யாரு?"},
+      "slam_cue": {"word": "மாட்டோம்."},
+      "sfx": [
+        {"at": {"word": "யாரு?"}, "type": "riser"},
+        {"at": {"word": "மாட்டோம்.", "off": 0.35}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "VIRUMAANDI · SCREENPLAY BREAKDOWN",
+      "question": [
+        {"text": "KAMAL'S BEST", "size": 130},
+        {"text": "SCREENPLAY?", "size": 125, "color": "#F5C66B"}
+      ],
+      "sub": "கமலோட பெஸ்ட் ஸ்கிரீன்ப்ளே இதுவா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ரஷோமோன் எஃபெக்ட். கமலோட பெஸ்ட் ஸ்கிரீன்ப்ளே இதுவா? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan Rashomon effect. Kamaloda best screenplay idhuvaa? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [{"at": 1.0, "type": "pop"}],
+      "recap": "TECHNIQUE: RASHOMON EFFECT"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Virumaandi: two prisoners tell the same story. Only one is telling the truth.",
+      "The technique is called the Rashomon effect: one event, told differently by each witness. Kamal Haasan's script lets Kothala Thevar tell the feud first, then Virumaandi tells it again, and the same jallikattu, love and killings show a different face.",
+      "Is this Kamal's best screenplay? Tell us.",
+      "Send this to the friend who says Anbe Sivam is his best script.",
+      "சொல்றவர் மாறினா, உண்மை மாறும்."
+    ],
+    "hashtags": ["#fyp", "#trending", "#viral", "#explorepage", "#reels"],
+    "cover": "VIRUMAANDI · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "Whose version did you believe first: Kothala's or Virumaandi's? No ending spoilers, please."
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 71,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "end card returns to the title still"
+    }
+  }
+}
