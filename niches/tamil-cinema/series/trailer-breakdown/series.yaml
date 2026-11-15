@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: trailer-breakdown
 name: Trailer Breakdown
+promise: "Three things in a new trailer most viewers missed."
 status: trial            # Harish, 12 Nov 2026 (AGENT.md 5.13)
 badge: { text: "TRAILER BREAKDOWN", color: gold }
 title_screen: "{FILM} · TRAILER BREAKDOWN"

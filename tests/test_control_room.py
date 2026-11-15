@@ -150,7 +150,7 @@ def main():
     import datetime as _dt2
     base0 = Control(d).settings["volume"]["base"]
     d.drop("50-dp.json", {"do": "day_plan", "series": {"movie-updates": {"per_day": 2, "slots": ["08:30", "21:30"]}, "trailer-breakdown": {"per_day": 0},
-                                                      "breaking-news": {"per_day": 1}}, "extras": False})
+                                                      "breaking-news": {"per_day": 1}}, "extras": False, "reserves": 0})
     d.drop("51-dp-clash.json", {"do": "day_plan", "series": {"movie-updates": {"per_day": 3, "slots": ["08:30", "12:30", "21:30"]}}})
     d.drop("52-dp-timer.json", {"do": "day_plan", "series": {"movie-updates": {"per_day": 1, "slots": ["09:10"]}}})
     d.drop("53-dp-few.json", {"do": "day_plan", "series": {"movie-updates": {"per_day": 0}, "film-breakdown": {"per_day": 1}}})
@@ -158,7 +158,7 @@ def main():
     log = [json.loads(l) for l in d.read_text("control", "log.jsonl").splitlines()]
     check([x["result"] for x in log[-4:]] == ["applied", "refused", "refused", "refused"], "a day plan is applied; a time clash, a time with no timer and too few reels are refused")
     check(ctl.settings["volume"]["base"] == 5 and ctl.series("movie-updates", nd)["slots"] == ["08:30", "21:30"] and not dayplan.extras_on(ctl.settings)
-          and ctl.settings["budgets"]["breaking_per_day"] == 1, "the total, the times, the extras switch and the breaking cap follow the day plan")
+          and ctl.settings["budgets"]["breaking_per_day"] == 1 and dayplan.reserves(ctl.settings) == 0, "reserves off; the total, the times, the extras switch and the breaking cap follow the day plan")
     dday = next(x for x in (_dt2.date.today() + _dt2.timedelta(days=k) for k in range(7)) if x.weekday() < 4).isoformat()
     rows = lineup_today(ctl, dday)[0]
     check([r[0] for r in rows if r[1] == "movie-updates"] == ["08:30", "21:30"] and dayplan.off(ctl, "trailer-breakdown") == dayplan.OFF_EXTRAS,
@@ -167,7 +167,7 @@ def main():
     check(next(r for r in card["rows"] if r["id"] == "movie-updates")["per_day"] == 2 and card["extras"] is False and "21:30" in card["times"], "the page gets the day plan back")
     d.drop("54-undo.json", {"do": "undo", "id": next(x["id"] for x in reversed(log) if x["do"] == "day_plan" and x["result"] == "applied")})
     ctl = Control(d)
-    check(ctl.settings["volume"]["base"] == base0 and dayplan.extras_on(ctl.settings) and "per_day" not in ctl.series_changes("movie-updates"), "one Undo takes the whole day plan back")
+    check(ctl.settings["volume"]["base"] == base0 and dayplan.extras_on(ctl.settings) and dayplan.reserves(ctl.settings) == 2 and "per_day" not in ctl.series_changes("movie-updates"), "one Undo takes the whole day plan back")
 
     # 3. a Google-Doc style or sloppy file still parses; several actions in one file
     check(len(relay.parse('{do: hold, reel_id: x}')) == 1 and len(relay.parse('{"do":"hold","reel_id":"a"}\n{"do":"skip","reel_id":"b"}')) == 2, "forgiving reader")

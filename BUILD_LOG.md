@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 15 Nov 2026, night — Reserves control, clearer series names
+Harish saw a reserve (Watch This Next, "Sudani from Nigeria") listed as an 8th reel and could not control reserves. Added Reserves Off/1/2/3 to Setup → Reels per day (`reserves.per_day`, default 2; the brief asks for that many, Make skips any extra). Every row now shows the full series name and a one-line promise (new `promise:` in each series file). The page also fills the day plan from its built-in copy when the status file is older.
+
 ## 15 Nov 2026, evening — Reels per day, per series (the day plan)
 Harish asked to set how many reels each series posts a day, pick their times from a list, and switch the extras off, from Setup. Built: Setup → Reels per day (Off/1–4 buttons per series, a time list per reel, Extras On/Off and "up to N" per extra, a live total, one Save, one Undo). Engine: `engine/dayplan.py`, relay action `day_plan`, the plan run, Make and Post follow it (AGENT.md 12.3). Times are only the 8 that already have timers, so no new runner minutes. Tests: `tests/test_control_room.py` 2b. **To watch:** the first plan run after a Save lists the new counts.
 

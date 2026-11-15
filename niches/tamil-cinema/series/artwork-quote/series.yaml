@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: artwork-quote
 name: Frame & Line (Artwork + Quote)
+promise: "An AI painting of a famous film scene with its best-known Tamil line and its meaning. Used only after a slow stretch of days."
 status: live
 badge: { text: "FRAME & LINE", color: soft_gold }
 title_screen: "{FILM} · THE LINE"

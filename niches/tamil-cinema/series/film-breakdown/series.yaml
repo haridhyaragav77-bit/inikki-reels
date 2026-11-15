@@ -2,6 +2,7 @@
 # lots of animation, this series' own look.
 id: film-breakdown
 name: Film Breakdown
+promise: "One film technique, named and explained: why a scene works."
 status: live
 priority: 1            # the page's main product
 badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE CINEMATOGRAPHY BREAKDOWN", "THE CAMERA BREAKDOWN", "THE SET DESIGN BREAKDOWN", "THE EDITING BREAKDOWN", "THE SOUND BREAKDOWN", "THE PERFORMANCE BREAKDOWN"], color: gold }
