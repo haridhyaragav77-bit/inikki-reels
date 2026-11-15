@@ -273,6 +273,11 @@ def main():
         if ok and not draft and not is_bank and series == "breaking-news" and ctl.can_post:     # cannot wait for a slot
             from . import post
             post.breaking_now(drive, day, rid, ctl)
+        elif ok and not draft and not is_bank and not plan.get("reserve") and ctl.can_post:
+            # uploaded to Instagram now, unpublished, so the Post run at its slot only publishes (fewer runner minutes)
+            from . import post
+            if post.prepare(drive, day, rid, local=r.get("reel")):
+                day.save()
     day.save()
     bank.save()
     summary = {"date": date, "phase": ctl.phase, "switch": ctl.mode, "made": made, "held": held, "skipped": skipped,
