@@ -374,6 +374,7 @@ def build(drive, ctl=None):
          "switch": ctl.mode, "phase": ctl.phase, "approval": ctl.settings.get("approval"), "away": bool(ctl.settings.get("away_mode")),
          "respect": (respect or {}).get("why") if respect else None,
          "active": ctl.settings.get("active"), "volume": ctl.settings.get("volume"), "slots": ctl.settings.get("slots"),
+         "day_plan": _safe(lambda: __import__("engine.dayplan", fromlist=["card"]).card(ctl), {}),
          "today": {"date": date, "reels": reels},
          "tomorrow": {"date": nxt, "slots": _safe(lambda: tomorrow(ctl, nxt), [])},
          "bank": {"ready": len(bank.reels("ready"))},

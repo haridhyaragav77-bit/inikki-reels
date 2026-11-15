@@ -704,8 +704,9 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Master switch | Run / Hold posts / Sleep | Run |
 | Approval level | **Autopilot** (content runs alone) · **Check-in** (new series and weekly rule changes wait for a tap) · **Hands-on** (each day's lineup needs a tap by 7 AM, else bank reels post) | Autopilot |
 | Always ask | Brand, niche, safety rules, budget | Fixed in every level |
-| Volume | 3–8 reels a day | 6 |
+| Volume | 3–8 regular reels a day, set per series (the day plan below) | 6 |
 | Schedule | Slot times | 08:30, 12:30, 15:30, 18:00, 20:00, 21:30 |
+| Extras | On / off, and "up to N a day" per extra series | On |
 | Language | Headline and voice language | Tanglish/English + Tamil, Tamil voice |
 | Budgets | Images per month, Lab share, storage cap | ₹500, 20%, 8 GB |
 | Active brand, niche, lineup | Pick from saved | inikki-reels, tamil-cinema, cinema-core |
@@ -713,6 +714,8 @@ The Advisor will tell you plainly: changing topic on the same Instagram account 
 | Safety rules | View. Edits need a typed confirmation. | Section 12.4 |
 
 **More switches (14 Nov), all under Control Room → Setup:** main voice (ElevenLabs or Microsoft), ElevenLabs voice, voice quality (best or economy), voice speed, breaking news on/off and its daily cap, calendar awareness, fast-page scouts, a different design for every breakdown, saver mode (fewer runner minutes), approval level, away mode. Each is one key of `config/agent.yaml`, listed with its allowed choices in `config/framework.yaml`; the relay refuses anything else.
+
+**The day plan (15 Nov).** Control Room → Setup → Reels per day. Each regular series gets Off/1/2/3/4 reels a day and a time for each reel; each story series Off/On; each extra (trailer-breakdown, movie-review, artwork-quote, breaking-news) Off/"up to 1–3", plus one Extras On/Off for all of them. The total of the regular rows is the day's volume (3 to 8). Times can only be the 8 posting times that already have timers (more timers would cost runner minutes). Two regular reels at one time are refused. One Save is one action and one Undo. The counts live in `control/overrides.yaml` (`series.<id>.per_day`, `.slots`; breaking-news uses `budgets.breaking_per_day`; `extras.enabled`) and win over the lineup file. A series set to 0 or an extra while Extras are off is not planned, made or posted (`engine/dayplan.py`); "up to N" for an extra is checked at Make.
 
 ### 12.4 Safety rules (only you change these)
 1. No rumours as fact. Unconfirmed is labelled or skipped.
@@ -732,6 +735,7 @@ The Control Room never edits the Engine's files. For each thing you ask, it **cr
 | --- | --- |
 | Master switch | `{"do":"switch","mode":"run"}` (or `hold_posts`, `sleep`) |
 | A setting | `{"do":"set","settings":{"volume":{"base":5}}}` (any key of `config/agent.yaml`; go live is `{"phase":"live"}`) |
+| Reels a day per series, times, extras | `{"do":"day_plan","series":{"movie-updates":{"per_day":2,"slots":["08:30","21:30"]},"trailer-breakdown":{"per_day":0}},"extras":true}` |
 | Pause or change a series | `{"do":"series","id":"guess-the-movie","set":{"paused":true}}` (also `slots`, `length_s`, `voice`) |
 | Standing rule (8.6) | `{"do":"note","series":"movie-recommendations","text":"…"}` (`"series":"all"` for the whole page) |
 | One reel | `{"do":"hold","reel_id":"…"}` (also `unhold`, `skip`, `post_now`, `retry`) |

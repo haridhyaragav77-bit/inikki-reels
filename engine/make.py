@@ -153,7 +153,8 @@ def still_waiting(rec, plan, is_bank, h, tight, cap_day, ctl):
         return True
     if cap_day is not None and str(rec.get("reason", "")).startswith("Runner minutes are almost used up"):
         return True
-    return ctl.series_paused(plan.get("series", ""))
+    from . import dayplan
+    return ctl.series_paused(plan.get("series", "")) or bool(dayplan.off(ctl, plan.get("series", "")))
 
 
 DRAFT_NOTE = "Draft series: made for you to watch; it is never posted. Move the series to trial in the Control Room to post it."
@@ -257,8 +258,13 @@ def main():
                     for_slot=plan.get("for_slot"), trial=plan.get("trial"), tribute=bool(plan.get("tribute")) or None,
                     manual=bool(plan.get("manual")) or None, remake_of=plan.get("remake_of"),
                     hash=plan_hash(path), hook=first.get("headline") or first.get("line") or (plan.get("package") or {}).get("cover"), virality=(plan.get("virality") or {}).get("total_100"))
-        if ctl.series_paused(series):
-            ledger.upsert(rid, **base, state="skipped", reason="The series is paused.")
+        from . import dayplan
+        why = "The series is paused." if ctl.series_paused(series) else dayplan.off(ctl, series)
+        cap = dayplan.chosen(ctl.overrides, series) if dayplan.roles(ctl.settings).get(series, ("",))[0] == "extra" else None
+        if not why and cap and not is_bank and len([r for r in day.reels("ready", "posted", "rendering") if r.get("series") == series and r["reel_id"] != rid]) >= cap:
+            why = f"Already {cap} {series} reel(s) today, the most set in the Control Room."
+        if why and not plan.get("manual"):
+            ledger.upsert(rid, **base, state="skipped", reason=why)
             skipped.append(rid)
             continue
         errors, _ = plancheck.check(plan)
