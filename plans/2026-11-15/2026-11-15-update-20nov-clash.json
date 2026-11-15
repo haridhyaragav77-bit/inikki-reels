@@ -1,0 +1,268 @@
+{
+  "id": "2026-11-15-update-20nov-clash",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 15 NOV 2026",
+  "lead": {
+    "topic": "Thursday 20 Nov: OM (Dhanush, Mammootty) and Sathyavan Savithiri (Keerthy Suresh, Mysskin) open the same day",
+    "facts": [
+      "OM worldwide release 20 Nov 2026, moved from 16 Oct; Dhanush and Mammootty's first film together; Rajkumar Periasamy directs (DT Next; Onmanorama)",
+      "OM gets a wide Kerala release through Binu George Alexander Productions (Onmanorama, 4 Nov)",
+      "Sathyavan Savithiri: courtroom drama, Keerthy Suresh and Mysskin, written and directed by Praveen S Vijaay, in theatres 20 Nov (Hollywood Reporter India; District listing)",
+      "Both trailers were in the news this week (news watch; our 14 Nov updates)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/dhanush-mammootty-starrer-om-locks-november-20-release",
+      "https://www.onmanorama.com/entertainment/entertainment-news/2026/10/03/mammootty-dhanush-movie-om-movie-new-release-date.html",
+      "https://www.onmanorama.com/entertainment/entertainment-news/2026/11/04/mammootty-and-dhanush-om-set-for-grand-kerala-release-distribution-rights.html",
+      "https://www.hollywoodreporterindia.com/features/insight/sathyavan-savithiri-trailer-keerthy-suresh-and-mysskin-clash-in-tense-courtroom-drama",
+      "https://www.district.in/movies/sathyavan-savithiri-movie-tickets-MV221047"
+    ],
+    "pictures_note": "Official trailer frames already checked by eye on 14 Nov: OM on Divo Music (aGSOpb_6kv8), Sathyavan Savithiri on Zee Studios South (XCLQGsbnFlw). Crops as on 14 Nov, kept wide."
+  },
+  "worth_it": {
+    "fan_opens_because": "Two new films the same Thursday: which one first? The answer is the comment.",
+    "spoilers": "None: dates and cast only.",
+    "voice": "Off: release news is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "dark, heavy, slow build then hit"
+      },
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 2,
+        "mood": "investigation, for the courtroom film"
+      }
+    ],
+    "xfade": 0.6,
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "keerthy": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg"
+    },
+    "court": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "20 NOV",
+          "size": 250,
+          "y": 1310
+        },
+        {
+          "text": "2 FILMS, 1 DAY",
+          "size": 120,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "glitch",
+      "image": "mammootty_card",
+      "fx": 0.45,
+      "fy": 0.4,
+      "dur": 4.2,
+      "lines": [
+        {
+          "text": "OM",
+          "size": 260,
+          "y": 1300
+        },
+        {
+          "text": "DHANUSH × MAMMOOTTY",
+          "size": 100,
+          "y": 1450,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "glitch"
+        },
+        {
+          "at": 1.0,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "title",
+      "in": "whip",
+      "image": "keerthy",
+      "fx": 0.6,
+      "fy": 0.4,
+      "dur": 4.4,
+      "lines": [
+        {
+          "text": "SATHYAVAN SAVITHIRI",
+          "size": 140,
+          "y": 1300
+        },
+        {
+          "text": "KEERTHY × MYSSKIN",
+          "size": 110,
+          "y": 1450,
+          "color": "#78E0D0"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.2,
+          "type": "whoosh"
+        },
+        {
+          "at": 1.0,
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "court",
+      "fx": 0.45,
+      "fy": 0.4,
+      "dur": 4.2,
+      "kicker": "THURSDAY · 20 NOV",
+      "value": 5,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "TO GO",
+        "BOOK EARLY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.2,
+      "echo": "20 NOV · 2 FILMS, 1 DAY",
+      "question": [
+        {
+          "text": "OM OR",
+          "size": 130
+        },
+        {
+          "text": "SATHYAVAN SAVITHIRI?",
+          "size": 100,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Which one first, tonight's plan?",
+      "cta": "SEND TO YOUR MOVIE BUDDY",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Thursday 20 Nov: two films, one day.",
+      "OM: Dhanush and Mammootty together for the first time, directed by Rajkumar Periasamy. Sathyavan Savithiri: Keerthy Suresh and Mysskin in a courtroom drama by Praveen S Vijaay.",
+      "Which one are you watching first?",
+      "Send this to the friend you go to the theatre with.",
+      "நவம்பர் 20 — இரண்டு படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "20 NOV · 2 FILMS, 1 DAY",
+    "slot": "18:00",
+    "first_comment": "OM or Sathyavan Savithiri: which one first?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 5,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 71,
+    "weakest": {
+      "save_value": "the date is the save: 'BOOK EARLY' on the countdown",
+      "loop": "end card returns to the OM frame of screen 1"
+    }
+  }
+}

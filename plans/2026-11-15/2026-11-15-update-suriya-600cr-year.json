@@ -1,0 +1,242 @@
+{
+  "id": "2026-11-15-update-suriya-600cr-year",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 15 NOV 2026",
+  "lead": {
+    "topic": "Suriya's 2026 crosses ₹600 Cr worldwide: after Kanguva and Retro, Karuppu, Vishwanath & Sons and Scene",
+    "facts": [
+      "Suriya's 2026 worldwide total crossed ₹600 Cr (Koimoi: ₹643.79 Cr after Scene's opening weekend; Sacnilk, 10 Nov: over ₹670 Cr)",
+      "Karuppu was his first ₹300 Cr worldwide film (Pinkvilla closing collections); two films gave ₹513 Cr (Sacnilk)",
+      "Scene: about ₹211 Cr worldwide in 8 days (Box Office Worldwide, citing Sacnilk)",
+      "Before 2026, Kanguva and Retro did not succeed (Variety India)",
+      "Trend: 'How Suriya turned his biggest box office failures into a Rs 600 crore comeback', 19 publishers (news watch)"
+    ],
+    "sources": [
+      "https://www.koimoi.com/box-office/box-office-suriya-crosses-600-crore-worldwide-in-2026-is-700-crore-the-next-target/",
+      "https://www.sacnilk.com/news/from-karuppu-to-scene-suriya-scripts-a-stunning-box-office-turnaround-with-three-successful-films-in-a-single-year",
+      "https://www.sacnilk.com/news/suriya-dominates-2026-box-office-with-513-crore-gross-as-karuppu-2-emerges-frontrunner-for-suriya-50",
+      "https://www.pinkvilla.com/entertainment/box-office/karuppu-worldwide-box-office-closing-collections-suriya-starrer-is-a-rs-300-cr-blockbuster-1403744",
+      "https://boxofficeworldwide.com/box-office/suriya-scene-rs-132-50-crore-india-rs-200-crore-worldwide-8-days/"
+    ],
+    "pictures_note": "Same official frames as yesterday's Suriya update (checked by eye then): Scene, Karuppu and Vishwanath & Sons trailers. Crops kept wide (Harish, 14 Nov: images cropped too much).",
+    "follow_up": "Follow-up to 2026-11-14-update-suriya-three-200cr (1704 views, skip and watch green). New angle: the running year total, not one film."
+  },
+  "worth_it": {
+    "fan_opens_because": "The comeback in one number: from two flops to a ₹600 Cr year.",
+    "spoilers": "None: box office only.",
+    "voice": "Off: a box office update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold mass theme, loud from frame 1"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "scene": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+      "crop": [
+        0.05,
+        0.0,
+        0.65,
+        0.7
+      ]
+    },
+    "karuppu": {
+      "src": "engine/.cache/stills/karuppu/JpVl_-1YgIo_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.08,
+        0.55,
+        0.9
+      ]
+    },
+    "vishwa": {
+      "src": "engine/.cache/stills/vishwanath_and_sons/jZHoM2YhFCY_maxres3.jpg"
+    },
+    "vishwa_stage": {
+      "src": "engine/.cache/stills/vishwanath_and_sons/jZHoM2YhFCY_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "scene",
+      "fx": 0.45,
+      "fy": 0.4,
+      "dur": 3.0,
+      "lines": [
+        {
+          "text": "SURIYA",
+          "size": 250,
+          "y": 1310
+        },
+        {
+          "text": "₹600 CR+ YEAR",
+          "size": 130,
+          "y": 1478,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "ladder",
+      "in": "whip",
+      "image": "karuppu",
+      "fx": 0.5,
+      "fy": 0.35,
+      "dur": 6.0,
+      "heading": "THE 2026 CLIMB",
+      "max": 600,
+      "step": 100,
+      "stops": [
+        {
+          "value": 300,
+          "label": "KARUPPU",
+          "at": 1.2
+        },
+        {
+          "value": 500,
+          "label": "+ VISHWANATH",
+          "at": 2.6
+        },
+        {
+          "value": 600,
+          "label": "+ SCENE",
+          "at": 4.0
+        }
+      ],
+      "sfx": [
+        {
+          "at": 1.2,
+          "type": "impact"
+        },
+        {
+          "at": 2.6,
+          "type": "impact"
+        },
+        {
+          "at": 4.0,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "vishwa",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.6,
+      "kicker": "AFTER KANGUVA & RETRO",
+      "value": 3,
+      "unit": " HITS",
+      "land": 1.5,
+      "tag": [
+        "IN ONE YEAR",
+        "THE COMEBACK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "vishwa_stage",
+      "dur": 3.8,
+      "echo": "SURIYA · ₹600 CR+ YEAR",
+      "question": [
+        {
+          "text": "NEXT STOP",
+          "size": 130
+        },
+        {
+          "text": "₹700 CR?",
+          "size": 140,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Will Scene take him there?",
+      "cta": "SEND TO A SURIYA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Suriya's 2026: past ₹600 Cr worldwide.",
+      "Two years after Kanguva and Retro, three hits in one year: Karuppu (his first ₹300 Cr film), Vishwanath & Sons, and now Scene (about ₹211 Cr in 8 days). Figures: Koimoi, Sacnilk.",
+      "Will he reach ₹700 Cr this year?",
+      "Send this to the Suriya fan who never gave up.",
+      "சூர்யா 2026 — ₹600 கோடி."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SURIYA · ₹600 CR+ YEAR",
+    "slot": "08:30",
+    "first_comment": "Which of the three did you like most: Karuppu, Vishwanath & Sons or Scene?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 7,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 7,
+    "total_100": 66,
+    "weakest": {
+      "save_value": "news, not a keeper; the end card asks a forward question instead",
+      "loop": "end card echoes the title line"
+    }
+  }
+}

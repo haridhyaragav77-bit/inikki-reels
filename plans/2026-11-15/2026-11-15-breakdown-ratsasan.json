@@ -1,0 +1,461 @@
+{
+  "id": "2026-11-15-breakdown-ratsasan",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "blueprint",
+  "length_reason": "Name the technique, show the research (setup) and the hunt (payoff), why it hits: about a minute.",
+  "lead": {
+    "topic": "Ratsasan (2018): the failed film script that becomes the hero's weapon",
+    "angle": "screenplay",
+    "insight": "Arun spends years researching psycho killers for a film nobody will make. It looks like wasted years; it is the setup. When he joins the police, that research is what reads the killer's pattern. The film plants it in the opening and pays it off in the hunt.",
+    "why_now": "Cult thriller still rewatched (remade in Telugu as Rakshasudu); a rainy Sunday night is thriller weather (brief, Today).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ratsasan (plot: aspiring filmmaker Arun researches serial killers for his script, becomes a sub-inspector, and investigates the murders of schoolgirls; dir. Ram Kumar)",
+      "https://en.wikipedia.org/wiki/Chekhov%27s_gun (setup and payoff)"
+    ],
+    "technique": "Setup and payoff (plant something early, pay it off later)",
+    "pictures_note": "Official trailer frames (GsrN7rNch9Y), checked by eye: maxresdefault is the poster card (crop keeps Arun, cuts the views and TRAILER text), maxres1 a schoolgirl walking, maxres2 Viji (Amala Paul), maxres3 Arun and Viji. Bottom 12% cut for the channel mark."
+  },
+  "worth_it": {
+    "learn": "Ratsasan's opening is a setup: the hero's failed film research is the payoff that catches the killer.",
+    "stop": "His biggest failure becomes his only weapon.",
+    "why_now": "Cult thriller people rewatch; tonight is a rainy Sunday night.",
+    "send_to": "The friend who still cannot hear Ghibran's theme at night.",
+    "best_angle": "Yes: the structure is why the hunt feels earned; no killer reveal needed."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "threat_north",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "ominous"
+      },
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "investigation"
+      },
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "chase tension"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/ratsasan/GsrN7rNch9Y_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.5,
+        0.88
+      ]
+    },
+    "girl": {
+      "src": "engine/.cache/stills/ratsasan/GsrN7rNch9Y_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.88
+      ]
+    },
+    "viji": {
+      "src": "engine/.cache/stills/ratsasan/GsrN7rNch9Y_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.88
+      ]
+    },
+    "arun": {
+      "src": "engine/.cache/stills/ratsasan/GsrN7rNch9Y_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.88
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "RATSASAN",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ராட்சசன். ஹீரோவோட தோத்துப்போன படம் தான், கடைசியில அவனோட ஆயுதம்.",
+      "voice_tg": "Raatchasan. Herovoda thothuppona padam thaan, kadaisiyila avanoda aayudham.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "pins",
+      "image": "arun",
+      "in": "zoom",
+      "voice": "அருண் சினிமா இயக்குனர் ஆகணும்னு கனவு. சைக்கோ கொலைகாரர்கள் பத்தி வருஷக்கணக்கா ரிசர்ச். படம் வரல. போலீஸ் வேலைக்கு போறான்.",
+      "voice_tg": "Arun cinema iyakkunar aaganumnu kanavu. Psycho kolaikaarargal pathi varushakkanakkaa research. Padam varala. Police velaikku poraan.",
+      "pins": [
+        {
+          "x": 0.4,
+          "y": 0.4,
+          "lx": 80,
+          "ly": 318,
+          "text": "ARUN · FILMMAKER",
+          "cue": {
+            "word": "அருண்"
+          }
+        }
+      ],
+      "slam": {
+        "cue": {
+          "word": "வரல."
+        },
+        "lines": [
+          {
+            "text": "NO FILM.",
+            "size": 150,
+            "color": "#ffffff"
+          },
+          {
+            "text": "ONLY RESEARCH.",
+            "size": 110,
+            "color": "#78C8F0",
+            "glow": "rgba(120,200,240,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "அருண்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "ரிசர்ச்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வரல."
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "போலீஸ்"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "SETUP & PAYOFF",
+      "definition": "PLANT EARLY, PAY OFF LATER",
+      "outer_label": "THE HUNT",
+      "inner": [
+        "HIS FILES",
+        "HIS NOTES",
+        "HIS SCRIPT"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, செட்அப் அண்ட் பேஆஃப். முதல்ல ஒரு விஷயத்தை விதைக்கிறாங்க. கடைசியில அது தான் கதையை காப்பாத்துது.",
+      "voice_tg": "Indha technique peru, setup and payoff. Mudhalla oru vishayaththai vidhaikkiraanga. Kadaisiyila adhu thaan kadhaiyai kaappaathudhu.",
+      "cues": {
+        "name": {
+          "word": "செட்அப்"
+        },
+        "outer": {
+          "word": "விதைக்கிறாங்க."
+        },
+        "inner": {
+          "word": "காப்பாத்துது."
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "செட்அப்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "விதைக்கிறாங்க."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "காப்பாத்துது."
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "காப்பாத்துது.",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "காப்பாத்துது.",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "PLANTED, THEN PAID OFF",
+      "voice": "முதல்ல ரிசர்ச். அப்புறம் யூனிஃபார்ம். ஸ்கூல் பொண்ணுங்க காணாமல் போறாங்க. மத்த போலீஸ் பார்க்காத பேட்டர்ன், அருணுக்கு மட்டும் தெரியுது.",
+      "voice_tg": "Mudhalla research. Appuram uniform. School ponnunga kaanaamal poraanga. Matha police paarkkaadha pattern, Arunukku mattum theriyudhu.",
+      "events": [
+        {
+          "label": "THE RESEARCH",
+          "sub": "SETUP",
+          "cue": {
+            "word": "ரிசர்ச்."
+          }
+        },
+        {
+          "label": "THE UNIFORM",
+          "cue": {
+            "word": "யூனிஃபார்ம்."
+          }
+        },
+        {
+          "label": "GIRLS GO MISSING",
+          "cue": {
+            "word": "காணாமல்"
+          }
+        },
+        {
+          "label": "THE PATTERN",
+          "sub": "PAYOFF",
+          "cue": {
+            "word": "பேட்டர்ன்,"
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "HIS FAILURE IS HIS WEAPON",
+      "footer_cue": {
+        "word": "தெரியுது."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "ரிசர்ச்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "யூனிஃபார்ம்."
+          },
+          "type": "stamp"
+        },
+        {
+          "at": {
+            "word": "காணாமல்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பேட்டர்ன்,"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "WHY IT HITS",
+      "label": "PAYOFF",
+      "voice": "முதல்ல அந்த வருஷம் எல்லாம் வீணா போன மாதிரி தோணும். அப்புறம் ஒரு சந்தேகம். கடைசியில அந்த ரிசர்ச் தான் சாவி.",
+      "voice_tg": "Mudhalla andha varusham ellaam veenaa pona maadhiri thonum. Appuram oru sandhegam. Kadaisiyila andha research thaan saavi.",
+      "levels": [
+        {
+          "label": "WASTED YEARS?",
+          "value": 30,
+          "cue": {
+            "word": "வீணா"
+          }
+        },
+        {
+          "label": "A HUNCH",
+          "value": 65,
+          "cue": {
+            "word": "சந்தேகம்."
+          }
+        },
+        {
+          "label": "THE KEY",
+          "value": 100,
+          "cue": {
+            "word": "சாவி."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "வீணா"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "சந்தேகம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "சாவி."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "girl",
+      "fy": 0.45,
+      "fx": 0.5,
+      "slam_text": "WHO IS IT?",
+      "voice": "அந்த கொலைகாரன் யாரு? நாங்க சொல்ல மாட்டோம். இன்னிக்கு ராத்திரி, லைட்டை அணைச்சிட்டு பாருங்க.",
+      "voice_tg": "Andha kolaikaaran yaaru? Naanga solla maattom. Innikku raathiri, lightai anaichittu paarunga.",
+      "q_cue": {
+        "word": "யாரு?"
+      },
+      "slam_cue": {
+        "word": "மாட்டோம்."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "யாரு?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மாட்டோம்.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "RATSASAN · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "BEST TAMIL",
+          "size": 135
+        },
+        {
+          "text": "THRILLER EVER?",
+          "size": 120,
+          "color": "#78C8F0"
+        }
+      ],
+      "sub": "இதை விட பெரிய த்ரில்லர் இருக்கா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் செட்அப் அண்ட் பேஆஃப். இதை விட பெரிய தமிழ் த்ரில்லர் இருக்கா? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan setup and payoff. Idhai vida periya Tamil thriller irukkaa? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: SETUP & PAYOFF"
+    }
+  ],
+  "package": {
+    "caption": [
+      "In Ratsasan, the hero's failed film becomes his only weapon.",
+      "The technique is called setup and payoff: plant something early, pay it off later. Arun's years of research into psycho killers look wasted. Then he joins the police, and that research is what reads the pattern nobody else sees.",
+      "Is there a better Tamil thriller? Tell us.",
+      "Send this to the friend you watched it with, lights off.",
+      "தோல்வியே ஆயுதம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "RATSASAN · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Best Tamil thriller of the last 10 years: Ratsasan, Kaithi or Maharaja?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 73,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "end card returns to the title still"
+    }
+  }
+}

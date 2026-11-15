@@ -1,0 +1,398 @@
+{
+  "id": "2026-11-15-watch-lazy-sunday-feel-good",
+  "series": "movie-recommendations",
+  "template": "poster-wall",
+  "fps": 30,
+  "length_s": [
+    25,
+    45
+  ],
+  "length_reason": "Harish (13 Nov): longer, at reading pace, with a plot beat per film: title 3.2 s + 4 films x 7.4 s + recap 5 s = 37.8 s.",
+  "lead": {
+    "topic": "Lazy Sunday in the Chennai rains: 4 feel-good films for the family tonight",
+    "films": [
+      {
+        "film": "Kumbalangi Nights",
+        "year": 2019,
+        "language": "Malayalam",
+        "country": "India",
+        "director": "Madhu C. Narayanan",
+        "letterboxd": "4.21/5 (36,157 ratings)",
+        "proof": "Written by Syam Pushkaran; Fahadh Faasil's Shammi became one of Malayalam cinema's most quoted characters",
+        "premise": "Four brothers in a messy house by the backwaters learn to be a family.",
+        "watch_india": "Prime Video (JustWatch India, 15 Nov 2026)"
+      },
+      {
+        "film": "Maheshinte Prathikaaram",
+        "year": 2016,
+        "language": "Malayalam",
+        "country": "India",
+        "director": "Dileesh Pothan",
+        "letterboxd": "4.04/5 (12,144 ratings)",
+        "proof": "National Film Awards: Best Original Screenplay and Best Malayalam Film (64th)",
+        "premise": "A gentle village photographer is beaten in public and makes a promise.",
+        "watch_india": "Prime Video (JustWatch India, 15 Nov 2026)"
+      },
+      {
+        "film": "Paddington 2",
+        "year": 2017,
+        "language": "English",
+        "country": "UK",
+        "director": "Paul King",
+        "letterboxd": "4.10/5 (765,152 ratings)",
+        "proof": "3 BAFTA nominations, incl. Outstanding British Film",
+        "premise": "A polite bear wants one perfect birthday gift for his aunt.",
+        "watch_india": "Prime Video (JustWatch India, 15 Nov 2026)"
+      },
+      {
+        "film": "Little Miss Sunshine",
+        "year": 2006,
+        "language": "English",
+        "country": "USA",
+        "director": "Jonathan Dayton, Valerie Faris",
+        "letterboxd": "4.22/5 (2,592,140 ratings)",
+        "proof": "2 Oscars: Original Screenplay, Supporting Actor (Alan Arkin)",
+        "premise": "A broken family drives across America in a yellow van for a girl's dream.",
+        "watch_india": "Prime Video (JustWatch India, 15 Nov 2026)"
+      }
+    ],
+    "why_now": "Sunday 15 Nov, families at home, north-east monsoon rain in Chennai (brief, Today). Title angle from the brief: LAZY SUNDAY: {N} FEEL-GOOD FILMS; kicker MAZHAI + MOVIE.",
+    "whose_list": "Theme list ranked by Letterboxd (all 4.0 or higher), each with one award or famous fact.",
+    "dropped": "Thanneer Mathan Dinangal: not found streaming on JustWatch India today.",
+    "sources": [
+      "https://www.justwatch.com/in",
+      "https://letterboxd.com/film/kumbalangi-nights/",
+      "https://letterboxd.com/film/maheshinte-prathikaaram/",
+      "https://letterboxd.com/film/paddington-2/",
+      "https://letterboxd.com/film/little-miss-sunshine/",
+      "https://en.wikipedia.org/wiki/Maheshinte_Prathikaaram",
+      "https://en.wikipedia.org/wiki/Little_Miss_Sunshine"
+    ],
+    "pictures_note": "Official YouTube frames checked by eye: Kumbalangi Nights trailer (Bhavana Studios), Maheshinte Prathikaaram 'Idukki' song video (Muzik247, the film's label; no official trailer upload found), Paddington 2 trailer (StudiocanalUK), Little Miss Sunshine trailer (BigBeachFilms). Letterbox bars cropped; faces kept wide."
+  },
+  "worth_it": {
+    "seen_by_most": "No: two Malayalam films most Tamil viewers skipped, and two world films that never released here.",
+    "tell_a_friend": "Yes: easy, warm films the whole family can watch on a rainy night.",
+    "spoilers": "Premise only.",
+    "where_to_watch": "Checked on JustWatch India today: all on Prime Video.",
+    "proof": "Letterboxd 4.0 to 4.2, plus a National Award, 2 Oscars, 3 BAFTA nominations, and Fahadh's Shammi."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "whats_cookin",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "quirky, bold from frame 1 (a hook)"
+      },
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "warm, for the family films"
+      }
+    ],
+    "xfade": 0.8,
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "kumbalangi": {
+      "src": "engine/.cache/stills/kumbalangi_nights/3P4BFBSafF0_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    },
+    "mahesh": {
+      "src": "engine/.cache/stills/maheshinte_prathikaaram/NL5bYMXCSJ0_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    },
+    "paddington": {
+      "src": "engine/.cache/stills/paddington_2/52x5HJ9H8DM_maxres1.jpg"
+    },
+    "sunshine": {
+      "src": "engine/.cache/stills/little_miss_sunshine/wvwVkllXT80_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.2,
+      "posters": [
+        "kumbalangi",
+        "mahesh",
+        "paddington",
+        "sunshine"
+      ],
+      "fx": [
+        0.5,
+        0.5,
+        0.45,
+        0.5
+      ],
+      "kicker": "MAZHAI + MOVIE",
+      "lines": [
+        "LAZY SUNDAY",
+        "4 FEEL-GOOD FILMS"
+      ],
+      "tag": "FOR TONIGHT, WITH FAMILY",
+      "sfx": [
+        {
+          "at": 0.15,
+          "type": "impact"
+        },
+        {
+          "at": 0.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "in": "push",
+      "dur": 7.4,
+      "image": "kumbalangi",
+      "fx": 0.5,
+      "num": "01",
+      "title": "KUMBALANGI NIGHTS",
+      "meta": [
+        "2019",
+        "MALAYALAM",
+        "INDIA"
+      ],
+      "director": "DIR. MADHU C. NARAYANAN",
+      "reason": "Four brothers. One leaky home.",
+      "plot": "Four brothers in a messy house by the backwaters learn to be a family.",
+      "plot_beats": [
+        "FOUR BROTHERS, ONE MESSY HOUSE",
+        "BY THE BACKWATERS",
+        "LEARNING TO BE FAMILY"
+      ],
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.2,
+      "proof": "FAHADH'S ICONIC SHAMMI",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.4,
+      "image": "mahesh",
+      "fx": 0.5,
+      "num": "02",
+      "title": "MAHESHINTE PRATHIKAARAM",
+      "meta": [
+        "2016",
+        "MALAYALAM",
+        "INDIA"
+      ],
+      "director": "DIR. DILEESH POTHAN",
+      "reason": "A small-town vow. Big heart.",
+      "plot": "A gentle village photographer is beaten in public and makes a promise.",
+      "plot_beats": [
+        "A GENTLE PHOTOGRAPHER",
+        "BEATEN IN PUBLIC",
+        "HE MAKES A PROMISE"
+      ],
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.0,
+      "proof": "NATIONAL AWARD: SCREENPLAY",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.4,
+      "image": "paddington",
+      "fx": 0.45,
+      "num": "03",
+      "title": "PADDINGTON 2",
+      "meta": [
+        "2017",
+        "ENGLISH",
+        "UK"
+      ],
+      "director": "DIR. PAUL KING",
+      "reason": "Pure kindness. Hugh Grant's best villain.",
+      "plot": "A polite bear wants one perfect birthday gift for his aunt.",
+      "plot_beats": [
+        "A POLITE BEAR",
+        "ONE BIRTHDAY GIFT",
+        "A VERY BIG MIX-UP"
+      ],
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.1,
+      "proof": "3 BAFTA NOMINATIONS",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "film",
+      "in": "whip",
+      "dur": 7.4,
+      "image": "sunshine",
+      "fx": 0.5,
+      "num": "04",
+      "title": "LITTLE MISS SUNSHINE",
+      "meta": [
+        "2006",
+        "ENGLISH",
+        "USA"
+      ],
+      "director": "DIR. DAYTON · FARIS",
+      "reason": "One van. Whole family. Chaos.",
+      "plot": "A broken family drives across America in a yellow van for a girl's dream.",
+      "plot_beats": [
+        "A BROKEN FAMILY",
+        "ONE YELLOW VAN",
+        "A LITTLE GIRL'S DREAM"
+      ],
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 4.2,
+      "proof": "2 OSCARS",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "recap",
+      "in": "zoom",
+      "dur": 5.0,
+      "heading": "YOUR RAINY SUNDAY LIST",
+      "items": [
+        {
+          "image": "kumbalangi",
+          "title": "KUMBALANGI NIGHTS",
+          "fx": 0.5,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "mahesh",
+          "title": "MAHESHINTE PRATHIKAARAM",
+          "fx": 0.5,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "paddington",
+          "title": "PADDINGTON 2",
+          "fx": 0.45,
+          "watch": "PRIME VIDEO"
+        },
+        {
+          "image": "sunshine",
+          "title": "LITTLE MISS SUNSHINE",
+          "fx": 0.5,
+          "watch": "PRIME VIDEO"
+        }
+      ],
+      "cta": "SAVE FOR TONIGHT",
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Lazy Sunday, Chennai rain: 4 feel-good films for tonight.",
+      "Kumbalangi Nights, Maheshinte Prathikaaram, Paddington 2 and Little Miss Sunshine. All on Prime Video. Letterboxd 4.0 to 4.2.",
+      "Which one is your family watching first?",
+      "Save this for the next rainy night. Send it to the family group.",
+      "மழை + சினிமா."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "LAZY SUNDAY · 4 FEEL-GOOD FILMS",
+    "slot": "15:30",
+    "first_comment": "Your go-to feel-good film for a rainy day?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 7,
+    "save_value": 9,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 76,
+    "weakest": {
+      "loop": "recap returns to the posters of the title wall",
+      "comment_trigger": "first comment asks for their own rainy-day film"
+    }
+  }
+}

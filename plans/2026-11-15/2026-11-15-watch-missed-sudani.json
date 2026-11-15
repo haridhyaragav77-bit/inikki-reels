@@ -1,0 +1,201 @@
+{
+  "id": "2026-11-15-watch-missed-sudani",
+  "series": "movie-recommendations",
+  "template": "poster-wall",
+  "fps": 30,
+  "reserve": true,
+  "length_s": [
+    15,
+    25
+  ],
+  "lead": {
+    "topic": "One film you missed: Sudani from Nigeria, a feel-good football film for a rainy Sunday",
+    "films": [
+      {
+        "film": "Sudani from Nigeria",
+        "year": 2018,
+        "language": "Malayalam",
+        "country": "India",
+        "director": "Zakariya Mohammed",
+        "letterboxd": "3.88/5 (7,809 ratings)",
+        "proof": "National Film Award, Best Malayalam Film (66th); 5 Kerala State Film Awards",
+        "premise": "A small-town football manager must care for his injured Nigerian star.",
+        "watch_india": "Prime Video (JustWatch India, 15 Nov 2026)"
+      }
+    ],
+    "why_now": "Same rainy-Sunday, feel-good theme as today's 15:30 list.",
+    "sources": [
+      "https://letterboxd.com/film/sudani-from-nigeria/",
+      "https://www.justwatch.com/in/movie/sudani-from-nigeria",
+      "https://www.thenewsminute.com/amp/story/flix/actors-keerthy-suresh-vicky-kaushal-and-ayushmann-khurana-win-national-awards-2018-106942",
+      "https://sabrangindia.in/kerala-state-film-awards-sudani-nigeria-bags-five-awards/"
+    ],
+    "pictures_note": "Official trailer frames (Happy Hours Entertainments, the producer, EHyaTJGmN4k), checked by eye."
+  },
+  "worth_it": {
+    "seen_by_most": "No: a Malayalam film most Tamil viewers skipped.",
+    "tell_a_friend": "Yes: warm, funny, and about football and mothers.",
+    "spoilers": "Premise only.",
+    "where_to_watch": "Prime Video, checked on JustWatch India today.",
+    "proof": "Letterboxd 3.9 and a National Award."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "whats_cookin",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "quirky, bold from frame 1"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.2
+  },
+  "assets": {
+    "sudani": {
+      "src": "engine/.cache/stills/sudani_from_nigeria/EHyaTJGmN4k_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.0,
+        0.6,
+        0.9
+      ]
+    },
+    "coach": {
+      "src": "engine/.cache/stills/sudani_from_nigeria/EHyaTJGmN4k_maxres2.jpg"
+    },
+    "mothers": {
+      "src": "engine/.cache/stills/sudani_from_nigeria/EHyaTJGmN4k_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.2,
+      "posters": [
+        "sudani",
+        "coach",
+        "mothers"
+      ],
+      "fx": [
+        0.45,
+        0.5,
+        0.5
+      ],
+      "kicker": "RAINY SUNDAY PICK",
+      "lines": [
+        "ONE FILM",
+        "YOU MISSED"
+      ],
+      "sfx": [
+        {
+          "at": 0.15,
+          "type": "impact"
+        },
+        {
+          "at": 0.7,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "film",
+      "in": "push",
+      "dur": 7.4,
+      "image": "sudani",
+      "fx": 0.45,
+      "num": "01",
+      "title": "SUDANI FROM NIGERIA",
+      "meta": [
+        "2018",
+        "MALAYALAM",
+        "INDIA"
+      ],
+      "director": "DIR. ZAKARIYA MOHAMMED",
+      "reason": "Football, friendship and two mothers.",
+      "plot": "A small-town football manager must care for his injured Nigerian star.",
+      "plot_beats": [
+        "A SMALL-TOWN FOOTBALL MANAGER",
+        "HIS STAR GETS INJURED",
+        "NOW HE MUST CARE"
+      ],
+      "sfx": [
+        {
+          "at": 0.75,
+          "type": "pop"
+        },
+        {
+          "at": 1.6,
+          "type": "tick"
+        },
+        {
+          "at": 2.15,
+          "type": "pop"
+        }
+      ],
+      "rating": 3.9,
+      "proof": "NATIONAL AWARD",
+      "watch": "PRIME VIDEO"
+    },
+    {
+      "kind": "recap",
+      "in": "zoom",
+      "dur": 5.0,
+      "heading": "TONIGHT'S PICK",
+      "items": [
+        {
+          "image": "sudani",
+          "title": "SUDANI FROM NIGERIA",
+          "fx": 0.45,
+          "watch": "PRIME VIDEO"
+        }
+      ],
+      "cta": "SAVE FOR TONIGHT",
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "One film you missed: Sudani from Nigeria.",
+      "A small-town football manager has to look after his injured Nigerian star, and two mothers steal the film. National Award, Best Malayalam Film. Letterboxd 3.9. On Prime Video.",
+      "Seen it?",
+      "Save it for the next rainy night.",
+      "மழை நாளுக்கு ஒரு படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "ONE FILM YOU MISSED · SUDANI FROM NIGERIA",
+    "slot": "reserve",
+    "first_comment": "Another warm Malayalam film we should add?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 6,
+    "send_trigger": 6,
+    "comment_trigger": 6,
+    "save_value": 8,
+    "pacing": 7,
+    "loop": 5,
+    "timely_original": 6,
+    "total_100": 64,
+    "weakest": {
+      "hook": "kicker ties it to today's rain",
+      "loop": "recap returns to the title still"
+    }
+  },
+  "length_reason": "One film only: title 3.2 s + film 7.4 s + recap 5 s, inside the series pace limits."
+}
