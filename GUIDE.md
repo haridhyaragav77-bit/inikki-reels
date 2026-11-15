@@ -90,6 +90,7 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 | Pause or resume a series | **Series** → **Pause / Resume** | `pause guess the movie` |
 | Suggest a topic | **Today** → idea box | `cover this: …` |
 | Change reels per day, slot times, budgets, switches | **Setup** tab | `post 5 a day` |
+| How many reels each series posts, and at what time; extras on or off | **Setup** → Reels per day: tap a number per series, pick each time, tap Save day plan | `2 movie updates a day, no extras` |
 | Take something back | **Setup** → Your last actions → **Undo** | `undo` |
 | Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 

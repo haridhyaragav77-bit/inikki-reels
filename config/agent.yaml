@@ -5,6 +5,7 @@ always_ask: [brand, niche, safety, budget]
 active: { brand: inikki-reels, niche: tamil-cinema, lineup: cinema-core }
 goal: { followers: 1000, by_days: 90, start_followers: 37, start_date: 2026-11-10 }
 volume: { base: 6, max: 8 }
+extras: { enabled: true }          # flex and extra series (trailer-breakdown, movie-review, artwork-quote, breaking-news); Control Room → Setup
 slots: ["08:30", "12:30", "15:30", "18:00", "20:00", "21:30"]
 flex_slots: ["11:00", "17:00"]
 timezone: Asia/Kolkata
