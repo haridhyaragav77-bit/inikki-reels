@@ -289,7 +289,7 @@ def run(drive=None, ctl=None, test=False):
         if ((strong or drop) and fresh and not s.get("fired_at")
                 and s.get("kw_max", 0) >= float(w.get("breaking_min_keyword", 3))
                 and lo <= now.hour < hi and len(fired_today) < int(w.get("max_wakes_per_day", 2)) and (ctl is None or ctl.mode != "sleep")
-                and (ctl is None or (ctl.settings.get("breaking") or {}).get("enabled", True))):
+                and (ctl is None or ((ctl.settings.get("breaking") or {}).get("enabled", True) and (ctl.settings.get("extras") or {}).get("enabled", True)))):
             try:
                 from .day import Day
                 done = sum(1 for r in Day(drive).reels() if r.get("series") == "breaking-news") if drive else 0

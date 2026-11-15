@@ -54,6 +54,9 @@ def stopper(r, ctl, respect, now):
     series = r.get("series", "")
     if ctl.series_paused(series):
         return "The series is paused."
+    from . import dayplan
+    if dayplan.off(ctl, series) and not r.get("manual"):
+        return dayplan.off(ctl, series)
     if respect and not r.get("tribute"):
         allow = respect.get("allow_series") or ctl.settings.get("respect", {}).get("allow_series", [])
         if series not in allow:
