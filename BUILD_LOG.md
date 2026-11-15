@@ -13,11 +13,11 @@ Measured first (GitHub run history): a live day cost about 115 minutes. Posting 
 | Late timer waits only when needed | `engine/post.py` `clock_alive`, `wait_for_slot`; Drive `status/clock.json` | Clock on time → the late run leaves a close slot to it; clock missing → waits and posts on time as before |
 | Upload when made | `engine/post.py` `prepare`, `prep_usable`, `publish`; `engine/make.py` | Unpublished upload at Make; the slot's run publishes; any doubt → uploads then, as before |
 | Quicker status step | `engine/panel.py` `Once` | Each Drive file read once, one listing per folder |
-| Make is one job | `.github/workflows/make.yml` | The check is the first step, not a second billed job |
+| Make is one job | `.github/workflows/make.yml`, `engine/make.py` `still_waiting` | The check is the first step, not a second billed job; a reel skipped to save minutes no longer starts the heavy tools on every run |
 | Nightly not doubled | `.github/workflows/daily.yml`, `engine/status.py` `recent` | The late copy stops when the clock already ran it |
 | Golden test once | `.github/workflows/make-reels.yml`, `engine/tools/pick_plans.py` | Branch only, and only the looks a push touched |
 | Honest counter | `engine/health.py` | A day that cannot be counted is tried again, never saved as 0; month recounted |
-| Tests | `tests/test_minutes.py` | 34 checks, no keys |
+| Tests | `tests/test_minutes.py` | 37 checks, no keys |
 
 **Not changed:** encoder, frame rate, voice, music, slot times, the 3-hours-late rule, both timers.
 **To watch:** the first live day's minutes on the Usage tab (expected about 60); the first "using the upload made ahead of the slot" line in a Post run.
