@@ -26,7 +26,8 @@ def local_write(name, obj):
 
 
 def write(drive, name, obj):
-    obj = dict(obj)
+    from .mask import clean
+    obj = clean(dict(obj))                     # a key that slipped into an error message is masked before it is saved
     obj.setdefault("updated", stamp())
     local_write(name, obj)
     if drive:

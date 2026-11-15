@@ -37,8 +37,8 @@ jobs:
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
@@ -48,10 +48,13 @@ jobs:
           sudo apt-get install -y -qq ffmpeg fonts-noto-core >/dev/null
           pip install -q -r requirements.txt
       - name: Run the smoke tests
-        run: python -m engine.smoke --tests "${{ inputs.tests }}" --image "${{ inputs.spend_on_image }}"
+        env:
+          TESTS: ${{ inputs.tests }}
+          IMAGE: ${{ inputs.spend_on_image }}
+        run: python -m engine.smoke --tests "$TESTS" --image "$IMAGE"
       - name: Keep the results (report, voice clip, image, clip)
-        if: always()
-        uses: actions/upload-artifact@v4
+        if: always() && github.event.repository.private     # a public repository shows these files to everyone: Drive has them
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: smoke-results
           path: out/

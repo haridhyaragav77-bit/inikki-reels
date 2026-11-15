@@ -451,9 +451,23 @@ def run(drive):
         return 0
     seen = {x.get("file") for x in st.log}
     done = 0
+    from . import guard
+    people = guard.trusted_people(drive)                       # commands count only from Harish's own Drive account (AGENT.md 21)
     for f in files:
         if f["id"] in seen:                                    # applied earlier, its file just could not be binned
             _bin(drive, f)
+            continue
+        if guard.stranger(f, people):
+            st.log.append({"id": hashlib.md5(f["id"].encode()).hexdigest()[:6], "file": f["id"], "at": status.stamp(), "do": "?",
+                           "summary": f"{f.get('name', '')}: not from your account", "result": "refused", "why": "the file was made by an account that is not yours"})
+            print("relay: refused a command from an account that is not Harish's:", f.get("name"))
+            held = guard.lockdown(drive, "A Control Room command came from an account that is not yours")
+            if held:
+                st.switch = drive.read_json("control", "switch.json") or st.switch
+            status.alert(drive, "Security: a command came from an account that is not yours",
+                         f"A file named {str(f.get('name', ''))[:60]} was put in the Control Room inbox by {', '.join(o.get('emailAddress', '?') for o in f.get('owners') or [])}.",
+                         "It was not applied." + (" Posting is on hold until you press Resume." if held else ""),
+                         "Open Drive → iNiKKi Reels → Share and remove anyone you do not know (GUIDE.md 12, 'If someone gets in').", level="warn")
             continue
         try:
             actions = parse(_read(drive, f))
