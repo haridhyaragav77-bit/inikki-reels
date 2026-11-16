@@ -1,6 +1,6 @@
-**Sun 15 Nov** · 3 posted, 3 ready for tonight (18:00, 20:00, 21:30), 0 held · no follower count in today's numbers
-**Best:** the 08:30 Suriya ₹600 cr update: 346 views in 2 hours and the lowest skip yet (50%)
-**Weak:** the Jail Mates teaser update: only 14% of the reel watched (red); shares are still near 0% on every reel
-**Tomorrow:** Nayanthara's birthday is Wed 18 Nov, so a Nayanthara pick or update fits the week; OM opens Thu 20 Nov · bank now holds 3 breakdowns (Kaithi, Maharaja, Virumaandi)
-**Changed:** your note on the Shaji Kumar update (cropped too much, poor titles) is now a test rule for the next 5 updates (change #15); tonight's updates stay as planned
-**Needs you:** 3 trailers to get (Sathyavan Savithiri, Jail Mates, OM; OM is listed 3 times, it is one film). The command is in Drive requests/trailers_to_get.md
+**Mon 16 Nov** · 1 posted, 1 could not post (12:30 Pariyerum Perumal, still ready), 3 ready for tonight (18:00, 20:00, 21:30)
+**Best:** the Ratsasan breakdown keeps climbing: 1,199 views, up from 328 at 2 hours; the Suriya ₹600 cr update is top at 1,371 views
+**Weak:** the Lazy Sunday picks and the Inji Vellam update: only 14% and 11% of the reel watched (red); shares still near 0%
+**Tomorrow:** thrillers are rising (Ratsasan), so lead with a thriller breakdown; Nayanthara's birthday is Wed, OM opens Thu 20 Nov
+**Changed:** added a Jigarthanda breakdown to the bank (2 of 4 ready); tonight's updates stay, no bigger news than the OM trailer
+**Needs you:** 5 trailers to get (3 films; OM is listed three ways). The command is in Drive requests/trailers_to_get.md

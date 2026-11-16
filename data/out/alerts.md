@@ -12,3 +12,4 @@
 - 15 Nov 05:45 IST · 6 reels planned, not 7: no flex reel today. None of the new library trailers is a new release (no trailer breakdown), and Sunday is not a release day (no review).
 - 15 Nov 22:45 IST · Your standing rule for Movie Review stops mid-sentence ("…interesting visual desings to it make the"). Please finish it in the Control Room so the plans follow all of it.
 - 16 Nov 05:55 IST · 5 reels planned, not 6: the 6th count is a flex slot, and today has no new trailer in the library (no trailer breakdown) and Monday is not a release day (no review). Trailer links for Sathyavan Savithiri, Jail Mates and OM were already in the note (OM is listed three ways; it is one film).
+- 16 Nov 16:50 IST · Harish's note on the Shaji Kumar update (cropped too much, poor titles) shows as new again in the brief, but it is already change #15 (test on 5 updates). Nothing new was added; the brief may be re-reading old feedback.

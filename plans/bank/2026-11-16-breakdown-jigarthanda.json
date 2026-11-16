@@ -1,0 +1,207 @@
+{
+  "id": "2026-11-16-breakdown-jigarthanda",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [40, 62],
+  "design": "royal",
+  "length_reason": "Set up the director and the gangster, name the technique, show the research web and the rising danger: about a minute.",
+  "lead": {
+    "topic": "Jigarthanda (2014): a young director spies on a Madurai gangster to write his first film",
+    "angle": "screenplay",
+    "insight": "Karthik needs a gangster script, so he studies a real gangster, Assault Sethu. We watch a film being researched inside the film, and every note he takes pulls him closer to danger. That is a film within a film, where the making of the story becomes the story.",
+    "why_now": "Karthik Subbaraj's breakout, two National Awards (Bobby Simha, editing); a Monday rainy-night rewatch (brief, Today: Chennai rains).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Jigarthanda_(2014_film) (plot: short-film director Karthik is told by producer Sundar to make a gangster film and goes to Madurai to document gangster Assault Sethu with his friend Oorani; two National Film Awards: Best Supporting Actor, Simha, and Best Editing)",
+      "https://en.wikipedia.org/wiki/Story_within_a_story (a story told inside another story, including films about making films)"
+    ],
+    "technique": "Film within a film (a story about making a story)",
+    "pictures_note": "Official trailer frames (_T8n-EHr4ZE, Think Music channel), checked by eye: maxresdefault is the illustrated poster with the whole cast (crop cuts the TRAILER label on the left and the title logo at the bottom), maxres3 Karthik (Siddharth) close-up, serious; maxres2 Karthik half-smiling. 'sethu' is cropped from the poster around Bobby Simha's face (lower middle); keep his face whole, no heads cut. maxres1 is a near copy of maxres2 and is not used."
+  },
+  "worth_it": {
+    "learn": "Jigarthanda shows a film being researched inside the film; the research itself becomes the danger (film within a film).",
+    "stop": "He wanted to make a gangster film. So he started following a real gangster.",
+    "why_now": "Karthik Subbaraj's breakout and two National Awards; Monday rain suits a rewatch.",
+    "send_to": "The friend who wants to be a director.",
+    "best_angle": "Yes: the director-studies-gangster set-up is the film's engine; nothing past the first act is told."
+  },
+  "voice": {"on": true},
+  "music": {
+    "sections": [
+      {"track": "lone_wolf", "from": 0.0, "screen": 0, "mood": "cool, moody"},
+      {"track": "suspects", "from": 0.0, "screen": 3, "mood": "investigation"},
+      {"track": "hunt_begins", "from": 0.0, "screen": 4, "mood": "danger closes in"}
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {"src": "engine/.cache/stills/jigarthanda/_T8n-EHr4ZE_maxresdefault.jpg", "crop": [0.28, 0.0, 0.62, 0.74]},
+    "sethu": {"src": "engine/.cache/stills/jigarthanda/_T8n-EHr4ZE_maxresdefault.jpg", "crop": [0.52, 0.42, 0.34, 0.33]},
+    "karthik": {"src": "engine/.cache/stills/jigarthanda/_T8n-EHr4ZE_maxres3.jpg", "crop": [0.0, 0.1, 1.0, 0.82]},
+    "karthik_smile": {"src": "engine/.cache/stills/jigarthanda/_T8n-EHr4ZE_maxres2.jpg", "crop": [0.0, 0.1, 1.0, 0.82]}
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "JIGARTHANDA",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ஜிகர்தண்டா. கேங்ஸ்டர் படம் எடுக்கணும். அதுக்கு ஒரு நிஜ கேங்ஸ்டரையே பின்தொடர்றான்.",
+      "voice_tg": "Jigarthanda. Gangster padam edukkanum. Adhukku oru nija gangsteraiye pinthodaraan.",
+      "sfx": [{"at": 0.12, "type": "impact"}]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {"image": "karthik", "label": "THE DIRECTOR", "sub": "KARTHIK", "cue": {"word": "கார்த்திக்"}},
+      "right": {"image": "sethu", "label": "THE GANGSTER", "sub": "ASSAULT SETHU", "cue": {"word": "சேது."}},
+      "tilt": 1,
+      "tilt_cue": {"word": "மதுரைக்கு"},
+      "slam_text": "WHO IS WATCHING WHOM?",
+      "slam_cue": {"word": "நோட்ஸ்"},
+      "voice": "ஒரு பக்கம், முதல் படம் எடுக்கத் துடிக்கிற கார்த்திக். இன்னொரு பக்கம், மதுரை அசால்ட் சேது. கார்த்திக் மதுரைக்கு போய், சேதுவை நோட்ஸ் எடுக்கிறான்.",
+      "voice_tg": "Oru pakkam, mudhal padam edukka thudikkira Karthik. Innoru pakkam, Madurai Assault Sethu. Karthik Maduraikku poi, Sethuvai notes edukkiraan.",
+      "sfx": [
+        {"at": {"word": "கார்த்திக்"}, "type": "whoosh"},
+        {"at": {"word": "சேது."}, "type": "whoosh"},
+        {"at": {"word": "நோட்ஸ்"}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "FILM WITHIN A FILM",
+      "definition": "A STORY ABOUT MAKING A STORY",
+      "outer_label": "JIGARTHANDA",
+      "inner": ["KARTHIK'S SCRIPT", "SETHU'S LIFE", "YOU, WATCHING"],
+      "voice": "இந்த டெக்னிக் பேரு, ஃபிலிம் விதின் எ ஃபிலிம். படத்துக்குள்ள ஒரு படம் உருவாகுது. நாம அதை உருவாகும் போதே பாக்குறோம்.",
+      "voice_tg": "Indha technique peru, film within a film. Padaththukulla oru padam uruvaagudhu. Naama adhai uruvaagum podhe paakkurom.",
+      "cues": {
+        "name": {"word": "ஃபிலிம்"},
+        "outer": {"word": "படத்துக்குள்ள"},
+        "inner": {"word": "பாக்குறோம்."}
+      },
+      "tail": 0.6,
+      "sfx": [
+        {"at": {"word": "ஃபிலிம்"}, "type": "impact"},
+        {"at": {"word": "படத்துக்குள்ள"}, "type": "whoosh"},
+        {"at": {"word": "பாக்குறோம்."}, "type": "pop"},
+        {"at": {"word": "பாக்குறோம்.", "off": 0.3}, "type": "pop"},
+        {"at": {"word": "பாக்குறோம்.", "off": 0.6}, "type": "pop"}
+      ]
+    },
+    {
+      "kind": "web",
+      "in": "whip",
+      "heading": "HIS RESEARCH",
+      "voice": "நண்பன் ஊரணி. சேதுவோட ஆளுங்க. சமையல்காரம்மா பொண்ணு கயல். ஒவ்வொருத்தரும் கார்த்திக்கோட ஸ்கிரிப்டுக்கு ஒரு வழி.",
+      "voice_tg": "Nanban Oorani. Sethuvoda aalunga. Samaiyalkaaramma ponnu Kayal. Ovvoruththarum Karthikkoda scriptukku oru vazhi.",
+      "center": {"label": "KARTHIK", "image": "karthik_smile"},
+      "nodes": [
+        {"label": "OORANI", "link": "HELPS", "cue": {"word": "ஊரணி."}},
+        {"label": "SETHU'S MEN", "link": "WATCHES", "cue": {"word": "ஆளுங்க."}},
+        {"label": "KAYAL", "link": "GETS CLOSE", "cue": {"word": "கயல்."}},
+        {"label": "THE SCRIPT", "link": "WRITES", "cue": {"word": "ஸ்கிரிப்டுக்கு"}}
+      ],
+      "footer": "EVERY LINK IS A RISK",
+      "footer_cue": {"word": "வழி."},
+      "sfx": [
+        {"at": {"word": "ஊரணி."}, "type": "tick"},
+        {"at": {"word": "ஆளுங்க."}, "type": "tick"},
+        {"at": {"word": "கயல்."}, "type": "tick"},
+        {"at": {"word": "ஸ்கிரிப்டுக்கு"}, "type": "tick"},
+        {"at": {"word": "வழி."}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "HOW CLOSE HE GETS",
+      "label": "DANGER",
+      "voice": "தூரத்துல இருந்து பாக்குறான். அப்புறம் பக்கத்துல போறான். ஒவ்வொரு அடியும், கதையை நல்லா ஆக்குது, ஆபத்தையும் கூட்டுது.",
+      "voice_tg": "Thoorathula irundhu paakkuraan. Appuram pakkaththula poraan. Ovvoru adiyum, kadhaiyai nallaa aakkudhu, aabaththaiyum koottudhu.",
+      "levels": [
+        {"label": "FROM A DISTANCE", "value": 30, "cue": {"word": "தூரத்துல"}},
+        {"label": "UP CLOSE", "value": 70, "cue": {"word": "பக்கத்துல"}},
+        {"label": "TOO CLOSE", "value": 100, "cue": {"word": "கூட்டுது."}}
+      ],
+      "sfx": [
+        {"at": {"word": "தூரத்துல"}, "type": "tick"},
+        {"at": {"word": "பக்கத்துல"}, "type": "tick"},
+        {"at": {"word": "கூட்டுது."}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "sethu",
+      "fy": 0.45,
+      "fx": 0.5,
+      "slam_text": "WHAT IF HE FINDS OUT?",
+      "voice": "சேதுவுக்கு இது தெரிஞ்சா என்ன ஆகும்? அதை நாங்க சொல்ல மாட்டோம். மழை ராத்திரியில நீங்களே பாருங்க.",
+      "voice_tg": "Sethuvukku idhu therinjaa enna aagum? Adhai naanga solla maattom. Mazhai raaththiriyila neengale paarunga.",
+      "q_cue": {"word": "ஆகும்?"},
+      "slam_cue": {"word": "மாட்டோம்."},
+      "sfx": [
+        {"at": {"word": "ஆகும்?"}, "type": "riser"},
+        {"at": {"word": "மாட்டோம்.", "off": 0.35}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "JIGARTHANDA · SCREENPLAY BREAKDOWN",
+      "question": [
+        {"text": "KARTHIK SUBBARAJ'S", "size": 110},
+        {"text": "BEST FILM?", "size": 130, "color": "#F5C66B"}
+      ],
+      "sub": "கார்த்திக் சுப்புராஜோட பெஸ்ட் படம் இதுவா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ஃபிலிம் விதின் எ ஃபிலிம். கார்த்திக் சுப்புராஜோட பெஸ்ட் படம் இதுவா? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan film within a film. Karthik Subbarajoda best padam idhuvaa? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [{"at": 1.0, "type": "pop"}],
+      "recap": "TECHNIQUE: FILM WITHIN A FILM"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Jigarthanda: he wanted to make a gangster film, so he started following a real gangster.",
+      "The technique is called a film within a film: a story about making a story. Karthik studies Assault Sethu for his first script, and every note he takes pulls him closer to danger.",
+      "Is this Karthik Subbaraj's best film? Tell us.",
+      "Send this to the friend who wants to be a director.",
+      "படத்துக்குள்ள ஒரு படம்."
+    ],
+    "hashtags": ["#fyp", "#trending", "#viral", "#explorepage", "#reels"],
+    "cover": "JIGARTHANDA · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "Would you follow a gangster for your first film? No spoilers past the first half, please."
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 7,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 5,
+    "total_100": 69,
+    "weakest": {
+      "timely_original": "ties to the Monday rain in the last line",
+      "loop": "end card returns to the title poster"
+    }
+  }
+}
