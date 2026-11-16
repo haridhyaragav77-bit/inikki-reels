@@ -14,5 +14,5 @@ To change what a run does, edit its card here. The Brain may not edit these (the
 
 ## The clock and the dispatcher (made fresh every week)
 Their exact rules and every scheduled task now live in `runs/renew/`: `clock.md`, `dispatcher.md`, `tasks.json`. Every
-Monday 03:17 IST the task "iNiKKi · Weekly fresh chats" starts a session that follows `runs/renew.md`: new chats first,
+Monday 03:17 IST the task "iNiKKi · Weekly fresh chats" sends `RENEW` to the small renewer chat (`runs/renew/renewer.md`), which follows `runs/renew.md` and also replaces itself: new chats first,
 then the tasks moved to them, then the old ones removed. Change those files, not the scheduled tasks by hand.

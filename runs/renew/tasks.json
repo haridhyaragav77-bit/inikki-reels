@@ -9,6 +9,9 @@
     {"name": "iNiKKi Clock · Brief for the Monthly run (1st, 22:42)", "cron": "CRON_TZ=Asia/Kolkata 42 22 1 * *", "prompt": "TICK daily brief-monthly"},
     {"name": "iNiKKi Clock · Nightly (23:40)", "cron": "CRON_TZ=Asia/Kolkata 40 23 * * *", "prompt": "TICK daily nightly"}
   ],
+  "renewer": [
+    {"name": "iNiKKi · Weekly fresh chats (Mon 03:17 IST)", "cron": "CRON_TZ=Asia/Kolkata 17 3 * * 1", "prompt": "RENEW"}
+  ],
   "dispatcher": [
     {"name": "iNiKKi Brain · Plan (daily 05:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 5 * * *", "prompt": "RUN plan"},
     {"name": "iNiKKi Brain · Refresh (daily 16:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 16 * * *", "prompt": "RUN refresh"},
