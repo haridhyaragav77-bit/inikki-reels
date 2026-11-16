@@ -18,5 +18,9 @@ first, remove the old last, so no tick is lost. Never touch any task that is not
    persistent_session_id = the new chat for that list, initiation "human_schedule".
 5. Only after step 4 fully worked: delete_trigger for every task whose name is in tasks.json and whose
    persistent_session_id is an OLD id (never one bound to a new chat). Then archive_session each OLD chat.
-6. Reply in at most 4 plain lines: new chat ids, tasks moved, anything that failed. If anything failed before step 5,
+6. Renew yourself last, so this chat never grows either: create_session like step 3 with title
+   "iNiKKi · renewer · <today>", append_system_prompt = `runs/renew/renewer.md`, then create_trigger for the
+   "renewer" entry in tasks.json bound to it, then delete_trigger the old renewer task (the one bound to this chat).
+   Do not archive this chat; it ends by itself.
+7. Reply in at most 4 plain lines: new chat ids, tasks moved, anything that failed. If anything failed before step 5,
    delete nothing: the old chats keep working.
