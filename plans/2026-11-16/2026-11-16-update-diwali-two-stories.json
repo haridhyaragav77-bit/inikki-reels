@@ -1,0 +1,228 @@
+{
+  "id": "2026-11-16-update-diwali-two-stories",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 16 NOV 2026",
+  "lead": {
+    "topic": "Same Diwali, two stories: after 10 days, Scene near ₹136 Cr India net, Mookuthi Amman 2 near ₹20 Cr",
+    "facts": [
+      "Both opened on 6 Nov 2026 for Diwali (Wikipedia: Mookuthi Amman 2; FilmiBeat: Scene)",
+      "Scene: about ₹136.50 Cr India net in 10 days (Sacnilk); over ₹240 Cr worldwide (DNA India)",
+      "Mookuthi Amman 2: ₹19.25 Cr India net after 9 days, day 10 early estimate about ₹0.78 Cr (Sacnilk); opening week ₹17.93 Cr (Koimoi)",
+      "Mookuthi Amman 2's reported budget is over ₹100 Cr (TrackTollywood) — not used on screen, only one source",
+      "Nayanthara's birthday is Wednesday 18 Nov (brief, Today)"
+    ],
+    "sources": [
+      "https://www.sacnilk.com/quicknews/Mookuthi_Amman_2_2026_Box_Office_Collection_Day_10",
+      "https://www.koimoi.com/box-office/mookuthi-amman-2-box-office-registers-nayantharas-2nd-lowest-opening-week-of-2026-in-india/",
+      "https://www.sacnilk.com/quicknews/Scene_2026_Box_Office_Collection_Day_10",
+      "https://www.dnaindia.com/entertainment/report-scene-box-office-collection-day-10-suriya-film-beats-vishwanath-and-sons-to-become-his-second-highest-grossing-movie-3224109"
+    ],
+    "pictures_note": "Mookuthi Amman 2 official trailer (tbnwnLatH1g, Vels upload), checked by eye on 16 Nov: maxresdefault is Nayanthara as the goddess on the trailer card (crop cuts the TRAILER word, the title block and the corner mark); maxres3 is Regina Cassandra. Scene card as in the 08:30 reel. Crops wide, faces whole.",
+    "tone": "Plain numbers, no mocking: the end card asks about OTT, not about a flop."
+  },
+  "worth_it": {
+    "fan_opens_because": "The two Diwali films side by side, 10 days in: one number tells the story.",
+    "spoilers": "None: box office only.",
+    "voice": "Off: box office is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "intrigue, builds"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "amman": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    },
+    "regina": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxres3.jpg"
+    },
+    "scene": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+      "crop": [
+        0.05,
+        0.0,
+        0.65,
+        0.7
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.35,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "DIWALI 2026",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "TWO STORIES",
+          "size": 130,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "impact"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "bars",
+      "in": "whip",
+      "image": "scene",
+      "fx": 0.5,
+      "fy": 0.35,
+      "dur": 5.4,
+      "kicker": "INDIA NET · 10 DAYS · ₹ CR",
+      "items": [
+        {
+          "label": "SCENE",
+          "value": 136,
+          "color": "#F07858"
+        },
+        {
+          "label": "MOOKUTHI AMMAN 2",
+          "value": 20,
+          "color": "#78E0D0"
+        }
+      ],
+      "note": "Source: Sacnilk (MA2 day 10 early estimate)",
+      "sfx": [
+        {
+          "at": 0.35,
+          "type": "whoosh"
+        },
+        {
+          "at": 0.7,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "regina",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "MOOKUTHI AMMAN 2 · INDIA NET",
+      "value": 20,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "₹ IN 10 DAYS",
+        "SACNILK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "amman",
+      "dur": 4.0,
+      "echo": "DIWALI 2026 · TWO STORIES",
+      "question": [
+        {
+          "text": "WAITING FOR",
+          "size": 125
+        },
+        {
+          "text": "THE OTT?",
+          "size": 140,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Nayanthara's birthday is Wednesday.",
+      "cta": "SEND TO A NAYANTHARA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Same Diwali, two very different stories.",
+      "After 10 days in India (net, Sacnilk): Scene about ₹136.5 Cr, Mookuthi Amman 2 about ₹20 Cr. Both opened on 6 Nov.",
+      "Did you watch Mookuthi Amman 2 in theatres, or are you waiting for the OTT?",
+      "Send this to the friend who picked Mookuthi Amman 2 for Diwali.",
+      "தீபாவளி 2026 — ரெண்டு கதை."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "DIWALI 2026 · TWO STORIES",
+    "slot": "21:30",
+    "first_comment": "Which Diwali film did you watch first: Scene or Mookuthi Amman 2?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 5,
+    "timely_original": 7,
+    "total_100": 62,
+    "weakest": {
+      "save_value": "news, not a keeper; the end card asks about OTT plans",
+      "send_trigger": "the cta names a fan to send it to"
+    }
+  }
+}

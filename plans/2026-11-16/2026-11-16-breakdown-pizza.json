@@ -1,0 +1,451 @@
+{
+  "id": "2026-11-16-breakdown-pizza",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "noir",
+  "length_reason": "Name the technique, show why we believe him, how the film makes us doubt: about a minute.",
+  "lead": {
+    "topic": "Pizza (2012): the horror story told by a man you should not trust",
+    "angle": "screenplay",
+    "insight": "Almost everything we see in Pizza comes through Michael, a delivery boy telling us what happened in a dark bungalow. We believe him because we see it with him. The film never warns us that the storyteller has his own reasons, so the last minutes turn the whole night upside down.",
+    "why_now": "Karthik Subbaraj's debut is a cult horror people still recommend; a rainy Monday night is the right night for it (brief, Today).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pizza_(2012_film) (plot: pizza delivery boy Michael, his girlfriend Anu writes horror stories, a delivery to a bungalow; dir. Karthik Subbaraj, Vijay Sethupathi and Remya Nambeesan)",
+      "https://en.wikipedia.org/wiki/Unreliable_narrator"
+    ],
+    "technique": "Unreliable narrator (a storyteller you cannot trust)",
+    "pictures_note": "Official trailer frames (1ORbkrHs5JU), checked by eye on 16 Nov: maxresdefault is the poster (Tamil title, credits block cut by the crop), maxres1 Anu and Michael smiling, maxres2 Michael at the door, maxres3 Anu.",
+    "spoiler_note": "The twist itself is never told: the reel says only that the storyteller cannot be trusted."
+  },
+  "worth_it": {
+    "learn": "Pizza works because we see the haunted night only through Michael, a storyteller we should not trust.",
+    "stop": "Every scare in this film comes from one man's story.",
+    "why_now": "Cult horror people still recommend; rainy Monday night.",
+    "send_to": "The friend who says no Tamil horror ever scared them.",
+    "best_angle": "Yes: it is the reason the ending lands; the twist stays hidden."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "threat_north",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "ominous"
+      },
+      {
+        "track": "villains_strategy",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "tension"
+      },
+      {
+        "track": "under_attack",
+        "from": 2.0,
+        "screen": 5,
+        "mood": "urgent stinger"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/pizza/1ORbkrHs5JU_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.55,
+        1.0
+      ]
+    },
+    "couple": {
+      "src": "engine/.cache/stills/pizza/1ORbkrHs5JU_maxres1.jpg"
+    },
+    "michael": {
+      "src": "engine/.cache/stills/pizza/1ORbkrHs5JU_maxres2.jpg"
+    },
+    "anu": {
+      "src": "engine/.cache/stills/pizza/1ORbkrHs5JU_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "michael",
+      "film": "PIZZA",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.62,
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "பீட்சா. இந்த படத்துல நீங்க பார்த்த பேய், உண்மையா?",
+      "voice_tg": "Pizza. Indha padaththula neenga paartha pei, unmaiyaa?",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "WHAT WE SEE",
+      "heading_ta": "நாம பார்க்கிறது",
+      "voice": "பீட்சா டெலிவரி பையன் மைக்கேல். அவன் காதலி அனு, பேய் கதை எழுதுறவ. ஒரு இருட்டு பங்களாவுக்கு டெலிவரி.",
+      "voice_tg": "Pizza delivery paiyan Michael. Avan kaadhali Anu, pei kadhai ezhudhuravaa. Oru iruttu bangalaavukku delivery.",
+      "cards": [
+        {
+          "lines": [
+            "THE DELIVERY",
+            "BOY"
+          ],
+          "image": "michael",
+          "fx": 0.62,
+          "cue": {
+            "word": "மைக்கேல்."
+          }
+        },
+        {
+          "lines": [
+            "SHE WRITES",
+            "GHOST STORIES"
+          ],
+          "image": "anu",
+          "fx": 0.4,
+          "cue": {
+            "word": "அனு,"
+          }
+        },
+        {
+          "lines": [
+            "ONE DARK",
+            "BUNGALOW"
+          ],
+          "image": "couple",
+          "fx": 0.5,
+          "cue": {
+            "word": "பங்களாவுக்கு"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "மைக்கேல்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அனு,"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பங்களாவுக்கு"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "UNRELIABLE NARRATOR",
+      "definition": "A STORYTELLER YOU CAN'T TRUST",
+      "outer_label": "HIS STORY",
+      "inner": [
+        "THE HOUSE",
+        "THE GHOST",
+        "THE NIGHT"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, அன்ரிலையபிள் நரேட்டர். கதை சொல்றவனையே நம்ப முடியாது.",
+      "voice_tg": "Indha technique peru, unreliable narrator. Kadhai solravanaiye namba mudiyaadhu.",
+      "cues": {
+        "name": {
+          "word": "அன்ரிலையபிள்"
+        },
+        "outer": {
+          "word": "சொல்றவனையே"
+        },
+        "inner": {
+          "word": "முடியாது."
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "அன்ரிலையபிள்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "சொல்றவனையே"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "முடியாது."
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "முடியாது.",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "முடியாது.",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "web",
+      "in": "whip",
+      "heading": "IT ALL GOES THROUGH ONE MAN",
+      "voice": "பங்களா, பேய், போலீஸ், முதலாளி. எல்லாமே மைக்கேல் வழியா தான் நமக்கு வருது.",
+      "voice_tg": "Bangalaa, pei, police, mudhalaali. Ellaame Michael vazhiyaa thaan namakku varudhu.",
+      "center": {
+        "label": "MICHAEL",
+        "image": "michael"
+      },
+      "nodes": [
+        {
+          "label": "THE BUNGALOW",
+          "link": "ENTERS",
+          "cue": {
+            "word": "பங்களா,"
+          }
+        },
+        {
+          "label": "THE GHOST",
+          "link": "SEES",
+          "cue": {
+            "word": "பேய்,"
+          }
+        },
+        {
+          "label": "THE POLICE",
+          "link": "TELLS",
+          "cue": {
+            "word": "போலீஸ்,"
+          }
+        },
+        {
+          "label": "THE BOSS",
+          "link": "TELLS",
+          "cue": {
+            "word": "முதலாளி."
+          }
+        }
+      ],
+      "footer": "WE ONLY HAVE HIS WORD",
+      "footer_cue": {
+        "word": "வருது."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "பங்களா,"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பேய்,"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "போலீஸ்,"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "முதலாளி."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "வருது."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "HOW MUCH WE TRUST HIM",
+      "label": "TRUST",
+      "voice": "நாம அவன் கூடவே பயப்படுறோம். அதனால முழுசா நம்புறோம். அது தான் படத்தோட பொறி.",
+      "voice_tg": "Naama avan koodave bayappadurom. Adhanaala muzhusaa nambrom. Adhu thaan padaththoda pori.",
+      "levels": [
+        {
+          "label": "SCARED WITH HIM",
+          "value": 45,
+          "cue": {
+            "word": "பயப்படுறோம்."
+          }
+        },
+        {
+          "label": "FULL TRUST",
+          "value": 85,
+          "cue": {
+            "word": "நம்புறோம்."
+          }
+        },
+        {
+          "label": "THE TRAP",
+          "value": 100,
+          "cue": {
+            "word": "பொறி."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "பயப்படுறோம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "நம்புறோம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பொறி."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "couple",
+      "fy": 0.42,
+      "fx": 0.5,
+      "slam_text": "WHAT DID YOU SEE?",
+      "voice": "அப்போ அந்த ராத்திரி உண்மையில என்ன நடந்தது? நாங்க சொல்ல மாட்டோம். இன்னிக்கு மழை ராத்திரி, தனியா பாருங்க.",
+      "voice_tg": "Appo andha raathiri unmaiyila enna nadandhadhu? Naanga solla maattom. Innikku mazhai raathiri, thaniyaa paarunga.",
+      "q_cue": {
+        "word": "நடந்தது?"
+      },
+      "slam_cue": {
+        "word": "மாட்டோம்."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "நடந்தது?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மாட்டோம்.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "michael",
+      "echo": "PIZZA · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "DID PIZZA",
+          "size": 135
+        },
+        {
+          "text": "FOOL YOU?",
+          "size": 130,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "முதல் தடவை பார்த்தப்போ கண்டுபிடிச்சீங்களா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் அன்ரிலையபிள் நரேட்டர். முதல் தடவையே கண்டுபிடிச்சீங்களா? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan unreliable narrator. Mudhal thadavaiye kandupidichingalaa? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: UNRELIABLE NARRATOR"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Every scare in Pizza comes from one man's story.",
+      "The technique is called an unreliable narrator: a storyteller you cannot trust. We see the dark bungalow only through Michael, so we are scared with him, and we believe him. That is the trap Karthik Subbaraj sets. No spoilers here.",
+      "Did you guess it the first time? Tell us.",
+      "Send this to the friend who says Tamil horror never scared them.",
+      "கதை சொல்றவனை நம்பாதீங்க."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "PIZZA · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Best Tamil twist of all time: Pizza, Ratsasan or Maharaja?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 73,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "end card returns to Michael at the door, the first shot"
+    }
+  }
+}

@@ -1,0 +1,490 @@
+{
+  "id": "2026-11-16-breakdown-pariyerum-perumal",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "forest",
+  "length_reason": "Name the motif, show where it returns three times, why it hurts: about a minute.",
+  "lead": {
+    "topic": "Pariyerum Perumal (2018): Karuppi, the dog that keeps coming back",
+    "angle": "screenplay and visual symbol",
+    "insight": "The film opens with Pariyan's dog Karuppi killed by men who hate his caste. The dog never really leaves: it returns in his dreams, in the song named after her, in the blue-tinted visions. Every time Pariyan is humiliated, the black dog comes back, so the viewer feels the old wound without a word of explanation.",
+    "why_now": "Mari Selvaraj's debut is a cult film people still share and quote; a slow rainy Monday afternoon suits a film that stays with you (brief, Today).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Pariyerum_Perumal (plot: law student Pariyan from Puliyankulam; his dog Karuppi is killed; dir. Mari Selvaraj, prod. Pa. Ranjith, music Santhosh Narayanan)",
+      "https://en.wikipedia.org/wiki/Motif_(narrative) (a recurring element with symbolic meaning)"
+    ],
+    "technique": "Motif (an image that keeps returning, carrying meaning)",
+    "pictures_note": "Official trailer frames (GMNsUxJe4R4, Pa. Ranjith's Neelam Productions upload), checked by eye on 16 Nov: maxresdefault is the title card (Pariyan with the dog; crop cuts the OFFICIAL TRAILER words at the top), maxres1 Pariyan close-up in black and white, maxres2 Pariyan at college, maxres3 Karuppi the black dog. Channel mark in the top-right corner kept out by the crops."
+  },
+  "worth_it": {
+    "learn": "Karuppi the dog is a motif: it returns every time Pariyan is hurt, so the film shows caste pain without saying it.",
+    "stop": "The film kills a dog in the first minutes, and never lets you forget her.",
+    "why_now": "Cult debut people still share; rainy Monday, a film that stays with you.",
+    "send_to": "The friend who still cannot hear the song 'Karuppi' without tearing up.",
+    "best_angle": "Yes: the dog is the film's heart; no ending spoiled."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "lone_wolf",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cool, moody"
+      },
+      {
+        "track": "the_story",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "intrigue, builds"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/pariyerum_perumal/GMNsUxJe4R4_maxresdefault.jpg",
+      "crop": [
+        0.25,
+        0.22,
+        0.75,
+        0.78
+      ]
+    },
+    "pariyan": {
+      "src": "engine/.cache/stills/pariyerum_perumal/GMNsUxJe4R4_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.92,
+        1.0
+      ]
+    },
+    "college": {
+      "src": "engine/.cache/stills/pariyerum_perumal/GMNsUxJe4R4_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.08,
+        0.92,
+        0.92
+      ]
+    },
+    "karuppi": {
+      "src": "engine/.cache/stills/pariyerum_perumal/GMNsUxJe4R4_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.08,
+        0.92,
+        0.92
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "PARIYERUM PERUMAL",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fy": 0.45,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "பரியேறும் பெருமாள். முதல் சீன்லயே ஒரு நாய் சாகுது. ஆனா படம் முழுக்க அது திரும்பி வருது.",
+      "voice_tg": "Pariyerum Perumal. Mudhal scene-laye oru naai saagudhu. Aana padam muzhukka adhu thirumbi varudhu.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "pins",
+      "image": "karuppi",
+      "in": "zoom",
+      "voice": "பரியனோட நாய், கருப்பி. அவன் சாதியை வெறுக்கிறவங்க, அவளை கொல்றாங்க. அங்க இருந்து தான் கதை ஆரம்பம்.",
+      "voice_tg": "Pariyanoda naai, Karuppi. Avan saadhiyai verukkiravanga, avalai kolraanga. Anga irundhu thaan kadhai aarambam.",
+      "pins": [
+        {
+          "x": 0.45,
+          "y": 0.42,
+          "lx": 80,
+          "ly": 318,
+          "text": "KARUPPI",
+          "cue": {
+            "word": "கருப்பி."
+          }
+        }
+      ],
+      "slam": {
+        "cue": {
+          "word": "கொல்றாங்க."
+        },
+        "lines": [
+          {
+            "text": "SHE DIES.",
+            "size": 150,
+            "color": "#ffffff"
+          },
+          {
+            "text": "SHE STAYS.",
+            "size": 120,
+            "color": "#8FD18A",
+            "glow": "rgba(143,209,138,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "கருப்பி."
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "கொல்றாங்க."
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "ஆரம்பம்."
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "whip",
+      "kicker": "THE TECHNIQUE",
+      "name": "MOTIF",
+      "definition": "AN IMAGE THAT KEEPS RETURNING",
+      "outer_label": "THE WOUND",
+      "inner": [
+        "DREAMS",
+        "THE SONG",
+        "BLUE VISIONS"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, மோட்டிஃப். ஒரு படம் திரும்ப திரும்ப வரும். ஒவ்வொரு தடவையும், ஒரு அர்த்தம் கூட வரும்.",
+      "voice_tg": "Indha technique peru, motif. Oru padam thirumba thirumba varum. Ovvoru thadavaiyum, oru artham kooda varum.",
+      "cues": {
+        "name": {
+          "word": "மோட்டிஃப்."
+        },
+        "outer": {
+          "word": "திரும்ப"
+        },
+        "inner": {
+          "word": "அர்த்தம்"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "மோட்டிஃப்."
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "EVERY TIME HE IS HURT",
+      "center_ta": "அவமானம் வரும்போதெல்லாம்",
+      "voice": "காலேஜ்ல அவமானம். கருப்பி கனவுல வருது. அடி விழுது. மறுபடியும் கருப்பி. நீலமா, அமைதியா.",
+      "voice_tg": "College-la avamaanam. Karuppi kanavula varudhu. Adi vizhudhu. Marupadiyum Karuppi. Neelamaa, amaidhiyaa.",
+      "nodes": [
+        {
+          "label": "HUMILIATED",
+          "cue": {
+            "word": "அவமானம்."
+          }
+        },
+        {
+          "label": "THE DOG",
+          "cue": {
+            "word": "கனவுல"
+          }
+        },
+        {
+          "label": "BEATEN",
+          "cue": {
+            "word": "அடி"
+          }
+        },
+        {
+          "label": "THE DOG AGAIN",
+          "cue": {
+            "word": "மறுபடியும்"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "அவமானம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கனவுல"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அடி"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "மறுபடியும்"
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "pins",
+      "image": "college",
+      "in": "wipe",
+      "voice": "பரியன் வாயால சொல்லாத வலியை, கருப்பி சொல்லுது. நமக்கு விளக்கம் தேவையில்ல.",
+      "voice_tg": "Pariyan vaayaala sollaadha valiyai, Karuppi solludhu. Namakku vilakkam thevaiyilla.",
+      "pins": [
+        {
+          "x": 0.62,
+          "y": 0.4,
+          "lx": 80,
+          "ly": 318,
+          "text": "PARIYAN · LAW STUDENT",
+          "cue": {
+            "word": "பரியன்"
+          }
+        }
+      ],
+      "slam": {
+        "cue": {
+          "word": "தேவையில்ல."
+        },
+        "lines": [
+          {
+            "text": "NO SPEECH.",
+            "size": 140,
+            "color": "#ffffff"
+          },
+          {
+            "text": "ONE DOG.",
+            "size": 130,
+            "color": "#8FD18A",
+            "glow": "rgba(143,209,138,.6)"
+          }
+        ]
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "பரியன்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "தேவையில்ல."
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "pariyan",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "GRIEF",
+      "right": "ANGER",
+      "left_ta": "வலி",
+      "right_ta": "கோபம்",
+      "slam_text": [
+        "NEVER",
+        "FORGOTTEN."
+      ],
+      "voice": "சாதி வன்முறைய படம் கத்தி சொல்லல. ஒரு கருப்பு நாய் மூலமா, நம்ம மனசுக்குள்ள வைக்குது. அதனால தான் மறக்கவே முடியல.",
+      "voice_tg": "Saadhi vanmuraiya padam kaththi sollala. Oru karuppu naai moolamaa, namma manasukkulla vaikkudhu. Adhanaala thaan marakkave mudiyala.",
+      "cues": {
+        "line": {
+          "word": "கத்தி"
+        },
+        "bleed": {
+          "word": "கருப்பு"
+        },
+        "crack": {
+          "word": "மனசுக்குள்ள"
+        },
+        "slam": {
+          "word": "மறக்கவே"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "கத்தி"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "மனசுக்குள்ள"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "மறக்கவே"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "karuppi",
+      "fy": 0.45,
+      "fx": 0.5,
+      "slam_text": "WHERE IS SHE?",
+      "voice": "கடைசியில கருப்பி எங்க வருது? நாங்க சொல்ல மாட்டோம். இன்னிக்கு மழையில, இந்த படத்தை பாருங்க.",
+      "voice_tg": "Kadaisiyila Karuppi enga varudhu? Naanga solla maattom. Innikku mazhaiyila, indha padaththai paarunga.",
+      "q_cue": {
+        "word": "வருது?"
+      },
+      "slam_cue": {
+        "word": "மாட்டோம்."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "வருது?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மாட்டோம்.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "whip",
+      "bg": "title",
+      "echo": "PARIYERUM PERUMAL · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "SAW HER",
+          "size": 135
+        },
+        {
+          "text": "EVERY TIME?",
+          "size": 120,
+          "color": "#8FD18A"
+        }
+      ],
+      "sub": "கருப்பி வந்த சீன் உங்களுக்கு நினைவு இருக்கா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் மோட்டிஃப். கருப்பி வந்த எந்த சீன் உங்களை உடைச்சது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan motif. Karuppi vandha endha scene ungalai udaichadhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: MOTIF"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Pariyerum Perumal kills a dog in its first minutes, and never lets you forget her.",
+      "The technique is called a motif: an image that keeps returning and carries meaning. Every time Pariyan is humiliated, Karuppi comes back, in his dreams, in her song, in blue silent visions. The film never lectures you about caste. The dog does it.",
+      "Which Karuppi moment broke you? Tell us.",
+      "Send this to the friend who cried at 'Karuppi'.",
+      "கருப்பி திரும்பி வருவா."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "PARIYERUM PERUMAL · SCREENPLAY BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "Mari Selvaraj's best: Pariyerum Perumal, Karnan, Maamannan or Vaazhai?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 71,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "end card returns to the dog on the title card"
+    }
+  }
+}
