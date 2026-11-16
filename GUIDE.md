@@ -195,6 +195,7 @@ Every change gets a number, a reason and an Undo in the change log.
 5. **Workshop:** one task per session, and start with "Use the workshop skill." Open a new session for the next task.
 6. **Do not ask for drawings** unless you want one. The page already has the cards.
 7. **Keep your Claude account lean.** Every new session first loads every plugin and connector you have switched on: about 60,000 tokens before it does anything (measured 13 Nov). Switch off the ones this agent does not use at claude.ai → Customize (plugins and connectors). The agent needs only GitHub, Google Drive and the Claude Code session tools.
+9. **The two helper chats renew themselves.** Every Monday at 03:17 the clock and dispatcher chats are replaced by fresh ones, so their cost does not keep growing. Nothing to do on your side.
 8. **AGENT.md is never read whole** (about 30,000 tokens). Sessions read its map and one section; a project hook enforces it.
 
 ## 11. Files and clean-up

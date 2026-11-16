@@ -2,6 +2,12 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 16 Nov 2026 — Weekend check and weekly fresh chats
+Weekend: every Plan (14, 15, 16 Nov), Refresh (14, 15) and the Weekly run (15) started on time; the catch-up checks found nothing missed.
+Found: the dispatcher's check pulled into a local branch, a git hook then complained at every tick and the chat argued back;
+by Monday each tick re-read about 285,000 tokens. Fixed: the check reads main without a branch and ignores git warnings,
+and `runs/renew.md` replaces the clock and dispatcher with fresh chats every Monday 03:17 IST (rules in `runs/renew/`).
+
 ## 15 Nov 2026 — Ready to go public: audit and the Guard
 Harish asked to make the repository public (free runner minutes) with security designed in. Design: AGENT.md 21.
 
