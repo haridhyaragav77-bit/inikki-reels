@@ -14,7 +14,7 @@ first, remove the old last, so no tick is lost. Never touch any task that is not
    "Set-up check, no run yet. Reply READY in one word.":
    title "iNiKKi Engine · clock · <today>" (clock.md) and title "iNiKKi Brain · dispatcher · <today>" (dispatcher.md).
    Wait about a minute, then check each replied (list_events, kinds ["result"]). One did not: archive it, stop, and report.
-4. For every entry in tasks.json, create_trigger with name, prompt, cron_expression (leave it out when empty),
+4. For every entry in the "clock" and "dispatcher" lists, create_trigger with name, prompt, cron_expression (leave it out when empty),
    persistent_session_id = the new chat for that list, initiation "human_schedule".
 5. Only after step 4 fully worked: delete_trigger for every task whose name is in tasks.json and whose
    persistent_session_id is an OLD id (never one bound to a new chat). Then archive_session each OLD chat.
