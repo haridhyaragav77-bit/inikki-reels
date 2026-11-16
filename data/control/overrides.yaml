@@ -1,8 +1,8 @@
 settings:
   volume:
-    base: 6
+    base: 7
   reserves:
-    per_day: 0
+    per_day: 2
   voice:
     elevenlabs_voice: bharadwaj
     quality: economy
@@ -46,6 +46,13 @@ series:
   artwork-quote:
     per_day: 0
     paused: true
+  movie-updates:
+    per_day: 4
+    slots:
+    - 08:30
+    - '18:00'
+    - '21:30'
+    - '11:00'
 notes:
 - id: 5be8dd
   at: '2026-11-13'

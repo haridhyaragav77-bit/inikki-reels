@@ -1,13 +1,10 @@
-# Brief · refresh run · 2026-11-16 (written 2026-11-16 16:34 IST)
+# Brief · plan run · 2026-11-17 (written 2026-11-17 05:12 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
-2. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
-3. Feedback: 1 new item(s) in data/control/feedback.jsonl.
-4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
+1. Plan 7 reel(s) for 2026-11-17 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-17/<reel_id>.json and check it with: python -m engine.plancheck <file>.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -17,26 +14,28 @@ Control Room settings copied to data/control/: switch.json, overrides.yaml, feed
 - movie-review: Change series to be more direct of its content which is movie review, people may skip thinking it's something else and use the actors make sure a popular element like the actors face, post is on the first fram and make it feel richer for the visual hook and interesting visual desings to it make the  (2026-11-13)
 
 ## Today (use it in hooks and titles; AGENT.md 10.5)
-Monday 16 Nov 2026 · back to work, short attention · season: Chennai rains (north-east monsoon)
+Tuesday 17 Nov 2026 · quiet weeknight · season: Chennai rains (north-east monsoon)
 Coming up: Nayanthara's birthday (Wed 18 Nov)
-Words that fit each slot's hour: 08:30 morning: TODAY / THIS WEEK · 12:30 afternoon: TONIGHT / AFTER WORK · 18:00 evening: TONIGHT · 20:00 evening: TONIGHT · 21:30 late night: LATE NIGHT / BEFORE YOU SLEEP
-Title angles for today (fill {N} and {FILM}; a film in today's news makes the strongest tie-in): RAINY NIGHT: {N} FILMS | MAZHAI + MOVIE: {N} PICKS | ONE FILM TO FIX YOUR MONDAY | MONDAY NIGHT: {N} EASY WATCHES
+Words that fit each slot's hour: 08:30 morning: TODAY / THIS WEEK · 11:00 morning: TODAY / THIS WEEK · 12:30 afternoon: TONIGHT / AFTER WORK · 18:00 evening: TONIGHT · 20:00 evening: TONIGHT · 21:30 late night: LATE NIGHT / BEFORE YOU SLEEP
+Title angles for today (fill {N} and {FILM}; a film in today's news makes the strongest tie-in): RAINY NIGHT: {N} FILMS | MAZHAI + MOVIE: {N} PICKS | {N} FILMS UNDER 2 HOURS | WEEKNIGHT WATCH: {N} PICKS
 
 ## Series settings changed in the Control Room (these win over the series file; AGENT.md 6.5)
 - artwork-quote: per_day = 0
+- movie-updates: per_day = 4; slots = ["08:30", "18:00", "21:30", "11:00"]
 - trailer-breakdown: status = "live"
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
 - 2026-11-16-breakdown-pizza: kit noir · cards → technique → web → meter → standoff
 - 2026-11-16-breakdown-pariyerum-perumal: kit forest · pins → technique → loop → pins → moral → standoff
+- 2026-11-16-breakdown-jigarthanda: kit royal · versus → technique → web → meter → standoff
 - 2026-11-15-breakdown-virumaandi: kit spotlight · versus → technique → timeline → moral → standoff
-- 2026-11-15-breakdown-ratsasan: kit blueprint · pins → technique → timeline → meter → standoff
 
-## Today's slots (2026-11-16)
+## Today's slots (2026-11-17)
 | time | series | template | notes |
 | --- | --- | --- | --- |
 | - | guess-the-movie | paused |  |
 | 08:30 | movie-updates | bulletin | voice: case by case, 15-30 s |
+| 11:00 | movie-updates | bulletin | voice: case by case, 15-30 s |
 | 12:30 | film-breakdown | stage | voice, 40-62 s |
 | 18:00 | movie-updates | bulletin | voice: case by case, 15-30 s |
 | 20:00 | film-breakdown | stage | voice, 40-62 s |
@@ -80,41 +79,21 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates, OM: Chapter One, OM, Om. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
-Digest 'Needs you' line: 5 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days. Turned off by Harish: artwork-quote.
-
-## Today's reels
-| slot | reel | series | state | note |
-| --- | --- | --- | --- | --- |
-| 08:30 | 2026-11-16-update-scene-suriya-no2 | movie-updates | posted |  |
-| 12:30 | 2026-11-16-breakdown-pariyerum-perumal | film-breakdown | ready |  |
-| 18:00 | 2026-11-16-update-om-ua-4-days | movie-updates | ready |  |
-| 20:00 | 2026-11-16-breakdown-pizza | film-breakdown | ready |  |
-| 21:30 | 2026-11-16-update-diwali-two-stories | movie-updates | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-11-15-update-suriya-600cr-year | movie-updates | 1371 | 49.0% green | 44.9% green | 0.0% grey | - grey |
-| 2026-11-15-breakdown-96 | film-breakdown | 128 | 67.9% amber | 17.5% green | 0.0% grey | - grey |
-| 2026-11-15-watch-lazy-sunday-feel-good | movie-recommendations | 125 | 81.1% amber | 13.7% red | 0.0% grey | - grey |
-| 2026-11-15-update-20nov-clash | movie-updates | 63 | 75.0% green | 26.8% green | 0.0% grey | - grey |
-| 2026-11-15-breakdown-ratsasan | film-breakdown | 1199 | 59.1% green | 19.2% green | 0.8% grey | - grey |
-| 2026-11-15-update-inji-vellam-75-days | movie-updates | 167 | 83.9% amber | 10.8% red | 0.0% grey | - grey |
-
-## Early numbers (2 hours after posting)
-- 2026-11-15-breakdown-96: 127 views, share 0.0%, skip 67.6%
-- 2026-11-15-watch-lazy-sunday-feel-good: 123 views, share 0.0%, skip 80.8%
-- 2026-11-15-update-20nov-clash: 25 views, share 0.0%, skip 72.0%
-- 2026-11-15-breakdown-ratsasan: 328 views, share 2.1%, skip 51.2%
-- 2026-11-15-update-inji-vellam-75-days: 161 views, share 0.0%, skip 85.9%
-- 2026-11-16-update-scene-suriya-no2: 197 views, share 0.0%, skip 65.9%
+| 2026-11-16-update-scene-suriya-no2 | movie-updates | 202 | 65.7% green | 31.6% green | 0.0% grey | - grey |
+| 2026-11-16-update-om-ua-4-days | movie-updates | 920 | 55.5% green | 35.3% green | 0.1% grey | - grey |
+| 2026-11-16-update-diwali-two-stories | movie-updates | 155 | 65.6% green | 34.0% green | 0.0% grey | - grey |
+| 2026-11-16-breakdown-pizza | film-breakdown | 165 | 59.2% green | 16.7% amber | 0.0% grey | - grey |
 
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 7 publishers (3 trusted)
-- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 11 publishers (4 trusted)
+- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 12 publishers (5 trusted)
 - [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 8 publishers (4 trusted)
-- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 26 publishers (8 trusted)
+- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 29 publishers (8 trusted)
 - [8.8] Mani Ratnam returns to romance: Vijay Sethupathi, Sai Pallavi’s Inji Vellam gets release date · 4 publishers (2 trusted)
 
 ## Changes in force (newest first)
@@ -124,19 +103,9 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #12 · 14 Nov 2026 · rule (film-breakdown, trailer-breakdown) · every breakdown had the same gold stage and the same six screens in the same order → each names a design ki
 - #11 · 14 Nov 2026 · series (movie-recommendations) · weak hook frame, 7.6 s per film, plot never shown → title big in the middle of a moving poster wall with a timely kic
 
-## New feedback from Harish
-- 2026-11-14-update-shaji-kumar-tribute: rated 2/5 · Images cropped too much, poor titles
-
-## Open alerts
-- 2026-11-16 12:44 IST: A reel could not be posted
-- 2026-11-16 07:52 IST: Health check: 1 thing(s) need a look
-- 2026-11-16 05:44 IST: A note from the thinking run
-- 2026-11-16 05:14 IST: The nightly job did not finish
-- 2026-11-15 22:41 IST: A note from the thinking run
-
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 1017 of 2000 this month
-- Storage: 4.77 GB of 8 GB
+- Runner minutes: 1017 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Storage: 4.91 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
