@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 16 Nov 2026 — Public: minutes are free, and everything says so
+The repository went public on 16 Nov (old logs, saved files and the Gmail in history were cleared first). The health job already lifts the slow-down; now the brief tells the Brain there is no minute limit (plan the full day, reserves included), and the panel and the page's Usage card show "no limit" instead of "of 2,000". `engine/brief.py`, `engine/panel.py`, `control-room/page.template.html`. Reserves were set back to 2 a day through the Control Room inbox at Harish's request.
+
 ## 16 Nov 2026 — Weekend check and weekly fresh chats
 Weekend: every Plan (14, 15, 16 Nov), Refresh (14, 15) and the Weekly run (15) started on time; the catch-up checks found nothing missed.
 Found: the dispatcher's check pulled into a local branch, a git hook then complained at every tick and the chat argued back;
