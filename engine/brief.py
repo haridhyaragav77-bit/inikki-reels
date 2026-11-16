@@ -519,7 +519,8 @@ def build(drive, run, date):
     if alerts:
         L += ["", "## Open alerts"] + [f"- {a['at']}: {a['title']}" for a in alerts]
     L += ["", "## Money and limits", f"- {money}",
-          f"- Runner minutes: {minutes.get('minutes', '?')} of {minutes.get('limit', 2000)} this month",
+          (f"- Runner minutes: {minutes.get('minutes', '?')} used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes."
+           if minutes.get("free") else f"- Runner minutes: {minutes.get('minutes', '?')} of {minutes.get('limit', 2000)} this month"),
           f"- Storage: {storage.get('gb', '?')} GB of {ctl.settings.get('budgets', {}).get('storage_gb', 8)} GB",
           "", "Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>"]
     (OUT / "brief.md").write_text("\n".join(l for l in L if l is not None) + "\n", encoding="utf-8")

@@ -213,7 +213,7 @@ def usage(ctl, drive, money_card):
               "forecast_pct": round(100 * mins["forecast"] / limit) if mins.get("forecast") and limit else None,
               "ladder": [f"Heading past {limit}: reserve and bank reels wait", f"At {int(float(R.get('tight_share', .85)) * 100)}%: the same, and no extra news checks",
                          f"At {int(float(R.get('last_share', .95)) * 100)}%: only {R.get('last_reels_day', 3)} new reels a day, so posting never stops",
-                         "At 100%: GitHub stops every job until the 1st. Nothing moves to Claude: the Brain cannot make or post reels."]}
+                         "At 100%: GitHub stops every job until the 1st. Nothing moves to Claude: the Brain cannot make or post reels."] if not mins.get("free") else ["No monthly limit: the repository is public, so nothing is slowed down or skipped to save minutes."], "free": bool(mins.get("free"))}
     v = _safe(lambda: drive.read_json("status", "voice.json"), {}) or {}
     sub, reels = v.get("subscription") or {}, dict(v.get("reels") or {})
     from .voice import NO_KEY
@@ -290,7 +290,7 @@ def money(ctl, drive):
         pass
     mins = _safe(lambda: drive.read_json("status", "minutes.json"), {}) or {}
     stor = _safe(lambda: drive.read_json("status", "storage.json"), {}) or {}
-    out.update(runner_min=mins.get("minutes"), runner_limit=mins.get("limit", ENGINE.get("runner", {}).get("minutes_month")),
+    out.update(runner_min=mins.get("minutes"), runner_limit="no limit" if mins.get("free") else mins.get("limit", ENGINE.get("runner", {}).get("minutes_month")),
                storage_gb=stor.get("gb"), storage_cap=ctl.settings.get("budgets", {}).get("storage_gb"), last_cleanup_deleted=stor.get("deleted"))
     month = status.now().strftime("%Y-%m")
     posted = [p for p in load_json_lines(_safe(lambda: drive.read_text("status", "posted.jsonl"), "") or "") if str(p.get("posted_at", "")).startswith(month)]
@@ -435,7 +435,9 @@ def text(P):
           f"Images ₹{m.get('images_inr', '?')} of ₹{m.get('images_cap', '?')} · runner minutes {m.get('runner_min', '?')} of {m.get('runner_limit', '?')} · storage {m.get('storage_gb', '?')} of {m.get('storage_cap', '?')} GB"]
     u = P.get("usage") or {}
     r, v = u.get("runner") or {}, u.get("voice") or {}
-    if r.get("forecast"):
+    if r.get("free"):
+        L.append("Runner minutes: no monthly limit (the repository is public). Nothing is slowed down to save minutes.")
+    elif r.get("forecast"):
         L.append(f"Runner minutes are heading for {r['forecast']} of {r.get('limit')} by month end ({r.get('stage')})." + (f" At this pace they run out on {r['runs_out']}." if r.get("runs_out") else ""))
     if v.get("limit"):
         n_el, n_ms = v.get("reels_elevenlabs", 0), v.get("reels_microsoft", 0)

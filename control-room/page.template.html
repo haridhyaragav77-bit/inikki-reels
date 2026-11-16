@@ -509,17 +509,25 @@ function meter(label, used, cap, unit, note) {
   return `<div class="card"><div class="sub">${label}</div><div class="big">${used == null ? "—" : unit === "₹" ? "₹" + num(Math.round(used)) : num(used)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${unit === "₹" ? "₹" : ""}${num(cap)}${unit && unit !== "₹" ? " " + unit : ""}</span></div><div class="bar"><i class="${p >= 100 ? "over" : p >= 75 ? "hot" : ""}" style="width:${p}%"></i></div><div class="sub">${note}</div></div>`;
 }
 const bar2 = (pc, mark) => `<div class="barw"><div class="bar"><i class="${pc >= 100 ? "over" : pc >= 75 ? "hot" : ""}" style="width:${Math.min(100, pc || 0)}%"></i></div>${mark != null ? `<b style="left:calc(${Math.min(100, mark)}% - 1px)" title="Where the month is heading"></b>` : ""}</div>`;
+function runnerFree(r) {
+  return `<div class="big">${num(r.minutes)}<span class="sub" style="font-family:var(--text);font-size:14px"> min used · no limit</span></div>
+      <div><span class="dot green"></span>Free: the repository is public</div>
+      <div class="sub">${r.per_day != null ? `About ${num(r.per_day)} minutes a day. ` : ""}Nothing is slowed down or skipped to save minutes: reserves, bank reels and news checks all run.</div></div>`;
+}
+function runnerCapped(r, st, big) {
+  return `${big(r.minutes, r.limit, "min")}${bar2(r.pct, r.forecast_pct)}
+      <div><span class="dot ${st[1]}"></span>${esc(st[0])}</div>
+      <div class="sub">${r.forecast != null ? `At this week's pace (${num(r.per_day)} a day): <b>${num(r.forecast)}</b> by month end, ${num(r.forecast_pct)}% of the limit.` : "The forecast appears after 3 counted days."} ${r.runs_out ? `It would run out on <b>${esc(r.runs_out)}</b>.` : ""}</div>
+      <ul class="plain">${(r.ladder || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="sub">To use less: Saver mode or fewer reels a day (Setup). To never stop: a small spending limit on GitHub buys extra minutes.</div></div>`;
+}
 function vUsage() {
   const u = P.usage || {}, m = P.money || {}, pr = m.per_reel || {}, v = u.voice || {}, c = u.claude || {},
     r = u.runner || { minutes: m.runner_min, limit: m.runner_limit, pct: m.runner_limit ? Math.round(100 * (m.runner_min || 0) / m.runner_limit) : null, stage: "normal" };
   const STAGE = { normal: ["On track", "green"], saver: ["Saver mode is on", "amber"], save: ["Saving early: the month is heading past the limit", "amber"], tight: ["Tight: extras are paused", "amber"], last: ["Last minutes: only a few new reels a day", "red"] };
   const st = STAGE[r.stage] || STAGE.normal, big = (a, b2, unit) => `<div class="big">${num(a)}<span class="sub" style="font-family:var(--text);font-size:14px"> of ${num(b2)} ${unit}</span></div>`;
   let h = banners() + `<div><h2>Usage and limits</h2><div class="sub">This month. Every limit is enforced by the Engine's code. The mark on a bar shows where the month is heading.</div></div><div class="grid">
-    <div class="card"><div class="sub">GitHub runner minutes${r.month ? " · " + esc(r.month) : ""}</div>${big(r.minutes, r.limit, "min")}${bar2(r.pct, r.forecast_pct)}
-      <div><span class="dot ${st[1]}"></span>${esc(st[0])}</div>
-      <div class="sub">${r.forecast != null ? `At this week's pace (${num(r.per_day)} a day): <b>${num(r.forecast)}</b> by month end, ${num(r.forecast_pct)}% of the limit.` : "The forecast appears after 3 counted days."} ${r.runs_out ? `It would run out on <b>${esc(r.runs_out)}</b>.` : ""}</div>
-      <ul class="plain">${(r.ladder || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-      <div class="sub">To use less: Saver mode or fewer reels a day (Setup). To never stop: a small spending limit on GitHub buys extra minutes.</div></div>
+    <div class="card"><div class="sub">GitHub runner minutes${r.month ? " · " + esc(r.month) : ""}</div>${r.free ? runnerFree(r) : runnerCapped(r, st, big)}
     <div class="card"><div class="sub">Voice · ElevenLabs credits${v.tier ? " · " + esc(v.tier) + " plan" : ""}</div>${big(v.used, v.limit, "credits")}${bar2(v.limit ? v.used / v.limit * 100 : 0)}
       <div><span class="dot ${v.now === "microsoft" ? "amber" : "green"}"></span>Main voice: ${esc(v.main || "—")}${v.now ? ` · last reel spoken by ${esc(v.now)}` : ""}</div>
       <div class="sub">${v.resets ? `New credits on ${esc(v.resets)}. ` : ""}This month: ${num(v.reels_elevenlabs || 0)} reel${v.reels_elevenlabs === 1 ? "" : "s"} with ElevenLabs${v.per_reel ? ` (about ${num(v.per_reel)} credits each)` : ""}, ${num(v.reels_microsoft || 0)} with the Microsoft backup.${v.covers_reels != null ? ` The credits left cover about <b>${num(v.covers_reels)}</b> more reels.` : ""}</div>
