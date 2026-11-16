@@ -1,10 +1,13 @@
-# Brief · plan run · 2026-11-16 (written 2026-11-16 05:13 IST)
+# Brief · refresh run · 2026-11-16 (written 2026-11-16 16:34 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-16 at the slots below, and NO reserves (Harish turned reserves off in the Control Room). Save each to plans/2026-11-16/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
+2. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
+3. Feedback: 1 new item(s) in data/control/feedback.jsonl.
+4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -24,10 +27,10 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 - trailer-breakdown: status = "live"
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-16-breakdown-pizza: kit noir · cards → technique → web → meter → standoff
+- 2026-11-16-breakdown-pariyerum-perumal: kit forest · pins → technique → loop → pins → moral → standoff
 - 2026-11-15-breakdown-virumaandi: kit spotlight · versus → technique → timeline → moral → standoff
 - 2026-11-15-breakdown-ratsasan: kit blueprint · pins → technique → timeline → meter → standoff
-- 2026-11-15-breakdown-96: kit paper · timeline → technique → versus → meter → standoff
-- 2026-11-14-breakdown-super-deluxe: kit none named · pins → technique → loop → cards → moral → standoff
 
 ## Today's slots (2026-11-16)
 | time | series | template | notes |
@@ -77,23 +80,41 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates, OM: Chapter One, OM, Om. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
+Digest 'Needs you' line: 5 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days. Turned off by Harish: artwork-quote.
+
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 08:30 | 2026-11-16-update-scene-suriya-no2 | movie-updates | posted |  |
+| 12:30 | 2026-11-16-breakdown-pariyerum-perumal | film-breakdown | ready |  |
+| 18:00 | 2026-11-16-update-om-ua-4-days | movie-updates | ready |  |
+| 20:00 | 2026-11-16-breakdown-pizza | film-breakdown | ready |  |
+| 21:30 | 2026-11-16-update-diwali-two-stories | movie-updates | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-11-15-update-suriya-600cr-year | movie-updates | 1369 | 49.0% green | 44.9% green | 0.0% grey | - grey |
+| 2026-11-15-update-suriya-600cr-year | movie-updates | 1371 | 49.0% green | 44.9% green | 0.0% grey | - grey |
 | 2026-11-15-breakdown-96 | film-breakdown | 128 | 67.9% amber | 17.5% green | 0.0% grey | - grey |
 | 2026-11-15-watch-lazy-sunday-feel-good | movie-recommendations | 125 | 81.1% amber | 13.7% red | 0.0% grey | - grey |
-| 2026-11-15-update-20nov-clash | movie-updates | 62 | 74.5% green | 27.2% green | 0.0% grey | - grey |
-| 2026-11-15-breakdown-ratsasan | film-breakdown | 1175 | 59.7% green | 18.7% green | 0.8% grey | - grey |
-| 2026-11-15-update-inji-vellam-75-days | movie-updates | 166 | 84.4% amber | 10.7% red | 0.0% grey | - grey |
+| 2026-11-15-update-20nov-clash | movie-updates | 63 | 75.0% green | 26.8% green | 0.0% grey | - grey |
+| 2026-11-15-breakdown-ratsasan | film-breakdown | 1199 | 59.1% green | 19.2% green | 0.8% grey | - grey |
+| 2026-11-15-update-inji-vellam-75-days | movie-updates | 167 | 83.9% amber | 10.8% red | 0.0% grey | - grey |
+
+## Early numbers (2 hours after posting)
+- 2026-11-15-breakdown-96: 127 views, share 0.0%, skip 67.6%
+- 2026-11-15-watch-lazy-sunday-feel-good: 123 views, share 0.0%, skip 80.8%
+- 2026-11-15-update-20nov-clash: 25 views, share 0.0%, skip 72.0%
+- 2026-11-15-breakdown-ratsasan: 328 views, share 2.1%, skip 51.2%
+- 2026-11-15-update-inji-vellam-75-days: 161 views, share 0.0%, skip 85.9%
+- 2026-11-16-update-scene-suriya-no2: 197 views, share 0.0%, skip 65.9%
 
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 7 publishers (3 trusted)
-- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 9 publishers (4 trusted)
-- [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 7 publishers (4 trusted)
-- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 24 publishers (7 trusted)
+- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 11 publishers (4 trusted)
+- [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 8 publishers (4 trusted)
+- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 26 publishers (8 trusted)
 - [8.8] Mani Ratnam returns to romance: Vijay Sethupathi, Sai Pallavi’s Inji Vellam gets release date · 4 publishers (2 trusted)
 
 ## Changes in force (newest first)
@@ -107,15 +128,15 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - 2026-11-14-update-shaji-kumar-tribute: rated 2/5 · Images cropped too much, poor titles
 
 ## Open alerts
+- 2026-11-16 12:44 IST: A reel could not be posted
+- 2026-11-16 07:52 IST: Health check: 1 thing(s) need a look
+- 2026-11-16 05:44 IST: A note from the thinking run
+- 2026-11-16 05:14 IST: The nightly job did not finish
 - 2026-11-15 22:41 IST: A note from the thinking run
-- 2026-11-15 22:30 IST: Health check: 1 thing(s) need a look
-- 2026-11-15 21:58 IST: Health check: 1 thing(s) need a look
-- 2026-11-15 21:44 IST: Health check: 1 thing(s) need a look
-- 2026-11-15 21:39 IST: Health check: 1 thing(s) need a look
 
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 879 of 2000 this month
+- Runner minutes: 1017 of 2000 this month
 - Storage: 4.77 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
