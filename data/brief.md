@@ -1,10 +1,13 @@
-# Brief · plan run · 2026-11-17 (written 2026-11-17 05:12 IST)
+# Brief · refresh run · 2026-11-17 (written 2026-11-17 16:13 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 7 reel(s) for 2026-11-17 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-17/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
+2. Breakdown bank: 2 of 4 ready. Add 1 breakdown plan to plans/bank/.
+3. Feedback: nothing new.
+4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -25,10 +28,14 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 - trailer-breakdown: status = "live"
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-17-breakdown-soodhu-kavvum: kit neon · versus → technique → timeline → web → standoff
+- 2026-11-17-breakdown-karnan: kit paper · cards → technique → loop → meter → standoff
 - 2026-11-16-breakdown-pizza: kit noir · cards → technique → web → meter → standoff
 - 2026-11-16-breakdown-pariyerum-perumal: kit forest · pins → technique → loop → pins → moral → standoff
-- 2026-11-16-breakdown-jigarthanda: kit royal · versus → technique → web → meter → standoff
-- 2026-11-15-breakdown-virumaandi: kit spotlight · versus → technique → timeline → moral → standoff
+
+## Ideas from Harish (leads, not orders: use one if it passes the worth-it test, AGENT.md 5.7)
+- From the insights: Move a reel from 18:00 towards 08:00 (reels posted around 08:00 get 1393 views in the middle, around 18:00 only 102)
+- From the insights: Move a reel from 18:00 towards 08:00 (reels posted around 08:00 get 1393 views in the middle, around 18:00 only 102)
 
 ## Today's slots (2026-11-17)
 | time | series | template | notes |
@@ -79,7 +86,20 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates, OM: Chapter One, OM, Om. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
+Digest 'Needs you' line: 5 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days. Turned off by Harish: artwork-quote.
+
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 11:00 | 2026-11-17-update-sai-pallavi-two-films | movie-updates | posted |  |
+| 08:30 | 2026-11-17-update-om-operation-mole | movie-updates | posted |  |
+| 12:30 | 2026-11-17-breakdown-karnan | film-breakdown | posted |  |
+| 18:00 | 2026-11-17-update-nayanthara-birthday-eve | movie-updates | ready |  |
+| 20:00 | 2026-11-17-breakdown-soodhu-kavvum | film-breakdown | ready |  |
+| 21:30 | 2026-11-17-update-sathyavan-savithiri-3-days | movie-updates | ready |  |
+| - | 2026-11-17-update-inji-vellam-rahman-19 | movie-updates | ready |  |
+| - | 2026-11-17-update-scene-overseas-83cr | movie-updates | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
@@ -89,9 +109,17 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 | 2026-11-16-update-diwali-two-stories | movie-updates | 155 | 65.6% green | 34.0% green | 0.0% grey | - grey |
 | 2026-11-16-breakdown-pizza | film-breakdown | 165 | 59.2% green | 16.7% amber | 0.0% grey | - grey |
 
+## Early numbers (2 hours after posting)
+- 2026-11-16-update-om-ua-4-days: 315 views, share 0.0%, skip 63.3%
+- 2026-11-16-update-diwali-two-stories: 155 views, share 0.0%, skip 64.8%
+- 2026-11-16-breakdown-pizza: 167 views, share 0.0%, skip 58.5%
+- 2026-11-17-update-om-operation-mole: 485 views, share 0.0%, skip 52.0%
+- 2026-11-17-update-sai-pallavi-two-films: 368 views, share 0.0%, skip 67.4%
+- 2026-11-17-breakdown-karnan: 291 views, share 0.0%, skip 54.8%
+
 ## Trends from the news watch (top 5, no AI; verify before use)
-- [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 7 publishers (3 trusted)
-- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 12 publishers (5 trusted)
+- [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 8 publishers (3 trusted)
+- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 13 publishers (5 trusted)
 - [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 8 publishers (4 trusted)
 - [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 29 publishers (8 trusted)
 - [8.8] Mani Ratnam returns to romance: Vijay Sethupathi, Sai Pallavi’s Inji Vellam gets release date · 4 publishers (2 trusted)
@@ -103,9 +131,14 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #12 · 14 Nov 2026 · rule (film-breakdown, trailer-breakdown) · every breakdown had the same gold stage and the same six screens in the same order → each names a design ki
 - #11 · 14 Nov 2026 · series (movie-recommendations) · weak hook frame, 7.6 s per film, plot never shown → title big in the middle of a moving poster wall with a timely kic
 
+## Open alerts
+- 2026-11-17 10:14 IST: Security: A job was started by someone who is not you
+- 2026-11-17 05:46 IST: The sync job did not finish
+- 2026-11-17 05:45 IST: A note from the thinking run
+
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 1017 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Runner minutes: 1122 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
 - Storage: 4.91 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
