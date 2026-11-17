@@ -1,0 +1,216 @@
+{
+  "id": "2026-11-17-update-nayanthara-birthday-eve",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Nayanthara turns a year older tomorrow (Wed 18 Nov); her Diwali film Mookuthi Amman 2 is on day 12 in cinemas, OTT on JioHotstar with no date yet",
+    "facts": [
+      "Nayanthara's birthday: 18 November (Wikipedia)",
+      "Mookuthi Amman 2 opened 6 Nov 2026 for Diwali; 17 Nov is day 12 (Wikipedia)",
+      "JioHotstar holds the digital rights; no OTT date announced yet (FilmiBeat; NewsBytes)"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nayanthara",
+      "https://en.wikipedia.org/wiki/Mookuthi_Amman_2",
+      "https://www.filmibeat.com/tamil/news/2026/mookuthi-amman-2-ott-release-where-watch-nayanthara-regina-cassandra-film-after-its-theatrical-run-537475.html",
+      "https://www.newsbytesapp.com/news/entertainment/mookuthi-amman-2-ott-release-details/story"
+    ],
+    "pictures_note": "Mookuthi Amman 2 official trailer (tbnwnLatH1g, Vels upload), checked by eye on 16 Nov: maxresdefault is Nayanthara as the goddess on the trailer card; same wide crop as 16 Nov (cuts the TRAILER word, the title block and the corner mark)."
+  },
+  "worth_it": {
+    "fan_opens_because": "Her birthday is tomorrow; fans want to know where her new film is and when it streams.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "varun_intro",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold, catchy"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "amman": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    },
+    "amman_close": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "NAYANTHARA",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "BIRTHDAY TOMORROW",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "amman_close",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "MOOKUTHI AMMAN 2 · IN CINEMAS",
+      "value": 12,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "SINCE 6 NOV",
+        "DIWALI RELEASE"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "WEDNESDAY · LADY SUPERSTAR",
+      "value": 18,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "HER BIRTHDAY",
+        "OTT: JIOHOTSTAR, DATE NOT OUT"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "amman",
+      "dur": 4.0,
+      "echo": "NAYANTHARA · BIRTHDAY TOMORROW",
+      "question": [
+        {
+          "text": "YOUR FAVOURITE",
+          "size": 130
+        },
+        {
+          "text": "NAYANTHARA FILM?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Mookuthi Amman 2 streams on JioHotstar: date not out yet",
+      "cta": "TAG A NAYANTHARA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Lady Superstar's birthday is tomorrow, Wednesday 18 Nov.",
+      "Her Diwali film Mookuthi Amman 2 is on day 12 in cinemas. It will stream on JioHotstar; the date is not out yet. Sources: Wikipedia, FilmiBeat, NewsBytes.",
+      "Your favourite Nayanthara film?",
+      "Tag a Nayanthara fan.",
+      "நயன்தாரா — நாளை பிறந்தநாள்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "NAYANTHARA · BIRTHDAY TOMORROW",
+    "slot": "18:00",
+    "first_comment": "One Nayanthara film you can watch again and again?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 69,
+    "weakest": {
+      "save_value": "a birthday post is not a keeper; it lives on comments",
+      "value": "thin news; the OTT line gives one useful fact"
+    }
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "id": "2026-11-17-update-om-operation-mole",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Dhanush's film now goes by O.M: Operation Mole; it opens Thursday 20 Nov, 3 days away",
+    "facts": [
+      "Retitled O.M: Operation Mole right before release, reportedly over censor issues (NewsBytes)",
+      "The official trailer card itself reads OM · OPERATION MOLE (Divo Music upload, checked by eye 17 Nov)",
+      "Dhanush plays a mole planted inside a red sandalwood smuggling ring (Pinkvilla trailer report)",
+      "Dhanush's 55th film, directed by Rajkumar Periasamy; Mammootty, Sai Pallavi, Sreeleela, Naseeruddin Shah (Wikipedia)",
+      "Worldwide release Thursday 20 Nov (Wikipedia; DT Next, 16 Nov plan)"
+    ],
+    "sources": [
+      "https://www.newsbytesapp.com/news/entertainment/dhanush-film-retitled-om-operation-mole-reportedly-over-censor-issues/tldr",
+      "https://www.pinkvilla.com/entertainment/south/o-m-trailer-out-dhanushs-operation-mole-against-red-sandalwood-mafia-looks-intense-mammootty-sai-pallavi-steal-show-1406432",
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), checked by eye again on 17 Nov: the card shows the OPERATION MOLE title; crops as on 15 Nov keep faces whole and cut the TRAILER word and date."
+  },
+  "worth_it": {
+    "fan_opens_because": "The title changed 3 days before release: fans will want to know what O.M now stands for.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "heist, fun"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "O.M",
+          "size": 280,
+          "y": 1310
+        },
+        {
+          "text": "= OPERATION MOLE",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "glitch",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "DHANUSH · FILM NO.",
+      "value": 55,
+      "unit": "",
+      "land": 1.5,
+      "tag": [
+        "UNDERCOVER MOLE",
+        "RED SANDALWOOD RING"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "mammootty_card",
+      "fx": 0.45,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THURSDAY · 20 NOV",
+      "value": 3,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "TO GO",
+        "THIS WEEK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "O.M = OPERATION MOLE",
+      "question": [
+        {
+          "text": "OM OR",
+          "size": 130
+        },
+        {
+          "text": "OPERATION MOLE?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Which title do you like more?",
+      "cta": "SEND TO YOUR FDFS GANG",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "O.M now stands for Operation Mole.",
+      "Dhanush's 55th film was retitled O.M: Operation Mole just before release (reportedly over censor issues). He plays a mole inside a red sandalwood smuggling ring. In cinemas this Thursday, 20 Nov. Sources: NewsBytes, Pinkvilla.",
+      "Old title or new one: which do you like?",
+      "Send this to your FDFS gang.",
+      "ஓ.எம் — இன்னும் 3 நாள்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "O.M = OPERATION MOLE",
+    "slot": "08:30",
+    "first_comment": "Dhanush as a mole, Mammootty as the villain: who are you watching it for?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 69,
+    "weakest": {
+      "save_value": "news, not a keeper; end card asks a title question to pull comments",
+      "loop": "end card echoes the title card"
+    }
+  }
+}

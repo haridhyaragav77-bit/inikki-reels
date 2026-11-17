@@ -1,0 +1,220 @@
+{
+  "id": "2026-11-17-update-sai-pallavi-two-films",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Sai Pallavi's two big dates: O.M this Thursday (20 Nov), Mani Ratnam's Inji Vellam on 29 Jan 2027",
+    "facts": [
+      "O.M: Operation Mole opens Thursday 20 Nov; in the trailer Sai Pallavi plays an IPS officer (Onmanorama; Telangana Today)",
+      "Inji Vellam, Mani Ratnam's romance with Vijay Sethupathi, releases 29 Jan 2027 (ANI; Bollywood Hungama)",
+      "Inji Vellam is her first film with Mani Ratnam and her first with Vijay Sethupathi (Bollywood Hungama)",
+      "Counted from 17 Nov: 3 days to O.M, 73 days to Inji Vellam"
+    ],
+    "sources": [
+      "https://www.onmanorama.com/entertainment/entertainment-news/2026/11/14/dhanush-undercover-cop-om-chapter-1-trailer.html",
+      "https://telanganatoday.com/om-trailer-mammoottys-antagonist-role-and-dhanushs-cop-avatar-surprise-fans",
+      "https://www.aninews.in/news/entertainment/bollywood/mani-ratnams-inji-vellam-starring-vijay-sethupathi-sai-pallavi-to-hit-theatres-on-january-29-202720261112193134/",
+      "https://www.bollywoodhungama.com/news/south-cinema/mani-ratnam-announces-inji-vellam-release-date-vijay-sethupathi-and-sai-pallavi-romance-to-hit-theatres-on-january-29-2027/"
+    ],
+    "pictures_note": "Inji Vellam official title video (5i73lHN4Bpw), checked by eye 17 Nov: maxres3 is Sai Pallavi's eye with her name on the left (crop cuts the name), maxres2 the idol painter. OM trailer card as in the 08:30 reel. No OM frame shows Sai Pallavi, so OM is shown by its card."
+  },
+  "worth_it": {
+    "fan_opens_because": "One actor, two big films in 73 days: fans of Sai Pallavi get a date for each.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "romance"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "eye": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres3.jpg",
+      "crop": [
+        0.25,
+        0.0,
+        0.75,
+        1.0
+      ]
+    },
+    "painter": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres2.jpg"
+    },
+    "om_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "eye",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SAI PALLAVI",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "2 FILMS · 2 DATES",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "om_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "O.M · IPS OFFICER",
+      "value": 3,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "THURSDAY",
+        "20 NOV"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "painter",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "INJI VELLAM · MANI RATNAM",
+      "value": 73,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "29 JAN 2027",
+        "WITH VIJAY SETHUPATHI"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "eye",
+      "dur": 4.0,
+      "echo": "SAI PALLAVI · 2 FILMS · 2 DATES",
+      "question": [
+        {
+          "text": "O.M OR",
+          "size": 130
+        },
+        {
+          "text": "INJI VELLAM?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Which Sai Pallavi are you waiting for?",
+      "cta": "TAG A SAI PALLAVI FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Sai Pallavi, two films, two dates.",
+      "This Thursday (20 Nov) she is an IPS officer in O.M with Dhanush and Mammootty. On 29 Jan 2027 comes Mani Ratnam's Inji Vellam with Vijay Sethupathi, her first film with him. Sources: Onmanorama, ANI, Bollywood Hungama.",
+      "Which one are you waiting for?",
+      "Tag a Sai Pallavi fan.",
+      "சாய் பல்லவி — ரெண்டு படம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SAI PALLAVI · 2 FILMS",
+    "slot": "11:00",
+    "first_comment": "Cop in O.M or romance in Inji Vellam: which Sai Pallavi do you want more?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 71,
+    "weakest": {
+      "save_value": "dates are worth a save; caption gives both",
+      "loop": "end card returns to the eye from frame 1"
+    }
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-17-update-inji-vellam-rahman-19",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "reserve": true,
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Inji Vellam is Mani Ratnam and A.R. Rahman's 19th film together; release 29 Jan 2027",
+    "facts": [
+      "A.R. Rahman composes the music: the pair's 19th collaboration (ANI; Bollywood Hungama)",
+      "Vijay Sethupathi and Sai Pallavi lead; in cinemas 29 Jan 2027 (ANI; Bollywood Hungama)",
+      "Produced by Lyca Productions and Madras Talkies (ANI)"
+    ],
+    "sources": [
+      "https://www.aninews.in/news/entertainment/bollywood/mani-ratnams-inji-vellam-starring-vijay-sethupathi-sai-pallavi-to-hit-theatres-on-january-29-202720261112193134/",
+      "https://www.bollywoodhungama.com/news/south-cinema/mani-ratnam-announces-inji-vellam-release-date-vijay-sethupathi-and-sai-pallavi-romance-to-hit-theatres-on-january-29-2027/"
+    ],
+    "pictures_note": "Inji Vellam official title video (5i73lHN4Bpw) and poster, checked by eye on 13 and 17 Nov."
+  },
+  "worth_it": {
+    "fan_opens_because": "Mani Ratnam + Rahman is a pairing every fan counts; 19 is a fact people share.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "romance"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "eye": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres3.jpg",
+      "crop": [
+        0.25,
+        0.0,
+        0.75,
+        1.0
+      ]
+    },
+    "painter": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres2.jpg"
+    },
+    "orange": {
+      "src": "engine/.cache/stills/inji_vellam/5i73lHN4Bpw_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "painter",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "MANI × RAHMAN",
+          "size": 190,
+          "y": 1310
+        },
+        {
+          "text": "FILM NO. 19",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "orange",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "MANI RATNAM × A.R. RAHMAN",
+      "value": 19,
+      "unit": "",
+      "land": 1.5,
+      "tag": [
+        "FILMS TOGETHER",
+        "INJI VELLAM"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "eye",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "INJI VELLAM · IN CINEMAS",
+      "value": 73,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "29 JAN 2027",
+        "VJS · SAI PALLAVI"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "painter",
+      "dur": 4.0,
+      "echo": "MANI × RAHMAN · FILM NO. 19",
+      "question": [
+        {
+          "text": "BEST ALBUM",
+          "size": 130
+        },
+        {
+          "text": "OF THE 19?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Roja, Bombay, Alaipayuthey... pick one",
+      "cta": "SEND TO A RAHMAN FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Mani Ratnam and A.R. Rahman: film number 19.",
+      "Inji Vellam, with Vijay Sethupathi and Sai Pallavi, is the pair's 19th film together. In cinemas 29 Jan 2027. Sources: ANI, Bollywood Hungama.",
+      "Which of their albums is the best?",
+      "Send this to a Rahman fan.",
+      "மணி × ரஹ்மான் — 19."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "MANI × RAHMAN · NO. 19",
+    "slot": "reserve",
+    "first_comment": "Roja, Bombay, Alaipayuthey or Kannathil Muthamittal: best Mani-Rahman album?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 5,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 71,
+    "weakest": {
+      "timely_original": "Inji Vellam news is 5 days old; held as a reserve",
+      "loop": "end card echoes the title"
+    }
+  }
+}

@@ -1,0 +1,469 @@
+{
+  "id": "2026-11-17-breakdown-soodhu-kavvum",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "neon",
+  "length_reason": "Name the technique, show the rules (setup), the big job that breaks them (payoff) and the gang: about a minute.",
+  "lead": {
+    "topic": "Soodhu Kavvum (2013): a kidnapper with rules, and a film that plants each rule so it can break it for a laugh",
+    "angle": "screenplay",
+    "insight": "Das is a small-time kidnapper who lives by his own rules. Nalan Kumarasamy plants those rules early, then sends Das and three jobless friends on one big job where every rule breaks. Because we were told the rules, every break lands as a laugh: the setup does the comedy's work.",
+    "why_now": "Vijay Sethupathi is in the news with Inji Vellam (29 Jan 2027, brief trends); Soodhu Kavvum is the cult dark comedy that made Das a meme. Quiet weeknight, 20:00: TONIGHT.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Soodhu_Kavvum (dir. Nalan Kumarasamy; Das, a kidnapper with an imaginary girlfriend; three jobless friends; the minister's son; a ruthless cop)",
+      "https://en.wikipedia.org/wiki/Chekhov%27s_gun (setup and payoff)"
+    ],
+    "technique": "Setup and payoff (plant it early, pay it off later)",
+    "pictures_note": "Official trailer frames (Think Music, JwDc_9J9QqI), checked by eye on 17 Nov: maxresdefault is the poster card (Das in sunglasses centre; crop cuts the TRAILER tag, the Tamil title and the logo), maxres1 a senior police officer on the phone, maxres3 Das with the girl only he sees. maxres2 not used (not sure who she is).",
+    "spoiler_note": "Nothing about how the kidnapping ends; the standoff asks who gets caught and does not answer."
+  },
+  "worth_it": {
+    "learn": "Soodhu Kavvum's laughs come from setup and payoff: the rules are planted so the film can break them.",
+    "stop": "A kidnapper with rules is already funny; watch how the film uses them.",
+    "why_now": "Vijay Sethupathi is in the news (Inji Vellam); cult comedy for a quiet weeknight.",
+    "send_to": "The friend who still quotes Das.",
+    "best_angle": "Yes: the rules are the spine of the comedy."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "whats_cookin",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "quirky, bold"
+      },
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "heist, fun"
+      },
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "chase tension"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "poster": {
+      "src": "engine/.cache/stills/soodhu_kavvum/JwDc_9J9QqI_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.03,
+        0.82,
+        0.6
+      ]
+    },
+    "das": {
+      "src": "engine/.cache/stills/soodhu_kavvum/JwDc_9J9QqI_maxres3.jpg",
+      "crop": [
+        0.45,
+        0.0,
+        0.55,
+        1.0
+      ]
+    },
+    "girl": {
+      "src": "engine/.cache/stills/soodhu_kavvum/JwDc_9J9QqI_maxres3.jpg",
+      "crop": [
+        0.05,
+        0.0,
+        0.55,
+        1.0
+      ]
+    },
+    "cop": {
+      "src": "engine/.cache/stills/soodhu_kavvum/JwDc_9J9QqI_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "poster",
+      "film": "SOODHU KAVVUM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "சூது கவ்வும். கடத்தல்காரனுக்கும் ரூல்ஸ் இருக்கு. அது தான் இந்த படத்தோட காமெடி ரகசியம்.",
+      "voice_tg": "Soodhu Kavvum. Kadaththalkaaranukkum rules irukku. Adhu thaan indha padaththoda comedy ragasiyam.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {
+        "image": "das",
+        "label": "DAS'S RULES",
+        "sub": "NEAT. SAFE.",
+        "cue": {
+          "word": "ரூல்ஸ்."
+        }
+      },
+      "right": {
+        "image": "cop",
+        "label": "THE BIG JOB",
+        "sub": "CHAOS",
+        "cue": {
+          "word": "வேலை"
+        }
+      },
+      "tilt": 1,
+      "tilt_cue": {
+        "word": "ஆனா"
+      },
+      "slam_text": "RULES BROKEN.",
+      "slam_cue": {
+        "word": "உடையுது."
+      },
+      "voice": "தாஸ் ஒரு சின்ன கடத்தல்காரன். அவனுக்கு சொந்த ரூல்ஸ். ஆனா ஒரு பெரிய வேலை வருது. ஒவ்வொரு ரூலும் உடையுது.",
+      "voice_tg": "Das oru chinna kadaththalkaaran. Avanukku sondha rules. Aanaa oru periya velai varudhu. Ovvoru rulum udaiyudhu.",
+      "sfx": [
+        {
+          "at": {
+            "word": "ரூல்ஸ்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வேலை"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "உடையுது.",
+            "off": 0.3
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "SETUP AND PAYOFF",
+      "definition": "PLANT IT EARLY, CASH IT LATER",
+      "outer_label": "THE SETUP",
+      "inner": [
+        "THE RULES",
+        "THE GIRL",
+        "THE PLAN"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, செட்டப் அண்ட் பேஆஃப். முன்னாடி விதைச்சது, பின்னாடி வெடிக்கும்.",
+      "voice_tg": "Indha technique peru, setup and payoff. Munnaadi vidhaichadhu, pinnaadi vedikkum.",
+      "cues": {
+        "name": {
+          "word": "செட்டப்"
+        },
+        "outer": {
+          "word": "முன்னாடி"
+        },
+        "inner": {
+          "word": "வெடிக்கும்."
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "செட்டப்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "முன்னாடி"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வெடிக்கும்."
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "வெடிக்கும்.",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "வெடிக்கும்.",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "PLANTED, THEN PAID OFF",
+      "voice": "முதல்ல ரூல்ஸ் சொல்றான். அப்புறம் பெரிய வேலை. பதட்டம். ஒவ்வொரு ரூல் உடையும்போதும், நமக்கு சிரிப்பு.",
+      "voice_tg": "Mudhalla rules solraan. Appuram periya velai. Padhattam. Ovvoru rule udaiyumbodhum, namakku sirippu.",
+      "events": [
+        {
+          "label": "THE RULES",
+          "sub": "SETUP",
+          "cue": {
+            "word": "ரூல்ஸ்"
+          }
+        },
+        {
+          "label": "THE BIG JOB",
+          "cue": {
+            "word": "வேலை."
+          }
+        },
+        {
+          "label": "PANIC",
+          "cue": {
+            "word": "பதட்டம்."
+          }
+        },
+        {
+          "label": "THE LAUGH",
+          "sub": "PAYOFF",
+          "cue": {
+            "word": "சிரிப்பு."
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "WE KNEW THE RULES",
+      "footer_cue": {
+        "word": "சிரிப்பு.",
+        "off": 0.4
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "ரூல்ஸ்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "வேலை."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பதட்டம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "சிரிப்பு."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "web",
+      "in": "whip",
+      "heading": "ONE KIDNAPPER, ONE BIG MESS",
+      "voice": "வேலை இல்லாத மூணு நண்பர்கள். அவன் கண்ணுக்கு மட்டும் தெரியுற காதலி. அமைச்சர் மகன். ஒரு கொடூரமான போலீஸ்.",
+      "voice_tg": "Velai illaadha moonu nanbargal. Avan kannukku mattum theriyura kaadhali. Amaichar magan. Oru kodooramaana police.",
+      "center": {
+        "label": "DAS",
+        "image": "das"
+      },
+      "nodes": [
+        {
+          "label": "3 JOBLESS FRIENDS",
+          "link": "JOIN",
+          "cue": {
+            "word": "நண்பர்கள்."
+          }
+        },
+        {
+          "label": "THE GIRL ONLY HE SEES",
+          "link": "TALKS",
+          "image": "girl",
+          "cue": {
+            "word": "காதலி."
+          }
+        },
+        {
+          "label": "THE MINISTER'S SON",
+          "link": "TAKES",
+          "cue": {
+            "word": "மகன்."
+          }
+        },
+        {
+          "label": "A RUTHLESS COP",
+          "link": "HUNTS",
+          "image": "cop",
+          "cue": {
+            "word": "போலீஸ்."
+          }
+        }
+      ],
+      "footer": "NOBODY FOLLOWS THE RULES",
+      "footer_cue": {
+        "word": "போலீஸ்.",
+        "off": 0.4
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "நண்பர்கள்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "காதலி."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மகன்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "போலீஸ்."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "das",
+      "fy": 0.42,
+      "fx": 0.5,
+      "slam_text": "WHO GETS CAUGHT?",
+      "voice": "அப்போ கடைசியில யார் மாட்டுறாங்க? நாங்க சொல்ல மாட்டோம். இன்னிக்கு ராத்திரி சிரிக்கணும்னா, சூது கவ்வும் பாருங்க.",
+      "voice_tg": "Appo kadaisiyila yaar maatturaanga? Naanga solla maattom. Innikku raathiri sirikkanumnaa, Soodhu Kavvum paarunga.",
+      "q_cue": {
+        "word": "மாட்டுறாங்க?"
+      },
+      "slam_cue": {
+        "word": "மாட்டோம்."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "மாட்டுறாங்க?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "மாட்டோம்.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "poster",
+      "echo": "SOODHU KAVVUM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "YOUR FAVOURITE",
+          "size": 130
+        },
+        {
+          "text": "DAS MOMENT?",
+          "size": 135,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "உங்களுக்கு பிடிச்ச தாஸ் சீன் எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் செட்டப் அண்ட் பேஆஃப். உங்களுக்கு பிடிச்ச தாஸ் சீன் எது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan setup and payoff. Ungalukku pidicha Das seen edhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: SETUP AND PAYOFF"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Even a kidnapper needs rules.",
+      "The technique is setup and payoff: plant it early, cash it later. Soodhu Kavvum tells us Das's rules first, then sends him on one big job where every rule breaks. Because we know the rules, every break is a laugh. No spoilers here.",
+      "Your favourite Das moment?",
+      "Send this to the friend who still quotes Das.",
+      "ரூல்ஸ் உடைஞ்சா தான் காமெடி."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SOODHU KAVVUM · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Best Vijay Sethupathi dark comedy: Soodhu Kavvum, Naduvula Konjam Pakkatha Kaanom or Super Deluxe?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 74,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "standoff and end return to Das and the poster from frame 1"
+    }
+  }
+}

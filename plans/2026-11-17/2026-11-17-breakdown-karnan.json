@@ -1,0 +1,434 @@
+{
+  "id": "2026-11-17-breakdown-karnan",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "paper",
+  "length_reason": "Name the technique, show the three images, how the donkey stands for the village, why anger builds: about a minute.",
+  "lead": {
+    "topic": "Karnan (2021): a film that talks through images — a bus that never stops, a donkey with tied legs, a god with no face",
+    "angle": "cinematography and symbols",
+    "insight": "Mari Selvaraj rarely says what Podiyankulam suffers. He shows it: the bus that will not stop, the donkey whose front legs are tied, the faceless village goddess. Each image comes back, and each time it means more, so by the time Karnan's anger breaks, we already feel why.",
+    "why_now": "Dhanush is back in cinemas this Thursday with O.M (brief, news watch); Karnan is the Dhanush film people still discuss. Quiet weeknight, afternoon slot: words TONIGHT / AFTER WORK.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Karnan_(film) (dir. Mari Selvaraj, Dhanush; village Podiyankulam; no bus stop for the village)",
+      "https://en.wikipedia.org/wiki/Motif_(narrative)"
+    ],
+    "technique": "Visual motif (an image that keeps coming back with a meaning)",
+    "pictures_note": "Official teaser frames (Think Music, pgfUzQ8nzBY), checked by eye on 17 Nov: maxresdefault is the teaser card (Dhanush among masked figures; crop cuts OFFICIAL TEASER, the title and the corner mark), maxres1 the headless deity at sunset, maxres2 an old village woman, maxres3 villagers waiting. No donkey frame: the loop screen carries the donkey as a graphic.",
+    "spoiler_note": "Only the set-up images; nothing about what Karnan does or how it ends."
+  },
+  "worth_it": {
+    "learn": "Karnan tells its story through three repeating images, a technique called visual motif.",
+    "stop": "A donkey with tied legs is the whole film in one shot.",
+    "why_now": "Dhanush's O.M opens Thursday; Karnan is his most-discussed recent film.",
+    "send_to": "The friend who says Tamil cinema only talks, never shows.",
+    "best_angle": "Yes: the symbols are why people still write about Karnan."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "giant_emerges",
+        "from": 6.0,
+        "screen": 0,
+        "mood": "epic build"
+      },
+      {
+        "track": "threat_north",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "ominous"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/karnan/pgfUzQ8nzBY_maxresdefault.jpg",
+      "crop": [
+        0.22,
+        0.0,
+        0.5,
+        0.6
+      ]
+    },
+    "goddess": {
+      "src": "engine/.cache/stills/karnan/pgfUzQ8nzBY_maxres1.jpg"
+    },
+    "elder": {
+      "src": "engine/.cache/stills/karnan/pgfUzQ8nzBY_maxres2.jpg"
+    },
+    "village": {
+      "src": "engine/.cache/stills/karnan/pgfUzQ8nzBY_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "KARNAN",
+      "type": "VISUAL BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "கர்ணன். இந்த படம் வசனத்துல இல்ல, படங்கள்ல பேசுது.",
+      "voice_tg": "Karnan. Indha padam vasanaththula illa, padangalla pesudhu.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "WHAT WE SEE",
+      "heading_ta": "நாம பார்க்கிறது",
+      "voice": "ஊர்ல நிக்காத பஸ். காத்திருக்கிற மக்கள். முகமில்லாத சாமி.",
+      "voice_tg": "Oorla nikkaadha bus. Kaaththirukkira makkal. Mugamillaadha saami.",
+      "cards": [
+        {
+          "lines": [
+            "A BUS THAT",
+            "NEVER STOPS"
+          ],
+          "image": "village",
+          "fx": 0.5,
+          "cue": {
+            "word": "பஸ்."
+          }
+        },
+        {
+          "lines": [
+            "A VILLAGE",
+            "THAT WAITS"
+          ],
+          "image": "elder",
+          "fx": 0.4,
+          "cue": {
+            "word": "மக்கள்."
+          }
+        },
+        {
+          "lines": [
+            "A GOD WITH",
+            "NO FACE"
+          ],
+          "image": "goddess",
+          "fx": 0.5,
+          "cue": {
+            "word": "சாமி."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "பஸ்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "மக்கள்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சாமி."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "VISUAL MOTIF",
+      "definition": "AN IMAGE THAT CARRIES MEANING",
+      "outer_label": "THE FILM",
+      "inner": [
+        "THE BUS",
+        "THE DONKEY",
+        "THE GOD"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, விஷுவல் மோட்டிஃப். ஒரே படம், திரும்பத் திரும்ப வந்து, ஒரு அர்த்தம் சொல்லும்.",
+      "voice_tg": "Indha technique peru, visual motif. Ore padam, thirumba thirumba vandhu, oru arththam sollum.",
+      "cues": {
+        "name": {
+          "word": "விஷுவல்"
+        },
+        "outer": {
+          "word": "திரும்பத்"
+        },
+        "inner": {
+          "word": "அர்த்தம்"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "விஷுவல்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "திரும்பத்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "அர்த்தம்",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "THE DONKEY",
+      "center_ta": "கழுதை",
+      "voice": "படம் முழுக்க ஒரு கழுதை, முன் கால் கட்டி. அது நடக்க முடியாம தவிக்குது. அந்த ஊரும் அப்படித் தான். பஸ் நிக்காது, வெளியே போக முடியாது.",
+      "voice_tg": "Padam muzhukka oru kazhudhai, mun kaal katti. Adhu nadakka mudiyaama thavikkudhu. Andha oorum appadi thaan. Bus nikkaadhu, veliye poga mudiyaadhu.",
+      "nodes": [
+        {
+          "label": "LEGS TIED",
+          "cue": {
+            "word": "கட்டி."
+          }
+        },
+        {
+          "label": "CAN'T WALK",
+          "cue": {
+            "word": "நடக்க"
+          }
+        },
+        {
+          "label": "NO BUS",
+          "cue": {
+            "word": "பஸ்"
+          }
+        },
+        {
+          "label": "CAN'T LEAVE",
+          "cue": {
+            "word": "போக"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "கட்டி."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "நடக்க"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பஸ்"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "போக"
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "WHAT EACH BUS LEAVES BEHIND",
+      "label": "ANGER",
+      "voice": "ஒவ்வொரு முறையும் பஸ் நிக்காம போகும்போது, கோபம் ஏறுது. அந்த கோபத்தோட முகம் தான் கர்ணன்.",
+      "voice_tg": "Ovvoru muraiyum bus nikkaama pogumbodhu, kobam erudhu. Andha kobaththoda mugam thaan Karnan.",
+      "levels": [
+        {
+          "label": "BUS PASSES",
+          "value": 40,
+          "cue": {
+            "word": "போகும்போது,"
+          }
+        },
+        {
+          "label": "ANGER RISES",
+          "value": 75,
+          "cue": {
+            "word": "ஏறுது."
+          }
+        },
+        {
+          "label": "KARNAN",
+          "value": 100,
+          "cue": {
+            "word": "கர்ணன்."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "போகும்போது,"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "ஏறுது."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கர்ணன்."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "goddess",
+      "fy": 0.42,
+      "fx": 0.5,
+      "slam_text": "WHO TIED THE LEGS?",
+      "voice": "அப்போ அந்த கால்களை கட்டினது யாரு? படம் சத்தமா சொல்லல, படங்களால சொல்லுது. இந்த வியாழன் தனுஷ் ஓ.எம் வருது. அதுக்கு முன்னாடி, இன்னிக்கு ராத்திரி கர்ணன் பாருங்க.",
+      "voice_tg": "Appo andha kaalgalai kattinadhu yaaru? Padam saththamaa sollala, padangalaala solludhu. Indha viyaazhan Dhanush O.M varudhu. Adhukku munnaadi, innikku raathiri Karnan paarunga.",
+      "q_cue": {
+        "word": "யாரு?"
+      },
+      "slam_cue": {
+        "word": "சொல்லுது."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "யாரு?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "சொல்லுது.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "KARNAN · VISUAL BREAKDOWN",
+      "question": [
+        {
+          "text": "WHICH IMAGE",
+          "size": 135
+        },
+        {
+          "text": "STAYED WITH YOU?",
+          "size": 120,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "உங்க மனசுல நின்ன காட்சி எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் விஷுவல் மோட்டிஃப். உங்க மனசுல நின்ன காட்சி எது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan visual motif. Unga manasula ninna kaatchi edhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: VISUAL MOTIF"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Karnan talks through images, not dialogue.",
+      "The technique is called a visual motif: an image that keeps coming back and means more each time. The bus that never stops, the donkey with tied legs, the god with no face. By the time Karnan's anger breaks, we already feel why. No spoilers here.",
+      "Which image stayed with you?",
+      "Send this to the friend who says Tamil cinema only talks, never shows.",
+      "படம் பேசுது, படங்களால."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "KARNAN · VISUAL BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "Before O.M on Thursday: best Dhanush performance — Karnan, Asuran or Vada Chennai?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 72,
+    "weakest": {
+      "loop": "standoff returns to the faceless god; end card on the teaser card",
+      "pacing": "loop screen line is long; graphics land on 4 words to keep it moving"
+    }
+  }
+}

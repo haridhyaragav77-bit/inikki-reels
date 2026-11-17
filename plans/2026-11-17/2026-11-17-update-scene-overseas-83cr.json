@@ -1,0 +1,219 @@
+{
+  "id": "2026-11-17-update-scene-overseas-83cr",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "reserve": true,
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Scene's overseas push: about ₹83.5 Cr from outside India in 10 days, of ₹242 Cr worldwide",
+    "facts": [
+      "Day 10: about ₹242.05 Cr worldwide, ₹158.55 Cr India gross, ₹83.50 Cr overseas (Sacnilk via India TV; Wikipedia)",
+      "India TV calls overseas an unexpected boost (16 Nov)",
+      "Overseas numbers are provisional"
+    ],
+    "sources": [
+      "https://www.indiatvnews.com/entertainment/news/scene-box-office-collection-suriya-s-gets-unexpected-boost-from-overseas-here-s-how-much-film-earned-in-10-days-2026-11-16-1059567",
+      "https://www.india.com/entertainment/regional/suriya-beats-his-own-box-office-record-as-scene-earns-rs-242-crore-worldwide-in-10-days-surpasses-karuppu-8545383/",
+      "https://en.wikipedia.org/wiki/Scene_(2026_film)"
+    ],
+    "pictures_note": "Official Scene trailer frames (LM4ByXufv2w), checked by eye on 16 Nov; same wide crops."
+  },
+  "worth_it": {
+    "fan_opens_because": "Over a third of Scene's money came from abroad: a number fans share.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold mass theme"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "scene": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+      "crop": [
+        0.05,
+        0.0,
+        0.65,
+        0.7
+      ]
+    },
+    "street": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres1.jpg"
+    },
+    "nazriya": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "scene",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SCENE",
+          "size": 260,
+          "y": 1310
+        },
+        {
+          "text": "₹83 CR FROM ABROAD",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "bars",
+      "in": "whip",
+      "image": "street",
+      "fx": 0.5,
+      "fy": 0.35,
+      "dur": 5.4,
+      "kicker": "10 DAYS · GROSS · ₹ CR",
+      "items": [
+        {
+          "label": "INDIA",
+          "value": 158,
+          "color": "#F07858"
+        },
+        {
+          "label": "OVERSEAS",
+          "value": 83,
+          "color": "#78E0D0"
+        }
+      ],
+      "note": "Source: Sacnilk via India TV (provisional)",
+      "sfx": [
+        {
+          "at": 0.35,
+          "type": "whoosh"
+        },
+        {
+          "at": 0.7,
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "nazriya",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "WORLDWIDE · 10 DAYS",
+      "value": 242,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "₹ GROSS",
+        "SACNILK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "scene",
+      "dur": 4.0,
+      "echo": "SCENE · ₹83 CR FROM ABROAD",
+      "question": [
+        {
+          "text": "WHERE DID",
+          "size": 130
+        },
+        {
+          "text": "YOU WATCH IT?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Comment your city or country",
+      "cta": "SEND TO A FRIEND ABROAD",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Scene made about ₹83.5 Cr outside India in 10 days.",
+      "Of ₹242 Cr worldwide, ₹158.5 Cr came from India and ₹83.5 Cr from overseas (provisional, Sacnilk via India TV).",
+      "Where did you watch it? Comment your city.",
+      "Send this to a friend abroad.",
+      "சீன் — வெளிநாட்டிலும் ஹிட்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SCENE · ₹83 CR ABROAD",
+    "slot": "reserve",
+    "first_comment": "Watched Scene outside India? Which city?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 6,
+    "total_100": 64,
+    "weakest": {
+      "timely_original": "third Scene number in a row; held as a reserve",
+      "save_value": "news, not a keeper"
+    }
+  }
+}

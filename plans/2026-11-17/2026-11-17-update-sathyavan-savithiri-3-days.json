@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-17-update-sathyavan-savithiri-3-days",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 17 NOV 2026",
+  "lead": {
+    "topic": "Sathyavan Savithiri, Keerthy Suresh and Mysskin's courtroom drama, opens Thursday 20 Nov: 3 days to go",
+    "facts": [
+      "Keerthy Suresh plays a young lawyer up against her mentor, Mysskin; directed by Praveen S Vijay (DT Next; IANS)",
+      "Release 20 Nov 2026, moved from 24 July (IANS; District listing)",
+      "Same day as O.M: Operation Mole (both release 20 Nov)"
+    ],
+    "sources": [
+      "https://ianslive.in/sathyavan-savithiri-trailer-keerthy-suresh-plays-a-woman-forced-into-marriage-in-this-courtroom-drama--20261113101925",
+      "https://www.dtnext.in/entertainment/cinema/sathyavan-savithiri-teaser-a-young-woman-lawyer-locks-horns-with-her-mentor-in-a-gripping-courtroom-drama",
+      "https://www.hollywoodreporterindia.com/features/insight/sathyavan-savithiri-keerthy-suresh-plays-a-newbie-lawyer-in-this-light-hearted-courtroom-drama"
+    ],
+    "pictures_note": "Official trailer (Zee Studios South, XCLQGsbnFlw), checked by eye again on 17 Nov: maxresdefault is the trailer card (Keerthy right; crop keeps her face whole, cuts the title, the TRAILER word and the date, as on 14 Nov), maxres3 Keerthy smiling, maxres2 the opposing lawyer."
+  },
+  "worth_it": {
+    "fan_opens_because": "Last news before Thursday for Keerthy fans; a courtroom film people pick for a weekend.",
+    "spoilers": "None: only what the makers and the trailer showed.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "keerthy_card": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+      "crop": [
+        0.66,
+        0.0,
+        0.34,
+        0.82
+      ]
+    },
+    "keerthy": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg"
+    },
+    "court": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "keerthy_card",
+      "fx": 0.55,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SATHYAVAN SAVITHIRI",
+          "size": 150,
+          "y": 1310
+        },
+        {
+          "text": "3 DAYS TO GO",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "glitch",
+      "image": "court",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "LAWYER vs MENTOR",
+      "value": 1,
+      "unit": " CASE",
+      "land": 1.5,
+      "tag": [
+        "KEERTHY SURESH",
+        "vs MYSSKIN"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "keerthy",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THURSDAY · IN CINEMAS",
+      "value": 3,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "20 NOV",
+        "MOVED FROM 24 JULY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "keerthy_card",
+      "dur": 4.0,
+      "echo": "SATHYAVAN SAVITHIRI · 3 DAYS TO GO",
+      "question": [
+        {
+          "text": "WHO WINS",
+          "size": 130
+        },
+        {
+          "text": "THE CASE?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Keerthy or Mysskin: before you sleep, place your bet",
+      "cta": "SEND TO YOUR WEEKEND MOVIE BUDDY",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Sathyavan Savithiri: 3 days to go.",
+      "Keerthy Suresh is a young lawyer up against her own mentor, Mysskin, in Praveen S Vijay's courtroom drama. In cinemas this Thursday, 20 Nov, moved from July. Sources: DT Next, IANS.",
+      "Keerthy or Mysskin: who wins the case?",
+      "Send this to your weekend movie buddy.",
+      "சத்தியவான் சாவித்திரி — வியாழன் முதல்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SATHYAVAN SAVITHIRI · 3 DAYS",
+    "slot": "21:30",
+    "first_comment": "Thursday plan: O.M, Sathyavan Savithiri, or both?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 7,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 68,
+    "weakest": {
+      "save_value": "news, not a keeper; end card bet pulls comments",
+      "hook": "long title; the gold line says 3 DAYS big"
+    }
+  }
+}
