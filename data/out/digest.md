@@ -1,6 +1,6 @@
-**Mon 16 Nov** · 1 posted, 1 could not post (12:30 Pariyerum Perumal, still ready), 3 ready for tonight (18:00, 20:00, 21:30)
-**Best:** the Ratsasan breakdown keeps climbing: 1,199 views, up from 328 at 2 hours; the Suriya ₹600 cr update is top at 1,371 views
-**Weak:** the Lazy Sunday picks and the Inji Vellam update: only 14% and 11% of the reel watched (red); shares still near 0%
-**Tomorrow:** thrillers are rising (Ratsasan), so lead with a thriller breakdown; Nayanthara's birthday is Wed, OM opens Thu 20 Nov
-**Changed:** added a Jigarthanda breakdown to the bank (2 of 4 ready); tonight's updates stay, no bigger news than the OM trailer
-**Needs you:** 5 trailers to get (3 films; OM is listed three ways). The command is in Drive requests/trailers_to_get.md
+**Tue 17 Nov** · 3 posted, 0 held, 3 ready for tonight (18:00, 20:00, 21:30) plus 2 reserves
+**Best:** the OM "Operation Mole" update leads today: 485 views in 2 hours; yesterday's OM U/A update reached 920
+**Weak:** shares are 0% on every reel; the Pizza breakdown kept only 17% of the reel watched (amber); the Sai Pallavi update lost 67% early
+**Tomorrow:** OM is the story of the week (opens Thu 20 Nov), so lead with OM updates; Nayanthara's birthday is Wed; keep thriller breakdowns
+**Changed:** added a Vikram breakdown to the bank (3 of 4 ready); tonight's updates stay, no bigger news than the OM trailer
+**Needs you:** 5 trailers to get (command in Drive requests/trailers_to_get.md) · check the open alert "a job was started by someone who is not you"

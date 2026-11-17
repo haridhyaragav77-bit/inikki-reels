@@ -1,0 +1,216 @@
+{
+  "id": "2026-11-17-breakdown-vikram",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [40, 62],
+  "design": "blueprint",
+  "length_reason": "Lay out the hunt on a line, name the technique, show the wait climbing, then the hunter against the star he never sees: about a minute.",
+  "lead": {
+    "topic": "Vikram (2022): a Kamal Haasan film that keeps Kamal Haasan off the screen, and why that makes his moment explode",
+    "angle": "screenplay",
+    "insight": "Lokesh Kanagaraj gives the first half to Amar, the officer hunting a gang of masked killers. The star of the film is held back. Every scene of the hunt makes us want him more, so when he finally takes the screen, the hunger we built pays off all at once. The delay is the mass moment.",
+    "why_now": "Thrillers are rising on the page (the Ratsasan breakdown keeps climbing). Vikram is the thriller most people have seen but few have looked at this way. Works as an evening pick: TONIGHT.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vikram_(2022_film) (dir. Lokesh Kanagaraj; Kamal Haasan, Vijay Sethupathi, Fahadh Faasil as Amar; Amar leads a black-ops team investigating masked killers)",
+      "https://en.wikipedia.org/wiki/Setup_(drama) (setup and delayed payoff)"
+    ],
+    "technique": "The delayed hero (hold the star back so his entry lands harder)",
+    "pictures_note": "Official trailer frames (OKBMCL-frPU), checked by eye on 17 Nov: maxresdefault is the poster card (Kamal Haasan with a gun on the left; crop cuts the OFFICIAL TRAILER words, the VIKRAM logo and the label logo), maxres1 a Fahadh Faasil (Amar) close-up between black bars. maxres2 not used (cigarette and health warning), maxres3 not used (not sure who he is).",
+    "spoiler_note": "Nothing about who the masked men are or what the interval reveals; the standoff asks when he comes and does not answer."
+  },
+  "worth_it": {
+    "learn": "Vikram holds its star back on purpose: the wait builds the mass moment.",
+    "stop": "A Kamal film that hides Kamal is a surprise worth a minute.",
+    "why_now": "Thrillers are rising on the page; Vikram is the big one everyone has seen.",
+    "send_to": "The friend who still plays the Vikram theme on loop.",
+    "best_angle": "Yes: the delay is the spine of the first half."
+  },
+  "voice": {"on": true},
+  "music": {
+    "sections": [
+      {"track": "suspects", "from": 0.0, "screen": 0, "mood": "investigation"},
+      {"track": "giant_emerges", "from": 6.0, "screen": 3, "mood": "epic build (skip the quiet first 6 s)"},
+      {"track": "climax_theme", "from": 0.0, "screen": 5, "mood": "big release"}
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "poster": {
+      "src": "engine/.cache/stills/vikram/OKBMCL-frPU_maxresdefault.jpg",
+      "crop": [0.04, 0.1, 0.44, 0.9]
+    },
+    "kamal": {
+      "src": "engine/.cache/stills/vikram/OKBMCL-frPU_maxresdefault.jpg",
+      "crop": [0.1, 0.12, 0.36, 0.7]
+    },
+    "amar": {
+      "src": "engine/.cache/stills/vikram/OKBMCL-frPU_maxres1.jpg",
+      "crop": [0.18, 0.13, 0.64, 0.74]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "poster",
+      "film": "VIKRAM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "விக்ரம். கமல் படம். ஆனா பாதி படம் வரைக்கும் கமல் எங்கே? அது தான் ரகசியம்.",
+      "voice_tg": "Vikram. Kamal padam. Aanaa paadhi padam varaikkum Kamal engey? Adhu thaan ragasiyam.",
+      "sfx": [{"at": 0.12, "type": "impact"}]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "THE HUNT, STEP BY STEP",
+      "voice": "முகமூடி கொலைகாரர்கள். அமர் விசாரணையை ஆரம்பிக்கிறான். நாம காத்திருக்கோம். அப்புறம் இடைவேளை.",
+      "voice_tg": "Mugamoodi kolaikaarargal. Amar visaaranaiyai aarambikkiraan. Naama kaaththirukkom. Appuram idaivelai.",
+      "events": [
+        {"label": "MASKED KILLERS", "sub": "SETUP", "cue": {"word": "கொலைகாரர்கள்."}},
+        {"label": "AMAR'S HUNT", "cue": {"word": "ஆரம்பிக்கிறான்."}},
+        {"label": "THE WAIT", "cue": {"word": "காத்திருக்கோம்."}},
+        {"label": "INTERVAL", "sub": "PAYOFF", "cue": {"word": "இடைவேளை."}}
+      ],
+      "links": [[0, 3]],
+      "footer": "WHERE IS THE STAR?",
+      "footer_cue": {"word": "இடைவேளை.", "off": 0.4},
+      "sfx": [
+        {"at": {"word": "கொலைகாரர்கள்."}, "type": "tick"},
+        {"at": {"word": "ஆரம்பிக்கிறான்."}, "type": "whoosh"},
+        {"at": {"word": "காத்திருக்கோம்."}, "type": "tick"},
+        {"at": {"word": "இடைவேளை."}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "THE DELAYED HERO",
+      "definition": "HOLD THE STAR BACK",
+      "outer_label": "THE WAIT",
+      "inner": ["THE HUNT", "THE CLUES", "THE HUNGER"],
+      "voice": "இந்த டெக்னிக் பேரு, டிலேய்டு ஹீரோ. ஹீரோவை பிடிச்சு வைக்கிறாங்க. காத்திருப்பு தான் பசியை கூட்டுது.",
+      "voice_tg": "Indha technique peru, delayed hero. Herovai pidichu vaikkiraanga. Kaaththiruppu thaan pasiyai koottudhu.",
+      "cues": {
+        "name": {"word": "டிலேய்டு"},
+        "outer": {"word": "காத்திருப்பு"},
+        "inner": {"word": "கூட்டுது."}
+      },
+      "tail": 0.6,
+      "sfx": [
+        {"at": {"word": "டிலேய்டு"}, "type": "glitch"},
+        {"at": {"word": "காத்திருப்பு"}, "type": "whoosh"},
+        {"at": {"word": "கூட்டுது."}, "type": "pop"},
+        {"at": {"word": "கூட்டுது.", "off": 0.3}, "type": "pop"},
+        {"at": {"word": "கூட்டுது.", "off": 0.6}, "type": "pop"}
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "WHAT EACH SCENE BUILDS",
+      "label": "HUNGER",
+      "voice": "ஒவ்வொரு சீனும் ஒரு க்ளூ. ஒவ்வொரு க்ளூவும் ஆசையை ஏத்துது. கடைசியில, தியேட்டரே வெடிக்குது.",
+      "voice_tg": "Ovvoru seenum oru clue. Ovvoru clue-vum aasaiyai eththudhu. Kadaisiyila, theatre-e vedikkudhu.",
+      "levels": [
+        {"label": "A CLUE", "value": 40, "cue": {"word": "க்ளூ."}},
+        {"label": "WE WANT HIM", "value": 75, "cue": {"word": "ஏத்துது."}},
+        {"label": "THEATRE EXPLODES", "value": 100, "cue": {"word": "வெடிக்குது."}}
+      ],
+      "sfx": [
+        {"at": {"word": "க்ளூ."}, "type": "tick"},
+        {"at": {"word": "ஏத்துது."}, "type": "tick"},
+        {"at": {"word": "வெடிக்குது."}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {"image": "amar", "label": "AMAR", "sub": "ON SCREEN. HUNTING.", "cue": {"word": "அமர்"}},
+      "right": {"image": "kamal", "label": "THE STAR", "sub": "OFF SCREEN. WAITING.", "cue": {"word": "கமல்"}},
+      "tilt": 1,
+      "tilt_cue": {"word": "ஆனா"},
+      "slam_text": "HE'S WAITING.",
+      "slam_cue": {"word": "காத்திருக்கார்."},
+      "voice": "திரையில அமர் தேடுறான். கமல் பின்னாடி நிக்கிறார். ஆனா அவர் எப்பவும் காத்திருக்கார்.",
+      "voice_tg": "Thiraiyila Amar thedraan. Kamal pinnaadi nikkiraar. Aanaa avar eppavum kaaththirukkaar.",
+      "sfx": [
+        {"at": {"word": "அமர்"}, "type": "whoosh"},
+        {"at": {"word": "கமல்"}, "type": "whoosh"},
+        {"at": {"word": "காத்திருக்கார்.", "off": 0.3}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "kamal",
+      "fy": 0.4,
+      "fx": 0.5,
+      "slam_text": "WHEN DOES HE COME?",
+      "voice": "அப்போ அவர் எப்போ வருவார்? எப்படி வருவார்? நாங்க சொல்ல மாட்டோம். இன்னிக்கு ராத்திரி, விக்ரம் பாருங்க.",
+      "voice_tg": "Appo avar eppo varuvaar? Eppadi varuvaar? Naanga solla maattom. Innikku raathiri, Vikram paarunga.",
+      "q_cue": {"word": "வருவார்?"},
+      "slam_cue": {"word": "மாட்டோம்."},
+      "sfx": [
+        {"at": {"word": "வருவார்?"}, "type": "riser"},
+        {"at": {"word": "மாட்டோம்.", "off": 0.35}, "type": "impact"}
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "poster",
+      "echo": "VIKRAM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {"text": "BEST HERO", "size": 130},
+        {"text": "ENTRY EVER?", "size": 135, "color": "#E04848"}
+      ],
+      "sub": "உங்களுக்கு பிடிச்ச ஹீரோ என்ட்ரி எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் டிலேய்டு ஹீரோ. உங்களுக்கு பிடிச்ச ஹீரோ என்ட்ரி எது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan delayed hero. Ungalukku pidicha hero entry edhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [{"at": 1.0, "type": "pop"}],
+      "recap": "TECHNIQUE: THE DELAYED HERO"
+    }
+  ],
+  "package": {
+    "caption": [
+      "A Kamal film that keeps Kamal off the screen.",
+      "The technique is the delayed hero: hold the star back so his entry lands harder. Vikram gives its first half to Amar's hunt for the masked killers, and every scene makes us want the star more. No spoilers here.",
+      "Best hero entry ever?",
+      "Send this to the friend who still plays the Vikram theme on loop.",
+      "காத்திருப்பு தான் மாஸ்."
+    ],
+    "hashtags": ["#fyp", "#trending", "#viral", "#explorepage", "#reels"],
+    "cover": "VIKRAM · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "Best Lokesh Kanagaraj first half: Kaithi, Master or Vikram?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 6,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 74,
+    "weakest": {
+      "save_value": "end card names the technique as a keeper",
+      "loop": "standoff and end return to Kamal and the poster from frame 1"
+    }
+  }
+}
