@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-18-update-sathyavan-savithiri-2-days",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 18 NOV 2026",
+  "lead": {
+    "topic": "Sathyavan Savithiri opens Thursday 20 Nov (2 days): Praveen S. Vijaay's first film as director, music by Sam C.S.",
+    "facts": [
+      "Written and directed by Praveen S. Vijaay, his directorial debut; music Sam C.S.; Zee Studios and Drumsticks Productions (Wikipedia)",
+      "Keerthy Suresh plays a young lawyer who faces her own mentor, Mysskin, in court (Wikipedia; DT Next)",
+      "Release 20 Nov 2026, moved from 24 July (Hans India; IANS)"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sathyavan_Savithiri",
+      "https://www.thehansindia.com/cinema/keerthy-suresh-mysskin-starrer-sathyavan-savithiri-to-now-hit-screens-on-november-20-1128001",
+      "https://www.dtnext.in/entertainment/cinema/sathyavan-savithiri-teaser-a-young-woman-lawyer-locks-horns-with-her-mentor-in-a-gripping-courtroom-drama"
+    ],
+    "pictures_note": "Official trailer (Zee Studios South, XCLQGsbnFlw), the same crops as on 17 Nov: Keerthy's face whole, title, TRAILER word and date cut."
+  },
+  "worth_it": {
+    "fan_opens_because": "Thursday has two films; this tells a Keerthy fan who made this one and that it is 2 days away.",
+    "spoilers": "None: only the premise the makers shared.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "keerthy_card": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+      "crop": [
+        0.66,
+        0.0,
+        0.34,
+        0.82
+      ]
+    },
+    "keerthy": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg"
+    },
+    "court": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "keerthy_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SATHYAVAN SAVITHIRI",
+          "size": 150,
+          "y": 1310
+        },
+        {
+          "text": "2 DAYS TO GO",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "court",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "DIRECTOR · PRAVEEN S. VIJAAY",
+      "value": 1,
+      "unit": "ST FILM",
+      "land": 1.5,
+      "tag": [
+        "A DEBUT",
+        "COURTROOM DRAMA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "keerthy",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THURSDAY · IN CINEMAS",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "KEERTHY vs MYSSKIN",
+        "MUSIC: SAM C.S."
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "keerthy_card",
+      "dur": 4.0,
+      "echo": "SATHYAVAN SAVITHIRI · 2 DAYS",
+      "question": [
+        {
+          "text": "COURTROOM DRAMA",
+          "size": 130
+        },
+        {
+          "text": "OR O.M?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Both open Thursday 20 Nov",
+      "cta": "PICK YOUR THURSDAY FILM",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Sathyavan Savithiri is 2 days away.",
+      "Keerthy Suresh plays a young lawyer who has to face her own mentor, Mysskin, in court. It is Praveen S. Vijaay's first film as director, with music by Sam C.S. In cinemas Thursday 20 Nov. Sources: Wikipedia, Hans India, DT Next.",
+      "Thursday: courtroom drama or O.M?",
+      "Tag the friend you are going with.",
+      "சத்யவான் சாவித்திரி — இன்னும் 2 நாள்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SATHYAVAN SAVITHIRI · 2 DAYS",
+    "slot": "21:30",
+    "first_comment": "Keerthy vs Mysskin: who wins the courtroom?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 68,
+    "weakest": {
+      "save_value": "a countdown is not a keeper",
+      "hook": "the title is long; the yellow line '2 DAYS TO GO' carries the hook"
+    }
+  }
+}

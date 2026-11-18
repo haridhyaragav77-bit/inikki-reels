@@ -1,0 +1,225 @@
+{
+  "id": "2026-11-18-update-om-mammootty-7-months",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 18 NOV 2026",
+  "lead": {
+    "topic": "O.M's director spent about 7 months getting Mammootty to say yes; he was the first name on the list",
+    "facts": [
+      "Rajkumar Periasamy: Mammootty was the very first person on his list for the role (Variety India, 27 Aug 2026)",
+      "It took about 7 months to convince him to sign (Indian Express, 19 June 2026)",
+      "O.M opens Thursday 20 Nov (Wikipedia)"
+    ],
+    "sources": [
+      "https://varietyindia.com/mammootty-was-the-very-first-person-on-my-list-om-director-rajkumar-periasamy-on-casting-exclusive/",
+      "https://indianexpress.com/article/entertainment/tamil/dhanush-om-why-it-took-7-months-to-convince-mammootty-to-sign-the-film-10747779/",
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), the same crops as on 17 Nov: faces whole, the TRAILER word and date cut."
+  },
+  "worth_it": {
+    "fan_opens_because": "Mammootty in a Tamil film opposite Dhanush is the big draw; the 7-month chase is a fact few know.",
+    "spoilers": "None.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vip_gathering",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "swagger"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "MAMMOOTTY",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "7 MONTHS TO SAY YES",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "O.M · FIRST CHOICE",
+      "value": 1,
+      "unit": "ST NAME",
+      "land": 1.5,
+      "tag": [
+        "ON THE DIRECTOR'S LIST",
+        "RAJKUMAR PERIASAMY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THE CHASE",
+      "value": 7,
+      "unit": " MONTHS",
+      "land": 1.5,
+      "tag": [
+        "TO SIGN HIM",
+        "INDIAN EXPRESS"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "MAMMOOTTY · 7 MONTHS TO SAY YES",
+      "question": [
+        {
+          "text": "DHANUSH vs",
+          "size": 130
+        },
+        {
+          "text": "MAMMOOTTY: WHO WINS?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "O.M opens Thursday 20 Nov",
+      "cta": "TAG A MAMMOOKKA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "O.M's director chased Mammootty for about 7 months.",
+      "Rajkumar Periasamy says Mammootty was the first name on his list, and it took about 7 months to get a yes. O.M opens Thursday 20 Nov. Sources: Variety India, Indian Express.",
+      "Dhanush vs Mammootty: who wins the screen?",
+      "Tag a Mammookka fan.",
+      "மம்மூட்டி — 7 மாசம் காத்திருப்பு."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "MAMMOOTTY · 7 MONTHS",
+    "slot": "reserve",
+    "first_comment": "Mammootty's best Tamil film so far?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 68,
+    "weakest": {
+      "save_value": "trivia, not a keeper",
+      "timely_original": "June-August interviews; the release this week makes it timely"
+    }
+  },
+  "reserve": true
+}

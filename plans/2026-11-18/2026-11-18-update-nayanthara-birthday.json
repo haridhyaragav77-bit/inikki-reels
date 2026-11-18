@@ -1,0 +1,237 @@
+{
+  "id": "2026-11-18-update-nayanthara-birthday",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 18 NOV 2026",
+  "lead": {
+    "topic": "Nayanthara turns 42 today; Aramm's first look came on her birthday 10 years ago; Mookuthi Amman 2 is on day 13 in cinemas",
+    "facts": [
+      "Born 18 November 1984: 42 today (Wikipedia)",
+      "Aramm's title and first look were revealed on 18 Nov 2016, her birthday (Wikipedia, Aramm)",
+      "Mookuthi Amman 2 opened 6 Nov 2026; 18 Nov is day 13 (Wikipedia; 17 Nov plan)",
+      "JioHotstar holds its streaming rights; no date yet (FilmiBeat, 17 Nov plan)"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nayanthara",
+      "https://en.wikipedia.org/wiki/Aramm",
+      "https://en.wikipedia.org/wiki/Mookuthi_Amman_2",
+      "https://www.filmibeat.com/tamil/news/2026/mookuthi-amman-2-ott-release-where-watch-nayanthara-regina-cassandra-film-after-its-theatrical-run-537475.html"
+    ],
+    "pictures_note": "Mookuthi Amman 2 official trailer card (tbnwnLatH1g), the same wide crop as on 17 Nov (face whole); Aramm official trailer frame (Think Music India, hWsn_1cs6Dc maxres1), checked by eye 18 Nov."
+  },
+  "worth_it": {
+    "fan_opens_because": "It is her birthday today; one fact fans did not know (Aramm's first look on this day) and where her new film is.",
+    "spoilers": "None.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "varun_intro",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold, catchy"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "amman": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    },
+    "aramm": {
+      "src": "engine/.cache/stills/aramm/hWsn_1cs6Dc_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "NAYANTHARA",
+          "size": 200,
+          "y": 1310
+        },
+        {
+          "text": "HAPPY BIRTHDAY",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "LADY SUPERSTAR · TODAY",
+      "value": 42,
+      "unit": "",
+      "land": 1.5,
+      "tag": [
+        "BORN 18 NOV 1984",
+        "HAPPY BIRTHDAY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "aramm",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "ARAMM · FIRST LOOK ON HER BIRTHDAY",
+      "value": 10,
+      "unit": " YEARS",
+      "land": 1.5,
+      "tag": [
+        "18 NOV 2016",
+        "TO THE DAY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "MOOKUTHI AMMAN 2 · IN CINEMAS",
+      "value": 13,
+      "unit": " DAYS",
+      "land": 1.5,
+      "tag": [
+        "SINCE 6 NOV",
+        "OTT: JIOHOTSTAR, DATE NOT OUT"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "amman",
+      "dur": 4.0,
+      "echo": "NAYANTHARA · HAPPY BIRTHDAY",
+      "question": [
+        {
+          "text": "COLLECTOR, KOKILA",
+          "size": 130
+        },
+        {
+          "text": "OR AMMAN?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Her best role: tell us in one word",
+      "cta": "WISH HER IN THE COMMENTS",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Happy birthday, Nayanthara: 42 today.",
+      "Ten years ago today, on her birthday, Aramm's title and first look came out. Her Diwali film Mookuthi Amman 2 is on day 13 in cinemas; it will stream on JioHotstar, date not out yet. Sources: Wikipedia, FilmiBeat.",
+      "Collector, Kokila or Amman: her best role?",
+      "Tag a Nayanthara fan.",
+      "இனிய பிறந்தநாள் வாழ்த்துகள், நயன்தாரா."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "NAYANTHARA · 42 TODAY",
+    "slot": "18:00",
+    "first_comment": "One Nayanthara scene you can watch on loop?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 72,
+    "weakest": {
+      "save_value": "a birthday post is not a keeper; it lives on comments",
+      "value": "the 10-years fact is the one new thing; lead with it if it tests well"
+    }
+  }
+}

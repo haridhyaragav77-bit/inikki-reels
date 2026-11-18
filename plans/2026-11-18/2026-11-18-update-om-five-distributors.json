@@ -1,0 +1,224 @@
+{
+  "id": "2026-11-18-update-om-five-distributors",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 18 NOV 2026",
+  "lead": {
+    "topic": "O.M opens Thursday with five distributors: AGS (Tamil Nadu), Binu George Alexander (Kerala), Sithara (Andhra and Telangana), Mythri (Nizam), Pen Marudhar (North India)",
+    "facts": [
+      "AGS Cinemas: Tamil Nadu; Binu George Alexander Productions: Kerala; Sithara Entertainments: Andhra Pradesh and Telangana; Mythri: Nizam (Wikipedia, citing the distributors' own posts)",
+      "Pen Marudhar: North India theatrical (Bollywood Hungama, 11 Nov 2026)",
+      "Release Thursday 20 Nov worldwide (Wikipedia)"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole",
+      "https://www.bollywoodhungama.com/news/south-cinema/dhanush-starrer-om-chapter-1-udhiram-the-blood-wood-ropes-in-pen-marudhar-for-north-india-theatrical-distribution/"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), the same crops as on 17 Nov: faces whole, the TRAILER word and date cut."
+  },
+  "worth_it": {
+    "fan_opens_because": "Shows how wide O.M opens across India; fans from Kerala and Telangana see their state.",
+    "spoilers": "None.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "plan_is_on",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "heist, fun"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "O.M",
+          "size": 280,
+          "y": 1310
+        },
+        {
+          "text": "OPENS ACROSS INDIA",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "DISTRIBUTORS · THURSDAY",
+      "value": 5,
+      "unit": " PARTNERS",
+      "land": 1.5,
+      "tag": [
+        "TN · KERALA · AP-TS",
+        "NIZAM · NORTH INDIA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "NORTH INDIA · PEN MARUDHAR",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "WORLDWIDE",
+        "DOLBY CINEMA TOO"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "O.M · OPENS ACROSS INDIA",
+      "question": [
+        {
+          "text": "WHERE ARE YOU",
+          "size": 130
+        },
+        {
+          "text": "WATCHING O.M?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Tell us your city",
+      "cta": "TAG YOUR FDFS GANG",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "O.M opens across India this Thursday.",
+      "AGS in Tamil Nadu, Binu George Alexander in Kerala, Sithara in Andhra and Telangana, Mythri in Nizam, Pen Marudhar in North India. Sources: Wikipedia, Bollywood Hungama.",
+      "Which city are you watching it in?",
+      "Tag your first-day-first-show gang.",
+      "ஓ.எம் — இந்தியா முழுக்க."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "O.M · OPENS ACROSS INDIA",
+    "slot": "reserve",
+    "first_comment": "Comment your city: where are you watching O.M?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 8,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 64,
+    "weakest": {
+      "save_value": "trade news, not a keeper",
+      "send_trigger": "the city question in the comments gives fans a reason to tag"
+    }
+  },
+  "reserve": true
+}
