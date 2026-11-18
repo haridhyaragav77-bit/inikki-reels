@@ -1,10 +1,13 @@
-# Brief · plan run · 2026-11-18 (written 2026-11-18 05:12 IST)
+# Brief · refresh run · 2026-11-18 (written 2026-11-18 16:13 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: none yet
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-18 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-18/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
+2. Breakdown bank: 0 of 4 ready. Add 1 breakdown plan to plans/bank/.
+3. Feedback: nothing new.
+4. Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Today (use it in hooks and titles; AGENT.md 10.5)
 Wednesday 18 Nov 2026 · midweek, solo evening · Nayanthara's birthday · season: Chennai rains (north-east monsoon)
@@ -12,10 +15,10 @@ Words that fit each slot's hour: 08:30 morning: TODAY / THIS WEEK · 12:30 after
 Title angles for today (fill {N} and {FILM}; a film in today's news makes the strongest tie-in): RAINY NIGHT: {N} FILMS | MAZHAI + MOVIE: {N} PICKS | SOLO NIGHT: {N} FILMS | MIDWEEK ESCAPE: {N} FILMS
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-18-breakdown-aramm: kit spotlight · versus → technique → timeline → meter → standoff
+- 2026-11-18-breakdown-anbe-sivam: kit forest · cards → technique → versus → meter → moral
 - 2026-11-17-breakdown-vikram: kit blueprint · timeline → technique → meter → versus → standoff
 - 2026-11-17-breakdown-soodhu-kavvum: kit neon · versus → technique → timeline → web → standoff
-- 2026-11-17-breakdown-karnan: kit paper · cards → technique → loop → meter → standoff
-- 2026-11-16-breakdown-pizza: kit noir · cards → technique → web → meter → standoff
 
 ## Ideas from Harish (leads, not orders: use one if it passes the worth-it test, AGENT.md 5.7)
 - From the insights: Move a reel from 18:00 towards 08:00 (reels posted around 08:00 get 1393 views in the middle, around 18:00 only 102)
@@ -38,6 +41,8 @@ Breakdowns, updates, Watch This Next, reviews and breaking use official YouTube 
 - None yet.
 For an older look, open a film's grid (Google Drive) and pick the shot whose picture shows each line; shot times are in data/trailers.json. Check its timeline sheet (same folder, '... - timeline.jpg', a frame every 1.5 s): the tiles from your start second for as long as the line lasts (2-4 s) must all show what the line says. Older-look visual: {type: clip, film: <film>, start: <second>, len: 2.5, label: <2-word tag>}.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days, artwork-quote after a dull stretch.
+
+Plans already in plans/2026-11-18/: ?, ?, 2026-11-18-guess-04, ?, ?, ?, ?, ?
 
 ## Yesterday's numbers (per reach; colour against the series median)
 Nothing posted yesterday.
