@@ -1,0 +1,224 @@
+{
+  "id": "2026-11-18-update-om-2-days-178-min",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 18 NOV 2026",
+  "lead": {
+    "topic": "O.M: Operation Mole opens Thursday 20 Nov (2 days); the UK censor listing gives it 178 minutes, about 3 hours",
+    "facts": [
+      "BBFC (UK) classified it 15 on 16 Nov with a running time of 178 minutes, under its earlier title OM - Chapter 1 (BBFC; Wikipedia)",
+      "Worldwide release Thursday 20 Nov, also in Dolby Cinema (Wikipedia; Wunderbar Films post)",
+      "Dhanush and Mammootty lead; Rajkumar Periasamy directs (Wikipedia)",
+      "The Indian cut may differ slightly; the reel says 'UK listing'"
+    ],
+    "sources": [
+      "https://www.bbfc.co.uk/release/om-chapter-1-uthiram-the-blood-wood-q29sbgvjdglvbjpwwc0xmtiyodq3",
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), the same crops as on 17 Nov: faces whole, the TRAILER word and date cut."
+  },
+  "worth_it": {
+    "fan_opens_because": "Fans planning the first show want the length and the countdown.",
+    "spoilers": "None: a running time and a date.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold mass"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "O.M",
+          "size": 280,
+          "y": 1310
+        },
+        {
+          "text": "2 DAYS TO GO",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "RUNTIME · UK LISTING",
+      "value": 178,
+      "unit": " MIN",
+      "land": 1.5,
+      "tag": [
+        "ABOUT 3 HOURS",
+        "RATED 15 IN THE UK"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THURSDAY · WORLDWIDE",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "DOLBY CINEMA TOO",
+        "DHANUSH x MAMMOOTTY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "O.M · 2 DAYS TO GO",
+      "question": [
+        {
+          "text": "3 HOURS OF O.M:",
+          "size": 130
+        },
+        {
+          "text": "READY?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "O.M: Operation Mole · in cinemas Thursday 20 Nov",
+      "cta": "TAG YOUR FDFS GANG",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "O.M: Operation Mole is 2 days away.",
+      "The UK censor listing (BBFC, 16 Nov) gives it 178 minutes, about 3 hours. It opens worldwide on Thursday 20 Nov, also in Dolby Cinema. Sources: BBFC, Wikipedia.",
+      "3 hours of Dhanush and Mammootty: ready?",
+      "Tag your first-day-first-show gang.",
+      "ஓ.எம் — இன்னும் 2 நாள்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "O.M · 2 DAYS · 178 MIN",
+    "slot": "08:30",
+    "first_comment": "First show or weekend show for O.M?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 7,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 70,
+    "weakest": {
+      "save_value": "a countdown is not a keeper",
+      "value": "one new fact (the runtime); the date is known"
+    }
+  }
+}

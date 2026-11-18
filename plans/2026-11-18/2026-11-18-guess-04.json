@@ -1,0 +1,151 @@
+{
+  "_note": "Guess the Tamil Movie #4 for Nayanthara's birthday. Clues are objects and places, never faces or the title.",
+  "reel_id": "2026-11-18-guess-04",
+  "id": "2026-11-18-guess-04",
+  "series": "guess-the-movie",
+  "template": "diorama",
+  "episode": 4,
+  "post_at": "2026-11-18T15:30:00+05:30",
+  "lead": {
+    "topic": "Kolamaavu Kokila (2018): a kolam-powder tin, a hospital bill, a quiet doorstep. Today is Nayanthara's birthday.",
+    "score": 76,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kolamaavu_Kokila (Kokila's mother is diagnosed with lung cancer; Kokila is drawn into cocaine smuggling; released 17 Aug 2018)"
+    ]
+  },
+  "worth_it": {
+    "film_people_love": "Yes: Nayanthara's dark comedy hit (Rs 73 Cr on a Rs 8 Cr budget, Wikipedia); her birthday is today.",
+    "clue1_hard_but_fair": "A lung X-ray and bills: only fans tie it to Kokila's mother.",
+    "spoilers": "None: only the set-up (her mother's illness, the powder)."
+  },
+  "music": {
+    "mood": "suspense_ticks",
+    "track": "16-Missing-Girl-Investigation-MassTamilan.com.mp3"
+  },
+  "images": [
+    {
+      "prompt": "A chest X-ray of lungs clipped to a glowing hospital light box in a small dim government hospital ward at night, a pile of unpaid medical bills and a steel tiffin box on the bedside table, rain streaking the window behind, cold blue light with one warm lamp, miniature film-set diorama style, vertical framing with room for text, no people, no faces, no text",
+      "move": "push",
+      "focus": [
+        0.5,
+        0.42
+      ],
+      "weather": "rain"
+    },
+    {
+      "prompt": "An open round steel tin of white kolam rangoli powder on a kitchen shelf in a modest Chennai home, small sealed plastic packets of white powder hidden half-buried inside it, a mortar and a calendar on the wall behind, evening light through a window grille, miniature film-set diorama style, vertical framing, no people, no faces, no text",
+      "move": "orbit",
+      "focus": [
+        0.5,
+        0.5
+      ],
+      "weather": "dust"
+    },
+    {
+      "prompt": "A fresh white kolam pattern drawn on the wet front doorstep of a small Chennai house at dawn, a steel kolam powder tin beside it, a folded jasmine string on the step, a blue door half open, soft pink dawn light after rain, puddles reflecting the sky, miniature film-set diorama style, vertical framing, no people, no faces, no text",
+      "move": "crane",
+      "focus": [
+        0.5,
+        0.55
+      ],
+      "weather": "rain"
+    }
+  ],
+  "screens": [
+    {
+      "kind": "title",
+      "dur": 3.9,
+      "image": 0,
+      "kicker": "BIRTHDAY SPECIAL / 3 CLUES",
+      "headline": "3 clues.",
+      "headline2": "Padam enna?",
+      "caption": "Indha birthday-ku oru padam. Kandupidi.",
+      "caption_tamil": "இந்த பிறந்தநாளுக்கு ஒரு படம். கண்டுபிடி."
+    },
+    {
+      "kind": "clue",
+      "n": 1,
+      "dur": 4.5,
+      "image": 0,
+      "kicker": "CLUE 01 / FANS ONLY",
+      "headline": "X-ray. Hospital bill.",
+      "tamil": "எக்ஸ்-ரே. ஆஸ்பத்திரி பில்.",
+      "caption": "Amma-kaga oru ponnu.",
+      "caption_tamil": "அம்மாவுக்காக ஒரு பொண்ணு."
+    },
+    {
+      "kind": "clue",
+      "n": 2,
+      "dur": 6.0,
+      "image": 1,
+      "kicker": "CLUE 02 / LOOK CLOSER",
+      "headline": "Tin-kulla vera powder.",
+      "tamil": "டின்னுக்குள்ள வேற பவுடர்.",
+      "caption": "Paakka kolam maavu thaan.",
+      "caption_tamil": "பார்க்க கோலமாவு தான்."
+    },
+    {
+      "kind": "clue",
+      "n": 3,
+      "dur": 6.0,
+      "image": 2,
+      "kicker": "CLUE 03 / LAST CHANCE",
+      "headline": "Vaasalil oru kolam.",
+      "tamil": "வாசலில் ஒரு கோலம்.",
+      "caption": "Kadaisi clue. Answer-a lock pannu.",
+      "caption_tamil": "கடைசி துப்பு. பதிலை முடிவு பண்ணு."
+    },
+    {
+      "kind": "countdown",
+      "dur": 4.6,
+      "image": 2,
+      "kicker": "LOCK YOUR ANSWER",
+      "caption": "Guess pannitiyaa?",
+      "caption_tamil": "பதில் ரெடியா?"
+    },
+    {
+      "kind": "reveal",
+      "dur": 5.0,
+      "image": 1,
+      "kicker": "THE ANSWER",
+      "title": "KOLAMAAVU KOKILA",
+      "year": "2018",
+      "headline": "Endha clue-la kandupidicha?",
+      "tamil": "எந்த துப்புல கண்டுபிடிச்ச?",
+      "caption": "1, 2, illa 3? Comment pannu.",
+      "caption_tamil": "1, 2, இல்ல 3? கமெண்ட் பண்ணு."
+    }
+  ],
+  "caption": {
+    "text": "Birthday special. 3 clues. Oru Tamil padam. Kandupidikka mudiyumaa?\nOru X-ray, oru tin kolam maavu, oru vaasal.\nEndha clue-la kandupidicheenga: 1, 2, illa 3?\nUnga cinema friend-a test pannunga.",
+    "hashtags": [
+      "#TamilCinema",
+      "#GuessTheMovie",
+      "#iNiKKiGuess"
+    ],
+    "first_comment": "Clue 1-laye kandupidichavanga yaaru?"
+  },
+  "package": {
+    "cover": "GUESS THE TAMIL MOVIE #4",
+    "slot": "15:30"
+  },
+  "cover": {
+    "screen": 1
+  },
+  "hook": "thunder",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 7,
+    "timely_original": 8,
+    "total_100": 71,
+    "weakest": {
+      "save_value": "a quiz is not a keeper; it lives on comments and sends",
+      "value": "light by design; the birthday tie-in gives it a reason today"
+    }
+  }
+}

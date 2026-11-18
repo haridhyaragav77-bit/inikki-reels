@@ -1,0 +1,464 @@
+{
+  "id": "2026-11-18-breakdown-anbe-sivam",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "forest",
+  "length_reason": "Rain sets up the room, name the technique, the two men, how one changes: about a minute.",
+  "lead": {
+    "topic": "Anbe Sivam (2003): a rain-locked journey that works because the two men are opposites",
+    "angle": "screenplay",
+    "insight": "Heavy rain cancels every flight out of Bhubaneswar and forces a proud ad director, Aras, to share a room and a road with Sivam, a scarred, gentle activist. Sivam is the foil: he barely changes, so every bit of Aras's change shows. The rain is only the excuse that keeps the foil next to him.",
+    "why_now": "North-east monsoon rains in Chennai this week (brief: season), a rainy midweek night at 20:00: title angle RAINY NIGHT / MAZHAI + MOVIE. Anbe Sivam is a cult classic people still rewatch (Wikipedia: underperformed in 2003, now a cult film).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Anbe_Sivam (Aras and Sivam meet at Bhubaneswar airport; heavy rainfall cancels flights and floods the city; they share a hotel room, then a bus and the Coromandel Express; cult film)",
+      "https://en.wikipedia.org/wiki/Foil_(literature)"
+    ],
+    "technique": "Character foil (a character whose contrast shows another's traits)",
+    "pictures_note": "Official clips (Prime Video India, qjtue2vEul8; Simply South, fZKdmdoLl6U), checked by eye on 18 Nov: Prime maxres1 Aras in tears beside Sivam, maxres2 and maxres3 both smiling (crop cuts the Prime Video band at the bottom); Simply South maxres1 Sivam smiling in glasses (crop cuts the corner mark). No official rain frame: the cards and graphics carry the rain.",
+    "spoiler_note": "Only the set-up (rain, room, road) and the idea of the two men; nothing about the flashback or the wedding."
+  },
+  "worth_it": {
+    "learn": "Anbe Sivam uses a character foil: Sivam stays the same so we can watch Aras change.",
+    "stop": "A rainy night trapped two strangers in one room, and Tamil cinema got a classic.",
+    "why_now": "Chennai is in its monsoon week; tonight is a rainy night in.",
+    "send_to": "The friend who is more Aras than Sivam.",
+    "best_angle": "Yes: the pairing is what people remember; the rain is how the film gets them together."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "lone_wolf",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cool, moody rain"
+      },
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "warmth"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/anbe_sivam/qjtue2vEul8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.78
+      ]
+    },
+    "both": {
+      "src": "engine/.cache/stills/anbe_sivam/qjtue2vEul8_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.78
+      ]
+    },
+    "aras": {
+      "src": "engine/.cache/stills/anbe_sivam/qjtue2vEul8_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.78
+      ]
+    },
+    "sivam": {
+      "src": "engine/.cache/stills/anbe_sivam/fZKdmdoLl6U_maxres1.jpg",
+      "crop": [
+        0.0,
+        0.08,
+        0.86,
+        0.92
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "ANBE SIVAM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.6,
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "அன்பே சிவம். ஒரு மழை ராத்திரி. ரெண்டு பேர். ஒரே ரூம்.",
+      "voice_tg": "Anbe Sivam. Oru mazhai raaththiri. Rendu per. Ore room.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "WHAT THE RAIN DOES",
+      "heading_ta": "மழை செய்யுறது",
+      "voice": "புவனேஸ்வர்ல பெரிய மழை. ஃப்ளைட் கேன்சல். ஊரே வெள்ளம். ரெண்டு அந்நியர்கள், ஒரே ரூம்ல.",
+      "voice_tg": "Bhubaneswar-la periya mazhai. Flight cancel. Oore vellam. Rendu anniyargal, ore room-la.",
+      "cards": [
+        {
+          "lines": [
+            "FLIGHTS",
+            "CANCELLED"
+          ],
+          "image": "sivam",
+          "fx": 0.45,
+          "cue": {
+            "word": "கேன்சல்."
+          }
+        },
+        {
+          "lines": [
+            "A CITY",
+            "FLOODED"
+          ],
+          "image": "aras",
+          "fx": 0.6,
+          "cue": {
+            "word": "வெள்ளம்."
+          }
+        },
+        {
+          "lines": [
+            "TWO STRANGERS",
+            "ONE ROOM"
+          ],
+          "image": "both",
+          "fx": 0.5,
+          "cue": {
+            "word": "ரூம்ல."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "கேன்சல்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வெள்ளம்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "ரூம்ல."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "CHARACTER FOIL",
+      "definition": "ONE CHARACTER REVEALS ANOTHER",
+      "outer_label": "THE JOURNEY",
+      "inner": [
+        "HIS KINDNESS",
+        "HIS EGO",
+        "THE CHANGE"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, கேரக்டர் ஃபாயில். ஒருத்தரோட குணம், இன்னொருத்தர் பக்கத்துல நிக்கும்போது தான் தெரியும்.",
+      "voice_tg": "Indha technique peru, character foil. Oruththaroda gunam, innoruththar pakkaththula nikkumbodhu thaan theriyum.",
+      "cues": {
+        "name": {
+          "word": "கேரக்டர்"
+        },
+        "outer": {
+          "word": "குணம்,"
+        },
+        "inner": {
+          "word": "பக்கத்துல"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "கேரக்டர்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "குணம்,"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பக்கத்துல"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "பக்கத்துல",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "பக்கத்துல",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "zoom",
+      "left": {
+        "image": "sivam",
+        "label": "SIVAM",
+        "sub": "KIND. CALM.",
+        "cue": {
+          "word": "சிவம்."
+        }
+      },
+      "right": {
+        "image": "aras",
+        "label": "ARAS",
+        "sub": "PROUD. RUSHED.",
+        "cue": {
+          "word": "அரசு."
+        }
+      },
+      "tilt": -1,
+      "tilt_cue": {
+        "word": "ரெண்டும்"
+      },
+      "slam_text": "OPPOSITES.",
+      "slam_cue": {
+        "word": "துருவம்."
+      },
+      "voice": "ஒருத்தர் அன்பா இருக்கிற சிவம். இன்னொருத்தர் அவசரமும் ஈகோவும் நிறைஞ்ச அரசு. ரெண்டும் எதிர் துருவம்.",
+      "voice_tg": "Oruththar anbaa irukkira Sivam. Innoruththar avasaramum egovum niranja Aras. Rendum edhir dhuruvam.",
+      "sfx": [
+        {
+          "at": {
+            "word": "சிவம்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அரசு."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "துருவம்.",
+            "off": 0.3
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "EVERY STOP ON THE ROAD",
+      "label": "ARAS CHANGES",
+      "voice": "முதல்ல அரசுக்கு சந்தேகம். பஸ், ரயில், ஒவ்வொரு நிறுத்தமும் அவனை மாத்துது. கடைசியில, மரியாதை.",
+      "voice_tg": "Mudhalla Arasukku sandhegam. Bus, rail, ovvoru niruththamum avanai maaththudhu. Kadaisiyila, mariyaadhai.",
+      "levels": [
+        {
+          "label": "SUSPICION",
+          "value": 30,
+          "cue": {
+            "word": "சந்தேகம்."
+          }
+        },
+        {
+          "label": "THE ROAD",
+          "value": 65,
+          "cue": {
+            "word": "மாத்துது."
+          }
+        },
+        {
+          "label": "RESPECT",
+          "value": 100,
+          "cue": {
+            "word": "மரியாதை."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "சந்தேகம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மாத்துது."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "மரியாதை."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "both",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "SIVAM",
+      "right": "ARAS",
+      "left_ta": "சிவம்",
+      "right_ta": "அரசு",
+      "slam_text": [
+        "LOVE",
+        "IS GOD."
+      ],
+      "voice": "சிவம் மாறவே இல்ல. மாறுறது அரசு தான். அதனால தான் படத்தோட பேரு, அன்பே சிவம்.",
+      "voice_tg": "Sivam maarave illa. Maarradhu Aras thaan. Adhanaala thaan padaththoda peru, Anbe Sivam.",
+      "cues": {
+        "line": {
+          "word": "மாறவே"
+        },
+        "bleed": {
+          "word": "மாறுறது"
+        },
+        "crack": {
+          "word": "அரசு"
+        },
+        "slam": {
+          "word": "அன்பே"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "மாறவே"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அரசு"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "அன்பே"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "ANBE SIVAM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "ARE YOU SIVAM",
+          "size": 130
+        },
+        {
+          "text": "OR ARAS?",
+          "size": 150,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "நீங்க சிவமா, அரசா?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் கேரக்டர் ஃபாயில். இன்னிக்கு மழை ராத்திரி. நீங்க சிவமா, அரசா? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan character foil. Innikku mazhai raaththiri. Neenga Sivamaa, Arasaa? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: CHARACTER FOIL"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Rainy night: one room, two strangers, one classic.",
+      "In Anbe Sivam, rain cancels every flight and locks a proud ad director in with a gentle, scarred stranger. The technique is called a character foil: Sivam stays the same, so we can watch Aras change. No spoilers here.",
+      "Are you Sivam or Aras?",
+      "Send this to the friend who is fully Aras.",
+      "மழை ராத்திரி. அன்பே சிவம்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "ANBE SIVAM · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Best rain scene in Tamil cinema? One film only."
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 7,
+    "timely_original": 8,
+    "total_100": 78,
+    "weakest": {
+      "loop": "end card returns to the two men smiling; question mirrors the versus screen",
+      "pacing": "cards and versus both show the pair; versus comes after the technique so each idea gets its own visual"
+    }
+  }
+}

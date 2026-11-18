@@ -1,0 +1,435 @@
+{
+  "id": "2026-11-18-breakdown-aramm",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "spotlight",
+  "length_reason": "Name the technique, show the two times, how the frame turns a rescue into a trial: about a minute.",
+  "lead": {
+    "topic": "Aramm (2017): a borewell rescue told from inside an enquiry room",
+    "angle": "screenplay",
+    "insight": "Aramm opens with Collector Madhivadhani facing a senior official and telling him what happened a week ago. Because we meet her on trial first, every call she makes at the borewell plays as evidence. The frame turns a rescue film into a courtroom, and the clock feels twice as loud.",
+    "why_now": "Nayanthara's birthday is today (18 Nov, brief); Aramm's title and first look were revealed on her birthday in 2016, exactly 10 years ago (Wikipedia). Afternoon slot: words TONIGHT / AFTER WORK.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Aramm (dir. N. Gopi Nainar; Nayanthara as Collector Madhivadhani; story begins with her telling a higher official what happened a week ago in Kattoor; title and first look revealed 18 Nov 2016)",
+      "https://en.wikipedia.org/wiki/Frame_story"
+    ],
+    "technique": "Frame story (a story told inside another story)",
+    "pictures_note": "Official trailer (Think Music India, hWsn_1cs6Dc) and teaser (IDW_vJIeGzA), checked by eye on 18 Nov: trailer maxresdefault is the card (Nayanthara right; crop cuts the title, TRAILER word and corner mark), maxres1 Nayanthara bent over a radio set, maxres2 villagers running with a child; teaser maxres3 police and army at the barricade. No enquiry-room frame: the timeline and technique screens carry the room as graphics.",
+    "spoiler_note": "Only the opening frame and the set-up; nothing about how the rescue or the enquiry ends."
+  },
+  "worth_it": {
+    "learn": "Aramm is built as a frame story: the enquiry room makes every rescue decision feel like evidence.",
+    "stop": "A rescue film that starts with the hero already on trial.",
+    "why_now": "Nayanthara's birthday today; Aramm's first look came on this day in 2016.",
+    "send_to": "The Nayanthara fan who calls Aramm her best film.",
+    "best_angle": "Yes: the structure is why a simple rescue feels like a thriller."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 2.0,
+        "screen": 0,
+        "mood": "intrigue"
+      },
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "tension"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/aramm/hWsn_1cs6Dc_maxresdefault.jpg",
+      "crop": [
+        0.5,
+        0.0,
+        0.5,
+        0.84
+      ]
+    },
+    "collector": {
+      "src": "engine/.cache/stills/aramm/hWsn_1cs6Dc_maxres1.jpg"
+    },
+    "rescue": {
+      "src": "engine/.cache/stills/aramm/hWsn_1cs6Dc_maxres2.jpg"
+    },
+    "barricade": {
+      "src": "engine/.cache/stills/aramm/IDW_vJIeGzA_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "ARAMM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "அறம். இந்த படம் ஒரு விசாரணை அறையில ஆரம்பிக்குது. ஏன்?",
+      "voice_tg": "Aram. Indha padam oru visaaranai araiyila aarambikkudhu. Yen?",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "whip",
+      "left": {
+        "image": "collector",
+        "label": "THE ENQUIRY",
+        "sub": "NOW",
+        "cue": {
+          "word": "அதிகாரி"
+        }
+      },
+      "right": {
+        "image": "rescue",
+        "label": "THE BOREWELL",
+        "sub": "A WEEK AGO",
+        "cue": {
+          "word": "கிணறு."
+        }
+      },
+      "tilt": 1,
+      "tilt_cue": {
+        "word": "வாரம்"
+      },
+      "slam_text": "ONE GIRL. ONE WELL.",
+      "slam_cue": {
+        "word": "பொண்ணு."
+      },
+      "voice": "கலெக்டர் மதிவதனி ஒரு அதிகாரி முன்னாடி உட்கார்ந்திருக்காங்க. அவங்க சொல்ற கதை, ஒரு வாரம் முன்னாடி நடந்தது. ஒரு ஆழ்துளை கிணறு. ஒரு சின்ன பொண்ணு.",
+      "voice_tg": "Collector Madhivadhani oru adhigaari munnaadi utkaarndhirukkaanga. Avanga solra kadhai, oru vaaram munnaadi nadandhadhu. Oru aazhthulai kinaru. Oru chinna ponnu.",
+      "sfx": [
+        {
+          "at": {
+            "word": "அதிகாரி"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "கிணறு."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பொண்ணு.",
+            "off": 0.3
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "FRAME STORY",
+      "definition": "A STORY INSIDE A STORY",
+      "outer_label": "THE ENQUIRY",
+      "inner": [
+        "THE BOREWELL",
+        "THE RESCUE",
+        "HER CHOICES"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, ஃப்ரேம் ஸ்டோரி. ஒரு கதைக்குள்ள, இன்னொரு கதை.",
+      "voice_tg": "Indha technique peru, frame story. Oru kadhaikkulla, innoru kadhai.",
+      "cues": {
+        "name": {
+          "word": "ஃப்ரேம்"
+        },
+        "outer": {
+          "word": "கதைக்குள்ள,"
+        },
+        "inner": {
+          "word": "இன்னொரு"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "ஃப்ரேம்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "கதைக்குள்ள,"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "இன்னொரு"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "இன்னொரு",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "இன்னொரு",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "HOW THE FRAME WORKS",
+      "voice": "முதல்ல விசாரணை. அப்புறம் கிணறு. அவங்க எடுக்கிற ஒவ்வொரு முடிவும், அந்த அறையில கேள்வியா நிக்குது.",
+      "voice_tg": "Mudhalla visaaranai. Appuram kinaru. Avanga edukkira ovvoru mudivum, andha araiyila kelviyaa nikkudhu.",
+      "events": [
+        {
+          "label": "THE ENQUIRY",
+          "sub": "NOW",
+          "cue": {
+            "word": "விசாரணை."
+          }
+        },
+        {
+          "label": "THE BOREWELL",
+          "sub": "A WEEK AGO",
+          "cue": {
+            "word": "கிணறு."
+          }
+        },
+        {
+          "label": "EVERY CHOICE",
+          "cue": {
+            "word": "முடிவும்,"
+          }
+        },
+        {
+          "label": "A QUESTION",
+          "sub": "BACK IN THE ROOM",
+          "cue": {
+            "word": "கேள்வியா"
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "SHE IS ON TRIAL",
+      "footer_cue": {
+        "word": "நிக்குது.",
+        "off": 0.2
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "விசாரணை."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கிணறு."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "முடிவும்,"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கேள்வியா"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "meter",
+      "in": "push",
+      "heading": "WHAT THE FRAME ADDS",
+      "label": "PRESSURE",
+      "voice": "அதனால, இது வெறும் மீட்பு கதை இல்ல. ஒரு விசாரணை. ஒவ்வொரு நிமிஷமும் நமக்கு பதட்டம்.",
+      "voice_tg": "Adhanaala, idhu verum meetpu kadhai illa. Oru visaaranai. Ovvoru nimishamum namakku padhattam.",
+      "levels": [
+        {
+          "label": "A RESCUE",
+          "value": 40,
+          "cue": {
+            "word": "மீட்பு"
+          }
+        },
+        {
+          "label": "A TRIAL",
+          "value": 75,
+          "cue": {
+            "word": "விசாரணை."
+          }
+        },
+        {
+          "label": "EVERY MINUTE",
+          "value": 100,
+          "cue": {
+            "word": "பதட்டம்."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "மீட்பு"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "விசாரணை."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பதட்டம்."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "barricade",
+      "fx": 0.5,
+      "fy": 0.42,
+      "slam_text": "WHO IS ON TRIAL?",
+      "voice": "அப்போ உண்மையில விசாரணை யாருக்கு? அவங்களுக்கா, இல்ல சிஸ்டத்துக்கா? இன்னிக்கு நயன்தாரா பிறந்தநாள். அறம் பாருங்க.",
+      "voice_tg": "Appo unmaiyila visaaranai yaarukku? Avangalukkaa, illa system-ukkaa? Innikku Nayanthara pirandhanaal. Aram paarunga.",
+      "q_cue": {
+        "word": "யாருக்கு?"
+      },
+      "slam_cue": {
+        "word": "சிஸ்டத்துக்கா?"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "யாருக்கு?"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "சிஸ்டத்துக்கா?",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "ARAMM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHO WAS REALLY",
+          "size": 125
+        },
+        {
+          "text": "ON TRIAL?",
+          "size": 140,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "உண்மையில விசாரணை யாருக்கு?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ஃப்ரேம் ஸ்டோரி. உங்க பதில் என்ன? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan frame story. Unga badhil enna? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: FRAME STORY"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Aramm starts in an enquiry room, not at the borewell.",
+      "The technique is called a frame story: a story told inside another story. Because we meet Collector Madhivadhani already facing questions, every choice she makes at the borewell feels like evidence. A rescue film becomes a trial. No spoilers here.",
+      "Who was really on trial?",
+      "Happy birthday, Nayanthara. Aramm's first look came out on her birthday in 2016.",
+      "கதைக்குள்ள ஒரு கதை."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "ARAMM · SCREENPLAY BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "Nayanthara's best role: Aramm, Kolamaavu Kokila or Maya?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 8,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 75,
+    "weakest": {
+      "loop": "end card returns to the trailer card; the question repeats the opening 'why'",
+      "pacing": "versus line is long; four graphics land on its words to keep it moving"
+    }
+  }
+}
