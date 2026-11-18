@@ -1,0 +1,425 @@
+{
+  "id": "2026-11-18-breakdown-thani-oruvan",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "noir",
+  "length_reason": "Name the technique, show hero and villain side by side, and why a bigger villain makes a bigger hero: about a minute.",
+  "lead": {
+    "topic": "Thani Oruvan (2015): a hero who chooses his own villain",
+    "angle": "screenplay",
+    "insight": "Mithran does not wait for a villain. He follows small crimes to the big men behind them and picks the one at the top: Siddharth Abhimanyu. The film then gives the villain his own story, so the cop and the scientist feel like two equal minds on opposite sides. A bigger villain makes a bigger hero.",
+    "why_now": "Thrillers keep working on the page (Ratsasan, Vikram). Thani Oruvan is a hit most people have seen but few have looked at as a hero-villain mirror. Works in any evening slot: TONIGHT.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Thani_Oruvan (dir. Mohan Raja; Jayam Ravi as IPS officer Mithran, Arvind Swami as scientist Siddharth Abhimanyu; Mithran traces small crimes to the powerful men behind them and targets Siddharth)",
+      "https://en.wikipedia.org/wiki/Foil_(literature)"
+    ],
+    "technique": "Foil (a character who contrasts with and mirrors the hero)",
+    "pictures_note": "Official trailer (r5Lih8rKd6k) and teaser (VwDl8pr7aSE), checked by eye on 18 Nov: trailer maxres2 Jayam Ravi close-up (no text), trailer maxres3 Arvind Swami among police, teaser maxres3 Arvind Swami close-up, teaser maxres1 a rider on a dark street at night. Trailer maxres1 has a baked-in MITHRAN title and the trailer card has the logo: not used.",
+    "spoiler_note": "Only the set-up (Mithran picks Siddharth) and that the villain gets his own story; nothing about the middle twist or the ending."
+  },
+  "worth_it": {
+    "learn": "Thani Oruvan uses a foil: the villain mirrors the hero, so beating him means something.",
+    "stop": "A hero who picks his own villain.",
+    "why_now": "Thrillers are rising on the page; this is the hero-villain film everyone remembers.",
+    "send_to": "The friend who says Siddharth Abhimanyu is the best Tamil villain.",
+    "best_angle": "Yes: the mirror is why the villain is as loved as the hero."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "villains_strategy",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cold intrigue"
+      },
+      {
+        "track": "hunt_begins",
+        "from": 0.0,
+        "screen": 3,
+        "mood": "tension"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 5,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/thani-oruvan/r5Lih8rKd6k_maxres2.jpg"
+    },
+    "mithran": {
+      "src": "engine/.cache/stills/thani-oruvan/r5Lih8rKd6k_maxres2.jpg"
+    },
+    "siddharth": {
+      "src": "engine/.cache/stills/thani-oruvan/VwDl8pr7aSE_maxres3.jpg"
+    },
+    "police": {
+      "src": "engine/.cache/stills/thani-oruvan/r5Lih8rKd6k_maxres3.jpg"
+    },
+    "night": {
+      "src": "engine/.cache/stills/thani-oruvan/VwDl8pr7aSE_maxres1.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "THANI ORUVAN",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "தனி ஒருவன். இந்த ஹீரோ, தன் வில்லனை தானே தேர்ந்தெடுக்கிறார். ஏன்?",
+      "voice_tg": "Thani Oruvan. Indha hero, than villanai thaane thernthedukkiraar. Yen?",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "web",
+      "in": "whip",
+      "heading": "HIS NIGHT HUNT",
+      "voice": "ராத்திரி ஆனா, மித்ரன் சின்ன குற்றங்களை துரத்துறார். அந்த குற்றங்கள், பெரிய ஆளுங்க கிட்ட போகுது. அந்த ஆளுங்க, ஒரே ஒரு பேருக்கு போறாங்க.",
+      "voice_tg": "Raaththiri aanaa, Mithran chinna kuttrangalai thuraththuraar. Andha kuttrangal, periya aalunga kitta pogudhu. Andha aalunga, ore oru perukku poraanga.",
+      "center": {
+        "label": "MITHRAN",
+        "image": "mithran"
+      },
+      "nodes": [
+        {
+          "label": "SMALL CRIMES",
+          "link": "CHASES",
+          "cue": {
+            "word": "குற்றங்களை"
+          }
+        },
+        {
+          "label": "BIG MEN",
+          "link": "LEADS TO",
+          "cue": {
+            "word": "பெரிய"
+          }
+        },
+        {
+          "label": "ONE NAME",
+          "link": "POINTS TO",
+          "image": "siddharth",
+          "cue": {
+            "word": "பேருக்கு"
+          }
+        }
+      ],
+      "footer": "HE PICKS HIS ENEMY",
+      "footer_cue": {
+        "word": "போறாங்க."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "குற்றங்களை"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பெரிய"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "பேருக்கு"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "போறாங்க."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "THE FOIL",
+      "definition": "A RIVAL WHO MIRRORS THE HERO",
+      "outer_label": "MITHRAN",
+      "inner": [
+        "SAME BRAIN",
+        "SAME WILL",
+        "OTHER SIDE"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, ஃபாயில். ஹீரோவை கண்ணாடி மாதிரி காட்டுற ஒரு எதிரி.",
+      "voice_tg": "Indha technique peru, foil. Herovai kannaadi maadhiri kaattura oru edhiri.",
+      "cues": {
+        "name": {
+          "word": "ஃபாயில்."
+        },
+        "outer": {
+          "word": "ஹீரோவை"
+        },
+        "inner": {
+          "word": "கண்ணாடி"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "ஃபாயில்."
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "ஹீரோவை"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "கண்ணாடி"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "கண்ணாடி",
+            "off": 0.3
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "கண்ணாடி",
+            "off": 0.6
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "versus",
+      "in": "whip",
+      "left": {
+        "image": "mithran",
+        "label": "MITHRAN",
+        "sub": "THE COP",
+        "cue": {
+          "word": "போலீஸ்."
+        }
+      },
+      "right": {
+        "image": "siddharth",
+        "label": "SIDDHARTH",
+        "sub": "THE SCIENTIST",
+        "cue": {
+          "word": "விஞ்ஞானி."
+        }
+      },
+      "tilt": 1,
+      "tilt_cue": {
+        "word": "வழி"
+      },
+      "slam_text": "SAME MIND. OTHER SIDE.",
+      "slam_cue": {
+        "word": "வேற."
+      },
+      "voice": "மித்ரன் ஒரு போலீஸ். சித்தார்த் ஒரு விஞ்ஞானி. ரெண்டு பேருமே ஜீனியஸ். வழி மட்டும் தான் வேற.",
+      "voice_tg": "Mithran oru police. Siddharth oru vinjnaani. Rendu perume genius. Vazhi mattum thaan vera.",
+      "sfx": [
+        {
+          "at": {
+            "word": "போலீஸ்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "விஞ்ஞானி."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "வேற.",
+            "off": 0.3
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "night",
+      "fx": 0.5,
+      "kicker": "WHY IT WORKS",
+      "left": "HERO",
+      "right": "VILLAIN",
+      "left_ta": "ஹீரோ",
+      "right_ta": "வில்லன்",
+      "slam_text": [
+        "BIG VILLAIN.",
+        "BIGGER HERO."
+      ],
+      "voice": "வில்லன் பெருசா இருந்தா தான், ஹீரோ பெருசா தெரிவார். அதனால தான் படம், வில்லனுக்கும் ஒரு கதை கொடுக்குது.",
+      "voice_tg": "Villan perusaa irundhaa thaan, hero perusaa therivaar. Adhanaala thaan padam, villanukkum oru kadhai kodukkudhu.",
+      "cues": {
+        "line": {
+          "word": "வில்லன்"
+        },
+        "bleed": {
+          "word": "ஹீரோ"
+        },
+        "crack": {
+          "word": "அதனால"
+        },
+        "slam": {
+          "word": "கதை"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "வில்லன்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அதனால"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "கதை"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "police",
+      "fx": 0.5,
+      "fy": 0.42,
+      "slam_text": "NAME YOUR ENEMY.",
+      "voice": "உன் எதிரியை சொல்லு, நீ யாருன்னு சொல்றேன். இந்த படத்தோட மொத்த ஐடியா இது தான்.",
+      "voice_tg": "Un edhiriyai sollu, nee yaarunnu solren. Indha padaththoda moththa idea idhu thaan.",
+      "q_cue": {
+        "word": "யாருன்னு"
+      },
+      "slam_cue": {
+        "word": "ஐடியா"
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "யாருன்னு"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "ஐடியா",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "THANI ORUVAN · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "YOUR FAVOURITE",
+          "size": 125
+        },
+        {
+          "text": "TAMIL VILLAIN?",
+          "size": 140,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "உங்க ஃபேவரிட் வில்லன் யாரு?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் ஃபாயில். உங்க ஃபேவரிட் தமிழ் வில்லன் யாரு? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan foil. Unga favourite Tamil villain yaaru? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: THE FOIL"
+    }
+  ],
+  "package": {
+    "caption": [
+      "In Thani Oruvan, the hero picks his own villain.",
+      "The technique is called a foil: a rival who mirrors the hero. Mithran the cop and Siddharth the scientist are equally sharp, on opposite sides, and the film gives the villain his own story too. A bigger villain makes a bigger hero. No spoilers here.",
+      "Who is your favourite Tamil villain?",
+      "Send this to the friend who still quotes Siddharth Abhimanyu.",
+      "எதிரியை சொல்லு, நீ யாருன்னு சொல்றேன்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "THANI ORUVAN · SCREENPLAY BREAKDOWN",
+    "slot": "bank",
+    "first_comment": "Best Tamil villain: Siddharth Abhimanyu, Sethu (Jigarthanda) or Rolex?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 9,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 75,
+    "weakest": {
+      "loop": "end card returns to the title still; the villain question echoes the opening 'why'",
+      "timely_original": "a bank reel: no date tie-in, so the hook carries it"
+    }
+  }
+}
