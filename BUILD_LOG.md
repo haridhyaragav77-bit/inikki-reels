@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 18 Nov 2026 — Drive runs on the sign-in only
+The Drive sign-in (`GDRIVE_OAUTH_REFRESH_TOKEN`, new account, app In production) is now the required Drive key; the old robot key `GDRIVE_SERVICE_ACCOUNT_JSON` (old private-email Google project) is optional and is being deleted with that project.
+
 ## 18 Nov 2026 — Moving Drive to a new Google account
 The sign-in app is now In production (no 7-day expiry). Drive moves to a new Google account: the old folder is shared with it, and the one-time job `daily` → `drive-copy` (`python -m engine.drive copy-old`) copies everything inside Google into the new folder; it is safe to run again. Then the old share and the old Cloud project are removed.
 

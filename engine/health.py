@@ -110,13 +110,13 @@ def main():
     try:
         drive = Drive()
     except Exception as e:
-        checks.append({"name": "Google Drive", "ok": False, "detail": str(e)[:200], "you_do": "Check the secret GDRIVE_SERVICE_ACCOUNT_JSON."})
+        checks.append({"name": "Google Drive", "ok": False, "detail": str(e)[:200], "you_do": "Check the secret GDRIVE_OAUTH_REFRESH_TOKEN (the Drive sign-in)."})
     miss = missing_secrets()
     checks.append({"name": "Keys in GitHub", "ok": not miss, "detail": "all present" if not miss else "missing: " + ", ".join(miss),
                    "you_do": "" if not miss else "Add the missing secret(s) on GitHub (AGENT.md 19.2)."})
     if drive:
         check("Google Drive", lambda: (True, f"signed in as the Engine; {drive.quota().get('used_gb')} GB used in the account"),
-              "Check the secret GDRIVE_SERVICE_ACCOUNT_JSON and the folder share.")
+              "Check the secret GDRIVE_OAUTH_REFRESH_TOKEN and GDRIVE_ROOT_FOLDER_ID.")
 
     def ig():
         from .instagram import Instagram
