@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 18 Nov 2026 — Home and privacy pages for the Google sign-in app
+Google would not let the sign-in app be published (so its sign-in kept expiring every 7 days) without a home page and privacy policy. `docs/index.html` and `docs/privacy.html` are served by GitHub Pages and named on the app's Branding page. Drive is moving to a new Google account; the engine follows whoever owns the folder.
+
 ## 18 Nov 2026 — Dependabot allowed to start jobs; Drive sign-in expired
 GitHub's own package checker (`dependabot[bot]`) started a job on 16 Nov, which the daily look-around counts as a stranger and holds posting. It is now in `guard.trusted_actors` (it gets none of our keys). Separately, every job from 17 Nov fails because the Drive sign-in (`GDRIVE_OAUTH_REFRESH_TOKEN`) expired: the Google app was still in Testing (7-day limit). Harish publishes the app and makes a new sign-in (AGENT.md 19.2). The Engine now signs its saves with GitHub's own bot address, so a stranger's account named "engine" no longer shows as a contributor.
 
