@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 18 Nov 2026 — Dependabot allowed to start jobs; Drive sign-in expired
+GitHub's own package checker (`dependabot[bot]`) started a job on 16 Nov, which the daily look-around counts as a stranger and holds posting. It is now in `guard.trusted_actors` (it gets none of our keys). Separately, every job from 17 Nov fails because the Drive sign-in (`GDRIVE_OAUTH_REFRESH_TOKEN`) expired: the Google app was still in Testing (7-day limit). Harish publishes the app and makes a new sign-in (AGENT.md 19.2).
+
 ## 16 Nov 2026 — Public: minutes are free, and everything says so
 The repository went public on 16 Nov (old logs, saved files and the Gmail in history were cleared first). The health job already lifts the slow-down; now the brief tells the Brain there is no minute limit (plan the full day, reserves included), and the panel and the page's Usage card show "no limit" instead of "of 2,000". `engine/brief.py`, `engine/panel.py`, `control-room/page.template.html`. Reserves were set back to 2 a day through the Control Room inbox at Harish's request.
 
