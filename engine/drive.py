@@ -337,6 +337,50 @@ def upload_out(drive, folder, plan_paths, here=False):
     return sent
 
 
+def copy_old(d, dry=False):
+    """One-time move to a new Google account: copy everything from the old 'iNiKKi Reels' folder, shared with the
+    new account, into the new root folder. Copies stay inside Google (nothing is downloaded). Safe to run again:
+    a file whose name is already in the same place is left alone. Shortcuts are followed, so their contents come too."""
+    if d.mode != "harish_signin":
+        return {"ok": False, "reason": "needs the Drive sign-in of the new account (GDRIVE_OAUTH_REFRESH_TOKEN)"}
+    name = ENGINE["drive"].get("root_name", "iNiKKi Reels")
+    q = f"sharedWithMe and name = '{_esc(name)}' and mimeType = '{FOLDER}' and trashed = false"
+    old = [f for f in d._list(q) if f["id"] != d.root]
+    if len(old) != 1:
+        return {"ok": False, "reason": f"found {len(old)} shared folders named '{name}'; share exactly one old folder with the new account"}
+    counts = {"copied": 0, "already_there": 0, "folders": 0, "failed": []}
+
+    def walk(src, dst, path):
+        here = {(it["name"], it["mimeType"] == FOLDER): it["id"] for it in d.children(dst, resolve_shortcuts=False)} if dst else {}
+        for it in d.children(src):
+            kind = it["mimeType"]
+            if kind == SHORTCUT:
+                continue                              # a shortcut whose target is gone or out of reach
+            p = f"{path}/{it['name']}"
+            if kind == FOLDER:
+                sub = here.get((it["name"], True))
+                if not sub and not dry:
+                    sub = d.svc.files().create(body={"name": it["name"], "mimeType": FOLDER, "parents": [dst]},
+                                               fields="id", supportsAllDrives=True).execute(num_retries=3)["id"]
+                counts["folders"] += 1
+                walk(it["id"], sub, p)
+            elif (it["name"], False) in here:
+                counts["already_there"] += 1
+            else:
+                if not dry:
+                    try:
+                        d.svc.files().copy(fileId=it["id"], body={"name": it["name"], "parents": [dst]},
+                                           fields="id", supportsAllDrives=True).execute(num_retries=3)
+                    except HttpError as e:
+                        counts["failed"].append(f"{p}: {plain_error(e)}")
+                        continue
+                counts["copied"] += 1
+
+    walk(old[0]["id"], d.root, "")
+    counts["failed"] = counts["failed"][:20]
+    return {"ok": not counts["failed"], "dry": dry, **counts}
+
+
 def main(argv=None):
     import sys
     a = list(sys.argv[1:] if argv is None else argv)
@@ -372,6 +416,8 @@ def main(argv=None):
     if cmd == "download":
         d.download(a[0], a[1])
         return say(ok=True, file=a[1])
+    if cmd == "copy-old":
+        return say(**copy_old(d, dry="--dry" in a))
     raise SystemExit(f"unknown command: {cmd}")
 
 
