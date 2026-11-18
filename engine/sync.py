@@ -74,7 +74,7 @@ def verdict(path, new_text, old_text):
 
 def run(branch, dry=False):
     git("config", "user.name", "iNiKKi Engine")
-    git("config", "user.email", "engine@users.noreply.github.com")
+    git("config", "user.email", "41898283+github-actions[bot]@users.noreply.github.com")
     git("fetch", "-q", "origin", "main", branch)
     base = git("merge-base", "origin/main", f"origin/{branch}").strip()
     head_msg = git("log", "-1", "--format=%s", f"origin/{branch}").strip()

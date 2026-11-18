@@ -93,7 +93,7 @@ jobs:
           git add -A data plans niches/*/series
           git diff --cached --quiet && exit 0
           python -m engine.guard staged      # the repository is public: private details are masked, a key stops the save
-          git -c user.name="iNiKKi Engine" -c user.email=engine@users.noreply.github.com commit -q -m "engine: $JOB $(TZ=Asia/Kolkata date +%F)"
+          git -c user.name="iNiKKi Engine" -c "user.email=41898283+github-actions[bot]@users.noreply.github.com" commit -q -m "engine: $JOB $(TZ=Asia/Kolkata date +%F)"
           for i in 1 2 3 4; do git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; git pull -q --rebase origin "${GITHUB_REF_NAME}"; done
           exit 1
       - name: Status (always)

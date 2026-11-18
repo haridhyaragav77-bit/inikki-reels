@@ -51,7 +51,7 @@ jobs:
           git init -q
           git checkout -q -b peek
           git add -A
-          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "peek $(date -u +%FT%TZ)"
+          git -c user.name=engine -c "user.email=41898283+github-actions[bot]@users.noreply.github.com" commit -q -m "peek $(date -u +%FT%TZ)"
           git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" peek:peek
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
