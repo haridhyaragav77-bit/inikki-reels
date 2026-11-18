@@ -256,7 +256,7 @@ def ship(ids, date, retry):
     run = lambda *a: subprocess.run(a, capture_output=True, text=True)
     run("git", "add", "-A", "plans")
     if run("git", "diff", "--cached", "--quiet").returncode:
-        run("git", "-c", "user.name=iNiKKi Engine", "-c", "user.email=engine@users.noreply.github.com", "commit", "-q", "-m",
+        run("git", "-c", "user.name=iNiKKi Engine", "-c", "user.email=41898283+github-actions[bot]@users.noreply.github.com", "commit", "-q", "-m",
             f"engine: Control Room change to {', '.join(ids)[:80]}")
         for _ in range(4):
             if run("git", "push", "-q", "origin", f"HEAD:{ref}").returncode == 0:

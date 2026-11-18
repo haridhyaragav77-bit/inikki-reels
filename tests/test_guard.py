@@ -80,7 +80,7 @@ def main():
     line = f"refused: https://graph.instagram.com/me?access_token={FAKE['IG_ACCESS_TOKEN']} for harish.someone@gmail.com (key {FAKE['OPENAI_API_KEY']})"
     safe = guard.redact(line)
     check(not any(v in safe for v in (FAKE["IG_ACCESS_TOKEN"], FAKE["OPENAI_API_KEY"], "harish.someone")), "a printed line loses its keys and its email")
-    check("engine@users.noreply.github.com" in guard.redact("by engine@users.noreply.github.com"), "the Engine's own no-reply address is left alone")
+    check("41898283+github-actions[bot]@users.noreply.github.com" in guard.redact("by 41898283+github-actions[bot]@users.noreply.github.com"), "the Engine's own no-reply address is left alone")
     check("M" * 64 not in guard.redact("key line " + "M" * 64), "one line of the robot account's private key is masked too")
     check("r" * 60 not in guard.redact("token 1//" + "r" * 60), "the Drive sign-in token inside the one-line secret is masked")
     check(guard.redact("11-14-update-sathyavan-savithiri-risk-of-a-very-long-reel-name-here-ok") == "11-14-update-sathyavan-savithiri-risk-of-a-very-long-reel-name-here-ok",

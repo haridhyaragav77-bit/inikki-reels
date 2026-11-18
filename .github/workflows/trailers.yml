@@ -72,7 +72,7 @@ jobs:
           mkdir -p out/peek
           python -m engine.guard preview --dir out/peek     # this branch is public: private details masked, a key stops the push
           cd out/peek && git init -q && git checkout -q -b peek && git add -A
-          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "trailers ${{ env.PROBE && 'probe' || 'run' }}" || exit 0
+          git -c user.name=engine -c "user.email=41898283+github-actions[bot]@users.noreply.github.com" commit -q -m "trailers ${{ env.PROBE && 'probe' || 'run' }}" || exit 0
           git push -q -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" peek:peek
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

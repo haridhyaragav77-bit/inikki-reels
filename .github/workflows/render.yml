@@ -77,7 +77,7 @@ jobs:
           python -m engine.guard preview --dir out/peek     # this branch is public: private details masked, a key stops the push
           B=review; [ -n "$STAND_INS" ] && B=review-test        # a stand-in test never overwrites the real review
           cd out/peek && git init -q && git checkout -q -b "$B" && git add -A
-          git -c user.name=engine -c user.email=engine@users.noreply.github.com commit -q -m "render review $(date -u +%FT%TZ)" || exit 0
+          git -c user.name=engine -c "user.email=41898283+github-actions[bot]@users.noreply.github.com" commit -q -m "render review $(date -u +%FT%TZ)" || exit 0
           git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$B:$B"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
