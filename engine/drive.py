@@ -75,7 +75,7 @@ class Drive:
             except ValueError as e:
                 raise DriveError(f"GDRIVE_SERVICE_ACCOUNT_JSON is not valid JSON ({e})")
             return "service_account", service_account.Credentials.from_service_account_info(info, scopes=SCOPES)
-        raise DriveError("No Drive key. Add the secret GDRIVE_SERVICE_ACCOUNT_JSON.")
+        raise DriveError("No Drive key. Add the secret GDRIVE_OAUTH_REFRESH_TOKEN (the Drive sign-in, AGENT.md 19.2).")
 
     @staticmethod
     def _parse_signin(tok):
