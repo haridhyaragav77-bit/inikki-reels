@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 18 Nov 2026 — Moving Drive to a new Google account
+The sign-in app is now In production (no 7-day expiry). Drive moves to a new Google account: the old folder is shared with it, and the one-time job `daily` → `drive-copy` (`python -m engine.drive copy-old`) copies everything inside Google into the new folder; it is safe to run again. Then the old share and the old Cloud project are removed.
+
 ## 18 Nov 2026 — Home and privacy pages for the Google sign-in app
 Google would not let the sign-in app be published (so its sign-in kept expiring every 7 days) without a home page and privacy policy. `docs/index.html` and `docs/privacy.html` are served by GitHub Pages and named on the app's Branding page. Drive is moving to a new Google account; the engine follows whoever owns the folder.
 

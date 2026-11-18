@@ -7,7 +7,7 @@ on:
       job:
         description: "Which job"
         type: choice
-        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel]
+        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel, drive-copy]
         default: brief-plan
   schedule:
     # GitHub's timer runs about 7 hours late here (found 14 Nov 2026), so the briefs and the nightly job are started on
@@ -84,11 +84,14 @@ jobs:
       - name: Control Room panel now
         if: env.JOB == 'panel'
         run: python -m engine.panel --print
+      - name: One-time copy of the old Drive folder into the new one (move to a new Google account)
+        if: env.JOB == 'drive-copy'
+        run: python -m engine.drive copy-old
       - name: News feeds test
         if: env.JOB == 'watch-test'
         run: python -m engine.watch --test
       - name: Save the text results (brief, Control Room copy, metrics, packed plans)
-        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel' && env.JOB != 'done'
+        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel' && env.JOB != 'drive-copy' && env.JOB != 'done'
         run: |
           git add -A data plans niches/*/series
           git diff --cached --quiet && exit 0
