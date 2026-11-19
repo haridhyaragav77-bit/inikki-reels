@@ -74,6 +74,13 @@ def job_end(name, result):
     if result not in ("success", "skipped", "cancelled"):
         alert(drive, f"The {name} job did not finish", f"The {name} job stopped with: {result}.",
               "One reel or one step is affected, not the day; the next run starts fresh.", f"Nothing, unless it repeats. Details: {run}", level="warn")
+    if drive:                                    # the Control Room account can always see the folder (AGENT.md 13.3)
+        try:
+            from . import guard
+            if guard.control_room_email():
+                guard.link_control_room(drive, guard.control_room_email())
+        except Exception as e:
+            print("status: Control Room sharing skipped:", str(e)[:120])
     if drive:                                    # the Control Room's one file, fresh after every job (AGENT.md 13.3)
         try:
             from . import panel
