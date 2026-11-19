@@ -419,6 +419,14 @@ def main():
         if r:
             out.append(f"{r['reel_id']}: " + deliver(drive, day, r, ctl, respect))
         result = "; ".join(out) or result
+    if not a.dry:                                       # YouTube Shorts after Instagram; never touches Instagram (AGENT.md 5.15)
+        try:
+            from . import youtube
+            yl = youtube.run(drive, day, ctl)
+            if yl not in ("YouTube: not connected", "YouTube: nothing new"):
+                result += f"; {yl}"
+        except Exception as e:
+            print(f"YouTube skipped: {str(e)[:160]}", file=sys.stderr)
     if day.dirty or not day.data.get("updated"):        # nothing changed: nothing to write (each Drive write is runner time)
         day.save()
     if bank.dirty or not bank.data.get("updated"):

@@ -68,7 +68,7 @@ def run(drive, dry=False):
     tight = gb >= float(R["tight_gb"])
     keep = top_reels(float(R["keep_top_share"]))
     for root, days in (("finished", R["finished_days_tight"] if tight else R["finished_days"]), ("rehearsal", R["rehearsal_days"]),
-                       ("work", R["work_days"]), ("status/days", R["status_days"])):
+                       ("work", R["work_days"]), ("status/days", R["status_days"]), ("study", R.get("study_text_days", 90))):
         fid = drive.folder(root, create=False)
         if not fid:
             continue

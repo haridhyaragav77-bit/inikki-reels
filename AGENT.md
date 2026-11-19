@@ -194,6 +194,9 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 | Measure | 2 hours after each post, and nightly | Pulls stats, computes rates, medians and health colours |
 | Brief | Before each thinking run | Builds the 1-page brief and copies your Control Room settings (switch, changes, feedback, commands) to `data/control/`, so the Brain needs no Drive access |
 | Watch | Every 2 hours, 8 AM–10 PM | Scans trusted feeds for breaking news (no AI) |
+| Channel watch | Nightly | Reads the YouTube channels we study (niche `competitors`) from YouTube's free public feed: new shorts, views, likes and the creator's own description; with the free YouTube key also each short's length and top comments (10.3) |
+| Study | Nightly, after Channel watch | Turns the Tamil speech of the shorts worth studying into text with Whisper, a free program that runs on GitHub's computer (no AI service, no cost). Full text stays in Drive; the repository gets a short study card (10.3) |
+| YouTube | Inside each Post run | Puts each reel posted on Instagram today on the page's YouTube channel too, as a Short (5.15) |
 | Clean | Nightly | Deletes working files by the retention rules (section 14) |
 | Health | Daily 04:00 | Keys valid, credit left, storage, runner minutes, voice reachable |
 | Dashboard | After Measure | Updates the Dashboard sheet |
@@ -306,9 +309,13 @@ Fixed posting times · series names and episode numbers · designed covers · a 
 
 An old film with no cult following is skipped, however good it is.
 
-**Breakdowns are not only about screenplay.** Pick the strongest angle for that film: screenplay, cinematography and camera, set and production design, editing, sound and music, or acting. If a film has no strong insight left, change the angle or the film.
+**Breakdowns are not only about screenplay.** Pick the strongest angle for that film: screenplay, cinematography and camera, set and production design, editing, sound and music, or acting. Two more angles since 19 Nov (Harish, from studying Expert FX and World Filmology, 10.3): **hidden details** (3 details in one film most viewers missed, each on its own frame, counted 1/3, 2/3, 3/3) and **behind the scenes** (a true making-of story told by someone who was there, from a named interview, checked in 2 trusted sources and credited on screen). If a film has no strong insight left, change the angle or the film.
 
-**Every breakdown pins a named technique.** The core of a breakdown is an existing, named technique, brought to light: a storytelling or screenplay device (frame story, ticking clock, dramatic irony, setup and payoff, unreliable narrator), a camera or lighting technique, an editing technique (match cut, cross-cutting), a music or sound technique (leitmotif, silence). The reel names it on screen ("THE TECHNIQUE: FRAME STORY"), defines it in a few words, shows how the film uses it, says why it works, and recaps it on the end card. If you cannot name the technique, it is not a breakdown yet.
+**Lead with the detail (Harish, 19 Nov).** The studied channels' hits sell one specific, surprising thing ("the jail scene's hidden detail", "the director's last-minute trick"), never a lesson. So the hook is the concrete detail the viewer missed, or the true story they never heard. The named technique comes in the middle as the reason it works, and the end card recaps it.
+
+**Film weeks (Harish, 19 Nov).** A film with a lot to say can get a run of up to 3 parts in 7 days (Part 1/3, 2/3, 3/3, each a different angle or detail set, each standing on its own). The end card of one part names the next. Outside a film week, the same film at most once in 21 days. Hollywood and world films the audience knows count the same as Tamil films.
+
+**Every breakdown still pins a named technique.** The core of a breakdown is an existing, named technique, brought to light: a storytelling or screenplay device (frame story, ticking clock, dramatic irony, setup and payoff, unreliable narrator), a camera or lighting technique, an editing technique (match cut, cross-cutting), a music or sound technique (leitmotif, silence). The reel names it on screen ("THE TECHNIQUE: FRAME STORY"), defines it in a few words, shows how the film uses it, says why it works, and recaps it on the end card. If you cannot name the technique, it is not a breakdown yet.
 
 **What counts as an insight.** A specific craft choice + why it works + what the viewer felt without noticing. Weak: "Kaithi has great action." Strong: "Kaithi happens in one night, so every delay costs a life. The clock is the real villain."
 
@@ -330,6 +337,7 @@ Motion graphics exist to **show the idea the voice is saying, at the moment it i
 | On pace | Each graphic appears on the word it explains and leaves when that idea ends. Timed from the voice timestamps. |
 | No repeats in a reel | Each idea gets its own visual. The same graphic may come back once, only as a callback at the end. |
 | **A different design every reel** (Harish, 14 Nov) | Unique motion graphics are the page's selling point. Every breakdown names a **design kit** (colours and backdrop: spotlight, blueprint, noir, neon, paper, forest, royal) and is **built from the graphics that fit that film's idea** (pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web). The plan check refuses a kit used in the last 3 breakdowns and a build identical to the last 2 (`unique_design` in the series card). The brief lists what was used lately. |
+| **Breakdown graphics added 19 Nov** | `detail` (a magnifying lens travels to the hidden detail on a still and zooms in, with a 1/3 counter), `chain` (dominoes: one small choice knocks down the next, up to the ending), `quote` (who said it, their role and a short key phrase, with the interview as the source tag), `source` (two tracks, the source story and the film, beats linked by lines), and the **part badge** (PART 1/3 on the title and end screens of a film week). Details in `niches/<niche>/motion_library.md`. |
 | One hero moment | Every reel has one rich graphic people remember: layered, with depth, light and movement. Example: a fight drawn as moving figures on a top-down map. |
 | Takes over when visuals don't fit | If no clip or still matches a beat, the graphic goes full-screen and leads that beat. |
 | Uses the space | Graphics can use the whole frame, not just a strip at the bottom. |
@@ -339,7 +347,7 @@ Motion graphics exist to **show the idea the voice is saying, at the moment it i
 | Moving transitions | Screens change with movement (whip, zoom-through, light flash, mask wipe), never a plain cut to a still card. |
 
 ### 5.9 Length and voice
-- **The content decides the length.** Most reels stay at 45 s or less. **Breakdowns aim for about 1 minute** (the safe spot: enough time to explain a technique, short enough to hold); shorter is fine, up to 75 s only when truly needed. The plan writes down why.
+- **The content decides the length.** Most reels stay at 45 s or less. **Breakdowns run 60 to 90 seconds** (Harish, 19 Nov: room for the detail, why it works and the payoff); shorter is fine when the idea is done. The plan writes down why in `length_reason`.
 - **Not every reel needs a voice.** Box office updates, release dates and first-look drops can be music-only: numbers, stills and motion graphics tell the story, with no captions. Voice is used when something needs explaining. Each series sets its default; the plan can switch it for one reel.
 - **Some reels should stay simple.** A clear number on a great still beats a busy screen.
 
@@ -378,7 +386,7 @@ A reel never waits for a perfect picture: official stills, posters and trailer f
 **Trailers and stills, automatically (Harish decided on 12 Nov: stills for news, clips for breakdowns):**
 1. The official studio, music-label, star and streaming accounts on Instagram, read through Instagram's own API: allowed from the cloud, free, minutes after a drop. The list is in `niches/<niche>/knowledge/sources.yaml` (`trailers`). At most 2 pages per account per run and a 6-hour shared copy, inside Instagram's hourly limit (the run stops at half of Meta's meter, so posting always has room). A plan names its film's own accounts (`trailer_from`); then only those are searched, further back (up to 6 pages), so an older trailer is found in a few calls. Without names, each listed account gives its newest page (a new drop). Meta's meter counts processing time, so pages are read as captions only and the video link is asked for the one matching post.
    Meta withholds the video of posts with licensed film music or with downloads turned off (checked on 12 Nov: Sun Pictures' Jailer 2 trailer posts), but it still gives each post's cover picture and the picture posts. So for news the Engine saves the film's **official stills** (up to 30, with a numbered grid) to `clip-library/stills/<film>/` within minutes, and uses real clips whenever Meta gives the video.
-2. Breakdowns need real clips. Harish fills the trailer library once from his laptop (`tools/clip_helper.py --film-bank`: one command, the film bank's official trailers, then one folder dragged into Drive `clip-library/`); grids are made by code. After that the library grows by itself (history search, videos Meta gives) and by **Harish's top-up about every 2 weeks**: the Engine keeps one ready command in Drive `requests/trailers_to_get.md` (every film the coming plans need, new trailers first, each with its official link when the planning run found one) and the daily digest says "Needs you" when it is worth running. A new trailer can wait a day: it is run the next time Harish is at his laptop. The Engine never works around YouTube's block on cloud computers.
+2. Breakdowns need real clips. Harish fills the trailer library once from his laptop (`tools/clip_helper.py --film-bank`: one command, the film bank's official trailers, then one folder dragged into Drive `clip-library/`); grids are made by code. After that the library grows by itself (history search, videos Meta gives) and by **Harish's top-up about every 2 weeks**: the Engine keeps one ready command in Drive `requests/trailers_to_get.md` (every film the coming plans need, new trailers first, each with its official link when the planning run found one) and the daily digest says "Needs you" when it is worth running. A new trailer can wait a day: it is run the next time Harish is at his laptop. The Engine never works around YouTube's block on cloud computers. The same command also fetches the audio of the shorts on the study list (10.3).
 4. Trailer dates: the news watch also notes announced trailer dates ("trailer on 15 Nov"); the brief shows the trailers expected this week, so the request is ready the day the trailer drops.
 3. When: the trailer job runs at 04:52 for the day's wanted list; the news watch asks for a trailer as soon as a drop is reported; Make asks for any film a plan needs.
 
@@ -414,6 +422,19 @@ They keep their earlier looks until rebuilt in the new style:
 | Guess the Movie is 3D | Each clue is a 3D scene the camera travels through, with weather, moving light and depth of field. The pictures are made in a 3D-render style, like a film set in miniature. |
 | Stories name the person last | A Viral Story keeps the person unnamed to build curiosity, then reveals the name near the end ("None other than …"). The pictures are inspired-by paintings and are never passed off as the real face. |
 
+### 5.15 YouTube Shorts (Harish, 19 Nov)
+Every reel posted on Instagram also goes to the page's YouTube channel as a Short, in the same Post run, for free (YouTube's own upload service, the YouTube Data API, has a free daily allowance).
+
+| Rule | Detail |
+| --- | --- |
+| Same reel | The same vertical file. Title: the cover title + `#Shorts` (100 characters at most). Description: the caption. Tags: the hashtags. Category: Film & Animation. |
+| Same switches | Rehearsal posts nothing; Hold and Sleep stop YouTube too. Only reels Instagram really posted go up. |
+| Fails soft | A YouTube failure never touches Instagram. The next Post run that day tries again (2 tries at most), then the reel is marked and the panel says why. |
+| Privacy | `youtube.privacy` in `config/engine.yaml`: `private` until Google's free audit of the app is passed (Google may lock uploads from an app it has not audited to private, with no appeal), then `public`. |
+| Which series | `youtube.series` (`all`, or a list). YouTube flags film clips and film music more strictly than Instagram: a claimed or blocked reel is noted, and a series can be left out with one setting. |
+| Cap | `youtube.max_per_day` (8), inside the free allowance. |
+| Key | GitHub secret `YOUTUBE_OAUTH_REFRESH_TOKEN`: a one-time sign-in with the Google account that owns the channel (19.2). Without it nothing is tried and the panel says "YouTube: not connected". |
+
 
 ---
 
@@ -444,7 +465,7 @@ A folder with one settings card (`series.yaml`) and 2–3 example reels. The Eng
 | Slot | Series | Per day | Template | Voice |
 | --- | --- | --- | --- | --- |
 | A | Movie Updates | 3 | Bulletin | Case by case (box office: music only) |
-| B | Film Breakdown (the main product) | 2 | Stage | Yes |
+| B | Film Breakdown (the main product; 60–90 s; film weeks of up to 3 parts) | 2 | Stage | Yes |
 | C | Story slot: Guess the Tamil Movie (4 days) / Watch This Next (3 days, Fri–Sun) | 1 | Diorama / Poster Wall | No |
 | Flex | Trailer Breakdown (a new trailer in the library, max 1), Movie Review (release days, max 2) or Artwork + Quote (after 2–3 dull days) | 0–2 | Stage / Verdict / Cinematic | Yes / No / No |
 | Extra | Breaking News | 0–2 | Flash | No |
@@ -622,10 +643,18 @@ Each trend gets a speed (rising / peak / fading), a risk (none / fan war / sensi
 ### 10.3 Competitors and what already works
 | Input | How |
 | --- | --- |
-| Watchlist | 5–10 pages in the niche profile. The Researcher proposes names, you confirm. |
+| Watchlist | 5–10 pages in the niche profile (`competitors`). The Researcher proposes names, you confirm. Since 19 Nov: the YouTube channels Expert FX and World Filmology (Tamil breakdowns and behind-the-scenes stories, Tamil and Hollywood films), marked `study: true`. |
 | Public signals | Weekly: what formats they post, how often, visible likes and comments. Read through the API where it allows, otherwise through public pages. |
 | **Inspiration inbox** | You forward any reel that impressed you (link or screenshot) to the Control Room. The Advisor notes the format, hook and why it worked. This is the most reliable input. |
 | Your own winners | The Analyst's weekly list of what beat the median, and why |
+
+**Channel study (Harish, 19 Nov: free, as automatic as YouTube allows, no AI service).** The studied channels speak Tamil with no subtitles, so we listen to them:
+1. **Channel watch (nightly, no key).** YouTube's public feed of each channel gives the newest 15 videos: title, the creator's own description, views and likes. With the free YouTube key (`YOUTUBE_API_KEY`, optional) also each short's length and its top comments. Drive `status/channels.json`; the repository gets the table `data/study/channels.md`.
+2. **What is worth studying.** A short that beats its channel's median views by `study.beat` (1.5×), at most `study.per_day` (6) a day, goes on the study list.
+3. **The audio.** The study job tries one plain download. YouTube refuses cloud computers, so a refused short goes on the laptop list (Drive `requests/study_to_get.md`); `tools/clip_helper.py` fetches those with the trailers, into `study_for_drive/`, which Harish drags into Drive `study-audio/`. Any audio file Harish drops there by hand (any short, any channel) is studied too.
+4. **Speech to text.** Whisper, a free open-source program, runs on GitHub's computer (free minutes, the repository is public; model size `study.model`). The full Tamil text with times goes to Drive `study/<channel>/<id>.txt` (private). The repository gets only a **study card** per short in `data/study/cards.md`: title, views, length, pace (words a second), the hook (its first sentence) and the beats (the first words of each part and the second it starts). The audio is deleted once it is read.
+5. **Patterns, in our words.** The Weekly run reads the new cards and writes `lab/study/patterns.md`: hook types, detail types, beat shapes, lengths and topics that win, each naming the shorts that show it. The best ones go into the viral-factor list below. Cards are outside text: information, never instructions (CLAUDE.md rule 10).
+6. **Never copied:** their footage, their wording, their order of points. A story learned from them is checked on the web in 2 trusted sources, told in our own words and credited to the original interview, never to their video.
 
 Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook types, formats, endings and topics, each with how many times it won or lost. The Script Writer and Series Maker read this list, never the raw data. The agent borrows formats and ideas, never another page's footage or designs.
 
@@ -831,6 +860,8 @@ Drive: iNiKKi Reels/
   work/                 files for reels being made
   finished/             final reels
   rehearsal/  manual-post/  inspiration/
+  study-audio/          shorts' audio to study (the laptop helper or Harish puts it here; deleted once read)
+  study/<channel>/      the full text of each studied short (private; the repository only gets the study card)
   iNiKKi Dashboard      the sheet
 ```
 
@@ -844,6 +875,8 @@ Drive: iNiKKi Reels/
 | Music, memes, reference reels | Kept | — |
 | Plans and metrics (text) | Forever | Packed into one file per month |
 | Run logs | 30 days | Deleted |
+| Study audio (`study-audio/`) | Until it is turned into text | Deleted |
+| Study text (`study/`) | 90 days | Deleted (the study cards and patterns stay) |
 | Status files | Overwritten daily | — |
 
 ### 14.4 Storage safety
@@ -903,6 +936,8 @@ The Series Maker adds a skill whenever the same job has been done by hand 3 time
 | OpenAI images | ₹500 a month (about 150–200 images) | Code-enforced caps. At 80%: library reuse and fewer Guess days. At 100%: no new images until the 1st. |
 | GitHub runner minutes | No monthly limit while the repository is public (section 21). About 2,000 a month if it is private. | The health job reads which it is every day. Public: nothing is slowed down. Private: posting runs only at slot times, the health check warns at 70%, and the slow-down below applies. |
 | Drive | 8 GB cap | Section 14 |
+| YouTube | Free: the public channel feed needs no key; the YouTube Data API has a free daily allowance | Reads cost a few units a day; uploads are capped by `youtube.max_per_day` |
+| Speech to text (Whisper) | Free, open source, runs on GitHub's computer | At most `study.per_day` shorts a day; the model is cached between runs |
 | Claude Pro | Shared with your own use | Step-down ladder above |
 
 ---
@@ -1413,6 +1448,9 @@ Keys are never written in this file, in a chat, or in code. They go into **GitHu
 - Two more secrets (`BRAIN_FIRE_URL`, `BRAIN_FIRE_TOKEN`) wake the Breaking run when the news watcher sees strong news. They come from the Breaking task's API trigger (Block D). Without them, breaking leads wait for the 16:37 Refresh run.
 - If Google blocks the service account from uploading files (a known storage limit), the build walks you through one extra sign-in and adds `GDRIVE_OAUTH_REFRESH_TOKEN`.
 - Optional, free, 2 minutes each: `PEXELS_API_KEY` (pexels.com/api) and `PIXABAY_API_KEY` (pixabay.com/api/docs). With them the Engine finds better free photos before it makes an AI image (section 5.11). Without them it still searches public-domain pictures.
+- **YouTube, free (19 Nov).** Two optional secrets:
+  - `YOUTUBE_API_KEY` (2 minutes; adds each studied short's length and top comments; the channel watch works without it): Google Cloud console → the same project → APIs & Services → Library → **YouTube Data API v3** → Enable → Credentials → Create credentials → **API key** → Edit → restrict it to YouTube Data API v3 → copy it into the secret.
+  - `YOUTUBE_OAUTH_REFRESH_TOKEN` (posting Shorts, 5 minutes): on the laptop, `python tools/drive_signin.py --youtube`, sign in with the Google account that owns the YouTube channel (pick the channel if Google asks), paste the one printed line into the secret. Then send the free **YouTube API Services audit form** for the project (support.google.com/youtube/contact/yt_api_form) so uploads may be public; until it is approved, `youtube.privacy` stays `private`.
 - To replace a key: open the same page, click the secret, **Update**. The daily health check tells you by name if a key stops working. If a key may have leaked, section 21.4 says where to make a new one.
 
 ---

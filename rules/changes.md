@@ -8,6 +8,8 @@ Short format for small changes:
 
 ---
 
+`#16 · 19 Nov 2026 · series (film-breakdown, trailer-breakdown) · a named technique as the hook, 40-62 s, one film once in 21 days → lead with one specific detail or a true story (technique as the why), new angles hidden details and behind the scenes, film weeks of up to 3 parts, Hollywood welcome, 60-90 s, new graphics detail / chain / quote / source / part badge · why (Harish: "the analysis sometimes hits and sometimes doesn't"; the studied channels' hits sell details and stories: Expert FX's Vada Chennai detail shorts and World Filmology's behind-the-scenes stories, AGENT.md 10.3) · test on 5 reels · undo: restore the series cards from the commit before this one`
+
 `#15 · 15 Nov 2026 · series (movie-updates) · stills cropped tight and titles that did not say the news → soft rule: keep faces and the key subject whole (crop only to cut baked-in text or channel marks, never into heads), and the title says the news in plain words (who + what, a number if there is one) · why (Harish: "Images cropped too much, poor titles", 2/5 on 2026-11-14-update-shaji-kumar-tribute) · test on 5 reels · undo: delete the movie-updates soft rule in rules/playbook.md`
 
 `#14 · 14 Nov 2026 · rule (news watch) · a small film's trailer could not reach the score that wakes the Breaking run → fast pages (@chennaiist) are read at every pass; a trailer, teaser, first look or release date wakes it with 2 trusted sources, or one fast page naming the official account · Harish: the Ohm trailer was out and the page had nothing · rule · undo: Setup → "Watch fast pages" off, or `fire_score_drop: 8` in sources.yaml`

@@ -2,7 +2,9 @@ topic: "Tamil cinema"
 audience: "Tamil film fans, 18-35, India and abroad"
 sources: "knowledge/sources.yaml"        # Harish to confirm the trusted list
 calendar_types: [release, re_release, ott, anniversary, birthday, festival, awards]
-competitors: []                           # 5-10 handles; Researcher proposes, Harish confirms
+competitors:                              # 5-10 pages; Researcher proposes, Harish confirms. study: true = the channel study (AGENT.md 10.3)
+  - { name: "Expert FX", platform: youtube, handle: "@expertfx", channel_id: UCW3dmQDxU4YpDuMjlBTlchQ, study: true, why: "film detail breakdowns, Tamil and Hollywood" }
+  - { name: "World Filmology", platform: youtube, handle: "@worldfilmology", channel_id: UC9gcLdRWcqrj8tz9AaLkLRw, study: true, why: "behind-the-scenes stories from interviews" }
 hashtags: { broad: ["#TamilCinema", "#Kollywood"], series: {}, max: 5 }
 knowledge_bank: "knowledge/film_bank.json"
 meme_index: "memes/meme_index.csv"

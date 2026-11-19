@@ -1,0 +1,3 @@
+# Study job (AGENT.md 10.3): free, open-source speech to text and a plain YouTube reader. No keys, no paid service.
+faster-whisper>=1.1
+yt-dlp>=2025.10

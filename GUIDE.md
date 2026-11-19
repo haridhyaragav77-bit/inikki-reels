@@ -94,6 +94,12 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 | Take something back | **Setup** → Your last actions → **Undo** | `undo` |
 | Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 
+### Breakdowns, the channel study and YouTube (19 Nov)
+- **Breakdowns lead with a detail now.** The hook is one specific thing in the film you probably missed, or a true story from someone who was there. The technique name comes in the middle as the reason it works. Breakdowns run 60 to 90 seconds; a strong film can get up to 3 parts in a week (PART 1/3 on screen). Hollywood films are welcome.
+- **We study two YouTube channels, for free:** Expert FX and World Filmology (the list is `competitors` in the niche file). Every night the Engine reads their newest shorts and views, and turns the speech of the best ones into text with a free program. The Weekly run writes what works, in our own words, to `lab/study/patterns.md`. We never copy their videos or words.
+- **Your only job there:** YouTube does not let cloud computers download, so when the digest says "shorts to study", paste the line from Drive `requests/study_to_get.md` into the same laptop helper you use for trailers, then drag the `study_for_drive` folder's files into Drive `study-audio/`. You can also drop any short's audio there yourself.
+- **YouTube Shorts:** once you add the YouTube sign-in (AGENT.md 19.2, 5 minutes), every reel that posts on Instagram also goes to your YouTube channel. They upload as **private** until Google approves the free audit form; then change `youtube.privacy` to `public` (or ask the Workshop to).
+
 ### Switches and usage (page → Setup, page → Usage)
 - **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
 - **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage, and the two times of day to keep Claude free for the runs.

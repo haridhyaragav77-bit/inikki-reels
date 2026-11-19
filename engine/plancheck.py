@@ -30,7 +30,8 @@ def _words(t):
 
 # ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
 LOOK_KINDS = {
-    "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web", "end"},
+    "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web",
+              "detail", "chain", "quote", "source", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
     "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
@@ -146,6 +147,50 @@ def check_unique(plan, series, tpl, rid, E, W):
         W.append(f"Every graphic in this reel was also in the last one ({last[0].get('id')}). One fresh graphic keeps the page from looking the same.")
 
 
+def check_new_graphics(plan, screens):
+    """detail, chain, quote, source and the PART n/of badge: what each needs to draw (templates/README.md)."""
+    E = []
+    pt = plan.get("part")
+    if pt is not None and not (isinstance(pt, list) and len(pt) == 2 and all(isinstance(x, int) for x in pt) and 1 <= pt[0] <= pt[1] <= 3):
+        E.append("'part' is a film week's place, [n, of] with of at most 3, e.g. [1, 3] (AGENT.md 5.7).")
+    for n, s in enumerate(screens, 1):
+        k = s.get("kind")
+        if k == "detail":
+            sp = s.get("spot") or {}
+            if not s.get("image"):
+                E.append(f"Screen {n} (detail): needs the still with the detail in 'image'.")
+            if not all(isinstance(sp.get(a), (int, float)) and 0 <= sp[a] <= 1 for a in ("x", "y")):
+                E.append(f"Screen {n} (detail): 'spot' is where the detail is in the frame, {{x, y}} from 0 to 1.")
+            c = s.get("count")
+            if c is not None and not (isinstance(c, list) and len(c) == 2 and 1 <= c[0] <= c[1] <= 5):
+                E.append(f"Screen {n} (detail): 'count' is [n, of], e.g. [1, 3].")
+            if s.get("label") and _label_words(s["label"]) > 3:
+                E.append(f"Screen {n} (detail): the label '{s['label']}' has more than 3 words (AGENT.md 5.8).")
+        elif k == "chain":
+            st = s.get("steps") or []
+            if not 3 <= len(st) <= 5 or not all(isinstance(x, dict) and x.get("label") for x in st):
+                E.append(f"Screen {n} (chain): 3 to 5 'steps', each {{label, cue}}; the last one is the payoff.")
+            for x in st:
+                if isinstance(x, dict) and _label_words(x.get("label")) > 3:
+                    E.append(f"Screen {n} (chain): the step '{x.get('label')}' has more than 3 words (AGENT.md 5.8).")
+        elif k == "quote":
+            if not s.get("name") or not s.get("source"):
+                E.append(f"Screen {n} (quote): needs 'name' (who said it) and 'source' (where: interview and year), AGENT.md 5.7.")
+            if s.get("phrase") and _label_words(s["phrase"]) > 6:
+                E.append(f"Screen {n} (quote): the key phrase has more than 6 words; the rest belongs in the voice.")
+        elif k == "source":
+            L, R = s.get("left") or {}, s.get("right") or {}
+            if not (L.get("title") and R.get("title") and 2 <= len(L.get("beats") or []) <= 4 and 2 <= len(R.get("beats") or []) <= 4):
+                E.append(f"Screen {n} (source): 'left' and 'right' each need a 'title' and 2 to 4 'beats' of {{label, cue}}.")
+            nb = max(len(L.get("beats") or []), len(R.get("beats") or []))
+            for x in s.get("links") or []:
+                if not (isinstance(x, dict) and isinstance(x.get("from"), int) and isinstance(x.get("to"), int)
+                        and x["from"] < len(L.get("beats") or []) and x["to"] < len(R.get("beats") or [])):
+                    E.append(f"Screen {n} (source): each link is {{from: left beat number, to: right beat number, cue}}, counted from 0 (beats: {nb}).")
+                    break
+    return E
+
+
 def check_look(plan, series):
     """A plan in an approved look, against the standard for every reel (AGENT.md 5.10). Returns (errors, notes)."""
     E, W = [], []
@@ -209,6 +254,9 @@ def check_look(plan, series):
         for cue in (s.get("cues") or {}).values() if isinstance(s.get("cues"), dict) else []:
             if isinstance(cue, dict) and cue.get("word") and cue["word"] not in str(s.get("voice") or ""):
                 E.append(f"Screen {n}: a graphic waits for the word '{cue['word']}', which the voice line does not say.")
+
+    # the breakdown graphics added on 19 Nov (AGENT.md 5.8) and the film-week badge (5.7)
+    E += check_new_graphics(plan, screens)
 
     # voice: sound-on prompt and subtitles come with it (AGENT.md 5.3)
     if voiced:

@@ -141,7 +141,8 @@ def reels_today(day, plans_dir):
                "post_at": r.get("post_at"), "reserve": bool(r.get("reserve")), "manual": bool(r.get("manual")), "hook": r.get("hook"),
                "why": r.get("reason"), "seconds": r.get("seconds"), "score": r.get("virality"), "folder": r.get("link"),
                "video": f"https://drive.google.com/file/d/{r['drive_reel']}/view" if r.get("drive_reel") else None,
-               "posted": r.get("permalink"), "posted_at": r.get("posted_at"), "caption": (r.get("caption") or "")[:240]}
+               "posted": r.get("permalink"), "posted_at": r.get("posted_at"), "caption": (r.get("caption") or "")[:240],
+               "youtube": r.get("yt_url"), "youtube_note": r.get("yt_reason") if not r.get("yt_url") else None}
         p = plans_dir / f"{r['reel_id']}.json"
         if r.get("state") not in ("posted", "rehearsed") and p.exists():
             row["words"] = _safe(lambda: words(json.loads(p.read_text(encoding="utf-8"))), {})
@@ -424,7 +425,8 @@ def text(P):
         when = r.get("slot") or ("reserve" if r.get("reserve") else "-")
         link = r.get("posted") or r.get("video") or ""
         L.append(f"{r['n']}. {when} · {str(r.get('state')).upper()}{' (waits for post now)' if r.get('manual') and r.get('state') == 'ready' else ''} · {r['id']} · {r.get('series')} · \"{r.get('hook') or ''}\""
-                 + (f" · {link}" if link else "") + (f" · note: {r['why'][:90]}" if r.get("why") else ""))
+                 + (f" · {link}" if link else "") + (f" · YouTube: {r['youtube']}" if r.get("youtube") else "")
+                 + (f" · note: {r['why'][:90]}" if r.get("why") else "") + (f" · {r['youtube_note'][:80]}" if r.get("youtube_note") else ""))
     if not reels:
         L.append("No reels made yet today.")
     L += ["", "## NEXT RUNS (IST)"] + [f"- {_hm(s['at'])} · {s['what']}" for s in P.get("schedule", [])[:9]]

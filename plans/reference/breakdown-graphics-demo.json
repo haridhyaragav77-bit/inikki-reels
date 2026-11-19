@@ -1,0 +1,432 @@
+{
+ "id": "2026-11-19-breakdown-graphics-demo",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "forest",
+ "part": [
+  1,
+  3
+ ],
+ "length_s": [
+  20,
+  45
+ ],
+ "length_reason": "A test reel for the breakdown graphics added on 19 Nov (detail, source, chain, quote, part badge); music only, so no voice credits are spent.",
+ "lead": {
+  "topic": "Vikram Vedha (2017): how the screenplay borrows the Vikramadithyan-Vetal tale",
+  "angle": "hidden_details",
+  "insight": "Vikram Vedha is a frame story: the hunt for Vedha holds three smaller stories, each ending in a question like the Vetal's. Each answer tests Vikram and breaks his black-and-white view; the film leaves the last question to us.",
+  "why_now": "Cult classic: still quoted, rewatched and remade (Hindi, 2022).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vikram_Vedha (plot; 'inspired from Vikramaditya-Vetala tales', Sify)"
+  ],
+  "technique": "Frame story (story within a story), borrowed from the Vikramadithyan-Vetal tales"
+ },
+ "worth_it": {
+  "learn": "The technique has a name, frame story, and this film borrows it from the Vikram-Vetal tale.",
+  "stop": "A villain who wins an interrogation with stories, not guns.",
+  "why_now": "Cult classic people still argue about.",
+  "send_to": "The friend who still says Vikram was right.",
+  "best_angle": "Yes: the story structure is what people felt but never named."
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 2.0,
+    "screen": 0,
+    "mood": "intrigue"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxresdefault.jpg",
+   "crop": [
+    0.1,
+    0.075,
+    0.8,
+    0.795
+   ]
+  },
+  "interrogation": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres1.jpg",
+   "crop": [
+    0.06,
+    0.05,
+    0.94,
+    0.9
+   ]
+  },
+  "pulli": {
+   "src": "engine/.cache/stills/vikram_vedha/eLucCWmf6V4_maxres3.jpg",
+   "crop": [
+    0.0,
+    0.08,
+    0.86,
+    0.9
+   ]
+  },
+  "chandra": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres2.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.88
+   ]
+  },
+  "vikram_gun": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.88
+   ]
+  },
+  "faces": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxresdefault.jpg",
+   "crop": [
+    0.42,
+    0.0,
+    0.58,
+    0.86
+   ]
+  },
+  "surrender": {
+   "src": "engine/.cache/stills/vikram_vedha/1sVr-uWZPjE_maxres2.jpg",
+   "crop": [
+    0.06,
+    0.06,
+    0.94,
+    0.88
+   ]
+  },
+  "gun_full": {
+   "src": "engine/.cache/stills/vikram_vedha/4AYAcFcFu84_maxres1.jpg",
+   "crop": [
+    0.0,
+    0.1,
+    0.86,
+    0.8
+   ]
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "title",
+   "film": "VIKRAM VEDHA",
+   "type": "HIDDEN DETAILS",
+   "fy": 0.5,
+   "slam_at": 0.12,
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    }
+   ],
+   "dur": 3.0
+  },
+  {
+   "kind": "detail",
+   "in": "zoom",
+   "image": "interrogation",
+   "spot": {
+    "x": 0.62,
+    "y": 0.42
+   },
+   "zoom": 2.4,
+   "cue": {
+    "at": 1.0
+   },
+   "label": "STORY, NOT GUN",
+   "label_cue": {
+    "at": 1.8
+   },
+   "count": [
+    1,
+    3
+   ],
+   "sfx": [
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "dur": 5.0
+  },
+  {
+   "kind": "source",
+   "in": "whip",
+   "heading": "WHERE IT COMES FROM",
+   "left": {
+    "title": "VIKRAM–VETAL",
+    "beats": [
+     {
+      "label": "A STORY",
+      "cue": {
+       "at": 0.6
+      }
+     },
+     {
+      "label": "A QUESTION",
+      "cue": {
+       "at": 0.9
+      }
+     },
+     {
+      "label": "AN ESCAPE",
+      "cue": {
+       "at": 1.2
+      }
+     }
+    ]
+   },
+   "right": {
+    "title": "VIKRAM VEDHA",
+    "beats": [
+     {
+      "label": "VEDHA'S STORY",
+      "cue": {
+       "at": 1.5
+      }
+     },
+     {
+      "label": "HIS QUESTION",
+      "cue": {
+       "at": 1.8
+      }
+     },
+     {
+      "label": "HE WALKS OUT",
+      "cue": {
+       "at": 2.1
+      }
+     }
+    ]
+   },
+   "links": [
+    {
+     "from": 0,
+     "to": 0,
+     "cue": {
+      "at": 2.6
+     }
+    },
+    {
+     "from": 1,
+     "to": 1,
+     "cue": {
+      "at": 3.3
+     }
+    },
+    {
+     "from": 2,
+     "to": 2,
+     "cue": {
+      "at": 4.0
+     }
+    }
+   ],
+   "slam_text": "SAME SHAPE",
+   "slam_cue": {
+    "at": 4.8
+   },
+   "sfx": [
+    {
+     "at": 2.6,
+     "type": "whoosh"
+    },
+    {
+     "at": 4.8,
+     "type": "impact"
+    }
+   ],
+   "dur": 6.5
+  },
+  {
+   "kind": "chain",
+   "in": "push",
+   "heading": "HOW ONE STORY WINS",
+   "steps": [
+    {
+     "label": "ONE STORY",
+     "cue": {
+      "at": 0.5
+     }
+    },
+    {
+     "label": "ONE QUESTION",
+     "cue": {
+      "at": 1.5
+     }
+    },
+    {
+     "label": "VIKRAM DOUBTS",
+     "cue": {
+      "at": 2.5
+     }
+    },
+    {
+     "label": "HE CHANGES",
+     "cue": {
+      "at": 3.6
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.9,
+     "type": "pop"
+    },
+    {
+     "at": 1.9,
+     "type": "pop"
+    },
+    {
+     "at": 2.9,
+     "type": "pop"
+    },
+    {
+     "at": 4.0,
+     "type": "impact"
+    }
+   ],
+   "dur": 6.0
+  },
+  {
+   "kind": "technique",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "FRAME STORY",
+   "definition": "A STORY THAT HOLDS STORIES",
+   "outer_label": "VIKRAM vs VEDHA",
+   "inner": [
+    "STORY 1",
+    "STORY 2",
+    "STORY 3"
+   ],
+   "tail": 0.6,
+   "sfx": [
+    {
+     "at": {
+      "word": "ஃப்ரேம்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "பெரிய"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "சின்ன"
+     },
+     "type": "pop"
+    },
+    {
+     "at": {
+      "word": "சின்ன",
+      "off": 0.3
+     },
+     "type": "pop"
+    },
+    {
+     "at": {
+      "word": "சின்ன",
+      "off": 0.6
+     },
+     "type": "pop"
+    }
+   ],
+   "dur": 4.6,
+   "cues": {
+    "name": {
+     "at": 0.5
+    },
+    "outer": {
+     "at": 1.6
+    },
+    "inner": {
+     "at": 2.6
+    }
+   }
+  },
+  {
+   "kind": "quote",
+   "in": "flash",
+   "name": "PUSHKAR–GAYATHRI",
+   "role": "DIRECTORS",
+   "phrase": "VIKRAM–VETAL, RETOLD",
+   "source": "SIFY · 2017",
+   "cues": {
+    "name": {
+     "at": 0.6
+    },
+    "phrase": {
+     "at": 1.8
+    }
+   },
+   "sfx": [
+    {
+     "at": 1.8,
+     "type": "stamp"
+    }
+   ],
+   "dur": 5.0
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "echo": "VIKRAM VEDHA · HIDDEN DETAILS",
+   "question": [
+    {
+     "text": "ARREST HIM",
+     "size": 130
+    },
+    {
+     "text": "OR LET HIM GO?",
+     "size": 120,
+     "color": "#F8C868"
+    }
+   ],
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.6,
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: FRAME STORY",
+   "dur": 4.0
+  }
+ ],
+ "package": {
+  "caption": [
+   "Test reel for the new breakdown graphics (not posted)."
+  ],
+  "hashtags": [
+   "#TamilCinema",
+   "#VikramVedha",
+   "#iNiKKiBreakdown"
+  ],
+  "cover": "VIKRAM VEDHA · HIDDEN DETAILS",
+  "slot": "20:00"
+ },
+ "drive_folder": "reference-reels",
+ "subtitles": false,
+ "captions": "tamil_tanglish_subtitles",
+ "voice": {
+  "on": false
+ }
+}

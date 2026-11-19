@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — Breakdowns lead with a detail; channel study; YouTube Shorts
+Harish asked to learn from Expert FX and World Filmology (Tamil, audio only) at no cost. Breakdowns now hook on one detail or a true story, with the technique as the why; new angles (hidden details, behind the scenes), film weeks (`part`), Hollywood films, 60-90 s (AGENT.md 5.7, 5.9). Four new Stage screens `detail`, `chain`, `quote`, `source` and the PART badge (`templates/stage/template.js`, reference `plans/reference/breakdown-graphics-demo.json`). Channel study: `engine/channels.py` (YouTube's free public feed, optional `YOUTUBE_API_KEY`) and `engine/study.py` (Whisper on GitHub's runner; audio from Drive `study-audio/`, a plain try, or the laptop helper's `--study`), workflow `study.yml` (AGENT.md 10.3). YouTube Shorts after Instagram in each Post run: `engine/youtube.py`, secret `YOUTUBE_OAUTH_REFRESH_TOKEN` from `tools/drive_signin.py --youtube`, private until Google's audit (AGENT.md 5.15). Whisper was not run in the Workshop (its model download is blocked here); the first `study` run is the test.
+
 ## 19 Nov 2026 — Control Room follows the Drive move; notices, digest, news, insights
 The page read the old Drive's status file (stopped on 18 Nov), so runs, ✕ and sends looked broken. It now finds the newest `panel.txt` and sends to the inbox the panel names (Harish connects Claude's Google Drive to the new account once). Today: notices with a working ✕, "Today in short" digest, "News now" with check times; insights that change the day plan have Apply. Chennaiist is tier 1 (counts as trusted for breaking news). `control-room/page.template.html`, `engine/panel.py`, `engine/insights.py`, `engine/watch.py`, `sources.yaml`.
 
