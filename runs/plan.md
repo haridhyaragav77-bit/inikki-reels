@@ -19,6 +19,7 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
 ## The work
 Wear the hats in order (the cards in `team/`): Researcher → Script Writer → Content Specialist → Marketing Expert →
 Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with skill `plan-reel` and skill `score-reel`.
+- Movie updates for slots from 17:00 are drafts: the Refresh run rewrites them with the day's fresh news.
 - Plans already in `plans/$TODAY/` with `"booked": true` (approved by Harish in the Workshop) keep their slots: plan the
   rest of the lineup around them, and do not use their films or sources again today.
 - Every reel follows the standard (AGENT.md 5.10) and copies its series' reference plan (`plans/reference/`).

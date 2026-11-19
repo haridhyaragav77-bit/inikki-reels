@@ -396,6 +396,12 @@ def main():
     result = "nothing due"
     if a.now:
         r = next((x for x in day.reels() if x["reel_id"] == a.now.strip()), None)
+        b = None if r else next((x for x in bank.reels("ready") if x["reel_id"] == a.now.strip() and x.get("drive_reel")), None)
+        if b and ctl.phase == "live":                    # a bank reel posted now: it joins today and leaves the bank
+            day.upsert(b["reel_id"], **{k: v for k, v in b.items() if k not in ("reel_id", "state", "updated", "reason")},
+                       post_at=status.now().isoformat(timespec="seconds"), state="ready", reason="From the bank, posted now (Harish).")
+            bank.upsert(b["reel_id"], state="used", used_for="post now", used_at=status.now().isoformat(timespec="seconds"))
+            r = day.get(b["reel_id"])
         if not r or not r.get("drive_reel"):
             result = f"{a.now}: not found among today's made reels"
         elif ctl.phase != "live":

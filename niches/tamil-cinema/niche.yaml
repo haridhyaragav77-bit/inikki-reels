@@ -7,7 +7,7 @@ competitors:                              # 5-10 pages; Researcher proposes, Har
   # Rotation: no two breakdowns in a row draw on the same source (lead.inspired_by; plan check).
   - { name: "Expert FX", platform: youtube, handle: "@expertfx", channel_id: UCW3dmQDxU4YpDuMjlBTlchQ, study: true, priority: 1, why: "film detail breakdowns, Tamil and Hollywood" }
   - { name: "Kadhai Club", platform: instagram, handle: "kadhaiclub", study: true, priority: 1, why: "Tamil film stories and details (Harish, 19 Nov: a primary source)" }
-  - { name: "Level Up Learning Filmmaking", platform: instagram, handle: "", study: true, priority: 2, why: "filmmaking craft lessons", note: "Harish to confirm the handle" }
+  - { name: "Level Up Learning Filmmaking", platform: instagram, handle: "levelup_filmmaking", study: true, priority: 2, why: "filmmaking craft lessons" }
   - { name: "World Filmology (Instagram)", platform: instagram, handle: "worldfilmology.in", study: true, priority: 3, why: "behind-the-scenes stories, the Instagram page" }
   - { name: "World Filmology", platform: youtube, handle: "@worldfilmology", channel_id: UC9gcLdRWcqrj8tz9AaLkLRw, study: true, priority: 3, why: "behind-the-scenes stories from interviews" }
   # The wide net (19 Nov): read for topics and facts only (titles and the creator's description; study: titles, no audio)

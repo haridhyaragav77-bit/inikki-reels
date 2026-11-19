@@ -363,7 +363,12 @@ def build(drive, run, date):
             todo.append(f"Plan {base - len(main_plans)} reel(s) for {date} at the slots below{extra}. "
                         f"Save each to plans/{date}/<reel_id>.json and check it with: python -m engine.plancheck <file>.")
     elif run == "refresh":
-        todo.append("Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.")
+        todo.append("Breaking check: the top stories are below.")
+        ev = sorted(r[0] for r in slots if r[1] == "movie-updates" and str(r[0]) >= str((ctl.settings.get("fresh_updates") or {}).get("evening_from", "17:00")))
+        if ev and ctl.on("fresh_updates"):
+            todo.append(f"Fresh evening updates (Harish, 19 Nov): rewrite the movie-updates plans for {', '.join(ev)} in plans/{date}/ with news from "
+                        "today (since the morning run): new films, new numbers, new announcements, checked in 2 sources, variety rule. "
+                        "Keep a morning plan only if it is still the day's strongest story. Same file name per slot, so Make renders the new one.")
         need = max(0, bank_target - len(bank.reels("ready")))
         todo.append(f"Breakdown bank: {len(bank.reels('ready'))} of {bank_target} ready." + (" Add 1 breakdown plan to plans/bank/." if need else " Full."))
         todo.append(f"Feedback: {len(feedback)} new item(s) in data/control/feedback.jsonl." if feedback else "Feedback: nothing new.")
