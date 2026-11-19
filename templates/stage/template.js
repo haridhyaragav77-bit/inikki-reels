@@ -676,6 +676,223 @@ const KINDS = {
     };
   },
 
+  // ------------------------------------------------------------ BOARD (19 Nov): an evidence board. Clue cards are pinned one
+  // by one and red string runs from each to one face in the middle (heading, center: {label, image, fx, fy}, clues: 3-5 of
+  // {label, sub, image, cue}, slam_text, slam_cue). For "it all leads to one man", setup and payoff, hidden links.
+  board(env, s, i, T) {
+    const cl = s.clues, n = cl.length, cues = cl.map((c, k) => cue(env, i, c.cue, .5 + k * .9) - T.start);
+    const cs = s.slam_cue ? cue(env, i, s.slam_cue) - T.start : cues[n - 1] + 1.4, X0 = 60, Y0 = 380, BW = 960, BH = 900;
+    const cx = CX + 50, cy = 830, slots = [[-300, -300], [300, -300], [-300, 290], [300, 290], [0, -360]].slice(0, n);
+    const specks = (() => { const r = rng(77), a = []; for (let k = 0; k < 420; k++) a.push([X0 + r() * BW, Y0 + r() * BH, 1 + r() * 3, r()]); return a; })();
+    const card = (ctx, x, y, w, h, img, label, sub, rot, sc, col, o = {}) => {
+      ctx.save(); ctx.translate(x, y); ctx.rotate(rot); ctx.scale(sc, sc);
+      ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 26; ctx.shadowOffsetY = 14; ctx.fillStyle = '#F4EFE4'; ctx.fillRect(-w / 2, -h / 2, w, h); ctx.shadowColor = 'transparent';
+      const ih = img ? h - 74 : 0;
+      if (img) { ctx.save(); ctx.beginPath(); ctx.rect(-w / 2 + 12, -h / 2 + 12, w - 24, ih - 12); ctx.clip(); cover(ctx, img, -w / 2 + 12, -h / 2 + 12, w - 24, ih - 12, { zoom: 1.1, fx: o.fx ?? .5, fy: o.fy ?? .35 }); ctx.restore(); }
+      const ls = fitSize(env, ctx, label, 'Anton', 400, w - 30, img ? 40 : 52, 22);
+      txt(ctx, label, 0, img ? h / 2 - 26 - (sub ? 12 : 0) : (sub ? -4 : ls * .36), { size: ls, family: 'Anton', weight: 400, color: '#1B1B1B' });
+      if (sub) txt(ctx, sub, 0, img ? h / 2 - 12 : 34, { size: 22, weight: 800, color: '#7A2B22', ls: .1 });
+      ctx.beginPath(); ctx.arc(0, -h / 2 + 4, 11, 0, 7); ctx.fillStyle = col; ctx.fill(); ctx.beginPath(); ctx.arc(-3, -h / 2, 4, 0, 7); ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.fill();
+      ctx.restore();
+    };
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 320, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 74, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      const push = 1 + .05 * ep(lt, 0, T.end - T.start, E.linear) + .05 * ep(lt, cs, cs + .6, E.outBack);
+      const [sx, sy] = shake(lt, cues.map(c => c + .3).concat([cs]), 7);
+      ctx.save(); ctx.translate(cx + sx, cy + sy); ctx.scale(push, push); ctx.translate(-cx, -cy);
+      ctx.globalAlpha = ep(lt, 0, .4);                       // the cork board in its wooden frame
+      rrect(ctx, X0 - 16, Y0 - 16, BW + 32, BH + 32, 18); ctx.fillStyle = '#3A2414'; ctx.fill();
+      rrect(ctx, X0, Y0, BW, BH, 8); ctx.fillStyle = '#7B5532'; ctx.fill();
+      specks.forEach(([x, y, r, a]) => { ctx.fillStyle = a > .5 ? 'rgba(40,22,10,.35)' : 'rgba(200,160,110,.25)'; ctx.fillRect(x, y, r, r); });
+      radial(ctx, cx, cy, 700, [[0, 'rgba(255,220,160,.18)'], [1, 'rgba(0,0,0,.35)']], [X0, Y0, BW, BH]);
+      ctx.globalAlpha = 1;
+      const pins = slots.map(([dx, dy]) => [cx + dx, cy + dy - 85]);
+      cl.forEach((c, k) => {                                // red string first, so the cards sit on top
+        const d = lt - cues[k] - .35, p = ep(d, 0, .55, E.inOutCubic); if (p <= 0) return;
+        const [ax, ay] = pins[k], bx = cx, by = cy - 175, ex = lerp(ax, bx, p), ey = lerp(ay, by, p);
+        ctx.save(); ctx.strokeStyle = '#E0281E'; ctx.lineWidth = 5; ctx.shadowColor = 'rgba(255,60,40,.8)'; ctx.shadowBlur = lt > cs ? 22 + 16 * beatPulse(env, t) : 8;
+        ctx.beginPath(); ctx.moveTo(ax, ay); ctx.quadraticCurveTo((ax + ex) / 2, (ay + ey) / 2 + 40 * p, ex, ey); ctx.stroke(); ctx.restore();
+      });
+      const cimg = s.center && s.center.image ? env.img[s.center.image] : null, cin = ep(lt, .15, .7, E.outBack);
+      card(ctx, cx, cy, 300, 360, cimg, (s.center || {}).label || '?', (s.center || {}).sub, -.02 + Math.sin(lt * .7) * .01, cin, '#E0281E', s.center || {});
+      cl.forEach((c, k) => {
+        const d = lt - cues[k]; if (d < 0) return;
+        const p = ep(d, 0, .4, E.outBack), [dx, dy] = slots[k];
+        card(ctx, cx + dx, cy + dy - (1 - p) * 120, 240, c.image ? 250 : 160, c.image ? env.img[c.image] : null, c.label, c.sub, (k % 2 ? .06 : -.06) + Math.sin(lt * .8 + k) * .008, lerp(1.35, 1, p), '#F2C230', c);
+        ring(ctx, cx + dx, cy + dy - 85, d - .3, { color: '#F2C230', r0: 10, r1: 160, w: 6, d: .45 });
+      });
+      ctx.restore();
+      if (s.slam_text && lt > cs) {                          // a red stamp across the face in the middle
+        const p = ep(lt, cs, cs + .3, E.outBack);
+        ctx.save(); ctx.translate(cx, cy + 150); ctx.rotate(-.12); ctx.scale(lerp(2.2, 1, p), lerp(2.2, 1, p)); ctx.globalAlpha = clamp(p * 2);
+        const ss = fitSize(env, ctx, s.slam_text, 'Anton', 400, 620, 96, 44); setFont(ctx, ss, 'Anton', 400, .04);
+        const w = ctx.measureText(s.slam_text).width + 60; ctx.lineWidth = 8; ctx.strokeStyle = '#E0281E'; rrect(ctx, -w / 2, -ss * .85, w, ss * 1.3, 12); ctx.stroke();
+        txt(ctx, s.slam_text, 0, ss * .2, { size: ss, family: 'Anton', weight: 400, color: '#E0281E', ls: .04 });
+        ctx.restore(); ctx.globalAlpha = 1;
+      }
+    };
+  },
+
+  // ------------------------------------------------------------ CLIMB (19 Nov): a staircase in the city; a figure climbs it
+  // heavily (cold light, rain) or dances down it (warm light, sparks). For a character's arc told by direction (heading,
+  // phases: 1-2 of {dir: up|down, label, sub, cue}, steps, slam_text, slam_cue)
+  climb(env, s, i, T) {
+    const ph = s.phases, pc = ph.map((p, k) => cue(env, i, p.cue, .3 + k * 3) - T.start), N = s.steps || 10;
+    const cs = s.slam_cue ? cue(env, i, s.slam_cue) - T.start : 1e9, B = [130, 1190], Tp = [880, 470];
+    const city = (() => { const r = rng(31), a = []; let x = 0; while (x < W) { const w = 70 + r() * 110, h = 260 + r() * 520; a.push([x, w, h, Array.from({ length: 30 }, () => r())]); x += w + 6; } return a; })();
+    const rain = (() => { const r = rng(9), a = []; for (let k = 0; k < 140; k++) a.push([r() * W, r() * H, .6 + r() * .8]); return a; })();
+    const stepPos = f => [lerp(B[0], Tp[0], f), lerp(B[1], Tp[1], f)];
+    const figure = (ctx, x, y, mode, tt, col) => {          // a simple silhouette with a walk or dance cycle
+      const up = mode === 'up', sw = Math.sin(tt * (up ? 7 : 12)), lean = up ? .38 : -.12 + .1 * Math.sin(tt * 6);
+      ctx.save(); ctx.translate(x, y); ctx.scale(1.7, 1.7); ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 15;
+      ctx.shadowColor = up ? 'rgba(120,200,220,.5)' : 'rgba(255,90,40,.9)'; ctx.shadowBlur = up ? 10 : 30;
+      const hipY = -95 - (up ? 0 : Math.abs(sw) * 12), sh = [Math.sin(lean) * 85, hipY - Math.cos(lean) * 85];
+      ctx.beginPath(); ctx.moveTo(-14 * sw, 0); ctx.lineTo(0, hipY); ctx.lineTo(14 * sw, 0); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, hipY); ctx.lineTo(sh[0], sh[1]); ctx.stroke();
+      ctx.beginPath(); ctx.arc(sh[0] + Math.sin(lean) * 26, sh[1] - Math.cos(lean) * 26 + (up ? 10 : 0), 22, 0, 7); ctx.fill();
+      ctx.lineWidth = 12;
+      if (up) { ctx.beginPath(); ctx.moveTo(sh[0], sh[1]); ctx.lineTo(sh[0] + 10 + 8 * sw, sh[1] + 70); ctx.moveTo(sh[0], sh[1]); ctx.lineTo(sh[0] - 4 - 8 * sw, sh[1] + 72); ctx.stroke(); }
+      else { const a1 = -2.2 + .6 * sw, a2 = -.9 - .6 * sw; ctx.beginPath(); ctx.moveTo(sh[0], sh[1]); ctx.lineTo(sh[0] + Math.cos(a1) * 72, sh[1] + Math.sin(a1) * 72); ctx.moveTo(sh[0], sh[1]); ctx.lineTo(sh[0] + Math.cos(a2) * 72, sh[1] + Math.sin(a2) * 72); ctx.stroke(); }
+      ctx.restore();
+    };
+    return (ctx, lt, t) => {
+      const cur = ph.reduce((a, p, k) => (lt >= pc[k] ? k : a), 0), P = ph[cur], up = P.dir !== 'down';
+      const warm = ep(lt, pc[cur] - .2, pc[cur] + .6) * (up ? 0 : 1) + (up ? 0 : 0);
+      fill(ctx, INK);
+      radial(ctx, W / 2, 300, 1500, [[0, up ? 'rgba(90,140,160,.28)' : `rgba(255,${110 - 40 * warm | 0},50,${.18 + .2 * warm})`], [1, 'rgba(0,0,0,0)']]);
+      city.forEach(([x, w, h, win]) => {                    // the city behind, windows lit
+        ctx.fillStyle = '#0D1117'; ctx.fillRect(x, 1250 - h, w, h);
+        win.forEach((r, k) => { if (r > .62) { ctx.fillStyle = up ? `rgba(160,200,210,${.15 + .2 * r})` : `rgba(255,190,110,${.2 + .3 * r})`; ctx.fillRect(x + 12 + (k % 3) * (w - 30) / 3, 1250 - h + 24 + Math.floor(k / 3) * 46, 14, 20); } });
+      });
+      const steps = N, sw = (Tp[0] - B[0]) / steps, shh = (B[1] - Tp[1]) / steps;
+      for (let k = 0; k < steps; k++) {                     // the stairs: treads with a lit edge, and a rail
+        const x = B[0] + k * sw, y = B[1] - (k + 1) * shh;
+        ctx.fillStyle = '#20262E'; ctx.fillRect(x, y, W - x + 40, shh + 2);
+        ctx.fillStyle = up ? 'rgba(150,200,215,.55)' : 'rgba(255,150,80,.75)'; ctx.fillRect(x, y, sw + 4, 5);
+      }
+      ctx.strokeStyle = up ? 'rgba(170,210,220,.5)' : 'rgba(255,170,100,.7)'; ctx.lineWidth = 6;
+      ctx.beginPath(); ctx.moveTo(B[0] - 20, B[1] - 170); ctx.lineTo(Tp[0] - 20, Tp[1] - 170); ctx.stroke();
+      for (let k = 0; k <= steps; k += 2) { const [x, y] = stepPos(k / steps); ctx.beginPath(); ctx.moveTo(x - 20, y - 170 + 0); ctx.lineTo(x - 20, y); ctx.stroke(); }
+      // the walk: slow and heavy going up, quick and bouncing coming down
+      const d0 = pc[cur], d1 = cur + 1 < ph.length ? pc[cur + 1] : T.end - T.start, dur = Math.max(1, d1 - d0 - .2);
+      let f = ep(lt, d0, d0 + dur * (up ? 1 : .9), up ? E.inOutQuad : E.linear); f = up ? f : 1 - f;
+      if (lt < pc[0]) f = up ? 0 : 1;
+      const stepF = Math.floor(f * steps) / steps, sub = f * steps % 1, [fx, fy] = stepPos(stepF + sub / steps);
+      figure(ctx, fx + 30, fy - (up ? 0 : Math.abs(Math.sin(lt * 12)) * 18), up ? 'up' : 'down', lt, up ? '#7E97A3' : '#E8432E');
+      if (up && s.rain !== false) {                         // rain on the climb (rain: false to turn off)
+        ctx.save(); ctx.strokeStyle = 'rgba(180,210,230,.28)'; ctx.lineWidth = 2;
+        rain.forEach(([x, y, v]) => { const yy = (y + lt * 900 * v) % H; ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(x - 8, yy + 34); ctx.stroke(); }); ctx.restore();
+      } else dust(env, ctx, t, { n: 60, color: 'rgba(255,170,90,1)', alpha: .55, min: 3, max: 9, rise: 60, seed: 5 });
+      // the big arrow beside the stairs: which way the story goes
+      const ax = 1000, ay0 = up ? 1100 : 520, ay1 = up ? 560 : 1060, ap = ep(lt, d0 + .2, d0 + 1, E.inOutCubic);
+      ctx.save(); ctx.strokeStyle = up ? TEAL : '#FF5A3C'; ctx.fillStyle = ctx.strokeStyle; ctx.lineWidth = 14; ctx.lineCap = 'round'; ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 24;
+      const ey = lerp(ay0, ay1, ap); ctx.beginPath(); ctx.moveTo(ax, ay0); ctx.lineTo(ax, ey); ctx.stroke();
+      if (ap > .05) { const dir = up ? -1 : 1; ctx.beginPath(); ctx.moveTo(ax - 30, ey - dir * 34); ctx.lineTo(ax, ey + dir * 6); ctx.lineTo(ax + 30, ey - dir * 34); ctx.closePath(); ctx.fill(); }
+      ctx.restore();
+      if (s.heading) wordsIn(ctx, s.heading, CX, 300, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 70, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      const lab = P.label, ls = fitSize(env, ctx, lab, 'Anton', 400, 560, 110, 50);
+      slam(ctx, lab, 330, 420, lt - pc[cur] - .1, { size: ls, family: 'Anton', weight: 400, color: up ? '#CFE3EA' : '#FF5A3C', glow: up ? rgba(TEAL, .5) : 'rgba(255,90,60,.7)', glowBlur: 40 });
+      if (P.sub) pill(ctx, P.sub, 330, 490, lt - pc[cur] - .45, { size: 30, bg: up ? 'rgba(207,227,234,.92)' : '#FF5A3C', color: INK, ls: .1 });
+      if (s.slam_text) { slam(ctx, s.slam_text, CX, 1290, lt - cs, { size: fitSize(env, ctx, s.slam_text, 'Anton', 400, MAXW, 104, 50), family: 'Anton', weight: 400, color: '#fff', glow: 'rgba(255,90,60,.7)', glowBlur: 40, stroke: INK, strokeW: 10 }); flash(ctx, lt, cs, { alpha: .25 }); }
+    };
+  },
+
+  // ------------------------------------------------------------ TRACK (19 Nov): a race circuit or a route draws itself; a car
+  // laps it with a light trail while a speed counter climbs; markers pop on their word (heading, shape: circuit | route,
+  // points: [[x, y] 0-1] for your own route, lap seconds, start_cue, speed: {from, to, unit, cue}, markers: [{at 0-1, label, cue}])
+  track(env, s, i, T) {
+    const SH = { circuit: [[.18, .82], [.1, .62], [.16, .42], [.32, .36], [.42, .2], [.6, .14], [.86, .2], [.9, .38], [.74, .48], [.82, .66], [.66, .86], [.4, .9]],
+                 route: [[.12, .88], [.3, .7], [.22, .5], [.45, .42], [.58, .22], [.86, .12]] };
+    const raw = s.points || SH[s.shape || 'circuit'], closed = !s.points && (s.shape || 'circuit') === 'circuit';
+    const bx = 110, by = 470, bw = 760, bh = 700, pts = raw.map(([x, y]) => [bx + x * bw, by + y * bh]);
+    const path = (() => {                                   // smooth the corners (Catmull-Rom), then measure the length
+      const P = closed ? [pts[pts.length - 1], ...pts, pts[0], pts[1]] : [pts[0], ...pts, pts[pts.length - 1]], out = [];
+      for (let k = 1; k < P.length - 2; k++) for (let u = 0; u < 1; u += .05) {
+        const [p0, p1, p2, p3] = [P[k - 1], P[k], P[k + 1], P[k + 2]], u2 = u * u, u3 = u2 * u;
+        out.push([0, 1].map(j => .5 * (2 * p1[j] + (-p0[j] + p2[j]) * u + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * u2 + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * u3)));
+      }
+      if (closed) out.push(out[0]);
+      const L = [0]; for (let k = 1; k < out.length; k++) L.push(L[k - 1] + Math.hypot(out[k][0] - out[k - 1][0], out[k][1] - out[k - 1][1]));
+      return { pts: out, L, total: L[L.length - 1] };
+    })();
+    const at = f => { f = ((f % 1) + 1) % 1; const d = f * path.total; let k = path.L.findIndex(v => v >= d); k = Math.max(1, k);
+      const a = path.pts[k - 1], b = path.pts[k], u = (d - path.L[k - 1]) / Math.max(1e-6, path.L[k] - path.L[k - 1]);
+      return [lerp(a[0], b[0], u), lerp(a[1], b[1], u), Math.atan2(b[1] - a[1], b[0] - a[0])]; };
+    const st = cue(env, i, s.start_cue, .9) - T.start, lap = s.lap || 4.5, mk = (s.markers || []).map((m, k) => ({ ...m, c: cue(env, i, m.cue, 1.5 + k) - T.start }));
+    const sp = s.speed, spc = sp ? cue(env, i, sp.cue, st) - T.start : 0;
+    const line = (ctx, upto, w, col) => { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath();
+      const n = Math.max(2, Math.floor(path.pts.length * upto)); path.pts.slice(0, n).forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); };
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 320, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 74, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      const dr = ep(lt, .1, 1.3, E.inOutCubic);
+      ctx.save(); ctx.shadowColor = GOLD; ctx.shadowBlur = 30; line(ctx, dr, 58, rgba(GOLD, .35)); ctx.restore();
+      line(ctx, dr, 46, '#1A1D22'); ctx.setLineDash([18, 16]); line(ctx, dr, 3, 'rgba(255,255,255,.35)'); ctx.setLineDash([]);
+      if (dr >= 1) {                                         // start line, chequered
+        const [x, y, a] = at(0); ctx.save(); ctx.translate(x, y); ctx.rotate(a + Math.PI / 2);
+        for (let r = 0; r < 2; r++) for (let c = -3; c < 3; c++) { ctx.fillStyle = (r + c) % 2 ? '#fff' : '#111'; ctx.fillRect(c * 8, r * 8 - 8, 8, 8); } ctx.restore();
+      }
+      mk.forEach(m => {
+        const d = lt - m.c; if (d < 0) return; const [x, y] = at(m.at);
+        ring(ctx, x, y, d, { color: TEAL, r0: 10, r1: 150, w: 7, d: .5 });
+        ctx.beginPath(); ctx.arc(x, y, 14, 0, 7); ctx.fillStyle = TEAL; ctx.fill();
+        pill(ctx, m.label, clamp(x, 210, 770), y + (y > by + bh / 2 ? -70 : 70), d - .1, { size: 32, bg: TEAL, color: INK, ls: .08 });
+      });
+      if (lt > st) {                                         // the car: a light trail, then the car itself facing its way
+        const f = (lt - st) / lap, sp2 = Math.min(1, (lt - st) / 1.2);
+        for (let k = 14; k >= 1; k--) { const [x, y] = at(f - k * .006 * sp2); ctx.beginPath(); ctx.arc(x, y, 18 - k * .9, 0, 7); ctx.fillStyle = rgba(GOLD, .5 * (1 - k / 15)); ctx.fill(); }
+        const [x, y, a] = at(f); ctx.save(); ctx.translate(x, y); ctx.rotate(a); ctx.scale(1.8, 1.8); ctx.shadowColor = GOLD; ctx.shadowBlur = 24;
+        ctx.fillStyle = '#111'; [[-18, -16], [-18, 10], [16, -16], [16, 10]].forEach(([wx, wy]) => ctx.fillRect(wx, wy, 13, 7));
+        ctx.fillStyle = GOLD; rrect(ctx, -28, -7, 58, 14, 7); ctx.fill(); ctx.fillRect(28, -14, 6, 28); ctx.fillRect(-32, -12, 6, 24);
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(2, 0, 5, 0, 7); ctx.fill(); ctx.restore();
+      }
+      if (sp) {
+        const v = Math.round(lerp(sp.from || 0, sp.to, ep(lt, spc, spc + 2.2, E.outCubic))), p = ep(lt, spc - .2, spc + .2);
+        if (p > 0) { txt(ctx, String(v), 700, 1300, { size: 150, family: 'Anton', weight: 400, color: '#fff', glow: rgba(GOLD, .6), glowBlur: 30, alpha: p, align: 'right' });
+          txt(ctx, sp.unit || 'KM/H', 715, 1300, { size: 46, family: 'Anton', weight: 400, color: GOLD, alpha: p, align: 'left' }); }
+      }
+    };
+  },
+
+  // ------------------------------------------------------------ LAYERS (19 Nov): what is under the surface. Slabs drop into a
+  // stack one by one, then lift apart with a label each (heading, layers: 2-4 of {label, sub, cue}, bottom first; split_cue,
+  // slam_text, slam_cue). For a car under its bodywork, a set built in layers, sound layers, a story in layers.
+  layers(env, s, i, T) {
+    const ly = s.layers, n = ly.length, cues = ly.map((l, k) => cue(env, i, l.cue, .4 + k * .8) - T.start);
+    const sp = s.split_cue ? cue(env, i, s.split_cue) - T.start : cues[n - 1] + 1, cs = s.slam_cue ? cue(env, i, s.slam_cue) - T.start : 1e9;
+    const cx = 380, base = 1150, Wd = 600, Dp = 320, Th = 60;
+    const slab = (ctx, y, col, a, glow) => {
+      const top = [[cx, y - Dp / 2], [cx + Wd / 2, y], [cx, y + Dp / 2], [cx - Wd / 2, y]];
+      ctx.save(); ctx.globalAlpha = a; if (glow) { ctx.shadowColor = col; ctx.shadowBlur = glow; }
+      ctx.fillStyle = rgba(col, .22); ctx.beginPath(); ctx.moveTo(top[3][0], top[3][1]); ctx.lineTo(top[2][0], top[2][1]); ctx.lineTo(top[2][0], top[2][1] + Th); ctx.lineTo(top[3][0], top[3][1] + Th); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = rgba(col, .34); ctx.beginPath(); ctx.moveTo(top[2][0], top[2][1]); ctx.lineTo(top[1][0], top[1][1]); ctx.lineTo(top[1][0], top[1][1] + Th); ctx.lineTo(top[2][0], top[2][1] + Th); ctx.closePath(); ctx.fill();
+      ctx.fillStyle = rgba(col, .5); ctx.beginPath(); top.forEach(([x, yy], k) => k ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy)); ctx.closePath(); ctx.fill();
+      ctx.lineWidth = 3; ctx.strokeStyle = col; ctx.stroke(); ctx.restore(); ctx.globalAlpha = 1;
+    };
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 320, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 74, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      const split = ep(lt, sp, sp + .8, E.inOutCubic), [sx, sy] = shake(lt, cues.map(c => c + .35), 6);
+      ctx.save(); ctx.translate(sx, sy);
+      ly.forEach((l, k) => {
+        const d = lt - cues[k]; if (d < 0) return;
+        const fall = ep(d, 0, .4, E.outBack), y = base - k * (Th + 6) - split * k * 210 - (1 - fall) * 500;
+        const col = [GOLD, TEAL, '#FFFFFF', '#FF6B5E'][k % 4], hot = lt > cs && k === n - 1;
+        slab(ctx, y, col, clamp(d * 5), hot ? 40 + 30 * beatPulse(env, t) : 14);
+        const lp = ep(lt, Math.max(sp, cues[k]) + .2 + k * .12, Math.max(sp, cues[k]) + .6 + k * .12);
+        if (lp > 0) {                                         // a leader line out to the label
+          ctx.save(); ctx.globalAlpha = lp; ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(cx + Wd / 2, y); ctx.lineTo(cx + Wd / 2 + 60 * lp, y); ctx.stroke(); ctx.restore();
+          const ls = fitSize(env, ctx, l.label, 'Anton', 400, 330, 56, 28);
+          txt(ctx, l.label, cx + Wd / 2 + 74, y + ls * .2, { size: ls, family: 'Anton', weight: 400, color: '#fff', align: 'left', alpha: lp });
+          if (l.sub) txt(ctx, l.sub, cx + Wd / 2 + 76, y + ls * .2 + 36, { size: 24, weight: 800, color: col, align: 'left', alpha: lp, ls: .08 });
+        }
+      });
+      ctx.restore();
+      if (s.slam_text) { slam(ctx, s.slam_text, CX, 1300, lt - cs, { size: fitSize(env, ctx, s.slam_text, 'Anton', 400, MAXW, 100, 50), family: 'Anton', weight: 400, color: GOLD, glow: rgba(GOLD, .6), glowBlur: 40, stroke: INK, strokeW: 10 }); }
+    };
+  },
+
   // ------------------------------------------------------------ end: question, send prompt, mascot, echo of screen 1
   end(env, s, i, T) {
     const bg = s.bg ? env.memo('blur:' + s.bg, () => filtered(env.img[s.bg], 'blur(14px) brightness(.55) saturate(.8)', .5)) : null;

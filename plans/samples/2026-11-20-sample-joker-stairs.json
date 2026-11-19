@@ -1,0 +1,375 @@
+{
+ "id": "2026-11-20-sample-joker-stairs",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "neon",
+ "length_s": [
+  45,
+  90
+ ],
+ "length_reason": "Open loop (the stairs), two re-hooks (not the real detail; the dance secret), the technique and the payoff: about 70 s, every beat new.",
+ "lead": {
+  "topic": "Joker (2019): the stairs tell the whole story",
+  "angle": "cinematography_camera",
+  "insight": "Arthur climbs the Bronx stairs as a struggle; as Joker he dances down them. The film flips the usual meaning of going down, and makes us enjoy his fall.",
+  "why_now": "Cult film people still rewatch and quote; the stairs became a tourist spot.",
+  "technique": "Visual motif",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Joker_(2019_film) (stairs at West 167th Street, Bronx; tourist attraction)",
+   "Todd Phillips interviews, 2019 (the bathroom dance was improvised to Hildur Guðnadóttir's music)"
+  ],
+  "inspired_by": "Expert FX-style detail short, Level Up Learning Filmmaking-style craft lesson (our own script)"
+ },
+ "worth_it": {
+  "learn": "The same stairs mean pain going up and freedom going down: a visual motif.",
+  "stop": "One staircase holds the whole story.",
+  "why_now": "Cult film, rewatched every year.",
+  "send_to": "The friend who loves Joker.",
+  "best_angle": "Yes: the stairs are the most famous image of the film."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+30%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "threat_north",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxresdefault"
+   }
+  },
+  "arthur": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxres2.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxres2"
+   }
+  },
+  "street": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxres3.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxres3"
+   }
+  },
+  "smile": {
+   "src": "engine/.cache/stills/joker/t433PEQGErc_maxres1.jpg",
+   "fetch": {
+    "youtube": "t433PEQGErc",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "ஜோக்கர் படத்துல ஒரு படிக்கட்டு இருக்கு. அதுல தான் முழு கதையும் ஒளிஞ்சிருக்கு.",
+   "voice_tg": "Joker padathula oru padikkattu irukku. Adhula thaan muzhu kadhaiyum olinjirukku.",
+   "image": "title",
+   "film": "JOKER",
+   "type": "THE STAIRS DETAIL",
+   "fy": 0.4,
+   "slam_at": 0.12,
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "climb",
+   "voice": "ஆர்தர் தினமும் வேலை முடிஞ்சு இந்த படிக்கட்டுல ஏறுவான். சோர்ந்த நடை, குனிஞ்ச தோள். ஒவ்வொரு படியும் ஒரு போராட்டம். இந்த படிக்கட்டு New-York பிராங்க்ஸ்ல நிஜமா இருக்கு.",
+   "voice_tg": "Arthur dhinamum velai mudinju indha padikkattula eruvaan. Sorndha nadai, kuninja thol. Ovvoru padiyum oru poraattam. Indha padikkattu New-York Bronx-la nijamaa irukku.",
+   "in": "zoom",
+   "heading": "THE BRONX STAIRS",
+   "rain": false,
+   "steps": 11,
+   "phases": [
+    {
+     "dir": "up",
+     "label": "ARTHUR",
+     "sub": "UP = STRUGGLE",
+     "cue": {
+      "word": "ஏறுவான்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "போராட்டம்"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "versus",
+   "voice": "கவனிங்க. ஆர்தரா இருக்கும்போது பச்சை, பழுப்பு, மங்கின கலர்ஸ். ஜோக்கரா மாறும்போது, சிவப்பு சூட். ஆனா உண்மையான டீடெயில் இது இல்ல.",
+   "voice_tg": "Gavaninga. Arthur-aa irukkumbodhu pachai, pazhuppu, mangina colours. Joker-aa maarumbodhu, sivappu suit. Aana unmaiyaana detail idhu illa.",
+   "in": "whip",
+   "left": {
+    "image": "arthur",
+    "label": "ARTHUR",
+    "sub": "GREEN · BROWN",
+    "cue": {
+     "word": "ஆர்தரா"
+    },
+    "fy": 0.35
+   },
+   "right": {
+    "image": "title",
+    "label": "JOKER",
+    "sub": "RED SUIT",
+    "cue": {
+     "word": "ஜோக்கரா"
+    },
+    "fy": 0.35
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "சிவப்பு"
+   },
+   "slam_text": "NOT THE REAL DETAIL",
+   "slam_cue": {
+    "word": "உண்மையான"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "உண்மையான"
+     },
+     "type": "riser"
+    }
+   ]
+  },
+  {
+   "kind": "quote",
+   "voice": "இன்னொரு ரகசியம்: பாத்ரூம்ல ஆர்தர் ஆடுற டான்ஸ், ஸ்கிரிப்ட்லயே இல்ல. மியூசிக் கேட்டு, ஜோக்வின் ஃபீனிக்ஸ் அங்கேயே ஆடினார். அந்த நிமிஷம் தான் ஆர்தர் ஜோக்கரா மாறினான்.",
+   "voice_tg": "Innoru ragasiyam: bathroom-la Arthur aadura dance, script-laye illa. Music kettu, Joaquin Phoenix angeye aadinaar. Andha nimisham thaan Arthur Joker-aa maarinaan.",
+   "in": "flash",
+   "image": "smile",
+   "name": "JOAQUIN PHOENIX",
+   "role": "IMPROVISED THE DANCE",
+   "phrase": "NOT IN THE SCRIPT",
+   "source": "TODD PHILLIPS INTERVIEWS · 2019",
+   "cues": {
+    "name": {
+     "word": "ஜோக்வின்"
+    },
+    "phrase": {
+     "word": "ஸ்கிரிப்ட்லயே"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "மாறினான்"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "climb",
+   "voice": "கடைசியில, அதே படிக்கட்டுல ஜோக்கர் ஆடிகிட்டே இறங்குறான். ஏறும்போது வலி. இறங்கும்போது சந்தோஷம்.",
+   "voice_tg": "Kadaisiyila, adhe padikkattula Joker aadikitte iranguraan. Erumbodhu vali. Irangumbodhu sandhosham.",
+   "in": "push",
+   "heading": "SAME STAIRS. NEW DIRECTION.",
+   "steps": 11,
+   "phases": [
+    {
+     "dir": "down",
+     "label": "JOKER",
+     "sub": "DOWN = FREEDOM",
+     "cue": {
+      "word": "ஆடிகிட்டே"
+     }
+    }
+   ],
+   "slam_text": "DOWN = JOY",
+   "slam_cue": {
+    "word": "சந்தோஷம்"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஆடிகிட்டே"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "சந்தோஷம்"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு விஷுவல் மோட்டிஃப். ஒரே காட்சி திரும்ப வரும், ஆனா அர்த்தம் மாறியிருக்கும். சாதாரணமா கீழ இறங்குறது வீழ்ச்சி. இங்க அது தான் அவனோட எழுச்சி.",
+   "voice_tg": "Idhukku peru visual motif. Ore kaatchi thirumba varum, aana arththam maariyirukkum. Saadharanamaa keezha iranguradhu veezhchi. Inga adhu thaan avanoda ezhuchi.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "VISUAL MOTIF",
+   "definition": "AN IMAGE THAT RETURNS, CHANGED",
+   "outer_label": "THE STAIRS",
+   "inner": [
+    "UP = PAIN",
+    "DOWN = RISE",
+    "SAME PLACE"
+   ],
+   "cues": {
+    "name": {
+     "word": "மோட்டிஃப்"
+    },
+    "outer": {
+     "word": "காட்சி"
+    },
+    "inner": {
+     "word": "அர்த்தம்"
+    }
+   },
+   "tail": 0.4,
+   "sfx": [
+    {
+     "at": {
+      "word": "மோட்டிஃப்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "எழுச்சி"
+     },
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "moral",
+   "voice": "அதான் பயம். அவன் விழுறதை நாம ரசிக்கிறோம். படம் நம்மளையும் அவன் பக்கம் இழுக்குது.",
+   "voice_tg": "Adhaan bayam. Avan vizhuradhai naama rasikkirom. Padam nammalaiyum avan pakkam izhukkudhu.",
+   "in": "flash",
+   "image": "street",
+   "fx": 0.6,
+   "left": "HE FALLS",
+   "right": "WE CHEER",
+   "left_ta": "அவன் விழுறான்",
+   "right_ta": "நாம ரசிக்கிறோம்",
+   "slam_text": [
+    "WE'RE",
+    "WITH HIM."
+   ],
+   "cues": {
+    "line": {
+     "word": "விழுறதை"
+    },
+    "bleed": {
+     "word": "ரசிக்கிறோம்"
+    },
+    "crack": {
+     "word": "நம்மளையும்"
+    },
+    "slam": {
+     "word": "இழுக்குது"
+    }
+   },
+   "tail": 0.6,
+   "sfx": [
+    {
+     "at": {
+      "word": "ரசிக்கிறோம்"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "இழுக்குது"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "voice": "அடுத்த தடவை ஜோக்கர் பாக்கும்போது, படிக்கட்டை கவனிங்க. இந்த மாதிரி டீடெயில் வேணும்னா, ஃபாலோ பண்ணுங்க.",
+   "voice_tg": "Adutha thadavai Joker paakkumbodhu, padikkattai gavaninga. Indha maadhiri detail venumnaa, follow pannunga.",
+   "in": "whip",
+   "echo": "JOKER · THE STAIRS DETAIL",
+   "question": [
+    {
+     "text": "UP OR",
+     "size": 140
+    },
+    {
+     "text": "DOWN?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "அடுத்த தடவை படிக்கட்டை கவனிங்க",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.6,
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: VISUAL MOTIF"
+  }
+ ],
+ "package": {
+  "caption": [
+   "Joker's whole story is hidden in one staircase.",
+   "Up the stairs: Arthur, tired, struggling. Down the same stairs: Joker, dancing. The film flips what going down usually means, and makes us enjoy his fall. The technique is called a visual motif.",
+   "Up or down: which scene stays with you?",
+   "Send this to the friend who loves Joker."
+  ],
+  "hashtags": [
+   "#Joker",
+   "#JoaquinPhoenix",
+   "#FilmBreakdown",
+   "#iNiKKiBreakdown"
+  ],
+  "cover": "JOKER · THE STAIRS DETAIL",
+  "slot": "20:00",
+  "first_comment": "Which film should we break down next?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "rehearsal/samples"
+}

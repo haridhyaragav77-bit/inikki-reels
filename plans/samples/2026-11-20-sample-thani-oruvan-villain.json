@@ -1,0 +1,429 @@
+{
+ "id": "2026-11-20-sample-thani-oruvan-villain",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "noir",
+ "length_s": [
+  45,
+  90
+ ],
+ "length_reason": "Open loop (the villain's secret), the board, the key line, the mirror, the bug twist and why it works: about 75 s, every beat new.",
+ "lead": {
+  "topic": "Thani Oruvan (2015): why Siddharth Abhimanyu is one of Tamil cinema's best villains",
+  "angle": "screenplay",
+  "insight": "The film gives the villain his own story, mind and logic, as smart as the hero or smarter; the bug planted inside Mithran makes the hero lose before he wins. A stronger villain makes the hero's win bigger.",
+  "why_now": "Cult film; 10 years on (2025) people still quote the villain.",
+  "technique": "Worthy antagonist",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Thani_Oruvan (plot: Mithran links crimes to Siddharth; the bug planted in Mithran)",
+   "The film's tagline line about the enemy"
+  ],
+  "inspired_by": "Expert FX villain series (our own script)"
+ },
+ "worth_it": {
+  "learn": "A villain as smart as the hero, with his own story, is a named technique: the worthy antagonist.",
+  "stop": "The villain gets a full story too.",
+  "why_now": "Cult film, still quoted.",
+  "send_to": "The friend who says Siddharth is the best villain.",
+  "best_angle": "Yes: the villain is why people rewatch it."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+30%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "villains_strategy",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "tension"
+   },
+   {
+    "track": "suspects",
+    "from": 4.0,
+    "screen": 1,
+    "mood": "investigation"
+   },
+   {
+    "track": "hunt_begins",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "chase"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/thani_oruvan/r5Lih8rKd6k_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "r5Lih8rKd6k",
+    "frame": "maxresdefault"
+   }
+  },
+  "mithran": {
+   "src": "engine/.cache/stills/thani_oruvan/r5Lih8rKd6k_maxres2.jpg",
+   "fetch": {
+    "youtube": "r5Lih8rKd6k",
+    "frame": "maxres2"
+   }
+  },
+  "sidd": {
+   "src": "engine/.cache/stills/thani_oruvan/r5Lih8rKd6k_maxres3.jpg",
+   "fetch": {
+    "youtube": "r5Lih8rKd6k",
+    "frame": "maxres3"
+   }
+  },
+  "sidd_close": {
+   "src": "engine/.cache/stills/thani_oruvan/VwDl8pr7aSE_maxres3.jpg",
+   "fetch": {
+    "youtube": "VwDl8pr7aSE",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "தனி ஒருவன்ல வில்லனுக்கும், ஹீரோ மாதிரியே ஒரு முழு கதை. அது தான் படத்தோட ரகசியம்.",
+   "voice_tg": "Thani Oruvan-la villain-ukkum, hero maadhiriye oru muzhu kadhai. Adhu thaan padathoda ragasiyam.",
+   "image": "title",
+   "film": "THANI ORUVAN",
+   "type": "THE VILLAIN DETAIL",
+   "fy": 0.4,
+   "slam_at": 0.12,
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "board",
+   "voice": "மித்ரன் சின்ன சின்ன குற்றங்களை பேப்பர்ல இருந்து வெட்டி ஒட்டுறான். ஒவ்வொரு குற்றமும் ஒரே ஆள் கிட்ட போய் முடியுது.",
+   "voice_tg": "Mithran chinna chinna kutrangalai paper-la irundhu vetti otturaan. Ovvoru kutramum ore aal kitta poi mudiyudhu.",
+   "in": "zoom",
+   "heading": "HOW MITHRAN PICKS HIS ENEMY",
+   "center": {
+    "label": "SIDDHARTH",
+    "sub": "ONE MAN",
+    "image": "sidd_close"
+   },
+   "clues": [
+    {
+     "label": "CRIME 1",
+     "sub": "NEWS CUTTING",
+     "cue": {
+      "word": "குற்றங்களை"
+     }
+    },
+    {
+     "label": "CRIME 2",
+     "sub": "NEWS CUTTING",
+     "cue": {
+      "word": "பேப்பர்ல"
+     }
+    },
+    {
+     "label": "CRIME 3",
+     "sub": "NEWS CUTTING",
+     "cue": {
+      "word": "ஒட்டுறான்"
+     }
+    },
+    {
+     "label": "CRIME 4",
+     "sub": "NEWS CUTTING",
+     "cue": {
+      "word": "ஒவ்வொரு"
+     }
+    }
+   ],
+   "slam_text": "ONE MAN",
+   "slam_cue": {
+    "word": "ஒரே"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஒரே"
+     },
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "quote",
+   "voice": "அவன் சொல்ற லைன் தான் படத்தோட உயிர். உன் எதிரி யாருன்னு சொல்லு, நீ யாருன்னு சொல்றேன்.",
+   "voice_tg": "Avan solra line thaan padathoda uyir. Un ethiri yaarunnu sollu, nee yaarunnu solren.",
+   "in": "flash",
+   "image": "mithran",
+   "name": "MITHRAN IPS",
+   "role": "THE HERO'S RULE",
+   "phrase": "NAME YOUR ENEMY",
+   "source": "THANI ORUVAN · 2015",
+   "cues": {
+    "name": {
+     "word": "லைன்"
+    },
+    "phrase": {
+     "word": "எதிரி"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "எதிரி"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "versus",
+   "voice": "ஹீரோ புத்திசாலி. வில்லன் அவனை விட புத்திசாலி. ரெண்டு பேருமே பிளான் பண்றவங்க. ஒருத்தன் இன்னொருத்தனோட கண்ணாடி. ஆனா ஒரு டீடெயில் எல்லாத்தையும் மாத்துது.",
+   "voice_tg": "Hero buddhisaali. Villain avanai vida buddhisaali. Rendu perume plan panravanga. Oruthan innoruthanoda kannaadi. Aana oru detail ellaathaiyum maathudhu.",
+   "in": "whip",
+   "left": {
+    "image": "mithran",
+    "label": "MITHRAN",
+    "sub": "COP · PLANNER",
+    "cue": {
+     "word": "ஹீரோ"
+    },
+    "fy": 0.35
+   },
+   "right": {
+    "image": "sidd",
+    "label": "SIDDHARTH",
+    "sub": "SCIENTIST · PLANNER",
+    "cue": {
+     "word": "வில்லன்"
+    },
+    "fy": 0.3
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "அவனை"
+   },
+   "slam_text": "MIRRORS",
+   "slam_cue": {
+    "word": "கண்ணாடி"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கண்ணாடி"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "டீடெயில்"
+     },
+     "type": "riser"
+    }
+   ]
+  },
+  {
+   "kind": "detail",
+   "voice": "மித்ரன் உடம்புக்குள்ள, வில்லன் ஒரு சின்ன பக் வச்சிருக்கான். மித்ரன் பேசுறது எல்லாம், சித்தார்த் கேக்குறான்.",
+   "voice_tg": "Mithran udambukkulla, villain oru chinna bug vachirukkaan. Mithran pesuradhu ellaam, Siddharth kekkuraan.",
+   "in": "zoom",
+   "image": "mithran",
+   "spot": {
+    "x": 0.55,
+    "y": 0.72
+   },
+   "zoom": 2.4,
+   "cue": {
+    "word": "பக்"
+   },
+   "label": "THE BUG",
+   "label_cue": {
+    "word": "கேக்குறான்"
+   },
+   "heading": "THE TWIST",
+   "sfx": [
+    {
+     "at": {
+      "word": "பக்"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "chain",
+   "voice": "ஹீரோ பிளான் போடுறான், வில்லன் முன்னாடியே தெரிஞ்சுக்குறான். பக் கண்டுபிடிச்சதும், மித்ரன் அதையே ஆயுதமா மாத்துறான். பொய் சொல்லி, வில்லனையே ஏமாத்துறான்.",
+   "voice_tg": "Hero plan poduraan, villain munnaadiye therinjukkuraan. Bug kandupidichadhum, Mithran adhaiye aayudhamaa maathuraan. Poi solli, villanaiye emaathuraan.",
+   "in": "push",
+   "heading": "ONE BUG. WHOLE GAME.",
+   "steps": [
+    {
+     "label": "HERO PLANS",
+     "cue": {
+      "word": "பிளான்"
+     }
+    },
+    {
+     "label": "VILLAIN KNOWS FIRST",
+     "cue": {
+      "word": "முன்னாடியே"
+     }
+    },
+    {
+     "label": "BUG FOUND",
+     "cue": {
+      "word": "கண்டுபிடிச்சதும்"
+     }
+    },
+    {
+     "label": "FEEDS HIM LIES",
+     "cue": {
+      "word": "பொய்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "பொய்"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு வொர்தி ஆண்டகனிஸ்ட். வில்லனுக்கும் ஒரு கடந்த காலம், ஒரு பிளான், ஒரு நியாயம். வில்லன் எவ்வளவு பெருசோ, ஹீரோவோட வெற்றி அவ்வளவு பெருசு.",
+   "voice_tg": "Idhukku peru worthy antagonist. Villain-ukkum oru kadandha kaalam, oru plan, oru nyaayam. Villain evvalavu perusoo, hero-voda vetri avvalavu perusu.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "WORTHY ANTAGONIST",
+   "definition": "AS SMART AS THE HERO",
+   "outer_label": "SIDDHARTH",
+   "inner": [
+    "HIS PAST",
+    "HIS PLAN",
+    "HIS LOGIC"
+   ],
+   "cues": {
+    "name": {
+     "word": "வொர்தி"
+    },
+    "outer": {
+     "word": "கடந்த"
+    },
+    "inner": {
+     "word": "நியாயம்"
+    }
+   },
+   "tail": 0.4,
+   "sfx": [
+    {
+     "at": {
+      "word": "வொர்தி"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "meter",
+   "voice": "வில்லன் பலவீனமா இருந்தா, டென்ஷன் இல்ல. சமமா இருந்தா, சுவாரஸ்யம். ஹீரோவை விட ஒரு படி மேல இருந்தா, சீட் நுனி.",
+   "voice_tg": "Villain balaveenamaa irundhaa, tension illa. Samamaa irundhaa, suvaarasyam. Hero-vai vida oru padi mela irundhaa, seat nuni.",
+   "in": "flash",
+   "heading": "WHY IT WORKS",
+   "label": "TENSION",
+   "levels": [
+    {
+     "label": "WEAK VILLAIN",
+     "value": 20,
+     "cue": {
+      "word": "பலவீனமா"
+     }
+    },
+    {
+     "label": "EQUAL VILLAIN",
+     "value": 60,
+     "cue": {
+      "word": "சமமா"
+     }
+    },
+    {
+     "label": "SMARTER VILLAIN",
+     "value": 100,
+     "cue": {
+      "word": "மேல"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "நுனி"
+     },
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "voice": "உங்க பார்வையில, தமிழ் சினிமாவோட பெஸ்ட் வில்லன் யாரு? கமெண்ட்ல சொல்லுங்க.",
+   "voice_tg": "Unga paarvaiyila, Tamil cinema-voda best villain yaaru? Comment-la sollunga.",
+   "in": "whip",
+   "echo": "THANI ORUVAN · THE VILLAIN DETAIL",
+   "question": [
+    {
+     "text": "BEST TAMIL",
+     "size": 120
+    },
+    {
+     "text": "VILLAIN EVER?",
+     "size": 130,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "பெஸ்ட் வில்லன் யாரு?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.6,
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ],
+   "bg": "sidd",
+   "recap": "TECHNIQUE: WORTHY ANTAGONIST"
+  }
+ ],
+ "package": {
+  "caption": [
+   "Why Siddharth Abhimanyu still feels like Tamil cinema's smartest villain.",
+   "Mithran picks his enemy by linking small crimes to one man. The villain is as smart as the hero, and plants a bug inside him. The technique is called a worthy antagonist: the bigger the villain, the bigger the hero's win.",
+   "Who is the best Tamil villain ever?",
+   "Send this to the friend who rewatches Thani Oruvan."
+  ],
+  "hashtags": [
+   "#ThaniOruvan",
+   "#ArvindSwami",
+   "#JayamRavi",
+   "#iNiKKiBreakdown"
+  ],
+  "cover": "THANI ORUVAN · THE VILLAIN DETAIL",
+  "slot": "20:00",
+  "first_comment": "Siddharth or Varman: who wins?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "rehearsal/samples"
+}

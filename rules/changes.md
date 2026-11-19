@@ -8,6 +8,8 @@ Short format for small changes:
 
 ---
 
+`#17 · 19 Nov 2026 · series (film-breakdown) · stock graphics reused across reels, scripts that let viewers drift → illustrated graphics drawn for the film's idea (at most twice per kind), an open question answered near the end and a new hook every 10-15 s, sources in priority Expert FX > Level Up Learning Filmmaking > World Filmology · why (Harish: "the motion graphics seem very simple", "keep fighting to keep them hooked") · test on 3 sample reels · undo: remove the three rules added to the series card`
+
 `#16 · 19 Nov 2026 · series (film-breakdown, trailer-breakdown) · a named technique as the hook, 40-62 s, one film once in 21 days → lead with one specific detail or a true story (technique as the why), new angles hidden details and behind the scenes, film weeks of up to 3 parts, Hollywood welcome, 60-90 s, new graphics detail / chain / quote / source / part badge · why (Harish: "the analysis sometimes hits and sometimes doesn't"; the studied channels' hits sell details and stories: Expert FX's Vada Chennai detail shorts and World Filmology's behind-the-scenes stories, AGENT.md 10.3) · test on 5 reels · undo: restore the series cards from the commit before this one`
 
 `#15 · 15 Nov 2026 · series (movie-updates) · stills cropped tight and titles that did not say the news → soft rule: keep faces and the key subject whole (crop only to cut baked-in text or channel marks, never into heads), and the title says the news in plain words (who + what, a number if there is one) · why (Harish: "Images cropped too much, poor titles", 2/5 on 2026-11-14-update-shaji-kumar-tribute) · test on 5 reels · undo: delete the movie-updates soft rule in rules/playbook.md`

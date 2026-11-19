@@ -31,7 +31,7 @@ def _words(t):
 # ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
 LOOK_KINDS = {
     "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web",
-              "detail", "chain", "quote", "source", "end"},
+              "detail", "chain", "quote", "source", "board", "climb", "track", "layers", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
     "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
@@ -153,6 +153,10 @@ def check_new_graphics(plan, screens):
     pt = plan.get("part")
     if pt is not None and not (isinstance(pt, list) and len(pt) == 2 and all(isinstance(x, int) for x in pt) and 1 <= pt[0] <= pt[1] <= 3):
         E.append("'part' is a film week's place, [n, of] with of at most 3, e.g. [1, 3] (AGENT.md 5.7).")
+    from collections import Counter
+    for k, c in Counter(s.get("kind") for s in screens).items():
+        if plan.get("template") == "stage" and k not in ("title", "end") and c > 2:
+            E.append(f"The '{k}' graphic is used {c} times; at most twice (once, plus one callback). Pick or build an illustration for this idea (AGENT.md 5.8).")
     for n, s in enumerate(screens, 1):
         k = s.get("kind")
         if k == "detail":
