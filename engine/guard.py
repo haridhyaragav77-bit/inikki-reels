@@ -118,6 +118,28 @@ def plain(findings):
 
 
 # ---------- trusted: whose Drive files count as Harish's ----------
+def control_room_email():
+    """Harish's personal Google account, the one his Claude Google Drive connector uses (GitHub secret CONTROL_ROOM_EMAIL;
+    never in git). The Control Room page reads and writes Drive as this account."""
+    return str(os.environ.get("CONTROL_ROOM_EMAIL") or "").strip().lower()
+
+
+def link_control_room(drive, email):
+    """Share the iNiKKi Reels folder with that account as an editor, once (fail soft). No email is sent."""
+    if getattr(link_control_room, "done", False):
+        return
+    link_control_room.done = True
+    try:
+        perms = drive.svc.permissions().list(fileId=drive.root, fields="permissions(emailAddress)", supportsAllDrives=True).execute(num_retries=3)
+        if any(str(x.get("emailAddress", "")).lower() == email for x in perms.get("permissions", [])):
+            return
+        drive.svc.permissions().create(fileId=drive.root, body={"type": "user", "role": "writer", "emailAddress": email},
+                                       sendNotificationEmail=False, supportsAllDrives=True).execute(num_retries=3)
+        print("guard: the iNiKKi Reels folder is now shared with the Control Room account")
+    except Exception as e:
+        print("guard: could not share the folder with the Control Room account:", str(e)[:120])
+
+
 def trusted_people(drive):
     """Emails allowed to give the Engine commands: the owner(s) of the iNiKKi Reels folder and the Engine's own sign-in.
     Empty when Drive will not say (then nothing is refused: fail soft)."""
@@ -132,6 +154,10 @@ def trusted_people(drive):
             except ValueError:
                 pass
             people |= {str(e).lower() for e in CFG.get("extra_people") or []}
+            mine = control_room_email()
+            if mine:
+                people.add(mine)
+                link_control_room(drive, mine)
     except Exception as e:
         print("guard: could not read who owns the Drive folder:", str(e)[:120])
         return set()
