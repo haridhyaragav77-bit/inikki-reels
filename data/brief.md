@@ -1,10 +1,13 @@
-# Brief · plan run · 2026-11-19 (written 2026-11-19 05:13 IST)
+# Brief · refresh run · 2026-11-19 (written 2026-11-19 16:13 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 7 reel(s) for 2026-11-19 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-19/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below. Refresh tonight's updates only if better-proven news exists.
+2. Breakdown bank: 4 of 4 ready. Full.
+3. Feedback: nothing new.
+4. Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -24,10 +27,10 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 - trailer-breakdown: status = "live"
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-19-breakdown-peranbu: kit royal · technique → cards → loop → moral
+- 2026-11-19-breakdown-jai-bhim: kit paper · loop → technique → timeline → standoff
 - 2026-11-18-breakdown-thani-oruvan: kit noir · web → technique → versus → moral → standoff
 - 2026-11-18-breakdown-aramm: kit spotlight · versus → technique → timeline → meter → standoff
-- 2026-11-18-breakdown-anbe-sivam: kit forest · cards → technique → versus → meter → moral
-- 2026-11-17-breakdown-vikram: kit blueprint · timeline → technique → meter → versus → standoff
 
 ## Ideas from Harish (leads, not orders: use one if it passes the worth-it test, AGENT.md 5.7)
 - From the insights: Move a reel from 18:00 towards 08:00 (reels posted around 08:00 get 1393 views in the middle, around 18:00 only 102)
@@ -39,9 +42,9 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 | - | guess-the-movie | paused |  |
 | 08:30 | movie-updates | bulletin | voice: case by case, 15-30 s |
 | 11:00 | movie-updates | bulletin | voice: case by case, 15-30 s |
-| 12:30 | film-breakdown | stage | voice, 40-62 s |
+| 12:30 | film-breakdown | stage | voice, 45-90 s |
 | 18:00 | movie-updates | bulletin | voice: case by case, 15-30 s |
-| 20:00 | film-breakdown | stage | voice, 40-62 s |
+| 20:00 | film-breakdown | stage | voice, 45-90 s |
 | 21:30 | movie-updates | bulletin | voice: case by case, 15-30 s |
 
 ## Pictures for the approved looks (AGENT.md 5.11, skill plan-reel)
@@ -77,12 +80,27 @@ For an older look, open a film's grid (Google Drive) and pick the shot whose pic
 - Jailer 2: 30 stills, grid: clip-library/sheets/Jailer 2 - stills.jpg
 - Scene: 30 stills, grid: clip-library/sheets/Scene - stills.jpg
 - Inji Vellam: 1 stills, grid: clip-library/sheets/Inji Vellam - stills.jpg
+- OM: 8 stills, grid: clip-library/sheets/OM - stills.jpg
+- O.M: 11 stills, grid: clip-library/sheets/O.M - stills.jpg
 Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
 
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates, OM: Chapter One, OM, Om, O.M. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
+Digest 'Needs you' line: 6 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days. Turned off by Harish: artwork-quote.
+
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 08:30 | 2026-11-19-update-om-tomorrow-undercover | movie-updates | posted |  |
+| 11:00 | 2026-11-19-update-mookuthi-amman-2-week-one | movie-updates | held | Not posted: the master switch was on Hold. |
+| 11:00 | 2026-11-19-update-weekend-four-films | movie-updates | ready |  |
+| 12:30 | 2026-11-19-breakdown-jai-bhim | film-breakdown | ready |  |
+| 18:00 | 2026-11-19-update-om-mammootty-siya | movie-updates | ready |  |
+| 20:00 | 2026-11-19-breakdown-peranbu | film-breakdown | ready |  |
+| 21:30 | 2026-11-19-update-sathyavan-savithiri-tomorrow | movie-updates | ready |  |
+| - | 2026-11-19-update-sathyavan-savithiri-july-to-november | movie-updates | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
@@ -95,6 +113,14 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 | 2026-11-18-update-om-mammootty-7-months | movie-updates | 596 | 46.5% green | 35.0% green | 0.0% grey | - grey |
 | 2026-11-18-update-om-2-days-178-min | movie-updates | 116 | 61.9% green | 21.8% amber | 0.0% grey | - grey |
 
+## Early numbers (2 hours after posting)
+- 2026-11-18-update-om-five-distributors: 2 views, share 0.0%, skip 100.0%
+- 2026-11-18-update-sathyavan-savithiri-2-days: 144 views, share 0.0%, skip 72.0%
+- 2026-11-18-breakdown-aramm: 143 views, share 0.8%, skip 76.2%
+- 2026-11-18-update-om-mammootty-7-months: 696 views, share 0.0%, skip 50.7%
+- 2026-11-18-update-om-2-days-178-min: 137 views, share 0.0%, skip 70.2%
+- 2026-11-19-update-om-tomorrow-undercover: 235 views, share 0.0%, skip 67.0%
+
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 9 publishers (3 trusted)
 - [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 21 publishers (9 trusted)
@@ -103,20 +129,18 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - [6.0] Scene grosses over 200 crore; Suriya scripts Tamil cinema history · 12 publishers (3 trusted)
 
 ## Changes in force (newest first)
+- #16 · 19 Nov 2026 · series (film-breakdown, trailer-breakdown) · a named technique as the hook, 40-62 s, one film once in 21 days → lead with one specific detail or a tru
 - #15 · 15 Nov 2026 · series (movie-updates) · stills cropped tight and titles that did not say the news → soft rule: keep faces and the key subject whole (crop only to cut
 - #14 · 14 Nov 2026 · rule (news watch) · a small film's trailer could not reach the score that wakes the Breaking run → fast pages (@chennaiist) are read at every pass; a 
 - #13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must u
 - #12 · 14 Nov 2026 · rule (film-breakdown, trailer-breakdown) · every breakdown had the same gold stage and the same six screens in the same order → each names a design ki
-- #11 · 14 Nov 2026 · series (movie-recommendations) · weak hook frame, 7.6 s per film, plot never shown → title big in the middle of a moving poster wall with a timely kic
 
 ## Open alerts
-- 2026-11-17 10:14 IST: Security: A job was started by someone who is not you
-- 2026-11-17 05:46 IST: The sync job did not finish
-- 2026-11-17 05:45 IST: A note from the thinking run
+- 2026-11-19 14:59 IST: The youtube-check job did not finish
 
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 1122 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Runner minutes: 1352 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
 - Storage: 5.47 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
