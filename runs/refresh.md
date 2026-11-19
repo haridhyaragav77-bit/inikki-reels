@@ -11,7 +11,9 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
    in `data/out/alerts.md` ("today's refresh brief was not written"), then carry on with its slots and today's date.
 
 ## The work
-- Researcher: breaking check. Refresh tonight's updates only if better-proven news exists.
+- Researcher: breaking check, then a fresh news scan since the morning (the brief's news watch, then web search).
+- Script Writer: when the brief says "Fresh evening updates", rewrite tonight's movie-updates plans with today's news
+  (skill `plan-reel`, the variety rule, 2 sources each); keep a morning plan only if it is still the strongest story.
 - Analyst (light): flag rising reels and red metrics from the brief; add one follow-up lead for tomorrow.
 - Script Writer: one breakdown plan for the bank (`plans/bank/`) if the brief says the bank is short. Skill `plan-reel`,
   and it must pass `python -m engine.plancheck`.

@@ -2,6 +2,10 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — Fresh evening updates; post a bank reel now; Level Up handle
+The Refresh run (16:37) rewrites the evening movie updates (slots from 17:00) with the day news (`fresh_updates`, brief + run cards). `engine.post --now` also takes a ready bank reel (posts it today, marks it used). Level Up Learning Filmmaking = @levelup_filmmaking. The old Thani Oruvan bank reel posts tonight and leaves the bank.
+
+
 ## 19 Nov 2026 — Approved: one-take voice, loop ending, source rotation, update variety, ₹ fix; 3 reels booked
 Harish approved the v2 samples. Voice: the whole reel in one ElevenLabs take, cut between lines by letter times (`voice._one_take`, `voice.elevenlabs.one_take`); pronunciations now reach the approved looks (`render/audio.py`). Breakdowns end on a loop (CTA runs into the hook; the end screen fades to the opening frame). Sources: Kadhai Club and World Filmology on Instagram (read through Instagram's API in the study job), rotation by `lead.inspired_by` (`check_rotation`). Movie updates: `lead.film`, the same film once in 3 days unless `lead.new_event` (`check_variety`), the brief lists films covered lately; the ₹ sign only for money units (bulletin `money`). The three approved reels are booked at 20:00 on 20, 21 and 22 Nov (`plans/2026-11-2x/`, `"booked": true`; the Plan run keeps them). Samples folder removed.
 

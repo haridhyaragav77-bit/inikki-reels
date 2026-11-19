@@ -17,6 +17,7 @@ learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series
 gates: { lead_min: 60, virality_min: 65 }
 away_mode: false
 voice: { provider: elevenlabs, backup: microsoft, elevenlabs_voice: ashwin, quality: best, speed: 1.1 }   # provider: elevenlabs | microsoft; quality: best | economy (AGENT.md 4.4)
+fresh_updates: { enabled: true, evening_from: "17:00" }   # the Refresh run rewrites the evening updates with the day's news (AGENT.md 4.2)
 breaking: { enabled: true }          # the news watch may wake the Breaking run (AGENT.md 10.2)
 calendar: { enabled: true }          # day, hour, season and festivals in the brief (AGENT.md 10.5)
 scouts: { enabled: true }           # the news watch reads the fast pages in sources.yaml
