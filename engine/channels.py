@@ -161,11 +161,16 @@ def run(drive=None, quiet=False):
         if key:                                    # optional: length, likes and comment counts for what the feed showed
             try:
                 for vid, d in api_details([v["id"] for v in feed], key).items():
-                    ch["videos"][vid].update({k: x for k, x in d.items() if x is not None})
+                    ch["videos"][vid].update({**{k: x for k, x in d.items() if x is not None}, "api_at": dt.date.today().isoformat()})
                     if d.get("seconds") and d["seconds"] > 180:
                         ch["videos"][vid]["short"] = False
             except Exception as e:
                 notes.append(f"{c['name']}: YouTube key not used ({str(e)[:120]})")
+        today = dt.date.today().isoformat()
+        for v in ch["videos"].values():                  # YouTube API data is refreshed or deleted within 30 days (its policy; docs/privacy.html)
+            if v.get("api_at") and (dt.date.fromisoformat(today) - dt.date.fromisoformat(v["api_at"])).days > 30:
+                for k in ("seconds", "comments", "top_comments", "api_at"):
+                    v.pop(k, None)
         keep = sorted(ch["videos"].values(), key=lambda v: v.get("published", ""), reverse=True)[:KEEP_PER_CHANNEL]
         ch["videos"] = {v["id"]: v for v in keep}
         ch["read_at"] = status.stamp()
@@ -175,7 +180,7 @@ def run(drive=None, quiet=False):
             ch = state["channels"].get(next((cid for cid, x in state["channels"].items() if x.get("slug") == v["channel_slug"]), ""), {})
             if ch and not ch["videos"][v["id"]].get("top_comments"):
                 try:
-                    ch["videos"][v["id"]]["top_comments"] = api_comments(v["id"], key)
+                    ch["videos"][v["id"]].update(top_comments=api_comments(v["id"], key), api_at=dt.date.today().isoformat())
                 except Exception as e:
                     notes.append(f"comments for {v['id']} not read ({str(e)[:100]})")
     state.update({"wanted": [v["id"] for v in todo], "notes": notes, "key": bool(key)})
