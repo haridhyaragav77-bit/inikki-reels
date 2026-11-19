@@ -124,6 +124,7 @@ def study(drive, items, stories, src, now):
         if i.get("_score", 0) <= 0:
             continue
         pg["film_posts"] += 1
+        pg["latest"] = ([{"text": str(i.get("text") or "")[:90], "at": now.isoformat(timespec="minutes")}] + (pg.get("latest") or []))[:3]
         kind = trailers.kind_of(i["text"]) or (i.get("_hits") or ["other"])[0]
         pg["kinds"][kind] = pg["kinds"].get(kind, 0) + 1
         for m in i.get("mentions") or []:

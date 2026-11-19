@@ -349,7 +349,7 @@ def build(drive, run, date):
         need = max(0, bank_target - len(bank.reels("ready")))
         todo.append(f"Breakdown bank: {len(bank.reels('ready'))} of {bank_target} ready." + (" Add 1 breakdown plan to plans/bank/." if need else " Full."))
         todo.append(f"Feedback: {len(feedback)} new item(s) in data/control/feedback.jsonl." if feedback else "Feedback: nothing new.")
-        todo.append("Write the daily digest (6 lines at most, AGENT.md 16.4) to data/out/digest.md.")
+        todo.append("Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.")
     elif run == "breaking":
         cap = int(ctl.settings.get("budgets", {}).get("breaking_per_day", 2))
         from . import dayplan

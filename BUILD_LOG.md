@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — Control Room follows the Drive move; notices, digest, news, insights
+The page read the old Drive's status file (stopped on 18 Nov), so runs, ✕ and sends looked broken. It now finds the newest `panel.txt` and sends to the inbox the panel names (Harish connects Claude's Google Drive to the new account once). Today: notices with a working ✕, "Today in short" digest, "News now" with check times; insights that change the day plan have Apply. Chennaiist is tier 1 (counts as trusted for breaking news). `control-room/page.template.html`, `engine/panel.py`, `engine/insights.py`, `engine/watch.py`, `sources.yaml`.
+
 ## 18 Nov 2026 — Drive runs on the sign-in only
 The Drive sign-in (`GDRIVE_OAUTH_REFRESH_TOKEN`, new account, app In production) is now the required Drive key; the old robot key `GDRIVE_SERVICE_ACCOUNT_JSON` (old private-email Google project) is optional and is being deleted with that project.
 

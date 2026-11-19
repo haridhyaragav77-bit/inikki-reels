@@ -66,7 +66,7 @@ def build(metrics, now=None, days=14):
     strong = [s for s in series if s["reels"] >= 3 and (s["vs_page"] or 0) >= 0.3]
     weak = [s for s in series if s["reels"] >= 4 and (s["vs_page"] or 0) <= -0.4]
     for s in strong[:2]:
-        do.append({"do": f"Give {s['name']} one more slot", "why": f"its middle reel gets {int(s['views'])} views, {int(s['vs_page'] * 100)}% above the page{early}", "series": s["name"]})
+        do.append({"do": f"Give {s['name']} one more slot", "why": f"its middle reel gets {int(s['views'])} views, {int(s['vs_page'] * 100)}% above the page{early}", "series": s["name"], "more": s["name"]})
     for s in weak[:2]:
         do.append({"do": f"Rework or pause {s['name']}", "why": f"its middle reel gets {int(s['views'])} views, {int(-s['vs_page'] * 100)}% below the page over {s['reels']} reels{early}", "series": s["name"]})
     ps = out["page"].get("skip")
@@ -81,7 +81,7 @@ def build(metrics, now=None, days=14):
             do.append({"do": f"Study what gets {best['name']} sent to friends", "why": f"it is shared {best['share'] * 100:.1f}% of the time, the page {((out['page'].get('share') or 0) * 100):.1f}%{early}", "series": best["name"]})
     full = [s for s in slots if s["reels"] >= 3]
     if len(full) >= 2 and full[-1]["views"] and full[0]["views"] >= 1.5 * full[-1]["views"]:
-        do.append({"do": f"Move a reel from {full[-1]['name']} towards {full[0]['name']}", "why": f"reels posted around {full[0]['name']} get {int(full[0]['views'])} views in the middle, around {full[-1]['name']} only {int(full[-1]['views'])}{early}"})
+        do.append({"do": f"Move a reel from {full[-1]['name']} towards {full[0]['name']}", "why": f"reels posted around {full[0]['name']} get {int(full[0]['views'])} views in the middle, around {full[-1]['name']} only {int(full[-1]['views'])}{early}", "move": {"from": full[-1]["name"], "to": full[0]["name"]}})
     if not out["solid"]:
         do.append({"do": f"Keep posting: {need - len(reels)} more measured reels before the numbers are solid", "why": f"{len(reels)} reels in {days} days is a small sample; one lucky reel can move every line above"})
     lead = strong[0] if strong else (series[0] if series else None)

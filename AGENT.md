@@ -787,7 +787,7 @@ The sheet is for looking. All changes go through the Control Room, so there is o
 ### 13.3 The panel and the Control Room page
 After every job the Engine writes one small status file, the **panel**, in two forms: `status/panel.md` (text the chat reads in one go) and `status/panel.txt` (the same facts as data for the page). It holds: switch and phase, today's reels with state, hook, preview link and the words you can change, the next runs with their times, tomorrow's slots, the last reels' numbers, money and limits (also per posted reel), your standing rules, the series, open alerts, your last actions and what became of them, and the digest.
 
-The **Control Room page** is a saved page of cards and buttons. It reads the panel straight from Drive through your Google Drive connection and writes actions to the inbox (12.5). Opening it, refreshing it and pressing its buttons use **no Claude tokens**. It counts down to the next run. The chat is for what buttons cannot do: wording a new hook together, questions, wizards.
+The **Control Room page** is a saved page of cards and buttons. It reads the panel straight from Drive through your Google Drive connection and writes actions to the inbox (12.5). It finds the newest `panel.txt` by name each time it opens and sends to the inbox the panel names, so a Drive move needs no new page. On Today: notices with ✕ (hides at once, the Engine closes it at its next job), "Today in short" (the digest, one line per label) and "News now" (radar and Chennaiist, with when each was checked). An insight that is a day-plan change has **Apply**: it opens Reels per day with the change made, for one Save. Opening it, refreshing it and pressing its buttons use **no Claude tokens**. It counts down to the next run. The chat is for what buttons cannot do: wording a new hook together, questions, wizards.
 
 ---
 
@@ -978,6 +978,7 @@ The cards live on the Control Room page, where they cost no tokens. In the chat 
 Every delete asks once. Everything except posted-reel deletion can be undone.
 
 ### 16.4 Daily digest (about 10 PM, 6 lines at most)
+Each line is one fact in at most 12 words: no semicolons, no lists inside a line (Harish, 19 Nov: the page shows it as a quick read).
 > **Tue 10 Nov** · 6 posted, 0 held · on pace (41 followers, +4)
 > **Best:** Kaithi breakdown — share rate 2× your median
 > **Weak:** 6 PM update — most people left in the first 3 seconds; hook too slow

@@ -253,7 +253,8 @@ def scouts_card(drive):
         out.append({"page": name, "posts": pg.get("posts"), "film_posts": pg.get("film_posts"), "first": pg.get("first"),
                     "lead_min": leads[len(leads) // 2] if leads else None, "kinds": pg.get("kinds"),
                     "names": sorted((pg.get("mentions") or {}).items(), key=lambda kv: -kv[1])[:6]})
-    return {"since": st.get("since"), "pages": out, "learned": st.get("learned") or []} if out else None
+    latest = sorted((x for pg in (st.get("pages") or {}).values() for x in pg.get("latest") or []), key=lambda x: x.get("at") or "", reverse=True)[:3]
+    return {"since": st.get("since"), "pages": out, "learned": st.get("learned") or [], "checked": st.get("updated"), "latest": latest} if out else None
 
 
 def numbers(ctl, drive):
@@ -370,6 +371,7 @@ def build(drive, ctl=None):
         respect = None
     reels = _safe(lambda: reels_today(day, ROOT / "plans" / date), [])
     money_card = _safe(lambda: money(ctl, drive), {})
+    radar = _safe(lambda: drive.read_json("status", "radar.json"), {})
     P = {"v": 2, "updated": status.stamp(), "updated_iso": now.isoformat(timespec="seconds"),
          "switch": ctl.mode, "phase": ctl.phase, "approval": ctl.settings.get("approval"), "away": bool(ctl.settings.get("away_mode")),
          "respect": (respect or {}).get("why") if respect else None,
@@ -384,7 +386,7 @@ def build(drive, ctl=None):
          "insights": _safe(lambda: __import__("engine.insights", fromlist=["build"]).build(drive.read_json("status", "metrics.json") or {}, now), {}),
          "calendar": _safe(lambda: __import__("engine.almanac", fromlist=["today"]).today(date, ctl.settings.get("slots") or []), {}) if ctl.on("calendar") else None,
          "scouts": _safe(lambda: scouts_card(drive), None), "radar": [{"title": x.get("title"), "rank": x.get("rank"), "sources": len(x.get("publishers") or {}), "fired": bool(x.get("fired_at"))}
-                                                                      for x in (_safe(lambda: drive.read_json("status", "radar.json"), {}) or {}).get("stories", [])[:5]],
+                                                                      for x in (radar or {}).get("stories", [])[:5]], "radar_checked": (radar or {}).get("updated"),
          "page_rules": [{"id": n.get("id"), "text": n["text"], "at": n.get("at")} for n in ctl.notes()],
          "alerts": [{k: a.get(k) for k in ("id", "at", "level", "title", "what_happened", "what_was_done", "what_you_do")}
                     for a in (_safe(lambda: drive.read_json("status", "alerts.json"), {}) or {}).get("alerts", []) if a.get("open")][:6],
@@ -412,6 +414,8 @@ def text(P):
     L = [f"# iNiKKi panel · updated {P['updated']}",
          f"Switch {str(P['switch']).upper()} · Phase {str(P['phase']).upper()} · Approval {P.get('approval')}"
          + (f" · RESPECT MODE: {P['respect']}" if P.get("respect") else "") + (" · away mode" if P.get("away") else "")]
+    if P.get("inbox"):
+        L.append(f"Inbox folder id: {P['inbox']}")
     if n.get("followers") is not None:
         diff = n["followers"] - n.get("target_today", n["followers"])
         L.append(f"Followers {n['followers']} of {n.get('goal')} · target line today {n.get('target_today')} ({'+' if diff >= 0 else ''}{diff}) · {n.get('days_left')} days left")
