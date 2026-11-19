@@ -28,7 +28,7 @@ def example():
                         "claude": {"runs": [{"name": k, "at": str(v)} for k, v in (ctl.settings.get("thinking_runs") or {}).items()], "quiet": ["05:37 (plan)", "16:37 (refresh)"],
                                    "note": "Example numbers. Your own appear when the page is opened in Claude with Google Drive connected."}},
               "insights": {"days": 14, "reels": 24, "solid": True, "need": 10, "headline": "Example: film-breakdown leads with 2,700 views in the middle (+160% vs the page).",
-                           "do_next": [{"do": "Give film-breakdown one more slot", "why": "its middle reel gets 2,700 views, 160% above the page", "series": "film-breakdown"},
+                           "do_next": [{"do": "Give film-breakdown one more slot", "why": "its middle reel gets 2,700 views, 160% above the page", "series": "film-breakdown", "more": "film-breakdown"},
                                        {"do": "Change the first frame of movie-recommendations", "why": "58% swipe away in the first seconds, against 49% for the page", "series": "movie-recommendations"}],
                            "series": [{"name": "film-breakdown", "reels": 9, "views": 2700, "vs_page": 1.6, "skip": .41, "share": .014},
                                       {"name": "movie-updates", "reels": 11, "views": 900, "vs_page": -.12, "skip": .47, "share": .009}]}}

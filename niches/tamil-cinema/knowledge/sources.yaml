@@ -38,7 +38,7 @@ official:            # verified accounts of production houses and stars (signals
 youtube_channels: [] # official channels: { name, channel_id }; their trailer and song drops are read from YouTube's free feed
 scouts:              # fast pages the news watch reads at every pass, through Instagram's own API (signals, never proof).
   # The watch also studies them (Drive status/scouts.json): what they post, which official accounts they name, how early they are.
-  - { account: chennaiist, tier: 2, posts: 12, note: "Chennai city page; quick with trailers, teasers and release news (Harish, 14 Nov 2026)" }
+  - { account: chennaiist, tier: 1, posts: 12, note: "Chennai city page; quick with trailers, teasers and release news (Harish, 14 Nov 2026)" }
 audience_signal:     # never proof, only trend signal
   - { name: "r/kollywood", url: "https://www.reddit.com/r/kollywood/", tier: 3 }
 
