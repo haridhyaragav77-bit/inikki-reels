@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — Posting on time: why 2 reels were held, and the fixes
+At 09:17 the Guard held posting because GitHub's Pages robot (github-pages[bot]) rebuilt the docs pages; it stayed held until Harish pressed Resume at 14:11, and held reels never came back by themselves. Fixes: github-pages[bot] is a trusted actor; after Resume, reels the switch held today are released and post oldest first, one per run, up to 8 hours late (`release_switch_holds`); an Instagram "processing failed" upload is tried once more with a fresh upload.
+
 ## 19 Nov 2026 — Fresh evening updates; post a bank reel now; Level Up handle
 The Refresh run (16:37) rewrites the evening movie updates (slots from 17:00) with the day news (`fresh_updates`, brief + run cards). `engine.post --now` also takes a ready bank reel (posts it today, marks it used). Level Up Learning Filmmaking = @levelup_filmmaking. The old Thani Oruvan bank reel posts tonight and leaves the bank.
 

@@ -26,7 +26,7 @@ runner:
   usd_per_minute_over: 0.008  # what GitHub charges per extra minute, only if a spending limit is set (default: none, jobs stop)
 # The Guard (AGENT.md 21, engine/guard.py): what keeps a public repository safe. The daily health job runs the look-around.
 guard:
-  trusted_actors: ["dependabot[bot]"]   # GitHub names (besides the owner and GitHub's own clock) allowed to start jobs; dependabot = GitHub's own package checker
+  trusted_actors: ["dependabot[bot]", "github-pages[bot]"]   # GitHub names (besides the owner and GitHub's own clock) allowed to start jobs; dependabot = GitHub's own package checker
   extra_people: []            # Google accounts (besides the folder's owner and the Engine) allowed in the Drive folder
   drive_folders: [control, control/inbox, status]   # checked every day for "anyone with the link" (the main folder always is)
   preview_branches: [peek, review, "review-*"]      # build previews: deleted a day after their last change
