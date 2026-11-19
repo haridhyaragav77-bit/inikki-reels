@@ -4,6 +4,11 @@
 Run this on your laptop:   python tools/drive_signin.py
 It prints the steps, opens your browser for a Google sign-in, and ends by printing ONE line.
 Paste that whole line as the GitHub Secret  GDRIVE_OAUTH_REFRESH_TOKEN . Never paste it into a chat.
+
+YouTube Shorts (AGENT.md 5.15):   python tools/drive_signin.py --youtube
+Same steps, but sign in with the Google account that owns the YouTube channel (pick the channel if Google asks), and
+paste the printed line as the GitHub Secret  YOUTUBE_OAUTH_REFRESH_TOKEN . In the Cloud console, also turn on
+"YouTube Data API v3" (APIs & Services > Library) for the same project.
 """
 import glob
 import json
@@ -12,6 +17,9 @@ import subprocess
 import sys
 
 SCOPES = ["https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/spreadsheets"]
+YT_SCOPES = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.readonly"]
+YT = "--youtube" in sys.argv
+SECRET = "YOUTUBE_OAUTH_REFRESH_TOKEN" if YT else "GDRIVE_OAUTH_REFRESH_TOKEN"
 
 STEPS = """
 Before this works, Google needs a "sign-in client" for the iNiKKi project (one time, about 5 minutes):
@@ -38,13 +46,13 @@ def main():
     except ImportError:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "--quiet", "google-auth-oauthlib"])
         from google_auth_oauthlib.flow import InstalledAppFlow
-    flow = InstalledAppFlow.from_client_secrets_file(files[0], scopes=SCOPES)
+    flow = InstalledAppFlow.from_client_secrets_file(files[0], scopes=YT_SCOPES if YT else SCOPES)
     creds = flow.run_local_server(port=0, access_type="offline", prompt="consent")
     if not creds.refresh_token:
         print("Google did not give a long-lived token. Remove the app's access at myaccount.google.com/permissions and run again.")
         sys.exit(1)
     line = json.dumps({"client_id": creds.client_id, "client_secret": creds.client_secret, "refresh_token": creds.refresh_token})
-    print("\nDone. Copy the ENTIRE next line into the GitHub Secret GDRIVE_OAUTH_REFRESH_TOKEN:\n")
+    print(f"\nDone. Copy the ENTIRE next line into the GitHub Secret {SECRET}:\n")
     print(line)
     print("\nThen delete the client_secret JSON file from your laptop.")
 

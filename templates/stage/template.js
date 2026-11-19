@@ -77,6 +77,12 @@ function fadeBand(ctx, y0, h, bottom = 320) {
   grad(ctx, 0, y0 + h - bottom, 0, y0 + h, [[0, 'rgba(5,6,8,0)'], [1, INK]], [0, y0 + h - bottom, W, bottom + 2]);
 }
 
+// PART n/of: a film week's badge (plan.part = [n, of], AGENT.md 5.7), on the title and end screens
+function partBadge(env, ctx, lt, y) {
+  const pt = env.plan.part; if (!Array.isArray(pt) || lt < 0) return;
+  pill(ctx, `PART ${pt[0]}/${pt[1]}`, CX, y, lt, { size: 34, bg: INK, color: GOLD, border: GOLD, ls: .18, family: 'Anton', weight: 400, glow: rgba(GOLD, .5) });
+}
+
 // ---------------------------------------------------------------- icons for the story loop
 function icon(ctx, kind, s, col) {
   ctx.save(); ctx.scale(s, s); ctx.strokeStyle = col; ctx.fillStyle = col; ctx.lineWidth = 5; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
@@ -119,6 +125,7 @@ const KINDS = {
       const ts = fitSize(env, ctx, s.type, 'Inter', 900, MAXW - 20, 58, 34, .16);
       wordsIn(ctx, s.type, CX, 1236, lt - hit - .3, { size: ts, weight: 900, ls: .16, color: '#fff', stagger: .1 });
       const rl = ep(lt, hit + .65, hit + 1.15, E.inOutCubic);
+      partBadge(env, ctx, lt - hit - .5, 945);
       ctx.fillStyle = GOLD; ctx.fillRect(CX - 230 * rl, 1274, 460 * rl, 5);
       ctx.restore();
       if (env.plan.voice && env.plan.voice.on) soundOn(ctx, lt, CX, 300, { until: T.end - T.start + .2, accent: GOLD });
@@ -486,6 +493,189 @@ const KINDS = {
     };
   },
 
+  // ------------------------------------------------------------ DETAIL (19 Nov): a lens travels to the detail most viewers
+  // missed and magnifies it (image, spot: {x, y} 0-1 inside the frame, zoom, cue, label, label_cue, count: [n, of], heading)
+  detail(env, s, i, T) {
+    const img = env.img[s.image], cl = cue(env, i, s.cue, .9) - T.start, cb = s.label_cue ? cue(env, i, s.label_cue) - T.start : cl + .6;
+    const fx0 = 70, fy0 = 360, fw = 840, fh = 820, sp = s.spot || { x: .5, y: .5 }, Z = s.zoom || 2.6;
+    const tx = fx0 + sp.x * fw, ty = fy0 + sp.y * fh, cnt = s.count;
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      const [sx, sy] = shake(lt, [cl + .55], 9);
+      ctx.save(); ctx.translate(sx, sy);
+      const ent = ep(lt, 0, .6, E.outBack), push = 1.04 + .05 * ep(lt, 0, 8, E.linear);
+      const still = () => cover(ctx, img, fx0, fy0, fw, fh, { zoom: push, fx: s.fx ?? .5, fy: s.fy ?? .5 });
+      ctx.save(); ctx.globalAlpha = ep(lt, 0, .4); ctx.translate(CX, fy0 + fh / 2 + (1 - ent) * 140); ctx.scale(.9 + .1 * ent, .9 + .1 * ent); ctx.translate(-CX, -(fy0 + fh / 2));
+      ctx.save(); rrect(ctx, fx0, fy0, fw, fh, 30); ctx.clip(); still(); ctx.restore();
+      rrect(ctx, fx0, fy0, fw, fh, 30); ctx.lineWidth = 3; ctx.strokeStyle = rgba(GOLD, .5); ctx.stroke(); ctx.restore(); ctx.globalAlpha = 1;
+      // the lens: searches slowly, then travels to the detail on the word and opens up
+      const go = ep(lt, cl, cl + .6, E.inOutCubic), open = ep(lt, cl + .45, cl + .85, E.outBack);
+      const wx = CX + Math.sin(lt * 1.3) * 230, wy = fy0 + fh * .45 + Math.cos(lt * .9) * 170;
+      const lx = lerp(wx, tx, go), ly = lerp(wy, ty, go), R = lerp(95, 175, open), z = lerp(1.35, Z, open);
+      if (lt > .3) {
+        const dim = .62 * open;                              // the rest of the frame goes dark around the lens
+        if (dim > 0) { ctx.save(); ctx.beginPath(); ctx.rect(fx0, fy0, fw, fh); ctx.arc(lx, ly, R, 0, 7, true); ctx.fillStyle = `rgba(5,6,8,${dim})`; ctx.fill(); ctx.restore(); }
+        ctx.save(); ctx.beginPath(); ctx.arc(lx, ly, R - 4, 0, 7); ctx.clip();
+        ctx.translate(lx, ly); ctx.scale(z, z); ctx.translate(-lx, -ly); still(); ctx.restore();
+        ctx.save(); ctx.shadowColor = GOLD; ctx.shadowBlur = 30 + 24 * beatPulse(env, t); ctx.lineWidth = 9; ctx.strokeStyle = GOLD;
+        ctx.beginPath(); ctx.arc(lx, ly, R, 0, 7); ctx.stroke(); ctx.shadowBlur = 0;
+        ctx.lineWidth = 22; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(lx + R * .72, ly + R * .72); ctx.lineTo(lx + R * 1.25, ly + R * 1.25); ctx.stroke();
+        ctx.lineWidth = 3; ctx.strokeStyle = rgba('#ffffff', .55 * open);
+        for (let k = 0; k < 4; k++) { const a = k * Math.PI / 2 + lt * .6; ctx.beginPath(); ctx.moveTo(lx + Math.cos(a) * (R - 28), ly + Math.sin(a) * (R - 28)); ctx.lineTo(lx + Math.cos(a) * (R - 8), ly + Math.sin(a) * (R - 8)); ctx.stroke(); }
+        ctx.restore();
+        ring(ctx, lx, ly, lt - cl - .55, { color: GOLD, r0: R, r1: R + 260, w: 10 });
+      }
+      if (s.label) {                                          // the label hangs off the lens, on the side with room
+        const below = ty < fy0 + fh * .55, py = below ? ly + R + 95 : ly - R - 70, px = clamp(lx, 250, 730);
+        if (lt > cb) { ctx.save(); ctx.globalAlpha = ep(lt, cb, cb + .3); ctx.strokeStyle = TEAL; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(lx, ly + (below ? R : -R)); ctx.lineTo(px, py + (below ? -32 : 32)); ctx.stroke(); ctx.restore(); ctx.globalAlpha = 1; }
+        pill(ctx, s.label, px, py, lt - cb, { size: 44, bg: TEAL, color: INK, ls: .08, glow: rgba(TEAL, .6) });
+      }
+      ctx.restore();
+      // the counter: DETAIL 1/3, one bar per detail, this one fills on entry
+      if (cnt) {
+        const [n, of] = cnt, bw = 70, gap = 18, x0 = CX - ((of * bw + (of - 1) * gap) / 2);
+        wordsIn(ctx, s.heading || 'DETAIL', CX - 70, 300, lt - .05, { size: 44, weight: 900, ls: .2, color: '#fff', stagger: .08 });
+        slam(ctx, `${n}/${of}`, CX + 130, 304, lt - .2, { size: 64, family: 'Anton', weight: 400, color: GOLD, glow: rgba(GOLD, .6), glowBlur: 30 });
+        for (let k = 0; k < of; k++) {
+          const on = k < n - 1 ? 1 : k === n - 1 ? ep(lt, .35, .75, E.outBack) : 0;
+          ctx.fillStyle = 'rgba(255,255,255,.18)'; rrect(ctx, x0 + k * (bw + gap), 326, bw, 10, 5); ctx.fill();
+          if (on > 0) { ctx.save(); ctx.shadowColor = GOLD; ctx.shadowBlur = 18; ctx.fillStyle = GOLD; rrect(ctx, x0 + k * (bw + gap), 326, bw * on, 10, 5); ctx.fill(); ctx.restore(); }
+        }
+      } else if (s.heading) wordsIn(ctx, s.heading, CX, 300, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 76, 44), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+    };
+  },
+
+  // ------------------------------------------------------------ CHAIN (19 Nov): the butterfly effect. One small choice knocks
+  // down the next, each card bigger, up to the ending (heading, steps: 3-5 of {label, cue}; the last one is the payoff)
+  chain(env, s, i, T) {
+    const st = s.steps, n = st.length, cues = st.map((x, k) => cue(env, i, x.cue, .4 + k * 1.1) - T.start);
+    const y0 = 470, y1 = 1230, gap = n > 1 ? (y1 - y0) / (n - 1) : 0;
+    const pos = st.map((x, k) => { const f = n > 1 ? k / (n - 1) : 1; return { x: CX + (k % 2 ? 60 : -60) * (1 - f), y: y0 + k * gap, w: lerp(360, 800, f), h: lerp(96, 132, f) }; });
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      const hits = cues.map(c => c + .38), [sx, sy] = shake(lt, hits, 7);
+      ctx.save(); ctx.translate(sx, sy);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 330, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 76, 44), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      for (let k = 1; k < n; k++) {                        // the thread from one card to the next, drawn as the next one falls
+        const p = ep(lt, cues[k] - .1, cues[k] + .3, E.inOutCubic); if (p <= 0) continue;
+        const a = pos[k - 1], b = pos[k];
+        ctx.save(); ctx.strokeStyle = rgba(GOLD, .8); ctx.lineWidth = 5; ctx.setLineDash([14, 12]); ctx.lineDashOffset = -lt * 60;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y + a.h / 2); ctx.lineTo(lerp(a.x, b.x, p), lerp(a.y + a.h / 2, b.y - b.h / 2, p)); ctx.stroke(); ctx.restore();
+      }
+      st.forEach((x, k) => {
+        const d = lt - cues[k]; if (d < 0) return;
+        const P = pos[k], last = k === n - 1, fall = ep(d, 0, .42, E.outBack);
+        const pushed = k < n - 1 && lt > cues[k + 1] + .3 ? Math.exp(-(lt - cues[k + 1] - .3) * 5) * Math.sin((lt - cues[k + 1]) * 22) * .05 : 0;
+        ctx.save(); ctx.translate(P.x, P.y - (1 - fall) * 170); ctx.rotate((1 - fall) * (k % 2 ? .3 : -.3) + pushed + Math.sin(lt * .9 + k) * .01);
+        ctx.globalAlpha = clamp(d * 5);
+        if (last) { ctx.shadowColor = GOLD; ctx.shadowBlur = 40 + 30 * beatPulse(env, t); }
+        rrect(ctx, -P.w / 2, -P.h / 2, P.w, P.h, 22); ctx.fillStyle = last ? GOLD : '#12151B'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+        ctx.lineWidth = 4; ctx.strokeStyle = last ? '#fff' : rgba(k % 2 ? TEAL : GOLD, .8); ctx.stroke();
+        const size = fitSize(env, ctx, x.label, 'Anton', 400, P.w - 150, last ? 78 : 60, 34);
+        txt(ctx, x.label, 26, size * .36, { size, family: 'Anton', weight: 400, color: last ? INK : '#fff' });
+        txt(ctx, String(k + 1), -P.w / 2 + 50, 22, { size: 60, family: 'Anton', weight: 400, color: last ? rgba(INK, .5) : rgba(GOLD, .6) });
+        ctx.restore(); ctx.globalAlpha = 1;
+        ring(ctx, P.x, P.y, d - .38, { color: last ? GOLD : TEAL, r0: 60, r1: P.w * .7, w: 8, d: .55 });
+      });
+      ctx.restore();
+      // the butterfly on the first card: a tiny wing-beat that starts it all
+      const b = pos[0], bd = lt - cues[0];
+      if (bd > .2) {
+        const flap = .35 + .65 * Math.abs(Math.sin(lt * 9)), bx = b.x - b.w / 2 - 30 + Math.sin(lt * 1.7) * 14, by = b.y - b.h / 2 - 22 + Math.cos(lt * 2.3) * 10;
+        ctx.save(); ctx.translate(bx, by); ctx.globalAlpha = ep(bd, .2, .6); ctx.fillStyle = TEAL; ctx.shadowColor = TEAL; ctx.shadowBlur = 20;
+        [-1, 1].forEach(sd => { ctx.beginPath(); ctx.ellipse(sd * 13 * flap, -6, 14 * flap, 19, sd * .5, 0, 7); ctx.fill(); ctx.beginPath(); ctx.ellipse(sd * 9 * flap, 12, 9 * flap, 11, -sd * .4, 0, 7); ctx.fill(); });
+        ctx.restore(); ctx.globalAlpha = 1;
+      }
+      flash(ctx, lt, cues[n - 1] + .38, { alpha: .22, d: .25 });
+    };
+  },
+
+  // ------------------------------------------------------------ QUOTE (19 Nov): who said it, from where. A portrait that
+  // "talks" (bars pulse round it), the name, the role, a short key phrase and the source (image, name, role, phrase,
+  // source, cues: {name, phrase})
+  quote(env, s, i, T) {
+    const img = s.image ? env.img[s.image] : null, cs = s.cues || {};
+    const cn = cue(env, i, cs.name, .5) - T.start, cp = cue(env, i, cs.phrase, 1.6) - T.start;
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      const [sx, sy] = shake(lt, [cp + .1], 8);
+      ctx.save(); ctx.translate(sx, sy);
+      const px = CX, py = 600, R = 190, ent = ep(lt, 0, .6, E.outBack);
+      txt(ctx, '“', CX - 330, 470 + (1 - ep(lt, .1, .6)) * 60, { size: 360, family: 'Anton', weight: 400, color: rgba(GOLD, .22 * ep(lt, .1, .6)) });
+      ctx.save(); ctx.globalCompositeOperation = 'lighter';           // the voice bars round the portrait
+      for (let k = 0; k < 48; k++) {
+        const a = k / 48 * Math.PI * 2 + lt * .25, amp = (.35 + .65 * Math.abs(Math.sin(lt * 7 + k * 1.9) * Math.sin(lt * 3.1 + k * .7))) * (.5 + .5 * beatPulse(env, t));
+        const r0 = R + 22, r1 = r0 + 16 + 60 * amp * ent;
+        ctx.strokeStyle = rgba(k % 2 ? TEAL : GOLD, .55); ctx.lineWidth = 6; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(px + Math.cos(a) * r0, py + Math.sin(a) * r0); ctx.lineTo(px + Math.cos(a) * r1, py + Math.sin(a) * r1); ctx.stroke();
+      }
+      ctx.restore();
+      ctx.save(); ctx.translate(px, py); ctx.scale(ent, ent);
+      ctx.beginPath(); ctx.arc(0, 0, R, 0, 7); ctx.fillStyle = '#101216'; ctx.fill();
+      if (img) { ctx.save(); ctx.beginPath(); ctx.arc(0, 0, R - 8, 0, 7); ctx.clip(); cover(ctx, img, -R, -R, R * 2, R * 2, { zoom: 1.12 + .05 * ep(lt, 0, 8, E.linear), fx: s.fx ?? .5, fy: s.fy ?? .35 }); ctx.restore(); }
+      else txt(ctx, String(s.name || '?')[0], 0, R * .36, { size: R * 1.05, family: 'Anton', weight: 400, color: GOLD });
+      ctx.lineWidth = 8; ctx.strokeStyle = GOLD; ctx.shadowColor = GOLD; ctx.shadowBlur = 26; ctx.beginPath(); ctx.arc(0, 0, R, 0, 7); ctx.stroke();
+      ctx.restore(); ctx.shadowBlur = 0;
+      const ns = fitSize(env, ctx, s.name, 'Anton', 400, MAXW, 104, 54);
+      slam(ctx, s.name, CX, 935, lt - cn, { size: ns, family: 'Anton', weight: 400, color: '#fff', glow: rgba(GOLD, .5), glowBlur: 40 });
+      if (s.role) pill(ctx, s.role, CX, 1000, lt - cn - .3, { size: 32, bg: rgba('#ffffff', .12), color: '#fff', border: rgba(GOLD, .7), ls: .12 });
+      if (s.phrase) {
+        const ps = fitSize(env, ctx, s.phrase, 'Anton', 400, MAXW, 92, 46);
+        wordsIn(ctx, s.phrase, CX, 1150, lt - cp, { size: ps, family: 'Anton', weight: 400, color: GOLD, glow: rgba(GOLD, .5), glowBlur: 30, stagger: .1 });
+        streak(ctx, CX, 1175, lt - cp - .2, { len: 800 });
+      }
+      if (s.source) pill(ctx, 'SOURCE: ' + s.source, CX, 1262, lt - cp - .6, { size: 26, bg: INK, color: rgba('#ffffff', .85), border: rgba(TEAL, .8), ls: .14 });
+      ctx.restore();
+    };
+  },
+
+  // ------------------------------------------------------------ SOURCE (19 Nov): the source story and the film, side by
+  // side; lines link the beats that match (heading, left / right: {title, beats: [{label, cue}]}, links: [{from, to, cue}])
+  source(env, s, i, T) {
+    const L = s.left, R = s.right, lx = CX - 235, rx = CX + 235, top = 500, bot = s.slam_text ? 1080 : 1200;
+    const nb = Math.max(L.beats.length, R.beats.length), gy = nb > 1 ? (bot - top) / (nb - 1) : 0;
+    const ly = k => top + k * gy, bc = (side, k, f) => cue(env, i, side.beats[k].cue, f) - T.start;
+    const lc = L.beats.map((_, k) => bc(L, k, .3 + k * .25)), rc = R.beats.map((_, k) => bc(R, k, .5 + k * .25));
+    const links = (s.links || []).map((x, k) => ({ ...x, c: cue(env, i, x.cue, 1.5 + k * .9) - T.start }));
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      const [sx, sy] = shake(lt, links.map(x => x.c + .45), 6);
+      ctx.save(); ctx.translate(sx, sy);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 300, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 70, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      [[L, lx, GOLD, lc], [R, rx, TEAL, rc]].forEach(([side, x, col, cs], k) => {
+        const dp = ep(lt, .1 + k * .15, .9 + k * .15, E.inOutCubic);
+        ctx.save(); ctx.strokeStyle = rgba(col, .45); ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(x, top - 40); ctx.lineTo(x, lerp(top - 40, bot + 40, dp)); ctx.stroke(); ctx.restore();
+        const ts = fitSize(env, ctx, side.title, 'Anton', 400, 360, 64, 34);
+        slam(ctx, side.title, x, 400, lt - .15 - k * .2, { size: ts, family: 'Anton', weight: 400, color: col, glow: rgba(col, .5), glowBlur: 30 });
+        side.beats.forEach((b, j) => {
+          const d = lt - cs[j], y = ly(j); if (d < 0) return;
+          const p = ep(d, 0, .4, E.outBack), w = 340, h = 92, hit = links.some(x => (k ? x.to : x.from) === j && lt > x.c + .45);
+          ctx.save(); ctx.translate(x + (1 - p) * (k ? 120 : -120), y); ctx.globalAlpha = clamp(d * 4);
+          if (hit) { ctx.shadowColor = col; ctx.shadowBlur = 22 + 18 * beatPulse(env, t); }
+          rrect(ctx, -w / 2, -h / 2, w, h, 20); ctx.fillStyle = hit ? rgba(col, .22) : '#12151B'; ctx.fill(); ctx.shadowBlur = 0; ctx.shadowColor = 'transparent';
+          ctx.lineWidth = hit ? 5 : 3; ctx.strokeStyle = hit ? '#fff' : rgba(col, .8); ctx.stroke();
+          const bs = fitSize(env, ctx, b.label, 'Inter', 900, w - 40, 40, 24);
+          txt(ctx, b.label, 0, bs * .36, { size: bs, weight: 900, color: '#fff' });
+          ctx.restore(); ctx.globalAlpha = 1;
+        });
+      });
+      links.forEach(x => {                                   // a bright curve from the source beat to the film beat, a spark running along it
+        const p = ep(lt, x.c, x.c + .5, E.inOutCubic); if (p <= 0) return;
+        const ay = ly(x.from), by = ly(x.to), ax = lx + 170, bx = rx - 170, mx = (ax + bx) / 2;
+        ctx.save(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 6; ctx.shadowColor = GOLD; ctx.shadowBlur = 24 + 20 * beatPulse(env, t);
+        ctx.beginPath(); const N = 24;
+        const pt = u => { const q = 1 - u; return [q * q * q * ax + 3 * q * q * u * mx + 3 * q * u * u * mx + u * u * u * bx, q * q * q * ay + 3 * q * q * u * ay + 3 * q * u * u * by + u * u * u * by]; };
+        for (let k = 0; k <= N * p; k++) { const [px, py] = pt(k / N); k ? ctx.lineTo(px, py) : ctx.moveTo(px, py); }
+        ctx.stroke();
+        const [sx2, sy2] = pt((lt * .8) % 1); if (p >= 1) { ctx.fillStyle = GOLD; ctx.beginPath(); ctx.arc(sx2, sy2, 10, 0, 7); ctx.fill(); }
+        ctx.restore();
+        ring(ctx, bx, by, lt - x.c - .45, { color: TEAL, r0: 20, r1: 220, w: 8, d: .5 });
+      });
+      ctx.restore();
+      if (s.slam_text) { const c = cue(env, i, s.slam_cue, T.end - T.start - 1.2) - T.start; slam(ctx, s.slam_text, CX, 1250, lt - c, { size: fitSize(env, ctx, s.slam_text, 'Anton', 400, MAXW, 100, 50), family: 'Anton', weight: 400, color: GOLD, glow: rgba(GOLD, .6), glowBlur: 40, stroke: INK, strokeW: 10 }); }
+    };
+  },
+
   // ------------------------------------------------------------ end: question, send prompt, mascot, echo of screen 1
   end(env, s, i, T) {
     const bg = s.bg ? env.memo('blur:' + s.bg, () => filtered(env.img[s.bg], 'blur(14px) brightness(.55) saturate(.8)', .5)) : null;
@@ -493,6 +683,7 @@ const KINDS = {
       stage(env, ctx, t);
       if (bg) { ctx.save(); ctx.globalAlpha = .38 * ep(lt, 0, .8); cover(ctx, bg, 0, 0, W, H, { zoom: 1.15 + .05 * Math.sin(lt * .5), fy: .4 }); ctx.restore(); ctx.globalAlpha = 1; grad(ctx, 0, 0, 0, H, [[0, 'rgba(5,6,8,.75)'], [.5, 'rgba(5,6,8,.35)'], [1, 'rgba(5,6,8,.85)']]); }
       if (s.recap) pill(ctx, s.recap, CX, 505, lt - .15, { size: 38, bg: GOLD, color: INK, ls: .1, glow: rgba(GOLD, .6) });
+      partBadge(env, ctx, lt - .3, 425);
       endCard(env, ctx, lt, t, { echo: s.echo, question: s.question, cta: s.cta, sub: env.plan.subtitles === false ? s.sub : null, subFamily: s.subFamily, accent: GOLD,
         cx: CX, echoY: 330, qy: 690, ctaY: 990, handleY: 1100, mascot: [170, 1235, .7], echoSize: 30 });
     };

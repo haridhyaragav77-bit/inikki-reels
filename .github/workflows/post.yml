@@ -42,6 +42,7 @@ jobs:
       CONTROL_ROOM_EMAIL: ${{ secrets.CONTROL_ROOM_EMAIL }}
       IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
       IG_USER_ID: ${{ secrets.IG_USER_ID }}
+      YOUTUBE_OAUTH_REFRESH_TOKEN: ${{ secrets.YOUTUBE_OAUTH_REFRESH_TOKEN }}   # YouTube Shorts after Instagram (AGENT.md 5.15)
       BRAIN_FIRE_URL: ${{ secrets.BRAIN_FIRE_URL }}
       BRAIN_FIRE_TOKEN: ${{ secrets.BRAIN_FIRE_TOKEN }}
       DRY: ${{ inputs.dry && '--dry' || '' }}

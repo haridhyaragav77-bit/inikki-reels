@@ -21,7 +21,7 @@ hook_examples:
   - "Indha shot-a gavanicheengala?"
   - "Trailer-la 3 vishayam miss pannirupeenga."
 music: { from: the_trailer_mood, rule: "bold, starts on frame 1, never subtle" }
-motion_presets: [frame_grid, shot_scale_ladder, colour_strip, timeline_scrub, split_compare, still_reframe]
+motion_presets: [detail_zoom, frame_grid, shot_scale_ladder, colour_strip, timeline_scrub, split_compare, still_reframe]
 proof_required: 0        # only what the trailer shows; guesses are asked as questions, never stated as facts or leaks
 meme_use: ending_only
 success_metric: sends_per_reach
@@ -37,4 +37,4 @@ reference:   # the breakdown reference set (approved 13 Nov 2026)
 # Harish, 14 Nov 2026: every breakdown gets its own design. A plan names a design kit and builds its middle from the
 # graphics that fit this film's idea; the plan check refuses a kit or a build the last reels used (AGENT.md 5.8).
 unique_design: { since: "2026-11-15", window: 3, shape_window: 2, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
-graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web]   # the screens a breakdown is built from
+graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web, detail, chain, quote, source]   # the screens a breakdown is built from

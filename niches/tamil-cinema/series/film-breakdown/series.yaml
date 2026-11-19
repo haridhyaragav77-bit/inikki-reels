@@ -2,10 +2,10 @@
 # lots of animation, this series' own look.
 id: film-breakdown
 name: Film Breakdown
-promise: "One film technique, named and explained: why a scene works."
+promise: "The detail you missed in a film you love, and why it works." # Harish, 19 Nov: detail first, technique as the why
 status: live
 priority: 1            # the page's main product
-badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE CINEMATOGRAPHY BREAKDOWN", "THE CAMERA BREAKDOWN", "THE SET DESIGN BREAKDOWN", "THE EDITING BREAKDOWN", "THE SOUND BREAKDOWN", "THE PERFORMANCE BREAKDOWN"], color: gold }
+badge: { text: "THE SCREENPLAY BREAKDOWN", alt_texts: ["THE CINEMATOGRAPHY BREAKDOWN", "THE CAMERA BREAKDOWN", "THE SET DESIGN BREAKDOWN", "THE EDITING BREAKDOWN", "THE SOUND BREAKDOWN", "THE PERFORMANCE BREAKDOWN", "HIDDEN DETAILS", "BEHIND THE SCENES"], color: gold }
 title_screen: "{FILM} · {ANGLE} BREAKDOWN"     # e.g. "VIKRAM VEDHA · SCREENPLAY BREAKDOWN"; film's title logo from the trailer when available
 per_day: 2
 slots: ["12:30", "20:00"]
@@ -14,21 +14,26 @@ visuals: motion_graphics_first   # clips where they truly show the point; graphi
 voice: true
 captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit (change #7)
 instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }   # words and key visuals stay clear of Instagram's buttons
-length_s: [40, 62]      # about 1 minute is the safe spot (change #8); shorter is fine
-length_max_s: 75        # only when truly needed; the plan writes down why
+length_s: [45, 90]      # Harish, 19 Nov: 60-90 s (room for the detail, the why and the payoff); shorter is fine
+length_max_s: 90        # the plan writes down why in length_reason
 image_cap_per_reel: 0
 bank_target: 4          # keep 3-4 finished breakdowns ready
-angles: [screenplay, cinematography_camera, set_production_design, editing, sound_music, performance]
-lead_sources: [cult_classics, new_releases, news_hooks, anniversaries, re_releases, film_bank, comments]
-story_shape: [title_screen_sound_on, hook, setup, the_technique_named, where_it_comes_from, how_the_film_uses_it, why_it_works, payoff, end_recap_technique]
-hook_style: "A short Tanglish question about something the viewer felt but never noticed."
+angles: [screenplay, cinematography_camera, set_production_design, editing, sound_music, performance, hidden_details, behind_the_scenes]
+lead_sources: [cult_classics, new_releases, news_hooks, anniversaries, re_releases, film_bank, comments, channel_study, hollywood_in_news]
+story_shape: [title_screen_sound_on, hook_the_detail, setup, the_detail_shown, the_technique_named, why_it_works, payoff, end_recap_technique]
+story_shapes:            # per angle (AGENT.md 5.7)
+  hidden_details: [title_screen_sound_on, hook_the_best_detail_teased, detail_1, detail_2, detail_3_the_best, what_they_add_up_to, end_recap]
+  behind_the_scenes: [title_screen_sound_on, hook_the_surprise, who_told_it_and_where, the_story, the_trick_named, why_it_mattered_on_screen, end_recap]
+hook_style: "A short Tanglish line that points at one specific detail or true story the viewer never noticed (from the channel study, AGENT.md 10.3)."
 hook_examples:
   - "Phone-a thoda vidala. Yen?"
   - "Yaaru yaarai iyakkuraanga?"
   - "Saadhaarana satham. Bayam yen?"
+  - "Jail scene-la oru detail. 100 per-la 99 per miss pannirupaanga."
+  - "Indha song last minute-la maathunaanga. Yen theriyuma?"
 music_arc: [intrigue, tension, release]   # music changes with the story; starts on frame 1
 motion_library: "../../motion_library.md"
-motion_presets: [tension_bar, timer_dial, timeline_scrub, setup_payoff_thread, power_scale, character_map, knowledge_gap, camera_path, shot_scale_ladder, light_map, cut_rhythm, sound_layers, fight_map, split_compare]
+motion_presets: [detail_zoom, butterfly_chain, insider_quote, source_vs_film, part_badge, tension_bar, timer_dial, timeline_scrub, setup_payoff_thread, power_scale, character_map, knowledge_gap, camera_path, shot_scale_ladder, light_map, cut_rhythm, sound_layers, fight_map, split_compare]
 meme_use: ending_only
 trend_hooks: true
 success_metric: sends_per_reach
@@ -43,7 +48,12 @@ rules:
   - "Motion graphics show the idea on the word it is said: labels of 3 words or fewer, no graphic repeated in a reel, one hero moment."
   - "If no clip fits a beat, the motion graphic goes full-screen for that beat."
   - "Never retell the plot; explain why a scene works."
-  - "Same film at most once in 21 days; same film + angle at most once in 60 days."
+  - "Lead with the detail: the hook names one specific thing on screen or one true story, never a lesson (Harish, 19 Nov)."
+  - "Behind the scenes: name who said it and where (interview, year) on a quote screen; 2 trusted sources in the plan; never use another channel's video or wording."
+  - "Hidden details: exactly 3, each on its own frame with the detail lens, counted 1/3, 2/3, 3/3, best one last."
+  - "Film week: up to 3 parts on one film in 7 days (part: [n, 3] in the plan); each part a different angle or detail set and complete on its own; the end card names the next part."
+  - "Outside a film week: same film at most once in 21 days; same film + angle at most once in 60 days."
+  - "Hollywood and world films the audience knows are welcome (a new release, a re-release, a film in the news)."
 worth_it_extra:
   - "Is this the strongest angle on this film?"
 reference:   # approved 13 Nov 2026; replaces the earlier reference reels
@@ -52,4 +62,4 @@ reference:   # approved 13 Nov 2026; replaces the earlier reference reels
 # Harish, 14 Nov 2026: every breakdown gets its own design. A plan names a design kit and builds its middle from the
 # graphics that fit this film's idea; the plan check refuses a kit or a build the last reels used (AGENT.md 5.8).
 unique_design: { since: "2026-11-15", window: 3, shape_window: 2, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
-graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web]   # the screens a breakdown is built from
+graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web, detail, chain, quote, source]   # the screens a breakdown is built from

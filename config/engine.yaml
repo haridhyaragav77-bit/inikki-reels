@@ -1,6 +1,6 @@
 # Engine settings (code reads these; nothing brand- or niche-specific lives here)
 drive:
-  folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests]
+  folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests, study-audio, study]
   music_folder_aliases: ["music", "background music", "background music (1)"]
   never_auto_delete: [reference-reels, meme-bank, music, control]
   retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
@@ -14,6 +14,7 @@ drive:
     warn_gb: 6
     tight_gb: 7.5
     keep_top_share: 0.10
+    study_text_days: 90      # full text of studied shorts (Drive study/); the cards in the repository stay
   dashboard_sheet_name: "iNiKKi Dashboard"
   dashboard_tabs: [Home, Metrics, Series, Reels, Lab, Changes, Costs]
 runner:
@@ -39,6 +40,25 @@ post:
   early_upload: true          # a made reel is uploaded to Instagram at once, unpublished; its slot's run only publishes it
   early_upload_max_hours: 20  # Instagram keeps an unpublished upload for 24 hours; older ones are uploaded again at the slot
   watch_gap_minutes: 50       # a Post run this soon after the last news watch does not read the same feeds again
+# YouTube Shorts (AGENT.md 5.15): each reel Instagram posted also goes to YouTube in the same Post run. Free.
+youtube:
+  enabled: true               # needs the secret YOUTUBE_OAUTH_REFRESH_TOKEN; without it nothing is tried
+  privacy: private            # private until Google's free audit of the app is passed, then public
+  series: all                 # all, or a list of series ids
+  max_per_day: 8
+  tries: 2                    # a failed upload is tried again by the next Post run, at most this many times
+  category_id: "1"            # Film & Animation
+  made_for_kids: false
+# Channel study (AGENT.md 10.3): free. The channel list is the niche's `competitors` with study: true.
+study:
+  enabled: true
+  beat: 1.5                   # a short beating its channel's median views by this much is studied
+  per_day: 6                  # at most this many shorts turned into text a day
+  model: medium               # Whisper size: small (fast) | medium | large-v3 (best, slow); runs on GitHub's computer
+  language: ta
+  min_age_hours: 48           # a short's views settle for 2 days before it is compared
+  card_beats: 8               # beats kept on a study card
+  card_words: 6               # first words of each beat on the card (the full text stays in Drive)
 # Jobs the Claude clock tasks start on time (AGENT.md 4.3; times are IST: "05:12" daily, "sun 22:12", "1 22:42" on that
 # day of the month). Post is started at every slot of config/agent.yaml. The Control Room's "next runs" list reads this.
 clock:

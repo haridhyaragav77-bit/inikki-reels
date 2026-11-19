@@ -915,6 +915,118 @@
    "last_used": "",
    "notes": "English film, added 12 Nov (Harish: breakdowns of English films too)",
    "verify": "check year/director before first use"
+  },
+  {
+   "film": "F1",
+   "year": 2025,
+   "director": "Joseph Kosinski",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Mad Max: Fury Road",
+   "year": 2015,
+   "director": "George Miller",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Top Gun: Maverick",
+   "year": 2022,
+   "director": "Joseph Kosinski",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Spider-Man: Across the Spider-Verse",
+   "year": 2023,
+   "director": "Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Avengers: Endgame",
+   "year": 2019,
+   "director": "Anthony and Joe Russo",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "The Matrix",
+   "year": 1999,
+   "director": "The Wachowskis",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
+  },
+  {
+   "film": "Mission: Impossible – Fallout",
+   "year": 2018,
+   "director": "Christopher McQuarrie",
+   "angles": [
+    "cinematography",
+    "editing",
+    "sound_music",
+    "hidden_details",
+    "behind_the_scenes"
+   ],
+   "clips_available": "unknown",
+   "last_used": "",
+   "notes": "Hollywood (Harish, 19 Nov)",
+   "verify": "check year/director before first use"
   }
  ]
 }

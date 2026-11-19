@@ -16,6 +16,11 @@ Other uses:
 
 It keeps only trailers whose title names the film and that come from an official channel (it prints each channel).
 Running it again skips the files already in trailers_for_drive.
+
+Shorts to study (AGENT.md 10.3): the Engine writes the ready line in Drive requests/study_to_get.md, for example
+  py clip_helper.py --study https://www.youtube.com/shorts/... https://www.youtube.com/shorts/...
+It saves only the sound of each short into  study_for_drive ; drag those files into
+Google Drive > iNiKKi Reels > study-audio. The Engine turns them into text and deletes the sound.
 """
 import json
 import os
@@ -26,6 +31,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "trailers_for_drive")
+STUDY_OUT = os.path.join(HERE, "study_for_drive")
 
 # The film bank (niches/tamil-cinema/knowledge/film_bank.json), copied here so this file works on its own.
 FILMS = [("Kaithi", 2019), ("Jigarthanda", 2014), ("Ratsasan", 2018), ("Vikram", 2022), ("Vada Chennai", 2018), ("Super Deluxe", 2019),
@@ -38,7 +44,9 @@ FILMS = [("Kaithi", 2019), ("Jigarthanda", 2014), ("Ratsasan", 2018), ("Vikram",
          # English and world films for breakdowns and recommendations
          ("The Godfather", 1972), ("Pulp Fiction", 1994), ("The Dark Knight", 2008), ("Inception", 2010), ("Interstellar", 2014), ("Oppenheimer", 2023), ("Memento", 2000),
          ("The Prestige", 2006), ("Parasite", 2019), ("Joker", 2019), ("Whiplash", 2014), ("Fight Club", 1999), ("Se7en", 1995), ("Gone Girl", 2014),
-         ("Prisoners", 2013), ("The Shawshank Redemption", 1994), ("Goodfellas", 1990), ("Taxi Driver", 1976), ("No Country for Old Men", 2007), ("Dune: Part Two", 2024)]
+         ("Prisoners", 2013), ("The Shawshank Redemption", 1994), ("Goodfellas", 1990), ("Taxi Driver", 1976), ("No Country for Old Men", 2007), ("Dune: Part Two", 2024),
+         ("F1", 2025), ("Mad Max: Fury Road", 2015), ("Top Gun: Maverick", 2022), ("Spider-Man: Across the Spider-Verse", 2023),
+         ("Avengers: Endgame", 2019), ("The Matrix", 1999), ("Mission: Impossible – Fallout", 2018)]
 
 # Studios, music labels and TV channels whose uploads count as official (part of a channel name is enough).
 OFFICIAL = ["sun tv", "sun pictures", "sony music south", "think music", "saregama", "lahari", "lyca", "red giant", "dream warrior",
@@ -151,8 +159,32 @@ def download(cmd, url, film, vid):
     return "saved"
 
 
+def study(urls):
+    """Only the sound of each short, named with its id, for Drive study-audio/ (AGENT.md 10.3)."""
+    os.makedirs(STUDY_OUT, exist_ok=True)
+    cmd, ok = tools(), 0
+    for i, url in enumerate(urls, 1):
+        vid = re.search(r"(?:v=|youtu\.be/|shorts/)([\w-]{11})", url)
+        if vid and any(f"[{vid.group(1)}]" in n for n in os.listdir(STUDY_OUT)):
+            print(f"[{i}/{len(urls)}] already there")
+            ok += 1
+            continue
+        r = subprocess.run(cmd + ["--no-playlist", "-f", "bestaudio[ext=m4a]/bestaudio", "-o",
+                                  os.path.join(STUDY_OUT, "%(channel)s - %(title).60s [%(id)s].%(ext)s"), url], capture_output=True, text=True)
+        if r.returncode == 0:
+            ok += 1
+            print(f"[{i}/{len(urls)}] saved")
+        else:
+            err = (r.stderr or "").strip().splitlines()
+            print(f"[{i}/{len(urls)}] could not get it: {(err[-1] if err else 'download failed')[:160]}")
+    print(f"\nDone: {ok} of {len(urls)} in  {STUDY_OUT}")
+    print("Next: drag every file in that folder into Google Drive > iNiKKi Reels > study-audio. That is all.")
+
+
 def main():
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--study" in sys.argv:
+        return study([x for x in args if x.startswith("http")])
     years = dict(FILMS)
     wanted = [(a.split("=", 1)[0].strip(), a.split("=", 1)[1].strip()) if "=http" in a else (a.strip(), None) for a in args] or [(f, None) for f, _ in FILMS]
     os.makedirs(OUT, exist_ok=True)

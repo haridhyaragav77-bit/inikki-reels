@@ -7,7 +7,7 @@ on:
       job:
         description: "Which job"
         type: choice
-        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel, drive-copy]
+        options: [brief-plan, brief-refresh, brief-weekly, brief-monthly, health, nightly, clean-dry, watch-test, control, panel, drive-copy, youtube-check]
         default: brief-plan
   schedule:
     # GitHub's timer runs about 7 hours late here (found 14 Nov 2026), so the briefs and the nightly job are started on
@@ -40,6 +40,7 @@ jobs:
       META_APP_ID: ${{ secrets.META_APP_ID }}
       META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      YOUTUBE_OAUTH_REFRESH_TOKEN: ${{ secrets.YOUTUBE_OAUTH_REFRESH_TOKEN }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       - name: Which job
@@ -88,11 +89,14 @@ jobs:
       - name: One-time copy of the old Drive folder into the new one (move to a new Google account)
         if: env.JOB == 'drive-copy'
         run: python -m engine.drive copy-old
+      - name: YouTube sign-in check (uploads nothing)
+        if: env.JOB == 'youtube-check'
+        run: python -m engine.youtube --check
       - name: News feeds test
         if: env.JOB == 'watch-test'
         run: python -m engine.watch --test
       - name: Save the text results (brief, Control Room copy, metrics, packed plans)
-        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel' && env.JOB != 'drive-copy' && env.JOB != 'done'
+        if: env.JOB != 'health' && env.JOB != 'clean-dry' && env.JOB != 'watch-test' && env.JOB != 'control' && env.JOB != 'panel' && env.JOB != 'drive-copy' && env.JOB != 'youtube-check' && env.JOB != 'done'
         run: |
           git add -A data plans niches/*/series
           git diff --cached --quiet && exit 0

@@ -125,6 +125,18 @@ The Content Specialist picks from this list. A new graphic is added here when an
 | `brush_reveal` | An artwork appearing | Paint strokes uncover the image |
 
 
+## Details, stories and sources (Harish, 19 Nov: from studying Expert FX and World Filmology)
+Breakdowns now lead with one specific detail or a true story (AGENT.md 5.7). These are the screens for that; in a plan they
+are the Stage kinds `detail`, `chain`, `quote` and `source` (templates/README.md).
+| Graphic | The idea it shows | How it moves |
+| --- | --- | --- |
+| `detail_zoom` (kind `detail`) | The detail most viewers missed | A magnifying lens drifts over the still as if searching, then glides to the detail on the word, opens wide and magnifies it; the rest of the frame darkens; a label hangs off the lens; a ring bursts on arrival |
+| `detail_counter` (in `detail`, `count`) | Which detail of how many (hidden-details reels) | "DETAIL 2/3" at the top; one bar per detail, this one fills with a pop |
+| `butterfly_chain` (kind `chain`) | One small choice leads to the ending (cause and effect) | Cards drop in one by one down the screen, each bigger than the last, joined by a running dashed thread; a tiny butterfly flaps on the first; the last card glows as the payoff |
+| `insider_quote` (kind `quote`) | Who said it and where (behind-the-scenes stories) | A portrait in a glowing ring with voice bars pulsing round it like speech; the name slams, the role pops, a short key phrase rises word by word; the source tag (interview, year) lands last |
+| `source_vs_film` (kind `source`) | The source story and the film side by side (a myth, a play, a real event) | Two tracks draw down the screen; beats pop in on each side; a bright curve with a running spark links the beats that match, and the pair lights up |
+| `part_badge` (plan `part: [n, 3]`) | A film week's part | "PART 1/3" pill on the title and end screens |
+
 ## Breakdown pins and sign-off (change #8)
 | Graphic | The idea it shows | How it moves |
 | --- | --- | --- |
