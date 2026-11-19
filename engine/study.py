@@ -129,6 +129,12 @@ def run(drive, ctl=None):
     if not CFG.get("enabled", True):
         return "study is switched off (config/engine.yaml study.enabled)"
     state = channels.run(drive, quiet=True)
+    if status.now().weekday() == 6 or not (ROOT / "data" / "study" / "candidates.md").exists():
+        try:
+            films = [f.get("film") if isinstance(f, dict) else str(f) for f in (drive.read_json("status", "trailers_wanted.json") or {}).get("films", [])]
+            print(f"source scout: {channels.scout([f for f in films if f])} new channel(s) listed")
+        except Exception as e:
+            print("source scout skipped:", str(e)[:120], file=sys.stderr)
     index = {}                                          # id -> (channel id, video meta)
     for cid, ch in (state.get("channels") or {}).items():
         for vid, v in ch.get("videos", {}).items():

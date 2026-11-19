@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — The spine, the wide net, YouTube frames; samples v2
+Harish: content and graphics good, scripts weak and slow. Breakdowns now follow a checked spine (hook > lead > body > loop > body > loop > body > cta, `beat` on each screen, `check_spine`), "bend the source" rules, voice 1.2x and short gaps (series card). Sources: 8 more channels read for topics (`study: titles`), a weekly source scout (`channels.scout`, `data/study/candidates.md`). Frames from YouTube for every wanted film (`engine/ytstills.py`, in the trailer job). Samples v2 in `plans/samples/*-v2.json`.
+
 ## 19 Nov 2026 — Illustrated graphics, drop-off-proof scripts, 3 sample reels
 Harish: the graphics felt simple and repetitive; sources in priority Expert FX, Level Up Learning Filmmaking (Instagram), World Filmology; fight the drop-off; up to 90 s. New illustrated Stage screens `board` (evidence board), `climb` (staircase figure), `track` (race circuit), `layers` (what is under the surface); a breakdown may use a kind at most twice (plan check). Three voiced samples for review in `plans/samples/` (Joker stairs, Thani Oruvan villain, F1 real racing), rendered to Drive `rehearsal/samples/`; nothing posts. Library rollout waits for Harish's approval.
 

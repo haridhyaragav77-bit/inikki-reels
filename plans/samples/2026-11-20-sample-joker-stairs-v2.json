@@ -1,0 +1,465 @@
+{
+ "id": "2026-11-20-sample-joker-stairs-v2",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "royal",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "The spine: hook, lead (3 details), detail 1, loop, detail 2, loop, detail 3 with Rocky and the technique, call to action.",
+ "lead": {
+  "topic": "Joker (2019): the stairs tell the whole story",
+  "angle": "cinematography_camera",
+  "insight": "Arthur climbs the Bronx stairs as a struggle; as Joker he dances down them. The film flips the usual meaning of going down, and makes us enjoy his fall. Rocky climbs steps to win; Joker wins by going down.",
+  "why_now": "Cult film people still rewatch and quote; the stairs became a tourist spot.",
+  "technique": "Visual motif",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Joker_(2019_film) (stairs at West 167th Street, Bronx; tourist attraction)",
+   "Todd Phillips interviews, 2019 (the bathroom dance was improvised to Hildur Guðnadóttir's music)"
+  ],
+  "inspired_by": "Expert FX-style detail short, Level Up Learning Filmmaking-style craft lesson (our own script)"
+ },
+ "worth_it": {
+  "learn": "The same stairs mean pain going up and freedom going down: a visual motif.",
+  "stop": "One staircase holds the whole story.",
+  "why_now": "Cult film, rewatched every year.",
+  "send_to": "The friend who loves Joker.",
+  "best_angle": "Yes: the stairs are the most famous image of the film."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "threat_north",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxresdefault"
+   }
+  },
+  "arthur": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxres2.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxres2"
+   }
+  },
+  "street": {
+   "src": "engine/.cache/stills/joker/zAGVQLHvwOY_maxres3.jpg",
+   "fetch": {
+    "youtube": "zAGVQLHvwOY",
+    "frame": "maxres3"
+   }
+  },
+  "smile": {
+   "src": "engine/.cache/stills/joker/t433PEQGErc_maxres1.jpg",
+   "fetch": {
+    "youtube": "t433PEQGErc",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "beat": "hook",
+   "kind": "title",
+   "voice": "ஜோக்கர்ல நீங்க கவனிக்காத ஒரு படிக்கட்டு, முழு கதையையும் சொல்லுது.",
+   "voice_tg": "Joker-la neenga gavanikkaadha oru padikkattu, muzhu kadhaiyaiyum solludhu.",
+   "image": "title",
+   "film": "JOKER",
+   "type": "ONE STAIRCASE. WHOLE STORY.",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "beat": "lead",
+   "kind": "pins",
+   "voice": "மூணு டீடெயில் சொல்றேன். மூணாவது தான் உங்களை பயமுறுத்தும்.",
+   "voice_tg": "Moonu detail solren. Moonaavadhu thaan ungalai bayamuruththum.",
+   "in": "zoom",
+   "image": "arthur",
+   "pins": [
+    {
+     "x": 0.5,
+     "y": 0.35,
+     "lx": 120,
+     "ly": 318,
+     "text": "ARTHUR FLECK",
+     "cue": {
+      "word": "டீடெயில்"
+     }
+    }
+   ],
+   "slam": {
+    "cue": {
+     "word": "மூணாவது"
+    },
+    "lines": [
+     {
+      "text": "3 DETAILS.",
+      "size": 150,
+      "color": "#ffffff"
+     },
+     {
+      "text": "#3 IS DARK.",
+      "size": 140,
+      "color": "#F8C868"
+     }
+    ]
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "climb",
+   "voice": "டீடெயில் ஒண்ணு. ஆர்தர் தினமும் இந்த படிக்கட்டுல ஏறுவான். குனிஞ்ச தோள், கனமான நடை. ஒவ்வொரு படியும் போராட்டம்.",
+   "voice_tg": "Detail onnu. Arthur dhinamum indha padikkattula eruvaan. Kuninja thol, ganamaana nadai. Ovvoru padiyum poraattam.",
+   "in": "whip",
+   "heading": "DETAIL 1 · THE CLIMB",
+   "rain": false,
+   "steps": 11,
+   "phases": [
+    {
+     "dir": "up",
+     "label": "ARTHUR",
+     "sub": "UP = STRUGGLE",
+     "cue": {
+      "word": "ஏறுவான்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "போராட்டம்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஆனா இதே படிக்கட்டுல, கடைசியில ஒண்ணு நடக்குது.",
+   "voice_tg": "Aana idhe padikkattula, kadaisiyila onnu nadakkudhu.",
+   "in": "flash",
+   "image": "street",
+   "slam_text": "SAME STAIRS. LATER.",
+   "q_cue": {
+    "word": "இதே"
+   },
+   "slam_cue": {
+    "word": "நடக்குது"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "இதே"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "நடக்குது"
+     },
+     "type": "impact"
+    }
+   ],
+   "fx": 0.6,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "quote",
+   "voice": "டீடெயில் ரெண்டு. பாத்ரூம்ல ஆர்தர் ஆடுற டான்ஸ், ஸ்கிரிப்ட்லயே இல்ல. மியூசிக் கேட்டு, ஜோக்வின் ஃபீனிக்ஸ் அங்கேயே ஆடினார். அங்க தான் ஜோக்கர் பிறந்தான்.",
+   "voice_tg": "Detail rendu. Bathroom-la Arthur aadura dance, script-laye illa. Music kettu, Joaquin Phoenix angeye aadinaar. Anga thaan Joker pirandhaan.",
+   "in": "whip",
+   "image": "smile",
+   "name": "JOAQUIN PHOENIX",
+   "role": "IMPROVISED THE DANCE",
+   "phrase": "NOT IN THE SCRIPT",
+   "source": "TODD PHILLIPS INTERVIEWS · 2019",
+   "cues": {
+    "name": {
+     "word": "ஜோக்வின்"
+    },
+    "phrase": {
+     "word": "ஸ்கிரிப்ட்லயே"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பிறந்தான்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "மூணாவது டீடெயில், ராக்கி படத்தோட நேர் எதிர்.",
+   "voice_tg": "Moonaavadhu detail, Rocky padathoda ner edhir.",
+   "in": "flash",
+   "image": "title",
+   "slam_text": "THE OPPOSITE OF ROCKY",
+   "q_cue": {
+    "word": "ராக்கி"
+   },
+   "slam_cue": {
+    "word": "எதிர்"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ராக்கி"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "எதிர்"
+     },
+     "type": "impact"
+    }
+   ],
+   "fy": 0.35,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "climb",
+   "voice": "கடைசியில, அதே படிக்கட்டுல ஜோக்கர் ஆடிகிட்டே இறங்குறான்.",
+   "voice_tg": "Kadaisiyila, adhe padikkattula Joker aadikitte iranguraan.",
+   "in": "push",
+   "heading": "DETAIL 3 · THE DESCENT",
+   "steps": 11,
+   "phases": [
+    {
+     "dir": "down",
+     "label": "JOKER",
+     "sub": "DOWN = FREEDOM",
+     "cue": {
+      "word": "ஆடிகிட்டே"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "ஆடிகிட்டே"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "source",
+   "voice": "ராக்கி படத்துல, ஹீரோ படி ஏறினா ஜெயிச்சான். ஜோக்கர்ல, இறங்கினா தான் ஜெயிக்கிறான்.",
+   "voice_tg": "Rocky padathula, hero padi erinaa jeyichaan. Joker-la, iranginaa thaan jeyikkiraan.",
+   "in": "whip",
+   "heading": "SAME STEPS. OPPOSITE MEANING.",
+   "left": {
+    "title": "ROCKY",
+    "beats": [
+     {
+      "label": "CLIMBS UP",
+      "cue": {
+       "word": "ஏறினா"
+      }
+     },
+     {
+      "label": "WINS",
+      "cue": {
+       "word": "ஜெயிச்சான்"
+      }
+     }
+    ]
+   },
+   "right": {
+    "title": "JOKER",
+    "beats": [
+     {
+      "label": "DANCES DOWN",
+      "cue": {
+       "word": "இறங்கினா"
+      }
+     },
+     {
+      "label": "\"WINS\"",
+      "cue": {
+       "word": "ஜெயிக்கிறான்"
+      }
+     }
+    ]
+   },
+   "links": [
+    {
+     "from": 0,
+     "to": 0,
+     "cue": {
+      "word": "இறங்கினா"
+     }
+    },
+    {
+     "from": 1,
+     "to": 1,
+     "cue": {
+      "word": "ஜெயிக்கிறான்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "ஜெயிக்கிறான்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு விஷுவல் மோட்டிஃப். ஒரே இடம், அர்த்தம் தலைகீழ். அவன் விழுறதை, நாம ரசிக்கிறோம். அதான் பயம்.",
+   "voice_tg": "Idhukku peru visual motif. Ore idam, arththam thalaikeezh. Avan vizhuradhai, naama rasikkirom. Adhaan bayam.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "VISUAL MOTIF",
+   "definition": "ONE PLACE. FLIPPED MEANING.",
+   "outer_label": "THE STAIRS",
+   "inner": [
+    "UP = PAIN",
+    "DOWN = RISE",
+    "WE CHEER"
+   ],
+   "cues": {
+    "name": {
+     "word": "மோட்டிஃப்"
+    },
+    "outer": {
+     "word": "இடம்"
+    },
+    "inner": {
+     "word": "ரசிக்கிறோம்"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "மோட்டிஃப்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "பயம்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "cta",
+   "kind": "end",
+   "voice": "நீங்க ஜோக்கர் பக்கமா, ஆர்தர் பக்கமா? கமெண்ட் பண்ணுங்க. ஜோக்கர் ஃபேன்கிட்ட அனுப்புங்க.",
+   "voice_tg": "Neenga Joker pakkamaa, Arthur pakkamaa? Comment pannunga. Joker fan-kitta anuppunga.",
+   "in": "whip",
+   "echo": "JOKER · ONE STAIRCASE. WHOLE STORY.",
+   "question": [
+    {
+     "text": "ARTHUR OR",
+     "size": 130
+    },
+    {
+     "text": "JOKER?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "நீங்க யார் பக்கம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.4,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: VISUAL MOTIF",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Joker's whole story is hidden in one staircase.",
+   "Up the stairs: Arthur, tired, struggling. Down the same stairs: Joker, dancing. The film flips what going down usually means, and makes us enjoy his fall. The technique is called a visual motif.",
+   "Up or down: which scene stays with you?",
+   "Send this to the friend who loves Joker."
+  ],
+  "hashtags": [
+   "#Joker",
+   "#JoaquinPhoenix",
+   "#FilmBreakdown",
+   "#iNiKKiBreakdown"
+  ],
+  "cover": "JOKER · ONE STAIRCASE. WHOLE STORY.",
+  "slot": "20:00",
+  "first_comment": "Which film should we break down next?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "rehearsal/samples"
+}

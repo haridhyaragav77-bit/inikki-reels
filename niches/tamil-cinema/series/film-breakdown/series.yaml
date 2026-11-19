@@ -12,6 +12,7 @@ slots: ["12:30", "20:00"]
 template: stage         # its own look: dark stage, motion graphics lead (AGENT.md 6.6)
 visuals: motion_graphics_first   # clips where they truly show the point; graphics carry the rest
 voice: true
+voice_cfg: { speed: 1.2 }   # Harish, 19 Nov: quicker (1.2 is ElevenLabs' fastest); screens keep tail 0.12 s
 captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit (change #7)
 instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }   # words and key visuals stay clear of Instagram's buttons
 length_s: [45, 90]      # Harish, 19 Nov: 60-90 s (room for the detail, the why and the payoff); shorter is fine
@@ -31,6 +32,20 @@ hook_examples:
   - "Saadhaarana satham. Bayam yen?"
   - "Jail scene-la oru detail. 100 per-la 99 per miss pannirupaanga."
   - "Indha song last minute-la maathunaanga. Yen theriyuma?"
+# THE SPINE (Harish, 19 Nov): every breakdown is told in this order; each screen names its beat ("beat": ...) and the plan
+# check refuses a reel that breaks it. A beat may take more than one screen (body 3 often = the detail + the technique).
+spine: [hook, lead, body, loop, body, loop, body, cta]
+beats:
+  hook: "Title screen, 0-3 s, 6 to 10 words: one specific, surprising claim about something on screen ('the car he drove was not an F1 car'). Never the film's name alone, never a lesson, never 'did you know'."
+  lead: "3-8 s: who/what in one line, then the promise of the payoff ('3 secrets; the third one is dark')."
+  body: "One detail, 8-15 s, in its own illustration; ends on a punch line. Body 3 is the strongest: it pays the hook, names the technique and says why it works."
+  loop: "1-3 s open loop on its own screen (a standoff tease): a gap only the next body closes ('but the real secret is inside the car'). Never a summary."
+  cta: "End screen: one question that is easy to answer in a comment (pick a side, name a film), then who to send it to."
+bend:   # how a source's short becomes ours (AGENT.md 5.7)
+  - "Keep their strongest detail; cut their order. Strongest detail last."
+  - "Add one layer they don't have: the technique's name, a second verified fact, a contrast with another film (Tamil and Hollywood), or the consequence."
+  - "Say it in fewer words: 8 to 18 words a screen; one idea a screen."
+  - "Check every fact in 2 sources (Wikipedia production section, an interview, IMDb trivia); credit the original interview, never their video."
 music_arc: [intrigue, tension, release]   # music changes with the story; starts on frame 1
 motion_library: "../../motion_library.md"
 motion_presets: [detail_zoom, butterfly_chain, insider_quote, source_vs_film, part_badge, tension_bar, timer_dial, timeline_scrub, setup_payoff_thread, power_scale, character_map, knowledge_gap, camera_path, shot_scale_ladder, light_map, cut_rhythm, sound_layers, fight_map, split_compare]

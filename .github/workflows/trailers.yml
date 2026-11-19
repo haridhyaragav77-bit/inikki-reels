@@ -47,7 +47,7 @@ jobs:
         with: { python-version: "3.12", cache: pip, cache-dependency-path: requirements-light.txt }
       - run: |
           sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
-          pip install -q -r requirements-light.txt pillow
+          pip install -q -r requirements-light.txt pillow yt-dlp
       - name: Fetch trailers
         run: |
           if [ -n "$FRAMES" ]; then
@@ -67,6 +67,10 @@ jobs:
           else
             IFS=',' read -ra F <<< "$FILMS"; args=(); for f in "${F[@]}"; do args+=(--film "$f"); done; python -m engine.trailers "${args[@]}" --crawl
           fi
+      - name: Frames from YouTube for the wanted films (free thumbnails, no video download; AGENT.md 5.11)
+        if: env.PROBE == '' && env.FRAMES == '' && env.REGRID == '' && env.ADOPT == '' && env.STILLS == ''
+        continue-on-error: true
+        run: python -m engine.ytstills --wanted
       - name: Results and new grids to the 'peek' branch (a quick look; the real copies are in Drive)
         if: always()
         run: |

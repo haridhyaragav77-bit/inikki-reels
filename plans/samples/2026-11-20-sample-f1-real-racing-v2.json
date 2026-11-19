@@ -1,0 +1,451 @@
+{
+ "id": "2026-11-20-sample-f1-real-racing-v2",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "blueprint",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "The spine: hook (not an F1 car), lead (3 secrets), F2 under F1 bodywork, loop, the camera, loop, the Top Gun rule and the technique, call to action.",
+ "lead": {
+  "topic": "F1 (2025): how they shot real racing",
+  "angle": "behind_the_scenes",
+  "insight": "The cast drove real cars at real Grand Prix weekends: Formula 2 cars dressed as F1 cars by the Mercedes team, with tiny custom cameras. The director did the same with jets in Top Gun: Maverick. Real speed puts real fear on the faces, and audiences felt it.",
+  "why_now": "One of 2025's biggest films; Hollywood in the news.",
+  "technique": "Practical filmmaking",
+  "sources": [
+   "https://en.wikipedia.org/wiki/F1_(film) (filmed at real Grand Prix weekends; modified Formula 2 cars by Mercedes-AMG; Hamilton producer; Pitt's highest-grossing film)",
+   "Apple, 2025 (custom camera module built for the film)"
+  ],
+  "inspired_by": "Expert FX F1 series (our own script)"
+ },
+ "worth_it": {
+  "learn": "How a film shoots real racing: F2 cars dressed as F1, real race weekends, tiny cameras.",
+  "stop": "Brad Pitt really drove, at a real Grand Prix.",
+  "why_now": "2025 hit, Hollywood fans in Tamil Nadu.",
+  "send_to": "The F1 fan friend.",
+  "best_angle": "Yes: how it was shot is the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "hunt_begins",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "chase"
+   },
+   {
+    "track": "plan_is_on",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "heist"
+   },
+   {
+    "track": "giant_emerges",
+    "from": 6.0,
+    "screen": 6,
+    "mood": "epic"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/f1/8yh9BPUBbbQ_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "8yh9BPUBbbQ",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.25,
+    0.0,
+    0.75,
+    0.62
+   ]
+  },
+  "brad": {
+   "src": "engine/.cache/stills/f1/8yh9BPUBbbQ_maxres3.jpg",
+   "fetch": {
+    "youtube": "8yh9BPUBbbQ",
+    "frame": "maxres3"
+   }
+  },
+  "pair": {
+   "src": "engine/.cache/stills/f1/69ffwl-8pCU_maxres1.jpg",
+   "fetch": {
+    "youtube": "69ffwl-8pCU",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "beat": "hook",
+   "kind": "title",
+   "voice": "F1 படத்துல பிராட் பிட் ஓட்டின கார், F1 காரே இல்ல.",
+   "voice_tg": "F1 padathula Brad Pitt ottina car, F1 car-e illa.",
+   "image": "title",
+   "film": "F1",
+   "type": "NOT AN F1 CAR",
+   "fy": 0.35,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "beat": "lead",
+   "kind": "track",
+   "voice": "ஆனா ட்ராக் நிஜம், ரேஸ் வீக்கெண்ட் நிஜம், வேகம் நிஜம். அப்போ எது பொய்? மூணு ரகசியம்.",
+   "voice_tg": "Aana track nijam, race weekend nijam, vegam nijam. Appo edhu poi? Moonu ragasiyam.",
+   "in": "zoom",
+   "heading": "REAL TRACK. REAL RACE. 3 SECRETS.",
+   "shape": "circuit",
+   "lap": 3.6,
+   "start_cue": {
+    "word": "ஆனா"
+   },
+   "markers": [
+    {
+     "at": 0.02,
+     "label": "REAL TRACK",
+     "cue": {
+      "word": "ட்ராக்"
+     }
+    },
+    {
+     "at": 0.45,
+     "label": "REAL GRAND PRIX",
+     "cue": {
+      "word": "வீக்கெண்ட்"
+     }
+    },
+    {
+     "at": 0.75,
+     "label": "REAL SPEED",
+     "cue": {
+      "word": "வேகம்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "பொய்?"
+     },
+     "type": "riser"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "layers",
+   "voice": "ஒண்ணு. அது F2 கார். மேல, மெர்சிடிஸ் F1 டீம் செஞ்ச F1 பாடி. பாக்க F1, உள்ள F2.",
+   "voice_tg": "Onnu. Adhu F2 car. Mela, Mercedes F1 team senja F1 body. Paakka F1, ulla F2.",
+   "in": "whip",
+   "heading": "SECRET 1 · UNDER THE BODY",
+   "layers": [
+    {
+     "label": "F2 CAR",
+     "sub": "THE REAL MACHINE",
+     "cue": {
+      "word": "கார்."
+     }
+    },
+    {
+     "label": "F1 BODYWORK",
+     "sub": "MERCEDES F1 TEAM",
+     "cue": {
+      "word": "பாடி."
+     }
+    }
+   ],
+   "split_cue": {
+    "word": "பாக்க"
+   },
+   "slam_text": "LOOKS F1. IS F2.",
+   "slam_cue": {
+    "word": "உள்ள"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பாடி."
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "உள்ள"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ரெண்டாவது ரகசியம், காருக்குள்ள ஒளிஞ்சிருக்கு.",
+   "voice_tg": "Rendaavadhu ragasiyam, carukkulla olinjirukku.",
+   "in": "flash",
+   "image": "brad",
+   "slam_text": "SECRET 2 IS INSIDE",
+   "q_cue": {
+    "word": "ரகசியம்,"
+   },
+   "slam_cue": {
+    "word": "ஒளிஞ்சிருக்கு"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ரகசியம்,"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "ஒளிஞ்சிருக்கு"
+     },
+     "type": "impact"
+    }
+   ],
+   "fx": 0.7,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "quote",
+   "voice": "ஆப்பிள் கம்பெனி, ஐபோன் சிப் வச்சு, காருக்குள்ள பொருந்துற சின்ன கேமரா செஞ்சாங்க.",
+   "voice_tg": "Apple company, iPhone chip vachu, carukkulla porundhura chinna camera senjaanga.",
+   "in": "whip",
+   "name": "APPLE",
+   "role": "BUILT THE CAMERA",
+   "phrase": "AN IPHONE-CHIP CAMERA",
+   "source": "MAKING OF F1 · 2025",
+   "cues": {
+    "name": {
+     "word": "ஆப்பிள்"
+    },
+    "phrase": {
+     "word": "சிப்"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சிப்"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "மூணாவது ரகசியம், டாப் கன் படத்துல இருந்து வந்தது.",
+   "voice_tg": "Moonaavadhu ragasiyam, Top Gun padathula irundhu vandhadhu.",
+   "in": "flash",
+   "image": "pair",
+   "slam_text": "SECRET 3: TOP GUN",
+   "q_cue": {
+    "word": "மூணாவது"
+   },
+   "slam_cue": {
+    "word": "வந்தது"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "மூணாவது"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "வந்தது"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "source",
+   "voice": "டைரக்டர் ஜோசப் கோசின்ஸ்கி, டாப் கன் மேவரிக்ல நடிகர்களை நிஜ ஜெட்ல ஏத்தினார். இப்போ அதே ஃபார்முலா, நிஜ கார்ல.",
+   "voice_tg": "Director Joseph Kosinski, Top Gun Maverick-la nadigargalai nija jet-la eththinaar. Ippo adhe formula, nija car-la.",
+   "in": "push",
+   "heading": "SAME DIRECTOR. SAME RULE.",
+   "left": {
+    "title": "TOP GUN: MAVERICK",
+    "beats": [
+     {
+      "label": "REAL JETS",
+      "cue": {
+       "word": "ஜெட்ல"
+      }
+     },
+     {
+      "label": "ACTORS INSIDE",
+      "cue": {
+       "word": "ஏத்தினார்"
+      }
+     }
+    ]
+   },
+   "right": {
+    "title": "F1",
+    "beats": [
+     {
+      "label": "REAL CARS",
+      "cue": {
+       "word": "ஃபார்முலா,"
+      }
+     },
+     {
+      "label": "ACTORS DRIVING",
+      "cue": {
+       "word": "கார்ல"
+      }
+     }
+    ]
+   },
+   "links": [
+    {
+     "from": 0,
+     "to": 0,
+     "cue": {
+      "word": "அதே"
+     }
+    },
+    {
+     "from": 1,
+     "to": 1,
+     "cue": {
+      "word": "கார்ல"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "கார்ல"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு ப்ராக்டிகல் ஃபிலிம்மேக்கிங். ஸ்கிரீன்ல பயம் நிஜம். ரிசல்ட்? பிராட் பிட் கேரியர்லயே பெரிய ஹிட்.",
+   "voice_tg": "Idhukku peru practical filmmaking. Screen-la bayam nijam. Result? Brad Pitt career-laye periya hit.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "PRACTICAL FILMMAKING",
+   "definition": "SHOT FOR REAL, NOT CGI",
+   "outer_label": "F1 · 2025",
+   "inner": [
+    "REAL SPEED",
+    "REAL FEAR",
+    "BIGGEST HIT"
+   ],
+   "cues": {
+    "name": {
+     "word": "ப்ராக்டிகல்"
+    },
+    "outer": {
+     "word": "பயம்"
+    },
+    "inner": {
+     "word": "ஹிட்"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஹிட்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "cta",
+   "kind": "end",
+   "voice": "அடுத்தது எந்த ஹாலிவுட் படம்? கமெண்ட்ல சொல்லுங்க. F1 ஃபேன் நண்பனுக்கு அனுப்புங்க.",
+   "voice_tg": "Adutthadhu endha Hollywood padam? Comment-la sollunga. F1 fan nanbanukku anuppunga.",
+   "in": "whip",
+   "echo": "F1 · NOT AN F1 CAR",
+   "question": [
+    {
+     "text": "WHICH FILM",
+     "size": 130
+    },
+    {
+     "text": "NEXT?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "அடுத்தது எந்த படம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 1.4,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "brad",
+   "recap": "TECHNIQUE: PRACTICAL FILMMAKING",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Brad Pitt really drove, at a real Grand Prix weekend.",
+   "A made-up team with a real pit garage, Formula 2 cars dressed as F1 cars by the Mercedes team, tiny custom cameras, and the director who put actors in real jets for Top Gun: Maverick. The technique is called practical filmmaking.",
+   "Real or CGI: which do you prefer?",
+   "Send this to your F1 friend."
+  ],
+  "hashtags": [
+   "#F1Movie",
+   "#BradPitt",
+   "#Hollywood",
+   "#iNiKKiBreakdown"
+  ],
+  "cover": "F1 · NOT AN F1 CAR",
+  "slot": "20:00",
+  "first_comment": "Which Hollywood film should we break down next?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "rehearsal/samples"
+}

@@ -18,6 +18,7 @@ Examples for every series are in `plans/reference/`.
 | `screens` | The reel, screen by screen (below) |
 | `package` | Caption lines, hashtags, cover title, slot, first comment |
 | `drive_folder` | Where the finished reel goes in Drive (`rehearsal` until go-live, then `finished`); the date folder is added by itself |
+| `beat` (screen, breakdowns) | Where the screen sits on the spine: hook, lead, body, loop, cta (AGENT.md 5.7) |
 | `voice_tg` (screen) | The Tanglish line, word for word with the Tamil `voice`, for subtitles |
 
 ## Screen: common fields

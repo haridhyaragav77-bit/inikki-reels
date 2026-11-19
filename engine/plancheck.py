@@ -147,6 +147,34 @@ def check_unique(plan, series, tpl, rid, E, W):
         W.append(f"Every graphic in this reel was also in the last one ({last[0].get('id')}). One fresh graphic keeps the page from looking the same.")
 
 
+def check_spine(plan, series, screens):
+    """The spine (AGENT.md 5.7): hook, lead, body, loop, body, loop, body, cta. Each screen names its beat; a beat may take
+    more than one screen in a row. Only for series that have a spine, and only for plans made from 20 Nov on."""
+    sp = series.get("spine")
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not sp or rid[:10] < "2026-11-20":
+        return []
+    E, beats = [], [s.get("beat") for s in screens]
+    if any(b is None for b in beats):
+        return [f"Every screen names its beat ({', '.join(dict.fromkeys(sp))}); screens without one: "
+                f"{', '.join(str(n) for n, b in enumerate(beats, 1) if b is None)} (AGENT.md 5.7)."]
+    run = [b for k, b in enumerate(beats) if k == 0 or b != beats[k - 1]]
+    if run != sp:
+        E.append(f"The beats run {' > '.join(run)}; the spine is {' > '.join(sp)} (AGENT.md 5.7).")
+    if beats[0] != "hook" or screens[0].get("kind") != "title":
+        E.append("The hook is the title screen.")
+    hw = len(str(screens[0].get("voice") or "").split())
+    if hw > 12:
+        E.append(f"The hook line has {hw} words; 6 to 10 land in 3 seconds.")
+    for n, s in enumerate(screens, 1):
+        w = len(str(s.get("voice") or "").split())
+        if s.get("beat") == "loop" and w > 9:
+            E.append(f"Screen {n} (open loop) has {w} words; a loop is a 1-3 s tease (9 words at most).")
+        if w > 22:
+            E.append(f"Screen {n} has {w} words; 8 to 18 a screen keeps the pace (split it).")
+    return E
+
+
 def check_new_graphics(plan, screens):
     """detail, chain, quote, source and the PART n/of badge: what each needs to draw (templates/README.md)."""
     E = []
@@ -261,6 +289,7 @@ def check_look(plan, series):
 
     # the breakdown graphics added on 19 Nov (AGENT.md 5.8) and the film-week badge (5.7)
     E += check_new_graphics(plan, screens)
+    E += check_spine(plan, series, screens)
 
     # voice: sound-on prompt and subtitles come with it (AGENT.md 5.3)
     if voiced:
