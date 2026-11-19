@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-19-update-sathyavan-savithiri-july-to-november",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "Sathyavan Savithiri was first set for 24 July and moved to avoid a clash with Vijay's Jana Nayagan; it finally opens 20 Nov",
+    "facts": [
+      "First slated for 24 July, postponed (DT Next; The Hans India)",
+      "Moved to avoid a clash with Jana Nayagan, which had locked 23 July (DT Next)",
+      "Now in theatres Thursday 20 Nov; debut film of Praveen S. Vijaay (DT Next)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/keerthy-suresh-mysskin-starrer-sathyavan-savithiri-to-now-hit-screens-on-november-20",
+      "https://www.thehansindia.com/cinema/keerthy-suresh-mysskin-starrer-sathyavan-savithiri-to-now-hit-screens-on-november-20-1128001"
+    ],
+    "pictures_note": "Official trailer (Zee Studios South, XCLQGsbnFlw), the same crops as 17-18 Nov: Keerthy's face whole; title, TRAILER word and date cut."
+  },
+  "worth_it": {
+    "fan_opens_because": "A four-month wait, and the reason is Vijay's last film.",
+    "spoilers": "None.",
+    "voice": "Off: music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "lone_wolf",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "cool, moody"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "keerthy_card": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+      "crop": [
+        0.66,
+        0.0,
+        0.34,
+        0.82
+      ]
+    },
+    "keerthy": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg"
+    },
+    "court": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "keerthy_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SATHYAVAN SAVITHIRI",
+          "size": 150,
+          "y": 1310
+        },
+        {
+          "text": "4 MONTHS LATE",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "court",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "FIRST DATE · 24 JULY",
+      "value": 23,
+      "unit": " JULY",
+      "land": 1.5,
+      "tag": [
+        "JANA NAYAGAN'S DATE",
+        "SO IT MOVED"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "keerthy",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "FINALLY · IN CINEMAS",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "KEERTHY vs MYSSKIN",
+        "DEBUT DIRECTOR"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "keerthy_card",
+      "dur": 4.0,
+      "echo": "SATHYAVAN SAVITHIRI · 4 MONTHS LATE",
+      "question": [
+        {
+          "text": "WORTH",
+          "size": 130
+        },
+        {
+          "text": "THE WAIT?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "In cinemas Thursday 20 Nov",
+      "cta": "TAG A KEERTHY FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Sathyavan Savithiri waited 4 months for this week.",
+      "It was first set for 24 July and moved to avoid Jana Nayagan, which had locked 23 July. Now it opens Thursday 20 Nov. Sources: DT Next, The Hans India.",
+      "Worth the wait?",
+      "Tag a Keerthy fan.",
+      "4 மாசம் காத்திருப்பு."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SATHYAVAN SAVITHIRI · 4 MONTHS LATE",
+    "slot": "reserve",
+    "first_comment": "Keerthy's best courtroom moment so far?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 7,
+    "send_trigger": 6,
+    "comment_trigger": 7,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 62,
+    "weakest": {
+      "save_value": "trivia, not a keeper",
+      "value": "a date story; the Jana Nayagan link lifts it"
+    }
+  },
+  "reserve": true
+}

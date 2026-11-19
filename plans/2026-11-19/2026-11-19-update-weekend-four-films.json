@@ -1,0 +1,297 @@
+{
+  "id": "2026-11-19-update-weekend-four-films",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "Plan your weekend: two new films open tomorrow (O.M, Sathyavan Savithiri) while the Diwali films Scene and Mookuthi Amman 2 are still in cinemas",
+    "facts": [
+      "O.M (Dhanush, Mammootty) and Sathyavan Savithiri (Keerthy Suresh, Mysskin) both open Thursday 20 Nov (DT Next; Wikipedia)",
+      "Scene: about ₹242 Cr worldwide in 10 days (Sacnilk via India TV; DNA India: over ₹240 Cr)",
+      "Mookuthi Amman 2: about ₹19 Cr India net in 9 days (Sacnilk); opening week ₹17.93 Cr (Koimoi)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/keerthy-suresh-mysskin-starrer-sathyavan-savithiri-to-now-hit-screens-on-november-20",
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole",
+      "https://www.indiatvnews.com/entertainment/news/scene-box-office-collection-suriya-s-gets-unexpected-boost-from-overseas-here-s-how-much-film-earned-in-10-days-2026-11-16-1059567",
+      "https://www.dnaindia.com/entertainment/report-scene-box-office-collection-day-10-suriya-film-beats-vishwanath-and-sons-to-become-his-second-highest-grossing-movie-3224109",
+      "https://www.sacnilk.com/quicknews/Mookuthi_Amman_2_2026_Box_Office_Collection_Day_10",
+      "https://www.koimoi.com/box-office/mookuthi-amman-2-box-office-registers-nayantharas-2nd-lowest-opening-week-of-2026-in-india/"
+    ],
+    "pictures_note": "Official trailer frames, same crops as earlier reels: O.M (aGSOpb_6kv8), Sathyavan Savithiri (XCLQGsbnFlw), Scene (LM4ByXufv2w), Mookuthi Amman 2 (tbnwnLatH1g); faces whole, baked-in text cut. Scene is worldwide gross, Mookuthi Amman 2 is India net: the tags say so."
+  },
+  "worth_it": {
+    "fan_opens_because": "Release eve and the weekend starts: one screen tells you every Tamil film worth a ticket this weekend.",
+    "spoilers": "None.",
+    "voice": "Off: music-only list (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vip_gathering",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "swagger"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    },
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "keerthy_card": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+      "crop": [
+        0.66,
+        0.0,
+        0.34,
+        0.82
+      ]
+    },
+    "scene": {
+      "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+      "crop": [
+        0.05,
+        0.0,
+        0.65,
+        0.7
+      ]
+    },
+    "amman": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "PLAN YOUR WEEKEND",
+          "size": 160,
+          "y": 1310
+        },
+        {
+          "text": "4 FILMS IN CINEMAS",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "NEW TOMORROW · O.M",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "DHANUSH · MAMMOOTTY",
+        "SPY THRILLER"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "keerthy_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "NEW TOMORROW · SATHYAVAN SAVITHIRI",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "KEERTHY vs MYSSKIN",
+        "COURTROOM DRAMA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "scene",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "STILL RUNNING · SCENE · ₹",
+      "value": 242,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "WORLDWIDE · 10 DAYS",
+        "SURIYA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "STILL RUNNING · MOOKUTHI AMMAN 2 · ₹",
+      "value": 19,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "INDIA NET · 9 DAYS",
+        "NAYANTHARA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_night",
+      "dur": 4.0,
+      "echo": "PLAN YOUR WEEKEND · 4 FILMS",
+      "question": [
+        {
+          "text": "WHICH ONE",
+          "size": 130
+        },
+        {
+          "text": "THIS WEEKEND?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Two new films open tomorrow, 20 Nov",
+      "cta": "SAVE THIS FOR THE WEEKEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Plan your weekend: 4 Tamil films in cinemas.",
+      "New tomorrow (20 Nov): O.M with Dhanush and Mammootty, and Sathyavan Savithiri with Keerthy Suresh and Mysskin. Still running: Scene (about ₹242 Cr worldwide in 10 days) and Mookuthi Amman 2 (about ₹19 Cr India net in 9 days). Sources: DT Next, India TV, DNA India, Sacnilk, Koimoi.",
+      "Which one is your weekend pick?",
+      "Save this for Saturday.",
+      "இந்த வாரம் எந்த படம்?"
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "PLAN YOUR WEEKEND · 4 FILMS",
+    "slot": "11:00",
+    "first_comment": "Your weekend pick: O.M, Sathyavan Savithiri, Scene or Mookuthi Amman 2?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 7,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 8,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 74,
+    "weakest": {
+      "hook": "a list title; the big O.M frame carries it",
+      "loop": "end card returns to the opening frame"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "id": "2026-11-19-update-mookuthi-amman-2-week-one",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "Mookuthi Amman 2 closes its first week at about ₹17.93 Cr India net (Koimoi); day 6 about ₹1 Cr, day 7 about ₹75 lakh (Sacnilk)",
+    "facts": [
+      "Opening week ₹17.93 Cr India net (Koimoi)",
+      "Day 6 about ₹1.00 Cr, day 7 about ₹0.75 Cr, a 25% drop (Sacnilk)",
+      "About ₹19 Cr India net after 9 days (Sacnilk)"
+    ],
+    "sources": [
+      "https://www.koimoi.com/box-office/mookuthi-amman-2-box-office-registers-nayantharas-2nd-lowest-opening-week-of-2026-in-india/",
+      "https://www.sacnilk.com/quicknews/Mookuthi_Amman_2_2026_Box_Office_Collection_Day_7",
+      "https://www.sacnilk.com/quicknews/Mookuthi_Amman_2_2026_Box_Office_Collection_Day_10"
+    ],
+    "pictures_note": "Mookuthi Amman 2 official trailer card (tbnwnLatH1g), the same wide crop as 16-18 Nov (face whole)."
+  },
+  "worth_it": {
+    "fan_opens_because": "Nayanthara fans track her Diwali film's run; one clean number.",
+    "spoilers": "None.",
+    "voice": "Off: music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "vintage_arjun",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "bold mass theme"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "amman": {
+      "src": "engine/.cache/stills/mookuthi_amman_2/tbnwnLatH1g_maxresdefault.jpg",
+      "crop": [
+        0.12,
+        0.0,
+        0.46,
+        0.86
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "MOOKUTHI AMMAN 2",
+          "size": 160,
+          "y": 1310
+        },
+        {
+          "text": "WEEK ONE",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "INDIA NET · WEEK 1 · ₹",
+      "value": 18,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "₹17.93 CR · KOIMOI",
+        "NAYANTHARA"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "amman",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "INDIA NET · 9 DAYS · ₹",
+      "value": 19,
+      "unit": " CR",
+      "land": 1.5,
+      "tag": [
+        "SACNILK",
+        "STILL IN CINEMAS"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "amman",
+      "dur": 4.0,
+      "echo": "MOOKUTHI AMMAN 2 · WEEK ONE",
+      "question": [
+        {
+          "text": "SEEN IT",
+          "size": 130
+        },
+        {
+          "text": "YET?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "Still in cinemas",
+      "cta": "TAG A NAYANTHARA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Mookuthi Amman 2: week one in numbers.",
+      "About ₹17.93 Cr India net in the first week (Koimoi) and about ₹19 Cr after 9 days (Sacnilk). Still in cinemas.",
+      "Seen it yet?",
+      "Tag a Nayanthara fan.",
+      "மூக்குத்தி அம்மன் 2."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "MOOKUTHI AMMAN 2 · WEEK ONE",
+    "slot": "reserve",
+    "first_comment": "Better than the first Mookuthi Amman?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 6,
+    "hook": 6,
+    "send_trigger": 5,
+    "comment_trigger": 7,
+    "save_value": 3,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 5,
+    "total_100": 58,
+    "weakest": {
+      "timely_original": "week-one numbers are a few days old",
+      "send_trigger": "numbers alone; the end question carries it"
+    }
+  },
+  "reserve": true
+}

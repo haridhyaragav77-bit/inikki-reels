@@ -1,0 +1,212 @@
+{
+  "id": "2026-11-19-update-sathyavan-savithiri-tomorrow",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "Sathyavan Savithiri opens tomorrow: Keerthy Suresh plays Savithiri, whose husband is accused of murder, and she faces Mysskin, her former boss, in court",
+    "facts": [
+      "Keerthy Suresh plays Savithiri; her husband Deepak is accused of murder and she takes on the legal fight (DT Next, trailer report)",
+      "Mysskin plays her former boss and the rival lawyer (Hollywood Reporter India)",
+      "In theatres Thursday 20 Nov (DT Next)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/sathyavan-savithiri-trailer-keerthy-suresh-plays-a-woman-forced-into-marriage-in-this-courtroom-drama",
+      "https://www.hollywoodreporterindia.com/features/insight/sathyavan-savithiri-trailer-keerthy-suresh-and-mysskin-clash-in-tense-courtroom-drama",
+      "https://www.dtnext.in/entertainment/cinema/keerthy-suresh-mysskin-starrer-sathyavan-savithiri-to-now-hit-screens-on-november-20"
+    ],
+    "pictures_note": "Official trailer (Zee Studios South, XCLQGsbnFlw), the same crops as 17-18 Nov: Keerthy's face whole; title, TRAILER word and date cut. maxres2 is the opposing lawyer from the trailer."
+  },
+  "worth_it": {
+    "fan_opens_because": "The case is the hook: her husband is the accused, and her old boss is on the other side.",
+    "spoilers": "Only the trailer's premise; nothing about the verdict.",
+    "voice": "Off: music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "keerthy_card": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+      "crop": [
+        0.66,
+        0.0,
+        0.34,
+        0.82
+      ]
+    },
+    "keerthy": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg"
+    },
+    "court": {
+      "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "keerthy_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "SATHYAVAN SAVITHIRI",
+          "size": 150,
+          "y": 1310
+        },
+        {
+          "text": "TOMORROW IN CINEMAS",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "keerthy",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THE CASE · HER HUSBAND",
+      "value": 1,
+      "unit": " MURDER CHARGE",
+      "land": 1.5,
+      "tag": [
+        "SHE FIGHTS FOR HIM",
+        "KEERTHY SURESH"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "court",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THE OTHER SIDE · MYSSKIN",
+      "value": 1,
+      "unit": " OLD BOSS",
+      "land": 1.5,
+      "tag": [
+        "NOW HER RIVAL",
+        "IN COURT"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "keerthy_card",
+      "dur": 4.0,
+      "echo": "SATHYAVAN SAVITHIRI · TOMORROW",
+      "question": [
+        {
+          "text": "KEERTHY OR MYSSKIN:",
+          "size": 130
+        },
+        {
+          "text": "WHO WINS THE CASE?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "In cinemas tomorrow, Thursday 20 Nov",
+      "cta": "TAG YOUR LAWYER FRIEND",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Before you sleep: Sathyavan Savithiri opens tomorrow.",
+      "Keerthy Suresh plays Savithiri, whose husband is accused of murder. In court she faces Mysskin, her former boss. In cinemas Thursday 20 Nov. Sources: DT Next, Hollywood Reporter India.",
+      "Keerthy or Mysskin: who wins the case?",
+      "Tag your lawyer friend.",
+      "நாளை — சத்யவான் சாவித்திரி."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "SATHYAVAN SAVITHIRI · TOMORROW",
+    "slot": "21:30",
+    "first_comment": "Keerthy vs Mysskin: who are you backing?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 7,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 8,
+    "total_100": 70,
+    "weakest": {
+      "save_value": "news, not a keeper",
+      "loop": "end card returns to the opening card"
+    }
+  }
+}

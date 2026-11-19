@@ -1,0 +1,398 @@
+{
+  "id": "2026-11-19-breakdown-peranbu",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "royal",
+  "length_reason": "Name the technique, show two chapter titles, how each chapter runs and why: about 50 seconds.",
+  "lead": {
+    "topic": "Peranbu (2018): Mammootty's Tamil film told in 12 chapters named after nature",
+    "angle": "screenplay",
+    "insight": "Ram splits Peranbu into twelve chapters, each titled with a face of nature, ruthless or compassionate. Each title tells us how to feel before the scene starts, and together they say what Ram means: everything is nature, including Paapa. The structure turns a hard story into one we can hold.",
+    "why_now": "O.M, Mammootty's new Tamil film, opens tomorrow (20 Nov); evening slot: TONIGHT.",
+    "sources": [
+      "https://www.thenewsminute.com/flix/peranbu-review-ram-s-father-daughter-tale-delicately-crafted-must-watch-film-96046",
+      "https://www.filmcompanion.in/reviews/peranbu-movie-review-mammootty-plays-the-gentlest-ram-hero-in-rams-least-angry-most-moving-drama",
+      "https://www.onmanorama.com/entertainment/movie-reviews/2019/01/31/peranbu-mamootty-ram-sadhna-tamil-movie-review-rating.html",
+      "https://en.wikipedia.org/wiki/Peranbu"
+    ],
+    "technique": "Chapter structure (a story told in titled chapters)",
+    "pictures_note": "Official trailer (Saregama Tamil, 1Nk7bEYIA7c), checked by eye on 19 Nov: maxresdefault Mammootty in red on the trailer card (crop keeps his face on the left, cuts the title block, OFFICIAL TRAILER and HD VIDEO), maxres1 Paapa (Sadhana) in the house, maxres2 Paapa close, maxres3 the misty lake with the title (crop keeps the lake above the title).",
+    "spoiler_note": "Only the structure and two chapter titles reviews quote; nothing about what happens."
+  },
+  "worth_it": {
+    "learn": "Peranbu is built in 12 chapters named after nature, and the titles tell you how to feel each part.",
+    "stop": "A Mammootty film you watch chapter by chapter, like a book.",
+    "why_now": "Mammootty's O.M opens tomorrow.",
+    "send_to": "The Mammootty fan going to O.M tomorrow.",
+    "best_angle": "Yes: the chapters are how Ram makes a hard story bearable."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "the_story",
+        "from": 2.0,
+        "screen": 0,
+        "mood": "intrigue"
+      },
+      {
+        "track": "true_love",
+        "from": 0.0,
+        "screen": 2,
+        "mood": "tender"
+      },
+      {
+        "track": "giant_emerges",
+        "from": 6.0,
+        "screen": 4,
+        "mood": "epic build"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/peranbu/1Nk7bEYIA7c_maxresdefault.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        0.62,
+        0.86
+      ]
+    },
+    "paapa": {
+      "src": "engine/.cache/stills/peranbu/1Nk7bEYIA7c_maxres1.jpg"
+    },
+    "paapa_close": {
+      "src": "engine/.cache/stills/peranbu/1Nk7bEYIA7c_maxres2.jpg"
+    },
+    "lake": {
+      "src": "engine/.cache/stills/peranbu/1Nk7bEYIA7c_maxres3.jpg",
+      "crop": [
+        0.0,
+        0.0,
+        1.0,
+        0.55
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "PERANBU",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.4,
+      "fy": 0.4,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "பேரன்பு. நாளைக்கு ஓ.எம். அதுக்கு முன்னாடி, மம்மூட்டியோட இந்த தமிழ் படம்.",
+      "voice_tg": "Peranbu. Naalaikku O.M. Adhukku munnaadi, Mammootty-oda indha Tamil padam.",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "CHAPTER STRUCTURE",
+      "definition": "A STORY TOLD IN TITLED CHAPTERS",
+      "outer_label": "PERANBU",
+      "inner": [
+        "12 CHAPTERS",
+        "EACH ONE TITLED",
+        "ALL ABOUT NATURE"
+      ],
+      "voice": "இந்த படம் பன்னிரண்டு அத்தியாயங்களா பிரிஞ்சிருக்கு. டெக்னிக் பேரு, சாப்டர் ஸ்ட்ரக்சர்.",
+      "voice_tg": "Indha padam pannirendu aththiyaayangalaa pirinjirukku. Technique peru, chapter structure.",
+      "cues": {
+        "name": {
+          "word": "சாப்டர்"
+        },
+        "outer": {
+          "word": "படம்"
+        },
+        "inner": {
+          "word": "அத்தியாயங்களா"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "படம்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "அத்தியாயங்களா"
+          },
+          "type": "pop"
+        },
+        {
+          "at": {
+            "word": "சாப்டர்"
+          },
+          "type": "glitch"
+        }
+      ]
+    },
+    {
+      "kind": "cards",
+      "in": "whip",
+      "heading": "THE CHAPTER TITLES",
+      "heading_ta": "அத்தியாயங்களின் பேரு",
+      "voice": "ஒவ்வொரு அத்தியாயத்துக்கும் இயற்கையோட ஒரு குணம் தான் பேரு. இயற்கை கொடூரமானது. இயற்கை கருணையானது.",
+      "voice_tg": "Ovvoru aththiyaayaththukkum iyarkaiyoda oru gunam thaan peru. Iyarkai kodooramaanadhu. Iyarkai karunaiyaanadhu.",
+      "cards": [
+        {
+          "lines": [
+            "EVERY CHAPTER",
+            "A FACE OF NATURE"
+          ],
+          "image": "lake",
+          "fx": 0.5,
+          "cue": {
+            "word": "இயற்கையோட"
+          }
+        },
+        {
+          "lines": [
+            "NATURE IS",
+            "RUTHLESS"
+          ],
+          "image": "paapa",
+          "fx": 0.45,
+          "cue": {
+            "word": "கொடூரமானது."
+          }
+        },
+        {
+          "lines": [
+            "NATURE IS",
+            "COMPASSIONATE"
+          ],
+          "image": "paapa_close",
+          "fx": 0.55,
+          "cue": {
+            "word": "கருணையானது."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "இயற்கையோட"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "கொடூரமானது."
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "கருணையானது."
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "EVERY CHAPTER",
+      "center_ta": "அத்தியாயம்",
+      "voice": "ஒரு பேரு. அப்புறம் அமுதவனோட வாழ்க்கை. கடைசியா ஒரு வசனம். அப்புறம் அடுத்த அத்தியாயம்.",
+      "voice_tg": "Oru peru. Appuram Amudhavanoda vaazhkkai. Kadaisiyaa oru vasanam. Appuram adutha aththiyaayam.",
+      "nodes": [
+        {
+          "label": "A TITLE",
+          "cue": {
+            "word": "பேரு."
+          }
+        },
+        {
+          "label": "HIS LIFE",
+          "cue": {
+            "word": "வாழ்க்கை."
+          }
+        },
+        {
+          "label": "ONE LINE",
+          "cue": {
+            "word": "வசனம்."
+          }
+        },
+        {
+          "label": "NEXT CHAPTER",
+          "cue": {
+            "word": "அடுத்த"
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "பேரு."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "வாழ்க்கை."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "வசனம்."
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "அடுத்த"
+          },
+          "type": "whoosh"
+        }
+      ]
+    },
+    {
+      "kind": "moral",
+      "in": "flash",
+      "image": "title",
+      "fx": 0.35,
+      "kicker": "WHY IT WORKS",
+      "left": "RUTHLESS",
+      "right": "COMPASSIONATE",
+      "left_ta": "கொடூரம்",
+      "right_ta": "கருணை",
+      "slam_text": [
+        "IT IS ALL",
+        "NATURE."
+      ],
+      "voice": "கொடூரமும் இயற்கை தான். கருணையும் இயற்கை தான். பாப்பாவும் இயற்கை தான். அது தான் ராம் சொல்ல வர்றது.",
+      "voice_tg": "Kodooramum iyarkai thaan. Karunaiyum iyarkai thaan. Paapaavum iyarkai thaan. Adhu thaan Ram solla varradhu.",
+      "cues": {
+        "line": {
+          "word": "கொடூரமும்"
+        },
+        "bleed": {
+          "word": "கருணையும்"
+        },
+        "crack": {
+          "word": "பாப்பாவும்"
+        },
+        "slam": {
+          "word": "ராம்"
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "கொடூரமும்"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "பாப்பாவும்"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "ராம்"
+          },
+          "type": "stamp"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "PERANBU · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "WHICH CHAPTER",
+          "size": 130
+        },
+        {
+          "text": "BROKE YOU?",
+          "size": 140,
+          "color": "#E0B848"
+        }
+      ],
+      "sub": "எந்த அத்தியாயம் உங்களை உடைச்சது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் சாப்டர் ஸ்ட்ரக்சர். நாளைக்கு ஓ.எம் போறதுக்கு முன்னாடி, பேரன்பு பாருங்க.",
+      "voice_tg": "Idhu thaan chapter structure. Naalaikku O.M poradhukku munnaadi, Peranbu paarunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: CHAPTER STRUCTURE"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Peranbu is told in 12 chapters, each named after nature.",
+      "The technique is called chapter structure: a story told in titled chapters. Ram names each one after a face of nature, ruthless or compassionate, so every title tells you how to feel before the scene starts. No spoilers here.",
+      "Which chapter broke you?",
+      "Before Mammootty's O.M tomorrow, watch Peranbu tonight.",
+      "இயற்கை கொடூரமானது. இயற்கை கருணையானது."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "PERANBU · SCREENPLAY BREAKDOWN",
+    "slot": "20:00",
+    "first_comment": "Mammootty's best Tamil performance: Peranbu or Thalapathi?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 8,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 78,
+    "weakest": {
+      "loop": "end card returns to the title card",
+      "pacing": "the cards line is long; three cards land on its words"
+    }
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "id": "2026-11-19-update-om-mammootty-siya",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "O.M's other side: Mammootty plays Siya, the grey-shaded politician behind the red sandalwood trade; Sai Pallavi, Sreeleela, Naseeruddin Shah and Indrans also star",
+    "facts": [
+      "Mammootty plays Siya, a grey-shaded politician who controls the trade (DT Next; Telangana Today: an antagonist role)",
+      "Sai Pallavi plays Nithya Reddy, the officer behind Operation Mole; Sreeleela, Naseeruddin Shah and Indrans also star; music by Sai Abhyankkar (DT Next; Outlook India)",
+      "Sources differ on Sai Pallavi's agency (STF or CBI), so the reel says only 'the officer'",
+      "Opens tomorrow, Thursday 20 Nov"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/dhanush-mammootty-starrer-oms-trailer-springs-a-surprise-reveals-dhanush-is-with-the-tn-intelligence-unit",
+      "https://telanganatoday.com/om-trailer-mammoottys-antagonist-role-and-dhanushs-cop-avatar-surprise-fans",
+      "https://www.outlookindia.com/art-entertainment/south-cinema/om-trailer-out-dhanush-mammootty-sai-pallavi-in-rajkumar-periasamy-film"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), checked by eye again on 19 Nov: the same crops as 17-18 Nov keep faces whole and cut the TRAILER word and the date. No frame of Sai Pallavi is confirmed, so her name stays in the tag."
+  },
+  "worth_it": {
+    "fan_opens_because": "Mammootty as the man on the other side is the big draw; yesterday's Mammootty update was our best reel (596 views).",
+    "spoilers": "Only roles named by the trailer and press; no plot turns.",
+    "voice": "Off: music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "threat_north",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "ominous"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "MAMMOOTTY IS SIYA",
+          "size": 160,
+          "y": 1310
+        },
+        {
+          "text": "THE MAN BEHIND THE TRADE",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "O.M · THE OTHER SIDE",
+      "value": 1,
+      "unit": " BOSS",
+      "land": 1.5,
+      "tag": [
+        "RED SANDALWOOD TRADE",
+        "GREY POLITICIAN"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "O.M · THE CAST",
+      "value": 5,
+      "unit": " BIG NAMES",
+      "land": 1.5,
+      "tag": [
+        "SAI PALLAVI · SREELEELA",
+        "NASEERUDDIN SHAH · INDRANS"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "MAMMOOTTY IS SIYA",
+      "question": [
+        {
+          "text": "SPY DHANUSH OR",
+          "size": 130
+        },
+        {
+          "text": "BOSS MAMMOOTTY?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "O.M opens tomorrow, Thursday 20 Nov",
+      "cta": "TAG A MAMMOOKKA FAN",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "Tonight's O.M fact: Mammootty is Siya.",
+      "In O.M, Mammootty plays Siya, a grey-shaded politician who runs the red sandalwood trade, opposite Dhanush's undercover man. Sai Pallavi, Sreeleela, Naseeruddin Shah and Indrans also star. Opens tomorrow, 20 Nov. Sources: DT Next, Telangana Today, Outlook India.",
+      "Spy Dhanush or boss Mammootty: who are you watching for?",
+      "Tag a Mammookka fan.",
+      "மம்மூட்டி — சியா."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "MAMMOOTTY IS SIYA",
+    "slot": "18:00",
+    "first_comment": "Who steals O.M: Dhanush or Mammootty?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 72,
+    "weakest": {
+      "save_value": "news, not a keeper",
+      "loop": "end card returns to the opening card"
+    }
+  }
+}

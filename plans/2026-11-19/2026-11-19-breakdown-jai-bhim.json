@@ -1,0 +1,382 @@
+{
+  "id": "2026-11-19-breakdown-jai-bhim",
+  "series": "film-breakdown",
+  "template": "stage",
+  "fps": 30,
+  "length_s": [
+    40,
+    62
+  ],
+  "design": "paper",
+  "length_reason": "Show the gate, name the technique, link it to the court and say why it works: about 50 seconds.",
+  "lead": {
+    "topic": "Jai Bhim (2021): the scene at the prison gate before the titles",
+    "angle": "screenplay",
+    "insight": "Jai Bhim opens at a prison gate: released men are asked one question, their caste, and the answer decides who goes home and who is handed to waiting police for new cases. Before the titles, we already know the system the whole film will put on trial, so we stand with Chandru from the first minute.",
+    "why_now": "Suriya's run is the week's big story (news watch: 'How Suriya turned his biggest failures into a Rs 600 crore comeback', 30 publishers; Scene past ₹200 Cr). Afternoon slot: AFTER WORK.",
+    "sources": [
+      "https://www.filmcompanion.in/reviews/jai-bhim-movie-review-suriya-a-no-holds-barred-film-on-institutional-violence",
+      "https://www.thequint.com/entertainment/movie-reviews/jai-bhim-movie-review-suriya-tamil-film-amazon-prime-video",
+      "https://www.livelaw.in/columns/law-on-reels-jai-bhim-court-room-drama-state-impunity-caste-violence-184892",
+      "https://en.wikipedia.org/wiki/Cold_open"
+    ],
+    "technique": "Cold open (a scene before the titles)",
+    "pictures_note": "Official trailer (Prime Video India, Gc6dEDnL8JA), checked by eye on 19 Nov: maxresdefault Suriya on the trailer card (crop keeps his face, cuts the title, the bottom TRAILER bar and logo), maxres1 Sengeni smiling in the village, maxres2 the senior lawyer in court, maxres3 Suriya as Chandru in court. No prison-gate frame: the loop graphic carries the gate.",
+    "spoiler_note": "Only the opening scene and the premise (Rajakannu's case goes to court); nothing about the verdict.",
+    "care_note": "The reel names no caste; it says only that the gate asks for caste, as every review describes."
+  },
+  "worth_it": {
+    "learn": "Jai Bhim's first scene is a cold open that shows the whole case's problem before the titles.",
+    "stop": "One question at a prison gate decides who goes home.",
+    "why_now": "Suriya's comeback is the week's top film story.",
+    "send_to": "The friend who says Jai Bhim is Suriya's best film.",
+    "best_angle": "Yes: the opening is why the courtroom feels personal."
+  },
+  "voice": {
+    "on": true
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation"
+      },
+      {
+        "track": "threat_north",
+        "from": 0.0,
+        "screen": 2,
+        "mood": "ominous"
+      },
+      {
+        "track": "climax_theme",
+        "from": 0.0,
+        "screen": 4,
+        "mood": "big release"
+      }
+    ],
+    "duck": 0.32,
+    "level_db": -20,
+    "xfade": 0.8,
+    "fade_out": 1.2,
+    "note": "Harish 13 Nov: music under the voice, never over it; softer between lines but still present. Voice natural, paced, loud and clear."
+  },
+  "assets": {
+    "title": {
+      "src": "engine/.cache/stills/jai_bhim/Gc6dEDnL8JA_maxresdefault.jpg",
+      "crop": [
+        0.55,
+        0.0,
+        0.45,
+        0.82
+      ]
+    },
+    "sengeni": {
+      "src": "engine/.cache/stills/jai_bhim/Gc6dEDnL8JA_maxres1.jpg"
+    },
+    "lawyer": {
+      "src": "engine/.cache/stills/jai_bhim/Gc6dEDnL8JA_maxres2.jpg"
+    },
+    "chandru": {
+      "src": "engine/.cache/stills/jai_bhim/Gc6dEDnL8JA_maxres3.jpg"
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "title",
+      "film": "JAI BHIM",
+      "type": "SCREENPLAY BREAKDOWN",
+      "fx": 0.5,
+      "fy": 0.35,
+      "slam_at": 0.12,
+      "min": 3.2,
+      "voice": "ஜெய் பீம். படம் ஆரம்பிக்கிறதே ஒரு ஜெயில் வாசல்ல. ஏன்?",
+      "voice_tg": "Jai Bhim. Padam aarambikkiradhe oru jail vaasalla. Yen?",
+      "sfx": [
+        {
+          "at": 0.12,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "loop",
+      "in": "push",
+      "center": "BEFORE THE TITLES",
+      "center_ta": "ஜெயில் வாசல்",
+      "voice": "விடுதலை ஆன கைதிகள். வாசல்ல ஒரே ஒரு கேள்வி: நீ என்ன ஜாதி? பதிலை வச்சு, சிலர் வீட்டுக்கு. சிலர் மறுபடியும் உள்ள.",
+      "voice_tg": "Viduthalai aana kaidhigal. Vaasalla ore oru kelvi: nee enna jaadhi? Badhilai vachu, silar veettukku. Silar marupadiyum ulla.",
+      "nodes": [
+        {
+          "label": "THE GATE",
+          "cue": {
+            "word": "வாசல்ல"
+          }
+        },
+        {
+          "label": "ONE QUESTION",
+          "cue": {
+            "word": "கேள்வி:"
+          }
+        },
+        {
+          "label": "SENT HOME",
+          "cue": {
+            "word": "வீட்டுக்கு."
+          }
+        },
+        {
+          "label": "BACK INSIDE",
+          "cue": {
+            "word": "உள்ள."
+          }
+        }
+      ],
+      "sfx": [
+        {
+          "at": {
+            "word": "வாசல்ல"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கேள்வி:"
+          },
+          "type": "impact"
+        },
+        {
+          "at": {
+            "word": "வீட்டுக்கு."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "உள்ள."
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "technique",
+      "in": "glitch",
+      "kicker": "THE TECHNIQUE",
+      "name": "COLD OPEN",
+      "definition": "A SCENE BEFORE THE TITLES",
+      "outer_label": "THE FILM",
+      "inner": [
+        "THE GATE",
+        "THE QUESTION",
+        "THE STAKES"
+      ],
+      "voice": "இந்த டெக்னிக் பேரு, கோல்ட் ஓப்பன். டைட்டிலுக்கு முன்னாடியே ஒரு சீன்.",
+      "voice_tg": "Indha technique peru, cold open. Title-ukku munnaadiye oru scene.",
+      "cues": {
+        "name": {
+          "word": "கோல்ட்"
+        },
+        "outer": {
+          "word": "டைட்டிலுக்கு"
+        },
+        "inner": {
+          "word": "சீன்."
+        }
+      },
+      "tail": 0.6,
+      "sfx": [
+        {
+          "at": {
+            "word": "கோல்ட்"
+          },
+          "type": "glitch"
+        },
+        {
+          "at": {
+            "word": "டைட்டிலுக்கு"
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "சீன்."
+          },
+          "type": "pop"
+        }
+      ]
+    },
+    {
+      "kind": "timeline",
+      "in": "whip",
+      "heading": "SETUP TO PAYOFF",
+      "voice": "முதல் சீன்லயே பிரச்சனை தெரியுது. அப்புறம் ராஜாக்கண்ணு கேஸ். கோர்ட்ல சந்துரு அதே சிஸ்டத்தை கேள்வி கேக்கிறார்.",
+      "voice_tg": "Mudhal scene-laye prachanai theriyudhu. Appuram Rajakannu case. Court-la Chandru adhe system-ai kelvi kekkiraar.",
+      "events": [
+        {
+          "label": "THE GATE",
+          "sub": "MINUTE ONE",
+          "cue": {
+            "word": "சீன்லயே"
+          }
+        },
+        {
+          "label": "RAJAKANNU'S CASE",
+          "cue": {
+            "word": "கேஸ்."
+          }
+        },
+        {
+          "label": "THE COURT",
+          "sub": "CHANDRU",
+          "cue": {
+            "word": "கோர்ட்ல"
+          }
+        },
+        {
+          "label": "SAME SYSTEM",
+          "sub": "ON TRIAL",
+          "cue": {
+            "word": "சிஸ்டத்தை"
+          }
+        }
+      ],
+      "links": [
+        [
+          0,
+          3
+        ]
+      ],
+      "footer": "THE OPENING IS THE CASE",
+      "footer_cue": {
+        "word": "கேக்கிறார்.",
+        "off": 0.2
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "சீன்லயே"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "கேஸ்."
+          },
+          "type": "whoosh"
+        },
+        {
+          "at": {
+            "word": "கோர்ட்ல"
+          },
+          "type": "tick"
+        },
+        {
+          "at": {
+            "word": "சிஸ்டத்தை"
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "standoff",
+      "in": "zoom",
+      "image": "chandru",
+      "fx": 0.5,
+      "fy": 0.4,
+      "slam_text": "ONE SCENE. WHOLE FILM.",
+      "voice": "முதல் நிமிஷத்துலயே நமக்கு கோபம் வருது. அதனால தான் கடைசி வரை நாம சந்துரு பக்கம் நிக்கிறோம்.",
+      "voice_tg": "Mudhal nimishaththulaye namakku kobam varudhu. Adhanaala thaan kadaisi varai naama Chandru pakkam nikkirom.",
+      "q_cue": {
+        "word": "கோபம்"
+      },
+      "slam_cue": {
+        "word": "நிக்கிறோம்."
+      },
+      "sfx": [
+        {
+          "at": {
+            "word": "கோபம்"
+          },
+          "type": "riser"
+        },
+        {
+          "at": {
+            "word": "நிக்கிறோம்.",
+            "off": 0.35
+          },
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "glitch",
+      "bg": "title",
+      "echo": "JAI BHIM · SCREENPLAY BREAKDOWN",
+      "question": [
+        {
+          "text": "BEST OPENING SCENE",
+          "size": 115
+        },
+        {
+          "text": "IN TAMIL CINEMA?",
+          "size": 130,
+          "color": "#E04848"
+        }
+      ],
+      "sub": "உங்களுக்கு பிடிச்ச ஓப்பனிங் சீன் எது?",
+      "subFamily": "Noto Sans Tamil",
+      "voice": "இது தான் கோல்ட் ஓப்பன். உங்களுக்கு பிடிச்ச ஓப்பனிங் சீன் எது? கமெண்ட்ல சொல்லுங்க.",
+      "voice_tg": "Idhu thaan cold open. Ungalukku pidichcha opening scene edhu? Comment-la sollunga.",
+      "tail": 1.6,
+      "sfx": [
+        {
+          "at": 1.0,
+          "type": "pop"
+        }
+      ],
+      "recap": "TECHNIQUE: COLD OPEN"
+    }
+  ],
+  "package": {
+    "caption": [
+      "Jai Bhim's first scene happens before the titles.",
+      "The technique is called a cold open: a scene before the titles. At a prison gate, one question decides who goes home. Before the film even starts, we know the system it will put on trial, so we stand with Chandru from minute one. No spoilers here.",
+      "What is the best opening scene in Tamil cinema?",
+      "Send this to the friend who calls Jai Bhim Suriya's best.",
+      "டைட்டிலுக்கு முன்னாடியே ஒரு சீன்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "JAI BHIM · SCREENPLAY BREAKDOWN",
+    "slot": "12:30",
+    "first_comment": "Best opening scene in Tamil cinema? Jai Bhim, Kaithi or something else?"
+  },
+  "subtitles": true,
+  "captions": "tamil_tanglish_subtitles",
+  "drive_folder": "finished",
+  "virality": {
+    "value": 8,
+    "hook": 8,
+    "send_trigger": 7,
+    "comment_trigger": 9,
+    "save_value": 7,
+    "pacing": 7,
+    "loop": 6,
+    "timely_original": 7,
+    "total_100": 74,
+    "weakest": {
+      "loop": "end card returns to the title card; the question echoes the opening 'why'",
+      "timely_original": "tied to Suriya's week, not a Jai Bhim date"
+    }
+  }
+}

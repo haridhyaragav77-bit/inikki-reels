@@ -1,0 +1,224 @@
+{
+  "id": "2026-11-19-update-om-tomorrow-undercover",
+  "series": "movie-updates",
+  "template": "bulletin",
+  "fps": 30,
+  "length_s": [
+    15,
+    30
+  ],
+  "dateline": "MOVIE UPDATE · 19 NOV 2026",
+  "lead": {
+    "topic": "O.M opens tomorrow (Thu 20 Nov); the trailer's surprise: Dhanush is with the Tamil Nadu police intelligence unit and goes undercover as a smuggler",
+    "facts": [
+      "The trailer reveals Dhanush is part of a TN Police intelligence unit set up against organised crime (DT Next)",
+      "He goes undercover inside a red sandalwood smuggling ring (Outlook India)",
+      "In cinemas Thursday 20 Nov; the UK listing gives 178 minutes (our 18 Nov update: BBFC, Wikipedia)"
+    ],
+    "sources": [
+      "https://www.dtnext.in/entertainment/cinema/dhanush-mammootty-starrer-oms-trailer-springs-a-surprise-reveals-dhanush-is-with-the-tn-intelligence-unit",
+      "https://www.outlookindia.com/art-entertainment/south-cinema/om-trailer-out-dhanush-mammootty-sai-pallavi-in-rajkumar-periasamy-film",
+      "https://en.wikipedia.org/wiki/O.M:_Operation_Mole"
+    ],
+    "pictures_note": "Official OM trailer frames (Divo Music, aGSOpb_6kv8), checked by eye again on 19 Nov: the same crops as 17-18 Nov keep faces whole and cut the TRAILER word and the date."
+  },
+  "worth_it": {
+    "fan_opens_because": "Release eve, and the top story in the news watch (21 publishers): Dhanush is not a smuggler, he is a spy.",
+    "spoilers": "Only what the official trailer shows; nothing about how the mission goes.",
+    "voice": "Off: a short news update is music-only (series rule)."
+  },
+  "voice": {
+    "on": false
+  },
+  "music": {
+    "sections": [
+      {
+        "track": "suspects",
+        "from": 0.0,
+        "screen": 0,
+        "mood": "investigation"
+      }
+    ],
+    "level_db": -12.5,
+    "fade_out": 1.0
+  },
+  "assets": {
+    "dhanush_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.04,
+        0.04,
+        0.4,
+        0.9
+      ]
+    },
+    "mammootty_card": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+      "crop": [
+        0.54,
+        0.06,
+        0.33,
+        0.88
+      ]
+    },
+    "dhanush_night": {
+      "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+      "crop": [
+        0.0,
+        0.1,
+        1.0,
+        0.8
+      ]
+    }
+  },
+  "screens": [
+    {
+      "kind": "title",
+      "image": "dhanush_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 3.2,
+      "lines": [
+        {
+          "text": "O.M TOMORROW",
+          "size": 180,
+          "y": 1310
+        },
+        {
+          "text": "DHANUSH GOES UNDERCOVER",
+          "size": 110,
+          "y": 1470,
+          "color": "#F8C028",
+          "glow": "rgba(248,192,40,.5)"
+        }
+      ],
+      "sfx": [
+        {
+          "at": 0.1,
+          "type": "impact"
+        },
+        {
+          "at": 0.45,
+          "type": "stamp"
+        }
+      ],
+      "band": [
+        330,
+        640
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "whip",
+      "image": "dhanush_night",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THE TWIST · TN POLICE",
+      "value": 1,
+      "unit": " SPY",
+      "land": 1.5,
+      "tag": [
+        "INTELLIGENCE UNIT",
+        "INSIDE A SMUGGLING RING"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "number",
+      "in": "push",
+      "image": "mammootty_card",
+      "fx": 0.5,
+      "fy": 0.4,
+      "dur": 4.4,
+      "kicker": "THURSDAY · IN CINEMAS",
+      "value": 20,
+      "unit": " NOV",
+      "land": 1.5,
+      "tag": [
+        "178 MIN · UK LISTING",
+        "DHANUSH · MAMMOOTTY"
+      ],
+      "sfx": [
+        {
+          "at": 0.3,
+          "type": "riser"
+        },
+        {
+          "at": 1.5,
+          "type": "impact"
+        }
+      ]
+    },
+    {
+      "kind": "end",
+      "in": "zoom",
+      "bg": "dhanush_card",
+      "dur": 4.0,
+      "echo": "O.M · DHANUSH UNDERCOVER",
+      "question": [
+        {
+          "text": "SPY DHANUSH:",
+          "size": 130
+        },
+        {
+          "text": "FIRST DAY FIRST SHOW?",
+          "size": 130,
+          "color": "#F8C028"
+        }
+      ],
+      "sub": "O.M opens tomorrow, Thursday 20 Nov",
+      "cta": "TAG YOUR FDFS GANG",
+      "sfx": [
+        {
+          "at": 0.95,
+          "type": "pop"
+        }
+      ]
+    }
+  ],
+  "package": {
+    "caption": [
+      "O.M tomorrow: Dhanush goes undercover.",
+      "The trailer's surprise: Dhanush plays a man from the Tamil Nadu police intelligence unit who goes undercover inside a red sandalwood smuggling ring. O.M opens Thursday 20 Nov. Sources: DT Next, Outlook India.",
+      "First day first show?",
+      "Tag your FDFS gang.",
+      "நாளை O.M — ஸ்பை தனுஷ்."
+    ],
+    "hashtags": [
+      "#fyp",
+      "#trending",
+      "#viral",
+      "#explorepage",
+      "#reels"
+    ],
+    "cover": "O.M TOMORROW · UNDERCOVER",
+    "slot": "08:30",
+    "first_comment": "FDFS plans? Which theatre?"
+  },
+  "drive_folder": "finished",
+  "virality": {
+    "value": 7,
+    "hook": 8,
+    "send_trigger": 8,
+    "comment_trigger": 8,
+    "save_value": 4,
+    "pacing": 8,
+    "loop": 6,
+    "timely_original": 9,
+    "total_100": 72,
+    "weakest": {
+      "save_value": "news, not a keeper",
+      "loop": "end card returns to the opening card"
+    }
+  }
+}
