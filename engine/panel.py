@@ -16,7 +16,7 @@ import sys
 
 import yaml
 
-from .settings import AGENT, ENGINE, ROOT, niche_dir
+from .settings import AGENT, ENGINE, ROOT, niche, niche_dir
 from . import status
 from .control import Control
 from .day import Bank, Day, load_json_lines, today
@@ -373,6 +373,7 @@ def build(drive, ctl=None):
     reels = _safe(lambda: reels_today(day, ROOT / "plans" / date), [])
     money_card = _safe(lambda: money(ctl, drive), {})
     radar = _safe(lambda: drive.read_json("status", "radar.json"), {})
+    jobs_file = _safe(lambda: drive.read_json("status", "jobs.json"), {})
     P = {"v": 2, "updated": status.stamp(), "updated_iso": now.isoformat(timespec="seconds"),
          "switch": ctl.mode, "phase": ctl.phase, "approval": ctl.settings.get("approval"), "away": bool(ctl.settings.get("away_mode")),
          "respect": (respect or {}).get("why") if respect else None,
@@ -391,7 +392,14 @@ def build(drive, ctl=None):
          "page_rules": [{"id": n.get("id"), "text": n["text"], "at": n.get("at")} for n in ctl.notes()],
          "alerts": [{k: a.get(k) for k in ("id", "at", "level", "title", "what_happened", "what_was_done", "what_you_do")}
                     for a in (_safe(lambda: drive.read_json("status", "alerts.json"), {}) or {}).get("alerts", []) if a.get("open")][:6],
-         "jobs": {k: {"result": v.get("result"), "at": v.get("at")} for k, v in ((_safe(lambda: drive.read_json("status", "jobs.json"), {}) or {}).get("jobs") or {}).items()},
+         "jobs": {k: {"result": v.get("result"), "at": v.get("at"), "run": v.get("run")} for k, v in ((jobs_file or {}).get("jobs") or {}).items()},
+         "failed_runs": [f for f in (jobs_file or {}).get("failed") or [] if str(f.get("iso", ""))[:10] >= (now - dt.timedelta(days=7)).date().isoformat()][:15],
+         "youtube": {"on": bool((ENGINE.get("youtube") or {}).get("enabled", True)), "privacy": (ENGINE.get("youtube") or {}).get("privacy", "private"),
+                     "today": sum(1 for r in reels if r.get("youtube"))},
+         "study": {**(_safe(lambda: drive.read_json("status", "study.json"), {}) or {}),
+                   "sources": [{"name": c.get("name"), "where": c.get("platform"), "priority": c.get("priority"), "mode": c.get("study")}
+                               for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]},
+         "fresh_updates": ctl.on("fresh_updates"),
          "digest": (_safe(lambda: drive.read_text("status", "digest.md"), "") or "")[:900],
          "actions": _safe(lambda: actions(drive), []),
          "inbox": _safe(lambda: drive.folder("control/inbox"), None), "lineup": lineup_name}
@@ -429,6 +437,14 @@ def text(P):
                  + (f" · note: {r['why'][:90]}" if r.get("why") else "") + (f" · {r['youtube_note'][:80]}" if r.get("youtube_note") else ""))
     if not reels:
         L.append("No reels made yet today.")
+    fr = P.get("failed_runs") or []
+    if fr:
+        L += ["", f"## FAILED RUNS (7 days): {len(fr)}"] + [f"- {f.get('at')} · {f.get('job')} · {f.get('result')} · {f.get('run')}" for f in fr[:6]]
+    yt = P.get("youtube") or {}
+    L.append(f"YouTube: {'on' if yt.get('on') else 'off'} ({yt.get('privacy')}) · {yt.get('today', 0)} uploaded today")
+    st = P.get("study") or {}
+    if st.get("last"):
+        L.append(f"Channel study: {st['last']}")
     L += ["", "## NEXT RUNS (IST)"] + [f"- {_hm(s['at'])} · {s['what']}" for s in P.get("schedule", [])[:9]]
     if P["tomorrow"]["slots"]:
         L += ["", f"## TOMORROW {P['tomorrow']['date']} (planned at 05:37)", " · ".join(f"{s['time']} {s['series']}" for s in P["tomorrow"]["slots"])]
