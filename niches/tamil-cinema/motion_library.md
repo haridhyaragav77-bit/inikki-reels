@@ -136,6 +136,10 @@ are the Stage kinds `detail`, `chain`, `quote` and `source` (templates/README.md
 | `insider_quote` (kind `quote`) | Who said it and where (behind-the-scenes stories) | A portrait in a glowing ring with voice bars pulsing round it like speech; the name slams, the role pops, a short key phrase rises word by word; the source tag (interview, year) lands last |
 | `source_vs_film` (kind `source`) | The source story and the film side by side (a myth, a play, a real event) | Two tracks draw down the screen; beats pop in on each side; a bright curve with a running spark links the beats that match, and the pair lights up |
 | `part_badge` (plan `part: [n, 3]`) | A film week's part | "PART 1/3" pill on the title and end screens |
+| `evidence_board` (kind `board`) | Many small things lead to one person or cause | Cork board in a wooden frame; clue cards drop and pin on the word; red string draws from each to the face in the middle; a red stamp lands |
+| `staircase` (kind `climb`) | A character's arc told by direction (struggle up, freedom down) | City at night; a silhouette climbs heavily (cold light) or dances down bouncing (warm light, sparks); a big arrow shows the way the story goes |
+| `race_track` (kind `track`) | A race, a chase, a journey, a route | The circuit draws itself; a car laps with a light trail; markers pop with labels; a speed counter climbs |
+| `layer_stack` (kind `layers`) | What is under the surface (a car under bodywork, a set, a sound mix, a story) | Isometric slabs drop into a stack, then lift apart with leader-line labels |
 
 ## Breakdown pins and sign-off (change #8)
 | Graphic | The idea it shows | How it moves |

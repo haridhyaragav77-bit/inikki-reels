@@ -33,6 +33,11 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
 - Music: 1-3 parts from engine/music_index.json that follow the story; the first starts on screen 0. Bold, never subtle.
 - Package: caption lines, 3-5 hashtags, cover title (it names the reel in Drive), slot, first comment.
 - The id is "<date>-<short name>" (e.g. 2026-11-14-breakdown-kaithi); save it as plans/<date>/<id>.json.
+Breakdowns (from 20 Nov): write the script on the spine in the series card (hook > lead > body > loop > body > loop >
+body > cta; each screen has "beat"). Start from the study cards (data/study/), bend the source (series card `bend`),
+check facts by web search (Wikipedia production section, IMDb trivia, interviews). Loops are standoff screens of 9 words
+or fewer. Body 3 pays the hook and names the technique. 8-18 words a screen; "tail": 0.12 on every screen but the title.
+Pictures: the YouTube frames grid for the film (brief: Official stills, source youtube) or {"fetch": {"youtube": id, "frame": f}}.
 Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
 Older looks (Diorama for Guess the Movie, Cinematic for Artwork + Quote): fill templates/<template>/plan_form.json
 and validate the same way.

@@ -3,8 +3,29 @@ audience: "Tamil film fans, 18-35, India and abroad"
 sources: "knowledge/sources.yaml"        # Harish to confirm the trusted list
 calendar_types: [release, re_release, ott, anniversary, birthday, festival, awards]
 competitors:                              # 5-10 pages; Researcher proposes, Harish confirms. study: true = the channel study (AGENT.md 10.3)
-  - { name: "Expert FX", platform: youtube, handle: "@expertfx", channel_id: UCW3dmQDxU4YpDuMjlBTlchQ, study: true, why: "film detail breakdowns, Tamil and Hollywood" }
-  - { name: "World Filmology", platform: youtube, handle: "@worldfilmology", channel_id: UC9gcLdRWcqrj8tz9AaLkLRw, study: true, why: "behind-the-scenes stories from interviews" }
+  # priority (Harish, 19 Nov): 1 = the main sources of topics and insight, 2 = second, 3 = some cases.
+  # Rotation: no two breakdowns in a row draw on the same source (lead.inspired_by; plan check).
+  - { name: "Expert FX", platform: youtube, handle: "@expertfx", channel_id: UCW3dmQDxU4YpDuMjlBTlchQ, study: true, priority: 1, why: "film detail breakdowns, Tamil and Hollywood" }
+  - { name: "Kadhai Club", platform: instagram, handle: "kadhaiclub", study: true, priority: 1, why: "Tamil film stories and details (Harish, 19 Nov: a primary source)" }
+  - { name: "Level Up Learning Filmmaking", platform: instagram, handle: "", study: true, priority: 2, why: "filmmaking craft lessons", note: "Harish to confirm the handle" }
+  - { name: "World Filmology (Instagram)", platform: instagram, handle: "worldfilmology.in", study: true, priority: 3, why: "behind-the-scenes stories, the Instagram page" }
+  - { name: "World Filmology", platform: youtube, handle: "@worldfilmology", channel_id: UC9gcLdRWcqrj8tz9AaLkLRw, study: true, priority: 3, why: "behind-the-scenes stories from interviews" }
+  # The wide net (19 Nov): read for topics and facts only (titles and the creator's description; study: titles, no audio)
+  - { name: "Vanity Fair (Notes on a Scene)", platform: youtube, handle: "@VanityFair", channel_id: UCIsbLox_y9dCIMLd8tdC6qg, study: titles, priority: 4, why: "directors break down their own scenes: a primary source" }
+  - { name: "Lessons from the Screenplay", platform: youtube, handle: "@LessonsfromtheScreenplay", channel_id: UCErSSa3CaP_GJxmFpdjG9Jw, study: titles, priority: 4, why: "screenplay techniques" }
+  - { name: "StudioBinder", platform: youtube, handle: "@StudioBinder", channel_id: UCUFoQUaVRt3MVFxqwPUMLCQ, study: titles, priority: 4, why: "named camera and editing techniques" }
+  - { name: "Thomas Flight", platform: youtube, handle: "@ThomasFlight", channel_id: UCUyvQV2JsICeLZP4c_h40kA, study: titles, priority: 5, why: "film essays" }
+  - { name: "Nerdwriter1", platform: youtube, handle: "@Nerdwriter1", channel_id: UCJkMlOu7faDgqh4PfzbpLdg, study: titles, priority: 5, why: "film essays" }
+  - { name: "Behindwoods TV", platform: youtube, handle: "@BehindwoodsTV", channel_id: UC8md0UEGj7UbjcZtMjBVrgQ, study: titles, priority: 4, why: "Tamil interviews: behind-the-scenes stories at the source" }
+  - { name: "Galatta Plus", platform: youtube, handle: "@GalattaPlus", channel_id: UCTTUsQJAdGSd2mMsGGfvzhQ, study: titles, priority: 4, why: "Tamil director and actor interviews" }
+  - { name: "Cinema Vikatan", platform: youtube, handle: "@CinemaVikatan", channel_id: UCjF5ecCYXFDvR0UY9GcfnoA, study: titles, priority: 5, why: "Tamil interviews and news" }
+source_queries:   # the weekly source scout searches these (free) and lists new channels for Harish to confirm (AGENT.md 10.3)
+  - "tamil movie hidden details"
+  - "tamil cinema breakdown shorts"
+  - "tamil director interview behind the scenes"
+  - "movie details you missed shorts"
+  - "{film} details"
+  - "{film} behind the scenes"
 hashtags: { broad: ["#TamilCinema", "#Kollywood"], series: {}, max: 5 }
 knowledge_bank: "knowledge/film_bank.json"
 meme_index: "memes/meme_index.csv"

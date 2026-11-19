@@ -31,7 +31,7 @@ def _words(t):
 # ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
 LOOK_KINDS = {
     "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web",
-              "detail", "chain", "quote", "source", "end"},
+              "detail", "chain", "quote", "source", "board", "climb", "track", "layers", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
     "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
@@ -103,7 +103,7 @@ def recent_plans(template, rid, n=3):
     """The last `n` plans in the same look before this one (by their dated id), for the no-repeat rule (AGENT.md 5.8)."""
     out = []
     for p in (ROOT / "plans").glob("*/*.json"):
-        if p.parent.name == "reference" or p.name == "respect.json":
+        if p.parent.name in ("reference", "samples") or p.name == "respect.json":      # samples are never posted
             continue
         try:
             d = json.loads(p.read_text(encoding="utf-8"))
@@ -147,12 +147,128 @@ def check_unique(plan, series, tpl, rid, E, W):
         W.append(f"Every graphic in this reel was also in the last one ({last[0].get('id')}). One fresh graphic keeps the page from looking the same.")
 
 
+def films_lately(date, days, series_id="movie-updates", skip_id=""):
+    """Films the series covered in the last `days` days (and today), from the plans on disk: {film key: [reel ids]}."""
+    import datetime as _dt
+    out = {}
+    try:
+        d0 = _dt.date.fromisoformat(date)
+    except ValueError:
+        return out
+    for k in range(days + 1):
+        folder = ROOT / "plans" / (d0 - _dt.timedelta(days=k)).isoformat()
+        for f in sorted(folder.glob("*.json")) if folder.exists() else []:
+            try:
+                p = json.loads(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            rid = str(p.get("id") or p.get("reel_id") or f.stem)
+            if p.get("series") != series_id or rid == skip_id:
+                continue
+            key = film_key((p.get("lead") or {}).get("film")) or rid.split("update-", 1)[-1]
+            out.setdefault(key, []).append(rid)
+    return out
+
+
+def film_key(name):
+    return re.sub(r"[^a-z0-9]+", "-", str(name or "").lower()).strip("-")
+
+
+def check_variety(plan, series):
+    """Movie updates (Harish, 19 Nov): the same film at most once in `variety.film_days` days, unless real new news."""
+    v = series.get("variety")
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not v or rid[:10] < "2026-11-20":
+        return []
+    lead = plan.get("lead") or {}
+    film = film_key(lead.get("film"))
+    if not film:
+        return ["Name the film in lead.film, so the page does not repeat one film (variety rule)."]
+    seen = films_lately(rid[:10], int(v.get("film_days", 3)), plan.get("series"), rid)
+    hits = [r for k, rs in seen.items() for r in rs if k == film or k.startswith(film + "-")]
+    if hits and not str(lead.get("new_event") or "").strip():
+        return [f"{lead.get('film')} was already covered lately ({', '.join(hits[:3])}). Pick another film, or write the real new news in lead.new_event."]
+    return []
+
+
+def source_of(text):
+    """Which studied source a plan names in lead.inspired_by: a name from the niche competitors list, 'own', or None."""
+    t = str(text or "").lower()
+    if not t.strip():
+        return None
+    if "own idea" in t or t.strip() == "own":
+        return "own"
+    from .settings import niche
+    for c in sorted((niche().get("competitors") or []), key=lambda c: -len(str(c.get("name", "")))):
+        n = str(c.get("name", "")).lower().split(" (")[0]
+        if n and n in t:
+            return n
+    return "other"
+
+
+def check_rotation(plan, series):
+    """Breakdowns rotate their sources (Harish, 19 Nov): not the same source as another breakdown of today or yesterday."""
+    days = series.get("source_rotation")
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if days is None or rid[:10] < "2026-11-20" or plan.get("booked"):
+        return []
+    src = source_of((plan.get("lead") or {}).get("inspired_by"))
+    if not src:
+        return ["Name the source in lead.inspired_by: a name from the niche competitors list (or 'own idea'), so sources rotate (AGENT.md 10.3)."]
+    if src in ("own", "other"):
+        return []
+    import datetime as _dt
+    d0 = _dt.date.fromisoformat(rid[:10])
+    for k in range(int(days) + 1):
+        folder = ROOT / "plans" / (d0 - _dt.timedelta(days=k)).isoformat()
+        for f in sorted(folder.glob("*.json")) if folder.exists() else []:
+            try:
+                p = json.loads(f.read_text(encoding="utf-8"))
+            except Exception:
+                continue
+            if p.get("series") == plan.get("series") and str(p.get("id") or f.stem) != rid and source_of((p.get("lead") or {}).get("inspired_by")) == src:
+                return [f"{p.get('id') or f.stem} already draws on {src}; pick another source for this breakdown (rotation, AGENT.md 10.3)."]
+    return []
+
+
+def check_spine(plan, series, screens):
+    """The spine (AGENT.md 5.7): hook, lead, body, loop, body, loop, body, cta. Each screen names its beat; a beat may take
+    more than one screen in a row. Only for series that have a spine, and only for plans made from 20 Nov on."""
+    sp = series.get("spine")
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not sp or rid[:10] < "2026-11-20":
+        return []
+    E, beats = [], [s.get("beat") for s in screens]
+    if any(b is None for b in beats):
+        return [f"Every screen names its beat ({', '.join(dict.fromkeys(sp))}); screens without one: "
+                f"{', '.join(str(n) for n, b in enumerate(beats, 1) if b is None)} (AGENT.md 5.7)."]
+    run = [b for k, b in enumerate(beats) if k == 0 or b != beats[k - 1]]
+    if run != sp:
+        E.append(f"The beats run {' > '.join(run)}; the spine is {' > '.join(sp)} (AGENT.md 5.7).")
+    if beats[0] != "hook" or screens[0].get("kind") != "title":
+        E.append("The hook is the title screen.")
+    hw = len(str(screens[0].get("voice") or "").split())
+    if hw > 12:
+        E.append(f"The hook line has {hw} words; 6 to 10 land in 3 seconds.")
+    for n, s in enumerate(screens, 1):
+        w = len(str(s.get("voice") or "").split())
+        if s.get("beat") == "loop" and w > 9:
+            E.append(f"Screen {n} (open loop) has {w} words; a loop is a 1-3 s tease (9 words at most).")
+        if w > 22:
+            E.append(f"Screen {n} has {w} words; 8 to 18 a screen keeps the pace (split it).")
+    return E
+
+
 def check_new_graphics(plan, screens):
     """detail, chain, quote, source and the PART n/of badge: what each needs to draw (templates/README.md)."""
     E = []
     pt = plan.get("part")
     if pt is not None and not (isinstance(pt, list) and len(pt) == 2 and all(isinstance(x, int) for x in pt) and 1 <= pt[0] <= pt[1] <= 3):
         E.append("'part' is a film week's place, [n, of] with of at most 3, e.g. [1, 3] (AGENT.md 5.7).")
+    from collections import Counter
+    for k, c in Counter(s.get("kind") for s in screens).items():
+        if plan.get("template") == "stage" and k not in ("title", "end") and c > 2:
+            E.append(f"The '{k}' graphic is used {c} times; at most twice (once, plus one callback). Pick or build an illustration for this idea (AGENT.md 5.8).")
     for n, s in enumerate(screens, 1):
         k = s.get("kind")
         if k == "detail":
@@ -257,6 +373,9 @@ def check_look(plan, series):
 
     # the breakdown graphics added on 19 Nov (AGENT.md 5.8) and the film-week badge (5.7)
     E += check_new_graphics(plan, screens)
+    E += check_spine(plan, series, screens)
+    E += check_variety(plan, series)
+    E += check_rotation(plan, series)
 
     # voice: sound-on prompt and subtitles come with it (AGENT.md 5.3)
     if voiced:

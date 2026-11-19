@@ -266,10 +266,52 @@ def _speak(text, out, vid, model, vs, seed, before=None, after=None):
         f.write(audio)
     with open(out + ".json", "w", encoding="utf-8") as f:
         json.dump(words_from(j.get("alignment") or j.get("normalized_alignment")), f, ensure_ascii=False)
+    if j.get("alignment"):                            # letter times, so a one-take reel can be cut between its lines
+        with open(out + ".chars.json", "w", encoding="utf-8") as f:
+            json.dump(j["alignment"], f, ensure_ascii=False)
     try:
         return int(r.headers.get("character-cost") or r.headers.get("x-character-count") or len(text))
     except ValueError:
         return len(text)
+
+
+def _one_take(texts, outdir, vid, model, vs, seed, drive):
+    """The whole reel read in ONE take (Harish, 19 Nov: lines recorded one by one sounded stitched), then cut between
+    the lines at the middle of each pause, using the time ElevenLabs gives every letter. Each screen still gets its own
+    clip and word timings. Returns (clips, credits spent)."""
+    whole = _line_key("\n".join(texts), vid, model, vs)
+    clips = [{"line": i, "name": f"{whole}_{i}.mp3", "file": os.path.join(outdir, f"{whole}_{i}.mp3")} for i in range(len(texts))]
+    if all((os.path.exists(c["file"]) and os.path.exists(c["file"] + ".json")) or _cache_get(drive, c["name"], c["file"]) for c in clips):
+        return clips, 0
+    joined, spans, pos = "", [], 0
+    for t in texts:
+        if joined:
+            joined += " "
+        spans.append((len(joined), len(joined) + len(t)))
+        joined += t
+    full = os.path.join(outdir, f"{whole}_full.mp3")
+    spent = _speak(joined, full, vid, model, vs, seed)
+    with open(full + ".chars.json", encoding="utf-8") as f:
+        al = json.load(f)
+    chars, t0, t1 = al["characters"], al["character_start_times_seconds"], al["character_end_times_seconds"]
+    if len(chars) != len(joined):
+        raise RuntimeError("the one-take timings do not match the text; recording line by line")
+    total = seconds(full)
+    def last_end(a, b):
+        return max([t1[k] for k in range(a, b) if not chars[k].isspace()] or [t1[b - 1]])
+    def first_start(a, b):
+        return min([t0[k] for k in range(a, b) if not chars[k].isspace()] or [t0[a]])
+    cuts = [0.0] + [round((last_end(*spans[i]) + first_start(*spans[i + 1])) / 2, 3) for i in range(len(texts) - 1)] + [total]
+    for i, c in enumerate(clips):
+        a, b = cuts[i], cuts[i + 1]
+        subprocess.run([_ffmpeg(), "-y", "-v", "error", "-i", full, "-ss", f"{a:.3f}", "-to", f"{b:.3f}", "-c:a", "libmp3lame", "-q:a", "2", c["file"]], check=True)
+        s0, s1 = spans[i]
+        part = {"characters": chars[s0:s1], "character_start_times_seconds": [max(0.0, x - a) for x in t0[s0:s1]],
+                "character_end_times_seconds": [max(0.0, x - a) for x in t1[s0:s1]]}
+        with open(c["file"] + ".json", "w", encoding="utf-8") as f:
+            json.dump(words_from(part), f, ensure_ascii=False)
+        _cache_put(drive, c["name"], c["file"])
+    return clips, spent
 
 
 def elevenlabs_batch(plan, outdir, drive=None, reel_id=None, sub=None):
@@ -298,6 +340,19 @@ def elevenlabs_batch(plan, outdir, drive=None, reel_id=None, sub=None):
         if todo and sub is not None and sub["left"] - need < int(e.get("reserve_credits", 0)):
             return {"ok": False, "skipped": True, "error": f"ElevenLabs credits are nearly used up this month ({sub['left']} left, this reel needs about {need})"}
         spent = 0
+        if plan.get("one_take", e.get("one_take", True)) and len(texts) > 1:
+            try:
+                if todo and sub is not None and sub["left"] - sum(len(t) for t in texts) < int(e.get("reserve_credits", 0)):
+                    return {"ok": False, "skipped": True, "error": f"ElevenLabs credits are nearly used up this month ({sub['left']} left)"}
+                clips, spent = _one_take(texts, outdir, vid, model, vs, seed, drive)
+                out = []
+                for c in clips:
+                    with open(c["file"] + ".json", encoding="utf-8") as f:
+                        out.append({"line": c["line"], "file": os.path.abspath(c["file"]), "seconds": seconds(c["file"]), "words": json.load(f)})
+                return {"ok": True, "provider": "elevenlabs", "model": model, "voice_id": vid, "credits": spent, "reused": 0 if spent else len(texts),
+                        "one_take": True, "clips": out}
+            except Exception as ex:                     # fail soft: line by line, as before
+                print("voice: one take did not work, recording line by line:", str(ex)[:200], file=sys.stderr)
         try:
             for i in todo:
                 c = clips[i]
