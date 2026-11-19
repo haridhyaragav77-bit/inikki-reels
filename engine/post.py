@@ -161,8 +161,16 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
                 cid = None
         if not cid:
             local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
-            cid = ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
-            ig.wait_ready(cid)
+            for attempt in (1, 2):                      # Instagram's "ProcessingFailedError" often clears on a fresh upload
+                try:
+                    cid = ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
+                    ig.wait_ready(cid)
+                    break
+                except Exception as e:
+                    if attempt == 2 or not any(k in str(e) for k in ("ProcessingFailed", "not in the status", "processing failed", "ERROR")):
+                        raise
+                    print(f"{rid}: Instagram processing failed, uploading once more ({str(e)[:100]})", file=sys.stderr)
+                    time.sleep(20)
         cr = {}
         for _ in range(8):                      # Instagram's music/copyright check finishes shortly after processing
             cr = ig.copyright_status(cid) or {}
@@ -245,7 +253,8 @@ def choose(day, bank, now, ctl, early_min=5):
         if r.get("reserve") or not r.get("post_at"):
             continue
         t = dt.datetime.fromisoformat(r["post_at"])
-        if now - dt.timedelta(hours=3) <= t <= now + dt.timedelta(minutes=early_min) and r.get("state") in ("ready", "held", "failed"):
+        late = 8 if r.get("catch_up") else 3
+        if now - dt.timedelta(hours=late) <= t <= now + dt.timedelta(minutes=early_min) and r.get("state") in ("ready", "held", "failed"):
             due.append(r)
     for r in sorted(due, key=lambda x: x["post_at"]):
         if r.get("state") == "ready":
@@ -323,6 +332,21 @@ def wait_for_slot(ctl, max_wait_min=15, alive=False):
 RELEASABLE = ("Held by Harish.", "Not posted: the master switch was on Hold.")
 
 
+def release_switch_holds(ctl, day, now, hours=8):
+    """Harish, 19 Nov: after Resume, reels the master switch held come back by themselves (oldest first, one per run,
+    as the slots allow), instead of waiting for "post now". Only reels held by the switch, only today, only within `hours`."""
+    if ctl.mode != "run" or ctl.phase != "live":
+        return 0
+    n = 0
+    for r in day.reels("held"):
+        if r.get("reason") != "Not posted: the master switch was on Hold." or not r.get("post_at"):
+            continue
+        if now - dt.datetime.fromisoformat(r["post_at"]) <= dt.timedelta(hours=hours):
+            day.upsert(r["reel_id"], state="ready", reason="Held while the switch was on Hold; released after Resume.", catch_up=True)
+            n += 1
+    return n
+
+
 def apply_commands(ctl, day):
     """One-off commands from the Control Room (control/commands.jsonl): hold, unhold, post_now, skip."""
     for c in ctl.lines("commands.jsonl")[-80:]:
@@ -393,6 +417,7 @@ def main():
             ctl = Control(drive)                # the switch may have changed while waiting
     day, bank = Day(drive), Bank(drive)
     apply_commands(ctl, day)
+    release_switch_holds(ctl, day, status.now())
     result = "nothing due"
     if a.now:
         r = next((x for x in day.reels() if x["reel_id"] == a.now.strip()), None)
