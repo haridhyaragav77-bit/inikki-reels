@@ -70,6 +70,8 @@ def job_end(name, result):
         except Exception:
             pass
     jobs.setdefault("jobs", {})[name] = {"result": result, "at": stamp(), "run": run}
+    if result not in ("success", "skipped", "cancelled"):     # failed runs are kept for the Control Room (last 40)
+        jobs["failed"] = [{"job": name, "result": result, "at": stamp(), "iso": now().isoformat(timespec="minutes"), "run": run}] + (jobs.get("failed") or [])[:39]
     write(drive, "jobs.json", jobs)
     if result not in ("success", "skipped", "cancelled"):
         alert(drive, f"The {name} job did not finish", f"The {name} job stopped with: {result}.",

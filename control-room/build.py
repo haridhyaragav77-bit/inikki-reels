@@ -18,7 +18,11 @@ def example():
         from engine import almanac, dayplan, panel, status
         from engine.control import Control
         ctl = Control(None)
-        ex = {"day_plan": dayplan.card(ctl), "volume": ctl.settings.get("volume"), "framework": panel.framework_card(ctl), "series": panel.series_cards(ctl, {}, None),
+        from engine.settings import niche
+        srcs = [{"name": c.get("name"), "where": c.get("platform"), "priority": c.get("priority"), "mode": c.get("study")}
+                for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]
+        ex = {"study": {"sources": srcs, "last": "example: studied 3 short(s); 2 on the laptop list"}, "youtube": {"on": True, "privacy": "private", "today": 0},
+              "day_plan": dayplan.card(ctl), "volume": ctl.settings.get("volume"), "framework": panel.framework_card(ctl), "series": panel.series_cards(ctl, {}, None),
               "calendar": almanac.today(status.now().strftime("%Y-%m-%d"), ctl.settings.get("slots") or []),
               "usage": {"runner": {"minutes": 1180, "limit": 2000, "pct": 59, "forecast": 1890, "forecast_pct": 95, "per_day": 84, "stage": "normal", "month": "example",
                                    "ladder": ["Heading past 2000: reserve and bank reels wait", "At 85%: the same, and no extra news checks",

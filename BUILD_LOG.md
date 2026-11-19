@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 19 Nov 2026 — Control Room shows failed runs, YouTube, sources and the new runs
+`status.job_end` keeps every failed run (last 40, with its log link); the panel carries `failed_runs` (7 days), `youtube`, `study` (sources by priority, last study result) and `fresh_updates`; the page shows a red notice on Today for failures in the last 24 hours, Setup → "YouTube and sources" and "Failed runs (7 days)", and "Open on YouTube" on each reel. The study job is labelled in Next. Page republished (artifact version 10).
+
 ## 19 Nov 2026 — Posting on time: why 2 reels were held, and the fixes
 At 09:17 the Guard held posting because GitHub's Pages robot (github-pages[bot]) rebuilt the docs pages; it stayed held until Harish pressed Resume at 14:11, and held reels never came back by themselves. Fixes: github-pages[bot] is a trusted actor; after Resume, reels the switch held today are released and post oldest first, one per run, up to 8 hours late (`release_switch_holds`); an Instagram "processing failed" upload is tried once more with a fresh upload.
 

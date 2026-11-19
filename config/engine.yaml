@@ -74,6 +74,7 @@ schedule_labels:
   make: "Make reels"
   trailers: "Fetch trailers"
   music: "Music index"
+  study: "Channel study (sources, speech to text, source scout)"
   daily:
     "31 22 * * *": "Health check"
     "42 23 * * *": "Brief for the Plan run"
