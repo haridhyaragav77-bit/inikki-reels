@@ -1,4 +1,9 @@
 # Names -> how the voice should say them (Tamil script). Added by 'Redo line' in the Control Room.
+# One word for one word (the subtitles follow the words), longest names first is handled by code.
 # Example (fill in after first listen):
 # "Lokesh Kanagaraj": "லோகேஷ் கனகராஜ்"
 # "Anirudh": "அனிருத்"
+
+"F1": "எஃப்ஒன்"
+"F2": "எஃப்டூ"
+"APXGP": "ஏபிஎக்ஸ்ஜிபி"

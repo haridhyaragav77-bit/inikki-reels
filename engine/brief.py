@@ -427,6 +427,15 @@ def build(drive, run, date):
               for sid, card in ctl.new_series().items() if str((card.get("added") or {}).get("at", "")) >= recent]
     if run in ("plan", "refresh"):
         L += study_lines(drive, run)
+        try:                                              # variety in movie updates (Harish, 19 Nov)
+            from .plancheck import films_lately
+            seen = films_lately(date, 3)
+            if seen:
+                L += ["", "## Films the updates covered in the last 3 days (pick other films unless there is real new news; lead.film, lead.new_event)"]
+                L += ["- " + " · ".join(sorted(seen))]
+                L += ["Today: at least 3 different films, and one update from outside the top films (smaller film, OTT drop, another-language or Hollywood release in Tamil Nadu, industry story). Use the news watch's lower-ranked stories too."]
+        except Exception as e:
+            print("updates lately left out:", str(e)[:100])
     if run in ("plan", "refresh") and ctl.on("unique_designs"):
         try:
             recent = looks_lately()

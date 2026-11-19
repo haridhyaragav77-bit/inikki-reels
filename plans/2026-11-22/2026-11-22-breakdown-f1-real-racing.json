@@ -1,5 +1,5 @@
 {
- "id": "2026-11-20-sample-f1-real-racing-v2",
+ "id": "2026-11-22-breakdown-f1-real-racing",
  "series": "film-breakdown",
  "template": "stage",
  "fps": 30,
@@ -399,8 +399,8 @@
   {
    "beat": "cta",
    "kind": "end",
-   "voice": "அடுத்தது எந்த ஹாலிவுட் படம்? கமெண்ட்ல சொல்லுங்க. F1 ஃபேன் நண்பனுக்கு அனுப்புங்க.",
-   "voice_tg": "Adutthadhu endha Hollywood padam? Comment-la sollunga. F1 fan nanbanukku anuppunga.",
+   "voice": "அடுத்தது எந்த ஹாலிவுட் படம்? கமெண்ட்ல சொல்லுங்க. மறந்துடாதீங்க,",
+   "voice_tg": "Adutthadhu endha Hollywood padam? Comment-la sollunga. Marandhudaadheenga,",
    "in": "whip",
    "echo": "F1 · NOT AN F1 CAR",
    "question": [
@@ -416,7 +416,7 @@
    ],
    "sub": "அடுத்தது எந்த படம்?",
    "subFamily": "Noto Sans Tamil",
-   "tail": 1.4,
+   "tail": 0.35,
    "sfx": [
     {
      "at": 0.8,
@@ -447,5 +447,6 @@
  },
  "subtitles": true,
  "captions": "tamil_tanglish_subtitles",
- "drive_folder": "rehearsal/samples"
+ "drive_folder": "finished",
+ "booked": true
 }

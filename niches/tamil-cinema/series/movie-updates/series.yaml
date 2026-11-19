@@ -26,10 +26,13 @@ proof_required: 2       # trusted sources that must agree
 meme_use: ending_only
 trend_hooks: true
 success_metric: sends_per_reach
+variety: { film_days: 3 }   # same film again only after this many days, unless lead.new_event (plan check)
 rules:
   - "The title screen says exactly what the update is, e.g. 'COOLIE · WEEK 1 BOX OFFICE'."
   - "No spoilers, ever: no plot, twists, cameos or endings. Report numbers, dates, cast, crew, trailers, songs, OTT dates."
   - "Before writing, answer: why would a fan open this? Report only that."
+  - "Variety (Harish, 19 Nov): the same film at most once in 3 days; a second time only for real new news (release-day verdict, a box office milestone), written in lead.new_event. Name the film in lead.film. At least 3 different films a day, and one update a day from outside the week's top films (a smaller film, an OTT drop, another-language or Hollywood film releasing in Tamil Nadu, an industry story)."
+  - "The ₹ sign is only for money: dates, days and counts show no ₹ (number screens add it by themselves for CR, L, lakh, crore)."
   - "Keep it simple: one big number or fact per screen, on a full-bleed still."
   - "Unconfirmed = say 'reportedly' or skip."
   - "End with a light, no-fan-war question."

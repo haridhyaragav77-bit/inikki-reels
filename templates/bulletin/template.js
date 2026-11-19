@@ -40,7 +40,9 @@ function splitStill(env, ctx, img, lt, o = {}) {
 function money(ctx, value, lt, d, x, y, o = {}) {
   const p = E.outExpo(prog(lt, 0, d)), v = value * p, dec = o.decimals || 0;
   const num = v.toFixed(dec), big = o.size || 300;
-  const parts = [['₹', big * .62, YEL], [num, big, o.color || '#fff'], [o.unit || ' CR', big * .42, YEL]];
+  // the ₹ sign only for money (Harish, 19 Nov: a date showed "₹20 NOV"): crore, lakh, thousand, million, or money: true
+  const unit = o.unit ?? ' CR', isMoney = o.money ?? /^\s*(CR|CRORE|CRORES|L|LAKH|LAKHS|K|M|MN|B|BN)\b\+?/i.test(unit);
+  const parts = [...(isMoney ? [['₹', big * .62, YEL]] : []), [num, big, o.color || '#fff'], [unit, big * .42, YEL]];
   let total = 0; const ws = parts.map(([s, z]) => { setFont(ctx, z, 'Anton', 400, 0); const w = ctx.measureText(s).width; total += w; return w; });
   let cx = x - total / 2;
   parts.forEach(([s, z, c], k) => { txt(ctx, s, cx + ws[k] / 2, y, { size: z, family: 'Anton', weight: 400, color: c, glow: k === 1 ? rgba(YEL, .35 + .3 * (lt > d ? 1 : 0)) : null, glowBlur: 50 }); cx += ws[k]; });
@@ -84,7 +86,7 @@ const KINDS = {
       pill(ctx, s.kicker, W / 2, 1065, lt - .2, { size: 38, bg: TEAL, color: NAVY, ls: .1 });
       const bp = 1 + beatPulse(env, t, 6) * .03 * (lt > land ? 1 : 0);
       ctx.save(); ctx.translate(W / 2, 1400); ctx.scale(bp, bp);
-      money(ctx, s.value, lt - .3, land - .3, 0, 0, { size: 300, unit: s.unit });
+      money(ctx, s.value, lt - .3, land - .3, 0, 0, { size: 300, unit: s.unit, money: s.money });
       ctx.restore();
       ring(ctx, W / 2, 1300, lt - land, { color: YEL, r1: 820, w: 18 });
       flash(ctx, lt, land, { alpha: .3, color: '#F8C028' });

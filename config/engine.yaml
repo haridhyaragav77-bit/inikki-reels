@@ -132,6 +132,7 @@ voice:
     language_code_models: [eleven_flash_v2_5, eleven_turbo_v2_5, eleven_v3]
     output_format: mp3_44100_128
     settings: { stability: 0.45, similarity_boost: 0.8, style: 0.2, use_speaker_boost: true, speed: 1.1 }
+    one_take: true                                   # the whole reel in one read, cut between lines (smooth, no stitching)
     reserve_credits: 1000                            # below this the backup voice speaks until the credits renew
 
 clips:

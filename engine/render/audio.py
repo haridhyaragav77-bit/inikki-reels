@@ -193,7 +193,17 @@ def main(plan_path, work):
             for k in ("provider", "elevenlabs_voice", "speed"):
                 if series_cfg.get(k):
                     cfg.setdefault(k, series_cfg[k])
-            cfg["lines"] = [{"text": text} for _, text in spoken]
+            try:                                                   # names said the way the pronunciation list says (niche knowledge)
+                import yaml
+                from engine.settings import niche_dir
+                says = yaml.safe_load((niche_dir() / "knowledge" / "pronunciations.yaml").read_text(encoding="utf-8")) or {}
+            except Exception:
+                says = {}
+            def said(t):
+                for k in sorted(says, key=len, reverse=True):
+                    t = t.replace(str(k), str(says[k]))
+                return t
+            cfg["lines"] = [{"text": said(text)} for _, text in spoken]
             r, why = V.main_voice(cfg, os.path.join(VOICE_CACHE, "elevenlabs"), drive, plan.get("reel_id") or plan.get("id"))
             if r:
                 provider = "elevenlabs"

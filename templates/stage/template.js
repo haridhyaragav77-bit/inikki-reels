@@ -903,6 +903,13 @@ const KINDS = {
       partBadge(env, ctx, lt - .3, 425);
       endCard(env, ctx, lt, t, { echo: s.echo, question: s.question, cta: s.cta, sub: env.plan.subtitles === false ? s.sub : null, subFamily: s.subFamily, accent: GOLD,
         cx: CX, echoY: 330, qy: 690, ctaY: 990, handleY: 1100, mascot: [170, 1235, .7], echoSize: 30 });
+      // the loop (Harish, 19 Nov): the last moments fade back to the opening frame, so the end flows into the start
+      const dur = T.end - T.start, lp = env.plan.loop === false ? 0 : ep(lt, dur - .75, dur, E.inOutCubic), first = env.plan.screens[0] || {};
+      if (lp > 0) {
+        ctx.save(); ctx.globalAlpha = lp; fill(ctx, INK);
+        if (env.img[first.image]) cover(ctx, env.img[first.image], 0, 170, W, 830, { zoom: 1.08, fx: first.fx ?? .5, fy: first.fy ?? .5 });
+        fadeBand(ctx, 170, 830, 200); ctx.restore(); ctx.globalAlpha = 1;
+      }
     };
   },
 };

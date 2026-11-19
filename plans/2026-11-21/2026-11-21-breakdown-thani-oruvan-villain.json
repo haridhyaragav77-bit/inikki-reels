@@ -1,5 +1,5 @@
 {
- "id": "2026-11-20-sample-thani-oruvan-villain-v2",
+ "id": "2026-11-21-breakdown-thani-oruvan-villain",
  "series": "film-breakdown",
  "template": "stage",
  "fps": 30,
@@ -381,8 +381,8 @@
   {
    "beat": "cta",
    "kind": "end",
-   "voice": "சித்தார்த் அபிமன்யு, தமிழ் சினிமாவோட பெஸ்ட் வில்லனா? கமெண்ட்ல சொல்லுங்க.",
-   "voice_tg": "Siddharth Abhimanyu, Tamil cinema-voda best villain-aa? Comment-la sollunga.",
+   "voice": "சித்தார்த் அபிமன்யு, தமிழ் சினிமாவோட பெஸ்ட் வில்லனா? கமெண்ட்ல சொல்லுங்க. ஏன்னா...",
+   "voice_tg": "Siddharth Abhimanyu, Tamil cinema-voda best villain-aa? Comment-la sollunga. Yenna...",
    "in": "whip",
    "echo": "THANI ORUVAN · THE VILLAIN INSIDE THE HERO",
    "question": [
@@ -398,7 +398,7 @@
    ],
    "sub": "பெஸ்ட் வில்லன் யாரு?",
    "subFamily": "Noto Sans Tamil",
-   "tail": 1.4,
+   "tail": 0.35,
    "sfx": [
     {
      "at": 0.8,
@@ -429,5 +429,6 @@
  },
  "subtitles": true,
  "captions": "tamil_tanglish_subtitles",
- "drive_folder": "rehearsal/samples"
+ "drive_folder": "finished",
+ "booked": true
 }

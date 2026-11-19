@@ -3,9 +3,12 @@ audience: "Tamil film fans, 18-35, India and abroad"
 sources: "knowledge/sources.yaml"        # Harish to confirm the trusted list
 calendar_types: [release, re_release, ott, anniversary, birthday, festival, awards]
 competitors:                              # 5-10 pages; Researcher proposes, Harish confirms. study: true = the channel study (AGENT.md 10.3)
-  # priority (Harish, 19 Nov): 1 = the main source of topics and insight, 2 = second, 3 = some cases
+  # priority (Harish, 19 Nov): 1 = the main sources of topics and insight, 2 = second, 3 = some cases.
+  # Rotation: no two breakdowns in a row draw on the same source (lead.inspired_by; plan check).
   - { name: "Expert FX", platform: youtube, handle: "@expertfx", channel_id: UCW3dmQDxU4YpDuMjlBTlchQ, study: true, priority: 1, why: "film detail breakdowns, Tamil and Hollywood" }
-  - { name: "Level Up Learning Filmmaking", platform: instagram, handle: "", study: true, priority: 2, why: "filmmaking craft lessons", note: "Harish to confirm the handle; Instagram reels are studied from links Harish forwards (inspiration inbox)" }
+  - { name: "Kadhai Club", platform: instagram, handle: "kadhaiclub", study: true, priority: 1, why: "Tamil film stories and details (Harish, 19 Nov: a primary source)" }
+  - { name: "Level Up Learning Filmmaking", platform: instagram, handle: "", study: true, priority: 2, why: "filmmaking craft lessons", note: "Harish to confirm the handle" }
+  - { name: "World Filmology (Instagram)", platform: instagram, handle: "worldfilmology.in", study: true, priority: 3, why: "behind-the-scenes stories, the Instagram page" }
   - { name: "World Filmology", platform: youtube, handle: "@worldfilmology", channel_id: UC9gcLdRWcqrj8tz9AaLkLRw, study: true, priority: 3, why: "behind-the-scenes stories from interviews" }
   # The wide net (19 Nov): read for topics and facts only (titles and the creator's description; study: titles, no audio)
   - { name: "Vanity Fair (Notes on a Scene)", platform: youtube, handle: "@VanityFair", channel_id: UCIsbLox_y9dCIMLd8tdC6qg, study: titles, priority: 4, why: "directors break down their own scenes: a primary source" }

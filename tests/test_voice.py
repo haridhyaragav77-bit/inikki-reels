@@ -47,7 +47,7 @@ def main():
     voice.subscription = lambda: {"used": 40000 - left["n"], "limit": 40000, "left": left["n"], "tier": "starter", "resets": "2026-12-04"}
     used = []
     voice.note_use = lambda drive, provider, reel_id, credits=0, reused=0, why=None, sub=None: used.append((provider, credits, reused, why))
-    plan = {"voice": "ta-IN-ValluvarNeural", "rate": "+18%", "lines": [{"text": "இந்த shot-a கவனிச்சீங்களா?"}, {"text": "இது ஒரு match cut."}]}
+    plan = {"voice": "ta-IN-ValluvarNeural", "rate": "+18%", "one_take": False, "lines": [{"text": "இந்த shot-a கவனிச்சீங்களா?"}, {"text": "இது ஒரு match cut."}]}
 
     r, why = voice.main_voice(plan, os.path.join(tmp, "el"), None, "reel-1")
     check("ElevenLabs speaks first, one call per line", r and r["provider"] == "elevenlabs" and len(calls) == 2)
@@ -58,13 +58,21 @@ def main():
     check("the credits used are counted", used[-1][:2] == ("elevenlabs", 24))
     r2, _ = voice.main_voice(plan, os.path.join(tmp, "el"), None, "reel-1")
     check("the same lines again cost nothing (no second draft)", len(calls) == 2 and r2["reused"] == 2 and r2["credits"] == 0)
-    plan2 = {"lines": [{"text": "இந்த shot-a கவனிச்சீங்களா?"}, {"text": "புது வரி."}]}
+    plan2 = {"one_take": False, "lines": [{"text": "இந்த shot-a கவனிச்சீங்களா?"}, {"text": "புது வரி."}]}
     voice.main_voice(plan2, os.path.join(tmp, "el"), None, "reel-1")
     check("after a word change only the changed line is recorded", len(calls) == 3)
 
+    # one take (the default since 19 Nov): the whole reel in one call, cut into one clip per line with its own word times
+    plan3 = {"lines": [{"text": "முதல் வரி இது."}, {"text": "ரெண்டாவது வரி இங்கே."}]}
+    r5, _ = voice.main_voice(plan3, os.path.join(tmp, "el"), None, "reel-4")
+    check("one take: one call for the whole reel", len(calls) == 4 and r5 and r5.get("one_take") and calls[-1]["text"] == "முதல் வரி இது. ரெண்டாவது வரி இங்கே.")
+    check("one take: each line gets its own clip and words", len(r5["clips"]) == 2 and [x["w"] for x in r5["clips"][1]["words"]][0] == "ரெண்டாவது"
+          and r5["clips"][1]["words"][0]["t"] < 0.3)
+    r6, _ = voice.main_voice(plan3, os.path.join(tmp, "el"), None, "reel-4")
+    check("one take: the same reel again costs nothing", len(calls) == 4 and r6["credits"] == 0)
     left["n"] = 900                                           # under the reserve: the backup must speak
     r3, why = voice.main_voice({"lines": [{"text": "இன்னொரு புது வரி."}]}, os.path.join(tmp, "el"), None, "reel-2")
-    check("near the end of the credits the backup voice is chosen", r3 is None and "credits" in why and len(calls) == 3)
+    check("near the end of the credits the backup voice is chosen", r3 is None and "credits" in why and len(calls) == 4)
     check("the reason is written in plain words", "backup voice (Microsoft)" in voice.backup_note(None, "reel-2", why))
     r4, why = voice.main_voice({"provider": "microsoft", "lines": [{"text": "x"}]}, os.path.join(tmp, "el"), None, "reel-3")
     check("a reel or series can ask for the Microsoft voice", r4 is None and why is None)

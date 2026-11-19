@@ -208,7 +208,9 @@ Every run starts with the **switch check**. If the master switch says Sleep, the
 
 | Rule | Detail |
 | --- | --- |
-| One take, never two drafts | Every line is recorded once and kept by its exact words (Drive `work/voice-cache`). A retry, a word change or a re-made reel reuses it and costs nothing. |
+| **One take for the whole reel (19 Nov)** | ElevenLabs reads the whole reel in one go, so it flows like one person talking; the take is cut between lines at the middle of each pause, using the time it gives every letter, so each screen still lands on its words. Lines recorded one by one sounded stitched (Harish). Setting: `voice.elevenlabs.one_take`; if a take cannot be cut, the lines are recorded one by one as before. |
+| One take, never two drafts | Every take is recorded once and kept by its exact words (Drive `work/voice-cache`). A retry or a re-made reel reuses it and costs nothing; a word change records the reel's take again. |
+| Names said right | `niches/<niche>/knowledge/pronunciations.yaml` (one word for one word, e.g. F1 → எஃப்ஒன்) is applied to every voice line before it is spoken. |
 | One voice per reel | If the main voice fails part-way, the whole reel is recorded with the backup. The reel's notes and the Control Room say so, with the reason. |
 | Word timings | Both voices give a time for every word, so subtitles light up and graphics land on the word. |
 | Fits the length | A reel that would run past its series' longest length is spoken a little faster (never above 1.15×) instead of being held. |
@@ -315,6 +317,8 @@ An old film with no cult following is skipped, however good it is.
 
 **The spine (Harish, 19 Nov).** Every breakdown runs **hook → lead → body 1 → open loop → body 2 → open loop → body 3 → call to action**, and each screen names its beat. The hook is the title screen: 6 to 10 words, one specific surprising claim about something on screen. The lead says who and what in one line and promises the payoff ("3 secrets; the third is dark"). Each open loop is its own 1-3 s tease screen that only the next body closes. Body 3 is the strongest: it pays the hook, names the technique and says why it works. The call to action is one question that is easy to answer. Pace: the voice at 1.2× (ElevenLabs' fastest), 8 to 18 words a screen, short gaps. The plan check refuses a breakdown that breaks the spine.
 
+**The loop ending (Harish, 19 Nov).** The call to action ends on 1 to 3 words that run straight into the hook ("ஏன்னா…" → "Thani Oruvan-la villain…"), and the last moments fade back to the opening frame by code, so a viewer who reaches the end slides into the start and watches again.
+
 **Bend the source (Harish, 19 Nov).** A studied short is raw material, never a script: keep its strongest detail and drop its order (strongest last), add one layer it does not have (the technique's name, a second verified fact, a contrast with another film, Tamil and Hollywood, or the consequence), say it in fewer words, and check every fact in 2 sources (the film's Wikipedia production section, an interview, IMDb trivia).
 
 **Fight the drop-off (Harish, 19 Nov).** Viewers try to leave; the script keeps winning them back: an open question in the first 3 seconds that is answered only near the end, a new hook every 10 to 15 seconds (a twist, "but that is not the real detail", a secret, a number), and no beat that only repeats. Length is what the value needs, up to 90 seconds. Topics come first from the studied sources in priority order (10.3: Expert FX, then Level Up Learning Filmmaking, then World Filmology): everything their short covers, told richer, in our own words and order.
@@ -331,6 +335,8 @@ An old film with no cult following is skipped, however good it is.
 3. Why now? (cult classic, new release, in the news)
 4. Who would they send it to?
 5. Is this the best angle on this film?
+
+**Variety in updates (Harish, 19 Nov).** The page was repeating the same few films (Om four times in two days). An update names its film in `lead.film`; the same film comes back only after 3 days unless there is real new news (`lead.new_event`: release-day verdict, a box office milestone), and the plan check refuses it otherwise. Each day: at least 3 different films and one update from outside the top films (a smaller film, an OTT drop, another-language or Hollywood release in Tamil Nadu, an industry story); the brief lists the films covered lately. Big numbers show ₹ only for money (crore, lakh); dates, days and counts never carry it.
 
 Updates also answer: "Why would a fan open this?" and "Does this spoil anything?" Recommendations also answer: "Has most of our audience already seen this?" and "Would I tell a friend to watch it tonight?" Every recommended film carries proof (its Letterboxd rating and one award, festival or famous fact) and where to watch it in India, checked on JustWatch on the day; a film that is not streaming in India is swapped for one that is. A weak answer means change the angle or drop the topic. Small compromises are fine (a reused still, a graphic instead of a clip). A compromise on the insight is not.
 
@@ -651,7 +657,7 @@ Each trend gets a speed (rising / peak / fading), a risk (none / fan war / sensi
 ### 10.3 Competitors and what already works
 | Input | How |
 | --- | --- |
-| Watchlist | 5–10 pages in the niche profile (`competitors`). The Researcher proposes names, you confirm. Since 19 Nov, in priority order: **Expert FX** (YouTube, the main source), **Level Up Learning Filmmaking** (Instagram, craft lessons; studied from links Harish forwards, since Instagram gives no one else's videos to the cloud), **World Filmology** (YouTube, behind-the-scenes stories), all marked `study: true`. |
+| Watchlist | 5–10 pages in the niche profile (`competitors`). The Researcher proposes names, you confirm. Since 19 Nov, in priority order: **Expert FX** (YouTube) and **Kadhai Club** (Instagram), the main sources; **Level Up Learning Filmmaking** (Instagram, craft lessons); **World Filmology** (YouTube and Instagram, behind-the-scenes stories), all marked `study: true`. Instagram pages are read through Instagram's own API (captions, likes, comments; no views are given for other pages, so likes stand in). **Rotation:** a breakdown names its source in `lead.inspired_by` and may not draw on the same source as another breakdown of that day or the day before (plan check), so the page never sounds like one channel. |
 | Public signals | Weekly: what formats they post, how often, visible likes and comments. Read through the API where it allows, otherwise through public pages. |
 | **Inspiration inbox** | You forward any reel that impressed you (link or screenshot) to the Control Room. The Advisor notes the format, hook and why it worked. This is the most reliable input. |
 | Your own winners | The Analyst's weekly list of what beat the median, and why |

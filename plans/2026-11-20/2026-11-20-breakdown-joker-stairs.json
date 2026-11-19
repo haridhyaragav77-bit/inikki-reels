@@ -1,9 +1,9 @@
 {
- "id": "2026-11-20-sample-joker-stairs-v2",
+ "id": "2026-11-20-breakdown-joker-stairs",
  "series": "film-breakdown",
  "template": "stage",
  "fps": 30,
- "design": "royal",
+ "design": "neon",
  "length_s": [
   40,
   75
@@ -413,8 +413,8 @@
   {
    "beat": "cta",
    "kind": "end",
-   "voice": "நீங்க ஜோக்கர் பக்கமா, ஆர்தர் பக்கமா? கமெண்ட் பண்ணுங்க. ஜோக்கர் ஃபேன்கிட்ட அனுப்புங்க.",
-   "voice_tg": "Neenga Joker pakkamaa, Arthur pakkamaa? Comment pannunga. Joker fan-kitta anuppunga.",
+   "voice": "நீங்க ஜோக்கர் பக்கமா, ஆர்தர் பக்கமா? கமெண்ட் பண்ணுங்க. ஏன்னா,",
+   "voice_tg": "Neenga Joker pakkamaa, Arthur pakkamaa? Comment pannunga. Yenna,",
    "in": "whip",
    "echo": "JOKER · ONE STAIRCASE. WHOLE STORY.",
    "question": [
@@ -430,7 +430,7 @@
    ],
    "sub": "நீங்க யார் பக்கம்?",
    "subFamily": "Noto Sans Tamil",
-   "tail": 1.4,
+   "tail": 0.35,
    "sfx": [
     {
      "at": 0.8,
@@ -461,5 +461,6 @@
  },
  "subtitles": true,
  "captions": "tamil_tanglish_subtitles",
- "drive_folder": "rehearsal/samples"
+ "drive_folder": "finished",
+ "booked": true
 }
