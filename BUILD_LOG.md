@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 20 Nov 2026 — Why today's Plan run did not start; the page read a stale file
+The dispatcher's check (`tools/run_due.py`) counted the Workshop's booked Joker plan in plans/2026-11-20/ as "today is planned", so the 05:37 Plan run started nothing (no plans, no reels, nothing new on the page). Booked plans no longer count. The Control Room page fell back to the old Drive's panel.txt (stopped 17 Nov) when its search failed; it now defaults to the Engine's current panel.txt and never keeps a stale id; the old panel files were binned.
+
 ## 19 Nov 2026 — Control Room shows failed runs, YouTube, sources and the new runs
 `status.job_end` keeps every failed run (last 40, with its log link); the panel carries `failed_runs` (7 days), `youtube`, `study` (sources by priority, last study result) and `fresh_updates`; the page shows a red notice on Today for failures in the last 24 hours, Setup → "YouTube and sources" and "Failed runs (7 days)", and "Open on YouTube" on each reel. The study job is labelled in Next. Page republished (artifact version 10).
 
