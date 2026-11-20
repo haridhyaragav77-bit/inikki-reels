@@ -1,14 +1,10 @@
-# Brief · refresh run · 2026-11-20 (written 2026-11-20 16:13 IST)
+# Brief · plan run · 2026-11-21 (written 2026-11-21 05:13 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Breaking check: the top stories are below.
-2. Fresh evening updates (Harish, 19 Nov): rewrite the movie-updates plans for 18:00 in plans/2026-11-20/ with news from today (since the morning run): new films, new numbers, new announcements, checked in 2 sources, variety rule. Keep a morning plan only if it is still the day's strongest story. Same file name per slot, so Make renders the new one.
-3. Breakdown bank: 3 of 4 ready. Add 1 breakdown plan to plans/bank/.
-4. Feedback: nothing new.
-5. Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.
+1. Plan 5 reel(s) for 2026-11-21 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-21/<reel_id>.json and check it with: python -m engine.plancheck <file>.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -23,9 +19,9 @@ Control Room settings copied to data/control/: switch.json, overrides.yaml, feed
 - movie-review: Change series to be more direct of its content which is movie review, people may skip thinking it's something else and use the actors make sure a popular element like the actors face, post is on the first fram and make it feel richer for the visual hook and interesting visual desings to it make the  (2026-11-13)
 
 ## Today (use it in hooks and titles; AGENT.md 10.5)
-Friday 20 Nov 2026 · Friday night, date night, new releases in theatres · season: Chennai rains (north-east monsoon)
+Saturday 21 Nov 2026 · weekend binge, friends over · season: Chennai rains (north-east monsoon)
 Words that fit each slot's hour: 08:30 morning: TODAY / THIS WEEK · 11:00 morning: TODAY / THIS WEEK · 12:30 afternoon: TONIGHT / AFTER WORK · 18:00 evening: TONIGHT · 20:00 evening: TONIGHT · 21:30 late night: LATE NIGHT / BEFORE YOU SLEEP
-Title angles for today (fill {N} and {FILM}; a film in today's news makes the strongest tie-in): RAINY NIGHT: {N} FILMS | MAZHAI + MOVIE: {N} PICKS | FRIDAY NIGHT: {N} FILMS | DATE NIGHT: {N} FILMS | LOVED {FILM}? WATCH THESE {N}
+Title angles for today (fill {N} and {FILM}; a film in today's news makes the strongest tie-in): RAINY NIGHT: {N} FILMS | MAZHAI + MOVIE: {N} PICKS | SATURDAY NIGHT: {N} FILMS | WEEKEND BINGE: {N} FILMS | LOVED {FILM}? WATCH THESE {N}
 
 ## Series settings changed in the Control Room (these win over the series file; AGENT.md 6.5)
 - artwork-quote: per_day = 0
@@ -34,20 +30,19 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 - trailer-breakdown: status = "live"
 
 ## Releases (knowledge/releases.yaml; keep it up to date: confirmed dates for the next 14 days, 2 sources)
-Releasing TODAY: O.M: Operation Mole, Appa Kutty, Sathyavan Savithiri. Its 'out now' update takes the first morning slot (08:30, else the next open one). Refresh run: one movie-review (First Verdict) per film, up to 2, from the first critics' reviews (2 sources), at the 17:00 flex slot and the next evening slot. A release on its day is never breaking news.
-Digest 'Needs you' line: 12 short(s) to study, command in Drive requests/study_to_get.md (same laptop helper).
+No release today or tomorrow in the calendar. Add any confirmed release dates you find.
 
 ## Films the updates covered in the last 3 days (pick other films unless there is real new news; lead.film, lead.new_event)
-- appa-kutty · inji-vellam-rahman-19 · jailer-2 · mookuthi-amman-2-week-one · nayanthara-birthday · nayanthara-birthday-eve · om · om-2-days-178-min · om-five-distributors · om-mammootty-7-months · om-mammootty-siya · om-operation-mole · om-tomorrow-undercover · ramayana · sai-pallavi-two-films · sathyavan-savithiri-2-days · sathyavan-savithiri-3-days · sathyavan-savithiri-july-to-november · sathyavan-savithiri-tomorrow · scene-overseas-83cr · suriya-200cr-hat-trick · weekend-four-films
+- appa-kutty · dorothy-rotterdam · jailer-2 · mookuthi-amman-2-week-one · nayanthara-birthday · om · om-2-days-178-min · om-five-distributors · om-mammootty-7-months · om-mammootty-siya · om-tomorrow-undercover · ramayana · sathyavan-savithiri-2-days · sathyavan-savithiri-july-to-november · sathyavan-savithiri-tomorrow · weekend-four-films
 Today: at least 3 different films, and one update from outside the top films (smaller film, OTT drop, another-language or Hollywood release in Tamil Nadu, industry story). Use the news watch's lower-ranked stories too.
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
 - 2026-11-22-breakdown-f1-real-racing: kit blueprint · track → layers → standoff → quote → standoff → source → technique
 - 2026-11-21-breakdown-thani-oruvan-villain: kit spotlight · versus → board → standoff → detail → standoff → chain → technique
 - 2026-11-20-breakdown-soorarai-pottru-real-maara: kit noir · pins → timeline → standoff → layers → standoff → versus → quote → technique
-- 2026-11-20-breakdown-joker-stairs: kit neon · pins → climb → standoff → quote → standoff → climb → source → technique
+- 2026-11-20-breakdown-maaveeran-voice: kit paper · pins → chain → standoff → quote → standoff → technique
 
-## Today's slots (2026-11-20)
+## Today's slots (2026-11-21)
 | time | series | template | notes |
 | --- | --- | --- | --- |
 | - | movie-recommendations | paused |  |
@@ -99,46 +94,30 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
 Waiting: Sathyavan Savithiri, Jail Mates, OM: Chapter One, OM, Om, O.M, Manikanda. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
-Digest 'Needs you' line: 7 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review on release days. Turned off by Harish: artwork-quote.
 
 ## Today's reels
 | slot | reel | series | state | note |
 | --- | --- | --- | --- | --- |
-| 11:00 | 2026-11-20-update-appa-kutty-today | movie-updates | posted |  |
-| - | 2026-11-20-update-om-release-day | movie-updates | posted |  |
-| 12:30 | 2026-11-20-breakdown-soorarai-pottru-real-maara | film-breakdown | posted |  |
-| 15:30 | 2026-11-20-watch-rainy-night | movie-recommendations | skipped | Skipped by Harish. |
-| 17:00 | 2026-11-20-update-ramayana-1384cr | movie-updates | ready |  |
-| 18:00 | 2026-11-20-update-suriya-200cr-hat-trick | movie-updates | ready |  |
-| 20:00 | 2026-11-20-breakdown-joker-stairs | film-breakdown | ready |  |
-| 21:30 | 2026-11-20-update-jailer-2-four-weeks | movie-updates | ready |  |
-| - | 2026-11-20-watch-missed-monsoon-wedding | movie-recommendations | skipped | Skipped by Harish. |
+| 20:00 | 2026-11-21-breakdown-thani-oruvan-villain | film-breakdown | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-11-19-update-om-tomorrow-undercover | movie-updates | 848 | 58.4% green | 28.4% green | 0.0% grey | - grey |
-| 2026-11-18-breakdown-thani-oruvan | film-breakdown | 255 | 68.5% amber | 14.5% green | 0.0% grey | - grey |
-| 2026-11-19-breakdown-jai-bhim | film-breakdown | 149 | 79.1% amber | 10.1% red | 0.0% grey | - grey |
-| 2026-11-19-update-om-mammootty-siya | movie-updates | 487 | 62.6% green | 25.8% amber | 0.0% grey | - grey |
-| 2026-11-19-breakdown-peranbu | film-breakdown | 125 | 65.0% green | 12.7% green | 0.0% grey | - grey |
-| 2026-11-19-update-sathyavan-savithiri-tomorrow | movie-updates | 52 | 77.8% red | 16.2% red | 0.0% grey | - grey |
-
-## Early numbers (2 hours after posting)
-- 2026-11-19-breakdown-jai-bhim: 152 views, share 0.7%, skip 79.6%
-- 2026-11-19-update-om-mammootty-siya: 497 views, share 0.0%, skip 62.5%
-- 2026-11-19-breakdown-peranbu: 125 views, share 0.0%, skip 65.0%
-- 2026-11-19-update-sathyavan-savithiri-tomorrow: 52 views, share 0.0%, skip 77.8%
-- 2026-11-20-update-om-release-day: 173 views, share 0.0%, skip 70.3%
-- 2026-11-20-update-appa-kutty-today: 62 views, share 0.0%, skip 76.4%
+| 2026-11-20-update-om-release-day | movie-updates | 193 | 72.4% amber | 21.5% red | 0.0% grey | - grey |
+| 2026-11-20-update-appa-kutty-today | movie-updates | 79 | 75.8% amber | 33.9% green | 0.0% grey | - grey |
+| 2026-11-20-review-om-operation-mole | movie-review | 325 | 57.9% green | 29.3% green | 0.0% grey | - grey |
+| 2026-11-20-review-sathyavan-savithiri | movie-review | 125 | 69.6% amber | 15.7% red | 0.0% grey | - grey |
+| 2026-11-20-update-ramayana-1384cr | movie-updates | 428 | 60.2% green | 32.5% green | 0.0% grey | - grey |
+| 2026-11-20-update-suriya-200cr-hat-trick | movie-updates | 153 | 65.2% green | 33.4% green | 0.0% grey | - grey |
+| 2026-11-20-breakdown-joker-stairs | film-breakdown | 151 | 73.9% amber | 12.7% amber | 0.7% green | - grey |
 
 ## Trends from the news watch (top 5, no AI; verify before use)
-- [11.2] OM trailer reveals too much: Dhanush, Mammootty, Sai Pallavi get their own Dhurandhar-meets-Pushpa | Hindustan · 11 publishers (3 trusted)
-- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 30 publishers (9 trusted)
-- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 30 publishers (8 trusted)
+- [11.2] 'O.M' OTT release date: Here's when and where you can watch Dhanush, Mammootty, Sai Pallavi and Sreeleela's sp · 13 publishers (4 trusted)
+- [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 31 publishers (9 trusted)
+- [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 31 publishers (8 trusted)
+- [9.6] OM Box Office Collection Day 1: Dhanush-Mammootty Starrer Begins Theatrical Run On Strong Note · 9 publishers (2 trusted)
 - [8.0] 'Mookuthi Amman 2' box office collection day 6 vs 'Jailer 2' day 28: Nayanthara's film adds Rs 1 crore to · 5 publishers (2 trusted)
-- [6.0] Scene grosses over 200 crore; Suriya scripts Tamil cinema history · 13 publishers (4 trusted)
 
 ## Changes in force (newest first)
 - #17 · 19 Nov 2026 · series (film-breakdown) · stock graphics reused across reels, scripts that let viewers drift → illustrated graphics drawn for the film's idea (at most
@@ -148,12 +127,14 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must u
 
 ## Open alerts
+- 2026-11-21 02:02 IST: Manual work is urgent: Study 12 competitor shorts with the laptop helper
+- 2026-11-20 23:47 IST: Drive storage is getting full
 - 2026-11-20 15:45 IST: Manual work due soon: Study 12 competitor shorts with the laptop helper
 - 2026-11-20 13:20 IST: Manual work is urgent: Get 7 trailers with the laptop helper
 
 ## Money and limits
 - Images ₹26 of ₹500 this month
 - Runner minutes: 1635 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
-- Storage: 5.94 GB of 8 GB
+- Storage: 6.26 GB of 8 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
