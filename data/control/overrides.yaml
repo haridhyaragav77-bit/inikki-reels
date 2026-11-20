@@ -1,11 +1,13 @@
 settings:
   volume:
-    base: 7
+    base: 6
   reserves:
     per_day: 2
   voice:
     elevenlabs_voice: bharadwaj
     quality: economy
+  unique_designs:
+    enabled: true
 series:
   movie-recommendations:
     notes:
@@ -15,6 +17,7 @@ series:
         reel and secondly add a motion graphics of the plot of the movie and extend
         length of reel accordingly so ppl get excited about the plot of each movie
         also without any spoilers
+    paused: true
   breaking-news:
     notes:
     - id: d170c1
@@ -28,6 +31,36 @@ series:
       text: Make music sublte and less louder than the voiceover, make voice over
         more natural and paced for people to understand and loud and clear but don't
         compromise the music either make them play well together.
+    - id: 4b315d
+      at: '2026-11-20'
+      text: A reel may make several points, but each point must be clear, focused
+        and worth the viewer's time, stated in plain words (e.g. 'In the film, Maara
+        is an Air Force officer. In real life, Captain G.R. Gopinath was an Army officer.'),
+        and the viewer must know what the reel is about from the hook.
+    - id: 58dc20
+      at: '2026-11-20'
+      text: 'Motion graphics are made fresh for each reel like the Joker and F1 samples,
+        and each screen shows exactly what that line says; the visual must suit the
+        subject (a person gets a person-style visual such as a portrait card with
+        name and role, never axonometric grids or diagrams used just because they '
+    - id: accf7a
+      at: '2026-11-20'
+      text: When naming the real person behind a character, introduce them simply
+        with who they are (e.g. 'Bommi is based on Bhargavi, Gopinath's wife') so
+        the name never feels strange.
+    - id: 586fa9
+      at: '2026-11-20'
+      text: 'The loop is seamless: the last spoken line flows straight into the hook
+        with no extra bridging line, and a reel never ends on a dangling word like
+        ''yenna''.'
+    - id: 42b170
+      at: '2026-11-20'
+      text: No word may be said twice in a row in the script or the ElevenLabs voice;
+        listen back to the finished voice track and redo any line where a word repeats.
+    per_day: 2
+    slots:
+    - '20:00'
+    - '21:30'
   movie-review:
     notes:
     - id: 8eb365
@@ -50,9 +83,9 @@ series:
     per_day: 4
     slots:
     - 08:30
-    - '18:00'
-    - '21:30'
     - '11:00'
+    - '12:30'
+    - '18:00'
 notes:
 - id: 5be8dd
   at: '2026-11-13'
