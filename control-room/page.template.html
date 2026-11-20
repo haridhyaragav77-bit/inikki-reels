@@ -176,7 +176,7 @@ ul.plain{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted)}
 <div id="toast" hidden role="status"></div>
 
 <script>
-const CFG = { server: "Google Drive", panel: "1QTsgL08RAYpcVozoWxw6wExtzbQv0bTy", inbox: "1Y2XGA7u4D_8hH04Nm2gOywYXVgpeZmE1" };
+const CFG = { server: "Google Drive", panel: "1JPc_McL4Prgrkx-SpqBD9jaYZmT_OYnS", inbox: "1Y2XGA7u4D_8hH04Nm2gOywYXVgpeZmE1" };
 const GUIDE = __GUIDE_JSON__;
 const IST = { timeZone: "Asia/Kolkata" };
 const BAD = ["Hook slow", "Unclear title", "Too wordy", "Too static", "Too long", "Visuals weak", "Music doesn't fit", "Silent start", "Not worth it", "Voice off", "Spoiler", "Fact wrong"];
@@ -261,7 +261,9 @@ function payload(r) { let p = r && r.payload; if (typeof p === "string") { try {
 /* The Engine's Drive can move (new Google account): use the newest panel.txt this Drive can see, not a fixed id. */
 function findPanel() {
   return mcp.callTool(CFG.server, "search_files", { query: "title = 'panel.txt' and trashed = false", orderBy: "modifiedTime desc", pageSize: 3, excludeContentSnippets: true })
-    .then(r => { const f = (payload(r).files || [])[0]; if (f && f.id) { SRC = f.id; save("panel", SRC); } }, () => {});
+    .then(r => { const fs = (payload(r).files || []).slice().sort((a, b) => String(b.modifiedTime || "").localeCompare(String(a.modifiedTime || "")));
+      const f = fs[0]; if (f && f.id) { SRC = f.id; save("panel", SRC); } },
+      () => { if (SRC !== CFG.panel) { SRC = CFG.panel; save("panel", SRC); } });   // search failed: the Engine's current file, never a stale one
 }
 const inbox = () => (live && P.inbox) || CFG.inbox;
 function refresh() {

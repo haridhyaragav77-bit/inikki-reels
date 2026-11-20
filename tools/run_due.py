@@ -79,7 +79,8 @@ def plans_in(date):
         if not n.endswith(".json") or n.endswith("respect.json"):
             continue
         try:
-            if not json.loads(git("show", f"origin/main:{n}") or "{}").get("reserve"):
+            d = json.loads(git("show", f"origin/main:{n}") or "{}")
+            if not d.get("reserve") and not d.get("booked"):      # a reel booked ahead (Workshop) is not the Plan run's work
                 main += 1
         except ValueError:
             main += 1
