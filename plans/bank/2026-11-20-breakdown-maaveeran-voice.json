@@ -1,0 +1,378 @@
+{
+ "id": "2026-11-20-breakdown-maaveeran-voice",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "paper",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "The spine: hook (a hero never on screen), lead (the voice), body 1 (what the voice does), loop, body 2 (whose voice), loop, body 3 (the technique and why it works), call to action.",
+ "lead": {
+  "topic": "Maaveeran (2023): the hero you hear but never see",
+  "angle": "sound_music",
+  "insight": "Sathya, a timid cartoonist (Sivakarthikeyan), starts hearing a voice that tells him what is coming. The voice is never given a face: in Tamil it is Vijay Sethupathi, who took no fee; in the Telugu version (Mahaveerudu) it is Ravi Teja. A voice with no face feels like it knows everything, so the viewer trusts and fears it like Sathya does.",
+  "why_now": "Sivakarthikeyan is the star of Amaran and Parasakthi; Maaveeran is a fan favourite on Prime Video.",
+  "technique": "Acousmêtre (the unseen voice)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Maaveeran_(2023_film) (Vijay Sethupathi voices the narrator in Tamil, Ravi Teja in Telugu; no remuneration)",
+   "https://www.dtnext.in/news/cinema/maaveeran-surprise-update-vjs-ravi-teja-give-voiceover-723747",
+   "https://www.galatta.com/tamil/movie/news/vijay-sethupathi-voice-acts-in-sivakarthikeyan-madonne-ashwin-maveeran-movie/",
+   "Michel Chion, The Voice in Cinema (1982): the term acousmêtre"
+  ],
+  "inspired_by": "own idea (library film; facts from Wikipedia, DT Next, Galatta)"
+ },
+ "worth_it": {
+  "learn": "Why a voice with no face feels more powerful than an actor on screen.",
+  "stop": "A hero of the film never appears on screen.",
+  "why_now": "Sivakarthikeyan fan favourite, streaming now.",
+  "send_to": "The Sivakarthikeyan or Vijay Sethupathi fan.",
+  "best_angle": "Yes: the voice is the film's big idea."
+ },
+ "voice": {
+  "on": true
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 6,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish's rule: music sits under the voice; the voice stays loud and clear."
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/maaveeran/EcNACt-LOi0_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "EcNACt-LOi0",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/maaveeran/EcNACt-LOi0_maxres1.jpg",
+   "fetch": {
+    "youtube": "EcNACt-LOi0",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/maaveeran/EcNACt-LOi0_maxres2.jpg",
+   "fetch": {
+    "youtube": "EcNACt-LOi0",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/maaveeran/EcNACt-LOi0_maxres3.jpg",
+   "fetch": {
+    "youtube": "EcNACt-LOi0",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "beat": "hook",
+   "kind": "title",
+   "voice": "மாவீரன் படத்துல ஒரு ஹீரோ, ஸ்கிரீன்ல ஒரு செகண்ட் கூட வரல.",
+   "voice_tg": "Maaveeran padathula oru hero, screen-la oru second kooda varala.",
+   "image": "title",
+   "film": "MAAVEERAN",
+   "type": "THE SOUND BREAKDOWN",
+   "fy": 0.35,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "beat": "lead",
+   "kind": "pins",
+   "voice": "சிவகார்த்திகேயன், ஒரு பயந்த கார்ட்டூனிஸ்ட். திடீர்னு வானத்துல இருந்து அவருக்கு மட்டும் ஒரு குரல் கேக்குது.",
+   "voice_tg": "Sivakarthikeyan, oru bayandha cartoonist. Thideernu vaanathula irundhu avarukku mattum oru kural kekkudhu.",
+   "in": "zoom",
+   "image": "s1",
+   "pins": [
+    {
+     "x": 0.45,
+     "y": 0.4,
+     "lx": 120,
+     "ly": 318,
+     "text": "SATHYA · CARTOONIST",
+     "cue": {
+      "word": "கார்ட்டூனிஸ்ட்."
+     }
+    }
+   ],
+   "slam": {
+    "cue": {
+     "word": "குரல்"
+    },
+    "lines": [
+     {
+      "text": "ONLY HE",
+      "size": 150,
+      "color": "#ffffff"
+     },
+     {
+      "text": "HEARS IT.",
+      "size": 140,
+      "color": "#F8C868"
+     }
+    ]
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "குரல்"
+     },
+     "type": "riser"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "chain",
+   "voice": "அந்த குரல் முதல்ல சொல்லுது. அப்புறம் அது நடக்குது. சத்யா நம்பித்தான் ஆகணும்.",
+   "voice_tg": "Andha kural mudhalla solludhu. Appuram adhu nadakkudhu. Sathya nambiththaan aaganum.",
+   "in": "whip",
+   "heading": "WHAT THE VOICE DOES",
+   "steps": [
+    {
+     "label": "VOICE SAYS IT",
+     "cue": {
+      "word": "சொல்லுது."
+     }
+    },
+    {
+     "label": "IT HAPPENS",
+     "cue": {
+      "word": "நடக்குது."
+     }
+    },
+    {
+     "label": "HE MUST BELIEVE",
+     "cue": {
+      "word": "நம்பித்தான்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "நம்பித்தான்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஆனா அந்த குரல் யாருடையது?",
+   "voice_tg": "Aana andha kural yaarudaiyadhu?",
+   "in": "flash",
+   "image": "s2",
+   "slam_text": "WHOSE VOICE?",
+   "q_cue": {
+    "word": "குரல்"
+   },
+   "slam_cue": {
+    "word": "யாருடையது?"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "குரல்"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "யாருடையது?"
+     },
+     "type": "impact"
+    }
+   ],
+   "fx": 0.6,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "quote",
+   "voice": "நடிகர் விஜய் சேதுபதி. இந்த குரலுக்கு அவர் சம்பளமே வாங்கல.",
+   "voice_tg": "Nadigar Vijay Sethupathi. Indha kuralukku avar sambalame vaangala.",
+   "in": "whip",
+   "name": "VIJAY SETHUPATHI",
+   "role": "ACTOR · THE VOICE",
+   "phrase": "VOICED IT FOR FREE",
+   "source": "DT NEXT · 2023",
+   "cues": {
+    "name": {
+     "word": "சேதுபதி."
+    },
+    "phrase": {
+     "word": "சம்பளமே"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சம்பளமே"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஆனா ஏன் அவர் முகத்தை காட்டவே இல்ல?",
+   "voice_tg": "Aana yen avar mugaththai kaattave illa?",
+   "in": "flash",
+   "image": "s3",
+   "slam_text": "WHY NO FACE?",
+   "q_cue": {
+    "word": "முகத்தை"
+   },
+   "slam_cue": {
+    "word": "இல்ல?"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "முகத்தை"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "இல்ல?"
+     },
+     "type": "impact"
+    }
+   ],
+   "fx": 0.5,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு அகூஸ்மேட்டர். முகம் தெரியாத குரல், எல்லாம் தெரிஞ்ச மாதிரி தோணும். அதனால சத்யா பயப்படுறார், நாமளும் பயப்படுறோம்.",
+   "voice_tg": "Idhukku peru acousmêtre. Mugam theriyaadha kural, ellaam therinja maadhiri thonum. Adhanaala Sathya bayappadurar, naamalum bayappadurom.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "ACOUSMÊTRE",
+   "definition": "A VOICE WITH NO FACE",
+   "outer_label": "MAAVEERAN · 2023",
+   "inner": [
+    "NO FACE",
+    "KNOWS ALL",
+    "WE FEAR IT"
+   ],
+   "cues": {
+    "name": {
+     "word": "அகூஸ்மேட்டர்."
+    },
+    "outer": {
+     "word": "தெரியாத"
+    },
+    "inner": {
+     "word": "நாமளும்"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "நாமளும்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "cta",
+   "kind": "end",
+   "voice": "முகம் காட்டாத குரல், வேற எந்த படத்துல? கமெண்ட்ல சொல்லுங்க. அடுத்த தடவை கவனிங்க:",
+   "voice_tg": "Mugam kaattaadha kural, vera endha padathula? Comment-la sollunga. Adutha thadavai gavaninga:",
+   "in": "whip",
+   "echo": "MAAVEERAN · THE UNSEEN HERO",
+   "question": [
+    {
+     "text": "ANOTHER FILM",
+     "size": 130
+    },
+    {
+     "text": "WITH NO FACE?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "வேற எந்த படம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "s1",
+   "recap": "TECHNIQUE: ACOUSMÊTRE",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "A hero of Maaveeran never appears on screen. You only hear him.",
+   "The voice that tells Sathya (Sivakarthikeyan) what is coming is Vijay Sethupathi, who took no fee for it. In the Telugu version, Mahaveerudu, it is Ravi Teja. A voice with no face is called an acousmêtre: it feels like it knows everything.",
+   "Which other film has a voice you never see?",
+   "Send this to the Vijay Sethupathi fan you know."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "MAAVEERAN · THE UNSEEN HERO",
+  "slot": "bank",
+  "first_comment": "Which other film has a voice you never see? Tell us."
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

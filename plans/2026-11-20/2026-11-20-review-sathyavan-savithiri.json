@@ -1,0 +1,274 @@
+{
+ "id": "2026-11-20-review-sathyavan-savithiri",
+ "series": "movie-review",
+ "template": "verdict",
+ "fps": 30,
+ "length_s": [
+  20,
+  45
+ ],
+ "lead": {
+  "topic": "Sathyavan Savithiri (Keerthy Suresh, Mysskin; dir. Praveen S Vijaay): first reviews",
+  "critics": [
+   {
+    "outlet": "Only Kollywood",
+    "quote": "a gripping murder mystery with an impressive climax"
+   },
+   {
+    "outlet": "The Sunday Guardian",
+    "quote": "a gripping courtroom drama"
+   },
+   {
+    "outlet": "Audience talk (X, via Filmibeat)",
+    "quote": "twists and second half praised; some found the first half slow"
+   }
+  ],
+  "sources": [
+   "https://www.onlykollywood.com/sathyavan-savithiri-movie-review/",
+   "https://sundayguardianlive.com/entertainment-news/sathyavan-savitri-movie-review-check-release-date-plot-full-cast-rating-languages-all-you-need-to-know-for-keerthy-suresh-starrer-324913/",
+   "https://tamil.filmibeat.com/reviews/sathyavan-savithri-x-review-keerthy-suresh-wins-praise-187227.html"
+  ],
+  "note": "Refresh run 20 Nov: second release-day review, takes 21:30 (the Jailer 2 update moves to reserve). Times of India and The Hindu reviews not found by search; only these sources used."
+ },
+ "worth_it": {
+  "deciding_this_week": "Yes: opened today; a Friday-night pick against O.M.",
+  "quotes": "Real, short, named; audience talk is marked as audience talk.",
+  "spoilers": "None. Only 'a courtroom murder mystery'; no twist named."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "investigation"
+   }
+  ],
+  "level_db": -15,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "cast": {
+   "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "XCLQGsbnFlw",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres3.jpg",
+   "fetch": {
+    "youtube": "XCLQGsbnFlw",
+    "frame": "maxres3"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres2.jpg",
+   "fetch": {
+    "youtube": "XCLQGsbnFlw",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/sathyavan_savithiri/XCLQGsbnFlw_maxres1.jpg",
+   "fetch": {
+    "youtube": "XCLQGsbnFlw",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "cast",
+   "fx": 0.5,
+   "fy": 0.35,
+   "dur": 2.9,
+   "film": "SATHYAVAN SAVITHIRI",
+   "type": "MOVIE REVIEW",
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    },
+    {
+     "at": 0.6,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "stamp",
+   "in": "flash",
+   "image": "s1",
+   "dur": 3.4,
+   "heading": "THE VERDICT",
+   "lines": [
+    "STAY FOR",
+    "THE CLIMAX"
+   ],
+   "land": 0.45,
+   "sub": "EARLY REVIEWS LEAN POSITIVE",
+   "sfx": [
+    {
+     "at": 0.62,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "in": "whip",
+   "image": "s2",
+   "dur": 5.4,
+   "works_label": "WORKS",
+   "not_label": "DOESN'T",
+   "works": [
+    "KEERTHY SURESH",
+    "MYSSKIN",
+    "COURTROOM",
+    "CLIMAX"
+   ],
+   "not": [
+    "SLOW FIRST HALF"
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.95,
+     "type": "pop"
+    },
+    {
+     "at": 1.4,
+     "type": "pop"
+    },
+    {
+     "at": 1.85,
+     "type": "pop"
+    },
+    {
+     "at": 2.3,
+     "type": "tick"
+    }
+   ]
+  },
+  {
+   "kind": "critics",
+   "in": "push",
+   "image": "s3",
+   "dur": 6.4,
+   "heading": "WHAT CRITICS SAY",
+   "cards": [
+    {
+     "outlet": "ONLY KOLLYWOOD",
+     "critic": "Review",
+     "quote": "an impressive climax"
+    },
+    {
+     "outlet": "THE SUNDAY GUARDIAN",
+     "critic": "Review",
+     "quote": "a gripping courtroom drama"
+    },
+    {
+     "outlet": "AUDIENCE TALK",
+     "critic": "X, via Filmibeat",
+     "quote": "the twists keep you hooked"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.25,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "whoosh"
+    },
+    {
+     "at": 3.15,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "who",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.4,
+   "fy": 0.35,
+   "dur": 3.6,
+   "heading": "WATCH IT IF YOU LOVE",
+   "chips": [
+    [
+     "COURTROOM DRAMA",
+     "MURDER MYSTERY"
+    ],
+    [
+     "KEERTHY SURESH",
+     "MYSSKIN"
+    ]
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "cast",
+   "dur": 3.8,
+   "echo": "SATHYAVAN SAVITHIRI · MOVIE REVIEW",
+   "question": [
+    {
+     "text": "SEEN IT?",
+     "size": 130
+    },
+    {
+     "text": "O.M OR THIS?",
+     "size": 120,
+     "color": "#F8C028"
+    }
+   ],
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 1.15,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Sathyavan Savithiri movie review: stay for the climax.",
+   "Keerthy Suresh and Mysskin in a courtroom murder mystery. Only Kollywood and The Sunday Guardian call it gripping; audiences on X praise the twists, some say the first half is slow.",
+   "Tonight: O.M or Sathyavan Savithiri?",
+   "Send this to the friend you're going with.",
+   "சத்தியவான் சாவித்திரி — பார்க்கலாமா? விமர்சனம்."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "SATHYAVAN SAVITHIRI · MOVIE REVIEW",
+  "slot": "21:30",
+  "first_comment": "O.M or Sathyavan Savithiri this weekend? 1 or 2."
+ },
+ "drive_folder": "finished"
+}

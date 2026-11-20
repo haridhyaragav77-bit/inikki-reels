@@ -1,0 +1,310 @@
+{
+ "id": "2026-11-20-review-om-operation-mole",
+ "series": "movie-review",
+ "template": "verdict",
+ "fps": 30,
+ "length_s": [
+  20,
+  45
+ ],
+ "lead": {
+  "topic": "O.M: Operation Mole (Dhanush, Mammootty, Sai Pallavi; dir. Rajkumar Periasamy): what critics say on day 1",
+  "critics": [
+   {
+    "outlet": "The Hollywood Reporter India",
+    "quote": "a morally complex drama with no easy answers"
+   },
+   {
+    "outlet": "Free Press Journal",
+    "rating": "3.5/5",
+    "quote": "a gripping emotional thriller"
+   },
+   {
+    "outlet": "Pinkvilla",
+    "rating": "3/5",
+    "quote": "stay flat in elevation and narration"
+   },
+   {
+    "outlet": "Great Andhra",
+    "rating": "2/5",
+    "quote": "big names, weak writing"
+   },
+   {
+    "outlet": "TrackTollywood",
+    "rating": "2.5/5",
+    "quote": "a gripping premise that loses steam"
+   }
+  ],
+  "sources": [
+   "https://www.hollywoodreporterindia.com/reviews/theatrical/om-operation-mole-movie-review-a-morally-complex-drama-with-no-easy-answers",
+   "https://www.freepressjournal.in/entertainment/om-operation-mole-review-dhanush-mammootty-sai-pallavi-shine-in-this-gripping-emotional-thriller-with-an-outstanding-climax",
+   "https://www.pinkvilla.com/entertainment/south/o-m-operation-mole-review-dhanush-mammootty-and-sai-pallavi-stand-out-but-stay-flat-in-elevation-and-narration-1406544",
+   "https://www.greatandhra.com/movies/reviews/o-m-operation-mole-review-big-names-weak-writing/"
+  ],
+  "note": "Refresh run 20 Nov: release-day review, takes the 17:00 flex slot (the Ramayana update moves to reserve)."
+ },
+ "worth_it": {
+  "deciding_this_week": "Yes: opened today, the biggest release of the weekend.",
+  "quotes": "Real, short, named; taken from each review's own headline. Mixed and negative voices included.",
+  "spoilers": "None. Only 'an undercover thriller'; nothing about the story."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue, builds (undercover thriller)"
+   }
+  ],
+  "level_db": -15,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "cast": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   },
+   "crop": [
+    0.0,
+    0.1,
+    1.0,
+    0.8
+   ]
+  },
+  "s2": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "cast",
+   "fx": 0.5,
+   "fy": 0.35,
+   "dur": 2.9,
+   "film": "O.M",
+   "type": "MOVIE REVIEW",
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    },
+    {
+     "at": 0.6,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "stamp",
+   "in": "flash",
+   "image": "s1",
+   "dur": 3.4,
+   "heading": "THE VERDICT",
+   "lines": [
+    "GO FOR",
+    "THE CAST"
+   ],
+   "land": 0.45,
+   "sub": "CRITICS ARE SPLIT",
+   "sfx": [
+    {
+     "at": 0.62,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "in": "whip",
+   "image": "s2",
+   "dur": 5.4,
+   "works_label": "WORKS",
+   "not_label": "DOESN'T",
+   "works": [
+    "DHANUSH",
+    "MAMMOOTTY",
+    "SAI PALLAVI",
+    "FIRST HALF"
+   ],
+   "not": [
+    "SECOND HALF",
+    "LONG RUNTIME"
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.95,
+     "type": "pop"
+    },
+    {
+     "at": 1.4,
+     "type": "pop"
+    },
+    {
+     "at": 1.85,
+     "type": "pop"
+    },
+    {
+     "at": 2.3,
+     "type": "pop"
+    },
+    {
+     "at": 2.75,
+     "type": "tick"
+    }
+   ]
+  },
+  {
+   "kind": "critics",
+   "in": "push",
+   "image": "s3",
+   "dur": 6.4,
+   "heading": "WHAT CRITICS SAY",
+   "cards": [
+    {
+     "outlet": "HOLLYWOOD REPORTER INDIA",
+     "critic": "Review",
+     "quote": "morally complex, no easy answers"
+    },
+    {
+     "outlet": "FREE PRESS JOURNAL",
+     "critic": "Review",
+     "quote": "a gripping emotional thriller",
+     "rating": "3.5/5"
+    },
+    {
+     "outlet": "PINKVILLA",
+     "critic": "Review",
+     "quote": "flat in elevation and narration",
+     "rating": "3/5"
+    },
+    {
+     "outlet": "GREAT ANDHRA",
+     "critic": "Review",
+     "quote": "big names, weak writing",
+     "rating": "2/5"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.25,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "whoosh"
+    },
+    {
+     "at": 3.15,
+     "type": "whoosh"
+    },
+    {
+     "at": 4.6,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "who",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.4,
+   "fy": 0.35,
+   "dur": 3.6,
+   "heading": "WATCH IT IF YOU LOVE",
+   "chips": [
+    [
+     "UNDERCOVER THRILLER",
+     "SLOW-BURN DRAMA"
+    ],
+    [
+     "DHANUSH",
+     "MAMMOOTTY"
+    ]
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "cast",
+   "dur": 3.8,
+   "echo": "O.M · MOVIE REVIEW",
+   "question": [
+    {
+     "text": "SEEN IT?",
+     "size": 130
+    },
+    {
+     "text": "YOUR VERDICT?",
+     "size": 120,
+     "color": "#F8C028"
+    }
+   ],
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 1.15,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole movie review: go for the cast, critics are split on the rest.",
+   "Dhanush, Mammootty and Sai Pallavi win praise everywhere. Free Press Journal 3.5/5, Pinkvilla 3/5, TrackTollywood 2.5/5, Great Andhra 2/5; the second half is the common complaint.",
+   "Seen it tonight? Your verdict?",
+   "Send this to the friend you're going with.",
+   "ஓ.எம் — பார்க்கலாமா? விமர்சகர்கள் சொல்றது."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "O.M · MOVIE REVIEW",
+  "slot": "17:00",
+  "first_comment": "Watched it? First half or second half, which won?"
+ },
+ "drive_folder": "finished"
+}

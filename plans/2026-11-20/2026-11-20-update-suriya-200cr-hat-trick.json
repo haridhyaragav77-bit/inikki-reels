@@ -9,24 +9,25 @@
  ],
  "dateline": "MOVIE UPDATE · 20 NOV 2026",
  "lead": {
-  "film": "suriya-200cr-hat-trick",
-  "topic": "Suriya: three ₹200 Cr films in one year (Karuppu, Vishwanath & Sons, Scene)",
+  "film": "dorothy-rotterdam",
+  "new_event": "Dorothy selected for IFFR 2027 (Limelight section), announced today",
+  "topic": "Karthik Subbaraj's Dorothy (Keerthy Suresh) picked for the Rotterdam Film Festival",
   "facts": [
-   "First Tamil actor with three ₹200 Cr+ worldwide grossers in one calendar year (Hollywood Reporter India; The Week)",
-   "Karuppu about ₹310 Cr, Vishwanath & Sons about ₹209 Cr worldwide (ThePrint)",
-   "Scene ₹205 Cr worldwide per Zhagaram Studios (Hollywood Reporter India); ₹200.60 Cr on day 7 (The Week, Sacnilk)"
+   "Selected for the Limelight section of the 56th International Film Festival Rotterdam (Daily Thanthi; News7 Tamil; Karthik Subbaraj on X)",
+   "IFFR lists it as a Dutch premiere at IFFR 2027, 146 minutes (iffr.com)",
+   "World premiere was at the Toronto International Film Festival in September 2026"
   ],
   "sources": [
-   "https://www.hollywoodreporterindia.com/features/insight/suriya-hits-hat-trick-with-scene-making-it-his-third-200-crore-grosser-after-vishwanath-sons-and-karuppu",
-   "https://theprint.in/entertainment/suriya-tamil-box-office-hattrick-scene-karuppu-rs-200-crore-2026/3097753/",
-   "https://www.theweek.in/news/entertainment/2026/11/12/box-office-record-scene-joining-karuppu-vishwanathan-and-sons-suriya-set-kollywood-record.html"
+   "https://www.dailythanthi.com/cinema/cinemanews/karthik-subbarajs-dorothy-selected-for-screening-at-the-rotterdam-film-festival",
+   "https://news7tamil.live/dorothy-at-the-rotterdam-film-festival.html",
+   "https://iffr.com/en/person/karthik-subbaraj"
   ],
-  "note": "Draft: the 16:37 Refresh run rewrites this evening update with the day's freshest numbers."
+  "note": "Refresh run 20 Nov: rewritten with today's news. The Suriya hat-trick (12 Nov news) was no longer the freshest story; O.M is covered by the 17:00 review. File name kept so Make renders the new plan."
  },
  "worth_it": {
-  "fan_opens_because": "Today's top trend is Suriya's comeback: one number shows it.",
-  "spoilers": "None. Numbers, dates and names only; nothing about the story.",
-  "voice": "Off: dates and box office are music-only (series rule)."
+  "fan_opens_because": "A Tamil film on a world festival stage: fresh, proud news from today.",
+  "spoilers": "None. Festival names and dates only.",
+  "voice": "Off: festival news is music-only (series rule)."
  },
  "voice": {
   "on": false
@@ -34,61 +35,61 @@
  "music": {
   "sections": [
    {
-    "track": "vintage_arjun",
-    "from": 0.3,
+    "track": "varun_intro",
+    "from": 0.0,
     "screen": 0,
-    "mood": "bold mass theme (a hook)"
+    "mood": "bold, catchy, punchy"
    }
   ],
   "level_db": -12.5,
   "fade_out": 1.0
  },
  "assets": {
-  "karuppu": {
-   "src": "engine/.cache/stills/karuppu/JpVl_-1YgIo_maxresdefault.jpg",
+  "key": {
+   "src": "engine/.cache/stills/dorothy/cCbiVWgEW1w_maxresdefault.jpg",
    "fetch": {
-    "youtube": "JpVl_-1YgIo",
+    "youtube": "cCbiVWgEW1w",
     "frame": "maxresdefault"
    }
   },
-  "vs": {
-   "src": "engine/.cache/stills/vishwanath_and_sons/jZHoM2YhFCY_maxres1.jpg",
+  "d1": {
+   "src": "engine/.cache/stills/dorothy/cCbiVWgEW1w_maxres1.jpg",
    "fetch": {
-    "youtube": "jZHoM2YhFCY",
+    "youtube": "cCbiVWgEW1w",
     "frame": "maxres1"
    }
   },
-  "scene": {
-   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg",
+  "d2": {
+   "src": "engine/.cache/stills/dorothy/cCbiVWgEW1w_maxres2.jpg",
    "fetch": {
-    "youtube": "LM4ByXufv2w",
+    "youtube": "cCbiVWgEW1w",
     "frame": "maxres2"
    }
   },
-  "scene_key": {
-   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+  "d3": {
+   "src": "engine/.cache/stills/dorothy/cCbiVWgEW1w_maxres3.jpg",
    "fetch": {
-    "youtube": "LM4ByXufv2w",
-    "frame": "maxresdefault"
+    "youtube": "cCbiVWgEW1w",
+    "frame": "maxres3"
    }
   }
  },
  "screens": [
   {
    "kind": "title",
-   "image": "scene_key",
+   "image": "key",
    "fx": 0.5,
    "fy": 0.4,
    "dur": 3.0,
    "lines": [
     {
-     "text": "SURIYA",
-     "size": 230,
+     "text": "DOROTHY",
+     "size": 220,
      "y": 1310
     },
     {
-     "text": "3 × ₹200 CR IN 2026",
-     "size": 115,
+     "text": "PICKED FOR ROTTERDAM",
+     "size": 100,
      "y": 1470,
      "color": "#F8C028",
      "glow": "rgba(248,192,40,.5)"
@@ -112,17 +113,18 @@
   {
    "kind": "number",
    "in": "whip",
-   "image": "karuppu",
+   "image": "d1",
    "fx": 0.5,
    "fy": 0.4,
    "dur": 4.4,
-   "kicker": "₹200 CR+ · ONE YEAR",
-   "value": 3,
-   "unit": " FILMS",
+   "kicker": "WORLD FESTIVALS",
+   "value": 2,
+   "unit": " FESTIVALS",
+   "money": false,
    "land": 1.5,
    "tag": [
-    "A TAMIL FIRST",
-    "REPORTED"
+    "TORONTO · SEPT 2026",
+    "ROTTERDAM · IFFR 2027"
    ],
    "sfx": [
     {
@@ -133,64 +135,53 @@
      "at": 1.5,
      "type": "impact"
     }
-   ],
-   "money": false
+   ]
   },
   {
-   "kind": "bars",
+   "kind": "number",
    "in": "push",
-   "image": "vs",
+   "image": "d2",
    "fx": 0.5,
    "fy": 0.4,
    "dur": 4.4,
-   "kicker": "WORLDWIDE GROSS",
-   "items": [
-    {
-     "label": "KARUPPU",
-     "value": 310,
-     "color": "#F8C028"
-    },
-    {
-     "label": "VISHWANATH & SONS",
-     "value": 209,
-     "color": "#78E0D0"
-    },
-    {
-     "label": "SCENE",
-     "value": 205,
-     "color": "#F87878"
-    }
+   "kicker": "IFFR · LIMELIGHT SECTION",
+   "value": 56,
+   "unit": "TH EDITION",
+   "money": false,
+   "land": 1.5,
+   "tag": [
+    "THE NETHERLANDS",
+    "DUTCH PREMIERE"
    ],
-   "note": "ThePrint, Hollywood Reporter India",
    "sfx": [
     {
-     "at": 0.35,
-     "type": "whoosh"
+     "at": 0.3,
+     "type": "riser"
     },
     {
-     "at": 0.7,
-     "type": "whoosh"
+     "at": 1.5,
+     "type": "impact"
     }
    ]
   },
   {
    "kind": "end",
    "in": "zoom",
-   "bg": "scene",
+   "bg": "d3",
    "dur": 3.8,
-   "echo": "SURIYA · 3 × ₹200 CR IN 2026",
+   "echo": "DOROTHY · PICKED FOR ROTTERDAM",
    "question": [
     {
-     "text": "YOUR FAVOURITE",
+     "text": "SEEN",
      "size": 130
     },
     {
-     "text": "OF THE 3?",
+     "text": "DOROTHY?",
      "size": 140,
      "color": "#F8C028"
     }
    ],
-   "sub": "Karuppu, Vishwanath & Sons or Scene",
+   "sub": "Karthik Subbaraj · Keerthy Suresh",
    "cta": "SEND TO THAT FRIEND",
    "sfx": [
     {
@@ -202,11 +193,11 @@
  ],
  "package": {
   "caption": [
-   "Suriya: three ₹200 Cr films in one year. A Tamil first (reported).",
-   "Karuppu (about ₹310 Cr), Vishwanath & Sons (about ₹209 Cr) and now Scene (₹205 Cr) all crossed ₹200 Cr worldwide in 2026. Sources: Hollywood Reporter India, ThePrint, The Week.",
-   "Which one is your favourite?",
-   "Send this to the Suriya fan you know.",
-   "சூர்யா — ஒரே வருஷத்தில் மூணு ₹200 கோடி படங்கள்."
+   "Karthik Subbaraj's Dorothy is going to Rotterdam.",
+   "After its world premiere at Toronto in September, the Keerthy Suresh film is picked for the Limelight section of the International Film Festival Rotterdam (IFFR 2027). Sources: Daily Thanthi, News7 Tamil, IFFR.",
+   "Seen Dorothy? Tell us below.",
+   "Send this to the Karthik Subbaraj fan you know.",
+   "டோரதி — ரோட்டர்டேம் திரைப்பட விழாவுக்கு தேர்வு."
   ],
   "hashtags": [
    "#fyp",
@@ -215,24 +206,24 @@
    "#explorepage",
    "#reels"
   ],
-  "cover": "SURIYA · 3 × ₹200 CR IN 2026",
+  "cover": "DOROTHY · PICKED FOR ROTTERDAM",
   "slot": "18:00",
-  "first_comment": "Karuppu, Vishwanath & Sons or Scene?"
+  "first_comment": "Which Karthik Subbaraj film should go to a festival next?"
  },
  "drive_folder": "finished",
  "virality": {
   "value": 7,
-  "hook": 8,
+  "hook": 7,
   "send_trigger": 7,
-  "comment_trigger": 8,
-  "save_value": 5,
+  "comment_trigger": 6,
+  "save_value": 4,
   "pacing": 8,
   "loop": 5,
-  "timely_original": 10,
-  "total_100": 72,
+  "timely_original": 9,
+  "total_100": 66,
   "weakest": [
-   "loop: end echoes the title",
-   "save_value: low by nature"
+   "save_value: low by nature",
+   "comment_trigger: soft question"
   ]
  }
 }
