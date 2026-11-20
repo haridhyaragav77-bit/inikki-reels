@@ -1,0 +1,256 @@
+{
+ "id": "2026-11-20-update-appa-kutty-today",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 20 NOV 2026",
+ "lead": {
+  "film": "appa-kutty",
+  "topic": "Vijay Antony's Appa Kutty opens in cinemas today, after three date changes",
+  "facts": [
+   "In cinemas Friday 20 Nov 2026, cleared U/A (Telangana Today, 6 Nov; The Hans India)",
+   "Vijay Antony stars and also does the music and the editing; written and directed by Mu. Maran; a father-daughter drama (The Hans India; ap7am)",
+   "Dates before: August (DT Next, 22 May), 16 Oct (newkerala/IANS), 6 Nov (News Today, 12 Oct), then 20 Nov"
+  ],
+  "sources": [
+   "https://telanganatoday.com/appa-kutty-vijay-antonys-film-gets-u-a-certificate-ahead-of-november-20-release",
+   "https://www.thehansindia.com/cinema/vijay-antonys-appa-kutty-cleared-for-release-with-ua-certificate-1139852",
+   "https://www.dtnext.in/entertainment/cinema/vijay-antonys-appa-kutty-to-hit-screens-in-august-this-year",
+   "https://newstodaynet.com/2026/10/12/vijay-antonys-appa-kutty-postponed-to-nov-6/"
+  ],
+  "note": "Late start: this update takes the 11:00 time (08:30 had passed)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Release day: is the long-delayed Vijay Antony film finally out? Yes, today.",
+  "spoilers": "None. Numbers, dates and names only; nothing about the story.",
+  "voice": "Off: dates and box office are music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "varun_intro",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold, catchy, punchy (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/appa_kutty/mm55UVZ0AxM_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxresdefault"
+   }
+  },
+  "a1": {
+   "src": "engine/.cache/stills/appa_kutty/mm55UVZ0AxM_maxres1.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres1"
+   }
+  },
+  "a2": {
+   "src": "engine/.cache/stills/appa_kutty/mm55UVZ0AxM_maxres2.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres2"
+   }
+  },
+  "a3": {
+   "src": "engine/.cache/stills/appa_kutty/mm55UVZ0AxM_maxres3.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "APPA KUTTY",
+     "size": 200,
+     "y": 1310
+    },
+    {
+     "text": "IN CINEMAS TODAY",
+     "size": 120,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "a1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "OUT TODAY · U/A",
+   "value": 20,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "VIJAY ANTONY",
+    "DIR. MU. MARAN"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "a2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "AUG → OCT 16 → NOV 6 → TODAY",
+   "value": 4,
+   "unit": " DATES",
+   "land": 1.5,
+   "tag": [
+    "FINALLY HERE",
+    "FATHER × DAUGHTER"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "a3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "VIJAY ANTONY: ACTOR · MUSIC · EDIT",
+   "value": 3,
+   "unit": " JOBS",
+   "land": 1.5,
+   "tag": [
+    "ONE MAN",
+    "ONE FILM"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "APPA KUTTY · IN CINEMAS TODAY",
+   "question": [
+    {
+     "text": "FIRST DAY",
+     "size": 130
+    },
+    {
+     "text": "FIRST SHOW?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Father-daughter drama, out today",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Appa Kutty is in cinemas today.",
+   "Vijay Antony's father-daughter drama (dir. Mu. Maran) opens on 20 Nov after dates in August, 16 Oct and 6 Nov. He also did the music and the editing. Cleared U/A. Sources: Telangana Today, The Hans India, DT Next.",
+   "Going this weekend?",
+   "Send this to your appa.",
+   "அப்பா குட்டி — இன்று முதல் திரையில்."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "APPA KUTTY · IN CINEMAS TODAY",
+  "slot": "11:00",
+  "first_comment": "Going with your appa or your kutty?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 5,
+  "comment_trigger": 6,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 9,
+  "total_100": 61,
+  "weakest": [
+   "save_value: low by nature (release-day news)",
+   "send_trigger: the end line asks to send it to your appa"
+  ]
+ }
+}

@@ -1,0 +1,232 @@
+{
+ "id": "2026-11-20-update-ramayana-1384cr",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 20 NOV 2026",
+ "lead": {
+  "film": "ramayana",
+  "topic": "Ramayana crosses ₹1,384 Cr worldwide in 11 days, past RRR and KGF Chapter 2",
+  "facts": [
+   "₹1,384.50 Cr worldwide gross in 11 days (Sacnilk, via Business Today, 16 Nov 2026), ahead of RRR and KGF Chapter 2",
+   "Crossed ₹1,000 Cr: second Bollywood film of 2026 to do it after Dhurandhar The Revenge (Bollywood Hungama)",
+   "Dhurandhar 2: The Revenge still leads 2026 at ₹1,813.39 Cr lifetime worldwide (Business Today)"
+  ],
+  "sources": [
+   "https://www.businesstoday.in/trending/box-office/story/ramayana-box-office-ranbir-kapoor-yash-epic-storms-past-rs1384-cr-worldwide-overtakes-rrr-and-kgf-chapter-2-567542-2026-11-16",
+   "https://www.bollywoodhungama.com/?p=2184565",
+   "https://www.indiablooms.com/showbiz/ramayana-box-office-ranbir-kapoors-film-storms-past-rs-1100-crore-worldwide-in-just-9-days/details"
+  ],
+  "note": "Draft: the 16:37 Refresh run rewrites this evening update with the day's freshest numbers. Late start: the 08:30 update moved to the 17:00 flex time."
+ },
+ "worth_it": {
+  "fan_opens_because": "The biggest film in India right now, also playing in Tamil: how big is it, and has it caught Dhurandhar 2?",
+  "spoilers": "None. Numbers, dates and names only; nothing about the story.",
+  "voice": "Off: dates and box office are music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/ramayana/1zip1rNaNYs_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "1zip1rNaNYs",
+    "frame": "maxresdefault"
+   }
+  },
+  "r1": {
+   "src": "engine/.cache/stills/ramayana/1zip1rNaNYs_maxres1.jpg",
+   "fetch": {
+    "youtube": "1zip1rNaNYs",
+    "frame": "maxres1"
+   }
+  },
+  "r2": {
+   "src": "engine/.cache/stills/ramayana/1zip1rNaNYs_maxres2.jpg",
+   "fetch": {
+    "youtube": "1zip1rNaNYs",
+    "frame": "maxres2"
+   }
+  },
+  "r3": {
+   "src": "engine/.cache/stills/ramayana/1zip1rNaNYs_maxres3.jpg",
+   "fetch": {
+    "youtube": "1zip1rNaNYs",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "RAMAYANA",
+     "size": 210,
+     "y": 1310
+    },
+    {
+     "text": "BEATS RRR & KGF 2",
+     "size": 115,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "r1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "WORLDWIDE · 11 DAYS",
+   "value": 1384,
+   "unit": " CR",
+   "land": 1.5,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "r2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "2026'S BIGGEST",
+   "items": [
+    {
+     "label": "DHURANDHAR 2",
+     "value": 1813,
+     "color": "#78E0D0"
+    },
+    {
+     "label": "RAMAYANA",
+     "value": 1384,
+     "color": "#F8C028"
+    }
+   ],
+   "note": "Worldwide gross · Business Today",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "r3",
+   "dur": 3.8,
+   "echo": "RAMAYANA · ₹1,384 CR IN 11 DAYS",
+   "question": [
+    {
+     "text": "TAMIL OR",
+     "size": 130
+    },
+    {
+     "text": "HINDI?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Which version did you watch?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Ramayana: ₹1,384 Cr worldwide in 11 days (reported).",
+   "Ranbir Kapoor and Yash's Ramayana passes RRR and KGF Chapter 2. Only Dhurandhar 2 (₹1,813 Cr) is bigger this year. Sources: Business Today (Sacnilk), Bollywood Hungama.",
+   "Watched it in Tamil or Hindi?",
+   "Send this to your theatre gang.",
+   "ராமாயணா — 11 நாளில் ₹1,384 கோடி."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "RAMAYANA · ₹1,384 CR IN 11 DAYS",
+  "slot": "17:00",
+  "first_comment": "Can it catch Dhurandhar 2?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 9,
+  "total_100": 68,
+  "weakest": [
+   "save_value: low by nature",
+   "loop: the end question points back to the number"
+  ]
+ }
+}

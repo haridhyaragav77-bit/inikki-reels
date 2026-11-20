@@ -1,0 +1,392 @@
+{
+ "id": "2026-11-20-watch-rainy-night",
+ "series": "movie-recommendations",
+ "template": "poster-wall",
+ "fps": 30,
+ "length_s": [
+  20,
+  45
+ ],
+ "length_reason": "4 films at the full 7.4 s each (Harish: reading pace and plot beats), plus title and recap: about 38 s.",
+ "lead": {
+  "topic": "Rainy night: 4 films for a Chennai monsoon Friday",
+  "format": "theme-list",
+  "films": [
+   {
+    "film": "Memories of Murder",
+    "year": 2003,
+    "language": "Korean",
+    "country": "South Korea",
+    "director": "Bong Joon-ho",
+    "premise": "Two village detectives chase a killer who strikes on rainy nights.",
+    "letterboxd": "4.42/5 (1,158,592 ratings)",
+    "proof": "Best Film, 40th Grand Bell Awards (2003)",
+    "watch_india": "Prime Video (JustWatch India, 20 Nov 2026)"
+   },
+   {
+    "film": "Ee.Ma.Yau",
+    "year": 2018,
+    "language": "Malayalam",
+    "country": "India",
+    "director": "Lijo Jose Pellissery",
+    "premise": "A son's promise of a grand funeral meets one long night of rain.",
+    "letterboxd": "4.10/5 (7,136 ratings)",
+    "proof": "IFFI 2018 Silver Peacock, Best Director; Kerala State Award, Best Director",
+    "watch_india": "Prime Video (JustWatch India, 20 Nov 2026)"
+   },
+   {
+    "film": "The Garden of Words",
+    "year": 2013,
+    "language": "Japanese",
+    "country": "Japan",
+    "director": "Makoto Shinkai",
+    "premise": "A teenage shoemaker and a stranger meet in a Tokyo garden on rainy mornings.",
+    "letterboxd": "3.44/5 (196,259 ratings)",
+    "proof": "Best Animated Feature, Stuttgart Festival of Animated Film 2014",
+    "watch_india": "Prime Video (JustWatch India, 20 Nov 2026)"
+   },
+   {
+    "film": "Merku Thodarchi Malai",
+    "year": 2018,
+    "language": "Tamil",
+    "country": "India",
+    "director": "Lenin Bharathi",
+    "premise": "A headload worker in the Western Ghats saves for a piece of land of his own.",
+    "letterboxd": "3.73/5 (1,393 ratings)",
+    "proof": "Produced by Vijay Sethupathi, music by Ilaiyaraaja; screened at IFFK",
+    "watch_india": "Prime Video (JustWatch India, 20 Nov 2026)"
+   }
+  ],
+  "why_now": "Friday night, north-east monsoon rain in Chennai (brief: Today); every film has rain at its heart or its mood.",
+  "sources": [
+   "https://letterboxd.com (ratings read 20 Nov 2026)",
+   "https://www.justwatch.com/in (offers read 20 Nov 2026)",
+   "https://www.thequint.com/entertainment/cinema/iffi-ee-ma-yau-lijo-jose-pellisery-chemban-vinod-win-silver-peacock-award",
+   "https://animenewsnetwork.com/news/2014-04-29/garden-of-words-wins-stuttgart-fest-of-animated-film-top-award",
+   "https://www.indiaglitz.com/vijay-sethupathi-gayathri-krishna-merku-thodarchi-malai-to-be-screened-in-international-film-festival-in-kerala-tamil-news-169046",
+   "https://imdb.com/title/tt0353969/awards"
+  ],
+  "pictures_note": "Official trailer frames (maxresdefault). The Garden of Words frame comes from an English-subtitled trailer upload; swap for the distributor's if the Engine finds it."
+ },
+ "worth_it": {
+  "seen_by_most": "No: none had a wide release in Tamil Nadu; Merku Thodarchi Malai is a Tamil gem few saw in cinemas.",
+  "tell_a_friend": "Yes: one per mood for a rainy night (a thriller, a dark comedy, a quiet romance, a Tamil gem).",
+  "spoilers": "Premise only.",
+  "where_to_watch": "All four on Prime Video, checked on JustWatch India today.",
+  "proof": "Letterboxd rating and one award or famous fact per film."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "lone_wolf",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "cool, moody, rain"
+   },
+   {
+    "track": "feeling_of_love",
+    "from": 1.0,
+    "screen": 3,
+    "mood": "romance"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "mom": {
+   "src": "engine/.cache/stills/memories_of_murder/0n_HQwQU8ls_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "0n_HQwQU8ls",
+    "frame": "maxresdefault"
+   }
+  },
+  "emy": {
+   "src": "engine/.cache/stills/ee_ma_yau/b8WZa0GvNYs_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "b8WZa0GvNYs",
+    "frame": "maxresdefault"
+   }
+  },
+  "gow": {
+   "src": "engine/.cache/stills/the_garden_of_words/FMabhvDoolc_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "FMabhvDoolc",
+    "frame": "maxresdefault"
+   }
+  },
+  "mtm": {
+   "src": "engine/.cache/stills/merku_thodarchi_malai/DGbchTBSkV4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "DGbchTBSkV4",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "dur": 3.2,
+   "posters": [
+    "mom",
+    "emy",
+    "gow",
+    "mtm"
+   ],
+   "fx": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "lines": [
+    "RAINY NIGHT:",
+    "4 FILMS"
+   ],
+   "kicker": "MAZHAI + MOVIE",
+   "sfx": [
+    {
+     "at": 0.15,
+     "type": "impact"
+    },
+    {
+     "at": 0.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "push",
+   "dur": 7.4,
+   "image": "mom",
+   "fx": 0.5,
+   "num": "01",
+   "title": "MEMORIES OF MURDER",
+   "meta": [
+    "2003",
+    "KOREAN",
+    "SOUTH KOREA"
+   ],
+   "director": "DIR. BONG JOON-HO",
+   "reason": "Rain. A killer. No clues.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 4.4,
+   "proof": "GRAND BELL: BEST FILM",
+   "watch": "PRIME VIDEO",
+   "plot": "In a quiet 1986 village, two detectives chase a killer who strikes on rainy nights.",
+   "plot_beats": [
+    "A QUIET 1986 VILLAGE",
+    "A KILLER ON RAINY NIGHTS",
+    "TWO COPS, NO CLUES"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.4,
+   "image": "emy",
+   "fx": 0.5,
+   "num": "02",
+   "title": "EE.MA.YAU",
+   "meta": [
+    "2018",
+    "MALAYALAM",
+    "INDIA"
+   ],
+   "director": "DIR. LIJO JOSE PELLISSERY",
+   "reason": "One funeral. One endless rain.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 4.1,
+   "proof": "IFFI: BEST DIRECTOR",
+   "watch": "PRIME VIDEO",
+   "plot": "A son promised his father a grand funeral. One rainy night, nothing goes to plan.",
+   "plot_beats": [
+    "A FATHER DIES",
+    "A SON'S BIG PROMISE",
+    "ONE NIGHT OF RAIN"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.4,
+   "image": "gow",
+   "fx": 0.5,
+   "num": "03",
+   "title": "THE GARDEN OF WORDS",
+   "meta": [
+    "2013",
+    "JAPANESE",
+    "JAPAN"
+   ],
+   "director": "DIR. MAKOTO SHINKAI",
+   "reason": "They meet only when it rains.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 3.4,
+   "proof": "STUTTGART: BEST ANIMATED",
+   "watch": "PRIME VIDEO",
+   "plot": "A teen shoemaker meets a stranger in a Tokyo garden, only on rainy mornings.",
+   "plot_beats": [
+    "A BOY WHO MAKES SHOES",
+    "A STRANGER IN THE GARDEN",
+    "ONLY WHEN IT RAINS"
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "whip",
+   "dur": 7.4,
+   "image": "mtm",
+   "fx": 0.5,
+   "num": "04",
+   "title": "MERKU THODARCHI MALAI",
+   "meta": [
+    "2018",
+    "TAMIL",
+    "INDIA"
+   ],
+   "director": "DIR. LENIN BHARATHI",
+   "reason": "Misty hills. One small dream.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 3.7,
+   "proof": "MUSIC: ILAIYARAAJA",
+   "watch": "PRIME VIDEO",
+   "plot": "A labourer carries loads over the Western Ghats, saving every rupee for land of his own.",
+   "plot_beats": [
+    "A HILL LABOURER",
+    "LOADS OVER THE GHATS",
+    "A DREAM OF HIS OWN LAND"
+   ]
+  },
+  {
+   "kind": "recap",
+   "in": "zoom",
+   "dur": 5.0,
+   "heading": "YOUR RAINY NIGHT LIST",
+   "items": [
+    {
+     "image": "mom",
+     "title": "MEMORIES OF MURDER",
+     "fx": 0.5,
+     "watch": "PRIME VIDEO"
+    },
+    {
+     "image": "emy",
+     "title": "EE.MA.YAU",
+     "fx": 0.5,
+     "watch": "PRIME VIDEO"
+    },
+    {
+     "image": "gow",
+     "title": "THE GARDEN OF WORDS",
+     "fx": 0.5,
+     "watch": "PRIME VIDEO"
+    },
+    {
+     "image": "mtm",
+     "title": "MERKU THODARCHI MALAI",
+     "fx": 0.5,
+     "watch": "PRIME VIDEO"
+    }
+   ],
+   "cta": "SAVE FOR TONIGHT",
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Rainy night in Chennai? 4 films for it.",
+   "Memories of Murder (Korea), Ee.Ma.Yau (Malayalam), The Garden of Words (Japan), Merku Thodarchi Malai (Tamil). All on Prime Video in India.",
+   "Which one first tonight?",
+   "Save this for the next rainy night. Send it to your movie buddy.",
+   "மழை இரவு — இந்த 4 படம்."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "RAINY NIGHT: 4 FILMS",
+  "slot": "15:30",
+  "first_comment": "Your favourite rainy-day film?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 9,
+  "pacing": 7,
+  "loop": 6,
+  "timely_original": 9,
+  "total_100": 78,
+  "weakest": [
+   "loop: recap grid echoes the title wall",
+   "comment_trigger: first comment asks for their rainy-day film"
+  ]
+ }
+}

@@ -6,3 +6,4 @@ OM: Chapter One = https://www.youtube.com/watch?v=aGSOpb_6kv8 (same film as OM)
 Om = https://www.youtube.com/watch?v=aGSOpb_6kv8 (same film as OM)
 Aramm = https://www.youtube.com/watch?v=hWsn_1cs6Dc
 O.M = https://www.youtube.com/watch?v=aGSOpb_6kv8 (same film as OM)
+Manikanda = https://www.youtube.com/watch?v=BLrV7Pa0ZU8 (teaser, Tantra Films; no trailer yet, 20 Nov)

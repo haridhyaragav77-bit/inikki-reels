@@ -1,0 +1,487 @@
+{
+ "id": "2026-11-20-breakdown-soorarai-pottru-real-maara",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "noir",
+ "length_s": [
+  45,
+  80
+ ],
+ "length_reason": "The spine: hook, lead, truth 1 (₹1 ticket), loop, truth 2 (Bommi), loop, truth 3 (the uniform) with Gopinath's own words and the technique, call to action.",
+ "lead": {
+  "topic": "Soorarai Pottru: what was real, and the one thing the film changed",
+  "angle": "behind_the_scenes",
+  "insight": "The ₹1 ticket was real (early birds only) and Bommi is the real Bhargavi Gopinath, whose bakery still runs; but the film turned an Army captain into an Air Force officer, so Maara's dream starts in the sky. Change the facts, keep the feeling: dramatic licence.",
+  "why_now": "Suriya's comeback is today's top trend (3 films past ₹200 Cr in 2026); Soorarai Pottru, his 5-National-Award film, came out in November 2020.",
+  "technique": "Dramatic licence",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Soorarai_Pottru (inspired by G. R. Gopinath's memoir Simply Fly; not a biopic, per Sudha Kongara; Bommi based on Bhargavi)",
+   "https://thebetterindia.com/241067/amazon-prime-soorarai-pottru-captain-gopinath-air-deccan-inspiring-success-story-ros174 (Air Deccan 2003, Re 1 early-bird fares, Bhargavi's Bun World bakery)",
+   "https://www.galatta.com/tamil/movie/news/capt-gr-gopinath-reply-to-people-who-did-not-like-soorarai-pottru (Gopinath: heavily fictionalised but captures the essence of my book)",
+   "https://globalindian.com/story/indian-brands/captain-gr-gopinath-the-air-deccan-founder (Army captain; Air Deccan 2003, Hubli-Bangalore, 48-seat planes)"
+  ],
+  "inspired_by": "own idea (Suriya trend today; facts from Gopinath's memoir and interviews)",
+  "pictures_note": "Official trailer frames from the library trailer (fa_DIwRsa9o). Frames were not viewed in this run: the Make checks pick faces; 'maara' and 'sky' may show the same scene."
+ },
+ "worth_it": {
+  "learn": "Which parts of Soorarai Pottru really happened, which one was changed, and why: dramatic licence.",
+  "stop": "Maara's uniform was never the real man's uniform.",
+  "why_now": "Suriya's comeback is today's top trend.",
+  "send_to": "The friend who cried at Soorarai Pottru.",
+  "best_angle": "Yes: real story vs film is the angle fans argue about."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 6,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/soorarai_pottru/fa_DIwRsa9o_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "fa_DIwRsa9o",
+    "frame": "maxresdefault"
+   }
+  },
+  "maara": {
+   "src": "engine/.cache/stills/soorarai_pottru/fa_DIwRsa9o_maxres1.jpg",
+   "fetch": {
+    "youtube": "fa_DIwRsa9o",
+    "frame": "maxres1"
+   }
+  },
+  "bommi": {
+   "src": "engine/.cache/stills/soorarai_pottru/fa_DIwRsa9o_maxres2.jpg",
+   "fetch": {
+    "youtube": "fa_DIwRsa9o",
+    "frame": "maxres2"
+   }
+  },
+  "sky": {
+   "src": "engine/.cache/stills/soorarai_pottru/fa_DIwRsa9o_maxres3.jpg",
+   "fetch": {
+    "youtube": "fa_DIwRsa9o",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "beat": "hook",
+   "kind": "title",
+   "voice": "சூரரைப் போற்று மாறா, ஏர் ஃபோர்ஸ் யூனிஃபார்ம் போட்டிருக்கார். உண்மையான மாறா, ஆர்மி.",
+   "voice_tg": "Soorarai Pottru Maara, Air Force uniform pottirukkaar. Unmaiyaana Maara, Army.",
+   "image": "title",
+   "film": "SOORARAI POTTRU",
+   "type": "AIR FORCE ON SCREEN. ARMY IN REAL LIFE.",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "lead": 0.05
+  },
+  {
+   "beat": "lead",
+   "kind": "pins",
+   "voice": "கேப்டன் கோபிநாத் வாழ்க்கையில இருந்து மூணு உண்மை. மூணாவது தான் பெரிய மாற்றம்.",
+   "voice_tg": "Captain Gopinath vaazhkkaiyila irundhu moonu unmai. Moonaavadhu thaan periya maatram.",
+   "in": "zoom",
+   "image": "maara",
+   "pins": [
+    {
+     "x": 0.5,
+     "y": 0.35,
+     "lx": 120,
+     "ly": 318,
+     "text": "THE REAL MAARA",
+     "cue": {
+      "word": "கோபிநாத்"
+     }
+    }
+   ],
+   "slam": {
+    "cue": {
+     "word": "மூணாவது"
+    },
+    "lines": [
+     {
+      "text": "3 TRUTHS.",
+      "size": 150,
+      "color": "#ffffff"
+     },
+     {
+      "text": "#3 WAS CHANGED.",
+      "size": 120,
+      "color": "#F8C868"
+     }
+    ]
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "timeline",
+   "voice": "உண்மை ஒண்ணு. 2003ல ஏர் டெக்கான் நிஜமாவே ஒரு ரூபாய் டிக்கெட் விட்டது. ஆனா முதல்ல புக் பண்ணவங்களுக்கு மட்டும்.",
+   "voice_tg": "Unmai onnu. 2003-la Air Deccan nijamaave oru roobaai ticket vittadhu. Aana mudhalla book pannavangalukku mattum.",
+   "in": "whip",
+   "heading": "TRUTH 1/3 · THE ₹1 TICKET",
+   "events": [
+    {
+     "label": "2003",
+     "sub": "AIR DECCAN",
+     "cue": {
+      "word": "டெக்கான்"
+     }
+    },
+    {
+     "label": "₹1 FARE",
+     "sub": "REAL",
+     "cue": {
+      "word": "ரூபாய்"
+     }
+    },
+    {
+     "label": "EARLY BIRDS",
+     "sub": "ONLY",
+     "cue": {
+      "word": "முதல்ல"
+     }
+    }
+   ],
+   "links": [
+    [
+     1,
+     2
+    ]
+   ],
+   "footer": "HUBLI → BANGALORE, 48 SEATS",
+   "sfx": [
+    {
+     "at": {
+      "word": "மட்டும்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஆனா பொம்மி கதை, இன்னும் சுவாரஸ்யம்.",
+   "voice_tg": "Aana Bommi kadhai, innum suvaarasyam.",
+   "in": "flash",
+   "image": "bommi",
+   "slam_text": "BOMMI WAS REAL.",
+   "q_cue": {
+    "word": "பொம்மி"
+   },
+   "slam_cue": {
+    "word": "சுவாரஸ்யம்"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பொம்மி"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "சுவாரஸ்யம்"
+     },
+     "type": "impact"
+    }
+   ],
+   "fx": 0.55,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "layers",
+   "voice": "உண்மை ரெண்டு. பொம்மி தான் நிஜ பார்கவி கோபிநாத். அவங்க பேக்கரி பன் வேர்ல்ட், இன்னும் பெங்களூர்ல ஓடுது.",
+   "voice_tg": "Unmai rendu. Bommi thaan nija Bhargavi Gopinath. Avanga bakery Bun World, innum Bengaluru-la odudhu.",
+   "in": "push",
+   "heading": "TRUTH 2/3 · UNDER BOMMI",
+   "layers": [
+    {
+     "label": "BUN WORLD",
+     "sub": "BENGALURU, TODAY",
+     "cue": {
+      "word": "பேக்கரி"
+     }
+    },
+    {
+     "label": "BHARGAVI",
+     "sub": "THE REAL WIFE",
+     "cue": {
+      "word": "பார்கவி"
+     }
+    },
+    {
+     "label": "BOMMI",
+     "sub": "ON SCREEN",
+     "cue": {
+      "word": "பொம்மி"
+     }
+    }
+   ],
+   "split_cue": {
+    "word": "இன்னும்"
+   },
+   "slam_text": "THE BAKERY IS REAL",
+   "sfx": [
+    {
+     "at": {
+      "word": "ஓடுது"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "மூணாவது உண்மையை தான், படம் மாத்திடுச்சு.",
+   "voice_tg": "Moonaavadhu unmaiyai thaan, padam maaththiduchu.",
+   "in": "flash",
+   "image": "title",
+   "slam_text": "THE ONE THEY CHANGED",
+   "q_cue": {
+    "word": "மூணாவது"
+   },
+   "slam_cue": {
+    "word": "மாத்திடுச்சு"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "மூணாவது"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "மாத்திடுச்சு"
+     },
+     "type": "impact"
+    }
+   ],
+   "fy": 0.35,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "versus",
+   "voice": "உண்மை மூணு. நிஜ கோபிநாத், இந்திய ராணுவத்துல கேப்டன். படத்துல மாறா, ஏர் ஃபோர்ஸ் ஆஃபீசர்.",
+   "voice_tg": "Unmai moonu. Nija Gopinath, Indhiya raanuvaththula captain. Padaththula Maara, Air Force officer.",
+   "in": "whip",
+   "left": {
+    "image": "maara",
+    "label": "ARMY CAPTAIN",
+    "sub": "REAL LIFE",
+    "cue": {
+     "word": "ராணுவத்துல"
+    }
+   },
+   "right": {
+    "image": "sky",
+    "label": "AIR FORCE",
+    "sub": "ON SCREEN",
+    "cue": {
+     "word": "ஃபோர்ஸ்"
+    }
+   },
+   "slam_text": "WHY CHANGE IT?",
+   "slam_cue": {
+    "word": "ஆஃபீசர்"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஆஃபீசர்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "quote",
+   "voice": "கோபிநாத்தே சொன்னார்: படம் நிறைய கற்பனை. ஆனா என் புத்தகத்தோட ஆன்மாவை பிடிச்சிருக்கு.",
+   "voice_tg": "Gopinath-e sonnaar: padam niraiya karpanai. Aana en puththagaththoda aanmaavai pidichirukku.",
+   "in": "whip",
+   "name": "CAPT. G.R. GOPINATH",
+   "role": "AIR DECCAN FOUNDER",
+   "phrase": "HEAVILY FICTIONALISED",
+   "source": "GOPINATH ON THE FILM · 2020",
+   "cues": {
+    "name": {
+     "word": "கோபிநாத்தே"
+    },
+    "phrase": {
+     "word": "கற்பனை"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பிடிச்சிருக்கு"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு டிரமாட்டிக் லைசென்ஸ். ஏர் ஃபோர்ஸ்னா, கனவு வானத்துலயே ஆரம்பிக்குது. உண்மையை மாத்தி, உணர்வை கூட்டுறாங்க.",
+   "voice_tg": "Idhukku peru dramatic license. Air Force-naa, kanavu vaanaththulaye aarambikkudhu. Unmaiyai maaththi, unarvai koottuRaanga.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "DRAMATIC LICENCE",
+   "definition": "FACTS BENT. FEELING SHARPENED.",
+   "outer_label": "SOORARAI POTTRU",
+   "inner": [
+    "₹1 TICKET: REAL",
+    "BOMMI: REAL",
+    "UNIFORM: CHANGED"
+   ],
+   "cues": {
+    "name": {
+     "word": "லைசென்ஸ்"
+    },
+    "outer": {
+     "word": "வானத்துலயே"
+    },
+    "inner": {
+     "word": "உணர்வை"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "லைசென்ஸ்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "கூட்டுறாங்க"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "cta",
+   "kind": "end",
+   "voice": "நீங்க பாத்தது பயோபிக்கா, கற்பனையா? கமெண்ட் பண்ணுங்க. ஏன்னா,",
+   "voice_tg": "Neenga paaththadhu biopic-aa, karpanaiyaa? Comment pannunga. Yenna,",
+   "in": "whip",
+   "echo": "SOORARAI POTTRU · AIR FORCE ON SCREEN. ARMY IN REAL LIFE.",
+   "question": [
+    {
+     "text": "BIOPIC OR",
+     "size": 130
+    },
+    {
+     "text": "FICTION?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "நீங்க என்ன நினைக்கிறீங்க?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: DRAMATIC LICENCE",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Soorarai Pottru: 2 things were real. 1 was changed.",
+   "The ₹1 ticket was real (Air Deccan, 2003, early birds only). Bommi is the real Bhargavi Gopinath, and her bakery still runs. But the real Captain Gopinath was in the Army, not the Air Force. That change is called dramatic licence.",
+   "Biopic or fiction: what do you call it?",
+   "Send this to the friend who cried at Soorarai Pottru."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "SOORARAI POTTRU · AIR FORCE ON SCREEN. ARMY IN REAL LIFE.",
+  "slot": "12:30",
+  "first_comment": "Which film should we check against the real story next?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 7,
+  "pacing": 7,
+  "loop": 8,
+  "timely_original": 8,
+  "total_100": 76,
+  "weakest": [
+   "save_value: the end card recaps all 3 truths",
+   "pacing: keep each screen at 8-18 words"
+  ]
+ }
+}

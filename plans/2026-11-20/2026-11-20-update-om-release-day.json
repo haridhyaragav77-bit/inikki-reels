@@ -1,0 +1,226 @@
+{
+ "id": "2026-11-20-update-om-release-day",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 20 NOV 2026",
+ "lead": {
+  "film": "om",
+  "topic": "O.M: Operation Mole opens in cinemas today",
+  "facts": [
+   "O.M: Operation Mole (Dhanush, Mammootty) opens on Friday 20 Nov 2026 (Filmibeat November calendar; Wikipedia)",
+   "Also out today: Sathyavan Savithiri (Keerthy Suresh, Mysskin) and Appa Kutty (Vijay Antony) (Filmibeat)"
+  ],
+  "sources": [
+   "https://www.filmibeat.com/tamil/movies/november-2026.html",
+   "https://en.wikipedia.org/wiki/O.M:_Operation_Mole"
+  ],
+  "new_event": "Release day: O.M opens in cinemas today (20 Nov); the last 3 days covered only the build-up."
+ },
+ "worth_it": {
+  "fan_opens_because": "Release day of the most talked-about film of the week.",
+  "spoilers": "None. Numbers, dates and names only; nothing about the story.",
+  "voice": "Off: dates and box office are music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  },
+  "o2": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   },
+   "crop": [
+    0.0,
+    0.1,
+    1.0,
+    0.8
+   ]
+  },
+  "o3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "o2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "IN CINEMAS TODAY",
+     "size": 120,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "OUT TODAY",
+   "value": 20,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "DHANUSH",
+    "MAMMOOTTY"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "o3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "ALSO OUT TODAY",
+   "value": 3,
+   "unit": " FILMS",
+   "land": 1.5,
+   "tag": [
+    "O.M · SATHYAVAN SAVITHIRI",
+    "APPA KUTTY"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "o3",
+   "dur": 3.8,
+   "echo": "O.M · IN CINEMAS TODAY",
+   "question": [
+    {
+     "text": "FDFS",
+     "size": 130
+    },
+    {
+     "text": "TODAY?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Dhanush and Mammootty, together",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole is in cinemas today.",
+   "Dhanush and Mammootty together, from today, 20 Nov. Sources: Filmibeat, Wikipedia.",
+   "Booked your ticket?",
+   "Send this to your FDFS gang.",
+   "ஓ.எம் — இன்று முதல் திரையில்."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "O.M · IN CINEMAS TODAY",
+  "slot": "reserve",
+  "first_comment": "First show or the weekend?"
+ },
+ "drive_folder": "finished",
+ "reserve": true,
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 6,
+  "save_value": 3,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 9,
+  "total_100": 60,
+  "weakest": [
+   "save_value: low by nature",
+   "hook: Refresh can add first-day talk"
+  ]
+ }
+}

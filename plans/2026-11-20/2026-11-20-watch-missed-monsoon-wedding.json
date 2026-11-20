@@ -1,0 +1,196 @@
+{
+ "id": "2026-11-20-watch-missed-monsoon-wedding",
+ "series": "movie-recommendations",
+ "template": "poster-wall",
+ "fps": 30,
+ "length_s": [
+  20,
+  30
+ ],
+ "lead": {
+  "topic": "One film you missed: Monsoon Wedding, for a rainy weekend",
+  "format": "one-film-you-missed",
+  "films": [
+   {
+    "film": "Monsoon Wedding",
+    "year": 2001,
+    "language": "Hindi/English",
+    "country": "India",
+    "director": "Mira Nair",
+    "premise": "A big Punjabi family gathers in Delhi for a wedding as the monsoon arrives.",
+    "letterboxd": "3.82/5 (25,807 ratings)",
+    "proof": "Golden Lion, Venice Film Festival 2001",
+    "watch_india": "Prime Video (JustWatch India, 20 Nov 2026)"
+   }
+  ],
+  "why_now": "Chennai monsoon weekend, wedding season.",
+  "sources": [
+   "https://letterboxd.com/film/monsoon-wedding/ (read 20 Nov 2026)",
+   "https://www.justwatch.com/in/movie/monsoon-wedding (read 20 Nov 2026)"
+  ],
+  "pictures_note": "Trailer frame from The Criterion Collection's official upload."
+ },
+ "worth_it": {
+  "seen_by_most": "No: a 2001 festival film most of our audience has not seen.",
+  "tell_a_friend": "Yes: warm, funny, made for a rainy weekend.",
+  "spoilers": "Premise only.",
+  "where_to_watch": "Prime Video, checked on JustWatch India today.",
+  "proof": "Letterboxd 3.8; Golden Lion, Venice."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "true_love",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "romance, warm"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "mw": {
+   "src": "engine/.cache/stills/monsoon_wedding/sjQjw-UyAX0_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "sjQjw-UyAX0",
+    "frame": "maxresdefault"
+   }
+  },
+  "mw2": {
+   "src": "engine/.cache/stills/monsoon_wedding/sjQjw-UyAX0_maxres2.jpg",
+   "fetch": {
+    "youtube": "sjQjw-UyAX0",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "dur": 3.2,
+   "posters": [
+    "mw",
+    "mw2"
+   ],
+   "fx": [
+    0.5,
+    0.5
+   ],
+   "lines": [
+    "ONE FILM",
+    "YOU MISSED"
+   ],
+   "kicker": "RAINY WEEKEND PICK",
+   "sfx": [
+    {
+     "at": 0.15,
+     "type": "impact"
+    },
+    {
+     "at": 0.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "film",
+   "in": "push",
+   "dur": 12.0,
+   "image": "mw",
+   "fx": 0.5,
+   "num": "01",
+   "title": "MONSOON WEDDING",
+   "meta": [
+    "2001",
+    "HINDI",
+    "INDIA"
+   ],
+   "director": "DIR. MIRA NAIR",
+   "reason": "One wedding. One loud family.",
+   "sfx": [
+    {
+     "at": 0.75,
+     "type": "pop"
+    },
+    {
+     "at": 1.6,
+     "type": "tick"
+    },
+    {
+     "at": 2.15,
+     "type": "pop"
+    }
+   ],
+   "rating": 3.8,
+   "proof": "GOLDEN LION, VENICE",
+   "watch": "PRIME VIDEO",
+   "plot": "A big Punjabi family gathers in Delhi for a wedding, just as the monsoon arrives.",
+   "plot_beats": [
+    "ONE BIG FAMILY",
+    "FOUR DAYS OF WEDDING",
+    "THE MONSOON ARRIVES"
+   ]
+  },
+  {
+   "kind": "recap",
+   "in": "zoom",
+   "dur": 5.0,
+   "heading": "THIS WEEKEND'S PICK",
+   "items": [
+    {
+     "image": "mw",
+     "title": "MONSOON WEDDING",
+     "fx": 0.5,
+     "watch": "PRIME VIDEO"
+    }
+   ],
+   "cta": "SAVE FOR THE WEEKEND",
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "One film you missed: Monsoon Wedding.",
+   "Mira Nair's Golden Lion winner: one Delhi family, one wedding, the monsoon arriving. Letterboxd 3.8. On Prime Video in India.",
+   "Seen it?",
+   "Save it for a rainy weekend.",
+   "மழை வீக்கெண்டுக்கு ஒரு படம்."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "ONE FILM YOU MISSED: MONSOON WEDDING",
+  "slot": "reserve",
+  "first_comment": "Your favourite wedding film?"
+ },
+ "reserve": true,
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 5,
+  "save_value": 8,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 64,
+  "weakest": [
+   "comment_trigger: ask for their favourite wedding film",
+   "hook: kicker ties it to the rain"
+  ]
+ }
+}

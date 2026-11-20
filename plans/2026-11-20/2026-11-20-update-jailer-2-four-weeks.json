@@ -1,0 +1,233 @@
+{
+ "id": "2026-11-20-update-jailer-2-four-weeks",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 20 NOV 2026",
+ "lead": {
+  "film": "jailer-2",
+  "topic": "Jailer 2 after four weeks: about ₹830 Cr worldwide, Tamil cinema's biggest ever",
+  "facts": [
+   "₹829.65 Cr worldwide gross to day 27 (Sacnilk, day 28 page, 11 Nov 2026)",
+   "First Tamil film past ₹800 Cr worldwide, on day 18 (DT Next; Hollywood Reporter India)",
+   "Passed 2.0's lifetime of about ₹691 Cr to become the top Tamil grosser worldwide (Sacnilk)"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/quicknews/Jailer_2_2026_Box_Office_Collection_Day_28",
+   "https://www.dtnext.in/entertainment/cinema/rajinikanths-jailer-2-crosses-rs-800-crore-worldwide-sets-new-tamil-cinema-record",
+   "https://www.hollywoodreporterindia.com/features/insight/jailer-2-box-office-rajinikanth-breaks-his-own-record-to-set-new-milestone-of-800-crore",
+   "https://www.sacnilk.com/news/jailer-2-box-office-rajinikanth-starrer-becomes-biggest-tamil-grosser-worldwide-beating-20"
+  ],
+  "note": "Draft: the 16:37 Refresh run rewrites this evening update with the day's freshest numbers."
+ },
+ "worth_it": {
+  "fan_opens_because": "The trend watch is comparing Jailer 2 at day 28: where does Tamil cinema's biggest film stand now?",
+  "spoilers": "None. Numbers, dates and names only; nothing about the story.",
+  "voice": "Off: dates and box office are music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vip_gathering",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "swagger"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "FW_PPcr1sPE",
+    "frame": "maxresdefault"
+   }
+  },
+  "j1": {
+   "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres1.jpg",
+   "fetch": {
+    "youtube": "FW_PPcr1sPE",
+    "frame": "maxres1"
+   }
+  },
+  "j2": {
+   "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres2.jpg",
+   "fetch": {
+    "youtube": "FW_PPcr1sPE",
+    "frame": "maxres2"
+   }
+  },
+  "j3": {
+   "src": "engine/.cache/stills/jailer_2/FW_PPcr1sPE_maxres3.jpg",
+   "fetch": {
+    "youtube": "FW_PPcr1sPE",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "JAILER 2",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "4 WEEKS · ₹830 CR",
+     "size": 120,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "j1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "WORLDWIDE · 27 DAYS",
+   "value": 830,
+   "unit": " CR",
+   "land": 1.5,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "j2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "BIGGEST TAMIL FILMS",
+   "items": [
+    {
+     "label": "JAILER 2",
+     "value": 830,
+     "color": "#F8C028"
+    },
+    {
+     "label": "2.0",
+     "value": 691,
+     "color": "#78E0D0"
+    }
+   ],
+   "note": "Worldwide gross · Sacnilk",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "j3",
+   "dur": 3.8,
+   "echo": "JAILER 2 · 4 WEEKS · ₹830 CR",
+   "question": [
+    {
+     "text": "₹1,000 CR",
+     "size": 130
+    },
+    {
+     "text": "NEXT?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Can it get there?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Jailer 2 after four weeks: about ₹830 Cr worldwide (reported).",
+   "The first Tamil film past ₹800 Cr, and ahead of 2.0 (about ₹691 Cr) as Tamil cinema's biggest grosser. Sources: Sacnilk, DT Next, Hollywood Reporter India.",
+   "Can it reach ₹1,000 Cr?",
+   "Send this to the Thalaivar fan you know.",
+   "ஜெயிலர் 2 — 4 வாரம், ₹830 கோடி."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "JAILER 2 · 4 WEEKS · ₹830 CR",
+  "slot": "21:30",
+  "first_comment": "₹1,000 Cr: yes or no?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 8,
+  "total_100": 65,
+  "weakest": [
+   "save_value: low by nature",
+   "send_trigger: Refresh can add the day's latest total"
+  ]
+ }
+}
