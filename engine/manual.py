@@ -9,7 +9,7 @@ so no run waits halfway.
 Sources, all read from Drive or the repository (no AI, no keys):
   trailers   Drive status/trailers_wanted.json (Make and the news watch add films) → the laptop helper fetches them
   top-up     film-bank films with no trailer in the library (low urgency)
-  study      Drive status/study.json "laptop": shorts YouTube will not give the cloud → read before the Weekly run
+  study      Drive requests/study_to_get.md: shorts YouTube will not give the cloud → read before the Weekly run
   sign-in    only while the Engine still uses the robot account (it cannot create new Drive files)
 State: Drive status/manual.json (first seen, warnings sent). Done marks: Drive control/manual.json (written by the relay).
 Settings: config/engine.yaml `manual`.
@@ -123,13 +123,11 @@ def next_weekly(now):
 
 
 def study_jobs(drive, now):
-    st = drive.read_json("status", "study.json") or {}
-    ids = ((st.get("study") or {}).get("laptop") or st.get("laptop") or [])
-    if not ids:
-        return []
+    """From Drive requests/study_to_get.md (written by the study job): its command line lists every short still waiting."""
     text = drive.read_text("requests", "study_to_get.md") or ""
     cmd = next((ln.strip() for ln in text.splitlines() if ln.strip().startswith("py clip_helper.py --study")), "")
-    if not cmd:
+    ids = cmd.split()[3:] if cmd else []
+    if not ids:
         return []
     due = next_weekly(now)
     run_day = (due + dt.timedelta(hours=20, minutes=37)).strftime("%a %d %b")

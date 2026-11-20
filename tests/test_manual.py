@@ -16,7 +16,6 @@ def main():
     manual.plan_slot = lambda rid: (soon_reel.date().isoformat(), soon_reel.strftime("%H:%M")) if rid == "r-soon" else None
     d.write_json("status", "trailers_wanted.json", {"films": ["Film A", "Film B"],
                                                      "why": {"Film A": "needed by the plan r-soon", "Film B": "news: a new trailer was reported"}})
-    d.write_json("status", "study.json", {"study": {"laptop": ["v1", "v2"]}})
     d.write_text("requests", "study_to_get.md", "# Shorts to study\n\npy clip_helper.py --study https://youtu.be/v1 https://youtu.be/v2\n")
 
     M = manual.build(d, now)

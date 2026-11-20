@@ -1059,7 +1059,7 @@ panel's MANUAL WORK section for the chat. Built by code (`engine/manual.py`, no 
 | --- | --- | --- | --- |
 | Trailers to get | Drive `status/trailers_wanted.json` | the planned reel's slot minus 3 hours; a news trailer within a day; others 3 days | that reel uses still pictures instead of trailer moments |
 | Library top-up | film-bank films with no trailer | 14 days | later reels of those films use stills |
-| Shorts to study | Drive `status/study.json` | Sunday 02:00, before the Weekly run | the Weekly run learns from fewer shorts |
+| Shorts to study | Drive `requests/study_to_get.md` | Sunday 02:00, before the Weekly run | the Weekly run learns from fewer shorts |
 | Drive sign-in | only while the Engine uses the robot account | now | new Drive files can fail |
 
 Each job shows what it is, why, the due time, what suffers, and the exact command with a Copy button. **Done** sends one
