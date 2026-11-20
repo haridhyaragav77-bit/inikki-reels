@@ -69,6 +69,19 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 
 ## 5. Everyday controls
 
+### Manual work: the jobs only your laptop can do
+YouTube and Instagram do not let the cloud computers download some things, so a few jobs need your laptop: fetching trailers,
+studying competitor shorts, and (once) the Drive sign-in. They are all on the **Manual work** tab. The red number on the tab
+is how many are waiting; Today shows the first one too.
+- Each job says **what** to do, **why**, **when it is due**, and **what suffers if you skip it** (for example: "this reel uses
+  still pictures instead of trailer moments").
+- Press **Copy**, paste the line in the laptop window (open the helper's folder, type `cmd` in the address bar), press Enter,
+  then drag the files it makes into the Drive folder it names.
+- Press **Done**. The Engine picks the files up at once and the job leaves the list.
+- **Warnings:** you get a notice 2 days before a job turns urgent, and another when it is urgent (one day left). Nothing stops
+  while you wait: reels go out with their fallback pictures.
+- In the chat: `manual` shows the list; `done <job id>` marks one finished.
+
 | I want to… | On the page | Or say in the chat |
 | --- | --- | --- |
 | See how today stands | **Today** tab | `status` |

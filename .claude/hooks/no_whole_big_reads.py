@@ -8,7 +8,8 @@ try:
     call = json.load(sys.stdin)
     args = call.get("tool_input") or {}
     path = args.get("file_path") or ""
-    if call.get("tool_name") == "Read" and not args.get("limit") and os.path.getsize(path) > 40_000:
+    media = path.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".pdf", ".ipynb"))   # pictures are not read as text
+    if call.get("tool_name") == "Read" and not media and not args.get("limit") and os.path.getsize(path) > 40_000:
         name = os.path.basename(path)
         print(f"{name} is large ({os.path.getsize(path) // 1000} KB). Do not read it whole. Find the section first "
               f"(for example: grep -n '^#' {name}), then Read with offset and limit.", file=sys.stderr)

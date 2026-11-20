@@ -21,7 +21,16 @@ def example():
         from engine.settings import niche
         srcs = [{"name": c.get("name"), "where": c.get("platform"), "priority": c.get("priority"), "mode": c.get("study")}
                 for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]
-        ex = {"study": {"sources": srcs, "last": "example: studied 3 short(s); 2 on the laptop list"}, "youtube": {"on": True, "privacy": "private", "today": 0},
+        ex = {"manual": {"count": 2, "urgent": 1, "warn_days": 2, "jobs": [
+                  {"id": "trailers-example1", "kind": "trailers", "items": ["Example Film"], "level": "urgent", "due": "", "due_text": "by Sat 21 Nov, 09:30 (in 18 h 10 min)",
+                   "title": "Get 1 trailer with the laptop helper", "what": "Example: open the folder with clip_helper.py, type cmd in the address bar, paste the line, press Enter. Then drag trailers_for_drive into Drive › clip-library.",
+                   "why": "Example Film: needed by the plan example-breakdown-01", "suffers": ["example-breakdown-01 (tomorrow 12:30): no trailer moments, so it uses still pictures"],
+                   "command": 'py clip_helper.py "Example Film"', "after": "The Engine makes the shot grids from clip-library at once."},
+                  {"id": "study-example2", "kind": "study", "items": ["v1", "v2"], "level": "soon", "due": "", "due_text": "by Sun 22 Nov, 02:00 (in 2 d 4 h)",
+                   "title": "Study 2 competitor shorts with the laptop helper", "what": "Example: the same helper, then drag study_for_drive into Drive › study-audio.",
+                   "why": "The channel study feeds the Weekly learning run.", "suffers": ["Weekly learning run on Sun 22 Nov: learns from 2 fewer competitor shorts"],
+                   "command": "py clip_helper.py --study https://youtu.be/example", "after": "The Engine starts the study job at once."}]},
+              "study": {"sources": srcs, "last": "example: studied 3 short(s); 2 on the laptop list"}, "youtube": {"on": True, "privacy": "private", "today": 0},
               "day_plan": dayplan.card(ctl), "volume": ctl.settings.get("volume"), "framework": panel.framework_card(ctl), "series": panel.series_cards(ctl, {}, None),
               "calendar": almanac.today(status.now().strftime("%Y-%m-%d"), ctl.settings.get("slots") or []),
               "usage": {"runner": {"minutes": 1180, "limit": 2000, "pct": 59, "forecast": 1890, "forecast_pct": 95, "per_day": 84, "stage": "normal", "month": "example",
