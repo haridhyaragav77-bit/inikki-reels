@@ -1,0 +1,8 @@
+# Release calendar (AGENT.md 10.5): films opening in theatres or on OTT in Tamil Nadu, kept up to date by the
+# Plan and Refresh runs from the news (confirmed dates only, 2 sources). The brief reads it:
+#   the day before a release -> one "releases tomorrow" news reel (breaking-news Flash look) in an evening slot
+#   release day              -> a movie-review (First Verdict) from the first critics' reviews; no breaking news that day
+releases:
+  - { film: "O.M: Operation Mole", date: "2026-11-20", where: theatres, note: "Mammootty" }
+  - { film: "Appa Kutty", date: "2026-11-20", where: theatres, note: "Vijay Antony" }
+  - { film: "Sathyavan Savithiri", date: "2026-11-20", where: theatres }
