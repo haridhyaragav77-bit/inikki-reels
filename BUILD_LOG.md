@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 20 Nov 2026 — Release calendar: reviews on release day, "releases tomorrow" the day before
+Release-day reviews were never planned (no calendar of releases). `niches/<niche>/knowledge/releases.yaml` (Brain-writable via Sync) feeds a "Releases" section in the Plan and Refresh briefs: on release day the Refresh run writes up to 2 First Verdict reviews (17:00 + next evening slot); the day before, one "releases tomorrow" Flash reel; a release on its day is never breaking news. Watch This Next was paused through the Control Room inbox (the pause had never reached the Engine: not in control/log.jsonl), and today's two Watch reels skipped.
+
 ## 20 Nov 2026 — Why today's Plan run did not start; the page read a stale file
 The dispatcher's check (`tools/run_due.py`) counted the Workshop's booked Joker plan in plans/2026-11-20/ as "today is planned", so the 05:37 Plan run started nothing (no plans, no reels, nothing new on the page). Booked plans no longer count. The Control Room page fell back to the old Drive's panel.txt (stopped 17 Nov) when its search failed; it now defaults to the Engine's current panel.txt and never keeps a stale id; the old panel files were binned.
 

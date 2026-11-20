@@ -303,6 +303,30 @@ def week_table():
     (OUT / "week_table.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def release_lines(date, run):
+    """The release calendar (Harish, 20 Nov): reviews on release day, a "releases tomorrow" reel the day before."""
+    import yaml
+    try:
+        rel = (yaml.safe_load((niche_dir() / "knowledge" / "releases.yaml").read_text(encoding="utf-8")) or {}).get("releases") or []
+    except Exception:
+        rel = []
+    d0 = dt.date.fromisoformat(date)
+    today_f = [r["film"] for r in rel if str(r.get("date")) == date]
+    tomorrow_f = [r["film"] for r in rel if str(r.get("date")) == (d0 + dt.timedelta(days=1)).isoformat()]
+    L = ["", "## Releases (knowledge/releases.yaml; keep it up to date: confirmed dates for the next 14 days, 2 sources)"]
+    if today_f:
+        L.append(f"Releasing TODAY: {', '.join(today_f)}. " + ("Refresh run: one movie-review (First Verdict) per film, up to 2, from the first critics' reviews "
+                 "(2 sources), at the 17:00 flex slot and the next evening slot. " if run == "refresh" else
+                 "Plan run: leave the 17:00 flex slot for the reviews (the Refresh run writes them once critics' reviews are out). ")
+                 + "A release on its day is never breaking news.")
+    if tomorrow_f:
+        L.append(f"Releasing TOMORROW: {', '.join(tomorrow_f)}. One 'releases tomorrow' news reel today (breaking-news Flash look: title, date, team, fact) in an evening slot, "
+                 "unless the Plan run already made one.")
+    if not (today_f or tomorrow_f):
+        L.append("No release today or tomorrow in the calendar. Add any confirmed release dates you find.")
+    return L
+
+
 def study_lines(drive, run):
     """The channel study for the planning runs (AGENT.md 10.3): where the patterns are, and the laptop list if any."""
     L, pat = [], ROOT / "lab" / "study" / "patterns.md"
@@ -431,6 +455,7 @@ def build(drive, run, date):
               "A draft is made for Harish to watch and is never posted; it still follows the standard (AGENT.md 5.10)."
               for sid, card in ctl.new_series().items() if str((card.get("added") or {}).get("at", "")) >= recent]
     if run in ("plan", "refresh"):
+        L += release_lines(date, run)
         L += study_lines(drive, run)
         try:                                              # variety in movie updates (Harish, 19 Nov)
             from .plancheck import films_lately
