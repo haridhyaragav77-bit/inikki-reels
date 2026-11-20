@@ -49,6 +49,14 @@ youtube:
   tries: 2                    # a failed upload is tried again by the next Post run, at most this many times
   category_id: "1"            # Film & Animation
   made_for_kids: false
+manual:                       # Control Room › Manual work (AGENT.md 16.6, engine/manual.py)
+  urgent_hours: 24            # a job is urgent this many hours before it is due
+  warn_days: 2                # an alert this many days before a job turns urgent
+  make_hours: 3               # a trailer for a planned reel is due this long before its slot
+  news_hours: 24              # a new trailer reported in the news: due within a day
+  other_days: 3               # a wanted trailer with no reel date yet
+  topup_days: 14              # the film-bank library top-up
+  done_hold_hours: 48         # after Done, those films wait for the Engine to pick them up before they can be asked again
 # Channel study (AGENT.md 10.3): free. The channel list is the niche's `competitors` with study: true.
 study:
   enabled: true

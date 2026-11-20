@@ -2,6 +2,16 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 20 Nov 2026 — Manual work tab
+Harish asked for one place for every laptop job, with urgency, the command and a Done button.
+| Piece | Where | In one line |
+| --- | --- | --- |
+| The list | `engine/manual.py`, `config/engine.yaml` `manual` | Trailers, library top-up, shorts to study, Drive sign-in: what, why, due, what suffers, the command |
+| Warnings | same | An alert 2 days before a job turns urgent and again when urgent, once each (Drive `status/manual.json`) |
+| Done | `engine/relay.py` `manual_done`, Drive `control/manual.json` | Marks the job and starts the trailer intake or the study job at once |
+| Page and panel | `control-room/page.template.html`, `engine/panel.py` | Tab with a count badge, a line on Today, MANUAL WORK in the chat text |
+| Tests | `tests/test_manual.py` | Levels, the 2-day warning, Done through the inbox, the panel section |
+
 ## 20 Nov 2026 — Post order by urgency; breakdowns in the evening
 Harish: Om's release-day post should have gone first. Run cards and brief: the most time-critical reel takes the earliest slot (a film out today: 08:30, else the next), reviews from 17:00, evergreen reels in the evening. Day plan via the Control Room inbox: updates 08:30, 11:00, 12:30, 18:00; breakdowns 20:00, 21:30. Om's out-now reel posted with 'post now' today.
 

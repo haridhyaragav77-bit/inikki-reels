@@ -29,6 +29,7 @@ One action is one JSON object:
 import copy
 import hashlib
 import json
+import re
 
 import yaml
 
@@ -239,6 +240,7 @@ class State:
         self.commands = drive.read_text("control", "commands.jsonl") or ""
         self.feedback = drive.read_text("control", "feedback.jsonl") or ""
         self.log = _lines(drive.read_text("control", "log.jsonl") or "")
+        self.manual = self._json("manual.json") or {"done": {}}
         self.dirty = set()
         self.alerts_closed = []
 
@@ -258,6 +260,8 @@ class State:
             d.write_text("control", "commands.jsonl", self.commands, "text/plain")
         if "feedback" in self.dirty:
             d.write_text("control", "feedback.jsonl", self.feedback, "text/plain")
+        if "manual" in self.dirty:
+            d.write_json("control", "manual.json", self.manual)
         d.write_text("control", "log.jsonl", "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in self.log[-LOG_KEEP:]), "text/plain")
         if self.alerts_closed:
             try:
@@ -438,6 +442,18 @@ def apply_one(st, a, aid, at):
         st.commands += json.dumps({"cmd": "idea", "text": text[:400], "at": at, "id": aid}, ensure_ascii=False) + "\n"
         st.dirty.add("commands")
         return f"Idea for the next plan: {text[:120]}", None
+    if do == "manual_done":                                       # Control Room › Manual work › Done (AGENT.md 16.6)
+        from . import manual
+        job, kind = str(a.get("job") or "").strip(), str(a.get("kind") or "").strip()
+        if not re.fullmatch(r"[a-z]+-[\w-]{1,40}", job):
+            raise ValueError("no manual job named")
+        items = [str(i)[:120] for i in (a.get("items") or [])][:60]
+        done = st.manual
+        done.setdefault("done", {})[job] = {"at": status.now().isoformat(timespec="minutes"), "kind": kind, "items": items}
+        done["done"] = dict(list(done["done"].items())[-60:])
+        st.dirty.add("manual")
+        started = manual.start_after(kind)
+        return f"Manual work done: {str(a.get('title') or job)[:90]} ({started})", None
     if do == "ack":
         st.alerts_closed.append(str(a.get("alert") or "all"))
         return "Alert(s) marked as read", None

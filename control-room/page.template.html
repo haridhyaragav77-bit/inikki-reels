@@ -53,6 +53,10 @@ h3{font-size:15px;margin:0}
 .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:13px;margin-top:3px}
 .pill{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
 .pill.ready{color:var(--teal)} .pill.posted{color:var(--green)} .pill.held,.pill.failed{color:var(--red)}
+.pill.overdue,.pill.urgent{color:var(--red)} .pill.soon{color:var(--amber)} .pill.later{color:var(--muted)}
+.badge{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:99px;background:var(--red);color:#fff;font-size:11px;line-height:18px;text-align:center;letter-spacing:0;vertical-align:1px}
+.badge.calm{background:var(--amber);color:var(--on-gold)}
+.cmd{display:flex;gap:8px;align-items:flex-start} .cmd code{flex:1;min-width:0;overflow-wrap:anywhere;white-space:pre-wrap;font-size:13px;background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
 .pill.planned,.pill.rendering{color:var(--amber)} .pill.skipped,.pill.rehearsed{color:var(--muted)} .pill.asked{color:var(--sky);border-style:dashed}
 .why{font-size:13px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}
 .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
@@ -169,7 +173,7 @@ ul.plain{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted)}
     </div>
   </div>
   <nav class="tabs" aria-label="Sections">
-    <a href="#today">Today</a><a href="#next">Next</a><a href="#series">Series</a><a href="#insights">Insights</a><a href="#usage">Usage</a><a href="#setup">Setup</a><a href="#guide">Guide</a>
+    <a href="#today">Today</a><a href="#next">Next</a><a href="#series">Series</a><a href="#insights">Insights</a><a href="#manual" id="tab-manual">Manual work</a><a href="#usage">Usage</a><a href="#setup">Setup</a><a href="#guide">Guide</a>
   </nav>
 </div></header>
 <main><div class="wrap" id="view"></div></main>
@@ -308,6 +312,7 @@ function head() {
   $("#updated").textContent = P.example ? "Example data" : "Updated " + String(P.updated).replace(/^\d{4}-\d{2}-\d{2} /, "");
   document.querySelectorAll(".switch button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.mode === P.switch)));
   document.querySelectorAll("nav.tabs a").forEach(a => a.getAttribute("href") === "#" + tab() ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  const mt = $("#tab-manual"); if (mt) mt.innerHTML = "Manual work" + manualBadge();
   tick();
 }
 function tick() {
@@ -396,9 +401,39 @@ function newsCard() {
     ${rd.slice(0, 3).map(x => `<div class="dg"><span class="dot ${x.fired ? "green" : ""}"></span><span>${esc(x.title)} <span class="sub">· ${num(x.sources)} source${x.sources === 1 ? "" : "s"}${x.fired ? " · breaking reel asked" : ""}</span></span></div>`).join("") || `<div class="sub">No big story right now.</div>`}
     ${sc && (sc.latest || []).length ? `<div class="sub">Latest on @chennaiist: ${sc.latest.slice(0, 2).map(x => esc(x.text) + (x.at ? " (" + esc(ago(x.at)) + ")" : "")).join(" · ")}</div>` : ""}</div>`;
 }
+/* ---------- Manual work: jobs only Harish's laptop can do (AGENT.md 16.6) ---------- */
+const MW = () => ((P.manual || {}).jobs || []).filter(j => !askedFor("mw:" + j.id).length);
+const LVL = { overdue: "Overdue", urgent: "Urgent", soon: "Due soon", later: "Later" };
+function manualBadge() {
+  const js = MW(), hot = js.filter(j => j.level === "overdue" || j.level === "urgent").length;
+  return js.length ? `<span class="badge ${hot ? "" : "calm"}" aria-label="${js.length} manual job${js.length > 1 ? "s" : ""}">${js.length}</span>` : "";
+}
+function manualBanner() {
+  const js = MW(); if (!js.length) return "";
+  const j = js[0], hot = j.level === "overdue" || j.level === "urgent";
+  return `<div class="banner ${hot ? "bad" : ""}" style="${hot ? "" : "border-left-color:var(--amber)"}"><b>${js.length} job${js.length > 1 ? "s need" : " needs"} your laptop.</b> First: ${esc(j.title)}, due ${esc(j.due_text)}. <a href="#manual" style="color:var(--sky)">Open Manual work</a></div>`;
+}
+function mwCard(j) {
+  return `<div class="card" id="mw-${esc(j.id)}">
+    <div class="inline" style="align-items:center"><span class="pill ${esc(j.level)}">${esc(LVL[j.level] || j.level)}</span><h3 style="flex:1;margin:0">${esc(j.title)}</h3></div>
+    <div class="sub"><b>Due ${esc(j.due_text)}</b></div>
+    <div class="dg"><span class="k">What</span><span>${esc(j.what)}</span></div>
+    <div class="dg"><span class="k">Why</span><span>${esc(j.why)}</span></div>
+    <div class="dg"><span class="k">If skipped</span><span>${(j.suffers || []).map(esc).join("<br>")}</span></div>
+    <div class="cmd"><code>${esc(j.command)}</code><button type="button" class="quiet" data-copy="${esc(j.command)}" data-toast="Copied. Paste it in the laptop window (cmd), press Enter.">Copy</button></div>
+    <div class="inline" style="align-items:center"><button type="button" class="go" data-act="mw-done" data-id="${esc(j.id)}">Done</button><span class="sub" style="flex:1">${esc(j.after || "")}</span></div>
+  </div>`;
+}
+function vManual() {
+  const js = MW(), sent = ((P.manual || {}).jobs || []).filter(j => askedFor("mw:" + j.id).length);
+  let h = banners() + `<div><h2>Manual work</h2><div class="sub">Jobs only your laptop can do: YouTube and Instagram do not let the cloud computers download these. Each one shows when it is due and what suffers if you skip it. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before a job turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
+  h += js.length ? `<div class="list">${js.map(mwCard).join("")}</div>` : `<div class="card"><div>Nothing needs your laptop right now.</div><div class="sub">New jobs appear here, with a red badge on this tab when they are urgent.</div></div>`;
+  if (sent.length) h += `<div class="card"><h3>Marked done, waiting for the Engine</h3>${sent.map(j => `<div class="sub">${esc(j.title)}: picked up at ${esc(pickup())}</div>`).join("")}</div>`;
+  return h;
+}
 function vToday() {
   const rs = P.today.reels || [], c = s => rs.filter(r => r.state === s).length;
-  let h = banners() + calCard();
+  let h = banners() + manualBanner() + calCard();
   h += alertsCard() + digestCard() + newsCard();
   h += `<div><h2>Today's shows · ${esc(P.today.date)}</h2><div class="sub">${c("posted")} posted · ${c("ready")} ready · ${c("held") + c("failed")} held · ${c("skipped")} skipped · breakdown bank ${esc((P.bank || {}).ready ?? "—")}</div></div>`;
   h += rs.length ? `<div class="list">${rs.map(reelRow).join("")}</div>` : `<div class="card"><div>No reels yet today.</div><div class="sub">The Plan run is at 05:37 and the reels are made right after. They appear here with a Watch button.</div></div>`;
@@ -703,7 +738,7 @@ function md(src) {
   return `<div class="toc">${toc.map(([id, t]) => `<button type="button" class="quiet" data-jump="${id}">${esc(t.replace(/^\d+\.\s*/, ""))}</button>`).join("")}</div><div class="guide">${h}</div>`;
 }
 let guideHtml = "";
-const VIEWS = { today: vToday, next: vNext, series: vSeries, insights: vInsights, usage: vUsage, setup: vSetup, guide: () => guideHtml || (guideHtml = md(GUIDE)) };
+const VIEWS = { today: vToday, manual: vManual, next: vNext, series: vSeries, insights: vInsights, usage: vUsage, setup: vSetup, guide: () => guideHtml || (guideHtml = md(GUIDE)) };
 const ALIAS = { numbers: "insights", money: "usage" };
 const tab = () => { const r = route()[0]; return VIEWS[r] ? r : ALIAS[r] || "today"; };
 function render() {
@@ -727,7 +762,7 @@ document.addEventListener("click", e => {
     scrollTo(0, 0); return render(); }
   if (e.target.id === "refresh") return refresh();
   const cp = e.target.closest("[data-copy]");
-  if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Copied. Paste it into a Claude Code session."), () => { const q = cp.closest("blockquote"); if (!q) return toast("Could not copy here. The same prompt is in the guide, under Ready prompts."); const r = document.createRange(); r.selectNodeContents(q.querySelector("p")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it with your keyboard."); }); return; }
+  if (cp) { const t = cp.dataset.copy; (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(cp.dataset.toast || "Copied. Paste it into a Claude Code session."), () => { const q = cp.closest("blockquote"); if (!q) return toast("Could not copy here. The same prompt is in the guide, under Ready prompts."); const r = document.createRange(); r.selectNodeContents(q.querySelector("p")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Selected. Copy it with your keyboard."); }); return; }
   const j = e.target.closest("[data-jump]"); if (j) { const el = document.getElementById(j.dataset.jump); if (el) el.scrollIntoView({ block: "start" }); return; }
   const chip = e.target.closest("[data-chip]"); if (chip) return chip.setAttribute("aria-pressed", String(chip.getAttribute("aria-pressed") !== "true"));
   const b = e.target.closest("[data-act]"); if (!b) return;
@@ -746,6 +781,9 @@ document.addEventListener("click", e => {
     if (!reasons.length && !text) return toast("Pick a reason or type a line."); return void send({ do: "feedback", reel_id: id, series: r.series, rating: act === "send-love" ? 5 : 2, reasons, text }, act === "send-love" ? "love it" : "not good", id).then(done); }
   if (act === "idea") { const el = $("#idea"), text = (el.value || "").trim(); if (!text) return toast("Type the idea first."); return void send({ do: "idea", text }, "idea").then(ok => { const x = $("#idea"); if (ok && x) x.value = ""; }); }
   if (act === "ack") return void send({ do: "ack", alert: "all" }, "alerts read");
+  if (act === "mw-done") { const j = ((P.manual || {}).jobs || []).find(x => x.id === id); if (!j) return;
+    openDrawer = { id: "setup", kind: "confirm", text: `Mark "${j.title}" as done? Only if the files are in Drive. The Engine then picks them up.`, yes: "Yes, it is done",
+      action: { do: "manual_done", job: j.id, kind: j.kind, items: j.items, title: j.title }, label: "done: " + j.title, key: "mw:" + j.id }; scrollTo(0, 0); return render(); }
   if (act === "rule") { const el = document.getElementById(b.dataset.input || "rule-all"), text = (el.value || "").trim(); if (!text) return toast("Type the rule first."); return void send({ do: "note", series: id, text }, "new rule", id === "all" ? "" : id).then(ok => { const x = document.getElementById(b.dataset.input || "rule-all"); if (ok && x) x.value = ""; }); }
   if (act === "pause" || act === "resume") return void send({ do: "series", id, set: { paused: act === "pause" } }, act, id);
   if (act === "undo") return void send({ do: "undo", id }, "undo");

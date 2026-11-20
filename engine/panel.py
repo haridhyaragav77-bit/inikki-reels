@@ -401,6 +401,7 @@ def build(drive, ctl=None):
                                for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]},
          "fresh_updates": ctl.on("fresh_updates"),
          "digest": (_safe(lambda: drive.read_text("status", "digest.md"), "") or "")[:900],
+         "manual": _safe(lambda: __import__("engine.manual", fromlist=["build"]).build(drive, now), {"count": 0, "jobs": []}),
          "actions": _safe(lambda: actions(drive), []),
          "inbox": _safe(lambda: drive.folder("control/inbox"), None), "lineup": lineup_name}
     return P
@@ -475,6 +476,15 @@ def text(P):
         L += ["", "## YOUR STANDING RULES"] + rules
     paused = [s["id"] for s in P.get("series") or [] if s.get("paused")]
     L += ["", "## SERIES", " · ".join(f"{s['id']}{' (PAUSED)' if s['id'] in paused else ''}" for s in P.get("series") or [])]
+    mw = P.get("manual") or {}
+    if mw.get("jobs"):
+        L += ["", f"## MANUAL WORK ({mw['count']} for your laptop · {mw.get('urgent', 0)} urgent)"]
+        for j in mw["jobs"]:
+            L += [f"- [{str(j['level']).upper()}] {j['title']} · due {j['due_text']} [{j['id']}]",
+                  f"  why: {j['why'][:200]}", f"  if skipped: {'; '.join(j['suffers'][:3])}", f"  command: {j['command']}"]
+        L.append("Run the command on your laptop, then press Done in Control Room › Manual work (or tell the chat: done <job id>).")
+    else:
+        L += ["", "## MANUAL WORK", "Nothing needs your laptop right now."]
     if P.get("alerts"):
         L += ["", f"## ALERTS ({len(P['alerts'])} open)"] + [f"- {a.get('at')} · {a.get('title')} · you: {a.get('what_you_do') or 'nothing'}" for a in P["alerts"]]
     if P.get("actions"):

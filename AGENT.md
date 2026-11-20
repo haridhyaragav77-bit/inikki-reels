@@ -1051,6 +1051,23 @@ Each line is one fact in at most 12 words: no semicolons, no lists inside a line
 7. **Money and limits**
 8. **One decision for you**, if any (tap-to-answer)
 
+### 16.6 Manual work (20 Nov 2026)
+Some jobs only Harish's laptop can do: YouTube and Instagram refuse downloads from cloud computers. They are listed in one
+place, the Control Room tab **Manual work**, with a count badge on that tab and a line on the Today screen, and in the
+panel's MANUAL WORK section for the chat. Built by code (`engine/manual.py`, no AI) at the end of every job.
+| Job | Source | Due | If skipped |
+| --- | --- | --- | --- |
+| Trailers to get | Drive `status/trailers_wanted.json` | the planned reel's slot minus 3 hours; a news trailer within a day; others 3 days | that reel uses still pictures instead of trailer moments |
+| Library top-up | film-bank films with no trailer | 14 days | later reels of those films use stills |
+| Shorts to study | Drive `requests/study_to_get.md` | Sunday 02:00, before the Weekly run | the Weekly run learns from fewer shorts |
+| Drive sign-in | only while the Engine uses the robot account | now | new Drive files can fail |
+
+Each job shows what it is, why, the due time, what suffers, and the exact command with a Copy button. **Done** sends one
+inbox file (`manual_done`); the relay marks it in Drive `control/manual.json` and starts the pick-up step at once
+(trailer intake, or the study job). Those items are not asked for again for 48 hours while the Engine picks them up.
+Levels: later → **due soon** (an alert 2 days before the job turns urgent) → **urgent** (24 hours left; a second alert) →
+overdue. Nothing waits on Harish: until a job is done, the Engine uses its fallback. Settings: `manual` in `config/engine.yaml`.
+
 ---
 
 ## 17. Scenario book

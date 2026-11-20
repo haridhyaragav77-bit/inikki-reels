@@ -29,6 +29,8 @@ Actions:
 {"do":"idea","text":"cover this: ..."}
 {"do":"ack","alert":"all"}
 {"do":"undo","id":"<id in square brackets under YOUR LAST ACTIONS>"}
+{"do":"manual_done","job":"<job id in square brackets under MANUAL WORK>","kind":"trailers|topup|study|signin"}   only when Harish says the laptop job is done
+"manual" from Harish: answer from the MANUAL WORK section of the panel (each job, due, what suffers, the command in a code block).
 Reel numbers in TODAY map to the reel ids on the same line.
 
 WHEN HE DISLIKES SOMETHING, pick one and show before → after in two lines, then act:
