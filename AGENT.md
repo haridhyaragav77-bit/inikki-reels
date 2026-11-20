@@ -687,6 +687,8 @@ Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook t
 ---
 
 ### 10.5 Calendar awareness
+**Post order (Harish, 20 Nov).** Slots go by urgency, not series order: a film out today takes the first morning slot (08:30, else the next), other same-day news follows, reviews go at 17:00 or later, and evergreen reels (breakdowns, recommendations) take the evening, when people watch longer reels. Day plan since 20 Nov: updates 08:30, 11:00, 12:30, 18:00; breakdowns 20:00, 21:30.
+
 **Release calendar (Harish, 20 Nov).** `niches/<niche>/knowledge/releases.yaml` lists confirmed releases (the Plan and Refresh runs keep it up to date from the news, 2 sources). The day before a release: one "releases tomorrow" news reel (Flash look) in an evening slot. On release day: a First Verdict review per film (up to 2) from the first critics' reviews, written by the Refresh run for 17:00 and the next evening slot; a release on its own day is never breaking news.
 
 The agent knows what day it is. No AI: `engine/almanac.py` reads `niches/<niche>/knowledge/calendar.yaml` and prints **Today** at the top of every brief: the day and its mood (Friday night, lazy Sunday, midweek), the season (Pongal holidays, Chennai rains, exam season), festivals and birthdays today and in the next 7 days, the words that fit each slot's hour (a 21:30 reel says LATE NIGHT), and title angles for the day ("FRIDAY NIGHT: {N} FILMS", "LOVED {FILM}? WATCH THESE {N}"). A series with `timely_titles: true` (Watch This Next) must use it. The monthly run adds the dates that move each year.
