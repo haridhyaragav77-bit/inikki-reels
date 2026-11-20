@@ -19,6 +19,11 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
 ## The work
 Wear the hats in order (the cards in `team/`): Researcher → Script Writer → Content Specialist → Marketing Expert →
 Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with skill `plan-reel` and skill `score-reel`.
+- **Post order (Harish, 20 Nov):** give each reel its slot by urgency, not by series order. The most time-critical news goes
+  first: a film out today ("out now") takes the first morning slot (08:30; if missed, the next one), then other same-day
+  news. Evergreen reels (breakdowns, recommendations) take the evening slots, when people have time to watch longer
+  reels. Reviews go at 17:00 or later, once critics have spoken. A planned reel may move to another series' slot when
+  urgency says so; write why in its plan ("slot_reason"). Check the brief's Insights for which hours work best.
 - The brief's "Releases" lines: leave 17:00 for release-day reviews; make a "releases tomorrow" reel; add confirmed
   release dates to `niches/<niche>/knowledge/releases.yaml`. A release on its own day is never breaking news.
 - Movie updates for slots from 17:00 are drafts: the Refresh run rewrites them with the day's fresh news.

@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 20 Nov 2026 — Post order by urgency; breakdowns in the evening
+Harish: Om's release-day post should have gone first. Run cards and brief: the most time-critical reel takes the earliest slot (a film out today: 08:30, else the next), reviews from 17:00, evergreen reels in the evening. Day plan via the Control Room inbox: updates 08:30, 11:00, 12:30, 18:00; breakdowns 20:00, 21:30. Om's out-now reel posted with 'post now' today.
+
 ## 20 Nov 2026 — Release calendar: reviews on release day, "releases tomorrow" the day before
 Release-day reviews were never planned (no calendar of releases). `niches/<niche>/knowledge/releases.yaml` (Brain-writable via Sync) feeds a "Releases" section in the Plan and Refresh briefs: on release day the Refresh run writes up to 2 First Verdict reviews (17:00 + next evening slot); the day before, one "releases tomorrow" Flash reel; a release on its day is never breaking news. Watch This Next was paused through the Control Room inbox (the pause had never reached the Engine: not in control/log.jsonl), and today's two Watch reels skipped.
 

@@ -315,7 +315,7 @@ def release_lines(date, run):
     tomorrow_f = [r["film"] for r in rel if str(r.get("date")) == (d0 + dt.timedelta(days=1)).isoformat()]
     L = ["", "## Releases (knowledge/releases.yaml; keep it up to date: confirmed dates for the next 14 days, 2 sources)"]
     if today_f:
-        L.append(f"Releasing TODAY: {', '.join(today_f)}. " + ("Refresh run: one movie-review (First Verdict) per film, up to 2, from the first critics' reviews "
+        L.append(f"Releasing TODAY: {', '.join(today_f)}. Its 'out now' update takes the first morning slot (08:30, else the next open one). " + ("Refresh run: one movie-review (First Verdict) per film, up to 2, from the first critics' reviews "
                  "(2 sources), at the 17:00 flex slot and the next evening slot. " if run == "refresh" else
                  "Plan run: leave the 17:00 flex slot for the reviews (the Refresh run writes them once critics' reviews are out). ")
                  + "A release on its day is never breaking news.")
