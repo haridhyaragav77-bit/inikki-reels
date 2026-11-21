@@ -97,3 +97,7 @@ Short format for small changes:
 `#2 · 11 Nov 2026 · rule (all series) · reels opened on a calm first frame → every reel opens on a visual hook, pictures change with a transition, Guess the Movie scenes are 3D (AGENT.md 5.8) · Harish, after the first golden reels: "premium, a visual hook, brighter" · rule · undo: set hook to none in the series cards`
 
 `#1 · 11 Nov 2026 · brand · page Night Navy → Marquee Indigo with Screen Violet light; muted text a step lighter · Harish: "slightly more brighter colours because people are scrolling" · rule · undo: in brand_tokens.json put gradient.previous_card_background back as card_background and remove indigo and glow from brand.yaml`
+
+`#18 · 21 Nov 2026 · series (film-breakdown) · slow hooks, weak pictures, a short reel whose point did not land → the hook says the surprising fact on screen 1 over a picture of its person or scene, each body screen proves one plain claim with the film's frame, at least 55 s · why (Harish on Amaran: "Hook slow", "Visuals weak", "Too short", "Bad content") · test on 5 reels · undo: remove the "Soft rule #18" line in the series card`
+
+`#19 · 21 Nov 2026 · series (film-breakdown) · point-of-view angles with nothing to check on screen → marked down as "Avoid" in the playbook · why (Harish on Amaran: "Not worth it", "Content doesn't make sense", 2/5 three times) · rule (next plan) · undo: delete the film-breakdown line under Avoid in rules/playbook.md`

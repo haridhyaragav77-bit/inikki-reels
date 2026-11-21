@@ -62,6 +62,7 @@ Every reel in every series is made the same way: worth it → script first → c
 - "Send this to your cinema friend." · "Know someone starting over?" · "Which scene would you try on mute?" · "Got it at clue 1 or 2? Comment."
 
 ## Avoid
+- film-breakdown · Avoid: "whose eyes tell the story" (point-of-view) angles with no fact the viewer can check on screen, e.g. Amaran told through Indhu (Harish, 21 Nov: "Not worth it", "Content doesn't make sense"). Change #19.
 - Silent openings. Music that doesn't match the moment. Wordy graphics and full-sentence captions. Small cryptic text instead of a title. Spoilers in updates. Scripts built around available footage. Two ideas in one breakdown. Long setups before the hook. Text near the top edge (the grid crops it). Memes on serious news. Recommending films everyone has already seen.
 
 ## Posting (starting guess, to be learned)
