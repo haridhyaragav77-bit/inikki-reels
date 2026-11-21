@@ -1,0 +1,221 @@
+{
+ "id": "2026-11-21-update-next-friday-27nov",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "releases-27-nov",
+  "new_event": "Next Friday's lineup: Minnum Oar Iravu, Cosmic Samson (Tamil) and more on 27 Nov",
+  "topic": "Next Friday in theatres: Minnum Oar Iravu, Cosmic Samson and more",
+  "facts": [
+   "Minnum Oar Iravu and Cosmic Samson listed for 27 Nov (District; 91mobiles)",
+   "District lists 8 Tamil titles for 27 Nov, incl. Delivery Boy, Mannavan, 606, Mysaa",
+   "Cosmic Samson (Sandeep Pradeep) has a Tamil curtain raiser on Think Music India"
+  ],
+  "sources": [
+   "https://www.district.in/movies/upcoming-tamil-movies",
+   "https://www.91mobiles.com/entertainment/upcoming-tamil-movies"
+  ],
+  "note": "Dates are listings, not studio announcements: the reel says 'listed'."
+ },
+ "worth_it": {
+  "fan_opens_because": "What is coming to theatres next week, after O.M?",
+  "spoilers": "None.",
+  "voice": "Off: music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxresdefault"
+   }
+  },
+  "c1": {
+   "src": "engine/.cache/stills/cosmic-samson/jI57jrcnULs_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "jI57jrcnULs",
+    "frame": "maxresdefault"
+   }
+  },
+  "m2": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres2.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "NEXT FRIDAY",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "27 NOV IN THEATRES",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "c1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "LISTED FOR 27 NOV",
+   "value": 8,
+   "unit": " FILMS",
+   "land": 1.5,
+   "tag": [
+    "MINNUM OAR IRAVU",
+    "COSMIC SAMSON"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "m2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DAYS TO GO",
+   "value": 6,
+   "unit": " DAYS",
+   "land": 1.5,
+   "tag": [
+    "AFTER O.M,",
+    "WHAT NEXT?"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "NEXT FRIDAY · 27 NOV",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 130
+    },
+    {
+     "text": "ARE YOU IN?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Listed dates; check before booking",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Next Friday, 27 Nov: 8 Tamil titles listed for theatres.",
+   "Minnum Oar Iravu and Cosmic Samson lead the list; also Delivery Boy, Mannavan, 606, Mysaa. Dates as listed by District and 91mobiles; check before booking.",
+   "Which one are you booking?",
+   "Send this to your Friday-movie friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "NEXT FRIDAY · 27 NOV",
+  "slot": "reserve",
+  "first_comment": "Which one will you book?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 7,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 66,
+  "weakest": [
+   "value: listed dates may move",
+   "hook: a face on the title frame"
+  ]
+ },
+ "reserve": true
+}

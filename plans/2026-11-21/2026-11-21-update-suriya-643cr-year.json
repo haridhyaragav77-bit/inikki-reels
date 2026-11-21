@@ -1,0 +1,245 @@
+{
+ "id": "2026-11-21-update-suriya-643cr-year",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "suriya-2026-total",
+  "new_event": "Koimoi: Suriya's 2026 worldwide total is ₹643.79 Cr from 3 films, after Kanguva and Retro",
+  "topic": "From two flops to ₹643 Cr: Suriya's 2026 in numbers",
+  "facts": [
+   "Karuppu ₹315 Cr, Vishwanath & Sons ₹212.34 Cr, Scene ₹116.45 Cr (3 days) worldwide gross: ₹643.79 Cr in 2026 (Koimoi)",
+   "Kanguva (2024) grossed about ₹106 Cr; Retro (2025) closed at ₹97.44 Cr (Koimoi; Wikipedia)",
+   "M9 also reports the 3 films together past ₹600 Cr"
+  ],
+  "sources": [
+   "https://www.koimoi.com/box-office/box-office-suriya-crosses-600-crore-worldwide-in-2026-is-700-crore-the-next-target/",
+   "https://www.m9.news/movienews/suriya-box-office-comeback-karuppu-vishwanath-scene/",
+   "https://www.koimoi.com/box-office/retro-worldwide-box-office-closing-collection-another-failure-for-suriya-earns-9-less-than-kanguva/"
+  ],
+  "note": "New angle on a story the news watch ranks #3 today (31 publishers): the year total against the two flops before it. The 20 Nov hat-trick reel was rewritten to Dorothy, so this did not post."
+ },
+ "worth_it": {
+  "fan_opens_because": "Everyone wrote Suriya off after Kanguva; how big is the comeback really?",
+  "spoilers": "None. Numbers and titles only.",
+  "voice": "Off: box office is music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxresdefault"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres2"
+   }
+  },
+  "k1": {
+   "src": "engine/.cache/stills/karuppu/1aYNmPe7dr0_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "1aYNmPe7dr0",
+    "frame": "maxresdefault"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres3.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "SURIYA",
+     "size": 240,
+     "y": 1310
+    },
+    {
+     "text": "₹643 CR IN 2026",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "k1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "2026 · WORLDWIDE GROSS",
+   "items": [
+    {
+     "label": "KARUPPU",
+     "value": 315,
+     "color": "#F8C028"
+    },
+    {
+     "label": "VISHWANATH & SONS",
+     "value": 212,
+     "color": "#78E0D0"
+    },
+    {
+     "label": "SCENE (3 DAYS)",
+     "value": 116,
+     "color": "#F07850"
+    }
+   ],
+   "note": "Koimoi · ₹ Cr",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "BEFORE THIS YEAR",
+   "items": [
+    {
+     "label": "KANGUVA 2024",
+     "value": 106,
+     "color": "#888888"
+    },
+    {
+     "label": "RETRO 2025",
+     "value": 97,
+     "color": "#888888"
+    }
+   ],
+   "note": "Worldwide gross · Koimoi",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "s3",
+   "dur": 3.8,
+   "echo": "SURIYA · ₹643 CR IN 2026",
+   "question": [
+    {
+     "text": "BEST OF",
+     "size": 130
+    },
+    {
+     "text": "THE THREE?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Karuppu, Vishwanath & Sons or Scene",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Suriya: ₹643 Cr worldwide in 2026 (reported).",
+   "After Kanguva (₹106 Cr) and Retro (₹97 Cr), three hits in one year: Karuppu ₹315 Cr, Vishwanath & Sons ₹212 Cr, Scene ₹116 Cr in 3 days. Source: Koimoi.",
+   "Which of the three is your favourite?",
+   "Send this to the Suriya fan who never gave up.",
+   "சூர்யா 2026 — ₹643 கோடி."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "SURIYA · ₹643 CR IN 2026",
+  "slot": "12:30",
+  "first_comment": "Karuppu, Vishwanath & Sons or Scene?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely_original": 7,
+  "total_100": 69,
+  "weakest": [
+   "save_value: numbers are watched, not saved",
+   "timely: a running total; Scene's figure is only 3 days"
+  ]
+ },
+ "slot_reason": "Big but not same-day news: afternoon slot."
+}

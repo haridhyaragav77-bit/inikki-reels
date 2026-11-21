@@ -1,0 +1,225 @@
+{
+ "id": "2026-11-21-update-om-netflix",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "om-ott-netflix",
+  "new_event": "Reports: Netflix holds O.M's streaming rights; no date announced",
+  "topic": "Where will O.M stream? Netflix, reportedly, after the theatre run",
+  "facts": [
+   "Netflix has reportedly bought O.M's digital rights; neither the makers nor Netflix has announced a date (Pratidin Time; NewsBytes)",
+   "Filmibeat lists the OTT date as not announced",
+   "News watch: 'O.M OTT release date' story, 13 publishers (4 trusted)",
+   "Day 1: ₹31.55 Cr worldwide gross (Sacnilk)"
+  ],
+  "sources": [
+   "https://www.pratidintime.com/entertainment/om-operation-mole-ott-release-when-and-where-to-watch-dhanush-and-mammoottys-action-thriller-12827010",
+   "https://www.newsbytesapp.com/news/entertainment/dhanush-and-mammoottys-om-operation-mole-reportedly-expected-on-netflix/tldr",
+   "https://www.filmibeat.com/tamil/movies/om-operation-mole/ott.html",
+   "https://www.sacnilk.com/quicknews/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_2"
+  ],
+  "note": "Draft for an evening slot: the Refresh run rewrites it with the day's freshest news (day-2 numbers or another story)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Can I wait for O.M at home, and where will it be?",
+  "spoilers": "None.",
+  "voice": "Off: music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  },
+  "o3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "o0": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "O.M ON OTT?",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "NETFLIX, REPORTEDLY",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "o0",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "IN THEATRES SINCE",
+   "value": 20,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "DATE NOT",
+    "ANNOUNCED"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DAY 1 · WORLDWIDE GROSS",
+   "value": 31.55,
+   "unit": " CR",
+   "land": 1.5,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": true,
+   "decimals": 2
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "o3",
+   "dur": 3.8,
+   "echo": "O.M · NETFLIX, REPORTEDLY",
+   "question": [
+    {
+     "text": "THEATRE",
+     "size": 130
+    },
+    {
+     "text": "OR WAIT?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "No OTT date yet",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Where will O.M stream? Netflix, reportedly.",
+   "Netflix is reported to hold the digital rights to Dhanush and Mammootty's O.M. No date yet: it is in theatres since 20 Nov. Sources: Pratidin Time, NewsBytes, Filmibeat.",
+   "Theatre now, or wait for Netflix?",
+   "Send this to the friend who 'will watch it on OTT'."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "O.M · NETFLIX, REPORTEDLY",
+  "slot": "18:00",
+  "first_comment": "Theatre or OTT for O.M?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 5,
+  "pacing": 8,
+  "loop": 6,
+  "timely_original": 7,
+  "total_100": 68,
+  "weakest": [
+   "value: only a report, no date",
+   "save_value: add the date when it is announced"
+  ]
+ },
+ "slot_reason": "Evening draft; the Refresh run fills it with the day's news."
+}

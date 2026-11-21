@@ -1,0 +1,447 @@
+{
+ "id": "2026-11-21-breakdown-amaran-indhu-voice",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "royal",
+ "length_s": [
+  45,
+  80
+ ],
+ "length_reason": "The spine: hook (the hero doesn't tell his story), lead (Indhu is the voice), truth 1 (the real couple), loop, truth 2 (whose eyes), loop, truth 3 (where the tension moves) and the technique, call to action.",
+ "slot_reason": "Evergreen breakdown: late-night slot, when people watch longer reels.",
+ "lead": {
+  "topic": "Amaran: the hero is Mukund, but the story is told through Indhu",
+  "angle": "screenplay",
+  "insight": "Amaran is based on Major Mukund Varadarajan (Ashoka Chakra, killed in Shopian in 2014). Everyone knows the ending, so the film moves the suspense: the first half shows Mukund through his wife Indhu's eyes, the second half is her wait. The question is not 'will he come back' but 'how will she bear it'. Point-of-view narration.",
+  "why_now": "O.M, out yesterday with Dhanush's biggest opening, is directed by Amaran's Rajkumar Periasamy and again stars Sai Pallavi.",
+  "technique": "Point-of-view narration",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mukund_Varadarajan (Major, Ashoka Chakra posthumous; killed 25 April 2014, Qazipathri, Shopian; married Indhu Rebecca Varghese 28 Aug 2009)",
+   "https://en.wikipedia.org/wiki/Amaran_(2024_film) (based on Mukund Varadarajan; Sai Pallavi as Indhu; dir. Rajkumar Periasamy)",
+   "https://baradwajrangan.wordpress.com/2024/10/31/amaran-temp-post/ (first half tells Mukund's story through Indhu's perspective; second half follows Indhu)"
+  ],
+  "inspired_by": "own idea (O.M trend today; facts from Wikipedia and Baradwaj Rangan's review)",
+  "pictures_note": "Official trailer frames (Saregama Tamil, hylIXfZeB4c). Frames were not viewed in this run: the Make checks pick faces; a1/a2 labels are halves of the film, not named people."
+ },
+ "worth_it": {
+  "learn": "Why a war film whose ending everyone knows still grips: it moves the suspense to the wife, a named technique (point-of-view narration).",
+  "stop": "The hero of Amaran is not the one telling the story.",
+  "why_now": "O.M, by the same director with Sai Pallavi, opened yesterday.",
+  "send_to": "The friend who cried at Amaran.",
+  "best_angle": "Yes: Indhu's view is why the film hurts; fans argue Sai Pallavi carried it."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "true_love",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "tender, aching"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 6,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/amaran/hylIXfZeB4c_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "hylIXfZeB4c",
+    "frame": "maxresdefault"
+   }
+  },
+  "a1": {
+   "src": "engine/.cache/stills/amaran/hylIXfZeB4c_maxres1.jpg",
+   "fetch": {
+    "youtube": "hylIXfZeB4c",
+    "frame": "maxres1"
+   }
+  },
+  "a2": {
+   "src": "engine/.cache/stills/amaran/hylIXfZeB4c_maxres2.jpg",
+   "fetch": {
+    "youtube": "hylIXfZeB4c",
+    "frame": "maxres2"
+   }
+  },
+  "a3": {
+   "src": "engine/.cache/stills/amaran/hylIXfZeB4c_maxres3.jpg",
+   "fetch": {
+    "youtube": "hylIXfZeB4c",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "beat": "hook",
+   "kind": "title",
+   "voice": "அமரன்ல ஹீரோ முகுந்த். ஆனா கதையை சொல்றது, அவர் இல்ல.",
+   "voice_tg": "Amaran-la hero Mukund. Aana kadhaiyai solradhu, avar illa.",
+   "image": "title",
+   "film": "AMARAN",
+   "type": "THE HERO DOESN'T TELL HIS STORY",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "lead": 0.05
+  },
+  {
+   "beat": "lead",
+   "kind": "pins",
+   "voice": "சாய் பல்லவி நடிச்ச இந்து தான், இந்த கதையோட குரல். ஏன்னு, மூணாவது உண்மையில புரியும்.",
+   "voice_tg": "Sai Pallavi nadicha Indhu thaan, indha kadhaiyoda kural. Yennu, moonaavadhu unmaiyila puriyum.",
+   "in": "zoom",
+   "image": "a2",
+   "pins": [
+    {
+     "x": 0.5,
+     "y": 0.35,
+     "lx": 120,
+     "ly": 318,
+     "text": "INDHU · THE VOICE",
+     "cue": {
+      "word": "இந்து"
+     }
+    }
+   ],
+   "slam": {
+    "cue": {
+     "word": "மூணாவது"
+    },
+    "lines": [
+     {
+      "text": "3 TRUTHS.",
+      "size": 150,
+      "color": "#ffffff"
+     },
+     {
+      "text": "#3: WHY.",
+      "size": 120,
+      "color": "#F8C868"
+     }
+    ]
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "timeline",
+   "voice": "உண்மை ஒண்ணு. இந்து, மேஜர் முகுந்தோட மனைவி. 2009ல கல்யாணம். 2014ல காஷ்மீர்ல வீரமரணம். அசோக சக்ரா விருது.",
+   "voice_tg": "Unmai onnu. Indhu, Major Mukund-oda manaivi. 2009-la kalyaanam. 2014-la Kashmir-la veeramaranam. Ashoka Chakra virudhu.",
+   "in": "whip",
+   "heading": "TRUTH 1/3 · THE REAL COUPLE",
+   "events": [
+    {
+     "label": "2009",
+     "sub": "MARRIED",
+     "cue": {
+      "word": "கல்யாணம்."
+     }
+    },
+    {
+     "label": "2014",
+     "sub": "SHOPIAN, J&K",
+     "cue": {
+      "word": "காஷ்மீர்ல"
+     }
+    },
+    {
+     "label": "ASHOKA CHAKRA",
+     "sub": "POSTHUMOUS",
+     "cue": {
+      "word": "அசோக"
+     }
+    }
+   ],
+   "links": [
+    [
+     0,
+     2
+    ]
+   ],
+   "footer": "MAJOR MUKUND VARADARAJAN · INDHU REBECCA VARGHESE",
+   "sfx": [
+    {
+     "at": {
+      "word": "விருது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஆனா படம், முகுந்த் கண்ணால பாக்கல.",
+   "voice_tg": "Aana padam, Mukund kannaala paakkala.",
+   "in": "flash",
+   "image": "a1",
+   "slam_text": "NOT THROUGH HIS EYES",
+   "q_cue": {
+    "word": "படம்,"
+   },
+   "slam_cue": {
+    "word": "பாக்கல."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "படம்,"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "பாக்கல."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "versus",
+   "voice": "உண்மை ரெண்டு. ஃபர்ஸ்ட் ஹாஃப், முகுந்த் கதை இந்துவோட பார்வையில. செகண்ட் ஹாஃப், காத்திருக்குற இந்துவோட போராட்டம்.",
+   "voice_tg": "Unmai rendu. First half, Mukund kadhai Indhu-voda paarvaiyila. Second half, kaaththirukkura Indhu-voda poraattam.",
+   "in": "whip",
+   "left": {
+    "image": "a1",
+    "label": "FIRST HALF",
+    "sub": "HIS STORY, HER EYES",
+    "cue": {
+     "word": "ஃபர்ஸ்ட்"
+    }
+   },
+   "right": {
+    "image": "a2",
+    "label": "SECOND HALF",
+    "sub": "HER WAIT",
+    "cue": {
+     "word": "செகண்ட்"
+    }
+   },
+   "slam_text": "SHE TELLS IT",
+   "slam_cue": {
+    "word": "போராட்டம்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "போராட்டம்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "loop",
+   "kind": "standoff",
+   "voice": "ஏன் இப்படி? முடிவு, நமக்கு முன்னாடியே தெரியும்.",
+   "voice_tg": "Yen ippadi? Mudivu, namakku munnaadiye theriyum.",
+   "in": "flash",
+   "image": "a3",
+   "slam_text": "WE KNOW THE ENDING",
+   "q_cue": {
+    "word": "ஏன்"
+   },
+   "slam_cue": {
+    "word": "தெரியும்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஏன்"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "தெரியும்."
+     },
+     "type": "impact"
+    }
+   ],
+   "fy": 0.35,
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "meter",
+   "voice": "உண்மை மூணு. அவர் திரும்பி வருவாரான்னு கேள்வி இல்ல. இந்து எப்படி தாங்குவாங்கன்னு தான் பதட்டம்.",
+   "voice_tg": "Unmai moonu. Avar thirumbi varuvaaraannu kelvi illa. Indhu eppadi thaanguvaangannu thaan padhattam.",
+   "in": "push",
+   "heading": "TRUTH 3/3 · WHERE THE TENSION MOVES",
+   "label": "TENSION",
+   "levels": [
+    {
+     "label": "WILL HE COME BACK?",
+     "value": 25,
+     "cue": {
+      "word": "திரும்பி"
+     }
+    },
+    {
+     "label": "HOW WILL SHE BEAR IT?",
+     "value": 95,
+     "cue": {
+      "word": "தாங்குவாங்கன்னு"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "பதட்டம்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "body",
+   "kind": "technique",
+   "voice": "இதுக்கு பேரு பாயிண்ட் ஆஃப் வியூ நரேஷன். முடிவு தெரிஞ்ச கதையில, சஸ்பென்ஸை காத்திருக்குறவங்க பக்கம் மாத்துறாங்க.",
+   "voice_tg": "Idhukku peru point of view narration. Mudivu therinja kadhaiyila, suspense-ai kaaththirukkuravanga pakkam maaththuraanga.",
+   "in": "whip",
+   "kicker": "THE TECHNIQUE",
+   "name": "POINT-OF-VIEW NARRATION",
+   "definition": "TOLD BY THE ONE WHO WAITS",
+   "outer_label": "AMARAN",
+   "inner": [
+    "HIS FIGHT",
+    "HER EYES",
+    "OUR TEARS"
+   ],
+   "cues": {
+    "name": {
+     "word": "பாயிண்ட்"
+    },
+    "outer": {
+     "word": "முடிவு"
+    },
+    "inner": {
+     "word": "காத்திருக்குறவங்க"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பாயிண்ட்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "மாத்துறாங்க."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "beat": "cta",
+   "kind": "end",
+   "voice": "நீங்க அழுதது முகுந்துக்காகவா, இந்துவுக்காகவா? கமெண்ட்ல சொல்லுங்க.",
+   "voice_tg": "Neenga azhudhadhu Mukund-ukkaagavaa, Indhu-vukkaagavaa? Comment-la sollunga.",
+   "in": "whip",
+   "echo": "AMARAN · THE HERO DOESN'T TELL HIS STORY",
+   "question": [
+    {
+     "text": "MUKUND OR",
+     "size": 130
+    },
+    {
+     "text": "INDHU?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "நீங்க அழுதது யாருக்காக?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "title",
+   "recap": "TECHNIQUE: POINT-OF-VIEW NARRATION",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Amaran's hero is Major Mukund. But the story is told by Indhu.",
+   "The real Major Mukund Varadarajan married Indhu Rebecca Varghese in 2009 and was killed in Shopian in 2014 (Ashoka Chakra). We all know the ending, so the film moves the suspense to Indhu: not 'will he come back?' but 'how will she bear it?'. That is point-of-view narration. Its director, Rajkumar Periasamy, made O.M, out now.",
+   "Did you cry for Mukund or for Indhu?",
+   "Send this to the friend who cried at Amaran."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "AMARAN · THE HERO DOESN'T TELL HIS STORY",
+  "slot": "21:30",
+  "first_comment": "Which film should we break down next from Rajkumar Periasamy?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely_original": 8,
+  "total_100": 75,
+  "weakest": [
+   "save_value: the end card recaps the technique only; add the 3 truths",
+   "pacing: keep each screen at 8-18 words"
+  ]
+ }
+}

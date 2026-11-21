@@ -1,0 +1,243 @@
+{
+ "id": "2026-11-21-update-om-day1-record",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "om-day-1",
+  "new_event": "Day 1 numbers are in: ₹17.70 Cr net in India, Dhanush's biggest opening",
+  "topic": "O.M opens at ₹17.70 Cr net on day 1, Dhanush's biggest opening in India",
+  "facts": [
+   "₹17.70 Cr India net on day 1; ₹20.55 Cr India gross; ₹31.55 Cr worldwide gross (Sacnilk, 21 Nov 2026)",
+   "Tamil ₹13.35 Cr, Telugu ₹4.00 Cr of the net (Sacnilk)",
+   "Dhanush's earlier best India opening: Tere Ishk Mein, ₹15.81 Cr net (Koimoi)",
+   "Andhravilas also calls it Dhanush's highest opening (₹17.50 Cr net)"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/quicknews/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_2",
+   "https://www.koimoi.com/box-office/om-box-office-where-will-it-rank-among-dhanushs-top-openers-in-india/",
+   "https://andhravilas.net/dhanushs-om-roars-at-box-office-highest-opening-yet-but-trails-scene/"
+  ]
+ },
+ "worth_it": {
+  "fan_opens_because": "Yesterday's biggest release: did it open big, and is it Dhanush's best start ever?",
+  "spoilers": "None. Numbers and names only.",
+  "voice": "Off: box office is music-only (series rule)."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  },
+  "o1": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  },
+  "o3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "o2": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   },
+   "crop": [
+    0.0,
+    0.1,
+    1.0,
+    0.8
+   ]
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "o2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "DHANUSH'S BIGGEST OPENING",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DAY 1 · INDIA NET",
+   "value": 17.7,
+   "unit": " CR",
+   "land": 1.5,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "decimals": 2
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "o1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DHANUSH'S BEST DAY 1",
+   "items": [
+    {
+     "label": "TERE ISHK MEIN",
+     "value": 15.81,
+     "color": "#78E0D0",
+     "decimals": 2
+    },
+    {
+     "label": "O.M",
+     "value": 17.7,
+     "color": "#F8C028",
+     "decimals": 2
+    }
+   ],
+   "note": "India net, ₹ Cr · Sacnilk, Koimoi",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "o3",
+   "dur": 3.8,
+   "echo": "O.M · ₹17.70 CR ON DAY 1",
+   "question": [
+    {
+     "text": "WATCHED",
+     "size": 130
+    },
+    {
+     "text": "IT YET?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Dhanush, Mammootty, Sai Pallavi",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M opens at ₹17.70 Cr net in India on day 1 (reported).",
+   "That beats Tere Ishk Mein (₹15.81 Cr) as Dhanush's biggest opening. Tamil ₹13.35 Cr, Telugu ₹4 Cr; ₹31.55 Cr worldwide gross. Sources: Sacnilk, Koimoi.",
+   "Watched it on Friday? Tell us in one word.",
+   "Send this to your FDFS gang.",
+   "ஓ.எம் — முதல் நாள் ₹17.70 கோடி."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "O.M · ₹17.70 CR ON DAY 1",
+  "slot": "08:30",
+  "first_comment": "One word for O.M?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 9,
+  "total_100": 68,
+  "weakest": [
+   "save_value: numbers are watched, not saved",
+   "loop: the end question points back to the opening number"
+  ]
+ },
+ "slot_reason": "Most time-critical: yesterday's release, day-1 numbers are freshest this morning."
+}

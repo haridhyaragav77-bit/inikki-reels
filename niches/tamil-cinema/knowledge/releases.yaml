@@ -6,3 +6,5 @@ releases:
   - { film: "O.M: Operation Mole", date: "2026-11-20", where: theatres, note: "Mammootty" }
   - { film: "Appa Kutty", date: "2026-11-20", where: theatres, note: "Vijay Antony" }
   - { film: "Sathyavan Savithiri", date: "2026-11-20", where: theatres }
+  - { film: "Minnum Oar Iravu", date: "2026-11-27", where: theatres, note: "District + 91mobiles listings" }
+  - { film: "Cosmic Samson", date: "2026-11-27", where: theatres, note: "Tamil version; District + 91mobiles listings" }

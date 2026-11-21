@@ -1,0 +1,257 @@
+{
+ "id": "2026-11-21-update-weekend-ott-drops",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "weekend-ott-drops",
+  "new_event": "New Tamil streaming this weekend: Anbil Avan, Haiku (out 20 Nov), Mr & Mrs Office (18 Nov)",
+  "topic": "Rainy weekend at home: 3 new Tamil titles on OTT",
+  "facts": [
+   "Haiku (Aegan, Sridevi Apalla, Femina George): Netflix, from 20 Nov (91mobiles; Netflix India trailer)",
+   "Anbil Avan (Ashok Selvan, Preity Mukhundhan): out 20 Nov; listings differ on the platform (SonyLIV per Cinebuds, Netflix per another), so the reel does not name one",
+   "Mr & Mrs Office (Pradeep Antony, Smeha Manimegalai): JioHotstar Tamil series, streaming from 18 Nov (DT Next; Sacnilk)"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/news/new-ott-releases-this-week-november-16-to-22-2026-the-vvaan-dhindora-2-cult-and-more-movies-web-series-to-watch",
+   "https://www.91mobiles.com/entertainment/ott-release-this-week",
+   "https://www.dtnext.in/entertainment/cinema/pradeep-antony-smeha-manimegalai-play-a-married-couple-hiding-their-relationship-in-mr-mrs-office",
+   "https://cinebuds.com/tamil-movies-digital-release-dates/"
+  ],
+  "note": "Outside the top films: smaller titles and an OTT drop, as the brief asks."
+ },
+ "worth_it": {
+  "fan_opens_because": "Saturday, Chennai rain: what new Tamil thing can I stream tonight?",
+  "spoilers": "None. Titles, cast and platforms only.",
+  "voice": "Off: a list of titles reads best music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/anbil-avan/dttG5wtkgCw_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "dttG5wtkgCw",
+    "frame": "maxresdefault"
+   }
+  },
+  "h1": {
+   "src": "engine/.cache/stills/haiku/gjyunMGD5rA_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "gjyunMGD5rA",
+    "frame": "maxresdefault"
+   }
+  },
+  "m1": {
+   "src": "engine/.cache/stills/mr-mrs-office/1YhG73huKT4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "1YhG73huKT4",
+    "frame": "maxresdefault"
+   }
+  },
+  "a2": {
+   "src": "engine/.cache/stills/anbil-avan/dttG5wtkgCw_maxres2.jpg",
+   "fetch": {
+    "youtube": "dttG5wtkgCw",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "RAINY WEEKEND",
+     "size": 200,
+     "y": 1310
+    },
+    {
+     "text": "3 NEW ON OTT",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "h1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "HAIKU · NETFLIX",
+   "value": 20,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "AEGAN",
+    "FEMINA GEORGE"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "m1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "MR & MRS OFFICE · JIOHOTSTAR",
+   "value": 18,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "PRADEEP ANTONY",
+    "SMEHA MANIMEGALAI"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "a2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "ANBIL AVAN · STREAMING",
+   "value": 20,
+   "unit": " NOV",
+   "land": 1.5,
+   "tag": [
+    "ASHOK SELVAN",
+    "PREITY MUKHUNDHAN"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "3 NEW TAMIL TITLES ON OTT",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 130
+    },
+    {
+     "text": "TONIGHT?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Saturday + rain = stay in",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Rainy Saturday? 3 new Tamil titles to stream.",
+   "Haiku on Netflix (from 20 Nov). Mr & Mrs Office on JioHotstar (from 18 Nov). Anbil Avan with Ashok Selvan, out 20 Nov (check your app; listings differ). Sources: Sacnilk, 91mobiles, DT Next.",
+   "Which one are you starting tonight?",
+   "Send this to the friend who asks 'enna paakalam?'"
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "RAINY WEEKEND · 3 NEW TAMIL ON OTT",
+  "slot": "11:00",
+  "first_comment": "Which one first?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 7,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 8,
+  "total_100": 70,
+  "weakest": [
+   "loop: end question does not lead back to the title",
+   "hook: name a film on the title, not only the count"
+  ]
+ },
+ "slot_reason": "Weekend binge news: useful all day, best before people plan their Saturday."
+}

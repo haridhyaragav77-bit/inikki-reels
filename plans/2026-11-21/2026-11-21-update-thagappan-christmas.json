@@ -1,0 +1,220 @@
+{
+ "id": "2026-11-21-update-thagappan-christmas",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 21 NOV 2026",
+ "lead": {
+  "film": "thagappan",
+  "new_event": "Jiiva's Thagappan dated for Christmas, 24 Dec; ZEE5 holds OTT rights",
+  "topic": "Jiiva's Thagappan comes for Christmas: 24 December",
+  "facts": [
+   "Thagappan (Jiiva, Rajisha Vijayan; dir. Ra. Venkat) releases in theatres on 24 Dec 2026 (DT Next; IANS)",
+   "Set in Madurai; Think Music has the music, ZEE Tamil satellite, ZEE5 OTT rights (DT Next)",
+   "Song 'Sokka Vachaale' is out on Think Music India"
+  ],
+  "sources": [
+   "https://www.dtnext.in/entertainment/cinema/jeevas-thagappan-set-for-december-24-release",
+   "https://ianslive.in/jiivas-thagappan-to-hit-screens-on-december-24--20261023190304"
+  ]
+ },
+ "worth_it": {
+  "fan_opens_because": "A Jiiva family film for Christmas: when, and who is in it?",
+  "spoilers": "None.",
+  "voice": "Off: music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "true_love",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "warm family theme"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/thagappan/0l9VTSNSqV0_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "0l9VTSNSqV0",
+    "frame": "maxresdefault"
+   }
+  },
+  "t2": {
+   "src": "engine/.cache/stills/thagappan/0l9VTSNSqV0_maxres2.jpg",
+   "fetch": {
+    "youtube": "0l9VTSNSqV0",
+    "frame": "maxres2"
+   }
+  },
+  "t3": {
+   "src": "engine/.cache/stills/thagappan/0l9VTSNSqV0_maxres3.jpg",
+   "fetch": {
+    "youtube": "0l9VTSNSqV0",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "THAGAPPAN",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "CHRISTMAS RELEASE",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "t2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "IN THEATRES",
+   "value": 24,
+   "unit": " DEC",
+   "land": 1.5,
+   "tag": [
+    "JIIVA",
+    "RAJISHA VIJAYAN"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "t3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DAYS TO GO",
+   "value": 33,
+   "unit": " DAYS",
+   "land": 1.5,
+   "tag": [
+    "DIR. RA. VENKAT",
+    "SET IN MADURAI"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "THAGAPPAN · 24 DEC",
+   "question": [
+    {
+     "text": "CHRISTMAS",
+     "size": 130
+    },
+    {
+     "text": "PLAN?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Jiiva's family film, set in Madurai",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Jiiva's Thagappan comes for Christmas: 24 December.",
+   "With Rajisha Vijayan, directed by Ra. Venkat, set in Madurai. ZEE5 has the OTT rights. Sources: DT Next, IANS.",
+   "Is this on your Christmas list?",
+   "Send this to the Jiiva fan."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "THAGAPPAN · 24 DEC",
+  "slot": "reserve",
+  "first_comment": "Jiiva's best film so far?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 62,
+  "weakest": [
+   "timely: the date was announced weeks ago",
+   "hook: add a still of Jiiva's face"
+  ]
+ },
+ "reserve": true
+}
