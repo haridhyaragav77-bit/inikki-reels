@@ -1,33 +1,31 @@
-# Weekly report · Sun 15 Nov 2026
+# Weekly report · Sun 22 Nov 2026
 
-**1. Pace:** no follower count in this week's numbers yet, so pace against the target can't be shown. Views: middle reel 599 over 8 measured reels.
+**1. Pace:** still no follower count in the numbers, so pace against the target can't be shown. Views: middle reel 203 over 47 reels this week (last week 599 over 8, a much smaller sample).
 
 **2. Three wins**
-- Suriya ₹200 cr update: 1704 views, 2.8× the middle reel. A big number about a star in the news.
-- Kaithi breakdown: 1237 views, 2× the middle reel. A cult film and one clear technique.
-- OM trailer update: 1101 views, 1.8× the middle reel. A big-star trailer on the day it came out.
+- Suriya ₹643 cr year: 1837 views, 9× the middle reel. Big money about a star in the news, again.
+- Thani Oruvan villain breakdown: 1572 views, 7.7×. A cult film and one clear point.
+- O.M day-1 record: 1531 views, 7.5×. The week's biggest film, on the morning after.
 
 **Three misses**
-- Courtroom dramas pick: 3 views. Instagram barely showed it; too early to say why.
-- Sathyavan Savithiri trailer: 119 views. A small film few people are looking for.
-- Jail Mates teaser: 457 views, only 14% watched (red). Small film, and only an unofficial upload.
+- O.M on Netflix: 82 views. An OTT date with no hook beyond the date.
+- Weekend OTT drops: 176 views, 81% skipped (red). A list with no star in the first frame.
+- Amaran told through Indhu: 259 views and 2/5 from you three times. Already fixed (#18, #19).
 
-**3. Health** (first week, so no arrows yet)
-Skip 71.9% green · Watch-through 20.2% green · Likes 0.8% green · Comments 0.2% green · Shares 0.0% grey · Saves 0.0% grey · Reposts 0.0% grey · Follows grey (no data)
-Shares and saves are near zero on every reel: the biggest gap.
+**3. Health** (this week vs the last 14 days)
+Skip 65.7% ↓ green · Watch-through 23.2% ↑ green · Likes 1.4% → green · Comments 0.6% ↑ green · Shares 0.0% grey · Saves 0.0% grey · Reposts 0.0% grey · Follows grey (no data)
+Shares and saves are still near zero: the biggest gap.
 
-**4. What I changed:** nothing. 8 reels over 2 days is too few to judge (rule: 10 reels over 14 days).
-Your own rules stay in force: #4 to #8, #15. Your 5 standing rules from 13 Nov become fixed rules on 20 Nov if they still stand.
+**4. What I changed:** no changes from the numbers: 55 reels over 9 days is still too few (rule: 14 days).
+Your 5 standing rules from 13 Nov are now fixed rules: #20 hashtags on every post · #21 checked pictures only in breaking news · #22 music under a clear voice in breakdowns · #23 longer recommendations with a plot beat · #24 reviews say "review" on screen 1 with the star's face. Undo: remove the standing rule.
+Your own rules stay in force: #4 to #8, #15, #18, #19, #20 to #24. Your 6 rules from 20 Nov become fixed on 27 Nov if they still stand.
 
-**5. Testing next week:** #15 (whole faces, titles that say the news) on the next 5 updates · #11 (moving poster wall) on Watch This Next · #12 (a new design for each breakdown) · #10 (ElevenLabs voice).
+**5. Testing next week:** #18 (surprising fact on screen 1, at least 55 s) on the next 2 breakdowns to reach 5 · #16 and #17 (one detail or true story, fresh graphics) · #15 (whole faces) on updates.
+Studied channels this week: "one hidden detail in a cult film" (405K views for Expert FX) and a director's own set story (15× normal for World Filmology) win most. Breakdowns will try both.
 
-**6. Lab:** 3 pitches, ranked
-1. **Box Office Ladder:** a film's money climbs a ladder. Money reels are our best (1704 views). 0 new pictures.
-2. **Director's Signature:** 3 shots that tell you whose film it is. Breakdowns are our strongest series. 0 pictures.
-3. **Guess the Dialogue:** a famous line with blanks; name the film. Guess reels reached 104K. 1 picture.
+**6. Lab:** not a Lab week. Box Office Ladder from last week is still the top pitch.
 
-**7. Money and limits:** pictures ₹26 of ₹500 (5%) · runner minutes 879 of 2000 (44%, at mid-month: on track) · storage 4.57 of 8 GB (57%).
+**7. Money and limits:** pictures ₹26 of ₹500 (5%) · runner minutes 1896 used (no limit, public repository) · storage 6.72 of 15 GB (45%).
 
-**8. One decision:** Start the Box Office Ladder pilot (3 trial reels, shown to non-followers first)?
-[Run it] · [Tweak] · [Veto] · [More like this]
-With no answer in 48 hours, it starts on its own (autopilot).
+**8. One decision:** Reels at 12:00 get 1227 views in the middle, at 11:00 only 204. Move the 11:00 update to 12:00?
+[Move it] · [Keep 11:00] · [Try for a week]

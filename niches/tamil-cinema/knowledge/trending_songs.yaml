@@ -2,4 +2,12 @@
 # (py clip_helper.py) downloads each song's audio, the music job tags it and lists it in data/music/trending.json.
 # Plans use them on music-only reels (updates, Watch This Next, reviews, breaking), from the song's hook. Organic posts only.
 # Format: - {song: "...", film: "...", why: "...", search: "words that find its official audio on YouTube"}
-songs: []
+# Week of 22 Nov 2026: from viral Tamil reels playlists (Spotify, Filtr India); none dated this month, so check the Reels audio count before use.
+songs:
+  - {song: "Veezha Veera", film: "O.M: Operation Mole", why: "new release this week; on several viral Tamil reels playlists", search: "Veezha Veera O.M Operation Mole official lyric video"}
+  - {song: "God Mode", film: "Karuppu", why: "2026 hit on Filtr's Instagram viral Tamil list", search: "God Mode Karuppu Suriya official video song"}
+  - {song: "Pattampoochi", film: "Vishwanath & Sons", why: "2026 track on Filtr's Instagram viral Tamil list", search: "Pattampoochi Vishwanath and Sons official song"}
+  - {song: "Mutta Kalakki", film: "Youth", why: "on two viral Tamil reels playlists", search: "Mutta Kalakki Youth official video song"}
+  - {song: "Raga of Revenge", film: "DC", why: "on viral Tamil reels playlists; strong for tense updates", search: "Raga of Revenge DC official audio"}
+  - {song: "Oorum Blood", film: "Dude", why: "still used on Tamil reels from 2025", search: "Oorum Blood Dude official video song"}
+  - {song: "Monica", film: "Coolie", why: "still used on Tamil reels from 2025", search: "Monica Coolie official video song Anirudh"}

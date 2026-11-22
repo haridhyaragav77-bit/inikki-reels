@@ -61,6 +61,13 @@ Every reel in every series is made the same way: worth it → script first → c
 ## Endings that invite sends
 - "Send this to your cinema friend." · "Know someone starting over?" · "Which scene would you try on mute?" · "Got it at clue 1 or 2? Comment."
 
+## Harish's hard rules (standing rules held a week; set by Harish, never undone by numbers, AGENT.md 8.4)
+- Every series (#20): post captions carry exactly these hashtags: #fyp #trending #viral #explorepage #reels.
+- breaking-news (#21): every picture must pass an image check before use: it shows the named film or person, comes from an official or trusted source, and is never a random search hit. No checked picture → lead with the biggest name on a graphic instead.
+- film-breakdown (#22): music sits clearly under the voice (quieter, never drowning it) but stays present; the voice is natural, paced to be understood, loud and clear. Music and voice must play well together.
+- movie-recommendations (#23): reels run a little longer, paced to how fast a person reads; each film gets a motion-graphics plot beat (no spoilers) to get people excited, and the length grows to fit.
+- movie-review (#24): say plainly on screen 1 that it is a movie review, so nobody skips thinking it is something else; the first frame shows a popular element (the lead actor's face or the poster), richer visual hook and design.
+
 ## Avoid
 - film-breakdown · Avoid: "whose eyes tell the story" (point-of-view) angles with no fact the viewer can check on screen, e.g. Amaran told through Indhu (Harish, 21 Nov: "Not worth it", "Content doesn't make sense"). Change #19.
 - Silent openings. Music that doesn't match the moment. Wordy graphics and full-sentence captions. Small cryptic text instead of a title. Spoilers in updates. Scripts built around available footage. Two ideas in one breakdown. Long setups before the hook. Text near the top edge (the grid crops it). Memes on serious news. Recommending films everyone has already seen.
