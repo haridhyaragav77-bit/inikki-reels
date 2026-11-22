@@ -1,5 +1,8 @@
 # Build log (plain words, newest first)
 
+## 22 Nov 2026 — Laptop run as a double-click
+`tools/iNiKKi Laptop Run.bat`: saved once in a Desktop folder iNiKKi; it fetches the newest `clip_helper.py` and runs it. Manual work tab: "How to do the laptop run" (set up once, every 15-20 days, stuck?); the laptop card says "double-click" instead of a command.
+
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
 ## 22 Nov 2026 — Priority 2: Quick and Trusted Reviews with stars out of 5, a complete release calendar
