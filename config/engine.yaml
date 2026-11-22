@@ -1,19 +1,19 @@
 # Engine settings (code reads these; nothing brand- or niche-specific lives here)
 drive:
   folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests, study-audio, study, from-laptop]
-  cap_gb: 30                 # the agent's whole storage (Harish, 22 Nov: the new Google account's 30 GB)
+  cap_gb: 15                 # the agent's whole storage (Harish, 22 Nov: the Google account has 15 GB)
   music_folder_aliases: ["music", "background music", "background music (1)"]
   never_auto_delete: [reference-reels, meme-bank, music, control]
   retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
-    finished_days: 60          # Harish, 22 Nov: the Drive is 30 GB now (AGENT.md 14.4)
-    finished_days_tight: 30
+    finished_days: 30          # Harish, 22 Nov: the Drive is 15 GB (AGENT.md 14.4)
+    finished_days_tight: 14
     rehearsal_days: 14
     work_days: 3
     status_days: 30
-    clip_library_gb: 12
-    image_library_gb: 4
-    warn_gb: 25
-    tight_gb: 28
+    clip_library_gb: 5
+    image_library_gb: 2
+    warn_gb: 11
+    tight_gb: 13
     keep_top_share: 0.10
     study_text_days: 90      # full text of studied shorts (Drive study/); the cards in the repository stay
   dashboard_sheet_name: "iNiKKi Dashboard"

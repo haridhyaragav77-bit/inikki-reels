@@ -145,7 +145,7 @@ month's trending songs.
 
 ### Switches and usage (page → Setup, page → Usage)
 - **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
-- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage (of 30 GB since 22 Nov: finished reels are kept 60 days), and the two times of day to keep Claude free for the runs.
+- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage (of 15 GB: finished reels are kept 30 days), and the two times of day to keep Claude free for the runs.
 - **Runner minutes, since 15 Nov:** a normal day (5 reels plus news and reviews) should use about 60 of the 2,000 monthly minutes, with no saver. Both timers still post (the Claude clock on time, GitHub's own timer as the late backstop), so a day when Claude has no usage left still posts. Building and testing in the Workshop is the part to keep small: about 200 minutes a month.
 - **If the runner minutes run out:** GitHub stops every job until the 1st. Nothing moves to Claude. The Engine slows down by itself before that (fewer extras, then 3 new reels a day) so posting does not stop. Saver mode and "one fewer reel a day" are your two levers.
 
