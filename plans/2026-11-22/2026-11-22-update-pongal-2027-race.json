@@ -1,0 +1,259 @@
+{
+ "id": "2026-11-22-update-pongal-2027-race",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 22 NOV 2026",
+ "lead": {
+  "film": "pongal-2027",
+  "new_event": "Pongal 2027 line-up so far: Vettuvam first to lock, Pocket Novel and Demonte Colony 3 in; Rajinikanth's Dharman not in the race",
+  "topic": "Pongal 2027: who is in so far",
+  "facts": [
+   "Pa. Ranjith's Vettuvam (Arya) is the first film to lock Pongal 2027, in five languages (Adgully; M9)",
+   "Thiagarajan Kumararaja's Pocket Novel (Vijay Sethupathi, Malavika Mohanan) locks Pongal 2027 (Outlook India)",
+   "Demonte Colony 3 (Arulnithi) announced for Pongal (123Telugu; M9)",
+   "Dharman (Rajinikanth, dir. Ashwath Marimuthu) is out of Pongal; the director targets April 2027 (Only Kollywood; M9)"
+  ],
+  "sources": [
+   "https://www.m9.news/tamil-movie-news/pongal-2027-kollywood-movie-release-race/",
+   "https://www.adgully.com/post/23123/pa-ranjiths-vettuvam-starring-arya-set-for-worldwide-theatrical-release-during-pongal-2027",
+   "https://www.outlookindia.com/art-entertainment/south-cinema/pocket-novel-release-date-vijay-sethupathi-malavika-mohanan-film-with-thiagarajan-kumararaja-pongal-2027-release",
+   "https://www.123telugu.com/mnews/tamil-horror-film-confirms-pongal-2027-release-hk.html"
+  ],
+  "note": "Industry story across several films; no film in the last 3 days' list."
+ },
+ "worth_it": {
+  "fan_opens_because": "Pongal is the biggest release week; fans want to know the clash.",
+  "spoilers": "None. Titles and dates only.",
+  "voice": "Off: dates news, music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/vettuvam/2RybY9-D9yg_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "2RybY9-D9yg",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.1,
+    0.0,
+    0.8,
+    1.0
+   ]
+  },
+  "pn": {
+   "src": "engine/.cache/stills/pocket-novel/jO-hDaba8s4_maxres3.jpg",
+   "fetch": {
+    "youtube": "jO-hDaba8s4",
+    "frame": "maxres3"
+   }
+  },
+  "pn2": {
+   "src": "engine/.cache/stills/pocket-novel/jO-hDaba8s4_maxres1.jpg",
+   "fetch": {
+    "youtube": "jO-hDaba8s4",
+    "frame": "maxres1"
+   }
+  },
+  "dh": {
+   "src": "engine/.cache/stills/dharman/tpEe10R1f0Y_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "tpEe10R1f0Y",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.3,
+    0.0,
+    0.7,
+    1.0
+   ]
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.45,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "PONGAL 2027",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "WHO'S IN SO FAR",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "ladder",
+   "in": "whip",
+   "image": "pn",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 5.0,
+   "heading": "LOCKED FOR PONGAL",
+   "max": 3,
+   "step": 1,
+   "stops": [
+    {
+     "value": 1,
+     "at": 1.0,
+     "label": "VETTUVAM"
+    },
+    {
+     "value": 2,
+     "at": 2.0,
+     "label": "POCKET NOVEL"
+    },
+    {
+     "value": 3,
+     "at": 3.0,
+     "label": "DEMONTE COLONY 3"
+    }
+   ],
+   "footer": "REPORTED · M9 · OUTLOOK",
+   "sfx": [
+    {
+     "at": 1.0,
+     "type": "tick"
+    },
+    {
+     "at": 2.0,
+     "type": "tick"
+    },
+    {
+     "at": 3.0,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "dh",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "DHARMAN",
+     "size": 200,
+     "y": 1310
+    },
+    {
+     "text": "NOT FOR PONGAL",
+     "size": 100,
+     "y": 1460,
+     "color": "#F07850"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "pn2",
+   "dur": 3.8,
+   "echo": "PONGAL 2027 · WHO'S IN SO FAR",
+   "question": [
+    {
+     "text": "FIRST TICKET",
+     "size": 120
+    },
+    {
+     "text": "FOR?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Vettuvam, Pocket Novel or Demonte Colony 3",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Pongal 2027, the race so far (reported).",
+   "Locked: Pa. Ranjith's Vettuvam with Arya (first in, five languages), Thiagarajan Kumararaja's Pocket Novel with Vijay Sethupathi, and Demonte Colony 3. Rajinikanth's Dharman is not in the race: the director is aiming for April. Sources: M9, Adgully, Outlook India.",
+   "Which one gets your first ticket?",
+   "Send this to your FDFS gang."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "PONGAL 2027 · WHO'S IN SO FAR",
+  "slot": "12:30",
+  "first_comment": "Vettuvam, Pocket Novel or Demonte Colony 3?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 70,
+  "weakest": [
+   "loop: end does not return to the title",
+   "timely: no new date today, a round-up"
+  ]
+ },
+ "slot_reason": "A round-up, not same-day news: afternoon, when Sunday viewers scroll after lunch."
+}

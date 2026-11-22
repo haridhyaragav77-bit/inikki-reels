@@ -1,0 +1,235 @@
+{
+ "id": "2026-11-22-update-om-two-days",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 22 NOV 2026",
+ "lead": {
+  "film": "om-day-2",
+  "new_event": "Sacnilk: O.M day 2 (Sat) ₹15.40 Cr net, India net ₹33.50 Cr in 2 days, about ₹60.9 Cr worldwide gross",
+  "topic": "O.M after 2 days: ₹33.5 Cr India net, Saturday close to day 1",
+  "facts": [
+   "Day 2 (Sat 21 Nov) ₹15.40 Cr net; 2-day India net ₹33.50 Cr; worldwide gross about ₹60.90 Cr (Sacnilk)",
+   "Dhanush's best domestic opening; over half the money from outside Tamil Nadu (The Week)",
+   "Sunday advance booking past ₹6.55 Cr gross, 4.13 lakh tickets (Flickonclick)"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/quicknews/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_2",
+   "https://www.theweek.in/news/entertainment/2026/11/21/om-operation-mole-day-2-box-office-collection.html",
+   "https://www.flickonclick.com/om-operation-mole-box-office-collection-day-2/"
+  ],
+  "note": "Real new news after the day 1 reel (21 Nov): the 2-day total. Day 2 numbers differ by source; the reel uses Sacnilk's full-day figures and says 'reported'."
+ },
+ "worth_it": {
+  "fan_opens_because": "Did O.M hold on Saturday after the record opening?",
+  "spoilers": "None. Numbers only.",
+  "voice": "Off: box office is music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.0,
+    0.0,
+    0.7,
+    1.0
+   ]
+  },
+  "s1": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 240,
+     "y": 1310
+    },
+    {
+     "text": "2 DAYS · ₹33.5 CR",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "INDIA NET · 2 DAYS",
+   "value": 33.5,
+   "decimals": 1,
+   "unit": " CR",
+   "land": 1.7,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "DAY BY DAY · INDIA NET",
+   "items": [
+    {
+     "label": "FRIDAY",
+     "value": 18.1,
+     "decimals": 1,
+     "color": "#F8C028"
+    },
+    {
+     "label": "SATURDAY",
+     "value": 15.4,
+     "decimals": 1,
+     "color": "#78E0D0"
+    }
+   ],
+   "note": "Sacnilk · ₹ Cr",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "O.M · 2 DAYS · ₹33.5 CR",
+   "question": [
+    {
+     "text": "SUNDAY",
+     "size": 140
+    },
+    {
+     "text": "PLANS?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Watching O.M this Sunday?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole, ₹33.5 Cr India net in 2 days (reported).",
+   "Friday about ₹18 Cr, Saturday ₹15.4 Cr. Worldwide about ₹61 Cr gross. Source: Sacnilk; The Week calls it Dhanush's best opening in India.",
+   "Rainy Sunday: theatre or home?",
+   "Send this to the Dhanush fan in your group."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "O.M · 2 DAYS · ₹33.5 CR",
+  "slot": "08:30",
+  "first_comment": "Seen O.M yet? One word review."
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 3,
+  "pacing": 8,
+  "loop": 6,
+  "timely_original": 8,
+  "total_100": 68,
+  "weakest": [
+   "save_value: numbers are watched, not saved",
+   "loop: end card does not lead back to the number"
+  ]
+ },
+ "slot_reason": "Fresh box office from last night is the most time-bound news today: first morning slot."
+}

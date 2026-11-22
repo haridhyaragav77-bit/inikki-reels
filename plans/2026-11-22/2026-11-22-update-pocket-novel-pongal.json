@@ -1,0 +1,221 @@
+{
+ "id": "2026-11-22-update-pocket-novel-pongal",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 22 NOV 2026",
+ "lead": {
+  "film": "pocket-novel",
+  "new_event": "Pocket Novel locks Pongal 2027: Kumararaja's first film since Super Deluxe (2019)",
+  "topic": "Pocket Novel: Thiagarajan Kumararaja is back for Pongal 2027",
+  "facts": [
+   "Pocket Novel (Vijay Sethupathi, Malavika Mohanan) locks a Pongal 2027 release (Outlook India; M9)",
+   "Kumararaja's last film was Super Deluxe (2019); shoot wrapped (official TylerDurden and Kinofist video)"
+  ],
+  "sources": [
+   "https://www.outlookindia.com/art-entertainment/south-cinema/pocket-novel-release-date-vijay-sethupathi-malavika-mohanan-film-with-thiagarajan-kumararaja-pongal-2027-release",
+   "https://www.m9.news/tamil-movie-news/pongal-2027-kollywood-movie-release-race/"
+  ],
+  "note": "Reserve: posts only if a reel is held."
+ },
+ "worth_it": {
+  "fan_opens_because": "Super Deluxe fans have waited seven years for Kumararaja's next.",
+  "spoilers": "None.",
+  "voice": "Off: date news."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/pocket-novel/jO-hDaba8s4_maxres3.jpg",
+   "fetch": {
+    "youtube": "jO-hDaba8s4",
+    "frame": "maxres3"
+   }
+  },
+  "crew": {
+   "src": "engine/.cache/stills/pocket-novel/jO-hDaba8s4_maxres1.jpg",
+   "fetch": {
+    "youtube": "jO-hDaba8s4",
+    "frame": "maxres1"
+   }
+  },
+  "set": {
+   "src": "engine/.cache/stills/pocket-novel/jO-hDaba8s4_maxres2.jpg",
+   "fetch": {
+    "youtube": "jO-hDaba8s4",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "POCKET NOVEL",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "PONGAL 2027",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "crew",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "SINCE SUPER DELUXE",
+   "value": 7,
+   "unit": " YEARS",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "KUMARARAJA",
+    "IS BACK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "set",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "VIJAY SETHUPATHI",
+     "size": 130,
+     "y": 1310
+    },
+    {
+     "text": "+ MALAVIKA MOHANAN",
+     "size": 90,
+     "y": 1450,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "set",
+   "dur": 3.8,
+   "echo": "POCKET NOVEL · PONGAL 2027",
+   "question": [
+    {
+     "text": "SUPER DELUXE",
+     "size": 120
+    },
+    {
+     "text": "LEVEL?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Can it match Super Deluxe?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Thiagarajan Kumararaja's Pocket Novel is set for Pongal 2027 (reported).",
+   "Vijay Sethupathi and Malavika Mohanan star. His first film since Super Deluxe (2019).",
+   "Can it match Super Deluxe?",
+   "Send this to the Super Deluxe fan."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "POCKET NOVEL · PONGAL 2027",
+  "slot": "21:30",
+  "first_comment": "Can Pocket Novel match Super Deluxe?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 66,
+  "weakest": [
+   "timely: a Pongal date, not today's news",
+   "save_value: low"
+  ]
+ },
+ "slot_reason": "Reserve: takes the slot of any held update.",
+ "reserve": true
+}

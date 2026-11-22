@@ -1,0 +1,228 @@
+{
+ "id": "2026-11-22-update-dharman-april-2027",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 22 NOV 2026",
+ "lead": {
+  "film": "dharman",
+  "new_event": "Ashwath Marimuthu clears Dharman's plan: not Pongal, aiming for April 2027 (14 April in listings)",
+  "topic": "Rajinikanth's Dharman: April 2027, not Pongal",
+  "facts": [
+   "Director Ashwath Marimuthu says the team never planned Pongal; work is still pending; target April 2027 (Only Kollywood)",
+   "Listings give 14 April 2027, Tamil New Year (Plex; FilmiBeat text); cast reported: Ram Pothineni, Sreeleela (RKFI video)",
+   "Produced by Raaj Kamal Films International (RKFI official videos)"
+  ],
+  "sources": [
+   "https://www.onlykollywood.com/ashwath-marimuthu-clarifies-dharmans-release-plans-targets-april-2027/",
+   "https://www.m9.news/tamil-movie-news/pongal-2027-kollywood-movie-release-race/",
+   "https://www.filmibeat.com/tamil/movies/dharman.html"
+  ],
+  "note": "Draft for an evening slot: the Refresh run rewrites it with the day's fresh news. The date says 'reportedly' until the makers announce it."
+ },
+ "worth_it": {
+  "fan_opens_because": "Rajinikanth's next: when do we see it?",
+  "spoilers": "None. Date and cast only.",
+  "voice": "Off: date news, music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/dharman/tpEe10R1f0Y_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "tpEe10R1f0Y",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.3,
+    0.0,
+    0.7,
+    1.0
+   ]
+  },
+  "sree": {
+   "src": "engine/.cache/stills/dharman/MmMXTYLC1IY_maxres2.jpg",
+   "fetch": {
+    "youtube": "MmMXTYLC1IY",
+    "frame": "maxres2"
+   }
+  },
+  "mk": {
+   "src": "engine/.cache/stills/dharman/tpEe10R1f0Y_maxres1.jpg",
+   "fetch": {
+    "youtube": "tpEe10R1f0Y",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "DHARMAN",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "APRIL 2027",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.3,
+   "dur": 4.2,
+   "kicker": "REPORTED DATE · TAMIL NEW YEAR",
+   "value": 14,
+   "unit": " APRIL",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "REPORTEDLY",
+    "NOT PONGAL"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "sree",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.6,
+   "lines": [
+    {
+     "text": "RAJINIKANTH",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "+ RAM POTHINENI · SREELEELA",
+     "size": 70,
+     "y": 1450,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "mk",
+   "dur": 3.8,
+   "echo": "DHARMAN · APRIL 2027",
+   "question": [
+    {
+     "text": "WORTH",
+     "size": 140
+    },
+    {
+     "text": "THE WAIT?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Dharman in April: yes or no?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Rajinikanth's Dharman is not coming for Pongal (reported).",
+   "Director Ashwath Marimuthu is aiming for April 2027; listings say 14 April, Tamil New Year. Ram Pothineni and Sreeleela also star. Produced by Raaj Kamal Films International.",
+   "Worth the wait?",
+   "Send this to the Thalaivar fan."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "DHARMAN · APRIL 2027",
+  "slot": "18:00",
+  "first_comment": "Tamil New Year with Thalaivar: yes or no?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 65,
+  "weakest": [
+   "timely: the April plan is a few days old",
+   "save_value: a date, not a keeper"
+  ]
+ },
+ "slot_reason": "Draft for the 18:00 update slot; the Refresh run replaces it if fresher news lands."
+}

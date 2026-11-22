@@ -1,0 +1,226 @@
+{
+ "id": "2026-11-22-update-mouna-mozhigal-27nov",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 22 NOV 2026",
+ "lead": {
+  "film": "mouna-mozhigal",
+  "new_event": "Mouna Mozhigal (singer Mano's son Shakir Mano) opens in cinemas Friday 27 Nov",
+  "topic": "Singer Mano's son Shakir Mano leads Mouna Mozhigal, in cinemas this Friday",
+  "facts": [
+   "Romantic comedy directed by A.C. Soundar; Shakir Mano, son of playback singer Mano, with Archana (IANS via Newkerala)",
+   "Trailer launched 13 Nov; worldwide release 27 Nov (IANS; Prokerala)"
+  ],
+  "sources": [
+   "https://www.newkerala.com/news/a/shakir-mano-starrer-mouna-mozhigals-trailer-released-751.htm",
+   "https://www.prokerala.com/news/articles/a1836459.html"
+  ],
+  "note": "The update from outside the top films the brief asks for: a small film opening next Friday."
+ },
+ "worth_it": {
+  "fan_opens_because": "Mano's voice is in every Tamil home; now his son is a hero.",
+  "spoilers": "None. Cast, director and date only.",
+  "voice": "Off: cast and date news, music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "varun_intro",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold mass theme (a hook)"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres3.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.2,
+    0.15,
+    0.6,
+    0.85
+   ]
+  },
+  "s2": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres2.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "MANO'S SON",
+     "size": 190,
+     "y": 1310
+    },
+    {
+     "text": "IS THE HERO",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.35,
+   "dur": 4.2,
+   "kicker": "MOUNA MOZHIGAL · IN CINEMAS",
+   "value": 27,
+   "unit": " NOV",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "THIS FRIDAY",
+    "WORLDWIDE"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.6,
+   "lines": [
+    {
+     "text": "SHAKIR MANO",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "DIR. A.C. SOUNDAR",
+     "size": 90,
+     "y": 1460,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "MANO'S SON IS THE HERO",
+   "question": [
+    {
+     "text": "BEST MANO",
+     "size": 130
+    },
+    {
+     "text": "SONG?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "One song, comment below",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Singer Mano's son Shakir Mano is the hero of Mouna Mozhigal.",
+   "A romantic comedy by A.C. Soundar, with Archana. In cinemas from Friday 27 November.",
+   "Your favourite Mano song?",
+   "Send this to the friend who still sings Mano songs."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "MOUNA MOZHIGAL · 27 NOV",
+  "slot": "11:00",
+  "first_comment": "Your favourite Mano song?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 3,
+  "pacing": 7,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 62,
+  "weakest": [
+   "value: a small film; the hook leans on Mano",
+   "save_value: date only"
+  ]
+ },
+ "slot_reason": "Not urgent but dated news for a small film; late morning, before the bigger afternoon story."
+}
