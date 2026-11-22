@@ -69,18 +69,22 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 
 ## 5. Everyday controls
 
-### Manual work: the jobs only your laptop can do
-YouTube and Instagram do not let the cloud computers download some things, so a few jobs need your laptop: fetching trailers,
-studying competitor shorts, and (once) the Drive sign-in. They are all on the **Manual work** tab. The red number on the tab
-is how many are waiting; Today shows the first one too.
-- Each job says **what** to do, **why**, **when it is due**, and **what suffers if you skip it** (for example: "this reel uses
-  still pictures instead of trailer moments").
-- Press **Copy**, paste the line in the laptop window (open the helper's folder, type `cmd` in the address bar), press Enter,
-  then drag the files it makes into the Drive folder it names.
-- Press **Done**. The Engine picks the files up at once and the job leaves the list.
-- **Warnings:** you get a notice 2 days before a job turns urgent, and another when it is urgent (one day left). Nothing stops
-  while you wait: reels go out with their fallback pictures.
-- In the chat: `manual` shows the list; `done <job id>` marks one finished.
+### Manual work: one laptop run every 15 to 20 days (since 22 Nov)
+YouTube and Instagram do not let the cloud computers download some things, so your laptop does them, all in one go:
+the trailers the coming reels need, older film trailers for the library, the competitor shorts to study, and this
+month's trending songs.
+- **The one command:** open the folder with `clip_helper.py`, type `cmd` in the address bar, type `py clip_helper.py`,
+  press Enter. It reads its own to-do list, updates itself and works by itself (about 30 to 60 minutes). At the end it
+  asks if you heard a trending song: type its name or paste an Instagram link, or just press Enter.
+- **First time only:** save the new `clip_helper.py` over the old one (the Manual work card has the link). After that it
+  updates itself.
+- **Getting the files to Drive:** if Google Drive for desktop is on your laptop, nothing to do: the files go straight into
+  Drive › iNiKKi Reels › from-laptop. Otherwise drag every file in the folder `for_drive` into that Drive folder. The
+  Engine sorts them by itself.
+- Press **Done** on the Manual work tab. The Engine picks everything up at once.
+- **When:** the tab shows one card with the counts and the due day. A notice comes 3 days before it is due, and again on
+  the last day. Nothing stops while you wait: reels use YouTube frames and the library music meanwhile.
+- In the chat: `manual` shows the card; `done <job id>` marks it finished.
 
 | I want to… | On the page | Or say in the chat |
 | --- | --- | --- |
@@ -107,15 +111,28 @@ is how many are waiting; Today shows the first one too.
 | Take something back | **Setup** → Your last actions → **Undo** | `undo` |
 | Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 
+### Breakdowns since 22 Nov: one clear point, a visual made for each film
+- **No fixed structure any more.** A breakdown has a strong hook, then tells one point in the order that works best for
+  that film, then loops back to the start. The agent writes the point first in one sentence; if it does not fit in one
+  sentence, the film is not ready. No "3 secrets" formulas.
+- **Every fact has its source.** Each screen names the link its fact comes from. A line without a source is cut.
+- **A visual made for each film.** The new scene builder draws the film's own idea from the plan: a camera gliding
+  through train coaches for Viduthalai, a race track for F1, an evidence board for Thani Oruvan. Stock graphics such as
+  the speedometer now rest between reels (the speedometer at most once in 10 breakdowns).
+- **Examples the agent copies:** the F1 reel, and a Viduthalai reel made with the scene builder (`plans/reference/`).
+- **Trending songs** go on music-only reels (updates, Watch This Next, reviews, breaking), from the song's catchiest part.
+  Voiced breakdowns keep the library music: if Instagram muted a song there, the voice would go silent too. Reels with a
+  trending song are posted normally and never boosted as ads.
+
 ### Breakdowns, the channel study and YouTube (19 Nov)
 - **Breakdowns lead with a detail now.** The hook is one specific thing in the film you probably missed, or a true story from someone who was there. The technique name comes in the middle as the reason it works. Breakdowns run 60 to 90 seconds; a strong film can get up to 3 parts in a week (PART 1/3 on screen). Hollywood films are welcome.
 - **We study two YouTube channels, for free:** Expert FX and World Filmology (the list is `competitors` in the niche file). Every night the Engine reads their newest shorts and views, and turns the speech of the best ones into text with a free program. The Weekly run writes what works, in our own words, to `lab/study/patterns.md`. We never copy their videos or words.
-- **Your only job there:** YouTube does not let cloud computers download, so when the digest says "shorts to study", paste the line from Drive `requests/study_to_get.md` into the same laptop helper you use for trailers, then drag the `study_for_drive` folder's files into Drive `study-audio/`. You can also drop any short's audio there yourself.
+- **Your only job there:** nothing extra. The shorts to study are part of the laptop run (Manual work, every 15 to 20 days). You can still drop any short's audio into Drive `study-audio/` yourself.
 - **YouTube Shorts:** once you add the YouTube sign-in (AGENT.md 19.2, 5 minutes), every reel that posts on Instagram also goes to your YouTube channel. They upload as **private** until Google approves the free audit form; then change `youtube.privacy` to `public` (or ask the Workshop to).
 
 ### Switches and usage (page → Setup, page → Usage)
 - **Setup → Switches:** main voice (ElevenLabs, with Microsoft always as the backup), which ElevenLabs voice, voice quality and speed, breaking news on/off, calendar awareness, the fast-page watch (Chennaiist), a different design for every breakdown, saver mode, approval, away mode. One tap each; Undo is under "Your last actions".
-- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage, and the two times of day to keep Claude free for the runs.
+- **Usage:** GitHub runner minutes with where the month is heading, ElevenLabs credits and how many reels they still cover, pictures, storage (of 30 GB since 22 Nov: finished reels are kept 60 days), and the two times of day to keep Claude free for the runs.
 - **Runner minutes, since 15 Nov:** a normal day (5 reels plus news and reviews) should use about 60 of the 2,000 monthly minutes, with no saver. Both timers still post (the Claude clock on time, GitHub's own timer as the late backstop), so a day when Claude has no usage left still posts. Building and testing in the Workshop is the part to keep small: about 200 minutes a month.
 - **If the runner minutes run out:** GitHub stops every job until the 1st. Nothing moves to Claude. The Engine slows down by itself before that (fewer extras, then 3 new reels a day) so posting does not stop. Saver mode and "one fewer reel a day" are your two levers.
 

@@ -45,7 +45,7 @@ def template_of(plan):
     return plan.get("template") or series_for(plan).get("template")
 
 
-def render_look(plan_path, plan, to_drive=None, drive=None, snap=None):
+def render_look(plan_path, plan, to_drive=None, drive=None, snap=None, local=False):
     """Make a reel in an approved look: engine/render/render.mjs draws it, mixes the sound and runs the stage-8 checks.
     The result goes to Drive in the same shape as the older looks, so Make, Post and Status need nothing else."""
     rid = plan.get("reel_id") or plan["id"]
@@ -57,6 +57,10 @@ def render_look(plan_path, plan, to_drive=None, drive=None, snap=None):
         if missing:
             notes.append("Tracks not in engine/music_index.json: " + ", ".join(missing))
     cmd = ["node", str(ROOT / "engine" / "render" / "render.mjs"), str(plan_path)]
+    if local:                                               # a test anywhere: stand-in timing and silence, no voice service
+        subprocess.run([sys.executable, str(ROOT / "engine" / "render" / "standin.py"), str(plan_path),
+                        str(ROOT / "engine" / ".work" / rid)], cwd=str(ROOT), check=True)
+        cmd.append("--skip-audio")
     if snap is not None:
         cmd += ["--stills", snap or "0.5,4,8"]
     subprocess.run(cmd, cwd=str(ROOT), check=True)
@@ -359,7 +363,7 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
     with open(plan_path, encoding="utf-8") as f:
         plan = json.load(f)
     if template_of(plan) in LOOKS:
-        return render_look(plan_path, plan, to_drive=to_drive, drive=None if local else drive, snap=snap)
+        return render_look(plan_path, plan, to_drive=to_drive, drive=None if local else drive, snap=snap, local=local)
     reel_id = plan["reel_id"]
     outdir = OUT / "reels" / reel_id
     work = OUT / "work" / reel_id

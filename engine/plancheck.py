@@ -11,7 +11,7 @@ import sys
 
 import yaml
 
-from .settings import ROOT, load_yaml, niche_dir
+from .settings import ENGINE, ROOT, load_yaml, niche_dir
 
 TAMIL = re.compile(r"[஀-௿]")
 LATIN = re.compile(r"[A-Za-z]")
@@ -31,7 +31,7 @@ def _words(t):
 # ---------------------------------------------------------------- the approved looks (AGENT.md 6.6)
 LOOK_KINDS = {
     "stage": {"title", "pins", "technique", "loop", "cards", "moral", "standoff", "timeline", "meter", "versus", "web",
-              "detail", "chain", "quote", "source", "board", "climb", "track", "layers", "end"},
+              "detail", "chain", "quote", "source", "board", "climb", "track", "layers", "scene", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
     "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
@@ -42,6 +42,18 @@ SPEAKS = {"stage"}                            # looks that carry a voice: TURN S
 TRANSITIONS = {"whip", "push", "zoom", "flash", "glitch", "wipe", "cut"}
 SOUNDS = {"whoosh", "impact", "stamp", "tick", "pop", "glitch", "riser"}
 DATED_ID = re.compile(r"^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")
+# the scene builder (AGENT.md 5.8, templates/stage/template.js `scene`): what a plan may name. The selftest keeps the icon list
+# equal to the template's drawings.
+SCENE_ICONS = {"camera", "film", "clapper", "mic", "spotlight", "screen", "person", "runner", "crowd", "car", "racecar", "bike", "train",
+               "coach", "plane", "boat", "bridge", "building", "house", "tree", "mountain", "sun", "moon", "star", "cloud", "rain", "fire",
+               "bomb", "blast", "gun", "knife", "phone", "clock", "hourglass", "heart", "eye", "crown", "key", "lock", "door", "book",
+               "letter", "note", "trophy", "flag", "skull", "mask", "throne", "ball", "ticket", "question", "exclaim", "check", "cross",
+               "arrow", "target", "pin", "dot"}
+SCENE_ACTS = {"fall", "shake", "blast", "light", "spin", "grow", "fade", "pulse", "swap"}
+SCENE_GROUNDS = {"floor", "road", "rail", "water", "city", "sky", "map", "grid", "none"}
+SCENE_ENTER = {"pop", "drop", "slide", "rise", "fade"}
+SCENE_COLORS = {"accent", "second", "white", "red"}
+SCENE_LINKS = {"line", "string", "beam", "arrow"}
 
 
 def mirror():
@@ -74,7 +86,16 @@ def _label_words(t):
 
 def _music_keys():
     with open(ROOT / "engine" / "music_index.json", encoding="utf-8") as f:
-        return set(json.load(f)["tracks"])
+        keys = set(json.load(f)["tracks"])
+    return keys | _trending_keys()
+
+
+def _trending_keys():
+    """This month's trending songs from the laptop run (data/music/trending.json, AGENT.md 5.4)."""
+    try:
+        return {t["key"] for t in json.loads((ROOT / "data" / "music" / "trending.json").read_text(encoding="utf-8")).get("tracks", [])}
+    except (OSError, ValueError, KeyError):
+        return set()
 
 
 def _recommended_before(reel_id, also=None):
@@ -304,6 +325,144 @@ def check_new_graphics(plan, screens):
                         and x["from"] < len(L.get("beats") or []) and x["to"] < len(R.get("beats") or [])):
                     E.append(f"Screen {n} (source): each link is {{from: left beat number, to: right beat number, cue}}, counted from 0 (beats: {nb}).")
                     break
+        elif k == "scene":
+            E += check_scene(s, n)
+    return E
+
+
+def check_scene(s, n):
+    """The scene builder (AGENT.md 5.8): props that exist, inside the box, acting on words the voice says."""
+    E, voice = [], str(s.get("voice") or "")
+    inbox = lambda v: isinstance(v, (int, float)) and -0.05 <= v <= 1.05
+    props = s.get("props") or []
+    if not 1 <= len(props) <= 8:
+        E.append(f"Screen {n} (scene): 1 to 8 'props', each {{icon, x, y}} (templates/README.md).")
+    if s.get("ground") is not None and s["ground"] not in SCENE_GROUNDS:
+        E.append(f"Screen {n} (scene): ground '{s['ground']}' does not exist. Use one of: {', '.join(sorted(SCENE_GROUNDS))}.")
+    ids = set()
+    for k, p in enumerate(props, 1):
+        if not isinstance(p, dict):
+            E.append(f"Screen {n} (scene): prop {k} is not a {{icon, x, y}} object.")
+            continue
+        if p.get("id"):
+            ids.add(p["id"])
+        if p.get("icon") not in SCENE_ICONS:
+            E.append(f"Screen {n} (scene): prop {k} icon '{p.get('icon')}' is not drawn yet. Use one of: {', '.join(sorted(SCENE_ICONS))}.")
+        if not (inbox(p.get("x", .5)) and inbox(p.get("y", .5))):
+            E.append(f"Screen {n} (scene): prop {k} 'x' and 'y' are places in the box, from 0 to 1.")
+        if p.get("size") is not None and not (isinstance(p["size"], (int, float)) and 0.3 <= p["size"] <= 2.5):
+            E.append(f"Screen {n} (scene): prop {k} 'size' runs from 0.3 to 2.5 (1 is a 160 px icon).")
+        if p.get("count") is not None and not (isinstance(p["count"], int) and 1 <= p["count"] <= 8):
+            E.append(f"Screen {n} (scene): prop {k} 'count' is 1 to 8 copies in a row.")
+        if p.get("enter") is not None and p["enter"] not in SCENE_ENTER:
+            E.append(f"Screen {n} (scene): prop {k} enters by {', '.join(sorted(SCENE_ENTER))}.")
+        if p.get("color") is not None and p["color"] not in SCENE_COLORS:
+            E.append(f"Screen {n} (scene): prop {k} colour is one of {', '.join(sorted(SCENE_COLORS))} (the reel's design kit sets the shades).")
+        if p.get("label") and _label_words(p["label"]) > 3:
+            E.append(f"Screen {n} (scene): the label '{p['label']}' has more than 3 words (AGENT.md 5.8).")
+        if "path" in p:
+            pa = p["path"]
+            if not (isinstance(pa, list) and 2 <= len(pa) <= 8 and all(isinstance(q, list) and len(q) == 2 and inbox(q[0]) and inbox(q[1]) for q in pa)):
+                E.append(f"Screen {n} (scene): prop {k} 'path' is 2 to 8 points [x, y] in the box, from 0 to 1.")
+        for a in p.get("acts") or []:
+            if not isinstance(a, dict) or a.get("do") not in SCENE_ACTS:
+                E.append(f"Screen {n} (scene): prop {k} acts by {', '.join(sorted(SCENE_ACTS))}, each {{do, cue}}.")
+            elif a["do"] == "swap" and a.get("icon") not in SCENE_ICONS:
+                E.append(f"Screen {n} (scene): prop {k} 'swap' needs the new 'icon', one that is drawn.")
+        for key in ("move_cue", "label_cue"):
+            c = p.get(key)
+            if isinstance(c, dict) and c.get("word") and c["word"] not in voice:
+                E.append(f"Screen {n} (scene): prop {k} waits for the word '{c['word']}', which the voice line does not say.")
+    for l in s.get("links") or []:
+        if not isinstance(l, dict) or l.get("from") not in ids or l.get("to") not in ids:
+            E.append(f"Screen {n} (scene): a link joins two props by their 'id' ({', '.join(sorted(ids)) or 'no ids yet'}).")
+        elif l.get("style") is not None and l["style"] not in SCENE_LINKS:
+            E.append(f"Screen {n} (scene): a link's style is one of {', '.join(sorted(SCENE_LINKS))}.")
+        elif l.get("label") and _label_words(l["label"]) > 3:
+            E.append(f"Screen {n} (scene): the link label '{l['label']}' has more than 3 words.")
+    fo = s.get("focus")
+    if fo is not None and not (isinstance(fo, dict) and (fo.get("on") in ids or (isinstance(fo.get("on"), list) and len(fo["on"]) == 2))
+                               and 1 <= float(fo.get("to", 1.3)) <= 1.8):
+        E.append(f"Screen {n} (scene): 'focus' is {{on: a prop id or [x, y], to: 1.1 to 1.8, cue}}.")
+    c = s.get("counter")
+    if c is not None:
+        if not (isinstance(c, dict) and isinstance(c.get("to"), (int, float))):
+            E.append(f"Screen {n} (scene): 'counter' is {{from, to, unit, cue}} with numbers.")
+        elif "₹" in str(c.get("unit", "")) and not re.search(r"(?i)\b(cr|crore|lakh|l)\b", str(c.get("unit", ""))):
+            E.append(f"Screen {n} (scene): the ₹ sign is only for money in crore or lakh (AGENT.md 5.7).")
+    sc = s.get("slam_cue")
+    if isinstance(sc, dict) and sc.get("word") and sc["word"] not in voice:
+        E.append(f"Screen {n} (scene): the slam waits for the word '{sc['word']}', which the voice line does not say.")
+    return E
+
+
+def check_point(plan, series, screens):
+    """One clear point, facts line by line, no formula phrases (Harish, 22 Nov; AGENT.md 5.7). Replaces the spine for plans
+    from the date in the series card (`one_point.since`), so older plans are not held by a newer rule."""
+    op = series.get("one_point") or {}
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not op or rid[:10] < str(op.get("since", "9999")):
+        return []
+    E, lead = [], plan.get("lead") or {}
+    point = str(lead.get("point") or "").strip()
+    if not point:
+        E.append("Write the reel's one point first, in 'lead.point': one sentence, what the viewer knows after watching (AGENT.md 5.7).")
+    else:
+        if len(point.split()) > int(op.get("point_words", 25)):
+            E.append(f"'lead.point' has {len(point.split())} words; say the point in one sentence of {op.get('point_words', 25)} words or fewer. If it does not fit, the topic is not ready.")
+        if len([x for x in re.split(r"[.!?](?:\s|$)", point) if x.strip()]) > 1:
+            E.append("'lead.point' is more than one sentence. One point, one sentence.")
+    srcs = lead.get("sources") or []
+    if len(srcs) < int(op.get("min_sources", 2)):
+        E.append(f"A breakdown checks its facts in at least {op.get('min_sources', 2)} sources; 'lead.sources' lists {len(srcs)}.")
+    for k, sc in enumerate(screens, 1):
+        if sc.get("kind") == "end":
+            continue
+        v = sc.get("src")
+        ok = v == "analysis" or (isinstance(v, int) and 0 <= v < len(srcs)) or \
+            (isinstance(v, list) and v and all(isinstance(x, int) and 0 <= x < len(srcs) for x in v))
+        if not ok:
+            E.append(f"Screen {k}: name where its fact comes from in 'src' (the number of the link in lead.sources, counted from 0, "
+                     "or \"analysis\" for our own reasoning that adds no new fact). A claim without a source is cut.")
+    text = json.dumps(screens, ensure_ascii=False).lower()
+    for ph in series.get("avoid_phrases") or []:
+        if str(ph).lower() in text:
+            E.append(f"'{ph}' is a formula phrase (series card avoid_phrases). Tell this film's point in its own words (AGENT.md 5.7).")
+    hero = series.get("hero_kinds") or []
+    if hero and not any(sc.get("kind") in hero for sc in screens):
+        E.append(f"Every breakdown has one hero visual drawn for its film: a 'scene' (the scene builder), or {', '.join(h for h in hero if h != 'scene')} "
+                 "when one shows the thing itself (AGENT.md 5.8).")
+    return E
+
+
+def cooling(series, rid, tpl="stage"):
+    """Stock graphics still cooling down (series card graphics_cooldown, AGENT.md 5.8): {kind: the plan that used it}."""
+    cd = series.get("graphics_cooldown") or {}
+    if not cd:
+        return {}
+    last = recent_plans(tpl, rid, max(int(v) for v in cd.values()))
+    out = {}
+    for kind, n in cd.items():
+        for d in last[:int(n)]:
+            if kind in [x.get("kind") for x in d.get("screens") or []]:
+                out[kind] = d.get("id") or d.get("reel_id")
+                break
+    return out
+
+
+def check_cooldown(plan, series, screens):
+    op = series.get("one_point") or {}
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not op or rid[:10] < str(op.get("since", "9999")) or not DATED_ID.match(rid):
+        return []
+    if not ((mirror().get("settings") or {}).get("unique_designs") or {}).get("enabled", True):
+        return []
+    used, E = cooling(series, rid, plan.get("template") or series.get("template") or "stage"), []
+    cd = series.get("graphics_cooldown") or {}
+    for kind in dict.fromkeys(sc.get("kind") for sc in screens):
+        if kind in used:
+            E.append(f"The '{kind}' graphic is cooling down: {used[kind]} used it, and it may come back after {cd[kind]} other breakdown"
+                     f"{'s' if int(cd[kind]) != 1 else ''} (AGENT.md 5.8). Show this idea with a scene drawn for this film instead.")
     return E
 
 
@@ -374,8 +533,11 @@ def check_look(plan, series):
     # the breakdown graphics added on 19 Nov (AGENT.md 5.8) and the film-week badge (5.7)
     E += check_new_graphics(plan, screens)
     E += check_spine(plan, series, screens)
-    E += check_variety(plan, series)
-    E += check_rotation(plan, series)
+    E += check_point(plan, series, screens)
+    if not plan.get("reference"):                    # a reference plan is an example, not a reel in the day's sequence
+        E += check_cooldown(plan, series, screens)
+        E += check_variety(plan, series)
+        E += check_rotation(plan, series)
 
     # voice: sound-on prompt and subtitles come with it (AGENT.md 5.3)
     if voiced:
@@ -407,7 +569,11 @@ def check_look(plan, series):
             E.append("The music must start on frame 1: the first music part starts on screen 0.")
         if len(secs) > 3:
             W.append(f"{len(secs)} music parts; 1 to 3 that follow the story work best (AGENT.md 5.4).")
-        keys = _music_keys()
+        keys, trend = _music_keys(), _trending_keys()
+        tcfg = ((ENGINE.get("music") or {}).get("trending") or {})
+        if voiced and not tcfg.get("voiced", False) and any(sec.get("track") in trend for sec in secs):
+            E.append("Trending songs go on music-only reels (AGENT.md 5.4): if Instagram mutes a matched song, a voiced reel loses its voice "
+                     "too. Use the library music for this one.")
         for sec in secs:
             if sec.get("track") not in keys:
                 E.append(f"Music track '{sec.get('track')}' is not in engine/music_index.json, so the Engine cannot fetch it.")
@@ -432,9 +598,10 @@ def check_look(plan, series):
         if not lead.get("insight"):
             E.append("Value first: the plan has no 'lead.insight' (AGENT.md 5.7).")
         tech = [s for s in screens if s.get("kind") == "technique"]
-        if not tech:
+        optional = rid[:10] >= str((series.get("one_point") or {}).get("since", "9999"))   # 22 Nov: no longer a fixed screen
+        if not tech and not optional:
             E.append("Every breakdown pins a named technique (AGENT.md 5.7): add a 'technique' screen with its name and definition.")
-        else:
+        elif tech:
             t = tech[0]
             if not t.get("name"):
                 E.append("The technique screen has no 'name' (for example FRAME STORY).")
@@ -445,7 +612,8 @@ def check_look(plan, series):
             if t.get("name") and str(t["name"]).lower() not in str(screens[-1].get("recap", "")).lower():
                 E.append(f"The end card must recap the technique, e.g. \"recap\": \"TECHNIQUE: {t['name']}\".")
     if tpl == "stage":
-        check_unique(plan, series, tpl, rid, E, W)
+        if not plan.get("reference"):
+            check_unique(plan, series, tpl, rid, E, W)
         need = {"timeline": ("heading", "events"), "meter": ("heading", "levels"), "versus": ("left", "right"), "web": ("center", "nodes")}
         for n, s in enumerate(screens, 1):
             for f in need.get(s.get("kind"), ()):
@@ -713,6 +881,11 @@ def selftest():
     rules = (ROOT / "rules" / "motion.md").read_text(encoding="utf-8")
     in_rules = set(re.findall(r"^\| `(\w+)`", rules, re.M))
     out = []
+    st = (ROOT / "templates" / "stage" / "template.js").read_text(encoding="utf-8")
+    i = st.find("const ICONS = {")
+    drawn = set(re.findall(r"^      (\w+): g =>", st[i:st.find("const painter", i)], re.M)) if i >= 0 else set()
+    if drawn != SCENE_ICONS:
+        out.append(f"Scene icons differ between the Stage template and the plan check: {sorted(drawn ^ SCENE_ICONS)}")
     if in_code != in_form:
         out.append(f"Card motions differ between the template and the plan form: {sorted(in_code ^ in_form)}")
     if not in_form <= in_rules:

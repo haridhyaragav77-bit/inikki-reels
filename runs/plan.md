@@ -30,7 +30,8 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
 - Plans already in `plans/$TODAY/` with `"booked": true` (approved by Harish in the Workshop) keep their slots: plan the
   rest of the lineup around them, and do not use their films or sources again today.
 - Every reel follows the standard (AGENT.md 5.10) and copies its series' reference plan (`plans/reference/`).
-- Breakdowns pin a named technique (5.7). Recommendations: 5.12. Trailer breakdowns: 5.13.
+- Breakdowns: one point in lead.point, facts line by line (src), one hero visual drawn for the film, best a scene (5.7, 5.8).
+  Recommendations: 5.12. Trailer breakdowns: 5.13.
 - Pictures are the film's own official stills, posters and trailer frames (5.11): official YouTube frames and posters
   for the approved looks; for the older looks, trailer moments from the shot list in `data/trailers.json`.
 - "Ideas from Harish" in the brief are leads: use one if it passes the worth-it test (5.7).

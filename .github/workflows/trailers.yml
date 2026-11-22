@@ -48,6 +48,9 @@ jobs:
       - run: |
           sudo apt-get update -qq >/dev/null && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
           pip install -q -r requirements-light.txt pillow yt-dlp
+      - name: Sort what the laptop run dropped into Drive from-laptop/ (AGENT.md 16.6)
+        continue-on-error: true
+        run: python -m engine.laptop --sort
       - name: Fetch trailers
         run: |
           if [ -n "$FRAMES" ]; then

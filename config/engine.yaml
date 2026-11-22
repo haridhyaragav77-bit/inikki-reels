@@ -1,18 +1,19 @@
 # Engine settings (code reads these; nothing brand- or niche-specific lives here)
 drive:
-  folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests, study-audio, study]
+  folders: [control, control/inbox, status, reference-reels, meme-bank, music, music/inbox, clip-library, image-library, work, finished, rehearsal, manual-post, inspiration, requests, study-audio, study, from-laptop]
+  cap_gb: 30                 # the agent's whole storage (Harish, 22 Nov: the new Google account's 30 GB)
   music_folder_aliases: ["music", "background music", "background music (1)"]
   never_auto_delete: [reference-reels, meme-bank, music, control]
   retention:                 # AGENT.md 14.3, 14.4 (the nightly Clean job)
-    finished_days: 30
-    finished_days_tight: 14
+    finished_days: 60          # Harish, 22 Nov: the Drive is 30 GB now (AGENT.md 14.4)
+    finished_days_tight: 30
     rehearsal_days: 14
     work_days: 3
     status_days: 30
-    clip_library_gb: 3
-    image_library_gb: 1.5
-    warn_gb: 6
-    tight_gb: 7.5
+    clip_library_gb: 12
+    image_library_gb: 4
+    warn_gb: 25
+    tight_gb: 28
     keep_top_share: 0.10
     study_text_days: 90      # full text of studied shorts (Drive study/); the cards in the repository stay
   dashboard_sheet_name: "iNiKKi Dashboard"
@@ -57,6 +58,11 @@ manual:                       # Control Room › Manual work (AGENT.md 16.6, eng
   other_days: 3               # a wanted trailer with no reel date yet
   topup_days: 14              # the film-bank library top-up
   done_hold_hours: 48         # after Done, those films wait for the Engine to pick them up before they can be asked again
+  laptop_every_days: 15       # the laptop run (Harish, 22 Nov): one command every 15-20 days for every download
+  laptop_late_days: 20        # due this many days after the last run (warning 2 days before urgent, urgent the last day)
+  laptop_first_days: 3        # the first run of the one-command helper is due within this many days
+laptop:                       # the laptop run's list (engine/laptop.py, AGENT.md 16.6)
+  songs_max: 15               # trending songs fetched per run
 # Channel study (AGENT.md 10.3): free. The channel list is the niche's `competitors` with study: true.
 study:
   enabled: true
@@ -160,6 +166,10 @@ depth:
   threads: 2
 
 music:
+  trending:                   # Harish, 22 Nov (AGENT.md 5.4): this month's trending songs from the laptop run
+    days: 45                  # a song stays on the trending list this long after it arrives
+    voiced: false             # music-only reels only: if Instagram mutes a matched song, a voiced reel would lose its voice too
+    on_match: post            # Instagram's copyright check matches a trending song: post anyway (organic only, never boosted)
   # Words in a track's file name that suggest a mood. The weekly review replaces this guess with results
   # (tracks are scored by the watch-through of the reels that used them, AGENT.md 5.4).
   mood_words:

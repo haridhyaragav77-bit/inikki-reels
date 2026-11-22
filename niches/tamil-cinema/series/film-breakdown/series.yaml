@@ -32,15 +32,14 @@ hook_examples:
   - "Saadhaarana satham. Bayam yen?"
   - "Jail scene-la oru detail. 100 per-la 99 per miss pannirupaanga."
   - "Indha song last minute-la maathunaanga. Yen theriyuma?"
-# THE SPINE (Harish, 19 Nov): every breakdown is told in this order; each screen names its beat ("beat": ...) and the plan
-# check refuses a reel that breaks it. A beat may take more than one screen (body 3 often = the detail + the technique).
-spine: [hook, lead, body, loop, body, loop, body, cta]
-beats:
-  hook: "Title screen, 0-3 s, 6 to 10 words: one specific, surprising claim about something on screen ('the car he drove was not an F1 car'). Never the film's name alone, never a lesson, never 'did you know'."
-  lead: "3-8 s: who/what in one line, then the promise of the payoff ('3 secrets; the third one is dark')."
-  body: "One detail, 8-15 s, in its own illustration; ends on a punch line. Body 3 is the strongest: it pays the hook, names the technique and says why it works."
-  loop: "1-3 s open loop on its own screen (a standoff tease): a gap only the next body closes ('but the real secret is inside the car'). Never a summary."
-  cta: "End screen: one question that is easy to answer in a comment (pick a side, name a film), then 1-3 last words that run straight into the hook ('ஏன்னா…', 'மறந்துடாதீங்க…'), so the end flows into the start and the reel loops. The picture fades back to the opening frame by itself."
+# ONE CLEAR POINT (Harish, 22 Nov; replaces the 19 Nov spine, AGENT.md 5.7). No fixed beats: a strong hook, one point told in
+# the order that lands best for this film, the loop ending. The plan check refuses a plan from `since` on with no lead.point,
+# a screen without 'src', a formula phrase below, no hero visual, or a stock graphic that is still cooling down.
+one_point: { since: "2026-11-23", point_words: 25, min_sources: 2 }
+shape: "Hook (the title screen, 6-10 words: one specific, surprising claim about something on screen) > the point, told in 2-6 screens in the order that lands best (each screen one idea, 8-18 words, its own picture of the thing itself; a tease or a twist only where it truly keeps people watching) > end (one easy question + 1-3 words that run into the hook, so the reel loops)."
+avoid_phrases: ["மூணு ரகசியம்", "ரெண்டாவது ரகசியம்", "மூணாவது ரகசியம்", "3 secrets", "three secrets", "secret 1", "secret 2", "secret 3", "moonu ragasiyam"]
+hero_kinds: [scene, board, climb, track, layers, detail]   # one per breakdown, drawn for this film (AGENT.md 5.8)
+graphics_cooldown: { meter: 10, timeline: 1, versus: 1, cards: 1, pins: 1, moral: 1, web: 1, loop: 1, standoff: 1, technique: 1 }   # not in the last N breakdowns
 source_rotation: 1   # days: a breakdown may not draw on the same source (lead.inspired_by) as another breakdown of today or the day before (plan check)
 bend:   # how a source's short becomes ours (AGENT.md 5.7)
   - "Keep their strongest detail; cut their order. Strongest detail last."
@@ -48,7 +47,7 @@ bend:   # how a source's short becomes ours (AGENT.md 5.7)
   - "Say it in fewer words: 8 to 18 words a screen; one idea a screen."
   - "Check every fact in 2 sources (Wikipedia production section, an interview, IMDb trivia); credit the original interview, never their video."
   - "Name the source in lead.inspired_by (its name in the niche competitors list); rotate sources so the page never sounds like one channel."
-  - "Graphics are drawn for this film: a staircase for Joker, a race track for F1. Never a stock screen when an illustration can show the thing itself."
+  - "Graphics are drawn for this film: a staircase for Joker, a race track for F1, a camera gliding through train coaches for Viduthalai (a scene). Never a stock screen when an illustration can show the thing itself."
   - "Names the voice may say wrong go in knowledge/pronunciations.yaml, one word for one word."
 music_arc: [intrigue, tension, release]   # music changes with the story; starts on frame 1
 motion_library: "../../motion_library.md"
@@ -58,30 +57,33 @@ trend_hooks: true
 success_metric: sends_per_reach
 rules:
   - "Value is the hero: the reel must pass the worth-it test (AGENT.md 5.7) before any visual is chosen."
-  - "Pin a named technique (frame story, ticking clock, match cut, leitmotif...): name it on screen, define it, show it, say why it works, recap it at the end."
+  - "Write lead.point first: one sentence, what the viewer knows after watching. Every screen serves it; cut anything that does not (Harish, 22 Nov)."
+  - "Every screen except the end names its source in 'src' (a link number in lead.sources, or 'analysis'). No source, no line."
+  - "Name a technique (frame story, ticking clock, match cut, leitmotif...) only when it makes the point clearer: on screen, defined, shown, recapped. It is not a fixed screen."
   - "Write the script first, then plan the motion graphics, then look for clips. Never bend the script to fit footage."
   - "Pick the strongest angle for the film: screenplay, camera, set, editing, sound or acting."
   - "Pick films people care about now: cult classics, new releases, films in the news. Skip old films with no cult following."
   - "Screen 1 names the film and the angle, big and clear."
-  - "One idea per reel, told in 2-4 beats."
+  - "One idea per reel, told in the order that lands best for this film; no fixed structure, no counted formulas ('3 secrets')."
   - "Motion graphics show the idea on the word it is said: labels of 3 words or fewer, no graphic repeated in a reel, one hero moment."
   - "If no clip fits a beat, the motion graphic goes full-screen for that beat."
   - "Never retell the plot; explain why a scene works."
   - "Lead with the detail: the hook names one specific thing on screen or one true story, never a lesson (Harish, 19 Nov)."
   - "Behind the scenes: name who said it and where (interview, year) on a quote screen; 2 trusted sources in the plan; never use another channel's video or wording."
-  - "Hidden details: exactly 3, each on its own frame with the detail lens, counted 1/3, 2/3, 3/3, best one last."
+  - "Hidden details: 1 to 3, each on its own frame with the detail lens, best one last; counted 1/3, 2/3, 3/3 only when there are several."
   - "Film week: up to 3 parts on one film in 7 days (part: [n, 3] in the plan); each part a different angle or detail set and complete on its own; the end card names the next part."
   - "Outside a film week: same film at most once in 21 days; same film + angle at most once in 60 days."
   - "Hollywood and world films the audience knows are welcome (a new release, a re-release, a film in the news)."
   - "Topics and insight come first from the studied sources, in priority order (niche competitors: Expert FX, then Level Up Learning Filmmaking, then World Filmology). Cover everything their short covers, richer, in our own words and order, checked in 2 sources."
   - "Fight the drop-off (Harish, 19 Nov): an open question in the first 3 s that is only answered near the end; a new hook every 10-15 s (a twist, 'but that is not the real detail', a secret, a number); never a beat that only repeats. Length is what the value needs, up to 90 s; never cut value to hit 30 s."
-  - "Every graphic is drawn for this film's idea (a staircase for a staircase, an evidence board for linked crimes, a race track for a race): pick or build the illustration that shows the thing itself. A kind appears at most twice in a reel (once, plus one callback)."
+  - "Every graphic is drawn for this film's idea (a staircase for a staircase, an evidence board for linked crimes, a race track for a race). The hero visual is a 'scene' (templates/README.md: props, paths, moves on the voice's words) unless board, climb, track, layers or detail shows the thing itself. A kind appears at most twice in a reel. The brief lists the stock graphics that are cooling down."
 worth_it_extra:
   - "Is this the strongest angle on this film?"
-reference:   # approved 13 Nov 2026; replaces the earlier reference reels
-  plan: plans/reference/breakdown-vikram-vedha.json
-  reel: "Drive reference-reels/2026-11-13/2026-11-13 · VIKRAM VEDHA · SCREENPLAY BREAKDOWN.mp4"
+reference:   # Harish, 22 Nov: the F1 reel is the look and the voice to copy (with the scene example for a custom visual)
+  plan: plans/reference/breakdown-f1-real-racing.json
+  scene_example: plans/reference/breakdown-scene-viduthalai.json
+  also_liked: [plans/2026-11-20/2026-11-20-breakdown-joker-stairs.json, plans/2026-11-21/2026-11-21-breakdown-thani-oruvan-villain.json]
 # Harish, 14 Nov 2026: every breakdown gets its own design. A plan names a design kit and builds its middle from the
 # graphics that fit this film's idea; the plan check refuses a kit or a build the last reels used (AGENT.md 5.8).
-unique_design: { since: "2026-11-15", window: 3, shape_window: 2, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
-graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web, detail, chain, quote, source]   # the screens a breakdown is built from
+unique_design: { since: "2026-11-15", window: 3, shape_window: 10, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
+graphics: [scene, board, climb, track, layers, detail, chain, quote, source, versus, timeline, standoff, pins, cards, web, moral, loop, technique, meter]   # first the ones drawn for the film; the stock ones cool down

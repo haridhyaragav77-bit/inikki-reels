@@ -21,15 +21,16 @@ def example():
         from engine.settings import niche
         srcs = [{"name": c.get("name"), "where": c.get("platform"), "priority": c.get("priority"), "mode": c.get("study")}
                 for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]
-        ex = {"manual": {"count": 2, "urgent": 1, "warn_days": 2, "jobs": [
-                  {"id": "trailers-example1", "kind": "trailers", "items": ["Example Film"], "level": "urgent", "due": "", "due_text": "by Sat 21 Nov, 09:30 (in 18 h 10 min)",
-                   "title": "Get 1 trailer with the laptop helper", "what": "Example: open the folder with clip_helper.py, type cmd in the address bar, paste the line, press Enter. Then drag trailers_for_drive into Drive › clip-library.",
-                   "why": "Example Film: needed by the plan example-breakdown-01", "suffers": ["example-breakdown-01 (tomorrow 12:30): no trailer moments, so it uses still pictures"],
-                   "command": 'py clip_helper.py "Example Film"', "after": "The Engine makes the shot grids from clip-library at once."},
-                  {"id": "study-example2", "kind": "study", "items": ["v1", "v2"], "level": "soon", "due": "", "due_text": "by Sun 22 Nov, 02:00 (in 2 d 4 h)",
-                   "title": "Study 2 competitor shorts with the laptop helper", "what": "Example: the same helper, then drag study_for_drive into Drive › study-audio.",
-                   "why": "The channel study feeds the Weekly learning run.", "suffers": ["Weekly learning run on Sun 22 Nov: learns from 2 fewer competitor shorts"],
-                   "command": "py clip_helper.py --study https://youtu.be/example", "after": "The Engine starts the study job at once."}]},
+        ex = {"manual": {"count": 1, "urgent": 0, "warn_days": 2, "jobs": [
+                  {"id": "laptop-example1", "kind": "laptop", "items": ["3 trailers for coming reels", "4 competitor shorts to study", "6 trending songs"],
+                   "level": "soon", "due": "", "due_text": "by Wed 25 Nov, 19:30 (in 2 d 21 h)",
+                   "title": "Laptop run: 3 trailers for coming reels, 4 competitor shorts to study, 6 trending songs",
+                   "what": "Example: every 15 to 20 days. Open the folder with clip_helper.py, type cmd in the address bar, paste the line, press Enter. It gets its own list, updates itself and fetches everything.",
+                   "why": "YouTube and Instagram do not let the cloud computers download these.", "suffers": ["3 coming reels use official YouTube frames instead of trailer moments",
+                   "reels use the library music instead of this month's trending songs"], "command": "py clip_helper.py",
+                   "after": "The Engine sorts the files, makes the trailer shot grids, studies the shorts and tags the songs at once."}]},
+              "music": {"library": 412, "trending": [{"key": "song_example", "title": "Example Song (Example Film)", "film": "Example Film", "best": ["upbeat_percussive"],
+                                                      "uses": 2, "added": "example", "fresh": True}]},
               "study": {"sources": srcs, "last": "example: studied 3 short(s); 2 on the laptop list"}, "youtube": {"on": True, "privacy": "private", "today": 0},
               "day_plan": dayplan.card(ctl), "volume": ctl.settings.get("volume"), "framework": panel.framework_card(ctl), "series": panel.series_cards(ctl, {}, None),
               "calendar": almanac.today(status.now().strftime("%Y-%m-%d"), ctl.settings.get("slots") or []),

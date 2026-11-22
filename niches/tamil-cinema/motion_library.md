@@ -147,3 +147,12 @@ are the Stage kinds `detail`, `chain`, `quote` and `source` (templates/README.md
 | `sound_on` | Turn the sound on (voiced reels only) | A speaker with three sound waves rippling out, on the title screen |
 | `technique_pin` | The named technique, the heart of a breakdown | Letters scramble, then the name slams in ("FRAME STORY"); a short definition pops; a diagram builds (for a frame story: one big frame drawing itself, small story boxes popping inside it, each with a "?") |
 | `handle` | The page name on every reel | @inikki_reels types itself in under the send prompt, with an underline sweeping across |
+
+## The scene builder (Harish, 22 Nov: a custom visual for every breakdown)
+| Name | Use it for | What moves |
+| --- | --- | --- |
+| `scene` (kind `scene`) | The thing itself, drawn for this film: a camera path through a set, a chase on a map, a heist floor plan, a phone that rings, a coach that falls | Drawn props (about 60 icons) appear on the voice's words, travel paths with a light trail, fall, blast, shake, light up; links (line, red string, light beam, arrow) join them; a counter runs; the camera pushes in. Fields: templates/README.md |
+
+Every breakdown has one hero visual drawn for its film: a `scene`, or `board`, `climb`, `track`, `layers` or `detail` when one of
+them shows the thing itself. Stock screens (meter, timeline, versus, cards, pins, moral, web, loop, standoff, technique) cool down
+between breakdowns (series card `graphics_cooldown`).

@@ -1,0 +1,5 @@
+# Trending songs (AGENT.md 5.4, Harish 22 Nov). The Weekly run rewrites this list from a web search every Sunday; the laptop run
+# (py clip_helper.py) downloads each song's audio, the music job tags it and lists it in data/music/trending.json.
+# Plans use them on music-only reels (updates, Watch This Next, reviews, breaking), from the song's hook. Organic posts only.
+# Format: - {song: "...", film: "...", why: "...", search: "words that find its official audio on YouTube"}
+songs: []

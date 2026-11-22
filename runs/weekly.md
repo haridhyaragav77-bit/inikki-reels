@@ -17,6 +17,11 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
   change set by Harish (skill `apply-feedback`). They are never undone by numbers (8.4).
 - Update `rules/playbook.md`, `rules/viral_factors.md`, `rules/changes.md`.
 - If the brief says it is a Lab week: Series Maker, skill `series-pitch` (up to 3 pitches, pilots for the top one).
+- Marketing Expert: trending songs (AGENT.md 5.4). Rewrite `niches/tamil-cinema/knowledge/trending_songs.yaml`: up to 12
+  songs trending on Tamil Instagram reels this week (one web search step: "trending Instagram reels songs Tamil <month year>",
+  songs from this month's big releases, what the studied pages use). Format: `songs:` then `- {song, film, why, search}`
+  (search = the words that find its official audio on YouTube). Keep songs still trending, drop the rest. The laptop run
+  downloads them; plans use them on music-only reels.
 - Advisor: the weekly report (AGENT.md 16.5, one screen) to `data/out/weekly_report.md`.
 
 ## Always

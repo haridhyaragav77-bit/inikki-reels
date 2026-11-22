@@ -2,6 +2,20 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 22 Nov 2026 — Priority 1 (A to F): breakdowns with one point and their own visuals, one laptop run, trending songs, 30 GB
+Harish: breakdowns kept sliding back to the old look (report: `lab/results/2026-11-22-breakdown-root-cause.md`); drop the fixed structure; one Python script every 15-20 days with trending music; 30 GB Drive.
+| Piece | Where | In one line |
+| --- | --- | --- |
+| One clear point | AGENT.md 5.7, series cards `one_point`, `avoid_phrases`, `engine/plancheck.py` `check_point` | From 23 Nov: `lead.point` (one sentence, 25 words), `src` on every screen (facts line by line, 2+ sources), no "3 secrets" formulas; the spine and the fixed technique screen are gone |
+| Scene builder | `templates/stage/template.js` `scene`, `templates/README.md`, `check_scene` | A custom visual from the plan: 58 drawn icons, paths, fall/blast/light/swap, links, counter, camera push-in; selftest keeps icons in sync |
+| Hero and cooldown | series cards `hero_kinds`, `graphics_cooldown`, `check_cooldown`; brief "Cooling now" | Every breakdown has a hero drawn for its film; the speedometer once in 10 breakdowns, other stock screens not twice in a row |
+| References | `plans/reference/breakdown-f1-real-racing.json`, `breakdown-scene-viduthalai.json` | F1 (cleaned of the formula) and Viduthalai with two scenes; `reference: true` skips the sequence checks |
+| Laptop run | `engine/laptop.py`, `engine/manual.py`, `tools/clip_helper.py`, daily `laptop --publish`, `--sort` in trailers/study/music jobs | One card, one command (`py clip_helper.py`), its list in `data/laptop/todo.json`, self-update, Drive for desktop or one drag into `from-laptop/`, 15-20 day cycle |
+| Trending songs | `niches/tamil-cinema/knowledge/trending_songs.yaml` (Weekly run), `engine/music_index.py` (`hook_s`, `data/music/trending.json`), `post.py` | Music-only reels, from the song's loudest 8 s; a copyright match on a trending song posts (organic only, never boosted) |
+| Storage | `config/agent.yaml`, `config/engine.yaml` retention | 30 GB cap, warn 25, tight 28; finished reels 60 days; clip library 12 GB |
+| Control Room | `control-room/page.template.html`, `engine/panel.py` | Manual work text, reel rows show a breakdown's point, hero visual and song, Setup › Trending songs, storage of 30 GB |
+| Tests | `tests/test_breakdown.py` (new), `tests/test_manual.py` (rewritten), golden check on both references | Local frames anywhere: `python -m engine.render <plan> --local --snap 1,4,8` (`engine/render/standin.py`) |
+
 ## 22 Nov 2026 — Why breakdowns slide back to the old look (report only)
 Harish's priority 1A. Report: `lab/results/2026-11-22-breakdown-root-cause.md`. In 15 agent-made breakdowns the speedometer (`meter`) was used 8 times; the staircase, evidence board and race track 0 times. Causes: the custom visuals were coded by hand per film in the Workshop (the Brain cannot build); the series card's `graphics:` and `reference:` still point at the old screens; the motion library describes 68 graphics but Stage draws 20; the spine fixes 5 of 9 screens; facts are counted, not checked per line. Nothing changed yet; fixes wait for approval. Harish, 22 Nov: runner minutes are no concern (public repo); trending audio is fine for organic posts (copyright matters only for paid boosts).
 

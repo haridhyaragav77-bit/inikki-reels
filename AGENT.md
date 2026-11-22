@@ -285,6 +285,7 @@ A lead with Value under 15 is dropped, whatever its total. A strong idea is neve
 | Learning | Tracks are scored by the watch-through of reels that used them. Weak tracks are retired. |
 | Mute guard | The Engine checks each posted reel's status. If Instagram mutes or restricts a reel for its music, the track is retired, the Advisor tells you, and a backup track is used next time. |
 | Adding music | Drop new tracks into Drive `music/inbox/`. They are tagged (mood, tempo, length) automatically. |
+| **Trending songs (Harish, 22 Nov)** | Songs trending on Instagram reels are a hook. The Weekly run lists them in `niches/<niche>/knowledge/trending_songs.yaml` (song, film, why, search words); the laptop run (16.6) downloads each song's audio; the music job tags it (mood, tempo, its loudest part as `hook_at`) and lists it in `data/music/trending.json` for 45 days. A plan uses a trending song when its mood fits the reel, from its `hook_at`. Organic posts only: copyright matters only for paid boosts, so a reel with a trending song is never boosted. The mute guard still applies. |
 
 ### 5.5 Caption and hashtags (picked at stage 5)
 | Part | Rule |
@@ -312,11 +313,11 @@ Fixed posting times · series names and episode numbers · designed covers · a 
 
 An old film with no cult following is skipped, however good it is.
 
-**Breakdowns are not only about screenplay.** Pick the strongest angle for that film: screenplay, cinematography and camera, set and production design, editing, sound and music, or acting. Two more angles since 19 Nov (Harish, from studying Expert FX and World Filmology, 10.3): **hidden details** (3 details in one film most viewers missed, each on its own frame, counted 1/3, 2/3, 3/3) and **behind the scenes** (a true making-of story told by someone who was there, from a named interview, checked in 2 trusted sources and credited on screen). If a film has no strong insight left, change the angle or the film.
+**Breakdowns are not only about screenplay.** Pick the strongest angle for that film: screenplay, cinematography and camera, set and production design, editing, sound and music, or acting. Two more angles since 19 Nov (Harish, from studying Expert FX and World Filmology, 10.3): **hidden details** (1 to 3 details in one film most viewers missed, each on its own frame; counted 1/3, 2/3, 3/3 only when there are several) and **behind the scenes** (a true making-of story told by someone who was there, from a named interview, checked in 2 trusted sources and credited on screen). If a film has no strong insight left, change the angle or the film.
 
 **Lead with the detail (Harish, 19 Nov).** The studied channels' hits sell one specific, surprising thing ("the jail scene's hidden detail", "the director's last-minute trick"), never a lesson. So the hook is the concrete detail the viewer missed, or the true story they never heard. The named technique comes in the middle as the reason it works, and the end card recaps it.
 
-**The spine (Harish, 19 Nov).** Every breakdown runs **hook → lead → body 1 → open loop → body 2 → open loop → body 3 → call to action**, and each screen names its beat. The hook is the title screen: 6 to 10 words, one specific surprising claim about something on screen. The lead says who and what in one line and promises the payoff ("3 secrets; the third is dark"). Each open loop is its own 1-3 s tease screen that only the next body closes. Body 3 is the strongest: it pays the hook, names the technique and says why it works. The call to action is one question that is easy to answer. Pace: the voice at 1.2× (ElevenLabs' fastest), 8 to 18 words a screen, short gaps. The plan check refuses a breakdown that breaks the spine.
+**One clear point, no fixed structure (Harish, 22 Nov; replaces the 19 Nov spine).** The spine made every breakdown look and sound the same and pushed filler ("3 secrets"). Now a breakdown has a strong hook (the title screen: 6 to 10 words, one specific, surprising claim about something on screen), then tells **one point** in the order that lands best for this film, then ends on the loop. The plan writes the point first, in one sentence (`lead.point`, 25 words at most): what the viewer knows after watching. If it does not fit in one sentence, the topic is not ready. Every screen serves that point; a tease or a twist is used when it truly keeps people watching, never as a fixed slot. No counted formulas ("3 secrets", "secret 1/2/3") unless the film truly has a list. **Facts line by line:** every screen except the end names its source in `src` (the number of a link in `lead.sources`, counted from 0, or `"analysis"` for our own reasoning that adds no new fact); a breakdown needs at least 2 sources; a claim without a source is cut. Pace: the voice at 1.2x, 8 to 18 words a screen, short gaps. The plan check refuses a breakdown with no point, a screen with no source, or a formula phrase from the series card (`avoid_phrases`).
 
 **The loop ending (Harish, 19 Nov).** The call to action ends on 1 to 3 words that run straight into the hook ("ஏன்னா…" → "Thani Oruvan-la villain…"), and the last moments fade back to the opening frame by code, so a viewer who reaches the end slides into the start and watches again.
 
@@ -326,7 +327,7 @@ An old film with no cult following is skipped, however good it is.
 
 **Film weeks (Harish, 19 Nov).** A film with a lot to say can get a run of up to 3 parts in 7 days (Part 1/3, 2/3, 3/3, each a different angle or detail set, each standing on its own). The end card of one part names the next. Outside a film week, the same film at most once in 21 days. Hollywood and world films the audience knows count the same as Tamil films.
 
-**Every breakdown still pins a named technique.** The core of a breakdown is an existing, named technique, brought to light: a storytelling or screenplay device (frame story, ticking clock, dramatic irony, setup and payoff, unreliable narrator), a camera or lighting technique, an editing technique (match cut, cross-cutting), a music or sound technique (leitmotif, silence). The reel names it on screen ("THE TECHNIQUE: FRAME STORY"), defines it in a few words, shows how the film uses it, says why it works, and recaps it on the end card. If you cannot name the technique, it is not a breakdown yet.
+**A named technique, when it makes the point clearer (22 Nov: no longer a fixed screen).** Many points rest on an existing, named technique, brought to light: a storytelling or screenplay device (frame story, ticking clock, dramatic irony, setup and payoff, unreliable narrator), a camera or lighting technique, an editing technique (match cut, cross-cutting), a music or sound technique (leitmotif, silence). The reel names it on screen ("THE TECHNIQUE: FRAME STORY"), defines it in a few words, shows how the film uses it, says why it works, and recaps it on the end card. The technique screen is not a slot every reel fills: it cools down like the other stock graphics (5.8).
 
 **What counts as an insight.** A specific craft choice + why it works + what the viewer felt without noticing. Weak: "Kaithi has great action." Strong: "Kaithi happens in one night, so every delay costs a life. The clock is the real villain."
 
@@ -349,9 +350,11 @@ Motion graphics exist to **show the idea the voice is saying, at the moment it i
 | Show, don't write | Arrows, timelines, meters, maps, camera paths, moving figures. Labels of 3 words or fewer (names, numbers). Sentences belong in the voice. |
 | On pace | Each graphic appears on the word it explains and leaves when that idea ends. Timed from the voice timestamps. |
 | No repeats in a reel | Each idea gets its own visual. The same graphic may come back once, only as a callback at the end. |
-| **A different design every reel** (Harish, 14 Nov) | Unique motion graphics are the page's selling point. Every breakdown names a **design kit** (colours and backdrop: spotlight, blueprint, noir, neon, paper, forest, royal) and is **built from the graphics that fit that film's idea** (pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web). The plan check refuses a kit used in the last 3 breakdowns and a build identical to the last 2 (`unique_design` in the series card). The brief lists what was used lately. |
+| **A different design every reel** (Harish, 14 Nov) | Unique motion graphics are the page's selling point. Every breakdown names a **design kit** (colours and backdrop: spotlight, blueprint, noir, neon, paper, forest, royal) and is **built from the graphics that fit that film's idea** (the series card's `graphics` list). The plan check refuses a kit used in the last 3 breakdowns and a build identical to the last 2 (`unique_design` in the series card). The brief lists what was used lately. |
 | **Breakdown graphics added 19 Nov** | `detail` (a magnifying lens travels to the hidden detail on a still and zooms in, with a 1/3 counter), `chain` (dominoes: one small choice knocks down the next, up to the ending), `quote` (who said it, their role and a short key phrase, with the interview as the source tag), `source` (two tracks, the source story and the film, beats linked by lines), and the **part badge** (PART 1/3 on the title and end screens of a film week). Details in `niches/<niche>/motion_library.md`. |
-| **Illustrated, not stock (Harish, 19 Nov)** | A graphic shows the thing itself: a staircase a figure climbs or dances down (`climb`), an evidence board with red string (`board`), a race track a car laps (`track`), what is under the surface lifting apart (`layers`). The plan picks the illustration that fits this film's idea; a kind appears at most twice in a reel (once, plus one callback). New illustrations are added to the library when a film needs one. |
+| **Illustrated, not stock (Harish, 19 Nov)** | A graphic shows the thing itself: a staircase a figure climbs or dances down (`climb`), an evidence board with red string (`board`), a race track a car laps (`track`), what is under the surface lifting apart (`layers`). The plan picks the illustration that fits this film's idea; a kind appears at most twice in a reel (once, plus one callback). A scene draws a new illustration in the plan itself; a new kind is added in the Workshop only when a scene cannot. |
+| **Scene builder (Harish, 22 Nov)** | The custom visual for each film, without new code. A `scene` screen describes props (a camera, a train coach, a car, a figure, a phone and about 40 more drawn icons), where they stand, the paths they move along and what happens on which word: appear, move, fall, blast, shake, light up, a link between two props, a counter, a camera push-in. Viduthalai's one-shot opening becomes a camera gliding through train coaches; a heist becomes figures crossing a floor plan. Every breakdown has one **hero visual** drawn for its film: a `scene`, or an illustrated kind that shows the thing itself (`board`, `climb`, `track`, `layers`, `detail`). |
+| **No repeats across reels (22 Nov)** | A build is compared with the last 10 breakdowns. Stock graphics cool down (series card `graphics_cooldown`): the speedometer (`meter`) at most once in 10 breakdowns and only for a real number; `timeline`, `versus`, `cards`, `pins`, `moral`, `web`, `loop`, `standoff` and `technique` not in two breakdowns in a row. The brief lists what is cooling. If the hero visual cannot be drawn, the reel is held for a fix, never swapped for an old graphic. |
 | One hero moment | Every reel has one rich graphic people remember: layered, with depth, light and movement. Example: a fight drawn as moving figures on a top-down map. |
 | Takes over when visuals don't fit | If no clip or still matches a beat, the graphic goes full-screen and leads that beat. |
 | Uses the space | Graphics can use the whole frame, not just a strip at the bottom. |
@@ -889,9 +892,9 @@ Drive: iNiKKi Reels/
 | File type | Kept for | Then |
 | --- | --- | --- |
 | Working files (raw images, voice clips, frames, downloaded trailers) | Until the reel posts + 2 days | Deleted |
-| Finished reels | 30 days | Deleted, except the top 10% and reference reels. The rest live on Instagram. |
+| Finished reels | 60 days | Deleted, except the top 10% and reference reels. The rest live on Instagram. |
 | AI images | Tagged reusable: kept in the image library. Others: 30 days. | Deleted |
-| Clip library | Kept, capped at 3 GB | Least-used removed first |
+| Clip library | Kept, capped at 12 GB | Least-used removed first |
 | Music, memes, reference reels | Kept | — |
 | Plans and metrics (text) | Forever | Packed into one file per month |
 | Run logs | 30 days | Deleted |
@@ -900,7 +903,7 @@ Drive: iNiKKi Reels/
 | Status files | Overwritten daily | — |
 
 ### 14.4 Storage safety
-- Agent cap 8 GB. Warning at 6 GB on the dashboard. At 7.5 GB the clean-up tightens (finished reels kept 14 days).
+- Agent cap 30 GB (Harish, 22 Nov: the new Google account's whole storage). Warning at 25 GB on the dashboard. At 28 GB the clean-up tightens (finished reels kept 30 days). The Usage tab shows the folder's size of 30 GB.
 - Deleted files go to Drive's bin first, so mistakes can be recovered for 30 days.
 - Nothing in `reference-reels/`, `meme-bank/`, `music/` or `control/` is ever auto-deleted.
 - The monthly review reports space used and what was removed.
@@ -928,6 +931,8 @@ Drive: iNiKKi Reels/
 | One file per answer | The Control Room chat reads only the panel (13.3). The Control Room page reads it with no tokens at all |
 | One file per action | Every change you make is one small new file in the inbox (12.5): nothing is read first |
 | Short project memory | The Control Room project holds `GUIDE.md` and Block B only, never this file |
+| Right the first time (22 Nov) | The brief names what the plan check would refuse (design kits used lately, stock graphics cooling down, this month's trending songs), and the reference plans show the new form, so a breakdown passes on its first try instead of costing a second pass |
+| Code does the errands (22 Nov) | The laptop run's list, the file sorting, the trending-song tagging (mood and hook second) and the storage clean-up are code; the Weekly run spends one search step on trending songs |
 
 **If Pro usage runs tight**, the agent steps down in this order and tells you: skip the Refresh run's bank top-up → merge the weekly Lab into the monthly run → drop to 2 updates a day → post from the bank.
 
@@ -1051,22 +1056,24 @@ Each line is one fact in at most 12 words: no semicolons, no lists inside a line
 7. **Money and limits**
 8. **One decision for you**, if any (tap-to-answer)
 
-### 16.6 Manual work (20 Nov 2026)
-Some jobs only Harish's laptop can do: YouTube and Instagram refuse downloads from cloud computers. They are listed in one
-place, the Control Room tab **Manual work**, with a count badge on that tab and a line on the Today screen, and in the
-panel's MANUAL WORK section for the chat. Built by code (`engine/manual.py`, no AI) at the end of every job.
-| Job | Source | Due | If skipped |
-| --- | --- | --- | --- |
-| Trailers to get | Drive `status/trailers_wanted.json` | the planned reel's slot minus 3 hours; a news trailer within a day; others 3 days | that reel uses still pictures instead of trailer moments |
-| Library top-up | film-bank films with no trailer | 14 days | later reels of those films use stills |
-| Shorts to study | Drive `requests/study_to_get.md` | Sunday 02:00, before the Weekly run | the Weekly run learns from fewer shorts |
-| Drive sign-in | only while the Engine uses the robot account | now | new Drive files can fail |
+### 16.6 Manual work: one laptop run every 15 to 20 days (Harish, 22 Nov; replaces three separate commands)
+Some jobs only Harish's laptop can do: YouTube and Instagram refuse downloads from cloud computers. Since 22 Nov they are one
+job, **the laptop run**: one command, `py clip_helper.py`, every 15 to 20 days. It reads its own to-do list from the public
+repository (`data/laptop/todo.json`, written by the Engine every night: film names, public video links, song names, nothing
+private), updates itself, and gets everything in one go:
+| Part | Source | If it waits |
+| --- | --- | --- |
+| Trailers the coming reels need, and the film-bank top-up | Drive `status/trailers_wanted.json`, the film bank | those reels use official YouTube frames instead of trailer moments |
+| Competitor shorts to study (YouTube Shorts) | Drive `requests/study_to_get.md` | the Weekly run learns from fewer shorts |
+| Trending songs (5.4) | `niches/<niche>/knowledge/trending_songs.yaml`, plus any song Harish types when the helper asks | reels use the library music |
 
-Each job shows what it is, why, the due time, what suffers, and the exact command with a Copy button. **Done** sends one
-inbox file (`manual_done`); the relay marks it in Drive `control/manual.json` and starts the pick-up step at once
-(trailer intake, or the study job). Those items are not asked for again for 48 hours while the Engine picks them up.
-Levels: later → **due soon** (an alert 2 days before the job turns urgent) → **urgent** (24 hours left; a second alert) →
-overdue. Nothing waits on Harish: until a job is done, the Engine uses its fallback. Settings: `manual` in `config/engine.yaml`.
+The files land in one folder. If Google Drive for desktop is on the laptop, the helper copies them straight into Drive;
+otherwise Harish drags the folder's files into Drive `from-laptop/` once, and the Engine sorts them (trailers to
+`clip-library/`, shorts to `study-audio/`, songs to `music/inbox/`). The Control Room tab **Manual work** shows one card
+with the counts, the day it is due and the command (Copy). **Done** sends one inbox file (`manual_done`); the relay starts the
+trailer intake, the study job and the music job at once. Levels: later → **due soon** (day 17, an alert) → **urgent** (day
+19, a second alert) → overdue (day 20). Nothing waits on Harish: until the run is done, the Engine uses its fallbacks. The one-time Drive
+sign-in stays its own card. Settings: `manual` in `config/engine.yaml`; built by code (`engine/manual.py`, `engine/laptop.py`).
 
 ---
 

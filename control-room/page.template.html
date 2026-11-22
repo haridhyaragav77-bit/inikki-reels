@@ -362,8 +362,9 @@ function reelRow(r) {
   if (open === "confirm") drawer = `<div class="drawer"><div>${esc(openDrawer.text)}</div><div class="acts">${b("yes", openDrawer.yes, "go")}${b("close", "Cancel", "quiet")}</div></div>`;
   return `<div class="reel"><div class="time">${esc(when)}<small>#${r.n || ""}</small></div><div>
     <div class="hook">${esc(r.hook || r.id)}</div>
+    ${r.point ? `<div class="sub">Point: ${esc(r.point)}</div>` : ""}
     <div class="meta"><span class="pill ${esc(st)}">${esc(r.manual && st === "ready" ? "waits for you" : st)}</span>${mine.map(m => `<span class="pill asked">asked: ${esc(m)}</span>`).join("")}
-      <span>${esc(r.series || "")}</span>${r.seconds ? `<span>${esc(r.seconds)} s</span>` : ""}${r.score ? `<span>score ${esc(r.score)}</span>` : ""}</div>
+      <span>${esc(r.series || "")}</span>${r.hero ? `<span>visual: ${esc(r.hero)}</span>` : ""}${r.song ? `<span>song: ${esc(r.song)}</span>` : ""}${r.seconds ? `<span>${esc(r.seconds)} s</span>` : ""}${r.score ? `<span>score ${esc(r.score)}</span>` : ""}</div>
     ${r.why ? `<div class="why">${esc(r.why)}</div>` : ""}<div class="acts">${acts}</div></div>${drawer}</div>`;
 }
 function calCard() {
@@ -426,7 +427,7 @@ function mwCard(j) {
 }
 function vManual() {
   const js = MW(), sent = ((P.manual || {}).jobs || []).filter(j => askedFor("mw:" + j.id).length);
-  let h = banners() + `<div><h2>Manual work</h2><div class="sub">Jobs only your laptop can do: YouTube and Instagram do not let the cloud computers download these. Each one shows when it is due and what suffers if you skip it. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before a job turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
+  let h = banners() + `<div><h2>Manual work</h2><div class="sub">One laptop run every 15 to 20 days: <b>py clip_helper.py</b> gets the trailers, the competitor shorts to study and this month's trending songs in one go (YouTube and Instagram do not let the cloud computers download these). It shows when it is due and what waits if you skip it. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before it turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
   h += js.length ? `<div class="list">${js.map(mwCard).join("")}</div>` : `<div class="card"><div>Nothing needs your laptop right now.</div><div class="sub">New jobs appear here, with a red badge on this tab when they are urgent.</div></div>`;
   if (sent.length) h += `<div class="card"><h3>Marked done, waiting for the Engine</h3>${sent.map(j => `<div class="sub">${esc(j.title)}: picked up at ${esc(pickup())}</div>`).join("")}</div>`;
   return h;
@@ -657,6 +658,9 @@ function vSetup() {
     <div class="card"><div class="sub">YouTube today</div><div class="big">${num(yt.today || 0)}</div><div class="sub">${yt.on ? "on" : "off"} · ${esc(yt.privacy || "")}</div></div>
     <div class="card"><div class="sub">Channel study</div><div style="font-weight:700">${esc(st.last || "no run yet")}</div><div class="sub">${esc(st.updated || "")}</div></div></div>
     <div class="list rows">${(st.sources || []).map(s => `<div class="row"><span class="t">${esc(String(s.priority ?? "—"))}</span><span class="w">${esc(s.name)}</span><span class="in">${esc(s.where || "")}${s.mode === "titles" ? " · topics" : ""}</span></div>`).join("")}</div>`;
+  const mu = P.music || {};
+  h += `<div><h2>Trending songs</h2><div class="sub">This month's songs from your laptop run, for music-only reels (updates, Watch This Next, reviews, breaking), from each song's catchiest part. Organic posts only, never boosted. The Weekly run picks the songs; you can add one when the helper asks. Library: ${num(mu.library || 0)} tracks.</div></div>
+    <div class="list rows">${(mu.trending || []).map(t => `<div class="row"><span class="t">${esc(t.added || "")}</span><span class="w">${esc(t.title)}${t.film ? ` <span class="sub">${esc(t.film)}</span>` : ""}</span><span class="in">${esc((t.best || []).join(", ").replace(/_/g, " "))} · used ${num(t.uses || 0)}x${t.fresh === false ? " · older" : ""}</span></div>`).join("") || `<div class="row sub">No trending songs yet. They arrive after your next laptop run.</div>`}</div>`;
   h += `<div><h2>Failed runs (7 days)</h2><div class="sub">Every run that did not finish, with its log. One failure affects one step; it matters when it repeats.</div></div><div class="list rows">${(P.failed_runs || []).map(f => `<div class="row"><span class="t">${esc(String(f.at || "").replace(" IST", ""))}</span><span class="w"><span class="dot red"></span>${esc(f.job)} · ${esc(f.result)}</span><span class="in">${f.run ? `<a href="${esc(f.run)}" target="_blank" rel="noopener" style="color:var(--sky)">log</a>` : ""}</span></div>`).join("") || `<div class="row sub">None in the last 7 days.</div>`}</div>`;
   h += `<div><h2>Jobs</h2></div><div class="list rows">${Object.entries(P.jobs || {}).map(([k, v]) => `<div class="row"><span class="t">${esc(k)}</span><span class="w"><span class="dot ${v.result === "success" ? "green" : "red"}"></span>${esc(v.result)}</span><span class="in">${esc(v.at || "")}</span></div>`).join("") || `<div class="row sub">No job results listed.</div>`}</div>`;
   return h;

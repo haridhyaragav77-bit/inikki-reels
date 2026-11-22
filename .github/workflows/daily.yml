@@ -80,6 +80,10 @@ jobs:
       - name: Clean-up
         if: env.JOB == 'nightly' || env.JOB == 'clean-dry'
         run: python -m engine.clean ${{ env.JOB == 'clean-dry' && '--dry' || '' }}
+      - name: The laptop run's list (data/laptop/todo.json, read by the laptop helper; AGENT.md 16.6)
+        if: env.JOB == 'nightly' || env.JOB == 'brief-plan'
+        continue-on-error: true
+        run: python -m engine.laptop --publish
       - name: Control Room changes now (the inbox, word edits, new versions)
         if: env.JOB == 'control'
         run: python -m engine.edits

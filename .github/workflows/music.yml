@@ -37,9 +37,20 @@ jobs:
           sudo apt-get update -qq >/dev/null
           sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -r requirements.txt
+      - name: Sort what the laptop run dropped into Drive from-laptop/ (songs go to music/inbox; AGENT.md 16.6)
+        continue-on-error: true
+        run: python -m engine.laptop --sort
       - run: python -m engine.music_index $ALL
         env:
           ALL: ${{ inputs.all && '--all' || '' }}
+      - name: Save the trending songs list (data/music/trending.json, AGENT.md 5.4)
+        run: |
+          git add -A data/music
+          git diff --cached --quiet && exit 0
+          python -m engine.guard staged      # the repository is public: private details are masked, a key stops the save
+          git -c user.name="iNiKKi Engine" -c "user.email=41898283+github-actions[bot]@users.noreply.github.com" commit -q -m "engine: music $(TZ=Asia/Kolkata date +%F)"
+          for i in 1 2 3 4; do git push -q origin "HEAD:${GITHUB_REF_NAME}" && exit 0; git pull -q --rebase origin "${GITHUB_REF_NAME}"; done
+          exit 1
       - name: Summary to the throwaway 'review-music' branch (for the build session)
         if: always()
         run: |
