@@ -76,16 +76,15 @@ def laptop_jobs(drive, now, seen, done):
     if c["topup"]:
         suffers.append("later breakdowns of older films use still pictures")
     since = (f"Last run {(now - last).days} days ago. " if last else
-             "First time only: save the new helper over the old clip_helper.py (from the repository: tools/clip_helper.py, "
-             "https://raw.githubusercontent.com/haridhyaragav77-bit/inikki-reels/main/tools/clip_helper.py); after that it updates itself. ")
+             "First time: do the 4 set-up steps in 'How to do the laptop run' above (Python, Drive for desktop, the iNiKKi folder, "
+             "the iNiKKi Laptop Run file). ")
     return [{"id": f"laptop-after-{last.strftime('%Y%m%d%H%M')}" if last else f"laptop-first-{now.strftime('%Y%m%d')}", "kind": "laptop", "items": parts,
              "title": "Laptop run: " + ", ".join(parts),
-             "what": since + "Every 15 to 20 days. Open the folder with clip_helper.py, type cmd in the address bar, paste the line, press "
-                     "Enter. It gets its own list, updates itself and fetches everything (about 30 to 60 minutes). If Google Drive for "
-                     "desktop is on the laptop the files go straight into Drive; otherwise drag every file in the folder for_drive into "
-                     "Google Drive › iNiKKi Reels › from-laptop.",
+             "what": since + "Every 15 to 20 days: double-click 'iNiKKi Laptop Run' in the iNiKKi folder on your Desktop (set-up steps: "
+                     "'How to do the laptop run' above). Keep the window open about 30 to 60 minutes. If Google Drive for desktop is on "
+                     "the laptop the files go straight into Drive; otherwise drag every file in for_drive into Google Drive › iNiKKi Reels › from-laptop.",
              "why": "YouTube and Instagram do not let the cloud computers download these: " + "; ".join(parts) + ".",
-             "suffers": suffers[:4], "due": due, "command": "py clip_helper.py",
+             "suffers": suffers[:4], "due": due, "command": "Double-click: Desktop › iNiKKi › iNiKKi Laptop Run",
              "after": "The Engine sorts the files, makes the trailer shot grids, studies the shorts and tags the songs at once."}]
 
 

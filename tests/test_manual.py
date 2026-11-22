@@ -27,9 +27,9 @@ def main():
     lap = [j for j in M["jobs"] if j["kind"] == "laptop"]
     check(len(lap) == 1 and len(M["jobs"]) == 1, f"one job for every download (was three commands): {[j['kind'] for j in M['jobs']]}")
     j = lap[0]
-    check(j["command"] == "py clip_helper.py", "the command is the same every time: py clip_helper.py")
+    check("iNiKKi Laptop Run" in j["command"], "the card says: double-click iNiKKi Laptop Run")
     check("2 trailers" in j["title"] and "2 competitor shorts" in j["title"] and "1 trending song" in j["title"], "the title counts each part: " + j["title"])
-    check("First time only" in j["what"], "the first run says how to get the new helper once")
+    check("First time" in j["what"], "the first run says how to get the new helper once")
     check(j["level"] in ("soon", "later") and "in 3 d" in j["due_text"] or "in 2 d" in j["due_text"], f"the first run is due within 3 days ({j['due_text']})")
 
     # Done: through the inbox; the job leaves the list for 48 hours, then the next cycle is 20 days out

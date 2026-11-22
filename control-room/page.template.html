@@ -421,13 +421,30 @@ function mwCard(j) {
     <div class="dg"><span class="k">What</span><span>${esc(j.what)}</span></div>
     <div class="dg"><span class="k">Why</span><span>${esc(j.why)}</span></div>
     <div class="dg"><span class="k">If skipped</span><span>${(j.suffers || []).map(esc).join("<br>")}</span></div>
-    <div class="cmd"><code>${esc(j.command)}</code><button type="button" class="quiet" data-copy="${esc(j.command)}" data-toast="Copied. Paste it in the laptop window (cmd), press Enter.">Copy</button></div>
+    ${j.kind === "laptop" ? `<div class="dg"><span class="k">Do</span><span><b>${esc(j.command)}</b></span></div>` : `<div class="cmd"><code>${esc(j.command)}</code><button type="button" class="quiet" data-copy="${esc(j.command)}" data-toast="Copied. Paste it in the laptop window (cmd), press Enter.">Copy</button></div>`}
     <div class="inline" style="align-items:center"><button type="button" class="go" data-act="mw-done" data-id="${esc(j.id)}">Done</button><span class="sub" style="flex:1">${esc(j.after || "")}</span></div>
   </div>`;
 }
 function vManual() {
   const js = MW(), sent = ((P.manual || {}).jobs || []).filter(j => askedFor("mw:" + j.id).length);
   let h = banners() + `<div><h2>Manual work</h2><div class="sub">One laptop run every 15 to 20 days: <b>py clip_helper.py</b> gets the trailers, the competitor shorts to study and this month's trending songs in one go (YouTube and Instagram do not let the cloud computers download these). It shows when it is due and what waits if you skip it. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before it turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
+  h += `<details class="blk"${js.length ? "" : " open"}><summary><span class="t">How to do the laptop run</span><span class="peek">Set up once, then double-click every 15 to 20 days</span></summary><div class="blkbody">
+    <h3>Set up once (about 10 minutes)</h3>
+    <ol class="plain" style="color:var(--fg)">
+      <li>Install Python from <b>python.org/downloads</b>. On the first screen tick <b>Add python.exe to PATH</b>, then Install.</li>
+      <li>Install <b>Google Drive for desktop</b> (google.com/drive/download) and sign in with the Google account that owns the <b>iNiKKi Reels</b> folder. Then the files go into Drive by themselves.</li>
+      <li>On your Desktop, make a folder called <b>iNiKKi</b>.</li>
+      <li>Open this link and save the file into that folder: <code>${esc("https://raw.githubusercontent.com/haridhyaragav77-bit/inikki-reels/main/tools/iNiKKi%20Laptop%20Run.bat")}</code> <button type="button" class="quiet" data-copy="https://raw.githubusercontent.com/haridhyaragav77-bit/inikki-reels/main/tools/iNiKKi%20Laptop%20Run.bat" data-toast="Link copied. Paste it in your browser.">Copy link</button> The file opens as text: press <b>Ctrl+S</b>, choose the iNiKKi folder, set "Save as type" to <b>All files</b>, keep the name <b>iNiKKi Laptop Run.bat</b>, Save.</li>
+    </ol>
+    <h3>Every 15 to 20 days (when the card below says so)</h3>
+    <ol class="plain" style="color:var(--fg)">
+      <li>Plug the laptop in. Open the <b>iNiKKi</b> folder on your Desktop and double-click <b>iNiKKi Laptop Run</b>. If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b> (only the first time).</li>
+      <li>A black window opens and works by itself for 30 to 60 minutes. Keep it open and do not close the lid. At the end it may ask for a trending song: type one, or just press Enter.</li>
+      <li>When it says <b>Finished</b>: if Drive for desktop is on, wait until Drive finishes uploading. If not, drag every file in the <b>for_drive</b> folder (inside iNiKKi) into Google Drive › iNiKKi Reels › from-laptop.</li>
+      <li>Press <b>Done</b> on the card below.</li>
+    </ol>
+    <div class="sub">Stuck? "Python is not installed": do set-up step 1 again and restart the laptop. Drive for desktop not found: run it once by dragging the files (step 3). Nothing else to install: the helper gets its own tools.</div>
+  </div></details>`;
   h += js.length ? `<div class="list">${js.map(mwCard).join("")}</div>` : `<div class="card"><div>Nothing needs your laptop right now.</div><div class="sub">New jobs appear here, with a red badge on this tab when they are urgent.</div></div>`;
   if (sent.length) h += `<div class="card"><h3>Marked done, waiting for the Engine</h3>${sent.map(j => `<div class="sub">${esc(j.title)}: picked up at ${esc(pickup())}</div>`).join("")}</div>`;
   return h;

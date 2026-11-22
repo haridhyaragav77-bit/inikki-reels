@@ -73,14 +73,13 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 YouTube and Instagram do not let the cloud computers download some things, so your laptop does them, all in one go:
 the trailers the coming reels need, older film trailers for the library, the competitor shorts to study, and this
 month's trending songs.
-- **The one command:** open the folder with `clip_helper.py`, type `cmd` in the address bar, type `py clip_helper.py`,
-  press Enter. It reads its own to-do list, updates itself and works by itself (about 30 to 60 minutes). At the end it
-  asks if you heard a trending song: type its name or paste an Instagram link, or just press Enter.
-- **First time only:** save the new `clip_helper.py` over the old one (the Manual work card has the link). After that it
-  updates itself.
-- **Getting the files to Drive:** if Google Drive for desktop is on your laptop, nothing to do: the files go straight into
-  Drive › iNiKKi Reels › from-laptop. Otherwise drag every file in the folder `for_drive` into that Drive folder. The
-  Engine sorts them by itself.
+- **Set up once:** (1) install Python from python.org/downloads, ticking "Add python.exe to PATH"; (2) install Google
+  Drive for desktop and sign in with the account that owns the iNiKKi Reels folder; (3) make a folder **iNiKKi** on your
+  Desktop; (4) save the file `iNiKKi Laptop Run.bat` into it (link and steps on the Manual work tab → "How to do the laptop run").
+- **Every 15 to 20 days:** plug in the laptop, double-click **iNiKKi Laptop Run**, keep the black window open (30 to 60
+  minutes). It gets the newest helper, its own to-do list and everything on it. At the end it may ask for a trending song:
+  type one or press Enter. With Drive for desktop the files go into Drive by themselves; otherwise drag the files in
+  `for_drive` into Drive › iNiKKi Reels › from-laptop.
 - Press **Done** on the Manual work tab. The Engine picks everything up at once.
 - **When:** the tab shows one card with the counts and the due day. A notice comes 3 days before it is due, and again on
   the last day. Nothing stops while you wait: reels use YouTube frames and the library music meanwhile.
