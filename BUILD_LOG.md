@@ -2,6 +2,9 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 22 Nov 2026 — Why breakdowns slide back to the old look (report only)
+Harish's priority 1A. Report: `lab/results/2026-11-22-breakdown-root-cause.md`. In 15 agent-made breakdowns the speedometer (`meter`) was used 8 times; the staircase, evidence board and race track 0 times. Causes: the custom visuals were coded by hand per film in the Workshop (the Brain cannot build); the series card's `graphics:` and `reference:` still point at the old screens; the motion library describes 68 graphics but Stage draws 20; the spine fixes 5 of 9 screens; facts are counted, not checked per line. Nothing changed yet; fixes wait for approval. Harish, 22 Nov: runner minutes are no concern (public repo); trending audio is fine for organic posts (copyright matters only for paid boosts).
+
 ## 20 Nov 2026 — Manual work tab
 Harish asked for one place for every laptop job, with urgency, the command and a Done button.
 | Piece | Where | In one line |
