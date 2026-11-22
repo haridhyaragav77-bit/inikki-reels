@@ -496,12 +496,12 @@ def run(drive):
         print("relay: control files not readable:", str(e)[:160])
         return 0
     seen = {x.get("file") for x in st.log}
-    done = 0
+    done, stuck = 0, 0
     from . import guard
     people = guard.trusted_people(drive)                       # commands count only from Harish's own Drive account (AGENT.md 21)
     for f in files:
         if f["id"] in seen:                                    # applied earlier, its file just could not be binned
-            _bin(drive, f)
+            stuck += not _bin(drive, f)
             continue
         if guard.stranger(f, people):
             st.log.append({"id": hashlib.md5(f["id"].encode()).hexdigest()[:6], "file": f["id"], "at": status.stamp(), "do": "?",
@@ -546,12 +546,24 @@ def run(drive):
         print("relay: could not save the control files; the actions stay in the inbox:", str(e)[:160])
         return 0
     for f in files:
-        _bin(drive, f)
+        if f["id"] not in seen:
+            stuck += not _bin(drive, f)
+    if stuck:
+        print(f"relay: {stuck} applied inbox file(s) could not be binned or moved (made by another Google account); they are skipped")
     return done
 
 
 def _bin(drive, f):
+    """Bin an applied inbox file. A file another Google account made (the Control Room page signed in elsewhere) cannot be
+    binned by the Engine (403); it is moved out of the inbox into control/applied instead, so the next job does not list it."""
     try:
         drive.trash(f["id"])
-    except Exception as e:
-        print("relay: could not bin", f.get("name"), str(e)[:100])
+        return True
+    except Exception:
+        pass
+    try:
+        drive.svc.files().update(fileId=f["id"], addParents=drive.folder("control/applied"), removeParents=drive.folder("control/inbox"),
+                                 fields="id", supportsAllDrives=True).execute(num_retries=3)
+        return True
+    except Exception:
+        return False

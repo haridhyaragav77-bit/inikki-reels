@@ -1,5 +1,8 @@
 # Build log (plain words, newest first)
 
+## 22 Nov 2026 — Inbox files from the other Google account
+The Engine could not bin Control Room inbox files the page made from another Google account (403), so every job listed them again. `relay._bin` now moves such a file to `control/applied` instead, and prints one line, not one per file.
+
 ## 22 Nov 2026 — Study job transcribes again
 PyAV 19 dropped an option faster-whisper still uses, so every short failed ("metadata_errors"). `requirements-study.txt` now pins `av<19` and `faster-whisper<1.3`.
 
