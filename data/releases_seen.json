@@ -35,6 +35,72 @@
    "date": "2026-11-27",
    "first_seen": "2026-11-22",
    "history": []
+  },
+  "benz": {
+   "film": "Benz",
+   "date": "2026-12-01",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "mentalmanadhil": {
+   "film": "Mental Manadhil",
+   "date": "2026-12-01",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "unvarugaikkagaanandhi": {
+   "film": "Un Varugaikkaga Anandhi",
+   "date": "2026-12-01",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "vallimayil": {
+   "film": "Valli Mayil",
+   "date": "2026-12-01",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "theproof": {
+   "film": "The Proof",
+   "date": "2026-12-03",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "hideandsilk": {
+   "film": "Hide And Silk",
+   "date": "2026-12-04",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "makkalkaavalan": {
+   "film": "Makkal Kaavalan",
+   "date": "2026-12-04",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "train": {
+   "film": "Train",
+   "date": "2026-12-04",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "dhruvanatchathiramchapteroneyuddhakaandam": {
+   "film": "Dhruva Natchathiram: Chapter One - Yuddha Kaandam",
+   "date": "2026-12-15",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "kannamoochi": {
+   "film": "Kannamoochi",
+   "date": "2026-12-21",
+   "first_seen": "2026-11-23",
+   "history": []
+  },
+  "genie": {
+   "film": "Genie",
+   "date": "2026-12-25",
+   "first_seen": "2026-11-23",
+   "history": []
   }
  },
  "alerted": {
