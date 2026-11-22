@@ -1,3 +1,4 @@
+- 22 Nov 2026: study job fixed: PyAV 19 broke faster-whisper (open() metadata_errors); pinned av<19 in requirements-study.txt.
 # Build log (plain words, newest first)
 
 ## 22 Nov 2026 — Laptop run as a double-click
