@@ -485,7 +485,7 @@ A folder with one settings card (`series.yaml`) and 2–3 example reels. The Eng
 | A | Movie Updates | 3 | Bulletin | Case by case (box office: music only) |
 | B | Film Breakdown (the main product; 60–90 s; film weeks of up to 3 parts) | 2 | Stage | Yes |
 | C | Story slot: Guess the Tamil Movie (4 days) / Watch This Next (3 days, Fri–Sun) | 1 | Diorama / Poster Wall | No |
-| Flex | Trailer Breakdown (a new trailer in the library, max 1), Movie Review (release days, max 2) or Artwork + Quote (after 2–3 dull days) | 0–2 | Stage / Verdict / Cinematic | Yes / No / No |
+| Flex | Trailer Breakdown (a new trailer in the library, max 1), Quick Review (release day, max 2) and Trusted Review (1-4 days later, max 2; both stay on when extras are off, 10.5) or Artwork + Quote (after 2–3 dull days) | 0–2 | Stage / Verdict / Cinematic | Yes / No / No |
 | Extra | Breaking News | 0–2 | Flash | No |
 | Lab | Pilot as a Trial Reel | 1 every 2 days at most | Any | Optional |
 
@@ -519,6 +519,7 @@ Series must not look alike. Each has its own template, background and use of spa
 | Guess the Tamil Movie | Diorama | Unchanged | Unchanged | No | Unchanged |
 | Viral Story, Artwork + Quote | Cinematic | Unchanged | Unchanged | No | Unchanged |
 | **Movie Review** (First Verdict) | **Verdict** | The film's still in a dark violet tint, a spotlight on the verdict | A tall scorecard fills the frame: verdict stamp, works-vs-not scale, critic cards | No | Verdict + named critic quotes of 6 words or fewer |
+| **Quick Review / Trusted Review** (22 Nov) | **Verdict** | The same, gold for Trusted | Five big stars fill to the score, the number counts up, the answer (GO / WAIT / SKIP) stamps down; critic cards carry each critic's own rating | No | Score out of 5 + the answer + named critics |
 | **Breaking News** | **Flash** | Full-bleed still in a red wash, a pulsing live dot, scan lines, a running ticker | The headline slams across the full width; facts snap in as big blocks | No | Headline of 7 words or fewer + 2 facts |
 
 **Reference reels (13 Nov 2026).** The approved set is the reference for each look and replaces the earlier reference reels: Vikram Vedha (Breakdown, Stage), Scene week 1 (Updates, Bulletin), Loved Vikram Vedha? Watch these 4 (Watch This Next, Poster Wall), Scene first verdict (Review, Verdict), Inji Vellam release date (Breaking, Flash). Plans: `plans/reference/`; reels: Drive `reference-reels/2026-11-13/`. Templates are tested against them (Block C rule 3).
@@ -692,7 +693,17 @@ Everything lands in one **viral-factor list** (`rules/viral_factors.md`): hook t
 ### 10.5 Calendar awareness
 **Post order (Harish, 20 Nov).** Slots go by urgency, not series order: a film out today takes the first morning slot (08:30, else the next), other same-day news follows, reviews go at 17:00 or later, and evergreen reels (breakdowns, recommendations) take the evening, when people watch longer reels. Day plan since 20 Nov: updates 08:30, 11:00, 12:30, 18:00; breakdowns 20:00, 21:30.
 
-**Release calendar (Harish, 20 Nov).** `niches/<niche>/knowledge/releases.yaml` lists confirmed releases (the Plan and Refresh runs keep it up to date from the news, 2 sources). The day before a release: one "releases tomorrow" news reel (Flash look) in an evening slot. On release day: a First Verdict review per film (up to 2) from the first critics' reviews, written by the Refresh run for 17:00 and the next evening slot; a release on its own day is never breaking news.
+**Release calendar (Harish, 20 Nov; made complete 22 Nov).** `niches/<niche>/knowledge/releases.yaml` lists every Tamil release in theatres and on OTT for the next 8 weeks: film, date, where, status (confirmed or tentative) and sources. The Weekly run sweeps the next 8 weeks; the Plan and Refresh runs check the next 14 days (2 sources) and fix any date that moved. The Engine keeps the history by code (`engine/releases.py`, `data/releases_seen.json`): every date change is recorded (old date, new date, the day it changed), and news headlines that mention a calendar film with words like "postponed" or "new release date" are listed in the brief to check. The day before a release: one "releases tomorrow" news reel (Flash look) in an evening slot. A release on its own day is never breaking news.
+
+**Two reviews for every release (Harish, 22 Nov).** Reviews are part of the page's promise, so they stay on even when extras are off (lineup `always: true`).
+| Review | When | Rating | Look |
+| --- | --- | --- | --- |
+| **Quick Review** (series movie-review) | Release day, 17:00 (the Refresh run) | An early star rating out of 5 from the first reviews (at least 2 named critics or outlets), labelled EARLY | Verdict look: title, the stars and the answer, works vs doesn't, critic cards, who should watch |
+| **Trusted Review** (series trusted-review) | 1 to 4 days after release, as soon as 3 reviewers from the trusted list are in | One combined star rating from the trusted reviewers only | The same look in gold: the stars and the answer, each trusted critic's card with their own rating |
+
+The trusted reviewers are a setting Harish owns (`niches/<niche>/knowledge/critics.yaml`: Baradwaj Rangan (Galatta Plus), Prashanth Rangaswamy, Sudhir Srinivasan, The Hindu, Cinema Express, The Times of India). The score is worked out by code, never guessed: a critic's own stars count as given; a review without stars counts by a fixed word scale (rave 4.5, positive 4, mostly positive 3.5, mixed 3, mostly negative 2.5, negative 2, pan 1.5); the combined score is the average, to one decimal. The answer follows the score: 3.5 and above **GO** (watch it in theatres), 2.5 to 3.4 **WAIT** (for OTT), below 2.5 **SKIP**. The plan check refuses a review whose stars or answer differ from the worked-out ones, a Trusted Review with a reviewer not on the list or fewer than 3, and a quote without its source. Audience talk is shown on its own, never in the score.
+
+**No release missed.** Every brief lists the reviews due (Quick today, Trusted inside its window) and the slot they take. A Quick Review not planned by the end of release day, or a Trusted Review not planned by day 4, raises an alert in the Control Room. The Control Room shows the calendar (date changes highlighted) and each film's review status.
 
 The agent knows what day it is. No AI: `engine/almanac.py` reads `niches/<niche>/knowledge/calendar.yaml` and prints **Today** at the top of every brief: the day and its mood (Friday night, lazy Sunday, midweek), the season (Pongal holidays, Chennai rains, exam season), festivals and birthdays today and in the next 7 days, the words that fit each slot's hour (a 21:30 reel says LATE NIGHT), and title angles for the day ("FRIDAY NIGHT: {N} FILMS", "LOVED {FILM}? WATCH THESE {N}"). A series with `timely_titles: true` (Watch This Next) must use it. The monthly run adds the dates that move each year.
 

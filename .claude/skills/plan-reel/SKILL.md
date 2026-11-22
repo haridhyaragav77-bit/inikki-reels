@@ -27,6 +27,10 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
   (where to watch in India, checked on JustWatch today) and a reason of 6 words or fewer. Add each film to
   niches/tamil-cinema/knowledge/recommended_log.csv.
 - Updates and breaking: music-only, no spoilers, 2 trusted sources in lead.sources.
+- Reviews (from 23 Nov): Quick Review (movie-review, release day) or Trusted Review (trusted-review, only reviewers from
+  niches/tamil-cinema/knowledge/critics.yaml, at least 3). Copy plans/reference/review-quick.json or review-trusted.json.
+  List every review in "rating" (stars as the critic gave them, else a verbal word), run the plan check: it prints the
+  score and the answer (GO / WAIT / SKIP) to put in "rating" and on the stars screen. Never guess a score.
 - Pictures: the film's own official stills, posters or trailer frames (AGENT.md 5.11). An official YouTube frame is
   {"src": "engine/.cache/stills/<film>/<youtube id>_maxres2.jpg"} (maxresdefault, maxres1, maxres2, maxres3);
   anything else gives "fetch": {"url": "..."}. Add "crop": [x, y, w, h] (0-1) to cut baked-in text.

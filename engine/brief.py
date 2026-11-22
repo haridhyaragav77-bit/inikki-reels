@@ -115,7 +115,8 @@ def flex_line(ctl):
     from . import dayplan
     if not dayplan.extras_on(ctl.settings):
         return "Extras are OFF (Control Room): plan no flex reels (no trailer-breakdown, movie-review or artwork-quote) today."
-    words = {"trailer-breakdown": "trailer-breakdown when a new trailer lands", "movie-review": "movie-review on release days",
+    words = {"trailer-breakdown": "trailer-breakdown when a new trailer lands", "movie-review": "movie-review (Quick Review) on release days",
+             "trusted-review": "trusted-review 1-4 days after a release",
              "artwork-quote": "artwork-quote after a dull stretch"}
     on, off = [], []
     for sid, (role, entry) in dayplan.roles(ctl.settings).items():
@@ -477,8 +478,14 @@ def build(drive, run, date):
         L += [f"- NEW series {sid} ({ctl.series(sid, niche_dir()).get('status')}): its card is niches/{AGENT['active']['niche']}/series/{sid}/series.yaml. "
               "A draft is made for Harish to watch and is never posted; it still follows the standard (AGENT.md 5.10)."
               for sid, card in ctl.new_series().items() if str((card.get("added") or {}).get("at", "")) >= recent]
+    if run in ("plan", "refresh", "weekly"):
+        try:                                              # the release calendar and the two reviews (Harish, 22 Nov)
+            from . import releases
+            L += releases.brief_lines(date, run, radar.get("stories"), drive)
+        except Exception as e:
+            print("releases left out:", str(e)[:120])
+            L += release_lines(date, run)
     if run in ("plan", "refresh"):
-        L += release_lines(date, run)
         L += study_lines(drive, run)
         try:                                              # variety in movie updates (Harish, 19 Nov)
             from .plancheck import films_lately

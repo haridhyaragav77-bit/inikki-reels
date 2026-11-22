@@ -111,6 +111,20 @@ month's trending songs.
 | Take something back | **Setup** → Your last actions → **Undo** | `undo` |
 | Clear the alerts | **Today** → alerts → **Mark all read** | `clear alerts` |
 
+### Reviews and the release calendar (since 22 Nov)
+- **Two reviews for every release.** A **Quick Review** on release day at 17:00, from the first reviews, with an early star
+  rating. A **Trusted Review** 1 to 4 days later, as soon as 3 of your trusted reviewers are in, with one combined rating.
+- **A straight answer.** Each review shows stars out of 5 and **GO** (watch it in theatres, 3.5 and above), **WAIT** (for
+  OTT, 2.5 to 3.4) or **SKIP**. The number is worked out by code from the reviews, never guessed: a critic's own stars count
+  as given, a review without stars counts by a fixed word scale (positive 4, mixed 3, negative 2...).
+- **Your trusted reviewers:** Baradwaj Rangan (Galatta Plus), Prashanth Rangaswamy, Sudhir Srinivasan, The Hindu, Cinema
+  Express, The Times of India. To add or drop one, ask the Workshop (`niches/tamil-cinema/knowledge/critics.yaml`).
+- **The calendar:** every Sunday the agent lists every Tamil release for the next 8 weeks; every day it checks the next
+  14 days. A moved date is recorded by code and marked on the **Next** tab. News that sounds like a date change is
+  flagged for checking.
+- **Nothing missed:** reviews stay on even when extras are off. If a review is not planned in time, you get an alert.
+- **Where to see it:** Next tab → Reviews (each recent film: Quick and Trusted) and Release calendar.
+
 ### Breakdowns since 22 Nov: one clear point, a visual made for each film
 - **No fixed structure any more.** A breakdown has a strong hook, then tells one point in the order that works best for
   that film, then loops back to the start. The agent writes the point first in one sentence; if it does not fit in one

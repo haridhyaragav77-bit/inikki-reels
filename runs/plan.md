@@ -24,8 +24,9 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
   news. Evergreen reels (breakdowns, recommendations) take the evening slots, when people have time to watch longer
   reels. Reviews go at 17:00 or later, once critics have spoken. A planned reel may move to another series' slot when
   urgency says so; write why in its plan ("slot_reason"). Check the brief's Insights for which hours work best.
-- The brief's "Releases" lines: leave 17:00 for release-day reviews; make a "releases tomorrow" reel; add confirmed
-  release dates to `niches/<niche>/knowledge/releases.yaml`. A release on its own day is never breaking news.
+- The brief's "Releases and reviews" lines: leave 17:00 for a Quick Review on release day; plan any TRUSTED REVIEW that is
+  due (3 trusted reviewers in); make a "releases tomorrow" reel; check the next 14 days' dates (2 sources) and fix
+  `niches/<niche>/knowledge/releases.yaml`. A release on its own day is never breaking news.
 - Movie updates for slots from 17:00 are drafts: the Refresh run rewrites them with the day's fresh news.
 - Plans already in `plans/$TODAY/` with `"booked": true` (approved by Harish in the Workshop) keep their slots: plan the
   rest of the lineup around them, and do not use their films or sources again today.
