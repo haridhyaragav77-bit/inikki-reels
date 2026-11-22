@@ -53,8 +53,8 @@ def extras_on(settings):
 
 def off(ctl, sid):
     """Why this series makes nothing today because of the day plan, in plain words (or None)."""
-    role = roles(ctl.settings).get(sid, (None, None))[0]
-    if role == "extra" and not extras_on(ctl.settings):
+    role, entry = roles(ctl.settings).get(sid, (None, None))
+    if role == "extra" and not extras_on(ctl.settings) and not (entry or {}).get("always"):   # reviews stay on (Harish, 22 Nov)
         return OFF_EXTRAS
     if chosen(ctl.overrides, sid) == 0:
         return OFF_REGULAR if role != "extra" else "Turned off in the Control Room."

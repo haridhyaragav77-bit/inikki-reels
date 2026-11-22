@@ -430,6 +430,7 @@ def build(drive, ctl=None):
                                for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]},
          "fresh_updates": ctl.on("fresh_updates"),
          "music": _safe(music_card, {}),
+         "releases": _safe(lambda: __import__("engine.releases", fromlist=["card"]).card(date), {}),
          "digest": (_safe(lambda: drive.read_text("status", "digest.md"), "") or "")[:900],
          "manual": _safe(lambda: __import__("engine.manual", fromlist=["build"]).build(drive, now), {"count": 0, "jobs": []}),
          "actions": _safe(lambda: actions(drive), []),
@@ -515,6 +516,13 @@ def text(P):
         L.append("Run the command on your laptop, then press Done in Control Room › Manual work (or tell the chat: done <job id>).")
     else:
         L += ["", "## MANUAL WORK", "Nothing needs your laptop right now."]
+    rl = P.get("releases") or {}
+    if rl.get("recent") or rl.get("upcoming"):
+        L += ["", "## RELEASES AND REVIEWS"]
+        L += [f"- {r['film']} (out {r['date']}): Quick {'planned' if r.get('quick') else r.get('quick_state', '-')} · Trusted "
+              f"{'planned' if r.get('trusted') else r.get('trusted_state', '-')}" for r in rl.get("recent", [])[:6]]
+        L += ["- Next: " + ", ".join(f"{u['film']} {u['date'][5:]}" + (f" (moved from {u['moved_from'][5:]})" if u.get("moved_from") else "")
+                                     for u in rl.get("upcoming", [])[:8])]
     mu = P.get("music") or {}
     if mu.get("trending"):
         L += ["", f"## TRENDING SONGS ({len(mu['trending'])} on the list; music-only reels, organic only)",

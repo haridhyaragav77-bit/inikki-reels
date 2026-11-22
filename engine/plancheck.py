@@ -34,7 +34,7 @@ LOOK_KINDS = {
               "detail", "chain", "quote", "source", "board", "climb", "track", "layers", "scene", "end"},
     "bulletin": {"title", "number", "bars", "ladder", "end"},
     "poster-wall": {"title", "film", "recap"},
-    "verdict": {"title", "stamp", "scale", "critics", "who", "end"},
+    "verdict": {"title", "stamp", "scale", "critics", "who", "stars", "end"},
     "flash": {"title", "date", "team", "fact", "end"},
 }
 LAST_KIND = {"poster-wall": "recap"}          # every other look ends on "end"
@@ -435,6 +435,94 @@ def check_point(plan, series, screens):
     return E
 
 
+def critics_cfg():
+    try:
+        return load_yaml((niche_dir() / "knowledge" / "critics.yaml").relative_to(ROOT)) or {}
+    except Exception:
+        return {}
+
+
+def trusted_match(name, cfg):
+    """The trusted reviewer a plan's name or outlet stands for (critics.yaml `match`), or None."""
+    n = re.sub(r"[^a-z ]+", " ", str(name or "").lower()).strip()
+    for c in cfg.get("trusted") or []:
+        keys = [str(c.get("name", "")).lower()] + [str(m).lower() for m in c.get("match") or []]
+        if any(k and (k == n or re.search(r"\b" + re.escape(k) + r"\b", n)) for k in keys):
+            return c.get("name")
+    return None
+
+
+def rating_score(rating, cfg):
+    """The combined score out of 5, worked out by code (AGENT.md 10.5): own stars as given, a verbal word by the fixed scale."""
+    scale, vals = cfg.get("verbal_scale") or {}, []
+    for c in rating.get("critics") or []:
+        if isinstance(c.get("stars"), (int, float)) and 0 <= c["stars"] <= 5:
+            vals.append(float(c["stars"]))
+        elif c.get("verbal") in scale:
+            vals.append(float(scale[c["verbal"]]))
+    return (round(sum(vals) / len(vals) + 1e-9, 1), len(vals)) if vals else (None, 0)
+
+
+def verdict_for(score, cfg):
+    for v in sorted(cfg.get("verdicts") or [], key=lambda v: -float(v.get("min", 0))):
+        if score >= float(v.get("min", 0)):
+            return v
+    return {}
+
+
+def check_rating(plan, series, screens):
+    """Quick and Trusted Reviews (Harish, 22 Nov; AGENT.md 10.5): the rating block, the score and the answer by code."""
+    kind = series.get("rating")
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not kind or rid[:10] < "2026-11-23":
+        return []
+    cfg, E = critics_cfg(), []
+    rt = plan.get("rating") or {}
+    crit = rt.get("critics") or []
+    srcs = (plan.get("lead") or {}).get("sources") or []
+    scale = cfg.get("verbal_scale") or {}
+    if not crit:
+        return ["A review carries a 'rating' block: critics [{name, outlet, stars (0-5) or verbal (" + ", ".join(scale) + "), quote, src}] (AGENT.md 10.5)."]
+    names = []
+    for k, c in enumerate(crit, 1):
+        if not c.get("name") or not c.get("outlet"):
+            E.append(f"Rating critic {k}: give the 'name' and the 'outlet'.")
+        if not (isinstance(c.get("stars"), (int, float)) and 0 <= c["stars"] <= 5) and c.get("verbal") not in scale:
+            E.append(f"Rating critic {k} ({c.get('name')}): give their own 'stars' (0-5) or a 'verbal' word: {', '.join(scale)}.")
+        if not (isinstance(c.get("src"), int) and 0 <= c["src"] < len(srcs)):
+            E.append(f"Rating critic {k} ({c.get('name')}): 'src' is the number of the link to their review in lead.sources (from 0).")
+        if c.get("quote") and _label_words(c["quote"]) > 8:
+            E.append(f"Rating critic {k}: the quote has more than 8 words.")
+        names.append(trusted_match(c.get("name"), cfg) or trusted_match(c.get("outlet"), cfg))
+    if kind == "trusted":
+        bad = [c.get("name") for c, n in zip(crit, names) if not n]
+        if bad:
+            E.append(f"A Trusted Review uses only the trusted reviewers (knowledge/critics.yaml); not on the list: {', '.join(map(str, bad))}.")
+        got = len({n for n in names if n})
+        if got < int(cfg.get("min_trusted", 3)):
+            E.append(f"A Trusted Review needs at least {cfg.get('min_trusted', 3)} trusted reviewers; this one has {got}. Wait until more are in.")
+    elif len(crit) < int(cfg.get("min_quick", 2)):
+        E.append(f"A Quick Review needs at least {cfg.get('min_quick', 2)} named reviews for its early rating; this one has {len(crit)}.")
+    score, n = rating_score(rt, cfg)
+    if score is None:
+        return E
+    v = verdict_for(score, cfg)
+    if rt.get("score") != score:
+        E.append(f"The combined score works out to {score} (the average of {n} reviews); put \"score\": {score} in 'rating' and on the stars screen.")
+    if rt.get("verdict") != v.get("word"):
+        E.append(f"A score of {score} means {v.get('word')} ({v.get('line')}); put \"verdict\": \"{v.get('word')}\" in 'rating' and on the stars screen.")
+    st = [x for x in screens if x.get("kind") == "stars"]
+    if not st:
+        E.append("Add the 'stars' screen right after the title: the score out of 5 and the answer (templates/README.md, Verdict).")
+    else:
+        x = st[0]
+        if x.get("score") != score or x.get("verdict") != v.get("word") or x.get("line") != v.get("line"):
+            E.append(f"The stars screen shows score {x.get('score')} / {x.get('verdict')} / {x.get('line')}; it must be {score} / {v.get('word')} / {v.get('line')}.")
+        if screens.index(x) > 1:
+            E.append("The stars screen comes right after the title: the answer first.")
+    return E
+
+
 def cooling(series, rid, tpl="stage"):
     """Stock graphics still cooling down (series card graphics_cooldown, AGENT.md 5.8): {kind: the plan that used it}."""
     cd = series.get("graphics_cooldown") or {}
@@ -668,6 +756,7 @@ def check_look(plan, series):
         for c in (c for s in screens if s.get("kind") == "critics" for c in s.get("cards") or []):
             if not c.get("critic") or not c.get("outlet"):
                 E.append("Every critic quote is named: give the critic and the outlet.")
+        E += check_rating(plan, series, screens)
 
     vir = plan.get("virality") or {}
     if isinstance(vir.get("value"), (int, float)) and vir["value"] < 6:

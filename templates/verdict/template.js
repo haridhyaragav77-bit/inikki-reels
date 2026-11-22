@@ -1,5 +1,5 @@
 // VERDICT — Movie Review (First Verdict) look (AGENT.md 6.6): the film's still in a dark violet tint,
-// a verdict stamp that slams down, a works-vs-not balance scale, named critic cards. Music-only.
+// a verdict stamp that slams down, a works-vs-not balance scale, named critic cards, the star rating (22 Nov). Music-only.
 import { W, H, clamp, lerp, prog, ep, E, rng, cue, beatPulse, nearestBeat, shake, fill, grad, radial, cover, framed, rrect,
   txt, setFont, fitSize, slam, wordsIn, pill, dust, tint, sweep, ring, streak, flash, vignette, grain, rgba, filtered, duotone } from '../_shared/runtime.js';
 import { endCard, chipsRow, mascot } from '../_shared/motion.js';
@@ -102,6 +102,39 @@ const KINDS = {
         });
       });
       if (s.footer) wordsIn(ctx, s.footer, W / 2, 1500, lt - (drop(items[items.length - 1]) + .6), { size: 50, family: 'Anton', weight: 400, color: CREAM, stagger: .07 });
+    };
+  },
+  // STARS (Harish, 22 Nov): the rating out of 5 and the straight answer. Fields: heading, score (the plan check's number),
+  // out_of (5), verdict (GO | WAIT | SKIP), line (WATCH IT IN THEATRES...), basis (e.g. "5 TRUSTED CRITICS"), land (s).
+  stars(env, s, i, T) {
+    const score = Number(s.score) || 0, out = s.out_of || 5, land = s.land ?? 1.9, word = String(s.verdict || ''), fillEnd = 1.5;
+    const col = { GO: GOOD, WAIT: TICKET, SKIP: BAD }[word] || TICKET;
+    const star = (ctx, cx, cy, r) => { ctx.beginPath(); for (let k = 0; k < 10; k++) { const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * .45 : r; ctx.lineTo(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr); } ctx.closePath(); };
+    return (ctx, lt, t) => {
+      const [sx, sy] = shake(lt, [land + .2], 16);
+      ctx.save(); ctx.translate(sx, sy);
+      violetBg(env, ctx, s.image, lt, { fx: s.fx, dim: .8 });
+      wordsIn(ctx, s.heading || 'THE RATING', W / 2, 400, lt - .05, { size: 70, family: 'Anton', weight: 400, color: CREAM, stagger: .08 });
+      const v = score * ep(lt, .35, fillEnd, E.inOutCubic), r = 78, gap = 178, y0 = 640;
+      for (let k = 0; k < out; k++) {
+        const cx = W / 2 + (k - (out - 1) / 2) * gap, pop = ep(lt, .1 + k * .07, .45 + k * .07, E.outBack);
+        ctx.save(); ctx.translate(cx, y0); ctx.scale(pop, pop); ctx.translate(-cx, -y0);
+        star(ctx, cx, y0, r); ctx.fillStyle = 'rgba(243,238,255,.10)'; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = rgba(CREAM, .55); ctx.stroke();
+        const f = clamp(v - k);
+        if (f > 0) { ctx.save(); ctx.beginPath(); ctx.rect(cx - r, y0 - r, 2 * r * f, 2 * r); ctx.clip(); star(ctx, cx, y0, r);
+          ctx.shadowColor = rgba(TICKET, .7); ctx.shadowBlur = 30; ctx.fillStyle = TICKET; ctx.fill(); ctx.restore(); }
+        ctx.restore();
+      }
+      const shown = (Math.round(v * 10) / 10).toFixed(1), pn = ep(lt, .3, .6);
+      if (pn > 0) {
+        const w = txt(ctx, shown, W / 2 - 20, 960, { size: 230, family: 'Anton', weight: 400, color: '#fff', glow: rgba(TICKET, .5), glowBlur: 40, alpha: pn, align: 'right' });
+        txt(ctx, '/' + out, W / 2 - 4, 960, { size: 96, family: 'Anton', weight: 400, color: rgba(CREAM, .8), alpha: pn, align: 'left' });
+      }
+      if (s.basis) pill(ctx, s.basis, W / 2, 1050, lt - fillEnd, { size: 32, bg: CREAM, color: DEEP, ls: .1 });
+      if (word) { ctx.save(); ctx.translate(W / 2, 1300); ctx.scale(.62, .62); stamp(env, ctx, ['VERDICT', word], 0, 0, lt - land, { color: col }); ctx.restore(); }
+      flash(ctx, lt, land + .2, { alpha: .2, color: col });
+      if (s.line) pill(ctx, s.line, W / 2, 1500, lt - land - .5, { size: 40, bg: col, color: DEEP, ls: .08 });
+      ctx.restore();
     };
   },
   critics(env, s, i, T) {

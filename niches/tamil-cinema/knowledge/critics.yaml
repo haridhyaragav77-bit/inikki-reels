@@ -1,0 +1,20 @@
+# Reviewers people trust (Harish, 22 Nov; AGENT.md 10.5). Read by the plan check and the brief. Harish owns this list:
+# the thinking runs cannot change it. To add or drop a reviewer, edit this file (Workshop) or ask the Control Room chat.
+# A Trusted Review uses only these reviewers, at least `min_trusted` of them. `match` lists other spellings a plan may use.
+trusted:
+  - { name: "Baradwaj Rangan", outlet: "Galatta Plus", rates: verbal, match: ["baradwaj rangan", "bharadwaj rangan", "galatta plus"] }
+  - { name: "Prashanth Rangaswamy", outlet: "YouTube", rates: verbal, match: ["prashanth rangaswamy", "prashanth"] }
+  - { name: "Sudhir Srinivasan", outlet: "Cinema Express", rates: stars, match: ["sudhir srinivasan", "sudhir"] }
+  - { name: "The Hindu", outlet: "The Hindu", rates: verbal, match: ["the hindu"] }
+  - { name: "Cinema Express", outlet: "The New Indian Express", rates: stars, match: ["cinema express", "new indian express"] }
+  - { name: "The Times of India", outlet: "The Times of India", rates: stars, match: ["times of india", "toi"] }
+min_trusted: 3          # a Trusted Review waits until this many have reviewed
+min_quick: 2            # a Quick Review needs at least this many early reviews (any named critic or outlet)
+window_days: [1, 4]     # the Trusted Review goes out 1 to 4 days after release, as soon as min_trusted are in
+# A review without stars is read as one of these words, each worth a fixed score out of 5 (code, not a guess)
+verbal_scale: { rave: 4.5, positive: 4.0, mostly_positive: 3.5, mixed: 3.0, mostly_negative: 2.5, negative: 2.0, pan: 1.5 }
+# The answer to "should I go?", from the combined score (the first line whose min the score reaches)
+verdicts:
+  - { min: 3.5, word: "GO", line: "WATCH IT IN THEATRES" }
+  - { min: 2.5, word: "WAIT", line: "WAIT FOR OTT" }
+  - { min: 0, word: "SKIP", line: "SKIP IT" }

@@ -1,0 +1,36 @@
+# Follows the standard for every reel (AGENT.md 5.10): worth-it test, title screen, music from frame 1,
+# lots of animation, this series' own look.
+id: trusted-review
+name: Trusted Review (days 1-4)
+promise: "The reviewers people trust, combined into one star rating out of 5, and a straight answer: go, wait or skip."
+status: live
+badge: { text: "TRUSTED REVIEW", color: gold }
+title_screen: "{FILM} · TRUSTED REVIEW"
+per_day: 0              # flex: one per film, as soon as the trusted reviewers are in
+trigger: trusted_critics_in   # 1-4 days after release, once critics.yaml min_trusted have reviewed
+slots: ["17:00", "18:00"]
+template: verdict       # its own look: violet scorecard, verdict stamp, critic cards (AGENT.md 6.6)
+visuals: mixed          # trailer clips + 1-2 AI hype art images
+voice: false
+length_s: [20, 45]       # music-only since change #5; content decides
+image_cap_per_reel: 2
+lead_sources: [trusted_critics]
+story_shape: [title_screen, stars_and_verdict, what_works, what_doesnt, critics_say, who_should_watch, comment_prompt]
+rating: trusted         # only reviewers from critics.yaml, at least min_trusted; the score is worked out by code
+meme_use: ending_only
+success_metric: saves_and_sends
+rules:
+  - "Quote critics fairly and name them; mark audience talk as audience talk."
+  - "No spoilers after the first 20 minutes of the film."
+  - "No rating wars or star comparisons."
+  - "The 'rating' block lists every review used (name, outlet, stars or a verbal word, a short quote, src); the 'stars' screen shows the score the plan check works out, and its answer: GO, WAIT or SKIP."
+  - "Only the reviewers in knowledge/critics.yaml; each critic card shows their own stars or their verbal verdict."
+captions: none
+music: confident_mid      # starts on frame 1; lifts when the verdict stamps down
+motion_presets: [verdict_stamp, works_vs_not, critic_cards, audience_meter, still_reframe]
+worth_it_extra:
+  - "Are people deciding this week whether to watch it?"
+  - "Is every critic quote real, short and named?"
+reference:   # Harish, 22 Nov: the star rating and the answer up front
+  plan: plans/reference/review-trusted.json
+  older: plans/reference/review-scene.json

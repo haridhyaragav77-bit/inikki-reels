@@ -2,6 +2,18 @@
 
 The design is AGENT.md. This file only says where the build stands, so a new Workshop session can pick up without re-reading everything.
 
+## 22 Nov 2026 — Priority 2: Quick and Trusted Reviews with stars out of 5, a complete release calendar
+Harish: a solid answer out of 5, two versions (quick, trusted), trusted reviewers, reviews automated, every release and every date change known.
+| Piece | Where | In one line |
+| --- | --- | --- |
+| Trusted reviewers, scale, answers | `niches/tamil-cinema/knowledge/critics.yaml` (Harish owns; not Brain-writable) | 6 reviewers, min 3, verbal word scale, GO 3.5+ / WAIT 2.5+ / SKIP |
+| Two review series | `movie-review` (Quick Review, release day), `trusted-review` (new, days 1-4); lineup `always: true` | Reviews stay on when extras are off (`dayplan.off`) |
+| Stars screen | `templates/verdict/template.js` `stars`; references `plans/reference/review-quick.json`, `review-trusted.json` | Stars fill to the score, the number counts up, the answer stamps down |
+| Score by code | `engine/plancheck.py` `check_rating` (plans from 23 Nov) | Average of own stars / verbal scale; refuses a made-up score or answer, an off-list or missing trusted reviewer, a quote without its source |
+| Calendar | `engine/releases.py`, `data/releases_seen.json`; brief "Releases and reviews"; Weekly sweep of 8 weeks | Date changes kept by code, headlines that may move a date flagged, reviews due listed, a missed review raises an alert once |
+| Control Room | `engine/panel.py` `releases`, page Next tab | Reviews per recent film (planned, due, missed) and the 21-day calendar with moved dates |
+| Tests | `tests/test_reviews.py` (new); golden check on both review references | |
+
 ## 22 Nov 2026 — Priority 1 (A to F): breakdowns with one point and their own visuals, one laptop run, trending songs, 30 GB
 Harish: breakdowns kept sliding back to the old look (report: `lab/results/2026-11-22-breakdown-root-cause.md`); drop the fixed structure; one Python script every 15-20 days with trending music; 30 GB Drive.
 | Piece | Where | In one line |

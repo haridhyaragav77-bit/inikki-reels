@@ -22,6 +22,10 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
   songs from this month's big releases, what the studied pages use). Format: `songs:` then `- {song, film, why, search}`
   (search = the words that find its official audio on YouTube). Keep songs still trending, drop the rest. The laptop run
   downloads them; plans use them on music-only reels.
+- Researcher: the release calendar (AGENT.md 10.5). One search step for every Tamil film releasing in theatres or on
+  OTT in the next 8 weeks; add or fix each in `niches/tamil-cinema/knowledge/releases.yaml` as
+  `{film, date, where, status: confirmed|tentative, note}` (2 sources for confirmed). Never delete a film whose date
+  moved: change its date (the Engine keeps the history).
 - Advisor: the weekly report (AGENT.md 16.5, one screen) to `data/out/weekly_report.md`.
 
 ## Always

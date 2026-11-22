@@ -13,8 +13,9 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
 ## The work
 - Researcher: breaking check, then a fresh news scan since the morning (the brief's news watch, then web search).
 - Post order: tonight's most time-critical reel takes the earliest open slot; evergreen reels take the later ones.
-- Script Writer: the brief's "Releases" lines come first: release-day reviews (movie-review) and a "releases tomorrow"
-  reel. Researcher: add confirmed release dates to `niches/<niche>/knowledge/releases.yaml`.
+- Script Writer: the brief's "Releases and reviews" lines come first: REVIEWS DUE (a Quick Review on release day, a
+  Trusted Review once 3 trusted reviewers are in; AGENT.md 10.5) and a "releases tomorrow" reel. Researcher: check the
+  next 14 days' dates and any "News that may move a date" (2 sources); fix `niches/<niche>/knowledge/releases.yaml`.
 - Script Writer: when the brief says "Fresh evening updates", rewrite tonight's movie-updates plans with today's news
   (skill `plan-reel`, the variety rule, 2 sources each); keep a morning plan only if it is still the strongest story.
 - Analyst (light): flag rising reels and red metrics from the brief; add one follow-up lead for tomorrow.
