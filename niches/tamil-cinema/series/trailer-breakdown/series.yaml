@@ -32,9 +32,13 @@ rules:
   - "When a shot uses a known technique (a match cut, a colour shift, a ticking clock), name it on screen, as in a film breakdown."
 worth_it_extra:
   - "Would a fan who watched the trailer twice still learn something?"
-reference:   # the breakdown reference set (approved 13 Nov 2026)
-  plan: plans/reference/breakdown-vikram-vedha.json
+reference:   # Harish, 22 Nov: the F1 reel's look; a scene for the custom visual
+  plan: plans/reference/breakdown-f1-real-racing.json
+  scene_example: plans/reference/breakdown-scene-viduthalai.json
 # Harish, 14 Nov 2026: every breakdown gets its own design. A plan names a design kit and builds its middle from the
 # graphics that fit this film's idea; the plan check refuses a kit or a build the last reels used (AGENT.md 5.8).
-unique_design: { since: "2026-11-15", window: 3, shape_window: 2, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
-graphics: [pins, technique, loop, cards, moral, standoff, timeline, meter, versus, web, detail, chain, quote, source]   # the screens a breakdown is built from
+unique_design: { since: "2026-11-15", window: 3, shape_window: 10, kits: [spotlight, blueprint, noir, neon, paper, forest, royal] }
+graphics: [scene, detail, board, track, layers, chain, quote, source, versus, timeline, standoff, pins, cards, web, moral, loop, technique, meter]   # first the ones drawn for the film; the stock ones cool down
+graphics_cooldown: { meter: 10, timeline: 1, versus: 1, cards: 1, pins: 1, moral: 1, web: 1, loop: 1, standoff: 1, technique: 1 }   # AGENT.md 5.8
+one_point: { since: "2026-11-23", point_words: 25, min_sources: 2 }   # AGENT.md 5.7: one point, facts line by line
+hero_kinds: [scene, detail, board, track, layers, climb]

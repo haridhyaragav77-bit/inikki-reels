@@ -8,14 +8,18 @@ series' reference plan (plans/reference/, named under "reference" in its series.
 Work in this order (value first, AGENT.md 5.7): lead (topic, insight, sources) → worth_it answers → script (Tamil
 voice lines in short sentences; each also written word for word in Tanglish as voice_tg) → screens and motion
 graphics from niches/tamil-cinema/motion_library.md → pictures last → music → package.
-- Breakdowns: pin one named technique on a "technique" screen (name, and a definition of 6 words or fewer) and
-  recap it on the end card ("recap": "TECHNIQUE: <NAME>"). About 1 minute.
+- Breakdowns (from 23 Nov, Harish): write "lead.point" FIRST: one sentence of 25 words or fewer, what the viewer knows
+  after watching. No fixed structure: the hook (title screen), the point told in the order that lands best for this
+  film (2-6 screens), the end. Every screen except the end has "src" (the number of its link in lead.sources, or
+  "analysis"); at least 2 sources, checked by web search. No formula phrases ("3 secrets", "secret 1"): the series
+  card's avoid_phrases. A named technique only when it makes the point clearer (then name, definition of 6 words or
+  fewer, recap on the end card).
 - Read the brief first: "Today" (day, hour, season: use it in hooks and titles), "Series settings changed in the
   Control Room" (they win over the series file) and "Breakdown designs used lately".
-- Breakdowns, from 15 Nov: name a design kit in "design" (spotlight, blueprint, noir, neon, paper, forest, royal) that
-  the last 3 breakdowns did not use, and build the middle from the graphics that fit THIS film's idea, not the last
-  reel's order: pins, technique, loop, cards, moral, standoff, timeline (moments on a line, links setup → payoff),
-  meter (a dial that climbs), versus (two stills, a moving cut), web (who is tied to whom). Fields: templates/README.md.
+- Breakdowns: name a design kit in "design" that the last 3 breakdowns did not use (the brief lists them). Draw the
+  film's idea: one hero visual made for THIS film, best a "scene" (the scene builder: drawn props that move and act on
+  the voice's words; copy plans/reference/breakdown-scene-viduthalai.json and templates/README.md), else board, climb,
+  track, layers or detail when it shows the thing itself. Stock graphics the brief lists as cooling are refused.
 - Watch This Next, from 15 Nov: the title screen has a "kicker" (2-4 words tying the list to today, from the brief's
   Today lines) and 2 lines that fit the day; each film has "plot" (one sentence, 16 words or fewer, no spoilers) and
   "plot_beats" (2-3 beats, 6 words or fewer each); title 3.2 s, film 7.4 s (card, then plot), recap 5 s at most.
@@ -30,13 +34,15 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
   "https://www.youtube.com/results?search_query=<film>+official+trailer" | grep -o '"videoId":"[^"]*"' | head -3;
   open https://i.ytimg.com/vi/<id>/maxresdefault.jpg to check it is the film's official trailer.
 - Graphics land on a word the voice says: {"cue": {"word": "<a word from that screen's Tamil line>"}}.
-- Music: 1-3 parts from engine/music_index.json that follow the story; the first starts on screen 0. Bold, never subtle.
+- Music: 1-3 parts that follow the story; the first starts on screen 0. Bold, never subtle. A trending song (brief:
+  "Trending songs", data/music/trending.json) is the first choice when its mood fits: "track" = its key, "from" = its
+  hook_at. Otherwise the library, engine/music_index.json.
 - Package: caption lines, 3-5 hashtags, cover title (it names the reel in Drive), slot, first comment.
 - The id is "<date>-<short name>" (e.g. 2026-11-14-breakdown-kaithi); save it as plans/<date>/<id>.json.
-Breakdowns (from 20 Nov): write the script on the spine in the series card (hook > lead > body > loop > body > loop >
-body > cta; each screen has "beat"). Start from the study cards (data/study/), bend the source (series card `bend`),
-check facts by web search (Wikipedia production section, IMDb trivia, interviews). Loops are standoff screens of 9 words
-or fewer. Body 3 pays the hook and names the technique. 8-18 words a screen; "tail": 0.12 on every screen but the title.
+Breakdowns: start from the study cards (data/study/), bend the source (series card `bend`), check every fact by web
+search (Wikipedia production section, IMDb trivia, interviews) and give each screen its "src". 8-18 words a screen;
+"tail": 0.12 on every screen but the title. Before saving, read the script aloud in your head: if a screen does not
+serve lead.point, cut it.
 Pictures: the YouTube frames grid for the film (brief: Official stills, source youtube) or {"fetch": {"youtube": id, "frame": f}}.
 Validate with: python -m engine.plancheck <plan file>. Fix what it reports, then save.
 Older looks (Diorama for Guess the Movie, Cinematic for Artwork + Quote): fill templates/<template>/plan_form.json

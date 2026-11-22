@@ -1,0 +1,469 @@
+{
+ "id": "2026-11-23-breakdown-scene-viduthalai",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "forest",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "One point (no cut, no escape): the hook, the shot drawn as a scene, how it was done, where it came from, why it works: about 45 s.",
+ "lead": {
+  "topic": "Viduthalai Part 1: the 8-minute opening with no cut",
+  "angle": "cinematography_camera",
+  "insight": "Viduthalai opens on a train blast filmed as one unbroken shot of about 8 minutes: the camera moves through the wrecked coaches and ends on a coach falling off a bridge. Velraj shot it all on a gimbal, inspired by Deakins (1917) and Lubezki (The Revenant). With no cut, the viewer cannot look away: we are trapped in the train too.",
+  "why_now": "Vetrimaaran shorts are the studied channels' biggest hits this week; a camera breakdown no recent reel has done.",
+  "technique": "Long take",
+  "sources": [
+   "https://www.filmcompanion.in/features/indepth-stories/velraj-on-capturing-chaos-and-grief-in-the-8-minute-single-shot-in-vetri-maarans-viduthalai-vijay-sethupathi-soori (8-minute single shot; gimbal; 1917 and The Revenant as inspiration)",
+   "https://www.filmcompanion.in/features/quick-reads/viduthalai-makers-release-bts-video-of-the-single-take-train-sequence (official BTS of the single-take train sequence)",
+   "https://en.wikipedia.org/wiki/Viduthalai_Part_1 (released 31 March 2023; R. Velraj cinematographer)"
+  ],
+  "inspired_by": "own idea (facts from Film Companion's Velraj interview and the makers' BTS video)",
+  "point": "Viduthalai's opening runs 8 minutes with no cut, so the camera never lets us look away: we are trapped in the train too."
+ },
+ "worth_it": {
+  "learn": "What a long take is, and why an 8-minute shot with no cut traps you in the scene.",
+  "stop": "8 minutes, zero cuts, in a Tamil film.",
+  "why_now": "Vetrimaaran is the most-watched director on the studied channels this week.",
+  "send_to": "The friend who loves Vetrimaaran or camera work.",
+  "best_angle": "Yes: the camera is what everyone remembers from this opening."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "threat_north",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "ominous"
+   },
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "intrigue, builds"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "big release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "vjs": {
+   "src": "engine/.cache/stills/viduthalai-part-1/GYeSfq_bj_M_maxres3.jpg",
+   "fetch": {
+    "youtube": "GYeSfq_bj_M",
+    "frame": "maxres3"
+   }
+  },
+  "soori": {
+   "src": "engine/.cache/stills/viduthalai-part-1/GYeSfq_bj_M_maxres2.jpg",
+   "fetch": {
+    "youtube": "GYeSfq_bj_M",
+    "frame": "maxres2"
+   }
+  },
+  "room": {
+   "src": "engine/.cache/stills/viduthalai-part-1/GYeSfq_bj_M_maxres1.jpg",
+   "fetch": {
+    "youtube": "GYeSfq_bj_M",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "விடுதலை படத்தோட முதல் எட்டு நிமிஷம், ஒரு கட் கூட இல்ல.",
+   "voice_tg": "Viduthalai padathoda mudhal ettu nimisham, oru cut kooda illa.",
+   "image": "vjs",
+   "film": "VIDUTHALAI",
+   "type": "8 MINUTES. ZERO CUTS.",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "ஒரு ட்ரெயின்ல குண்டு வெடிக்குது. கேமரா ஒவ்வொரு பெட்டிக்குள்ளயும் போகுது. கடைசியில ஒரு பெட்டி, பாலத்துல இருந்து விழுது. இது எப்படி சாத்தியம்?",
+   "voice_tg": "Oru train-la kundu vedikkudhu. Camera ovvoru pettikkullayum pogudhu. Kadaisiyila oru petti, paalathula irundhu vizhudhu. Idhu eppadi saathiyam?",
+   "heading": "ONE SHOT. NO CUT.",
+   "ground": "rail",
+   "props": [
+    {
+     "id": "bridge",
+     "icon": "bridge",
+     "x": 0.88,
+     "y": 0.82,
+     "size": 1.3,
+     "cue": {
+      "at": 0.3
+     },
+     "color": "white"
+    },
+    {
+     "id": "train",
+     "icon": "coach",
+     "x": 0.38,
+     "y": 0.745,
+     "count": 4,
+     "size": 1,
+     "cue": {
+      "at": 0.2
+     },
+     "enter": "slide",
+     "color": "second",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "வெடிக்குது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "bomb",
+     "icon": "bomb",
+     "x": 0.12,
+     "y": 0.45,
+     "size": 0.8,
+     "color": "red",
+     "cue": {
+      "word": "குண்டு"
+     },
+     "acts": [
+      {
+       "do": "blast",
+       "cue": {
+        "word": "வெடிக்குது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "cam",
+     "icon": "camera",
+     "x": 0.04,
+     "y": 0.45,
+     "size": 0.7,
+     "cue": {
+      "word": "கேமரா"
+     },
+     "path": [
+      [
+       0.04,
+       0.45
+      ],
+      [
+       0.25,
+       0.55
+      ],
+      [
+       0.45,
+       0.5
+      ],
+      [
+       0.62,
+       0.56
+      ],
+      [
+       0.72,
+       0.5
+      ]
+     ],
+     "move": 3.0,
+     "move_cue": {
+      "word": "ஒவ்வொரு"
+     },
+     "label": "ONE CAMERA",
+     "label_at": "above"
+    },
+    {
+     "id": "last",
+     "icon": "coach",
+     "x": 0.88,
+     "y": 0.745,
+     "size": 1,
+     "cue": {
+      "at": 0.5
+     },
+     "enter": "slide",
+     "label": "THE LAST COACH",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "fall",
+       "cue": {
+        "word": "விழுது."
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "cam",
+     "to": "last",
+     "cue": {
+      "word": "கடைசியில"
+     },
+     "style": "beam"
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 8,
+    "unit": "MIN",
+    "cue": {
+     "word": "போகுது."
+    },
+    "x": 0.55,
+    "y": 0.18
+   },
+   "slam_text": "8 MINUTES. ZERO CUTS.",
+   "slam_cue": {
+    "word": "சாத்தியம்?"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வெடிக்குது."
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "விழுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "voice": "கேமராமேன் வேல்ராஜ் சொல்றார், முழு சீனும் ஜிம்பல்ல எடுத்தாங்க. அதனால தான், கேமரா மிதக்குற மாதிரி இருக்கு.",
+   "voice_tg": "Cameraman Velraj solraar, muzhu scene-um gimbal-la eduthaanga. Adhanaala thaan, camera midhakkura maadhiri irukku.",
+   "in": "whip",
+   "name": "R. VELRAJ",
+   "role": "CINEMATOGRAPHER",
+   "phrase": "SHOT ENTIRELY ON A GIMBAL",
+   "source": "FILM COMPANION · 2023",
+   "cues": {
+    "name": {
+     "word": "வேல்ராஜ்"
+    },
+    "phrase": {
+     "word": "ஜிம்பல்ல"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஜிம்பல்ல"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05,
+   "src": 0
+  },
+  {
+   "kind": "chain",
+   "voice": "வேல்ராஜோட இன்ஸ்பிரேஷன், ரோஜர் டீக்கின்ஸோட நைன்டீன் செவன்டீன். லுபெஸ்கியோட தி ரெவனன்ட். அதே ஸ்டைல், இப்போ தமிழ் காட்டுல.",
+   "voice_tg": "Velraj-oda inspiration, Roger Deakins-oda Nineteen Seventeen. Lubezki-yoda The Revenant. Adhe style, ippo Tamil kaattula.",
+   "in": "push",
+   "heading": "WHERE IT CAME FROM",
+   "steps": [
+    {
+     "label": "1917 · DEAKINS",
+     "cue": {
+      "word": "செவன்டீன்."
+     }
+    },
+    {
+     "label": "THE REVENANT · LUBEZKI",
+     "cue": {
+      "word": "ரெவனன்ட்."
+     }
+    },
+    {
+     "label": "VIDUTHALAI · VELRAJ",
+     "cue": {
+      "word": "காட்டுல."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "காட்டுல."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05,
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": "analysis",
+   "voice": "இதுக்கு பேரு லாங் டேக். கட் இல்லாததால, நம்ம கண்ணுக்கு தப்பிக்க வழியே இல்ல. நாமளும் அந்த ட்ரெயின்ல மாட்டிக்கிறோம்.",
+   "voice_tg": "Idhukku peru long take. Cut illaadhadhaala, namma kannukku thappikka vazhiye illa. Naamalum andha train-la maattikkirom.",
+   "heading": "THE LONG TAKE",
+   "ground": "none",
+   "props": [
+    {
+     "id": "film",
+     "icon": "film",
+     "x": 0.5,
+     "y": 0.25,
+     "size": 1.2,
+     "cue": {
+      "word": "லாங்"
+     },
+     "label": "ONE SHOT",
+     "label_at": "above"
+    },
+    {
+     "id": "eye",
+     "icon": "eye",
+     "x": 0.5,
+     "y": 0.62,
+     "size": 1.4,
+     "color": "white",
+     "cue": {
+      "word": "கண்ணுக்கு"
+     },
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "மாட்டிக்கிறோம்."
+       }
+      }
+     ]
+    },
+    {
+     "id": "lock",
+     "icon": "lock",
+     "x": 0.82,
+     "y": 0.62,
+     "size": 0.8,
+     "color": "red",
+     "cue": {
+      "word": "தப்பிக்க"
+     },
+     "label": "NO ESCAPE"
+    },
+    {
+     "id": "train2",
+     "icon": "coach",
+     "x": 0.2,
+     "y": 0.62,
+     "size": 0.8,
+     "cue": {
+      "word": "ட்ரெயின்ல"
+     },
+     "label": "WE'RE INSIDE"
+    }
+   ],
+   "links": [
+    {
+     "from": "film",
+     "to": "eye",
+     "cue": {
+      "word": "கட்"
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "NO CUT. NO ESCAPE.",
+   "slam_cue": {
+    "word": "மாட்டிக்கிறோம்."
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "voice": "உங்களுக்கு பிடிச்ச லாங் டேக், எந்த படம்? கமெண்ட்ல சொல்லுங்க. ஞாபகம் வச்சுக்கோங்க,",
+   "voice_tg": "Ungalukku pidicha long take, endha padam? Comment-la sollunga. Gnaabagam vachukkonga,",
+   "in": "whip",
+   "echo": "VIDUTHALAI · 8 MINUTES. ZERO CUTS.",
+   "question": [
+    {
+     "text": "YOUR FAVOURITE",
+     "size": 120
+    },
+    {
+     "text": "LONG TAKE?",
+     "size": 150,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "பிடிச்ச லாங் டேக் எது?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "vjs",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Viduthalai's first 8 minutes: one shot, no cut.",
+   "A train blast, the camera floating through the wrecked coaches on a gimbal, a coach falling off a bridge, all in one take. Cinematographer R. Velraj named 1917 and The Revenant as his inspiration (Film Companion). The technique: the long take.",
+   "Your favourite long take?",
+   "Send this to the Vetrimaaran fan."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "VIDUTHALAI · 8 MINUTES. ZERO CUTS.",
+  "slot": "21:30",
+  "first_comment": "Which Tamil film has the best long take?"
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "rehearsal",
+ "reference": true
+}

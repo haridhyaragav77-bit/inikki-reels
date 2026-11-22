@@ -154,11 +154,34 @@ def series_files(ctl):
 
 
 def looks_lately(n=4):
-    """The design kit and the build of the last breakdowns, so the next one is different (AGENT.md 5.8). No AI."""
-    from .plancheck import recent_plans, shape
+    """The design kit and the build of the last breakdowns, so the next one is different (AGENT.md 5.8), and the stock
+    graphics still cooling down, so the plan does not need a second try. No AI."""
+    from .plancheck import recent_plans, shape, cooling
+    from .settings import load_yaml
     out = []
     for d in recent_plans("stage", "9999-99-99-x", n):
         out.append(f"- {d.get('id')}: kit {d.get('design') or 'none named'} · {' → '.join(shape(d))}")
+    try:
+        card = load_yaml((niche_dir() / "series" / "film-breakdown" / "series.yaml").relative_to(ROOT))
+        cool = cooling(card, "9999-99-99-x")
+        if cool:
+            out.append("- Cooling now (refused in the next breakdown): " + ", ".join(f"{k} (used in {v})" for k, v in cool.items()))
+        out.append("- Hero visual drawn for the film: scene (the scene builder, templates/README.md), or board, climb, track, layers, detail.")
+    except Exception as e:
+        print("cooling list left out:", str(e)[:100])
+    return out
+
+
+def trending_songs(limit=12):
+    """This month's trending songs from the laptop run (data/music/trending.json, AGENT.md 5.4): key, mood, where the hook is."""
+    try:
+        d = json.loads((ROOT / "data" / "music" / "trending.json").read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    out = []
+    for t in [t for t in d.get("tracks", []) if t.get("fresh", True)][:limit]:
+        out.append(f"- {t['key']} · {t.get('title', '')}{' (' + t['film'] + ')' if t.get('film') else ''} · mood {', '.join(t.get('best') or []) or '?'}"
+                   f" · hook_at {t.get('hook_at', 0)} s · used {t.get('uses', 0)}x")
     return out
 
 
@@ -473,6 +496,10 @@ def build(drive, run, date):
                 L += ["", "## Breakdown designs used lately (the next breakdown names another kit in \"design\" and a different build; AGENT.md 5.8)"] + recent
         except Exception as e:
             print("designs left out:", str(e)[:100])
+    if run in ("plan", "refresh"):
+        songs = trending_songs()
+        if songs:
+            L += ["", "## Trending songs (data/music/trending.json; first choice for music when the mood fits: track = key, from = hook_at; AGENT.md 5.4)"] + songs
     if run in ("weekly", "monthly"):
         try:
             from . import insights
@@ -584,7 +611,7 @@ def build(drive, run, date):
     L += ["", "## Money and limits", f"- {money}",
           (f"- Runner minutes: {minutes.get('minutes', '?')} used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes."
            if minutes.get("free") else f"- Runner minutes: {minutes.get('minutes', '?')} of {minutes.get('limit', 2000)} this month"),
-          f"- Storage: {storage.get('gb', '?')} GB of {ctl.settings.get('budgets', {}).get('storage_gb', 8)} GB",
+          f"- Storage: {storage.get('gb', '?')} GB of {ctl.settings.get('budgets', {}).get('storage_gb', 30)} GB",
           "", "Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>"]
     (OUT / "brief.md").write_text("\n".join(l for l in L if l is not None) + "\n", encoding="utf-8")
     status.write(drive, "brief.json", {"run": run, "date": date, "nothing_to_do": bool(nothing)})

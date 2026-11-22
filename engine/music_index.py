@@ -5,6 +5,9 @@ Reels then pick tracks by mood from the index instead of by file name.
     python -m engine.music_index            tag new tracks (and anything dropped into music/inbox), write music/index.json
     python -m engine.music_index --all      tag every track again
 
+Trending songs (Harish, 22 Nov; AGENT.md 5.4): files the laptop run names "song - <key> - <title> [<id>]" are also listed in
+data/music/trending.json (key, title, mood, where the hook is, Drive id) for config `music.trending.days`, so plans can use them.
+
 Free: plain signal maths on the runner, no AI. A track already in the index is skipped unless it changed."""
 import argparse
 import json
@@ -50,10 +53,14 @@ def features(path):
     k = int(np.argmax(np.where(ok, ac * weight, -np.inf)))
     third = max(1, n // 3)
     loud = db[db > np.percentile(db, 20)]
+    win = max(1, int(8 * fps))                                          # the hook: the loudest 8 s in the first 70% of the track
+    roll = np.convolve(db, np.ones(win) / win, "valid")
+    span = max(1, int(len(roll) * .7))
+    hook = round(float(np.argmax(roll[:span]) / fps), 1) if len(roll) else 0.0
     return {"bpm": round(float(60 * fps / k), 1), "pulse": round(float(ac[k] / (ac[0] + 1e-9)), 3),
             "energy_db": round(float(loud.mean()), 2), "dynamics_db": round(float(np.percentile(db, 95) - np.percentile(db, 30)), 2),
             "brightness_hz": round(centroid, 0), "drums": round(float(np.percentile(flux, 95) / (np.median(flux) + 1e-9)), 3),
-            "build_db": round(float(db[-third:].mean() - db[:third].mean()), 2)}
+            "build_db": round(float(db[-third:].mean() - db[:third].mean()), 2), "hook_s": hook}
 
 
 def _pct(vals):
@@ -90,6 +97,54 @@ def score_moods(items):
             moods[m] = round(float(min(1.0, max(0.0, s[m][i] + hint))), 3)
         it["moods"] = moods
         it["best"] = sorted(moods, key=moods.get, reverse=True)[:2]
+
+
+SONG = re.compile(r"^song - (song_[a-z0-9_]+) - (.+?)(?: \[[^\]]+\])?\.\w+$", re.I)
+
+
+def trending(tracks, keep_days=45):
+    """data/music/trending.json: the laptop run's songs, newest first, with the key a plan names and the hook's second.
+    Kept on the list for keep_days after they arrive; older ones stay usable (still listed, fresh: false) for 60 more days."""
+    from .settings import ROOT
+    p = ROOT / "data" / "music" / "trending.json"
+    try:
+        old = {t["key"]: t for t in json.loads(p.read_text(encoding="utf-8")).get("tracks", [])}
+    except Exception:
+        old = {}
+    uses = {}
+    for f in (ROOT / "plans").glob("20??-??-??/*.json"):
+        try:
+            for sec in (json.loads(f.read_text(encoding="utf-8")).get("music") or {}).get("sections", []):
+                uses[sec.get("track")] = uses.get(sec.get("track"), 0) + 1
+        except Exception:
+            continue
+    now, out = time.time(), []
+    for t in tracks:
+        m = SONG.match(t.get("name", ""))
+        if not m or t.get("retired"):
+            continue
+        key, title = m.group(1).lower(), m.group(2).strip()
+        prev = old.get(key, {})
+        added = prev.get("added") or time.strftime("%Y-%m-%d", time.gmtime())
+        age = (now - time.mktime(time.strptime(added, "%Y-%m-%d"))) / 86400
+        if age > keep_days + 60:
+            continue
+        film = re.search(r"\(([^)]+)\)\s*$", title)
+        out.append({"key": key, "title": title, "film": film.group(1) if film else prev.get("film", ""), "drive_id": t["id"], "seconds": t.get("seconds"),
+                    "best": t.get("best") or [], "hook_at": (t.get("f") or {}).get("hook_s", 0.0), "added": added,
+                    "fresh": age <= keep_days, "uses": uses.get(key, 0)})
+    out.sort(key=lambda x: x["added"], reverse=True)          # newest first, then the fresh ones ahead of the older ones
+    out.sort(key=lambda x: not x["fresh"])
+    p.parent.mkdir(parents=True, exist_ok=True)
+    body = {"note": "Trending songs from the laptop run (AGENT.md 5.4). Music-only reels; organic posts only, never boosted.", "tracks": out}
+    try:
+        same = {k: v for k, v in json.loads(p.read_text(encoding="utf-8")).items() if k != "updated"} == body
+    except Exception:
+        same = False
+    if not same:
+        p.write_text(json.dumps({"updated": time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime()), **body}, ensure_ascii=False, indent=1) + "\n",
+                     encoding="utf-8")
+    return out
 
 
 def load(drive, folder_id):
@@ -156,6 +211,11 @@ def main():
     else:
         d.svc.files().create(body={"name": INDEX, "parents": [mid]}, media_body=media, fields="id", supportsAllDrives=True).execute(num_retries=3)
     counts = {m: sum(1 for t in tracks if m in (t.get("best") or [])) for m in MOODS}
+    try:
+        songs = trending(tracks, int(((ENGINE.get("music") or {}).get("trending") or {}).get("days", 45)))
+        print(f"Trending songs: {sum(1 for x in songs if x['fresh'])} on the list (data/music/trending.json)")
+    except Exception as e:
+        print("trending list not written:", str(e)[:160], file=sys.stderr)
     print(f"Music index: {len(tracks)} tracks, {done} tagged now, {len(failed)} could not be read. Tracks per mood (top two moods each): {counts}")
     os.makedirs(OUT / "peek" / "music", exist_ok=True)
     with open(OUT / "peek" / "music" / "summary.json", "w", encoding="utf-8") as fh:

@@ -893,6 +893,267 @@ const KINDS = {
     };
   },
 
+  // ------------------------------------------------------------ SCENE (Harish, 22 Nov): the custom visual for each film,
+  // drawn from the plan, no new code. Props (drawn icons) stand in a box, move along paths, and act on the voice's words.
+  // Fields: heading · ground (floor|road|rail|water|city|sky|map|grid|none) · scroll (px/s for road and rail) ·
+  // props: 1-8 of {id, icon, x, y (0-1 in the box), size, count, gap, flip, color (accent|second|white|red), label (≤3 words),
+  //   label_at (below|above), cue, enter (pop|drop|slide|rise|fade), path [[x, y] 2-8 points], move (s), move_cue, trail, face,
+  //   loop, acts: [{do: fall|shake|blast|light|spin|grow|fade|pulse|swap, cue, to, icon, copy}]} ·
+  // links: [{from, to, cue, style (line|string|beam|arrow), label}] · focus {on, to (1.1-1.6), cue, d} ·
+  // counter {from, to, unit, cue, d, x, y} · slam_text, slam_cue. Same plan, same frames: everything is a function of time.
+  scene(env, s, i, T) {
+    const bx = 90, by = 450, bw = 800, bh = 780, X = x => bx + x * bw, Y = y => by + y * bh, RED = '#FF5A4E', U = 1.6;   // size 1 = a 160 px icon
+    const COL = { accent: GOLD, second: TEAL, white: '#FFFFFF', red: RED };
+    const at = (c, f) => cue(env, i, c, f) - T.start;
+    const smooth = (raw, closed) => {                    // Catmull-Rom through the points, measured for even speed
+      const pts = raw.map(([x, y]) => [X(x), Y(y)]);
+      if (pts.length < 2) return null;
+      const P = closed ? [pts[pts.length - 1], ...pts, pts[0], pts[1]] : [pts[0], ...pts, pts[pts.length - 1]], out = [];
+      for (let k = 1; k < P.length - 2; k++) for (let u = 0; u < 1; u += .05) {
+        const [p0, p1, p2, p3] = [P[k - 1], P[k], P[k + 1], P[k + 2]], u2 = u * u, u3 = u2 * u;
+        out.push([0, 1].map(j => .5 * (2 * p1[j] + (-p0[j] + p2[j]) * u + (2 * p0[j] - 5 * p1[j] + 4 * p2[j] - p3[j]) * u2 + (-p0[j] + 3 * p1[j] - 3 * p2[j] + p3[j]) * u3)));
+      }
+      out.push(closed ? out[0] : pts[pts.length - 1]);
+      const L = [0]; for (let k = 1; k < out.length; k++) L.push(L[k - 1] + Math.hypot(out[k][0] - out[k - 1][0], out[k][1] - out[k - 1][1]));
+      const total = Math.max(1e-6, L[L.length - 1]);
+      return { pts: out, L, total, at: f => {
+        f = clamp(f); const d = f * total; let k = L.findIndex(v => v >= d); k = Math.max(1, k < 0 ? L.length - 1 : k);
+        const a = out[k - 1], b = out[k], u = (d - L[k - 1]) / Math.max(1e-6, L[k] - L[k - 1]);
+        return [lerp(a[0], b[0], u), lerp(a[1], b[1], u), Math.atan2(b[1] - a[1], b[0] - a[0])]; } };
+    };
+    const props = (s.props || []).map((p, k) => {
+      const c0 = at(p.cue, .25 + k * .3), path = Array.isArray(p.path) ? smooth(p.path, !!p.loop) : null;
+      return { ...p, k, c0, path, mc: p.move_cue ? at(p.move_cue) : c0 + .35, mv: p.move || 2.6, lc: p.label_cue ? at(p.label_cue) : c0 + .35,
+        acts: (p.acts || []).map(a => ({ ...a, c: at(a.cue, c0 + 1.2) })), col: COL[p.color] || (k === 0 ? GOLD : TEAL) };
+    });
+    const byId = Object.fromEntries(props.filter(p => p.id).map(p => [p.id, p]));
+    const hits = [];
+    props.forEach(p => p.acts.forEach(a => { if (a.do === 'blast' || a.do === 'shake') hits.push(a.c); }));
+    const links = (s.links || []).map(l => ({ ...l, c: at(l.cue, 1.4) }));
+    const fo = s.focus, fc = fo ? at(fo.cue, 1) : 1e9, cs = s.slam_cue ? at(s.slam_cue) : 1e9, ct = s.counter ? at(s.counter.cue, .6) : 0;
+
+    // ---- the icons: drawn in a 100 px box around (0, 0), facing right; g strokes in the prop's colour with a glow
+    const ICONS = {
+      camera: g => { g.box(-44, -20, 60, 46, 8); g.circ(-30, -36, 13); g.circ(-2, -36, 13); g.poly([[16, -10], [46, -24], [46, 22], [16, 8]]); g.dot(-14, 3, 9); },
+      film: g => { g.box(-46, -26, 92, 52, 4); for (let x = -38; x <= 34; x += 18) { g.sq(x, -21, 7); g.sq(x, 14, 7); } g.line([[-46, -10], [46, -10]]); g.line([[-46, 9], [46, 9]]); },
+      clapper: g => { g.box(-40, -8, 80, 44, 4); g.poly([[-40, -10], [36, -34], [40, -22], [-36, 2]]); g.line([[-20, -15], [-8, -26]]); g.line([[2, -21], [14, -31]]); },
+      mic: g => { g.box(-13, -46, 26, 48, 13); g.arc(0, -6, 24, 0, Math.PI); g.line([[0, 18], [0, 40]]); g.line([[-20, 42], [20, 42]]); },
+      spotlight: g => { g.beam([[-14, -20], [14, -20], [60, 50], [-60, 50]]); g.poly([[-22, -44], [22, -44], [14, -18], [-14, -18]]); g.line([[0, -44], [0, -54]]); },
+      screen: g => { g.box(-48, -34, 96, 60, 4); g.line([[-14, 26], [-20, 42]]); g.line([[14, 26], [20, 42]]); g.line([[-28, 42], [28, 42]]); },
+      person: g => { g.circ(0, -36, 13); g.line([[0, -22], [0, 14]]); g.line([[-22, -6], [0, -14], [22, -6]]); g.line([[-15, 46], [0, 14], [15, 46]]); },
+      runner: g => { g.circ(8, -38, 13); g.line([[4, -24], [-4, 10]]); g.line([[-24, -4], [0, -16], [20, -24]]); g.line([[-26, 30], [-4, 10], [16, 30], [10, 46]]); },
+      crowd: g => { [-30, 0, 30].forEach((x, k) => { const y = k === 1 ? -6 : 4; g.circ(x, y - 26, 10); g.line([[x, y - 15], [x, y + 14]]); g.line([[x - 12, y + 40], [x, y + 14], [x + 12, y + 40]]); }); },
+      car: g => { g.poly([[-48, 14], [-48, -2], [-24, -6], [-12, -24], [20, -24], [32, -6], [48, -2], [48, 14]]); g.circ(-28, 16, 10); g.circ(28, 16, 10); g.line([[-8, -22], [-8, -6]]); },
+      racecar: g => { g.poly([[-48, 10], [-40, -4], [-4, -8], [8, -18], [22, -8], [44, -4], [50, 10]]); g.line([[-50, -14], [-50, 4]]); g.line([[-56, -14], [-42, -14]]); g.circ(-30, 14, 11); g.circ(32, 14, 11); },
+      bike: g => { g.circ(-28, 18, 18); g.circ(28, 18, 18); g.line([[-28, 18], [-6, -12], [16, -12], [28, 18]]); g.line([[-6, -12], [2, 18], [16, -12]]); g.line([[14, -22], [22, -22]]); },
+      train: g => { g.box(-48, -26, 64, 48, 4); g.box(-6, -44, 22, 20, 3); g.poly([[16, -14], [44, -6], [44, 22], [16, 22]]); g.circ(-32, 26, 9); g.circ(-4, 26, 9); g.circ(28, 26, 9); g.sq(-40, -16, 14); },
+      coach: g => { g.box(-48, -26, 96, 46, 6); [-34, -10, 14].forEach(x => g.sq(x, -16, 16)); g.circ(-30, 24, 8); g.circ(30, 24, 8); },
+      plane: g => { g.poly([[-50, 0], [-30, -8], [40, -6], [52, 0], [40, 6], [-30, 8]]); g.poly([[4, -6], [-14, -42], [-2, -42], [22, -6]]); g.poly([[4, 6], [-14, 42], [-2, 42], [22, 6]]); g.poly([[-44, -2], [-50, -20], [-40, -20], [-32, -6]]); },
+      boat: g => { g.poly([[-48, 10], [48, 10], [34, 30], [-34, 30]]); g.line([[0, 10], [0, -46]]); g.poly([[4, -42], [36, 4], [4, 4]]); },
+      bridge: g => { g.line([[-60, -6], [60, -6]]); g.line([[-60, 2], [60, 2]]); [-40, 0, 40].forEach(x => { g.line([[x, 2], [x, 44]]); }); g.arc(-20, 44, 20, Math.PI, 0); g.arc(20, 44, 20, Math.PI, 0); },
+      building: g => { g.box(-30, -50, 60, 100, 2); for (let y = -40; y < 40; y += 16) for (let x = -20; x <= 10; x += 14) g.sq(x, y, 8); },
+      house: g => { g.poly([[-40, -6], [0, -40], [40, -6]]); g.box(-32, -6, 64, 46, 2); g.box(-8, 14, 16, 26, 2); },
+      tree: g => { g.line([[0, 46], [0, 4]]); g.circ(0, -18, 28); g.circ(-18, -4, 16); g.circ(18, -4, 16); },
+      mountain: g => { g.poly([[-54, 40], [-14, -30], [10, 8], [24, -12], [56, 40]]); g.line([[-24, -12], [-14, -30], [-4, -14]]); },
+      sun: g => { g.circ(0, 0, 22); for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; g.line([[Math.cos(a) * 32, Math.sin(a) * 32], [Math.cos(a) * 46, Math.sin(a) * 46]]); } },
+      moon: g => { g.crescent(0, 0, 34); },
+      star: g => { g.poly([...Array(10)].map((_, k) => { const a = -Math.PI / 2 + k * Math.PI / 5, r = k % 2 ? 18 : 44; return [Math.cos(a) * r, Math.sin(a) * r]; })); },
+      cloud: g => { g.cloud(); },
+      rain: g => { g.cloud(); [-24, -4, 16].forEach(x => g.line([[x, 30], [x - 8, 48]])); },
+      fire: g => { g.flame(); },
+      bomb: g => { g.circ(-6, 8, 30); g.line([[14, -14], [24, -28], [36, -30]]); g.dot(40, -32, 6); },
+      blast: g => { g.poly([...Array(16)].map((_, k) => { const a = k * Math.PI / 8, r = k % 2 ? 22 : 50; return [Math.cos(a) * r, Math.sin(a) * r]; })); },
+      gun: g => { g.poly([[-44, -16], [40, -16], [40, -4], [-6, -4], [-14, 30], [-32, 30], [-26, -4], [-44, -4]]); g.line([[-6, -4], [-2, 8], [-12, 8]]); },
+      knife: g => { g.poly([[-8, -8], [48, -8], [24, 8], [-8, 8]]); g.box(-46, -8, 36, 16, 6); },
+      phone: g => { g.box(-24, -46, 48, 92, 9); g.box(-17, -36, 34, 62, 3); g.dot(0, 36, 4); },
+      clock: g => { g.circ(0, 0, 40); g.hand(0, 0, 28, g.t * 2.4); g.hand(0, 0, 18, g.t * .2); g.dot(0, 0, 4); },
+      hourglass: g => { g.poly([[-26, -42], [26, -42], [0, 0]]); g.poly([[-26, 42], [26, 42], [0, 0]]); g.line([[-32, -46], [32, -46]]); g.line([[-32, 46], [32, 46]]); },
+      heart: g => { g.heart(); },
+      eye: g => { g.eye(); },
+      crown: g => { g.poly([[-40, 24], [-44, -24], [-20, 0], [0, -32], [20, 0], [44, -24], [40, 24]]); g.dot(0, -32, 5); },
+      key: g => { g.circ(-26, 0, 16); g.line([[-10, 0], [44, 0]]); g.line([[30, 0], [30, 14]]); g.line([[40, 0], [40, 12]]); },
+      lock: g => { g.box(-28, -6, 56, 46, 6); g.arc(0, -6, 18, Math.PI, 0); g.line([[-18, -6], [-18, -6]]); g.dot(0, 14, 6); },
+      door: g => { g.box(-26, -48, 52, 96, 3); g.dot(14, 4, 5); },
+      book: g => { g.poly([[-46, -30], [0, -22], [0, 34], [-46, 26]]); g.poly([[46, -30], [0, -22], [0, 34], [46, 26]]); },
+      letter: g => { g.box(-44, -28, 88, 56, 4); g.line([[-44, -28], [0, 6], [44, -28]]); },
+      note: g => { g.circ(-14, 26, 13); g.line([[-2, 26], [-2, -40], [26, -28], [26, -14]]); },
+      trophy: g => { g.poly([[-26, -40], [26, -40], [20, 0], [-20, 0]]); g.arc(-26, -26, 12, Math.PI / 2, Math.PI * 1.5); g.arc(26, -26, 12, -Math.PI / 2, Math.PI / 2); g.line([[0, 0], [0, 24]]); g.box(-20, 24, 40, 14, 3); },
+      flag: g => { g.line([[-30, 46], [-30, -46]]); g.wave(-30, -44, 66, 40); },
+      skull: g => { g.circ(0, -8, 32); g.box(-16, 18, 32, 18, 4); g.dot(-12, -8, 8); g.dot(12, -8, 8); },
+      mask: g => { g.mask(); },
+      throne: g => { g.poly([[-26, -48], [26, -48], [26, 10], [-26, 10]]); g.box(-34, 6, 68, 14, 3); g.line([[-30, 20], [-30, 46]]); g.line([[30, 20], [30, 46]]); },
+      ball: g => { g.circ(0, 0, 36); g.poly([[0, -14], [13, -4], [8, 12], [-8, 12], [-13, -4]]); },
+      ticket: g => { g.ticket(); },
+      question: g => { g.circ(0, 0, 40); g.glyph('?'); },
+      exclaim: g => { g.circ(0, 0, 40); g.glyph('!'); },
+      check: g => { g.line([[-30, 0], [-8, 24], [32, -24]]); },
+      cross: g => { g.line([[-28, -28], [28, 28]]); g.line([[28, -28], [-28, 28]]); },
+      arrow: g => { g.line([[-44, 0], [36, 0]]); g.poly([[20, -18], [46, 0], [20, 18]]); },
+      target: g => { g.circ(0, 0, 40); g.circ(0, 0, 24); g.dot(0, 0, 9); },
+      pin: g => { g.pin(); },
+      dot: g => { g.dot(0, 0, 16); },
+    };
+    const painter = (ctx, col, t) => {
+      const st = () => { ctx.fillStyle = rgba(col, .16); ctx.fill(); ctx.stroke(); };
+      return {
+        t,
+        box: (x, y, w, h, r) => { rrect(ctx, x, y, w, h, r); st(); },
+        sq: (x, y, w) => { ctx.beginPath(); ctx.rect(x, y, w, w); ctx.fillStyle = rgba(col, .6); ctx.fill(); },
+        circ: (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); st(); },
+        dot: (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); },
+        arc: (x, y, r, a0, a1) => { ctx.beginPath(); ctx.arc(x, y, r, a0, a1); ctx.stroke(); },
+        line: pts => { ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); },
+        poly: pts => { ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.closePath(); st(); },
+        beam: pts => { ctx.save(); ctx.globalCompositeOperation = 'lighter'; ctx.shadowBlur = 0; const gr = ctx.createLinearGradient(0, -20, 0, 50);
+          gr.addColorStop(0, rgba(col, .45)); gr.addColorStop(1, rgba(col, 0)); ctx.fillStyle = gr; ctx.beginPath(); pts.forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.fill(); ctx.restore(); },
+        hand: (x, y, r, a) => { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + Math.cos(a - Math.PI / 2) * r, y + Math.sin(a - Math.PI / 2) * r); ctx.stroke(); },
+        crescent: (x, y, r) => { ctx.beginPath(); ctx.arc(x, y, r, Math.PI * .3, Math.PI * 1.7); ctx.arc(x + r * .5, y - r * .1, r * .8, Math.PI * 1.55, Math.PI * .45, true); ctx.closePath(); st(); },
+        cloud: () => { ctx.beginPath(); ctx.arc(-22, 6, 18, Math.PI * .5, Math.PI * 1.5); ctx.arc(-4, -10, 22, Math.PI, 0); ctx.arc(22, 2, 18, Math.PI * 1.4, Math.PI * .5); ctx.closePath(); st(); },
+        flame: () => { const f = 4 * Math.sin(t * 9); ctx.beginPath(); ctx.moveTo(0, 46); ctx.bezierCurveTo(-40, 30, -30, -10, -8 + f, -46); ctx.bezierCurveTo(-4, -20, 14, -26, 12, -40);
+          ctx.bezierCurveTo(40, -10, 40, 30, 0, 46); st(); ctx.beginPath(); ctx.moveTo(0, 40); ctx.bezierCurveTo(-16, 30, -12, 6, 0 - f, -8); ctx.bezierCurveTo(12, 8, 16, 30, 0, 40); ctx.fillStyle = rgba(col, .6); ctx.fill(); },
+        heart: () => { ctx.beginPath(); ctx.moveTo(0, 40); ctx.bezierCurveTo(-60, 0, -30, -50, 0, -18); ctx.bezierCurveTo(30, -50, 60, 0, 0, 40); st(); },
+        eye: () => { ctx.beginPath(); ctx.moveTo(-48, 0); ctx.quadraticCurveTo(0, -42, 48, 0); ctx.quadraticCurveTo(0, 42, -48, 0); st();
+          ctx.beginPath(); ctx.arc(6 * Math.sin(t * .9), 0, 15, 0, 7); ctx.fillStyle = col; ctx.fill(); },
+        mask: () => { ctx.beginPath(); ctx.moveTo(-36, -36); ctx.quadraticCurveTo(0, -46, 36, -36); ctx.quadraticCurveTo(40, 20, 0, 44); ctx.quadraticCurveTo(-40, 20, -36, -36); st();
+          ctx.beginPath(); ctx.ellipse(-14, -12, 9, 6, 0, 0, 7); ctx.ellipse(14, -12, 9, 6, 0, 0, 7); ctx.fillStyle = col; ctx.fill(); ctx.beginPath(); ctx.arc(0, 14, 14, .15 * Math.PI, .85 * Math.PI); ctx.stroke(); },
+        ticket: () => { ctx.beginPath(); ctx.moveTo(-46, -26); ctx.lineTo(46, -26); ctx.lineTo(46, -8); ctx.arc(46, 0, 8, -Math.PI / 2, Math.PI / 2, true); ctx.lineTo(46, 26);
+          ctx.lineTo(-46, 26); ctx.lineTo(-46, 8); ctx.arc(-46, 0, 8, Math.PI / 2, -Math.PI / 2, true); ctx.closePath(); st(); ctx.setLineDash([6, 6]); ctx.beginPath(); ctx.moveTo(16, -24); ctx.lineTo(16, 24); ctx.stroke(); ctx.setLineDash([]); },
+        wave: (x, y, w, h) => { ctx.beginPath(); ctx.moveTo(x, y); for (let u = 0; u <= 1.001; u += .1) ctx.lineTo(x + u * w, y + Math.sin(u * 6 + t * 5) * 5 * u);
+          for (let u = 1; u >= -.001; u -= .1) ctx.lineTo(x + u * w, y + h + Math.sin(u * 6 + t * 5) * 5 * u); ctx.closePath(); st(); },
+        pin: () => { ctx.beginPath(); ctx.arc(0, -16, 24, Math.PI * .8, Math.PI * .2); ctx.lineTo(0, 40); ctx.closePath(); st(); ctx.beginPath(); ctx.arc(0, -16, 9, 0, 7); ctx.fillStyle = col; ctx.fill(); },
+        glyph: ch => { ctx.save(); ctx.shadowBlur = 0; txt(ctx, ch, 0, 20, { size: 58, family: 'Anton', weight: 400, color: col }); ctx.restore(); },
+      };
+    };
+    const drawIcon = (ctx, name, x, y, sc, rot, flip, col, alpha, glow, t) => {
+      const fn = ICONS[name] || ICONS.dot;
+      ctx.save(); ctx.translate(x, y); ctx.rotate(rot || 0); ctx.scale((flip ? -1 : 1) * sc, sc); ctx.globalAlpha = clamp(alpha);
+      ctx.strokeStyle = col; ctx.lineWidth = 6.5 / Math.max(.5, Math.abs(sc)) * Math.max(.85, Math.min(1.3, sc / U)); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.shadowColor = col; ctx.shadowBlur = glow; fn(painter(ctx, col, t)); ctx.restore(); ctx.globalAlpha = 1;
+    };
+
+    // ---- where a prop is and how it looks at a moment
+    const state = (p, lt, copy) => {
+      const n = Math.max(1, Math.min(8, p.count || 1)), gap = (p.gap || .2 * (p.size || 1)) * bw, off = (copy - (n - 1) / 2) * gap;
+      let x = X(p.x ?? .5) + off, y = Y(p.y ?? .5), rot = 0, sc = (p.size || 1) * U, alpha = 1, glow = 16, icon = p.icon, col = p.col, hide = false;
+      const d0 = lt - p.c0, en = p.enter || 'pop';
+      if (d0 < 0) return null;
+      const a = ep(d0, 0, .5, E.outBack), af = clamp(d0 * 3);
+      if (en === 'pop') sc *= a; else if (en === 'drop') { y -= (1 - ep(d0, 0, .55, E.outBack)) * 420; alpha = af; }
+      else if (en === 'slide') { x += (1 - ep(d0, 0, .6, E.outCubic)) * ((p.x ?? .5) < .5 ? -520 : 520); alpha = af; }
+      else if (en === 'rise') { y += (1 - ep(d0, 0, .55, E.outBack)) * 220; alpha = af; } else alpha = clamp(d0 * 2);
+      if (p.path) {
+        const f = p.loop ? (lt > p.mc ? ((lt - p.mc) / p.mv) % 1 : 0) : ep(lt, p.mc, p.mc + p.mv, E.inOutCubic);
+        const [px, py, ang] = p.path.at(f); x = px + off; y = py; if (p.face) rot = ang;
+      }
+      for (const ac of p.acts) {
+        if (ac.copy != null && ac.copy !== copy) continue;
+        const d = lt - ac.c; if (d < 0) continue;
+        if (ac.do === 'fall') { y += 1300 * d * d; rot += d * 2.2 * ((p.x ?? .5) < .5 ? -1 : 1); if (y > H + 200) hide = true; }
+        else if (ac.do === 'shake' && d < .7) { const k = Math.exp(-d * 6) * 16; x += Math.sin(d * 70) * k; y += Math.cos(d * 61) * k; }
+        else if (ac.do === 'spin') rot += d * 4;
+        else if (ac.do === 'grow') sc *= lerp(1, ac.to || 1.6, ep(d, 0, .6, E.outBack));
+        else if (ac.do === 'pulse') sc *= 1 + .08 * Math.sin(d * 8);
+        else if (ac.do === 'fade') alpha *= 1 - clamp(d / .4);
+        else if (ac.do === 'light') { col = GOLD; glow = 34 + 26 * Math.sin(d * 6) ** 2; }
+        else if (ac.do === 'swap') { if (d < .25) sc *= 1 - d / .25 * .9; else { icon = ac.icon || icon; sc *= ep(d, .25, .6, E.outBack); } }
+        else if (ac.do === 'blast') { if (!ac.keep) alpha *= 1 - clamp((d - .15) / .35); sc *= 1 + .5 * ep(d, 0, .3); }
+      }
+      return hide ? null : { x, y, rot, sc, alpha, glow, icon, col };
+    };
+    const where = (p, lt) => state(p, Math.max(lt, p.c0 + .01), 0) || { x: X(p.x ?? .5), y: Y(p.y ?? .5) };
+
+    // ---- the ground under the props
+    const ground = (ctx, lt) => {
+      const g = s.ground || 'floor', gy = Y(.8), sc = (s.scroll || 0) * lt, dr = ep(lt, 0, .8, E.inOutCubic);
+      ctx.save(); ctx.globalAlpha = dr;
+      if (g === 'floor' || g === 'road' || g === 'rail') {
+        ctx.strokeStyle = rgba(GOLD, .55); ctx.lineWidth = 3; ctx.shadowColor = GOLD; ctx.shadowBlur = 18;
+        ctx.beginPath(); ctx.moveTo(X(0) - 40, gy); ctx.lineTo(X(1) + 40, gy); ctx.stroke(); ctx.shadowBlur = 0;
+        for (let k = -6; k <= 6; k++) { ctx.strokeStyle = rgba(TEAL, .1); ctx.beginPath(); ctx.moveTo(CX + k * 70, gy); ctx.lineTo(CX + k * 260, Y(1.08)); ctx.stroke(); }
+      }
+      if (g === 'road') { ctx.setLineDash([38, 30]); ctx.lineDashOffset = sc; ctx.strokeStyle = rgba('#FFFFFF', .45); ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(X(0), gy + 40); ctx.lineTo(X(1), gy + 40); ctx.stroke(); ctx.setLineDash([]); }
+      if (g === 'rail') { ctx.strokeStyle = rgba('#FFFFFF', .4); ctx.lineWidth = 4; [gy + 10, gy + 26].forEach(yy => { ctx.beginPath(); ctx.moveTo(X(0) - 40, yy); ctx.lineTo(X(1) + 40, yy); ctx.stroke(); });
+        for (let x = X(0) - 40 - ((sc % 46) + 46) % 46; x < X(1) + 40; x += 46) { ctx.fillStyle = rgba(GOLD, .25); ctx.fillRect(x, gy + 6, 10, 26); } }
+      if (g === 'water') for (let k = 0; k < 4; k++) { ctx.strokeStyle = rgba(TEAL, .35 - k * .07); ctx.lineWidth = 3; ctx.beginPath();
+        for (let x = X(0); x <= X(1); x += 20) ctx.lineTo(x, gy + k * 26 + Math.sin(x * .02 + lt * 2 + k) * 7); ctx.stroke(); }
+      if (g === 'city') { const r = rng(91 + i); for (let x = X(0) - 30; x < X(1) + 30;) { const w = 50 + r() * 70, h = 90 + r() * 260; ctx.fillStyle = 'rgba(14,16,22,.95)'; ctx.fillRect(x, gy - h, w, h);
+        ctx.strokeStyle = rgba(TEAL, .25); ctx.lineWidth = 2; ctx.strokeRect(x, gy - h, w, h);
+        for (let wy = gy - h + 14; wy < gy - 14; wy += 26) for (let wx = x + 10; wx < x + w - 12; wx += 20) if (r() < .35) { ctx.fillStyle = rgba(GOLD, .25 + .25 * Math.sin(lt * 2 + wx)); ctx.fillRect(wx, wy, 8, 10); }
+        x += w + 8; } }
+      if (g === 'sky') { const r = rng(57 + i); for (let k = 0; k < 60; k++) { const x = X(r() * 1.1 - .05), y = Y(r() * .75), a = .3 + .3 * Math.sin(lt * 2 + k);
+        ctx.fillStyle = rgba('#FFFFFF', a); ctx.beginPath(); ctx.arc(x, y, 1.5 + r() * 2.5, 0, 7); ctx.fill(); } }
+      if (g === 'map' || g === 'grid') { ctx.lineWidth = 1.5; for (let x = X(0); x <= X(1) + 1; x += bw / 10) { ctx.strokeStyle = rgba(TEAL, .14); ctx.beginPath(); ctx.moveTo(x, Y(0)); ctx.lineTo(x, Y(1)); ctx.stroke(); }
+        for (let y = Y(0); y <= Y(1) + 1; y += bh / 10) { ctx.strokeStyle = rgba(TEAL, .14); ctx.beginPath(); ctx.moveTo(X(0), y); ctx.lineTo(X(1), y); ctx.stroke(); }
+        if (g === 'map') { ctx.strokeStyle = rgba(GOLD, .5); ctx.lineWidth = 3; ctx.strokeRect(X(0), Y(0), bw, bh); } }
+      ctx.restore(); ctx.globalAlpha = 1;
+    };
+
+    return (ctx, lt, t) => {
+      stage(env, ctx, t);
+      if (s.heading) wordsIn(ctx, s.heading, CX, 330, lt - .05, { size: fitSize(env, ctx, s.heading, 'Anton', 400, MAXW, 74, 40), family: 'Anton', weight: 400, color: '#fff', stagger: .08 });
+      const [sx, sy] = shake(lt, hits, 10);
+      ctx.save(); ctx.translate(sx, sy);
+      if (fo) {                                               // the camera pushes in on one prop (or a point) and keeps it in frame
+        const z = lerp(1, clamp(fo.to || 1.3, 1, 1.8), ep(lt, fc, fc + (fo.d || 1.2), E.inOutCubic));
+        const tgt = typeof fo.on === 'string' && byId[fo.on] ? where(byId[fo.on], lt) : Array.isArray(fo.on) ? { x: X(fo.on[0]), y: Y(fo.on[1]) } : { x: CX, y: Y(.5) };
+        const cx = lerp(tgt.x, CX, (z - 1) / Math.max(.01, (fo.to || 1.3) - 1) * .7), cy = lerp(tgt.y, Y(.48), (z - 1) / Math.max(.01, (fo.to || 1.3) - 1) * .5);
+        ctx.translate(cx, cy); ctx.scale(z, z); ctx.translate(-tgt.x, -tgt.y);
+      }
+      ground(ctx, lt);
+      props.forEach(p => {                                    // the path a prop travels, drawn on as it moves (a camera path, a route)
+        if (!p.path || p.trail === false) return;
+        const f = p.loop ? 1 : ep(lt, p.mc, p.mc + p.mv, E.inOutCubic); if (lt < p.mc) return;
+        const n = Math.max(2, Math.floor(p.path.pts.length * f));
+        ctx.save(); ctx.strokeStyle = rgba(p.col, .55); ctx.lineWidth = 6; ctx.lineCap = 'round'; ctx.shadowColor = p.col; ctx.shadowBlur = 20; ctx.setLineDash([2, 16]);
+        ctx.beginPath(); p.path.pts.slice(0, n).forEach(([x, y], k) => k ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.stroke(); ctx.restore();
+      });
+      links.forEach(l => {                                    // a link between two props: a line, red string, a light beam or an arrow
+        const A = byId[l.from], B = byId[l.to]; if (!A || !B) return;
+        const p = ep(lt, l.c, l.c + .6, E.inOutCubic); if (p <= 0) return;
+        const a = where(A, lt), b = where(B, lt), mx = lerp(a.x, b.x, p), my = lerp(a.y, b.y, p), st2 = l.style || 'line';
+        ctx.save();
+        if (st2 === 'beam') { ctx.globalCompositeOperation = 'lighter'; const ang = Math.atan2(b.y - a.y, b.x - a.x), w = 70 * p, nx = -Math.sin(ang) * w, ny = Math.cos(ang) * w;
+          const gr = ctx.createLinearGradient(a.x, a.y, b.x, b.y); gr.addColorStop(0, rgba(GOLD, .5)); gr.addColorStop(1, rgba(GOLD, .05)); ctx.fillStyle = gr;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mx + nx, my + ny); ctx.lineTo(mx - nx, my - ny); ctx.closePath(); ctx.fill(); }
+        else { ctx.strokeStyle = st2 === 'string' ? RED : TEAL; ctx.lineWidth = st2 === 'string' ? 5 : 4; ctx.shadowColor = ctx.strokeStyle; ctx.shadowBlur = 14; if (st2 === 'line') ctx.setLineDash([14, 10]);
+          ctx.beginPath(); ctx.moveTo(a.x, a.y);
+          if (st2 === 'string') ctx.quadraticCurveTo((a.x + mx) / 2, (a.y + my) / 2 + 40 * p, mx, my); else ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]);
+          if (st2 === 'arrow' && p > .95) { const ang = Math.atan2(b.y - a.y, b.x - a.x); ctx.fillStyle = TEAL; ctx.beginPath(); ctx.moveTo(mx, my);
+            ctx.lineTo(mx - Math.cos(ang - .45) * 30, my - Math.sin(ang - .45) * 30); ctx.lineTo(mx - Math.cos(ang + .45) * 30, my - Math.sin(ang + .45) * 30); ctx.closePath(); ctx.fill(); } }
+        ctx.restore();
+        if (l.label && p >= 1) pill(ctx, l.label, clamp((a.x + b.x) / 2, 210, 770), (a.y + b.y) / 2 - 46, lt - l.c - .6, { size: 30, bg: st2 === 'string' ? RED : TEAL, color: INK, ls: .08 });
+      });
+      props.forEach(p => {
+        const n = Math.max(1, Math.min(8, p.count || 1));
+        for (let c = 0; c < n; c++) {
+          const v = state(p, lt, c); if (!v) continue;
+          drawIcon(ctx, v.icon, v.x, v.y, v.sc, v.rot, p.flip, v.col, v.alpha, v.glow, t);
+          p.acts.forEach(ac => {                              // a blast: ring, sparks and a flash
+            if (ac.do !== 'blast' || (ac.copy != null && ac.copy !== c)) return; const d = lt - ac.c; if (d < 0 || d > 1.2) return;
+            ring(ctx, v.x, v.y, d, { color: GOLD, r0: 20, r1: 340, w: 16, d: .7 });
+            const r = rng(i * 131 + p.k * 17 + c); for (let q = 0; q < 22; q++) { const ang = r() * Math.PI * 2, sp = 260 + r() * 520, dd = Math.min(d, .9);
+              ctx.fillStyle = rgba(q % 3 ? GOLD : '#FFFFFF', clamp(1 - d / 1.1)); ctx.beginPath(); ctx.arc(v.x + Math.cos(ang) * sp * dd, v.y + Math.sin(ang) * sp * dd + 300 * dd * dd, 3 + r() * 5, 0, 7); ctx.fill(); }
+          });
+        }
+      });
+      props.forEach(p => {                                    // labels last, so no prop covers them
+        if (!p.label || lt < p.lc) return;
+        const v = state(p, Math.max(lt, p.c0 + .5), 0); if (!v) return;
+        const up = p.label_at === 'above', ly = v.y + (up ? -1 : 1) * (52 * (p.size || 1) * U + 30);
+        pill(ctx, p.label, clamp(v.x, 210, 770), clamp(ly, 420, 1260), lt - p.lc, { size: 32, bg: p.col, color: INK, ls: .08 });
+      });
+      ctx.restore();
+      props.forEach(p => p.acts.forEach(ac => { if (ac.do === 'blast') flash(ctx, lt, ac.c, { alpha: .35, d: .3 }); }));
+      if (s.counter) {                                        // a number that counts up on its word (no currency sign unless the unit says so)
+        const c = s.counter, v = Math.round(lerp(c.from || 0, c.to, ep(lt, ct, ct + (c.d || 1.8), E.outCubic))), pa = ep(lt, ct - .2, ct + .2);
+        const x = X(c.x ?? .5), y = Y(c.y ?? .95);
+        if (pa > 0) { const w = txt(ctx, String(v), x - 12, y, { size: 140, family: 'Anton', weight: 400, color: '#fff', glow: rgba(GOLD, .6), glowBlur: 30, alpha: pa, align: 'right' });
+          if (c.unit) txt(ctx, c.unit, x, y, { size: 50, family: 'Anton', weight: 400, color: GOLD, alpha: pa, align: 'left' }); }
+      }
+      if (s.slam_text) slam(ctx, s.slam_text, CX, 1300, lt - cs, { size: fitSize(env, ctx, s.slam_text, 'Anton', 400, MAXW, 100, 50), family: 'Anton', weight: 400, color: GOLD, glow: rgba(GOLD, .6), glowBlur: 40, stroke: INK, strokeW: 10 });
+    };
+  },
+
   // ------------------------------------------------------------ end: question, send prompt, mascot, echo of screen 1
   end(env, s, i, T) {
     const bg = s.bg ? env.memo('blur:' + s.bg, () => filtered(env.img[s.bg], 'blur(14px) brightness(.55) saturate(.8)', .5)) : null;

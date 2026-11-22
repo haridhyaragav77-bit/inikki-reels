@@ -113,7 +113,7 @@ def run(drive, dry=False):
               "plans_packed": packed, "examples": gone[:10], "dry": dry}
     status.write(drive, "storage.json", report)
     if gb2 >= float(R["warn_gb"]) and not dry:
-        status.alert(drive, "Drive storage is getting full", f"The iNiKKi Reels folder uses {gb2} GB of {ENGINE['drive'].get('cap_gb', 8)} GB.",
+        status.alert(drive, "Drive storage is getting full", f"The iNiKKi Reels folder uses {gb2} GB of {ENGINE['drive'].get('cap_gb', 30)} GB.",
                      "Clean-up keeps finished reels 14 days instead of 30 from 7.5 GB.", "Nothing now. The monthly review looks at it.", level="warn")
     print(json.dumps({k: report[k] for k in ("gb", "deleted", "kept_top", "plans_packed", "tight")}))
     return report

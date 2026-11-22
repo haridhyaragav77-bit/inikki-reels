@@ -285,9 +285,17 @@ MUSIC_CACHE = os.path.join(HERE, ".cache", "music")
 
 
 def music_index():
-    """The tracks the approved looks use: key -> Drive file id (engine/music_index.json)."""
+    """The tracks the approved looks use: key -> Drive file id (engine/music_index.json), plus the trending songs from the
+    laptop run (data/music/trending.json, AGENT.md 5.4)."""
     with open(os.path.join(HERE, "music_index.json"), encoding="utf-8") as f:
-        return json.load(f)["tracks"]
+        idx = json.load(f)["tracks"]
+    try:
+        with open(os.path.join(HERE, "..", "data", "music", "trending.json"), encoding="utf-8") as f:
+            for t in json.load(f).get("tracks", []):
+                idx.setdefault(t["key"], {"drive_id": t["drive_id"], "title": t.get("title"), "mood": ", ".join(t.get("best") or []), "trending": True})
+    except (OSError, ValueError, KeyError):
+        pass
+    return idx
 
 
 def plan_tracks(plan):

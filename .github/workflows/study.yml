@@ -38,6 +38,9 @@ jobs:
           path: ~/.cache/huggingface
           key: whisper-${{ hashFiles('config/engine.yaml') }}
           restore-keys: whisper-
+      - name: Sort what the laptop run dropped into Drive from-laptop/ (AGENT.md 16.6)
+        continue-on-error: true
+        run: python -m engine.laptop --sort
       - name: Channel watch and study
         run: python -m engine.study
       - name: Save the study cards and the channel table

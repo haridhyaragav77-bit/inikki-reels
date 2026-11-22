@@ -133,6 +133,32 @@ def _safe(fn, default):
         return default
 
 
+HERO = ("scene", "board", "climb", "track", "layers", "detail")
+
+
+def plan_bits(plan):
+    """For the reel's row: a breakdown's one point and hero visual, and a trending song (AGENT.md 5.4, 5.7, 5.8)."""
+    out = {"point": (plan.get("lead") or {}).get("point")}
+    kinds = [s.get("kind") for s in plan.get("screens") or []]
+    out["hero"] = next((k for k in kinds if k in HERO), None) if plan.get("template") == "stage" else None
+    songs = {t["key"]: t.get("title") for t in music_card().get("trending", [])}
+    out["song"] = next((songs[s.get("track")] for s in (plan.get("music") or {}).get("sections", []) if s.get("track") in songs), None)
+    return {k: v for k, v in out.items() if v}
+
+
+def music_card():
+    """This month's trending songs (data/music/trending.json) and the library's size, for Setup › Trending songs."""
+    try:
+        tr = json.loads((ROOT / "data" / "music" / "trending.json").read_text(encoding="utf-8")).get("tracks", [])
+    except (OSError, ValueError):
+        tr = []
+    try:
+        lib = len(json.loads((ROOT / "engine" / "music_index.json").read_text(encoding="utf-8")).get("tracks", {}))
+    except (OSError, ValueError):
+        lib = 0
+    return {"trending": [{k: t.get(k) for k in ("key", "title", "film", "best", "uses", "added", "fresh")} for t in tr[:15]], "library": lib + len(tr)}
+
+
 def reels_today(day, plans_dir):
     from .edits import words
     out = []
@@ -144,8 +170,11 @@ def reels_today(day, plans_dir):
                "posted": r.get("permalink"), "posted_at": r.get("posted_at"), "caption": (r.get("caption") or "")[:240],
                "youtube": r.get("yt_url"), "youtube_note": r.get("yt_reason") if not r.get("yt_url") else None}
         p = plans_dir / f"{r['reel_id']}.json"
-        if r.get("state") not in ("posted", "rehearsed") and p.exists():
-            row["words"] = _safe(lambda: words(json.loads(p.read_text(encoding="utf-8"))), {})
+        plan = _safe(lambda: json.loads(p.read_text(encoding="utf-8")), {}) if p.exists() else {}
+        if r.get("state") not in ("posted", "rehearsed") and plan:
+            row["words"] = _safe(lambda: words(plan), {})
+        if plan:
+            row.update(_safe(lambda: plan_bits(plan), {}))
         out.append({k: v for k, v in row.items() if v not in (None, "", False, {})})
     return out
 
@@ -400,6 +429,7 @@ def build(drive, ctl=None):
                    "sources": [{"name": c.get("name"), "where": c.get("platform"), "priority": c.get("priority"), "mode": c.get("study")}
                                for c in sorted((niche().get("competitors") or []), key=lambda c: c.get("priority", 9)) if isinstance(c, dict)]},
          "fresh_updates": ctl.on("fresh_updates"),
+         "music": _safe(music_card, {}),
          "digest": (_safe(lambda: drive.read_text("status", "digest.md"), "") or "")[:900],
          "manual": _safe(lambda: __import__("engine.manual", fromlist=["build"]).build(drive, now), {"count": 0, "jobs": []}),
          "actions": _safe(lambda: actions(drive), []),
@@ -485,6 +515,10 @@ def text(P):
         L.append("Run the command on your laptop, then press Done in Control Room › Manual work (or tell the chat: done <job id>).")
     else:
         L += ["", "## MANUAL WORK", "Nothing needs your laptop right now."]
+    mu = P.get("music") or {}
+    if mu.get("trending"):
+        L += ["", f"## TRENDING SONGS ({len(mu['trending'])} on the list; music-only reels, organic only)",
+              "- " + " · ".join(f"{t.get('title')} [{t.get('key')}]" for t in mu["trending"][:8])]
     if P.get("alerts"):
         L += ["", f"## ALERTS ({len(P['alerts'])} open)"] + [f"- {a.get('at')} · {a.get('title')} · you: {a.get('what_you_do') or 'nothing'}" for a in P["alerts"]]
     if P.get("actions"):

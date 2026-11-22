@@ -1,9 +1,10 @@
-"""Manual work (AGENT.md 16.6) with a pretend Drive: the list, due dates and levels, the 2-day warning, Done through the
-inbox, and the panel section. Run: python -m tests.test_manual   (no keys, nothing started for real)"""
+"""Manual work (AGENT.md 16.6) with a pretend Drive: the one laptop run (trailers, top-up, shorts, songs in one job), its
+15-20 day cycle and levels, the warnings, Done through the inbox, the laptop drop sorting, and the panel section.
+Run: python -m tests.test_manual   (no keys, nothing started for real)"""
 import datetime as dt
 import sys
 
-from engine import manual, panel, relay, status
+from engine import laptop, manual, panel, relay, status
 from tests.test_control_room import FakeDrive, check
 
 
@@ -12,52 +13,62 @@ def main():
     d = FakeDrive()
     d.write_json("control", "switch.json", {"mode": "run"})
     now = status.now().replace(second=0, microsecond=0)
-    soon_reel = (now + dt.timedelta(hours=60))          # due 3 h before: 57 h away → inside the 2-day warning window
-    manual.plan_slot = lambda rid: (soon_reel.date().isoformat(), soon_reel.strftime("%H:%M")) if rid == "r-soon" else None
     d.write_json("status", "trailers_wanted.json", {"films": ["Film A", "Film B"],
                                                      "why": {"Film A": "needed by the plan r-soon", "Film B": "news: a new trailer was reported"}})
     d.write_text("requests", "study_to_get.md", "# Shorts to study\n\npy clip_helper.py --study https://youtu.be/v1 https://youtu.be/v2\n")
+    laptop.songs_wanted = lambda: [{"key": "song_test", "song": "Test Song", "film": "Film C", "search": "Test Song Film C", "link": None}]
+
+    t = laptop.todo(d)
+    c = laptop.counts(t)
+    check(c["trailers"] == 2 and c["study"] == 2 and c["songs"] == 1, f"the laptop list has the trailers, shorts and songs: {c}")
+    check(all(u.startswith("https://") for u in t["study"]) and "@" not in str(t), "the list holds public links and names only")
 
     M = manual.build(d, now)
-    kinds = {j["kind"]: j for j in M["jobs"]}
-    check({"trailers", "study"} <= set(kinds), "trailers and study jobs are listed")
-    t = kinds["trailers"]
-    check(t["command"].startswith("py clip_helper.py ") and '"Film A"' in t["command"] and '"Film B"' in t["command"], "trailer job carries the exact command")
-    check(t["level"] == "urgent", f"a news trailer makes the job urgent (due within a day): {t['level']}, {t['due_text']}")
-    check(any("r-soon" in s and "still pictures" in s for s in t["suffers"]), "the reel that suffers is named with its date")
-    check(kinds["study"]["command"].startswith("py clip_helper.py --study") and "Weekly learning run" in kinds["study"]["suffers"][0],
-          "study job: command from the request file, the Weekly run named")
-    check(M["jobs"][0]["level"] in ("overdue", "urgent"), "most urgent job first")
-    alerts = (d.read_json("status", "alerts.json") or {}).get("alerts", [])
-    check(any("Manual work is urgent" in a["title"] for a in alerts), "an alert is raised when a job is urgent")
-    n = len(alerts)
-    manual.build(d, now)
-    check(len((d.read_json("status", "alerts.json") or {}).get("alerts", [])) == n, "the same warning is not raised twice")
+    lap = [j for j in M["jobs"] if j["kind"] == "laptop"]
+    check(len(lap) == 1 and len(M["jobs"]) == 1, f"one job for every download (was three commands): {[j['kind'] for j in M['jobs']]}")
+    j = lap[0]
+    check(j["command"] == "py clip_helper.py", "the command is the same every time: py clip_helper.py")
+    check("2 trailers" in j["title"] and "2 competitor shorts" in j["title"] and "1 trending song" in j["title"], "the title counts each part: " + j["title"])
+    check("First time only" in j["what"], "the first run says how to get the new helper once")
+    check(j["level"] in ("soon", "later") and "in 3 d" in j["due_text"] or "in 2 d" in j["due_text"], f"the first run is due within 3 days ({j['due_text']})")
 
-    # the 2-day warning: only the reel's film, due in 57 h → "soon"
-    d.write_json("status", "trailers_wanted.json", {"films": ["Film A"], "why": {"Film A": "needed by the plan r-soon"}})
-    t2 = next(j for j in manual.build(d, now)["jobs"] if j["kind"] == "trailers")
-    check(t2["level"] == "soon", f"2 days before it turns urgent the job is 'soon' ({t2['due_text']})")
-    check(any("due soon" in a["title"] for a in d.read_json("status", "alerts.json")["alerts"]), "the 2-day early warning is raised")
-    later = manual.build(d, now - dt.timedelta(days=3), warn=False)
-    check(next(j for j in later["jobs"] if j["kind"] == "trailers")["level"] == "later", "earlier than that it is 'later'")
-
-    # Done from the page: through the inbox, the job leaves the list, its films wait for the Engine
-    d.drop("1-manual_done.json", {"do": "manual_done", "job": t2["id"], "kind": "trailers", "items": t2["items"], "title": t2["title"]})
+    # Done: through the inbox; the job leaves the list for 48 hours, then the next cycle is 20 days out
+    d.drop("1-manual_done.json", {"do": "manual_done", "job": j["id"], "kind": "laptop", "items": j["items"], "title": j["title"]})
     relay.run(d)
     log = [x for x in relay.State(d).log if x.get("do") == "manual_done"]
     check(log and log[-1]["result"] == "applied" and "Manual work done" in log[-1]["summary"], "Done is applied by the relay: " + (log[-1].get("summary", "") if log else "-"))
-    after = manual.build(d, now)
-    check(not any(j["kind"] == "trailers" for j in after["jobs"]), "after Done the trailer job is gone")
+    check(not manual.build(d, now)["jobs"], "right after Done the laptop job is gone while the Engine picks the files up")
+    later = manual.build(d, now + dt.timedelta(days=5), warn=False)["jobs"]
+    check(later and later[0]["level"] == "later" and "Last run 5 days ago" in later[0]["what"], "5 days later: the next run shows, not urgent yet")
+    soon = manual.build(d, now + dt.timedelta(days=17, hours=1))["jobs"]
+    check(soon and soon[0]["level"] == "soon", f"day 17: due soon, with a warning ({soon[0]['level'] if soon else '-'})")
+    check(any("due soon" in a["title"] for a in d.read_json("status", "alerts.json")["alerts"]), "the early warning is raised")
+    urgent = manual.build(d, now + dt.timedelta(days=19, hours=2))["jobs"]
+    check(urgent and urgent[0]["level"] == "urgent", "day 19: urgent")
+    over = manual.build(d, now + dt.timedelta(days=21), warn=False)["jobs"]
+    check(over and over[0]["level"] == "overdue", "day 21: overdue")
     d.drop("2-bad.json", {"do": "manual_done", "job": "../etc"})
     relay.run(d)
     check(relay.State(d).log[-1]["result"] == "refused", "a Done with a strange job name is refused")
 
+    # nothing to fetch: no job at all
+    d.write_json("status", "trailers_wanted.json", {"films": []})
+    d.write_text("requests", "study_to_get.md", "# Shorts to study\n\nNothing waiting.\n")
+    laptop.songs_wanted = lambda: []
+    T = __import__("engine.trailers", fromlist=["request_parts"])
+    orig = T.request_parts
+    T.request_parts = lambda drive: ([], [], {}, None, {})
+    check(not manual.build(d, now + dt.timedelta(days=30), warn=False)["jobs"], "nothing to fetch: no laptop job")
+    T.request_parts = orig
+
+    # the drop folder: each file goes where it belongs, by its name
+    want = {"song - song_x - X (Film) [ab].m4a": "music/inbox", "Leo - trailer [abc].mp4": "clip-library", "helper_report.txt": "clip-library",
+            "Expert FX - a short [abcdefghijk].m4a": "study-audio", "photo.png": None}
+    check(all(laptop.where(k) == v for k, v in want.items()), "the laptop drop is sorted by file name")
+
     # the panel: the section in the chat text and the count for the badge
-    P = {"manual": after}
     txt = "\n".join(l for l in panel.text.__code__.co_consts if isinstance(l, str))   # cheap guard that the section exists
     check("MANUAL WORK" in txt, "the chat panel has a Manual work section")
-    check(after["count"] == len(after["jobs"]) and P["manual"]["count"] >= 1, "the badge count matches the list")
     print("\nALL PASSED" if not check.failed else f"\n{check.failed} FAILED")
     sys.exit(1 if check.failed else 0)
 

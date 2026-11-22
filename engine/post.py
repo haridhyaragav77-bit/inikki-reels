@@ -75,6 +75,15 @@ def _append_line(drive, folder, name, obj):
     drive.write_text(folder, name, old + json.dumps(obj, ensure_ascii=False) + "\n", "application/x-ndjson")
 
 
+def trending_song(music):
+    """True when the reel's music (its track keys, 'a → b') includes a trending song from the laptop run (AGENT.md 5.4)."""
+    try:
+        keys = {t["key"] for t in json.loads((ROOT / "data" / "music" / "trending.json").read_text(encoding="utf-8")).get("tracks", [])}
+    except (OSError, ValueError, KeyError):
+        return False
+    return any(k.strip() in keys for k in str(music or "").split("→"))
+
+
 def retire_track(drive, track_name, why):
     """A track Instagram flags is never used again (AGENT.md 0, honest limits)."""
     try:
@@ -177,7 +186,11 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
             if str(cr.get("status", "complete")).lower() != "in_progress":
                 break
             time.sleep(8)
-        if cr.get("matches_found") in (True, "true"):
+        tcfg = ((ENGINE.get("music") or {}).get("trending") or {})
+        if cr.get("matches_found") in (True, "true") and tcfg.get("on_match", "post") == "post" and trending_song(r.get("music")):
+            day.upsert(rid, copyright_match="trending song, posted organic (Harish, 22 Nov; AGENT.md 5.4)")
+            print(f"{rid}: Instagram matched the trending song; posting anyway (organic only, never boosted)")
+        elif cr.get("matches_found") in (True, "true"):
             if r.get("music"):
                 retire_track(drive, r["music"], f"copyright match on {rid}")
             day.upsert(rid, state="held", reason="Instagram's own check found a copyright match. Not posted; its music track is retired.")

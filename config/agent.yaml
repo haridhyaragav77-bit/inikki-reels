@@ -11,7 +11,7 @@ slots: ["08:30", "12:30", "15:30", "18:00", "20:00", "21:30"]
 flex_slots: ["11:00", "17:00"]
 timezone: Asia/Kolkata
 language: { headline: "tanglish_or_english", line2: "tamil", voice: "ta-IN-ValluvarNeural", subtitles: ["tanglish", "tamil"] }
-budgets: { images_inr_month: 500, lab_share: 0.20, storage_gb: 8, breaking_per_day: 2 }
+budgets: { images_inr_month: 500, lab_share: 0.20, storage_gb: 30, breaking_per_day: 2 }   # storage: Harish, 22 Nov (30 GB Drive)
 metric_priority: [skip_rate, watch_through, share_rate, follow_rate, like_rate, save_rate, comment_rate, repost_rate]
 learning: { test_share: 0.2, min_reels: 10, min_days: 14, max_changes_per_series_week: 3, auto_revert_drop: 0.20 }
 gates: { lead_min: 60, virality_min: 65 }
