@@ -88,7 +88,7 @@ def build(drive):
     stor = drive.read_json("status", "storage.json") or {}
     costs = [["Item", "Used", "Limit"], ["Images this month (₹)", round(b.get("spent_inr", 0)), b.get("cap_inr", 500)],
              ["Runner minutes this month", mins.get("minutes", ""), mins.get("limit", 2000)],
-             ["Drive storage (GB)", stor.get("gb", ""), ctl.settings.get("budgets", {}).get("storage_gb", 30)]]
+             ["Drive storage (GB)", stor.get("gb", ""), ctl.settings.get("budgets", {}).get("storage_gb", 15)]]
     for tab, rows in (("Home", home), ("Metrics", metrics), ("Series", series), ("Reels", reel_rows), ("Lab", lab), ("Changes", ch), ("Costs", costs)):
         sh.clear(tab)
         sh.write(tab, "A1", [[("" if c is None else c) for c in r] for r in rows] or [[""]])

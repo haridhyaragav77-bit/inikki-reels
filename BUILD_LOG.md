@@ -3,6 +3,9 @@
 ## 22 Nov 2026 — Study job transcribes again
 PyAV 19 dropped an option faster-whisper still uses, so every short failed ("metadata_errors"). `requirements-study.txt` now pins `av<19` and `faster-whisper<1.3`.
 
+## 22 Nov 2026 — Storage is 15 GB, not 30
+Harish: the account has 15 GB. Cap 15, warn 11, tight 13; finished reels 30 days (14 tight); clip library 5 GB, pictures 2 GB.
+
 ## 22 Nov 2026 — Laptop run as a double-click
 `tools/iNiKKi Laptop Run.bat`: saved once in a Desktop folder iNiKKi; it fetches the newest `clip_helper.py` and runs it. Manual work tab: "How to do the laptop run" (set up once, every 15-20 days, stuck?); the laptop card says "double-click" instead of a command.
 
