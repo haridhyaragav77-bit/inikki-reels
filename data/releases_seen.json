@@ -1,0 +1,43 @@
+{
+ "films": {
+  "appakutty": {
+   "film": "Appa Kutty",
+   "date": "2026-11-20",
+   "first_seen": "2026-11-22",
+   "history": []
+  },
+  "omoperationmole": {
+   "film": "O.M: Operation Mole",
+   "date": "2026-11-20",
+   "first_seen": "2026-11-22",
+   "history": []
+  },
+  "sathyavansavithiri": {
+   "film": "Sathyavan Savithiri",
+   "date": "2026-11-20",
+   "first_seen": "2026-11-22",
+   "history": []
+  },
+  "cosmicsamson": {
+   "film": "Cosmic Samson",
+   "date": "2026-11-27",
+   "first_seen": "2026-11-22",
+   "history": []
+  },
+  "minnumoariravu": {
+   "film": "Minnum Oar Iravu",
+   "date": "2026-11-27",
+   "first_seen": "2026-11-22",
+   "history": []
+  },
+  "mounamozhigal": {
+   "film": "Mouna Mozhigal",
+   "date": "2026-11-27",
+   "first_seen": "2026-11-22",
+   "history": []
+  }
+ },
+ "alerted": {
+  "appakutty:Quick Review": "2026-11-22"
+ }
+}
