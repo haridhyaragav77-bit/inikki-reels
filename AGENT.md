@@ -903,9 +903,9 @@ Drive: iNiKKi Reels/
 | File type | Kept for | Then |
 | --- | --- | --- |
 | Working files (raw images, voice clips, frames, downloaded trailers) | Until the reel posts + 2 days | Deleted |
-| Finished reels | 60 days | Deleted, except the top 10% and reference reels. The rest live on Instagram. |
+| Finished reels | 30 days | Deleted, except the top 10% and reference reels. The rest live on Instagram. |
 | AI images | Tagged reusable: kept in the image library. Others: 30 days. | Deleted |
-| Clip library | Kept, capped at 12 GB | Least-used removed first |
+| Clip library | Kept, capped at 5 GB | Least-used removed first |
 | Music, memes, reference reels | Kept | — |
 | Plans and metrics (text) | Forever | Packed into one file per month |
 | Run logs | 30 days | Deleted |
@@ -914,7 +914,7 @@ Drive: iNiKKi Reels/
 | Status files | Overwritten daily | — |
 
 ### 14.4 Storage safety
-- Agent cap 30 GB (Harish, 22 Nov: the new Google account's whole storage). Warning at 25 GB on the dashboard. At 28 GB the clean-up tightens (finished reels kept 30 days). The Usage tab shows the folder's size of 30 GB.
+- Agent cap 15 GB (Harish, 22 Nov: the Google account's free storage, shared with anything else in that account). Warning at 11 GB on the dashboard. At 13 GB the clean-up tightens (finished reels kept 14 days). The Usage tab shows the folder's size of 15 GB.
 - Deleted files go to Drive's bin first, so mistakes can be recovered for 30 days.
 - Nothing in `reference-reels/`, `meme-bank/`, `music/` or `control/` is ever auto-deleted.
 - The monthly review reports space used and what was removed.
