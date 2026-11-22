@@ -1,5 +1,7 @@
-- 22 Nov 2026: study job fixed: PyAV 19 broke faster-whisper (open() metadata_errors); pinned av<19 in requirements-study.txt.
 # Build log (plain words, newest first)
+
+## 22 Nov 2026 — Study job transcribes again
+PyAV 19 dropped an option faster-whisper still uses, so every short failed ("metadata_errors"). `requirements-study.txt` now pins `av<19` and `faster-whisper<1.3`.
 
 ## 22 Nov 2026 — Laptop run as a double-click
 `tools/iNiKKi Laptop Run.bat`: saved once in a Desktop folder iNiKKi; it fetches the newest `clip_helper.py` and runs it. Manual work tab: "How to do the laptop run" (set up once, every 15-20 days, stuck?); the laptop card says "double-click" instead of a command.
