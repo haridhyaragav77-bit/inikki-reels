@@ -1,6 +1,6 @@
-**Sun 22 Nov** · 3 posted, 5 ready tonight · bank 4 of 4
-**Best:** Pongal 2027 race update, 343 views in 2 hours
-**Weak:** Mouna Mozhigal update, 76% skipped in 3 seconds
-**Tomorrow:** O.M first-weekend box office, final numbers from 2 trackers
-**Changed:** Nothing new, your Amaran notes were applied yesterday
-**Needs you:** 7 trailers and 12 shorts, commands in Drive requests
+**Mon 23 Nov** · 4 reels posted, 5 ready tonight, 2 spare
+**Best:** Pongal 2027 race update, 626 views yesterday
+**Weak:** Viduthalai breakdown, only 9% watched to the end
+**Tomorrow:** Sathyavan Savithiri Trusted Review, its last day
+**Changed:** Nothing, the refresh brief was missing so plans stay
+**Needs you:** Brief refresh job failed twice, please check it
