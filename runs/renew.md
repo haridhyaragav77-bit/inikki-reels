@@ -18,7 +18,9 @@ one-time reminders, other projects).
    persistent_session_id = the new chat, initiation "human_schedule". If the service says to wait (a creation limit),
    wait a minute and go on.
 5. Only after step 4 fully worked: delete_trigger every task bound to an OLD id (whatever its name: old catch-up times
-   included), and every task named in the "clock" list (any chat). Then archive_session each OLD and CLOCK chat.
+   included), and every task named in the "clock" list (any chat). If a delete is refused, switch that task off instead:
+   update_trigger enabled false, name prefixed "OLD (off) · ". An old task must never stay on. Then archive_session each
+   OLD and CLOCK chat.
 6. Renew yourself last: create_session like step 3 with title "iNiKKi · renewer · <today>" and append_system_prompt =
    renewer.md's text; create_trigger for the "renewer" entry bound to it; delete_trigger the renewer task bound to this chat.
    Do not archive this chat; it ends by itself.
