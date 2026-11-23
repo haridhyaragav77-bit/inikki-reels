@@ -28,6 +28,7 @@ Actions:
 {"do":"feedback","reel_id":"<id>","rating":1-5,"reasons":["Hook slow"],"text":"..."}
 {"do":"idea","text":"cover this: ..."}
 {"do":"ack","alert":"all"}
+{"do":"set","settings":{"thinking_models":{"plan":"opus high"}}}   "plan on opus" / "refresh on sonnet": model (opus|sonnet|haiku) and effort (low|medium|high) of a thinking run
 {"do":"undo","id":"<id in square brackets under YOUR LAST ACTIONS>"}
 {"do":"manual_done","job":"<job id in square brackets under MANUAL WORK>","kind":"trailers|topup|study|signin"}   only when Harish says the laptop job is done
 "manual" from Harish: answer from the MANUAL WORK section of the panel (each job, due, what suffers, the command in a code block).

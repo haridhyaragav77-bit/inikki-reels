@@ -1,0 +1,12 @@
+{
+  "_note": "The chat manager's rules (runs/renew.md step 6). It only ARCHIVES (Undo: unarchive in the app); it never deletes a chat. Edit this file to change what it keeps.",
+  "keep_titles": ["THE CONTROL ROOM", "Movie review reels improvements"],
+  "keep_rule": "Never archive: a title in keep_titles; the dispatcher and chat manager made today; a chat that is running or working right now; a chat updated in the last 6 hours.",
+  "archive": [
+    {"what": "Thinking runs (title starts 'iNiKKi Brain · plan|refresh|weekly|monthly|selftest|breaking ·')", "after_hours": 12},
+    {"what": "Old dispatchers, renewers, chat managers and clocks (title starts 'iNiKKi Brain · dispatcher', 'iNiKKi · renewer', 'iNiKKi · chat manager', 'iNiKKi Engine · clock') that are not today's", "after_hours": 0},
+    {"what": "Your own chats that finished (status idle or completed, nothing waiting on you)", "after_days": 2},
+    {"what": "Your own chats that wait on you but have not been touched", "after_days": 7}
+  ],
+  "report": "One line per archived chat in the reply: title · why. Chats it left alone because they wait on you: listed by title."
+}

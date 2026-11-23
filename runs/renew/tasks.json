@@ -39,7 +39,7 @@
   ],
   "renewer": [
     {
-      "name": "iNiKKi · Daily fresh chats (03:17 IST)",
+      "name": "iNiKKi · Chat manager (daily 03:17 IST)",
       "cron": "CRON_TZ=Asia/Kolkata 17 3 * * *",
       "prompt": "RENEW"
     }

@@ -46,9 +46,16 @@ def settings():
                 return re.findall(r'"([^"]*)"', body)
             return {k: v.strip().strip('"') for k, v in re.findall(r'(\w+):\s*("[^"]*"|[^,}]+)', body[1:-1])}
         s = {"thinking_runs": flow("thinking_runs"), "slots": flow("slots"), "flex_slots": flow("flex_slots"),
-             "catch_up": flow("catch_up")}
+             "catch_up": flow("catch_up"), "thinking_models": flow("thinking_models")}
     c = s.get("catch_up") or {}
-    return {"runs": s.get("thinking_runs") or {}, "slots": s.get("slots") or [], "flex": s.get("flex_slots") or [],
+    over = (ROOT / "data" / "control" / "overrides.yaml")          # the Control Room's copy wins (brief mirrors it)
+    try:
+        import yaml
+        ov = ((yaml.safe_load(over.read_text(encoding="utf-8")) or {}).get("settings") or {}) if over.exists() else {}
+    except Exception:
+        ov = {}
+    models = {**(s.get("thinking_models") or {}), **(ov.get("thinking_models") or {})}
+    return {"models": models, "runs": s.get("thinking_runs") or {}, "slots": s.get("slots") or [], "flex": s.get("flex_slots") or [],
             "make_minutes": int(c.get("make_minutes", 75)), "refresh_until": c.get("refresh_until", "22:45"),
             "weekly_days": int(c.get("weekly_days", 2)), "monthly_days": int(c.get("monthly_days", 2))}
 
@@ -167,6 +174,17 @@ def main():
     for run in ([a.run] if a.run else RUNS):
         state, why = check(run, now, s)
         print(f"{run}: {state}" + (f" ({why})" if why else ""))
+    print("models: " + "; ".join(f"{k}={model_of(v)}" for k, v in s["models"].items()))
+
+
+NAMES = {"opus": "claude-opus-5-5", "sonnet": "claude-sonnet-5-5", "haiku": "claude-haiku-5-5"}
+
+
+def model_of(spec):
+    """'sonnet high' -> 'claude-sonnet-5-5 effort=high' (config/agent.yaml thinking_models)."""
+    w = str(spec).lower().split()
+    name = NAMES.get(w[0], w[0]) if w else NAMES["sonnet"]
+    return name + (f" effort={w[1]}" if len(w) > 1 else "")
 
 
 if __name__ == "__main__":
