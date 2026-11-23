@@ -1,0 +1,29 @@
+name: metronome
+# The Engine's clock (AGENT.md 4.3): starts the timed jobs (posts, briefs, nightly) at their minute, with no Claude.
+# Each run waits through about 5 h 50 min of ticks (the "clock" list in runs/renew/tasks.json), then starts the next run
+# and hands over the time it covered. The repository is public, so these runner minutes are free.
+# metronome-watch.yml restarts the chain if it ever stops.
+on:
+  workflow_dispatch:
+    inputs:
+      since: { description: "Hand-over from the previous run (leave empty)", default: "" }
+
+permissions:
+  contents: read
+  actions: write          # to start the timed workflows and the next metronome run
+
+concurrency:
+  group: metronome
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 358
+    env:
+      GH_TOKEN: ${{ github.token }}
+      SINCE: ${{ inputs.since }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - name: Wait for each tick and start its job
+        run: python3 tools/metronome.py --since "$SINCE"

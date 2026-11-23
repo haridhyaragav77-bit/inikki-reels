@@ -1,0 +1,25 @@
+name: metronome-watch
+# Restarts the metronome if its chain ever stops (AGENT.md 4.3). GitHub's timer is late, which is fine here: this only
+# checks that a metronome run is going, and starts one if none is. It starts nothing else.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 * * * *"
+
+permissions:
+  actions: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Is a metronome run going?
+        run: |
+          live=$(gh run list -R "$REPO" --workflow metronome.yml --limit 10 --json status -q '[.[] | select(.status=="in_progress" or .status=="queued" or .status=="pending" or .status=="waiting")] | length')
+          if [ "${live:-0}" -gt 0 ]; then echo "metronome is running"; exit 0; fi
+          echo "no metronome run: starting one"
+          gh workflow run metronome.yml -R "$REPO" --ref main

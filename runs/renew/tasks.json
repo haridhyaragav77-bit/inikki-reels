@@ -1,24 +1,79 @@
 {
-  "_note": "The scheduled tasks the renewal re-creates on the fresh chats (runs/renew.md). Times are IST. Edit here to change the schedule; the next renewal applies it.",
+  "_note": "The scheduled tasks the daily renewal (runs/renew.md) re-creates on the fresh dispatcher. \"clock\" is read by the GitHub metronome (tools/metronome.py), not by a chat. Times are IST.",
   "clock": [
-    {"name": "iNiKKi Clock · Post (08:30, 12:30, 15:30, 21:30)", "cron": "CRON_TZ=Asia/Kolkata 30 8,12,15,21 * * *", "prompt": "TICK post"},
-    {"name": "iNiKKi Clock · Post (11:00, 17:00, 18:00, 20:00)", "cron": "CRON_TZ=Asia/Kolkata 0 11,17,18,20 * * *", "prompt": "TICK post"},
-    {"name": "iNiKKi Clock · Brief for the Plan run (05:12)", "cron": "CRON_TZ=Asia/Kolkata 12 5 * * *", "prompt": "TICK daily brief-plan"},
-    {"name": "iNiKKi Clock · Brief for the Refresh run (16:12)", "cron": "CRON_TZ=Asia/Kolkata 12 16 * * *", "prompt": "TICK daily brief-refresh"},
-    {"name": "iNiKKi Clock · Brief for the Weekly run (Sun 22:12)", "cron": "CRON_TZ=Asia/Kolkata 12 22 * * 0", "prompt": "TICK daily brief-weekly"},
-    {"name": "iNiKKi Clock · Brief for the Monthly run (1st, 22:42)", "cron": "CRON_TZ=Asia/Kolkata 42 22 1 * *", "prompt": "TICK daily brief-monthly"},
-    {"name": "iNiKKi Clock · Nightly (23:40)", "cron": "CRON_TZ=Asia/Kolkata 40 23 * * *", "prompt": "TICK daily nightly"}
+    {
+      "name": "iNiKKi Clock · Post (08:30, 12:30, 15:30, 21:30)",
+      "cron": "CRON_TZ=Asia/Kolkata 30 8,12,15,21 * * *",
+      "prompt": "TICK post"
+    },
+    {
+      "name": "iNiKKi Clock · Post (11:00, 17:00, 18:00, 20:00)",
+      "cron": "CRON_TZ=Asia/Kolkata 0 11,17,18,20 * * *",
+      "prompt": "TICK post"
+    },
+    {
+      "name": "iNiKKi Clock · Brief for the Plan run (05:12)",
+      "cron": "CRON_TZ=Asia/Kolkata 12 5 * * *",
+      "prompt": "TICK daily brief-plan"
+    },
+    {
+      "name": "iNiKKi Clock · Brief for the Refresh run (16:12)",
+      "cron": "CRON_TZ=Asia/Kolkata 12 16 * * *",
+      "prompt": "TICK daily brief-refresh"
+    },
+    {
+      "name": "iNiKKi Clock · Brief for the Weekly run (Sun 22:12)",
+      "cron": "CRON_TZ=Asia/Kolkata 12 22 * * 0",
+      "prompt": "TICK daily brief-weekly"
+    },
+    {
+      "name": "iNiKKi Clock · Brief for the Monthly run (1st, 22:42)",
+      "cron": "CRON_TZ=Asia/Kolkata 42 22 1 * *",
+      "prompt": "TICK daily brief-monthly"
+    },
+    {
+      "name": "iNiKKi Clock · Nightly (23:40)",
+      "cron": "CRON_TZ=Asia/Kolkata 40 23 * * *",
+      "prompt": "TICK daily nightly"
+    }
   ],
   "renewer": [
-    {"name": "iNiKKi · Weekly fresh chats (Mon 03:17 IST)", "cron": "CRON_TZ=Asia/Kolkata 17 3 * * 1", "prompt": "RENEW"}
+    {
+      "name": "iNiKKi · Daily fresh chats (03:17 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 17 3 * * *",
+      "prompt": "RENEW"
+    }
   ],
   "dispatcher": [
-    {"name": "iNiKKi Brain · Plan (daily 05:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 5 * * *", "prompt": "RUN plan"},
-    {"name": "iNiKKi Brain · Refresh (daily 16:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 16 * * *", "prompt": "RUN refresh"},
-    {"name": "iNiKKi Brain · Weekly learning (Sun 22:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 22 * * 0", "prompt": "RUN weekly"},
-    {"name": "iNiKKi Brain · Monthly review (1st, 23:07 IST)", "cron": "CRON_TZ=Asia/Kolkata 7 23 1 * *", "prompt": "RUN monthly"},
-    {"name": "iNiKKi Brain · Catch-up check (07:07, 13:07, 21:07 IST)", "cron": "CRON_TZ=Asia/Kolkata 7 7,13,21 * * *", "prompt": "RUN catchup"},
-    {"name": "iNiKKi Brain · Catch-up check (09:37, 18:37 IST)", "cron": "CRON_TZ=Asia/Kolkata 37 9,18 * * *", "prompt": "RUN catchup"},
-    {"name": "iNiKKi Brain · Self-test (on demand)", "cron": "", "prompt": "RUN selftest"}
+    {
+      "name": "iNiKKi Brain · Plan (daily 05:37 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 37 5 * * *",
+      "prompt": "RUN plan"
+    },
+    {
+      "name": "iNiKKi Brain · Refresh (daily 16:37 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 37 16 * * *",
+      "prompt": "RUN refresh"
+    },
+    {
+      "name": "iNiKKi Brain · Weekly learning (Sun 22:37 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 37 22 * * 0",
+      "prompt": "RUN weekly"
+    },
+    {
+      "name": "iNiKKi Brain · Monthly review (1st, 23:07 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 7 23 1 * *",
+      "prompt": "RUN monthly"
+    },
+    {
+      "name": "iNiKKi Brain · Catch-up check (09:37, 18:37 IST)",
+      "cron": "CRON_TZ=Asia/Kolkata 37 9,18 * * *",
+      "prompt": "RUN catchup"
+    },
+    {
+      "name": "iNiKKi Brain · Self-test (on demand)",
+      "cron": "",
+      "prompt": "RUN selftest"
+    }
   ]
 }

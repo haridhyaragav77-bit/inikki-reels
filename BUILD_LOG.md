@@ -1,5 +1,18 @@
 # Build log (plain words, newest first)
 
+## 23 Nov 2026 — Token audit: the clock leaves Claude
+Measured today (list price): clock chat about 765,000 tokens a tick, 13 ticks, about $10 a day; dispatcher about 550,000 a
+message, about $5 a day; Plan run (Opus) $4.50; Refresh about $2. Two doorbell chats cost twice the thinking. Causes: the
+weekly renewal answered "noted" to its own RENEW (scheduled messages arrive as notifications), and long chats with ticks
+hours apart pay their whole context again at every tick (the cache has expired).
+| Fix | Where |
+| --- | --- |
+| Clock → GitHub metronome, no Claude | `tools/metronome.py`, `.github/workflows/metronome.yml`, `metronome-watch.yml` |
+| Renewer acts on RENEW inside a notification; renewal daily; cheapest model | `runs/renew/renewer.md`, `runs/renew.md`, `tasks.json` |
+| Catch-up checks 5 → 2 a day | `runs/renew/tasks.json` |
+| Plan and Refresh on Sonnet (AGENT.md 15.1 already said so) | `runs/renew/dispatcher.md` |
+| Skill to repeat the audit cheaply | `.claude/skills/token-audit` |
+
 ## 22 Nov 2026 — Inbox files from the other Google account
 The Engine could not bin Control Room inbox files the page made from another Google account (403), so every job listed them again. `relay._bin` now moves such a file to `control/applied` instead, and prints one line, not one per file.
 

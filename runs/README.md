@@ -12,7 +12,9 @@ To change what a run does, edit its card here. The Brain may not edit these (the
 | `breaking.md` | When the news watch fires | One verified breaking reel |
 | `selftest.md` | On demand | Proves the run path works |
 
-## The clock and the dispatcher (made fresh every week)
-Their exact rules and every scheduled task now live in `runs/renew/`: `clock.md`, `dispatcher.md`, `tasks.json`. Every
-Monday 03:17 IST the task "iNiKKi · Weekly fresh chats" sends `RENEW` to the small renewer chat (`runs/renew/renewer.md`), which follows `runs/renew.md` and also replaces itself: new chats first,
-then the tasks moved to them, then the old ones removed. Change those files, not the scheduled tasks by hand.
+## The clock (GitHub metronome) and the dispatcher (made fresh every day)
+The timed jobs are started by the GitHub metronome (`tools/metronome.py`), from the "clock" list in `runs/renew/tasks.json`.
+No Claude chat is involved. The dispatcher's rules and its scheduled tasks live in `runs/renew/` (`dispatcher.md`,
+`tasks.json`). Every day at 03:17 IST the task "iNiKKi · Daily fresh chats" sends `RENEW` to the small renewer chat
+(`runs/renew/renewer.md`), which follows `runs/renew.md`: a new dispatcher, its tasks moved, the old ones removed, and a new
+renewer. Change those files, not the scheduled tasks by hand. To see what the chats cost: skill `token-audit`.
