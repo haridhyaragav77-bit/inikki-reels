@@ -1,5 +1,11 @@
 # Build log (plain words, newest first)
 
+## 23 Nov 2026, evening — Chat manager; model and effort as one setting
+The daily renewer became the chat manager (`runs/renew.md` step 6, rules in `runs/renew/chats.json`): it archives finished
+runs, old helper chats and Harish's finished chats, never deletes, keeps THE CONTROL ROOM and named chats. Model and effort per
+thinking run: `thinking_models` in `config/agent.yaml`, printed by `tools/run_due.py` for the dispatcher; changeable from the
+Control Room chat ("plan on opus"). Plan and Refresh: Sonnet high. Closed by hand today: 4 old chats.
+
 ## 23 Nov 2026 — Token audit: the clock leaves Claude
 Measured today (list price): clock chat about 765,000 tokens a tick, 13 ticks, about $10 a day; dispatcher about 550,000 a
 message, about $5 a day; Plan run (Opus) $4.50; Refresh about $2. Two doorbell chats cost twice the thinking. Causes: the

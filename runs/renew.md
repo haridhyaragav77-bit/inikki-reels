@@ -1,4 +1,4 @@
-# Run card: RENEW (daily, 03:17 IST; AGENT.md 4.2, "Fresh chats every day")
+# Run card: RENEW, the chat manager (daily, 03:17 IST; AGENT.md 4.2, "Fresh chats every day")
 The dispatcher re-reads its whole chat at every message, and its messages are hours apart, so Claude's cache has
 expired each time and the whole chat is paid for again. A fresh chat every day keeps each message small.
 The clock is no longer a chat: the GitHub metronome starts the timed jobs (tools/metronome.py, AGENT.md 4.3).
@@ -6,8 +6,9 @@ This card writes no files and pushes nothing. Make the new first, remove the old
 Never touch a task that is not named in `runs/renew/tasks.json` (for example "iNiKKi Brain · Breaking (on demand)",
 one-time reminders, other projects).
 
-1. Read `runs/renew/dispatcher.md`, `runs/renew/renewer.md` and `runs/renew/tasks.json`. Load the claude-code-remote
-   tools you need with ToolSearch: create_session, list_triggers, create_trigger, delete_trigger, archive_session, list_events.
+1. Read `runs/renew/dispatcher.md`, `runs/renew/renewer.md`, `runs/renew/tasks.json` and `runs/renew/chats.json`. Load the claude-code-remote
+   tools you need with ToolSearch: create_session, list_sessions, list_triggers, create_trigger, update_trigger,
+   delete_trigger, archive_session, list_events.
 2. `list_triggers` (limit 100). OLD = the persistent_session_id of each enabled task whose name is in the "dispatcher" list.
    CLOCK = the persistent_session_id of each task whose name is in the "clock" list (those are the metronome's now).
 3. create_session: source_url "https://github.com/haridhyaragav77-bit/inikki-reels", source_revision "main",
@@ -21,8 +22,11 @@ one-time reminders, other projects).
    included), and every task named in the "clock" list (any chat). If a delete is refused, switch that task off instead:
    update_trigger enabled false, name prefixed "OLD (off) · ". An old task must never stay on. Then archive_session each
    OLD and CLOCK chat.
-6. Renew yourself last: create_session like step 3 with title "iNiKKi · renewer · <today>" and append_system_prompt =
-   renewer.md's text; create_trigger for the "renewer" entry bound to it; delete_trigger the renewer task bound to this chat.
-   Do not archive this chat; it ends by itself.
-7. Reply in at most 3 plain lines: the new chat ids, tasks moved, anything that failed. If anything failed before
+6. Tidy the chats (chats.json): list_sessions (mine, limit 100). Archive each chat its rules say to archive, oldest
+   first, and nothing else. Read only titles, status, updated time; never open a chat's transcript. Archive, never delete.
+7. Renew yourself last: create_session like step 3 with title "iNiKKi · chat manager · <today>" and append_system_prompt =
+   renewer.md's text; create_trigger for the "renewer" entry bound to it; delete_trigger (or switch off) the task bound
+   to this chat. Do not archive this chat now: tomorrow's chat manager archives it in step 6.
+8. Reply in at most 5 plain lines: the new chat ids, tasks moved, chats archived (count, and any left because they wait
+   on Harish), anything that failed. If anything failed before
    step 5, delete nothing: the old chat keeps working.
