@@ -39,9 +39,9 @@ Last updated 14 Nov 2026. The full design is `AGENT.md`; this guide is the short
 | 17:22 | Engine | Makes anything new from the Refresh run |
 | 23:40 | Engine | Nightly: all numbers, the dashboard sheet, clean-up |
 
-**What keeps time:** GitHub's own timer runs this project's jobs about 7 hours late, so the posts, the briefs and the nightly job are started on time by a small Claude "clock" task. It costs a little (13 short ticks a day on the cheapest model). Section 12 has a free replacement.
+**What keeps time:** GitHub's own timer runs this project's jobs hours late, so a free GitHub "metronome" job waits for each post, brief and nightly time and starts that job at its minute. It uses no Claude at all (until 23 Nov a Claude chat did this, and it was the biggest daily cost).
 
-**If a run is missed** (your Claude usage ran out, or a session did not start): five times a day (07:07, 09:37, 13:07, 18:37, 21:07) the dispatcher runs a quick check that uses no AI. A missed run starts then. A late Plan run does not cancel reels: it moves them to the post times still open, flex slots included. What still does not fit is kept in the bank for a later day, except news that would be stale by then. If the run already happened, the check costs almost nothing. Weekly catches up until Tuesday, Monthly until the 3rd.
+**If a run is missed** (your Claude usage ran out, or a session did not start): twice a day (09:37 and 18:37) the dispatcher runs a quick check that uses no AI. A missed run starts then. A late Plan run does not cancel reels: it moves them to the post times still open, flex slots included. What still does not fit is kept in the bank for a later day, except news that would be stale by then. If the run already happened, the check costs almost nothing. Weekly catches up until Tuesday, Monthly until the 3rd.
 
 **Your moments, if you want them:**
 - **Morning, after about 07:00:** today's reels are made. Preview them on the page. Change words, hold or skip before the first slot.
@@ -244,7 +244,7 @@ Every change gets a number, a reason and an Undo in the change log.
 5. **Workshop:** one task per session, and start with "Use the workshop skill." Open a new session for the next task.
 6. **Do not ask for drawings** unless you want one. The page already has the cards.
 7. **Keep your Claude account lean.** Every new session first loads every plugin and connector you have switched on: about 60,000 tokens before it does anything (measured 13 Nov). Switch off the ones this agent does not use at claude.ai → Customize (plugins and connectors). The agent needs only GitHub, Google Drive and the Claude Code session tools.
-9. **The two helper chats renew themselves.** Every Monday at 03:17 the clock and dispatcher chats are replaced by fresh ones, so their cost does not keep growing. Nothing to do on your side.
+9. **The dispatcher chat renews itself every day** at 03:17, so its cost never grows. The clock is no longer a chat (the GitHub metronome does it for free). Daily thinking runs use the faster model; Weekly and Monthly the most capable.
 8. **AGENT.md is never read whole** (about 30,000 tokens). Sessions read its map and one section; a project hook enforces it.
 
 ## 11. Files and clean-up

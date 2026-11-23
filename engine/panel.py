@@ -105,7 +105,7 @@ def schedule(ctl, now, hours=40):
         for t in think_times(c.get("at", ""), now, hours):
             out.append({"at": t.isoformat(timespec="minutes"), "what": c.get("what", "job"), "kind": c.get("kind", "daily")})
     for job, cron in engine_clock():                  # the rest still hangs on GitHub's own timer, which may run late
-        if job == "post":
+        if job in ("post", "metronome-watch"):            # the watcher only restarts the metronome: not a job to list
             continue
         lab = labels.get(job, job)
         lab = lab.get(cron, job) if isinstance(lab, dict) else lab
