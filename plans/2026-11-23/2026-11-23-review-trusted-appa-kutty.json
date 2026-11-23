@@ -1,0 +1,325 @@
+{
+ "id": "2026-11-23-review-trusted-appa-kutty",
+ "series": "trusted-review",
+ "template": "verdict",
+ "fps": 30,
+ "length_s": [
+  20,
+  45
+ ],
+ "lead": {
+  "film": "Appa Kutty",
+  "topic": "Appa Kutty (Vijay Antony, dir. Mu. Maran): what the trusted critics say",
+  "critics": [
+   {
+    "outlet": "The Times of India",
+    "critic": "Roopa Radhakrishnan",
+    "rating": "3/5",
+    "quote": "Despite its flaws, Appakutty is moving"
+   },
+   {
+    "outlet": "Cinema Express",
+    "critic": "Akshay Kumar",
+    "rating": "2.5/5",
+    "quote": "a flawed, yet beautiful subversion of fatherhood"
+   },
+   {
+    "outlet": "Prashanth Rangaswamy",
+    "critic": "YouTube",
+    "quote": "a clean, emotional family film (as reported by Filmibeat)"
+   }
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/Appa_Kutty (Reception, with links to the Times of India and Cinema Express reviews)",
+   "https://tamil.filmibeat.com/reviews/appa-kutty-prashanth-review-vijay-antonys-film-gets-emotional-praise-from-popular-reviewer-187353.html"
+  ],
+  "note": "Day 3 after release (window ends tomorrow). Appa Kutty missed its Quick Review on release day."
+ },
+ "worth_it": {
+  "deciding_this_week": "Yes: first week, family audiences are deciding.",
+  "quotes": "Real, short, named; the softer Cinema Express view included.",
+  "spoilers": "None. Only 'a father and daughter story'."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "feeling_of_love",
+    "from": 1.0,
+    "screen": 0,
+    "mood": "warm, emotional"
+   }
+  ],
+  "level_db": -15,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "cast": {
+   "src": "engine/.cache/stills/appa-kutty/mm55UVZ0AxM_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/appa-kutty/mm55UVZ0AxM_maxres1.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/appa-kutty/mm55UVZ0AxM_maxres2.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/appa-kutty/mm55UVZ0AxM_maxres3.jpg",
+   "fetch": {
+    "youtube": "mm55UVZ0AxM",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "cast",
+   "fx": 0.45,
+   "fy": 0.35,
+   "dur": 2.9,
+   "film": "APPA KUTTY",
+   "type": "TRUSTED REVIEW",
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    },
+    {
+     "at": 0.6,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "stars",
+   "in": "flash",
+   "image": "s1",
+   "dur": 4.6,
+   "heading": "TRUSTED RATING",
+   "score": 3.2,
+   "out_of": 5,
+   "verdict": "WAIT",
+   "line": "WAIT FOR OTT",
+   "basis": "3 TRUSTED CRITICS",
+   "sfx": [
+    {
+     "at": 1.9,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "critics",
+   "in": "push",
+   "image": "s2",
+   "dur": 6.4,
+   "heading": "THE TRUSTED CRITICS",
+   "cards": [
+    {
+     "outlet": "THE TIMES OF INDIA",
+     "critic": "Roopa Radhakrishnan",
+     "quote": "Despite its flaws, it is moving",
+     "rating": "3/5"
+    },
+    {
+     "outlet": "CINEMA EXPRESS",
+     "critic": "Akshay Kumar",
+     "quote": "flawed, yet beautiful",
+     "rating": "2.5/5"
+    },
+    {
+     "outlet": "YOUTUBE",
+     "critic": "Prashanth Rangaswamy",
+     "quote": "a clean family film",
+     "rating": "POSITIVE"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.25,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "whoosh"
+    },
+    {
+     "at": 3.15,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "in": "whip",
+   "image": "s3",
+   "dur": 5.4,
+   "works_label": "WORKS",
+   "not_label": "DOESN'T",
+   "works": [
+    "FATHER-DAUGHTER FEELS",
+    "THE CLIMAX",
+    "THE DAUGHTER"
+   ],
+   "not": [
+    "SLOW FIRST HALF",
+    "FILLER SCENES"
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.95,
+     "type": "pop"
+    },
+    {
+     "at": 1.4,
+     "type": "pop"
+    },
+    {
+     "at": 1.85,
+     "type": "tick"
+    },
+    {
+     "at": 2.3,
+     "type": "tick"
+    }
+   ]
+  },
+  {
+   "kind": "who",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.4,
+   "fy": 0.35,
+   "dur": 3.6,
+   "heading": "WATCH IT IF YOU LOVE",
+   "chips": [
+    [
+     "FAMILY DRAMA",
+     "TEARJERKERS"
+    ],
+    [
+     "VIJAY ANTONY",
+     "FATHER-DAUGHTER"
+    ]
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "cast",
+   "dur": 3.8,
+   "echo": "APPA KUTTY · TRUSTED REVIEW",
+   "question": [
+    {
+     "text": "SEEN IT?",
+     "size": 130
+    },
+    {
+     "text": "YOUR VERDICT?",
+     "size": 120,
+     "color": "#F8C028"
+    }
+   ],
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 1.15,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Appa Kutty: worth the ticket? The trusted critics say wait.",
+   "Vijay Antony's father-daughter drama. Times of India 3/5, Cinema Express 2.5/5, Prashanth Rangaswamy positive. A slow first half, a moving final act.",
+   "Seen it? Your verdict?",
+   "Send this to the friend planning a family movie night.",
+   "அப்பா குட்டி — பார்க்கலாமா? நம்பகமான விமர்சகர்கள் சொல்றது."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "APPA KUTTY · TRUSTED REVIEW",
+  "slot": "17:00",
+  "first_comment": "Theatre or wait for OTT? 1 or 2."
+ },
+ "drive_folder": "finished",
+ "rating": {
+  "kind": "trusted",
+  "critics": [
+   {
+    "name": "Roopa Radhakrishnan",
+    "outlet": "The Times of India",
+    "stars": 3,
+    "quote": "Despite its flaws, it is moving",
+    "src": 0
+   },
+   {
+    "name": "Akshay Kumar",
+    "outlet": "Cinema Express",
+    "stars": 2.5,
+    "quote": "flawed, yet beautiful",
+    "src": 0
+   },
+   {
+    "name": "Prashanth Rangaswamy",
+    "outlet": "YouTube",
+    "verbal": "positive",
+    "quote": "a clean family film",
+    "src": 1
+   }
+  ],
+  "score": 3.2,
+  "verdict": "WAIT"
+ },
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 69,
+  "weakest": [
+   "loop: end card does not lead back to the stars",
+   "hook: the verdict could be on the title"
+  ]
+ },
+ "slot_reason": "Trusted Review due (3 trusted critics in, day 3 of 4): the 17:00 flex slot, once critics have spoken."
+}

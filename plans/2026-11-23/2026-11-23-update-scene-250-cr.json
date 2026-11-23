@@ -1,0 +1,222 @@
+{
+ "id": "2026-11-23-update-scene-250-cr",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 23 NOV 2026",
+ "lead": {
+  "film": "scene",
+  "new_event": "Scene crosses ₹250 Cr worldwide (Sacnilk); Suriya's three 2026 films past ₹770 Cr",
+  "topic": "Scene crosses ₹250 Cr worldwide",
+  "facts": [
+   "Scene has crossed ₹250 Cr worldwide gross (Sacnilk)",
+   "Suriya's three 2026 releases have grossed over ₹770 Cr worldwide (Sacnilk)",
+   "Suriya became the first Tamil star with three ₹200-crore hits in a year (Hindustan Times, day 7)"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/news/scene-crosses-250-crore-worldwide-as-suriyas-three-films-gross-over-770-crore-in-2026",
+   "https://www.hindustantimes.com/entertainment/tamil-cinema/scene-worldwide-box-office-collection-day-7-suriya-becomes-1st-tamil-star-with-three-200-crore-hits-in-a-year-shah-rukh-khan-akshay-kumar-101794543240239.html"
+  ],
+  "note": "Reserve: posts only if a reel is held."
+ },
+ "worth_it": {
+  "fan_opens_because": "Scene's new milestone in its third week.",
+  "spoilers": "None. Numbers only.",
+  "voice": "Off."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.25,
+    0.0,
+    0.5,
+    0.7
+   ]
+  },
+  "s1": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres1.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "SCENE",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "₹250 CR WORLDWIDE",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "WORLDWIDE GROSS",
+   "value": 250,
+   "unit": " CR",
+   "land": 1.6,
+   "tag": [
+    "REPORTED",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "SURIYA · 3 FILMS IN 2026",
+   "value": 770,
+   "unit": " CR",
+   "land": 1.6,
+   "tag": [
+    "WORLDWIDE",
+    "REPORTED"
+   ],
+   "sfx": [
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "SCENE · ₹250 CR WORLDWIDE",
+   "question": [
+    {
+     "text": "SURIYA'S",
+     "size": 130
+    },
+    {
+     "text": "YEAR?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Best of his three 2026 films?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Scene has crossed ₹250 Cr worldwide (reported, Sacnilk).",
+   "Suriya's three 2026 films are past ₹770 Cr together.",
+   "Which of the three is your favourite?",
+   "Send this to the Suriya fan."
+  ],
+  "cover": "SCENE · ₹250 CR",
+  "slot": "reserve",
+  "first_comment": "Suriya's best of 2026?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 3,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 60,
+  "weakest": [
+   "timely: the milestone is a few days old",
+   "save_value: numbers only"
+  ]
+ },
+ "slot_reason": "Reserve: fills any slot whose reel is held.",
+ "reserve": true
+}

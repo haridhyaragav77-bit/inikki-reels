@@ -1,0 +1,254 @@
+{
+ "id": "2026-11-23-update-train-dec-4",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 23 NOV 2026",
+ "lead": {
+  "film": "train",
+  "topic": "Train (Mysskin, Vijay Sethupathi): in theatres in 11 days, on 4 December",
+  "facts": [
+   "Mysskin's Train, starring Vijay Sethupathi, releases worldwide on 4 December 2026 (The Hollywood Reporter India; Pinkvilla)",
+   "The release was delayed by heavy CG and visual effects work (Pinkvilla)",
+   "A thriller set almost entirely inside a moving train; Shruti Haasan and Nassar in the cast; Mysskin also composed the music"
+  ],
+  "sources": [
+   "https://www.hollywoodreporterindia.com/amp/story/features/insight/train-mysskin-vijay-sethupathi-action-thriller-locks-december-2026-release",
+   "https://www.pinkvilla.com/entertainment/south/train-release-date-vijay-sethupathis-action-thriller-with-director-mysskin-to-hit-big-screens-on-december-4-2026-1405872"
+  ],
+  "note": "Countdown reel: 11 days to go. Pictures from the official release teaser (V Creations)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Mysskin + Vijay Sethupathi, a whole film inside a train: when?",
+  "spoilers": "None. Date and setting only.",
+  "voice": "Off: music-only update."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "hunt_begins",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxres1.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxres2.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxres3.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "TRAIN",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "4 DEC · IN THEATRES",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "MYSSKIN × VIJAY SETHUPATHI",
+   "value": 11,
+   "unit": " DAYS",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "TO GO",
+    "4 DECEMBER"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "ONE TRAIN",
+     "size": 180,
+     "y": 1310
+    },
+    {
+     "text": "ALMOST THE WHOLE FILM",
+     "size": 90,
+     "y": 1460,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.6,
+   "lines": [
+    {
+     "text": "SHRUTI HAASAN",
+     "size": 130,
+     "y": 1310
+    },
+    {
+     "text": "+ NASSAR · MUSIC: MYSSKIN",
+     "size": 80,
+     "y": 1450,
+     "color": "#F8C028"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "TRAIN · 4 DEC · IN THEATRES",
+   "question": [
+    {
+     "text": "FIRST DAY",
+     "size": 130
+    },
+    {
+     "text": "FIRST SHOW?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Mysskin's train thriller: in or out?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Mysskin's Train, with Vijay Sethupathi, is in theatres on 4 December: 11 days to go.",
+   "A thriller set almost entirely inside a moving train, delayed by heavy CG work. Shruti Haasan and Nassar co-star; Mysskin did the music too (The Hollywood Reporter India, Pinkvilla).",
+   "First day first show?",
+   "Send this to the Mysskin fan."
+  ],
+  "cover": "TRAIN · 4 DEC · IN THEATRES",
+  "slot": "11:00",
+  "first_comment": "Best Mysskin film so far? Name it.",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 64,
+  "weakest": [
+   "save_value: add the date as a reminder line in the caption",
+   "loop: end card could echo '11 DAYS'"
+  ]
+ },
+ "slot_reason": "Same-day news, a week-plus away: late morning slot, after the weekend box office."
+}

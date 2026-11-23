@@ -1,0 +1,220 @@
+{
+ "id": "2026-11-23-update-delivery-boy-friday",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 23 NOV 2026",
+ "lead": {
+  "film": "delivery-boy",
+  "topic": "Delivery Boy (Radikaa Sarathkumar) in theatres this Friday, 27 November",
+  "facts": [
+   "Delivery Boy, with Radikaa Sarathkumar and Leo Sivakumar, directed by Nani Darla, releases on 27 November (The Times of India; Wikipedia list of Tamil films of 2026)",
+   "From the team behind Thaai Kizhavi (official teaser promo); the official trailer is out"
+  ],
+  "sources": [
+   "https://en.wikipedia.org/wiki/List_of_Tamil_films_of_2026 (27 Nov: Delivery Boy, citing The Times of India)",
+   "https://www.youtube.com/watch?v=b77NFLgDXio (official trailer)",
+   "https://www.youtube.com/watch?v=YUdaeoApf5Y (teaser promo: 'Thaai Kizhavi's Next')"
+  ],
+  "note": "Draft for the evening slot: the Refresh run swaps it for fresher news if the day brings some. Small-film pick."
+ },
+ "worth_it": {
+  "fan_opens_because": "The Thaai Kizhavi team is back this Friday with Radikaa.",
+  "spoilers": "None. Date and cast only.",
+  "voice": "Off: music-only update."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "whats_cookin",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxres1.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxres2.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "DELIVERY BOY",
+     "size": 160,
+     "y": 1310
+    },
+    {
+     "text": "THIS FRIDAY · 27 NOV",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "RADIKAA",
+     "size": 200,
+     "y": 1310
+    },
+    {
+     "text": "+ LEO SIVAKUMAR",
+     "size": 100,
+     "y": 1460,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "whip",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "THAAI KIZHAVI",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "TEAM'S NEXT",
+     "size": 110,
+     "y": 1460,
+     "color": "#F8C028"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "DELIVERY BOY · THIS FRIDAY",
+   "question": [
+    {
+     "text": "THIS FRIDAY:",
+     "size": 130
+    },
+    {
+     "text": "WHICH ONE?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Delivery Boy, Mouna Mozhigal or Minnum Oar Iravu?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Delivery Boy, with Radikaa Sarathkumar, is in theatres this Friday, 27 November.",
+   "From the Thaai Kizhavi team; Leo Sivakumar co-stars, Nani Darla directs. The trailer is out.",
+   "Your Friday pick?",
+   "Send this to the friend who loved Thaai Kizhavi."
+  ],
+  "cover": "DELIVERY BOY · THIS FRIDAY",
+  "slot": "18:00",
+  "first_comment": "Which Friday release are you going for?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 60,
+  "weakest": [
+   "hook: a fresher evening story should replace it (Refresh)",
+   "send_trigger: weak for a small film"
+  ]
+ },
+ "slot_reason": "Evening draft for after-work viewers; the Refresh run rewrites it with the day's fresh news."
+}

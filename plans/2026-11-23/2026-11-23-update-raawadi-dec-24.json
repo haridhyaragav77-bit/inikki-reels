@@ -1,0 +1,213 @@
+{
+ "id": "2026-11-23-update-raawadi-dec-24",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 23 NOV 2026",
+ "lead": {
+  "film": "raawadi",
+  "topic": "Raawadi: Basil Joseph's Tamil film opens on 24 December",
+  "facts": [
+   "Raawadi, with Basil Joseph and LK Akshay Kumar, directed by Vignesh Vadivel, releases on 24 December 2026 (Daily Thanthi; Wikipedia list)",
+   "Official release date announcement video by Seven Screen Studio"
+  ],
+  "sources": [
+   "https://www.dailythanthi.com/cinema/cinemanews/akshay-kumars-raawadi-film-release-date-announced",
+   "https://www.youtube.com/watch?v=RCHZwF_-43k (official release date announcement)"
+  ],
+  "note": "Reserve: posts only if a reel is held. An another-language star in a Tamil film."
+ },
+ "worth_it": {
+  "fan_opens_because": "Basil Joseph in a Tamil film, on Christmas Eve.",
+  "spoilers": "None.",
+  "voice": "Off."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "varun_intro",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/raawadi/RCHZwF_-43k_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "RCHZwF_-43k",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/raawadi/RCHZwF_-43k_maxres1.jpg",
+   "fetch": {
+    "youtube": "RCHZwF_-43k",
+    "frame": "maxres1"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "RAAWADI",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "24 DEC · IN THEATRES",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "BASIL JOSEPH",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "IN TAMIL",
+     "size": 110,
+     "y": 1460,
+     "color": "#F8C028"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "CHRISTMAS EVE RELEASE",
+   "value": 31,
+   "unit": " DAYS",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "TO GO",
+    "24 DECEMBER"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "RAAWADI · 24 DEC",
+   "question": [
+    {
+     "text": "CHRISTMAS",
+     "size": 130
+    },
+    {
+     "text": "EVE PLANS?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Basil Joseph's Tamil film: in?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Raawadi, Basil Joseph's Tamil film, opens on 24 December.",
+   "LK Akshay Kumar co-stars; Vignesh Vadivel directs (Daily Thanthi).",
+   "Christmas Eve plans?",
+   "Send this to the Basil Joseph fan."
+  ],
+  "cover": "RAAWADI · 24 DEC",
+  "slot": "reserve",
+  "first_comment": "Basil Joseph's best film?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 6,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 6,
+  "total_100": 59,
+  "weakest": [
+   "value: a date only",
+   "hook: needs a trailer moment"
+  ]
+ },
+ "slot_reason": "Reserve: fills any slot whose reel is held.",
+ "reserve": true
+}

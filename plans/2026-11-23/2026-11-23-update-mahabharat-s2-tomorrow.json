@@ -1,0 +1,221 @@
+{
+ "id": "2026-11-23-update-mahabharat-s2-tomorrow",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 23 NOV 2026",
+ "lead": {
+  "film": "mahabharat-ek-dharmayudh",
+  "topic": "Mahabharat: Ek Dharmayudh season 2 streams tomorrow (24 Nov) on JioHotstar",
+  "facts": [
+   "Season 2 premieres on JioHotstar on 24 November 2026, 25 episodes (UNI; News Karnataka)",
+   "It picks up after the Varnavat fire: the Pandavas survive and rise with Krishna's guidance (UNI)",
+   "An AI-made series from JioStar and Collective Studios' Historyverse (JioStar)"
+  ],
+  "sources": [
+   "https://www.uniindia.com/entertainment/ent-mahabharat-ek-dharmayudh-s2/238738",
+   "https://newskarnataka.com/entertainment/mahabharat-ek-dharmayudh-season-2-to-premiere-on-jiohotstar-on-november-24/06112026/",
+   "https://www.jiostar.com/news/jiostar-and-collective-media-network-partner-to-launch-mahabharat-ek-dharmayudh-the-first-ever-ai-powered-premium-entertainment-series-india-has-seen/"
+  ],
+  "note": "Today's update from outside the top films (an OTT drop) and the 'releases tomorrow' reel. Tamil audio is not confirmed in the sources, so the reel does not claim it."
+ },
+ "worth_it": {
+  "fan_opens_because": "The AI Mahabharat is back tomorrow: what happens next?",
+  "spoilers": "None beyond the official season synopsis (the epic is public).",
+  "voice": "Off: music-only update."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "giant_emerges",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/mahabharat/IHPfrdtses4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "IHPfrdtses4",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/mahabharat/IHPfrdtses4_maxres1.jpg",
+   "fetch": {
+    "youtube": "IHPfrdtses4",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/mahabharat/IHPfrdtses4_maxres2.jpg",
+   "fetch": {
+    "youtube": "IHPfrdtses4",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "MAHABHARAT",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "SEASON 2 · TOMORROW",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "JIOHOTSTAR · 24 NOV",
+   "value": 25,
+   "unit": " EPISODES",
+   "money": false,
+   "land": 1.6,
+   "tag": [
+    "SEASON 2",
+    "AI-MADE"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.6,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "AFTER THE FIRE",
+     "size": 160,
+     "y": 1310
+    },
+    {
+     "text": "THE PANDAVAS RISE",
+     "size": 100,
+     "y": 1460,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "MAHABHARAT · SEASON 2 · TOMORROW",
+   "question": [
+    {
+     "text": "AI EPIC:",
+     "size": 130
+    },
+    {
+     "text": "YES OR NO?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Would you watch a series made with AI?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Mahabharat: Ek Dharmayudh season 2 streams tomorrow, 24 November, on JioHotstar: 25 episodes.",
+   "It picks up after the Varnavat fire, as the Pandavas survive and rise with Krishna. The series is made with AI (JioStar; UNI).",
+   "AI-made epic: would you watch it?",
+   "Send this to the friend who binged season 1."
+  ],
+  "cover": "MAHABHARAT · SEASON 2 · TOMORROW",
+  "slot": "12:30",
+  "first_comment": "AI series: future or not for you? Yes or no.",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 8,
+  "loop": 5,
+  "timely_original": 7,
+  "total_100": 64,
+  "weakest": [
+   "save_value: add the time it goes live once known",
+   "send_trigger: tie it to a Tamil angle when JioHotstar confirms Tamil audio"
+  ]
+ },
+ "slot_reason": "It streams tomorrow, so it is today's 'releases tomorrow' reel; lunch slot fits a light OTT update."
+}

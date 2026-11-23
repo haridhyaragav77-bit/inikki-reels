@@ -1,0 +1,527 @@
+{
+ "id": "2026-11-23-breakdown-dune-two-infrared",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "noir",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "The point needs the world (a sun with no colour), the camera trick, the filter, the side effect on costumes, and why it feels alien.",
+ "lead": {
+  "topic": "Dune: Part Two: the black-and-white arena was shot on an infrared camera",
+  "angle": "cinematography_camera",
+  "point": "Dune Part Two's black-and-white Giedi Prime scenes were not graded grey later: Greig Fraser shot them on a camera that sees only infrared light.",
+  "insight": "Villeneuve imagined Giedi Prime's sun giving no colour. Fraser swapped the camera's infrared-blocking filter for an 87C filter that blocks visible light, so the camera records only infrared. Black can turn white on that camera, so some costumes were made twice. That is why the arena feels like another planet.",
+  "why_now": "Dune: Part Two's trailer just landed in our library; a camera breakdown on a film people loved.",
+  "technique": "Infrared cinematography",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dune:_Part_Two (Production: Giedi Prime as a black-and-white world because its star emits no colour; 87C filters that block visible light)",
+   "https://inverse.com/entertainment/dune-2-gladiator-fight-black-white-giedi-prime-denis-villeneuve-greig-fraser-interview (Fraser: Alexa LF modified to see only infrared; infrared lights)",
+   "https://britishcinematographer.co.uk/greig-fraser-asc-acs-dune-part-two/ (Villeneuve's idea of a sun that emits no colour)",
+   "https://www.arrirental.com/en/about/overview/news/interview-on-dune-part-two-with-greig-fraser-acs-asc (some costumes needed an exterior and an interior version)"
+  ],
+  "inspired_by": "own idea (Greig Fraser interviews: Inverse, British Cinematographer, ARRI Rental)"
+ },
+ "worth_it": {
+  "learn": "Dune 2's black-and-white planet was shot on an infrared camera, not turned grey on a computer.",
+  "stop": "A camera that cannot see colour, on purpose.",
+  "why_now": "New in our trailer library; one of the most loved recent Hollywood films in Tamil Nadu.",
+  "send_to": "The Dune fan or the friend who loves cinematography.",
+  "best_angle": "Yes: the look of that arena is what everyone remembers."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "threat_north",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "ominous"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "investigation"
+   },
+   {
+    "track": "giant_emerges",
+    "from": 6.0,
+    "screen": 4,
+    "mood": "epic"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/dune-part-two/Way9Dexny3w_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Way9Dexny3w",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/dune-part-two/Way9Dexny3w_maxres1.jpg",
+   "fetch": {
+    "youtube": "Way9Dexny3w",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/dune-part-two/Way9Dexny3w_maxres2.jpg",
+   "fetch": {
+    "youtube": "Way9Dexny3w",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/dune-part-two/Way9Dexny3w_maxres3.jpg",
+   "fetch": {
+    "youtube": "Way9Dexny3w",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "டியூன் டூ-ல அந்த பிளாக் அண்ட் வைட் சீன், கலர்ல எடுத்து அப்புறம் கிரே ஆக்கல.",
+   "voice_tg": "Dune two-la andha black and white scene, colour-la eduthu appuram grey aakkala.",
+   "image": "title",
+   "film": "DUNE: PART TWO",
+   "type": "SHOT ON A CAMERA THAT SEES NO COLOUR",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    2
+   ],
+   "voice": "வில்லன் கிரகம் கீடி ப்ரைம்ல, சூரியன் எந்த கலரும் தராது. இதுதான் டைரக்டர் வில்லனூவோட ஐடியா.",
+   "voice_tg": "Villain kiragam Giedi Prime-la, sooriyan endha colour-um tharaadhu. Idhudhaan director Villeneuve-oda idea.",
+   "heading": "A SUN WITH NO COLOUR",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "sun",
+     "icon": "sun",
+     "x": 0.5,
+     "y": 0.2,
+     "size": 1.3,
+     "color": "white",
+     "cue": {
+      "word": "சூரியன்"
+     },
+     "label": "NO COLOUR",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "தராது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "crowd",
+     "icon": "crowd",
+     "x": 0.3,
+     "y": 0.8,
+     "size": 1.2,
+     "color": "white",
+     "cue": {
+      "word": "கிரகம்"
+     }
+    },
+    {
+     "id": "feyd",
+     "icon": "person",
+     "x": 0.68,
+     "y": 0.8,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "ப்ரைம்ல,"
+     },
+     "label": "GIEDI PRIME",
+     "label_at": "above"
+    }
+   ],
+   "links": [
+    {
+     "from": "sun",
+     "to": "feyd",
+     "cue": {
+      "word": "தராது."
+     },
+     "style": "beam"
+    }
+   ],
+   "slam_text": "A WORLD WITH NO COLOUR",
+   "slam_cue": {
+    "word": "ஐடியா."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சூரியன்"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "ஐடியா."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "source",
+   "in": "whip",
+   "src": 1,
+   "voice": "சாதாரண கேமரா, நம்ம கண் மாதிரி கலரைப் பாக்கும். கிரெய்க் ஃப்ரேசர் மாத்தின கேமரா, இன்ஃப்ராரெட் ஒளியை மட்டும் பாக்கும்.",
+   "voice_tg": "Saadhaarana camera, namma kann maadhiri colour-ai paakkum. Greig Fraser maathina camera, infrared oliyai mattum paakkum.",
+   "heading": "TWO CAMERAS",
+   "left": {
+    "title": "A NORMAL CAMERA",
+    "beats": [
+     {
+      "label": "LIKE OUR EYES",
+      "cue": {
+       "word": "கண்"
+      }
+     },
+     {
+      "label": "SEES COLOUR",
+      "cue": {
+       "word": "கலரைப்"
+      }
+     }
+    ]
+   },
+   "right": {
+    "title": "FRASER'S CAMERA",
+    "beats": [
+     {
+      "label": "MODIFIED",
+      "cue": {
+       "word": "மாத்தின"
+      }
+     },
+     {
+      "label": "INFRARED ONLY",
+      "cue": {
+       "word": "மட்டும்"
+      }
+     }
+    ]
+   },
+   "links": [
+    {
+     "from": 0,
+     "to": 0,
+     "cue": {
+      "word": "ஃப்ரேசர்"
+     }
+    },
+    {
+     "from": 1,
+     "to": 1,
+     "cue": {
+      "word": "இன்ஃப்ராரெட்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "மட்டும்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "layers",
+   "in": "push",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "சென்சாருக்கு மேல ஒரு ஸ்பெஷல் ஃபில்டர். அது கண்ணுக்கு தெரியுற வெளிச்சத்தை முழுசா தடுக்குது.",
+   "voice_tg": "Sensor-ukku mela oru special filter. Adhu kannukku theriyura velichathai muzhusaa thadukkudhu.",
+   "heading": "WHAT'S IN THE CAMERA",
+   "layers": [
+    {
+     "label": "SENSOR",
+     "sub": "ALEXA LF",
+     "cue": {
+      "word": "சென்சாருக்கு"
+     }
+    },
+    {
+     "label": "87C FILTER",
+     "sub": "BLOCKS VISIBLE LIGHT",
+     "cue": {
+      "word": "ஃபில்டர்."
+     }
+    }
+   ],
+   "split_cue": {
+    "word": "தடுக்குது."
+   },
+   "slam_text": "ONLY INFRARED GETS IN",
+   "slam_cue": {
+    "word": "தடுக்குது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஃபில்டர்."
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "தடுக்குது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "chain",
+   "in": "whip",
+   "src": [
+    1,
+    3
+   ],
+   "voice": "அந்த கேமராவுல கருப்பு டிரஸ் கூட வெள்ளையா தெரியலாம். அதனால சில காஸ்ட்யூம், ரெண்டு வெர்ஷன் தச்சாங்க.",
+   "voice_tg": "Andha camera-vula karuppu dress kooda vellaiyaa theriyalaam. Adhanaala sila costume, rendu version thachaanga.",
+   "heading": "THE SIDE EFFECT",
+   "steps": [
+    {
+     "label": "INFRARED CAMERA",
+     "cue": {
+      "word": "கேமராவுல"
+     }
+    },
+    {
+     "label": "BLACK TURNS WHITE",
+     "cue": {
+      "word": "வெள்ளையா"
+     }
+    },
+    {
+     "label": "TWO COSTUMES",
+     "cue": {
+      "word": "வெர்ஷன்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "வெர்ஷன்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "flash",
+   "src": "analysis",
+   "voice": "அதனால தான், அந்த அரீனா சண்டை வேற கிரகத்துல நடக்குற மாதிரி இருக்கு. அது கம்ப்யூட்டர் இல்ல, கேமராவோட கண்.",
+   "voice_tg": "Adhanaala dhaan, andha arena sandai vera kiragathula nadakkura maadhiri irukku. Adhu computer illa, camera-voda kann.",
+   "heading": "WHY IT FEELS ALIEN",
+   "ground": "none",
+   "props": [
+    {
+     "id": "cam",
+     "icon": "camera",
+     "x": 0.22,
+     "y": 0.5,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "கேமராவோட"
+     }
+    },
+    {
+     "id": "eye",
+     "icon": "eye",
+     "x": 0.5,
+     "y": 0.5,
+     "size": 1.3,
+     "color": "white",
+     "cue": {
+      "word": "கண்."
+     },
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "கண்."
+       }
+      }
+     ]
+    },
+    {
+     "id": "fight",
+     "icon": "knife",
+     "x": 0.8,
+     "y": 0.5,
+     "size": 0.9,
+     "color": "white",
+     "cue": {
+      "word": "சண்டை"
+     },
+     "label": "THE ARENA",
+     "label_at": "below"
+    },
+    {
+     "id": "pc",
+     "icon": "screen",
+     "x": 0.5,
+     "y": 0.2,
+     "size": 0.7,
+     "color": "red",
+     "cue": {
+      "word": "கம்ப்யூட்டர்"
+     },
+     "acts": [
+      {
+       "do": "fade",
+       "cue": {
+        "word": "இல்ல,"
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "cam",
+     "to": "fight",
+     "cue": {
+      "word": "கேமராவோட"
+     },
+     "style": "beam"
+    }
+   ],
+   "slam_text": "NOT A FILTER. A CAMERA.",
+   "slam_cue": {
+    "word": "கண்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கண்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "voice": "அடுத்து எந்த படத்தோட கேமரா ட்ரிக் வேணும்? கமெண்ட்ல சொல்லுங்க. ஞாபகம் வச்சுக்கோங்க,",
+   "voice_tg": "Adutthu endha padathoda camera trick venum? Comment-la sollunga. Gnaabagam vachukkonga,",
+   "in": "whip",
+   "echo": "DUNE: PART TWO · SHOT ON A CAMERA THAT SEES NO COLOUR",
+   "question": [
+    {
+     "text": "NEXT CAMERA",
+     "size": 120
+    },
+    {
+     "text": "TRICK?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "அடுத்து எந்த படம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "s3",
+   "recap": "TECHNIQUE: INFRARED CINEMATOGRAPHY",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Dune: Part Two's black-and-white planet was not turned grey on a computer.",
+   "Denis Villeneuve imagined Giedi Prime's sun giving no colour, so cinematographer Greig Fraser shot it on a camera fitted to see only infrared light. Black clothes could turn white on it, so some costumes were made twice. The technique: infrared cinematography.",
+   "Which film's camera trick next?",
+   "Send this to the Dune fan."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "DUNE 2 · A CAMERA THAT SEES NO COLOUR",
+  "slot": "20:00",
+  "first_comment": "Which film's camera work should we break down next?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 7,
+  "pacing": 8,
+  "loop": 7,
+  "timely_original": 6,
+  "total_100": 72,
+  "weakest": [
+   "send_trigger: niche for non-Dune fans; the hook must sell the surprise",
+   "timely_original: a 2024 film; fresh because it is new in our library"
+  ]
+ },
+ "slot_reason": "Evergreen breakdown in the evening slot when people have time for longer reels."
+}

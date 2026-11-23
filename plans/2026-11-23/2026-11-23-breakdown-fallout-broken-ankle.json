@@ -1,0 +1,536 @@
+{
+ "id": "2026-11-23-breakdown-fallout-broken-ankle",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "neon",
+ "length_s": [
+  40,
+  75
+ ],
+ "length_reason": "The point needs the jump, Cruise's own words, the take kept in the film, the cost (7-8 weeks), and one more real stunt as the payoff.",
+ "lead": {
+  "topic": "Mission: Impossible – Fallout: the broken-ankle take is in the film",
+  "angle": "behind_the_scenes",
+  "point": "In Fallout's rooftop jump, Tom Cruise really broke his ankle on the wall, finished the take, and that take is in the film.",
+  "insight": "Cruise hit the wall during a building-to-building jump in London (Aug 2017), knew at once his ankle was broken, got up and ran on so the shot would not need redoing. McQuarrie kept that take. Shooting stopped for 7-8 weeks; he came back not fully healed.",
+  "why_now": "Fallout's trailer just landed in our library; Mission: Impossible is the Hollywood series Tamil audiences know best.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Fallout (Production: ankle broken on a jump between buildings in London, Aug 2017; finished the scene; footage used; back after 7-8 weeks; HALO jump done 106 times incl. practice)",
+   "https://www.hollywoodreporter.com/heat-vision/tom-cruise-reveals-footage-mission-impossible-fallout-stunt-injury-1078917 (Cruise on The Graham Norton Show, Jan 2018: knew instantly it was broken, finished the take)",
+   "https://cinemablend.com/news/2306821/mission-impossible-fallout-decided-to-use-the-take-of-tom-cruise-breaking-his-ankle (the take where he broke his ankle is in the final cut)"
+  ],
+  "inspired_by": "own idea (Fallout production facts, Cruise on The Graham Norton Show)"
+ },
+ "worth_it": {
+  "learn": "The jump where Tom Cruise really broke his ankle is in the finished film, and he finished the take.",
+  "stop": "A real broken bone, on screen, in a film you have seen.",
+  "why_now": "New in our trailer library; Hollywood action is loved in Tamil Nadu.",
+  "send_to": "The Tom Cruise or action fan friend.",
+  "best_angle": "Yes: the true story is the reason people remember this shot."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "hunt_begins",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "chase"
+   },
+   {
+    "track": "villains_strategy",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "big release"
+   }
+  ],
+  "duck": 0.3,
+  "xfade": 0.8,
+  "fade_out": 1.2
+ },
+ "assets": {
+  "title": {
+   "src": "engine/.cache/stills/fallout/wb49-oV0F78_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "wb49-oV0F78",
+    "frame": "maxresdefault"
+   }
+  },
+  "run": {
+   "src": "engine/.cache/stills/fallout/wb49-oV0F78_maxres1.jpg",
+   "fetch": {
+    "youtube": "wb49-oV0F78",
+    "frame": "maxres1"
+   }
+  },
+  "cruise": {
+   "src": "engine/.cache/stills/fallout/wb49-oV0F78_maxres2.jpg",
+   "fetch": {
+    "youtube": "wb49-oV0F78",
+    "frame": "maxres2"
+   }
+  },
+  "sky": {
+   "src": "engine/.cache/stills/fallout/wb49-oV0F78_maxres3.jpg",
+   "fetch": {
+    "youtube": "wb49-oV0F78",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "மிஷன் இம்பாசிபிள் ஃபால்அவுட்ல, டாம் க்ரூஸ் கால் உடைஞ்ச ஷாட், படத்துலயே இருக்கு.",
+   "voice_tg": "Mission Impossible Fallout-la, Tom Cruise kaal udainja shot, padathulaye irukku.",
+   "image": "title",
+   "film": "MISSION: IMPOSSIBLE – FALLOUT",
+   "type": "HIS REAL BROKEN ANKLE IS ON SCREEN",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    2
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "லண்டன்ல, ஒரு பில்டிங்ல இருந்து இன்னொரு பில்டிங்குக்கு ஜம்ப். கால் சுவர்ல மோதுது. கணுக்கால் உடையுது.",
+   "voice_tg": "London-la, oru building-la irundhu innoru building-ukku jump. Kaal suvarla modhudhu. Kanukkaal udaiyudhu.",
+   "heading": "ONE JUMP. ONE WALL.",
+   "ground": "city",
+   "props": [
+    {
+     "id": "a",
+     "icon": "building",
+     "x": 0.18,
+     "y": 0.8,
+     "size": 1.6,
+     "cue": {
+      "at": 0.2
+     },
+     "color": "second",
+     "label": "ROOF 1",
+     "label_at": "above"
+    },
+    {
+     "id": "b",
+     "icon": "building",
+     "x": 0.78,
+     "y": 0.8,
+     "size": 1.6,
+     "cue": {
+      "at": 0.3
+     },
+     "color": "second",
+     "label": "ROOF 2",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "மோதுது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "tom",
+     "icon": "runner",
+     "x": 0.2,
+     "y": 0.42,
+     "size": 0.7,
+     "color": "white",
+     "cue": {
+      "word": "லண்டன்ல,"
+     },
+     "path": [
+      [
+       0.2,
+       0.42
+      ],
+      [
+       0.45,
+       0.3
+      ],
+      [
+       0.66,
+       0.5
+      ]
+     ],
+     "move": 1.6,
+     "move_cue": {
+      "word": "ஜம்ப்."
+     },
+     "face": true
+    },
+    {
+     "id": "hit",
+     "icon": "exclaim",
+     "x": 0.66,
+     "y": 0.5,
+     "size": 0.7,
+     "color": "red",
+     "cue": {
+      "word": "மோதுது."
+     },
+     "acts": [
+      {
+       "do": "blast",
+       "cue": {
+        "word": "மோதுது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "ankle",
+     "icon": "cross",
+     "x": 0.6,
+     "y": 0.66,
+     "size": 0.6,
+     "color": "red",
+     "cue": {
+      "word": "உடையுது."
+     },
+     "label": "ANKLE",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "உடையுது."
+       }
+      }
+     ]
+    }
+   ],
+   "focus": {
+    "on": "hit",
+    "to": 1.4,
+    "cue": {
+     "word": "சுவர்ல"
+    },
+    "d": 0.6
+   },
+   "slam_text": "ANKLE BROKEN",
+   "slam_cue": {
+    "word": "உடையுது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஜம்ப்."
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "மோதுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "whip",
+   "src": 1,
+   "voice": "கிரஹாம் நார்ட்டன் ஷோல க்ரூஸ் சொன்னார், உடைஞ்சது உடனே தெரிஞ்சது. ஆனா ஷாட்டை திரும்ப எடுக்க வேண்டாம்னு, எழுந்து ஓடினார்.",
+   "voice_tg": "Graham Norton show-la Cruise sonnaar, udainjadhu udane therinjadhu. Aana shot-ai thirumba edukka vendaamnu, ezhundhu odinaar.",
+   "image": "cruise",
+   "name": "TOM CRUISE",
+   "role": "DID HIS OWN STUNT",
+   "phrase": "I KNEW INSTANTLY IT WAS BROKEN",
+   "source": "THE GRAHAM NORTON SHOW · 2018",
+   "cues": {
+    "name": {
+     "word": "க்ரூஸ்"
+    },
+    "phrase": {
+     "word": "உடைஞ்சது"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஓடினார்."
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "push",
+   "src": [
+    0,
+    2
+   ],
+   "voice": "டைரக்டர் மெக்குவாரி, அந்த டேக்கையே படத்துல வச்சார். நீங்க பாத்த அந்த ஜம்ப், நிஜமான அடி.",
+   "voice_tg": "Director McQuarrie, andha take-aiye padathula vachaar. Neenga paatha andha jump, nijamaana adi.",
+   "left": {
+    "image": "run",
+    "label": "THE TAKE",
+    "sub": "ON SET, 2017",
+    "cue": {
+     "word": "டேக்கையே"
+    }
+   },
+   "right": {
+    "image": "title",
+    "label": "THE FILM",
+    "sub": "SAME TAKE",
+    "cue": {
+     "word": "படத்துல"
+    }
+   },
+   "slam_text": "SAME TAKE. REAL INJURY.",
+   "slam_cue": {
+    "word": "அடி."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "அடி."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "chain",
+   "in": "whip",
+   "src": 0,
+   "voice": "அப்புறம் ஷூட்டிங் நின்னுபோச்சு. ஏழு எட்டு வாரம் கழிச்சு, முழுசா குணமாகாமலே திரும்ப வந்தார். கிளைமாக்ஸ் சண்டை, அதே கால்ல.",
+   "voice_tg": "Appuram shooting ninnupochu. Ezhu ettu vaaram kazhichu, muzhusaa gunamaagaamale thirumba vandhaar. Climax sandai, adhe kaalla.",
+   "heading": "WHAT IT COST",
+   "steps": [
+    {
+     "label": "SHOOT STOPS",
+     "cue": {
+      "word": "நின்னுபோச்சு."
+     }
+    },
+    {
+     "label": "7-8 WEEKS",
+     "cue": {
+      "word": "வாரம்"
+     }
+    },
+    {
+     "label": "BACK, NOT HEALED",
+     "cue": {
+      "word": "வந்தார்."
+     }
+    },
+    {
+     "label": "CLIMAX, SAME ANKLE",
+     "cue": {
+      "word": "கால்ல."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "கால்ல."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "flash",
+   "src": 0,
+   "voice": "இது மட்டும் இல்ல. பாரிஸ் மேல ஸ்கைடைவ் சீனுக்கு, பிராக்டீஸ் சேர்த்து, அவர் நூத்தியாறு தடவை குதிச்சார்.",
+   "voice_tg": "Idhu mattum illa. Paris mela skydive scene-ukku, practice serthu, avar noothiyaaru thadavai kudhichaar.",
+   "heading": "THE HALO JUMP",
+   "ground": "sky",
+   "props": [
+    {
+     "id": "plane",
+     "icon": "plane",
+     "x": 0.2,
+     "y": 0.18,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "பாரிஸ்"
+     },
+     "enter": "slide"
+    },
+    {
+     "id": "tom2",
+     "icon": "person",
+     "x": 0.3,
+     "y": 0.25,
+     "size": 0.6,
+     "color": "accent",
+     "cue": {
+      "word": "ஸ்கைடைவ்"
+     },
+     "path": [
+      [
+       0.3,
+       0.25
+      ],
+      [
+       0.42,
+       0.45
+      ],
+      [
+       0.5,
+       0.7
+      ]
+     ],
+     "move": 2.0,
+     "move_cue": {
+      "word": "குதிச்சார்."
+     }
+    },
+    {
+     "id": "city",
+     "icon": "building",
+     "x": 0.75,
+     "y": 0.8,
+     "size": 1.0,
+     "color": "second",
+     "cue": {
+      "at": 0.3
+     },
+     "count": 3,
+     "gap": 0.08
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 106,
+    "unit": "JUMPS",
+    "cue": {
+     "word": "நூத்தியாறு"
+    },
+    "d": 1.4,
+    "x": 0.72,
+    "y": 0.2
+   },
+   "slam_text": "106 JUMPS. ONE SHOT.",
+   "slam_cue": {
+    "word": "குதிச்சார்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "நூத்தியாறு"
+     },
+     "type": "riser"
+    },
+    {
+     "at": {
+      "word": "குதிச்சார்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "voice": "நீங்க பாத்ததுலயே பெஸ்ட் நிஜ ஸ்டண்ட், எந்த படம்? கமெண்ட்ல சொல்லுங்க. திரும்ப பாருங்க,",
+   "voice_tg": "Neenga paathadhulaye best nija stunt, endha padam? Comment-la sollunga. Thirumba paarunga,",
+   "in": "whip",
+   "echo": "FALLOUT · HIS REAL BROKEN ANKLE IS ON SCREEN",
+   "question": [
+    {
+     "text": "BEST REAL",
+     "size": 130
+    },
+    {
+     "text": "STUNT?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "பெஸ்ட் நிஜ ஸ்டண்ட் எது?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "sky",
+   "recap": "THE TAKE THEY KEPT",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "The jump where Tom Cruise really broke his ankle is in Mission: Impossible – Fallout.",
+   "He hit the wall between two London rooftops, knew at once it was broken, and ran on so the shot would not need redoing (he told The Graham Norton Show). Director Christopher McQuarrie kept that take. Shooting stopped for 7-8 weeks, and he did the HALO jump 106 times, practice included.",
+   "Best real stunt you have seen?",
+   "Send this to the action-film friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "FALLOUT · THE BROKEN-ANKLE TAKE",
+  "slot": "21:30",
+  "first_comment": "Real stunts or CGI: which do you trust more?"
+ },
+ "drive_folder": "finished",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 8,
+  "loop": 7,
+  "timely_original": 6,
+  "total_100": 72,
+  "weakest": [
+   "timely_original: an old story; the fresh layer is the 106 jumps and the 7-8 week cost",
+   "save_value: a story, not a lesson"
+  ]
+ },
+ "slot_reason": "Evergreen breakdown: late-night slot when people watch longer reels; the 20:00 slot takes the camera breakdown."
+}
