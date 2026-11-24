@@ -1,10 +1,14 @@
-# Brief · plan run · 2026-11-24 (written 2026-11-24 05:12 IST)
+# Brief · refresh run · 2026-11-24 (written 2026-11-24 16:12 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-24 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-24/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below.
+2. Fresh evening updates (Harish, 19 Nov): rewrite the movie-updates plans for 18:00 in plans/2026-11-24/ with news from today (since the morning run): new films, new numbers, new announcements, checked in 2 sources, variety rule. Keep a morning plan only if it is still the day's strongest story. Same file name per slot, so Make renders the new one.
+3. Breakdown bank: 3 of 4 ready. Add 1 breakdown plan to plans/bank/.
+4. Feedback: nothing new.
+5. Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -39,9 +43,10 @@ Missed reviews: Appa Kutty (Quick). A Trusted Review can still go out today if t
 
 ## What the channels we study teach (AGENT.md 10.3)
 Breakdowns lead with one specific detail or a true story (AGENT.md 5.7). Patterns, in our words: lab/study/patterns.md. Their best recent shorts: data/study/channels.md. Never copy their wording or order; check any story in 2 trusted sources and credit the original interview.
+Digest 'Needs you' line: 7 short(s) to study, command in Drive requests/study_to_get.md (same laptop helper).
 
 ## Films the updates covered in the last 3 days (pick other films unless there is real new news; lead.film, lead.new_event)
-- delivery-boy · dharman · mahabharat-ek-dharmayudh · mouna-mozhigal · om-day-1 · om-day-2 · om-weekend · pocket-novel · pongal-2027 · raawadi · releases-27-nov · scene · scene-ott-netflix · suriya-2026-total · thagappan · train · vettuvam · weekend-ott-drops
+- delivery-boy · dharman · mahabharat-ek-dharmayudh · mouna-mozhigal · om-day-1 · om-day-2 · om-ott · om-weekend · pocket-novel · pongal-2027 · raawadi · releases-27-nov · scene · scene-ott-netflix · suriya-2026-total · thagappan · train · vettuvam · weekend-ott-drops
 Today: at least 3 different films, and one update from outside the top films (smaller film, OTT drop, another-language or Hollywood release in Tamil Nadu, industry story). Use the news watch's lower-ranked stories too.
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
@@ -119,6 +124,9 @@ For an older look, open a film's grid (Google Drive) and pick the shot whose pic
 - Manikanda: 34 stills, grid: clip-library/sheets/Manikanda - youtube.jpg
 Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
 
+## Trailers expected (announced dates)
+- Hello Kadhal: To Drop Today (Hello Kadhal Trailer Release Time: Arya, Nikhila Vimal & Vaishnavi Chaitanya's F)
+
 ## New trailers in the library (last 3 days)
 - Mission: Impossible – Fallout (trailer, grid: clip-library/sheets/Mission  Impossible – Fallout - trailer [wb49-oV0F78].jpg)
 - The Matrix (trailer, grid: clip-library/sheets/The Matrix - trailer [vKQi3bBA1y8].jpg)
@@ -128,6 +136,12 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 - Dune: Part Two (trailer, grid: clip-library/sheets/Dune  Part Two - trailer [Way9Dexny3w].jpg)
 Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review (Quick Review) on release days, trusted-review 1-4 days after a release. Turned off by Harish: artwork-quote.
+
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 08:30 | 2026-11-24-update-om-ott-netflix | movie-updates | posted |  |
+| 12:30 | 2026-11-15-breakdown-virumaandi | film-breakdown | posted |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
@@ -140,11 +154,19 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 | 2026-11-23-update-raawadi-dec-24 | movie-updates | 140 | 64.5% green | 30.4% green | 0.0% grey | - grey |
 | 2026-11-23-breakdown-fallout-broken-ankle | film-breakdown | 11 | 55.6% green | 41.5% green | 0.0% grey | - grey |
 
+## Early numbers (2 hours after posting)
+- 2026-11-23-review-trusted-appa-kutty: 139 views, share 0.0%, skip 74.0%
+- 2026-11-23-update-delivery-boy-friday: 221 views, share 0.0%, skip 77.8%
+- 2026-11-23-update-raawadi-dec-24: 140 views, share 0.0%, skip 64.5%
+- 2026-11-23-breakdown-fallout-broken-ankle: 13 views, share 0.0%, skip 54.5%
+- 2026-11-24-update-om-ott-netflix: 13 views, share 0.0%, skip 40.0%
+- 2026-11-15-breakdown-virumaandi: 525 views, share 0.0%, skip 43.6%
+
 ## Trends from the news watch (top 5, no AI; verify before use)
-- [14.0] OM box office collection Day 2: Dhanush-Mammootty film sees 14.9% drop, earns Rs 60 crore · 30 publishers (7 trusted)
+- [14.0] OM box office collection Day 2: Dhanush-Mammootty film sees 14.9% drop, earns Rs 60 crore · 31 publishers (8 trusted)
 - [11.2] 'O.M' OTT release date: Here's when and where you can watch Dhanush, Mammootty, Sai Pallavi and Sreeleela · 16 publishers (4 trusted)
 - [11.2] Dhanush, Mammootty-starrer Om's trailer springs a surprise; reveals Dhanush is with the TN intelligence unit · 33 publishers (9 trusted)
-- [11.2] OM worldwide box office collection day 2: Dhanush's film with Sreeleela, Mammootty, Sai Pallavi lags behind Ka · 7 publishers (4 trusted)
+- [11.2] OM box office collection day 3: Dhanush, Mammootty, Sai Pallavi's spy film crosses ₹50 crore mark in 1st weeke · 7 publishers (4 trusted)
 - [10.0] How Suriya turned his biggest box office failures into a Rs 600 crore comeback · 31 publishers (8 trusted)
 
 ## Changes in force (newest first)
@@ -154,15 +176,9 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #14 · 14 Nov 2026 · rule (news watch) · a small film's trailer could not reach the score that wakes the Breaking run → fast pages (@chennaiist) are read at every pass; a 
 - #13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must u
 
-## Open alerts
-- 2026-11-23 16:45 IST: A note from the thinking run
-- 2026-11-23 16:39 IST: The brief-refresh job did not finish
-- 2026-11-23 16:12 IST: The brief-refresh job did not finish
-- 2026-11-23 06:06 IST: 1 reel(s) held for 2026-11-23
-
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 2229 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Runner minutes: 3415 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
 - Storage: 7.51 GB of 15 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
