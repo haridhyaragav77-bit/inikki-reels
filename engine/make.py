@@ -15,7 +15,7 @@ import sys
 import traceback
 
 from .settings import ROOT, niche_dir
-from . import status
+from . import dayplan, status
 from .control import Control
 from .day import Bank, Day, slot_time, today
 
@@ -155,7 +155,6 @@ def still_waiting(rec, plan, is_bank, h, tight, cap_day, ctl):
         return True
     if reserve and str(rec.get("reason", "")).startswith("Reserves are set to"):
         return True                                  # reserves turned down in the Control Room: no heavy tools just to skip it
-    from . import dayplan
     return ctl.series_paused(plan.get("series", "")) or bool(dayplan.off(ctl, plan.get("series", "")))
 
 
@@ -241,7 +240,6 @@ def main():
         elif not plan.get("slot") and pslot:
             plan["slot"] = pslot
         ledger = bank if is_bank else day
-        from . import dayplan
         if plan.get("reserve") and not is_bank and len([r for r in day.reels("ready", "posted", "rendering")
                                                          if r.get("reserve") and r["reel_id"] != rid]) >= dayplan.reserves(ctl.settings):
             ledger.upsert(rid, series=series, hash=plan_hash(path), state="skipped",
@@ -267,7 +265,6 @@ def main():
                     for_slot=plan.get("for_slot"), trial=plan.get("trial"), tribute=bool(plan.get("tribute")) or None,
                     manual=bool(plan.get("manual")) or None, remake_of=plan.get("remake_of"),
                     hash=plan_hash(path), hook=first.get("headline") or first.get("line") or (plan.get("package") or {}).get("cover"), virality=(plan.get("virality") or {}).get("total_100"))
-        from . import dayplan
         why = "The series is paused." if ctl.series_paused(series) else dayplan.off(ctl, series)
         cap = dayplan.chosen(ctl.overrides, series) if dayplan.roles(ctl.settings).get(series, ("",))[0] == "extra" else None
         if not why and cap and not is_bank and len([r for r in day.reels("ready", "posted", "rendering") if r.get("series") == series and r["reel_id"] != rid]) >= cap:

@@ -16,7 +16,7 @@ concurrency:
 jobs:
   guard:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with: { persist-credentials: false }
@@ -27,3 +27,7 @@ jobs:
         run: python -m engine.guard scan
       - name: The Guard's own tests
         run: python -m tests.test_guard
+      - name: The Engine's tests and code check (no keys; merge only when this passes, CLAUDE.md rule 3)
+        run: |
+          pip install -q pylint==4.1.4
+          bash tools/check_code.sh

@@ -39,6 +39,13 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
 - Check every plan: `for f in plans/$TODAY/*.json; do python -m engine.plancheck "$f" | tail -n 3; done`. Fix what it reports.
 - For each film under "Trailers to get" in the brief, find its official YouTube trailer and add "Film = link" to
   `data/notes/trailer_links.md`.
+- **Fill the day (Harish, 24 Nov).** Plan every slot in the brief's table. Never stop at "no fresh news": for an update
+  slot with no new story in 2 sources, use in this order (1) a lower-ranked story from the news watch, (2) an update built
+  from the brief's "Releases and reviews" calendar (this week's releases, a moved date; the calendar is already checked),
+  (3) another live series' evergreen reel (a breakdown or Watch This Next) with "slot_reason". A bank breakdown that fails
+  today's check is fixed (new design kit, a scene, no cooling graphic), not dropped. Search in batches (all queries in
+  one step), and keep going until the slots are full. Fewer plans than slots is the last resort only: then the post job
+  fills each empty slot from a reserve or the bank, so say how many and why in one line in `data/out/alerts.md`.
 - Make the number of reserves the brief asks for (`"reserve": true`); none when it says reserves are off. Write plans to `plans/$TODAY/`.
 
 ## Always
