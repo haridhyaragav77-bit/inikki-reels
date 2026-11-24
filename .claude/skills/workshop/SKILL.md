@@ -15,6 +15,7 @@ Where things are:
 Change order (CLAUDE.md): AGENT.md first, then the build. Settings before code.
 
 Test before live:
+- Every change: `bash tools/check_code.sh` (all tests and the code check; the same runs on every push and must pass).
 - Control Room path: python -m tests.test_control_room (no keys).
 - A plan: python -m engine.plancheck <file>.
 - Against the real Drive, nothing posted: Actions → daily → Run workflow on your branch, job `panel` or `clean-dry`.

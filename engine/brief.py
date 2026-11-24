@@ -12,7 +12,7 @@ import statistics
 import yaml
 
 from .settings import AGENT, ROOT, niche_dir
-from . import status
+from . import dayplan, status
 from .control import Control
 from .day import Bank, Day, load_json_lines, today
 
@@ -63,7 +63,6 @@ def lineup_today(ctl, date):
     name = ctl.settings.get("active", {}).get("lineup", "cinema-core")
     lineup = yaml.safe_load((nd / "lineups" / f"{name}.yaml").read_text(encoding="utf-8")) or {}
     rows = []
-    from . import dayplan
     for s in lineup.get("slots", []):
         sid = s.get("series") or story_series(lineup, date)
         if not s.get("series") and sid and dayplan.off(ctl, sid):      # the story series of the day is off: another one takes the slot
@@ -112,7 +111,6 @@ def lineup_today(ctl, date):
 
 def flex_line(ctl):
     """The flex series for the plan run, with Harish's caps from the day plan (Control Room → Setup)."""
-    from . import dayplan
     if not dayplan.extras_on(ctl.settings):
         return "Extras are OFF (Control Room): plan no flex reels (no trailer-breakdown, movie-review or artwork-quote) today."
     words = {"trailer-breakdown": "trailer-breakdown when a new trailer lands", "movie-review": "movie-review (Quick Review) on release days",
@@ -404,7 +402,6 @@ def build(drive, run, date):
         if len(main_plans) >= base:
             nothing = f"Nothing to do: today's {len(main_plans)} plans are already in."
         else:
-            from . import dayplan
             want = dayplan.reserves(ctl.settings)
             extra = (f", plus {max(0, want - reserves)} reserve(s) (\"reserve\": true)" if want
                      else ", and NO reserves (Harish turned reserves off in the Control Room)")
@@ -423,7 +420,6 @@ def build(drive, run, date):
         todo.append("Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.")
     elif run == "breaking":
         cap = int(ctl.settings.get("budgets", {}).get("breaking_per_day", 2))
-        from . import dayplan
         if dayplan.off(ctl, "breaking-news"):
             nothing = "Nothing to do: " + dayplan.off(ctl, "breaking-news")
         elif breaking_today >= cap:

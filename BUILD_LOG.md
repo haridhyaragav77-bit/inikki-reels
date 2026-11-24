@@ -1,5 +1,11 @@
 # Build log (plain words, newest first)
 
+## 24 Nov 2026 — Only 1 of 6 reels: empty slots filled from the bank; every push runs all tests
+The Plan run planned 1 reel and stopped (thin news), and the post job left the 5 empty slots silent while 4 bank reels were
+ready. Root cause of repeat failures: only the Guard's test ran on push, so bugs like the 23 Nov brief crash reached main.
+Fixes: `post.fill_empty_slot` (reserve, then bank), "Fill the day" in `runs/plan.md`, `tests/test_brief.py`, all tests and a
+code check on every push (`tools/check_code.sh` in `guard.yml`). Report: `lab/results/2026-11-24-missing-reels-root-cause.md`.
+
 ## 23 Nov 2026, evening — Chat manager; model and effort as one setting
 The daily renewer became the chat manager (`runs/renew.md` step 6, rules in `runs/renew/chats.json`): it archives finished
 runs, old helper chats and Harish's finished chats, never deletes, keeps THE CONTROL ROOM and named chats. Model and effort per

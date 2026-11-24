@@ -200,6 +200,7 @@ def find(spec, n, reel_id, work, drive=None, library=None, film=None):
     out = os.path.join(work, f"found_{n:02d}.jpg")
     lib = library or Library(drive)
     for step in order:
+        rec = None
         try:
             if step == "library" and query:
                 it = lib.search(query, film=film)
