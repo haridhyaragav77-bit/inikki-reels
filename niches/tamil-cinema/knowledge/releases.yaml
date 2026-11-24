@@ -18,6 +18,7 @@ releases:
   - { film: "Hide And Silk", date: "2026-12-04", where: theatres, status: tentative, note: "Filmibeat calendar only" }
   - { film: "Makkal Kaavalan", date: "2026-12-04", where: theatres, status: tentative, note: "Manikandan, Divya Sripada; Filmibeat calendar only" }
   - { film: "Train", date: "2026-12-04", where: theatres, status: confirmed, note: "Mysskin, Vijay Sethupathi; makers' announcement via The Hollywood Reporter India + Pinkvilla (checked 23 Nov)" }
+  - { film: "Hello Kadhal", date: "2026-12-04", where: theatres, status: tentative, note: "Arya, Nikhila Vimal; trailer out 24 Nov; AP7AM + NewKerala (checked 24 Nov)" }
   - { film: "Dhruva Natchathiram: Chapter One - Yuddha Kaandam", date: "2026-12-15", where: theatres, status: tentative, note: "sources disagree: Filmibeat 15 Dec, 91mobiles 1 Dec" }
   - { film: "Mr. Bhaarath", date: "2026-12-11", where: theatres, status: tentative, note: "Wikipedia list only" }
   - { film: "Kannamoochi", date: "2026-12-21", where: theatres, status: tentative, note: "Filmibeat calendar only" }

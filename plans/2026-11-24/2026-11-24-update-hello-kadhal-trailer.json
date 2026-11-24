@@ -1,0 +1,241 @@
+{
+ "id": "2026-11-24-update-hello-kadhal-trailer",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 24 NOV 2026",
+ "lead": {
+  "film": "hello-kadhal",
+  "new_event": "Official trailer released today; film opens 4 Dec",
+  "topic": "Hello Kadhal trailer is out: Arya, Nikhila Vimal, 4 Dec in theatres",
+  "facts": [
+   "The Hello Kadhal trailer came out on 24 Nov (Manorama Online; Cinema Arattai)",
+   "Arya, Nikhila Vimal and Vaishnavi Chaitanya star; Nikhil Muraly directs",
+   "The film opens in theatres on 4 Dec (AP7AM; NewKerala)"
+  ],
+  "sources": [
+   "https://www.manoramaonline.com/movies/movie-news/2026/11/24/arya-nikhila-vimal-hello-kaadhal-trailer.html",
+   "https://www.cinemaarattai.com/2026/11/hello-kadhal-movie-trailer-tamil.html",
+   "https://www.ap7am.com/en/137639/aryas-romantic-entertainer-hello-kaadhal-to-hit-screens-on-december-4"
+  ],
+  "note": "Smaller film, new today, not covered before. Trailer by Think Music India (official channel)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Arya's new rom-com trailer is out: is it worth a watch?",
+  "spoilers": "None. Trailer and date only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres2.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres2"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxresdefault"
+   },
+   "crop": [
+    0.0,
+    0.0,
+    0.7,
+    1.0
+   ]
+  },
+  "s1": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres1.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres3.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "HELLO KADHAL",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "TRAILER IS OUT",
+     "size": 100,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "whip",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.0,
+   "lines": [
+    {
+     "text": "ARYA · NIKHILA VIMAL",
+     "size": 90,
+     "y": 1290
+    },
+    {
+     "text": "ROM-COM",
+     "size": 200,
+     "y": 1440,
+     "color": "#F07850"
+    },
+    {
+     "text": "MUSIC · G V PRAKASH",
+     "size": 70,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "riser"
+    },
+    {
+     "at": 1.2,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "title",
+   "in": "push",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.6,
+   "lines": [
+    {
+     "text": "IN THEATRES",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "4 DECEMBER",
+     "size": 95,
+     "y": 1460,
+     "color": "#F8C028"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "HELLO KADHAL · 4 DEC",
+   "question": [
+    {
+     "text": "WILL YOU",
+     "size": 130
+    },
+    {
+     "text": "WATCH IT?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Arya's 40th film",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Hello Kadhal trailer is out (Manorama Online, Cinema Arattai).",
+   "Arya, Nikhila Vimal and Vaishnavi Chaitanya. Opens 4 Dec.",
+   "Will you watch it in theatres? Tell us below.",
+   "Send this to your rom-com friend."
+  ],
+  "cover": "HELLO KADHAL · TRAILER",
+  "slot": "18:00",
+  "first_comment": "Hello Kadhal: theatre or OTT?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Trailer dropped today, so it is the most time-critical story; a smaller film, new to the feed.",
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 9,
+  "original": 7,
+  "total_100": 72
+ }
+}

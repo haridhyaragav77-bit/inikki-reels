@@ -1,6 +1,6 @@
-**Mon 23 Nov** · 4 reels posted, 5 ready tonight, 2 spare
-**Best:** Pongal 2027 race update, 626 views yesterday
-**Weak:** Viduthalai breakdown, only 9% watched to the end
-**Tomorrow:** Sathyavan Savithiri Trusted Review, its last day
-**Changed:** Nothing, the refresh brief was missing so plans stay
-**Needs you:** Brief refresh job failed twice, please check it
+**Tue 24 Nov** · 1 reel posted, 18:00 now Hello Kadhal trailer
+**Best:** O.M weekend update, 1830 views yesterday
+**Weak:** Delivery Boy update, 79% skipped it
+**Tomorrow:** O.M day 4 numbers, about ₹93 Cr worldwide
+**Changed:** 18:00 reel is the Hello Kadhal trailer
+**Needs you:** 20:00 and 21:30 breakdowns unplanned; 7 shorts to study
