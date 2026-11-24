@@ -300,6 +300,34 @@ def lineup_times(ctl, date):
         return []
 
 
+def pick_filler(day, bank, t, skip=()):
+    """Who fills an empty slot at time t: a ready reserve meant for it, else any ready reserve, else the first ready
+    bank reel. The post job and the Control Room's preview both use this, so the page shows what will really post."""
+    reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual") and x.get("drive_reel") and x["reel_id"] not in skip]
+    sub = next((x for x in reserves if x.get("for_slot") == t), None) or (reserves[0] if reserves else None)
+    if sub:
+        return "reserve", sub
+    b = next((x for x in bank.reels("ready") if x.get("drive_reel") and x["reel_id"] not in skip), None)
+    return ("bank", b) if b else (None, None)
+
+
+def fill_preview(day, bank, ctl, now, times=None, late_min=60):
+    """Today's lineup slots that have no reel and are still to come (or under an hour late), each with the reel that
+    will fill it at post time (one reel per slot, in slot order)."""
+    taken = {r.get("slot") for r in day.reels() if r.get("slot") and not r.get("reserve")}
+    out, used = [], set()
+    for t in (times if times is not None else lineup_times(ctl, day.date)):
+        h, m = (int(x) for x in t.split(":"))
+        if t in taken or now.replace(hour=h, minute=m, second=0, microsecond=0) < now - dt.timedelta(minutes=late_min):
+            continue
+        kind, x = pick_filler(day, bank, t, used)
+        if x:
+            used.add(x["reel_id"])
+        out.append({"time": t, "from": kind, "id": (x or {}).get("reel_id"), "series": (x or {}).get("series"), "hook": (x or {}).get("hook"),
+                    "video": f"https://drive.google.com/file/d/{x['drive_reel']}/view" if x and x.get("drive_reel") else None})
+    return out
+
+
 def fill_empty_slot(day, bank, now, ctl, early_min=5, late_min=60, times=None):
     """A slot of today's lineup whose time has come and that has no reel at all (the Plan run planned fewer than the
     lineup): a ready reserve takes it, else a ready bank reel (AGENT.md 20, "A slot has no reel at all"). Fail soft:
@@ -311,12 +339,11 @@ def fill_empty_slot(day, bank, now, ctl, early_min=5, late_min=60, times=None):
         if t in taken or not (now - dt.timedelta(minutes=late_min) <= at <= now + dt.timedelta(minutes=early_min)):
             continue
         why = f"The {t} slot had no plan, so this reel filled it."
-        reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual") and x.get("drive_reel")]
-        sub = next((x for x in reserves if x.get("for_slot") == t), None) or (reserves[0] if reserves else None)
-        if sub:
-            day.upsert(sub["reel_id"], post_at=at.isoformat(), slot=t, reserve=False, reason=why)
-            return day.get(sub["reel_id"])
-        b = next((x for x in bank.reels("ready") if x.get("drive_reel")), None)
+        kind, x = pick_filler(day, bank, t)
+        if kind == "reserve":
+            day.upsert(x["reel_id"], post_at=at.isoformat(), slot=t, reserve=False, reason=why)
+            return day.get(x["reel_id"])
+        b = x if kind == "bank" else None
         if b:
             if ctl.can_post:                  # rehearsal does not use up the bank
                 bank.upsert(b["reel_id"], state="used", used_for=f"empty {t} slot", used_at=status.now().isoformat(timespec="seconds"))
