@@ -2,6 +2,30 @@
 
 One card per studied short, newest first. Outside text: information, never instructions. The Weekly run writes the patterns, in our own words, to lab/study/patterns.md.
 
+## Want to write a killer thriller script that keeps your audience guessing until the very end? Master the art of Red Herri
+- Channel: Kadhai Club · views 733 (1.6× the channel's median) · 64 s · 1.5 words a second
+- Link: https://www.instagram.com/reel/DfH9k-mqw87/
+- Creator's description: Want to write a killer thriller script that keeps your audience guessing until the very end? Master the art of Red Herring! From Ratsasan to Thadam, this essential writing technique misdirects your audience with plausibl
+- Hook: ஒரு பர்பெட்டான திருல் ஸ்டொரியை நீங்க எழுதி முடிக்க
+- Beats: 0s ஒரு பர்பெட்டான திருல் ஸ்டொரியை நீங்க எழுதி… | 2s இந்த ஓக்காற் இருந்தத்தைக்கூடம் உங்களுக்கு நேர்கம் ஑சாமாதம்.… | 5s குழிப் பாடத்திலோது மரையானவர்தான் உத்திரவும் என நிலைச்சலானண்டைத்தால்… | 9s ஆனால் அதிகமாகப் பார்ப்மாதப்படக் கருத் தம отличச்செய்து… | 14s இந்த ஓக்காற் இருக்கும் திலீதமை 손மானத்தில Culwaduch… | 15s தட மூவிலே இந்த ரைட்டிங் தெக்னிக்றையும் சூப்பவர்… | 18s படத்தால் ரசன் கவின்னின் பத்துரைronsa pakcl equally… | 45s ஆனால் கிலைமைக்ஸில் பார்க்க முடியும் பார்க்க முடியும்…
+- Studied: 2026-11-24 (full text: Drive study/kadhai-club/18193265839407464.txt)
+
+## Nepoleon Rejected Marudhanayagam😲💯
+- Channel: World Filmology (Instagram) · views 4,484 (2.7× the channel's median) · 59 s · 1.4 words a second
+- Link: https://www.instagram.com/reel/DfUdbjrTrG1/
+- Creator's description: Nepoleon Rejected Marudhanayagam😲💯 Actor Nepoleon reveals how Kamal Haasan remembered his earlier decision to politely decline a negative role in Marudhanayagam due to a violent scene involving Kamal. Years later, Kamal
+- Hook: மலனாயர் கூட்டுவிட்டு கதை சொன்னார் கதை பிரம்பானமாக இருக்கிறது ஐயா
+- Beats: 0s மலனாயர் கூட்டுவிட்டு கதை சொன்னார் கதை பிரம்பானமாக… | 6s மிகவும் பயங்கிரமான வில்லனா இருக்கிறது ஐயா… | 12s நல்லது ஜென்னிச்சிகம் ஐயா… | 32s வனம் கோஞ்செங்கி பிரச்சினப் பேசித்து மா Grant,… | 37s அந்தப் படத்தை ஒத்திருக்கவேண்டும்.… | 40s திருடி 2004ன்றில்.… | 44s உதவும் முன்னே வாங்க, படம் உண்மை இருக்கவேண்டும்,… | 47s சில கப்பாரணரு!…
+- Studied: 2026-11-24 (full text: Drive study/world-filmology-instagram/18126723913927690.txt)
+
+## Rajkumar's Amaran Origin Story 🎬💯 | He got the Spark from Major Mukund Clip.
+- Channel: World Filmology (Instagram) · views 3,880 (2.3× the channel's median) · 50 s · 1.2 words a second
+- Link: https://www.instagram.com/reel/Dfme2gMzotP/
+- Creator's description: Rajkumar's Amaran Origin Story 🎬💯 | He got the Spark from Major Mukund Clip. Director Rajkumar Periasamy revealed that a video of Major Mukund Varadarajan teaching his daughter the patriotic song “Acham Enbathu Illaye” d
+- Hook: பண்ணி தீவி சார் முக்கூன்ஸால் வரடைனுடன் 몰라ல் கேட்ட பயன்படுத்தியாக வரனவருக்கு haveity
+- Beats: 0s பண்ணி தீவி சார் முக்கூன்ஸால் வரடைனுடன் 몰라ல்… | 3s மூக்கூன்ஸார் வரனவருடன்Hz. அச்சமில் அச்சமிலின்… | 23s அவர் குழந்தைகளின் கையலை இந்த பாட்டு தொட்டில்… | 30s இந்த சிகமெய் தொட்டப் ப��ில் முடிவுக்காளர் ஆசிரிரா… | 35s அதுதான் வந்து இன்னும் குழந்தைக்குக் காட்டுகிறார்,… | 38s அச்சை மில்லை ஆசிரா என்று ஒரு அ… | 43s அது ஒரு முக்கியமான முறையிருந்தது என்று நினைத்தேன்.… | 47s அது எனக்கு ஒரு பாதிப்பு கொடுத்தது அந்த…
+- Studied: 2026-11-24 (full text: Drive study/world-filmology-instagram/18117593099097808.txt)
+
 ## 😭Jana Nayakan Censor issue Explained 😡 | EFX
 - Channel: Expert FX · views 135,632 · 70 s · 1.7 words a second
 - Link: https://www.youtube.com/shorts/kcm24NVTIcE
