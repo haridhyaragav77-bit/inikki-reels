@@ -119,9 +119,17 @@
    "date": "2026-12-24",
    "first_seen": "2026-11-24",
    "history": []
+  },
+  "hellokadhal": {
+   "film": "Hello Kadhal",
+   "date": "2026-12-04",
+   "first_seen": "2026-11-25",
+   "history": []
   }
  },
  "alerted": {
-  "appakutty:Quick Review": "2026-11-22"
+  "appakutty:Quick Review": "2026-11-22",
+  "omoperationmole:Trusted Review": "2026-11-25",
+  "sathyavansavithiri:Trusted Review": "2026-11-25"
  }
 }
