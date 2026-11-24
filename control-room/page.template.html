@@ -204,7 +204,8 @@ function sample0() {
         words: { "screens.0.lines": "4 FILMS TO WATCH TONIGHT / IF YOU LOVED THE EXAMPLE", "package.caption": "An example caption." } },
       { n: 4, id: "example-update-02", series: "movie-updates", state: "held", slot: "18:00", hook: "EXAMPLE · BOX OFFICE", why: "Inspection: a picture stayed still too long" } ] },
     tomorrow: { date: "the day after", slots: [{ time: "08:30", series: "movie-updates" }, { time: "12:30", series: "film-breakdown" }, { time: "15:30", series: "guess-the-movie" }] },
-    bank: { ready: 2 }, schedule: [{ at: at(0.4), what: "Post · 12:30 slot", kind: "post" }, { at: at(3.4), what: "Post · 15:30 slot", kind: "post" }, { at: at(4.6), what: "Thinking run · Refresh", kind: "think" }, { at: at(5.3), what: "Make reels", kind: "make" }],
+    bank: { ready: 2, reels: [{ id: "bank-kaithi", series: "film-breakdown", hook: "THE ONE NIGHT KAITHI NEVER SHOWS" }, { id: "bank-vikram", series: "film-breakdown", hook: "VIKRAM'S MASK, EXPLAINED" }] },
+    fills: [{ time: "20:00", from: "bank", id: "bank-kaithi", series: "film-breakdown", hook: "THE ONE NIGHT KAITHI NEVER SHOWS" }], schedule: [{ at: at(0.4), what: "Post · 12:30 slot", kind: "post" }, { at: at(3.4), what: "Post · 15:30 slot", kind: "post" }, { at: at(4.6), what: "Thinking run · Refresh", kind: "think" }, { at: at(5.3), what: "Make reels", kind: "make" }],
     numbers: { followers: 120, goal: 1000, target_today: 140, days_left: 80, recent: [{ id: "example-update-00", views: 1840, rates: { skip_rate: .41, watch_through: .22, share_rate: .012 }, health: { skip_rate: "green", share_rate: "amber" } }] },
     series: [{ id: "movie-updates", name: "Movie Updates", status: "live", slots: ["08:30", "18:00", "21:30"], median_views: 1500, page_views: 1300, rules: [] },
              { id: "movie-recommendations", name: "Watch This Next", status: "trial", slots: ["15:30"], rules: [{ id: "eg1", text: "Open with a promise and a number.", at: "example" }] }],
@@ -449,12 +450,24 @@ function vManual() {
   if (sent.length) h += `<div class="card"><h3>Marked done, waiting for the Engine</h3>${sent.map(j => `<div class="sub">${esc(j.title)}: picked up at ${esc(pickup())}</div>`).join("")}</div>`;
   return h;
 }
+function fillsCard() {
+  const f = P.fills || [], bk = (P.bank || {}).reels || [];
+  if (!f.length && !bk.length) return "";
+  const watch = v => v ? `<a class="btn" href="${esc(v)}" target="_blank" rel="noopener">Watch</a>` : "";
+  let h = "";
+  if (f.length) h += `<div class="card"><h3>Slots with no plan: what posts there</h3><div class="sub">No reel was planned for these times. At each time the Engine posts the reel shown: a reserve first, else a bank reel.</div><div class="list">` +
+    f.map(x => `<div class="row"><div><b>${esc(x.time)}</b> · ${x.id ? `${x.from === "bank" ? "Bank" : "Reserve"} · ${esc(x.series || "")} · “${esc(x.hook || x.id)}”` : "Nothing to post: no reserve and the bank is empty"}</div><div class="acts">${watch(x.video)}</div></div>`).join("") + `</div></div>`;
+  if (bk.length) h += `<div class="card"><h3>Bank reels ready (${bk.length})</h3><div class="sub">Finished reels kept for empty or failed slots, used from the top.</div><div class="list">` +
+    bk.map((x, i) => `<div class="row"><div>${i + 1}. ${esc(x.series || "")} · “${esc(x.hook || x.id)}”</div><div class="acts">${watch(x.video)}</div></div>`).join("") + `</div></div>`;
+  return h;
+}
 function vToday() {
   const rs = P.today.reels || [], c = s => rs.filter(r => r.state === s).length;
   let h = banners() + manualBanner() + calCard();
   h += alertsCard() + digestCard() + newsCard();
   h += `<div><h2>Today's shows · ${esc(P.today.date)}</h2><div class="sub">${c("posted")} posted · ${c("ready")} ready · ${c("held") + c("failed")} held · ${c("skipped")} skipped · breakdown bank ${esc((P.bank || {}).ready ?? "—")}</div></div>`;
   h += rs.length ? `<div class="list">${rs.map(reelRow).join("")}</div>` : `<div class="card"><div>No reels yet today.</div><div class="sub">The Plan run is at 05:37 and the reels are made right after. They appear here with a Watch button.</div></div>`;
+  h += fillsCard();
   h += `<div class="card"><h3>Suggest a topic</h3><div class="sub">A lead for the next plan. The agent uses it if it passes the worth-it test.</div><div class="inline"><input type="text" id="idea" placeholder="cover this: 5 one-night thrillers on Netflix"><button type="button" data-act="idea" class="go">Send</button></div></div>`;
   return h;
 }

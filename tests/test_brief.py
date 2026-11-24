@@ -48,6 +48,24 @@ def empty_slot_fill():
     r = post.fill_empty_slot(day, bank, later, ctl, times=["08:30", "11:00", "12:30"])
     check(r and r["reel_id"] == "res-1" and not r.get("reserve"), "a ready reserve fills an empty slot before the bank")
     check(post.fill_empty_slot(day, bank, now.replace(hour=15), ctl, times=["11:00"]) is None, "a slot over an hour old is left alone")
+    # the Control Room's preview names the same reel the post job will use (24 Nov, Harish)
+    d2 = FakeDrive()
+    day2, bank2 = Day(d2, now.date().isoformat()), Bank(d2)
+    day2.upsert("upd-0830", series="movie-updates", slot="08:30", state="posted")
+    bank2.upsert("bank-a", series="film-breakdown", state="ready", drive_reel="fa", hook="A")
+    bank2.upsert("bank-b", series="film-breakdown", state="ready", drive_reel="fb", hook="B")
+    early = now.replace(hour=9, minute=0)
+    pv = post.fill_preview(day2, bank2, ctl, early, times=["08:30", "11:00", "12:30", "18:00"])
+    check([(x["time"], x["id"]) for x in pv] == [("11:00", "bank-a"), ("12:30", "bank-b"), ("18:00", None)],
+          "the preview lists each empty slot with its own bank reel, and says when nothing is left")
+    at11 = post.fill_empty_slot(day2, bank2, now.replace(hour=11, minute=1), ctl, times=["08:30", "11:00", "12:30", "18:00"])
+    check(at11 and at11["reel_id"] == pv[0]["id"], "at 11:00 the post job uses the reel the preview showed")
+    from engine import panel
+    P = {"updated": "x", "switch": "run", "phase": "live", "approval": "autopilot", "today": {"date": "d", "reels": []},
+         "tomorrow": {"slots": []}, "bank": {"ready": 1, "reels": [{"id": "bank-b", "series": "film-breakdown", "hook": "B"}]},
+         "fills": pv[1:], "schedule": []}
+    t = panel.text(P)
+    check("SLOTS WITH NO PLAN" in t and "bank-b" in t and "nothing to fill it" in t, "the panel text shows the empty slots and the bank reels")
 
 
 if __name__ == "__main__":

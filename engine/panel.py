@@ -410,7 +410,11 @@ def build(drive, ctl=None):
          "day_plan": _safe(lambda: __import__("engine.dayplan", fromlist=["card"]).card(ctl), {}),
          "today": {"date": date, "reels": reels},
          "tomorrow": {"date": nxt, "slots": _safe(lambda: tomorrow(ctl, nxt), [])},
-         "bank": {"ready": len(bank.reels("ready"))},
+         "bank": {"ready": len(bank.reels("ready")),
+                  "reels": [{"id": b["reel_id"], "series": b.get("series"), "hook": b.get("hook"),
+                             "video": f"https://drive.google.com/file/d/{b['drive_reel']}/view" if b.get("drive_reel") else None}
+                            for b in bank.reels("ready")][:8]},
+         "fills": _safe(lambda: __import__("engine.post", fromlist=["fill_preview"]).fill_preview(day, bank, ctl, now), []),
          "schedule": _safe(lambda: schedule(ctl, now), [])[:24],
          "numbers": nums, "series": _safe(lambda: series_cards(ctl, base, drive), []), "money": money_card,
          "usage": _safe(lambda: usage(ctl, drive, money_card), {}), "framework": _safe(lambda: framework_card(ctl), {}),
@@ -480,7 +484,12 @@ def text(P):
     L += ["", "## NEXT RUNS (IST)"] + [f"- {_hm(s['at'])} · {s['what']}" for s in P.get("schedule", [])[:9]]
     if P["tomorrow"]["slots"]:
         L += ["", f"## TOMORROW {P['tomorrow']['date']} (planned at 05:37)", " · ".join(f"{s['time']} {s['series']}" for s in P["tomorrow"]["slots"])]
-    L += ["", f"Breakdown bank: {P['bank']['ready']} ready"]
+    fills = P.get("fills") or []
+    if fills:
+        L += ["", "## SLOTS WITH NO PLAN (filled at post time)"] + [
+            f"- {f['time']} · " + (f"{'bank' if f['from'] == 'bank' else 'reserve'} reel {f['id']} · {f.get('series')} · \"{f.get('hook') or ''}\""
+                                   if f.get("id") else "nothing to fill it: no reserve, bank empty") for f in fills]
+    L += ["", f"Breakdown bank: {P['bank']['ready']} ready"] + [f"- {b['id']} · {b.get('series')} · \"{b.get('hook') or ''}\"" for b in (P["bank"].get("reels") or [])]
     if n.get("recent"):
         L += ["", "## LAST REELS (views · skip · watch-through · share)"] + [
             f"- {r['id']} · {r.get('views')} views · {_pct(r['rates'].get('skip_rate'))} · {_pct(r['rates'].get('watch_through'))} · {_pct(r['rates'].get('share_rate'))}"

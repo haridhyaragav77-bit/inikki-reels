@@ -1098,7 +1098,7 @@ sign-in stays its own card. Settings: `manual` in `config/engine.yaml`; built by
 | Ordinary day | 6 reels planned at 05:37, made, posted, measured | Today card green · digest at night |
 | Release day / festival (3 films) | Up to 2 reviews, event-day lineup, max 8 | "Event day" on Today |
 | Quiet news day | Weak updates swapped for bank breakdowns | "2 updates swapped" |
-| A slot has no reel at all (the Plan run planned fewer) | At the slot's time the post job fills it: a ready reserve, else a ready bank reel (24 Nov 2026) | "Filled from the bank" on the reel |
+| A slot has no reel at all (the Plan run planned fewer) | At the slot's time the post job fills it: a ready reserve, else a ready bank reel (24 Nov 2026) | Today tab: "Slots with no plan: what posts there" names the reel for each empty slot ahead of time, and the bank reels are listed (same rule as the post job) |
 | Page dull 2–3 days | Artwork + Quote switches on | Note in digest |
 | Trend spike (re-release, anniversary) | Breakdown and Guess use it the same day | Trend tag on the reel |
 | A reel takes off | Follow-up gets top priority, comment pinned | Milestone card |
