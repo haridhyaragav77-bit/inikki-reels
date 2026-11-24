@@ -29,5 +29,5 @@ jobs:
         run: python -m tests.test_guard
       - name: The Engine's tests and code check (no keys; merge only when this passes, CLAUDE.md rule 3)
         run: |
-          pip install -q pylint==4.1.4
+          pip install -q pylint==4.1.4 imageio-ffmpeg==0.8.1
           bash tools/check_code.sh
