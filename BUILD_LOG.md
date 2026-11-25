@@ -1,5 +1,9 @@
 # Build log (plain words, newest first)
 
+## 26 Nov 2026, evening — Updates built as on 20-21 Nov (Harish)
+Skill `plan-reel` now spells out the 20-21 Nov update build (title, 2-3 moving fact screens, end; 6-9 hits), used by
+the Plan run and the evening Refresh rewrite alike (`runs/refresh.md`).
+
 ## 26 Nov 2026, later — Opus medium, no animation floor (Harish)
 Plan and Refresh on Opus at medium effort, not high (cheaper; Opus was what made the good reels). The motion floor is
 removed from the plan check: a hard minimum could push plans to over-animate. The Plan run builds each reel like its

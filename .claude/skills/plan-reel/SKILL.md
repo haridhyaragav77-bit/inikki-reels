@@ -26,6 +26,10 @@ graphics from niches/tamil-cinema/motion_library.md → pictures last → music 
 - Watch This Next: every film screen has rating (Letterboxd), proof (one award, festival or famous fact), watch
   (where to watch in India, checked on JustWatch today) and a reason of 6 words or fewer. Add each film to
   niches/tamil-cinema/knowledge/recommended_log.csv.
+- Movie updates (Harish, 26 Nov: the same as on 20-21 Nov, e.g. the Suriya ₹643 Cr update): title, then 2-3 screens of
+  ONE fact each as a moving graphic (a number or date as a count-up `number`, unit " CR", " NOV", " DAYS"; a comparison
+  as `bars`; a climb as `ladder`), then end. 4-5 screens, about 15-20 s, transitions whip, push, zoom, a whoosh on each
+  arrival (6-9 hits a reel). Only the opening is a plain title card; never type a number on a title card. Not less, not more.
 - Updates and breaking: music-only, no spoilers, 2 trusted sources in lead.sources.
 - Reviews (from 23 Nov): Quick Review (movie-review, release day) or Trusted Review (trusted-review, only reviewers from
   niches/tamil-cinema/knowledge/critics.yaml, at least 3). Copy plans/reference/review-quick.json or review-trusted.json.
