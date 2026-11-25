@@ -1,0 +1,237 @@
+{
+ "id": "2026-11-25-update-suriya-failures-to-770cr",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 25 NOV 2026",
+ "lead": {
+  "film": "suriya-2026",
+  "new_event": "Suriya's 2026: three hits after Kanguva and Retro; Karuppu passed both films' lifetime in 3 days; the three gross over ₹770 Cr (Sacnilk)",
+  "topic": "How Suriya turned his big flops into a ₹770 Cr+ year",
+  "facts": [
+   "Karuppu beat Kanguva's and Retro's lifetime totals in 3 days (The Week)",
+   "Karuppu, Vishwanath & Sons and Scene: three hits in one year (Sacnilk)",
+   "Sacnilk: the three films gross over ₹770 Cr in 2026"
+  ],
+  "sources": [
+   "https://www.theweek.in/news/entertainment/2026/05/18/karuppu-box-office-sees-grand-comeback-for-suriya-hits-120-crore-worldwide-beats-kanguva-and-retro-lifetime-total-in-three-days.amp.html",
+   "https://www.sacnilk.com/news/scene-crosses-250-crore-worldwide-as-suriyas-three-films-gross-over-770-crore-in-2026",
+   "https://www.sacnilk.com/news/from-karuppu-to-scene-suriya-scripts-a-stunning-box-office-turnaround-with-three-successful-films-in-a-single-year"
+  ],
+  "note": "Draft for 18:00: the Refresh run rewrites it with the day's fresh news. The news watch's Suriya story has 31 publishers (8 trusted) today. Earlier reels (21 and 23 Nov) used the totals; this one tells the career turn (flops to hits) and asks which of the three was best."
+ },
+ "worth_it": {
+  "fan_opens_because": "How did Suriya get from Kanguva and Retro to a hit year?",
+  "spoilers": "None.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vip_gathering",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/karuppu/JpVl_-1YgIo_maxres2.jpg",
+   "fetch": {
+    "youtube": "JpVl_-1YgIo",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/scene-suriya/LM4ByXufv2w_maxres2.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/vishwanath-and-sons/jZHoM2YhFCY_maxres2.jpg",
+   "fetch": {
+    "youtube": "jZHoM2YhFCY",
+    "frame": "maxres2"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/karuppu/JpVl_-1YgIo_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "JpVl_-1YgIo",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "SURIYA",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "FROM FLOPS TO ₹770 CR+",
+     "size": 85,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "KARUPPU BEAT",
+     "size": 130,
+     "y": 1290
+    },
+    {
+     "text": "KANGUVA + RETRO",
+     "size": 110,
+     "y": 1440,
+     "color": "#F07850"
+    },
+    {
+     "text": "LIFETIME IN 3 DAYS",
+     "size": 70,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "whip"
+  },
+  {
+   "kind": "title",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "3 HITS IN 2026",
+     "size": 140,
+     "y": 1290
+    },
+    {
+     "text": "KARUPPU · VISHWANATH · SCENE",
+     "size": 65,
+     "y": 1440,
+     "color": "#F8C028"
+    },
+    {
+     "text": "OVER ₹770 CR WORLDWIDE",
+     "size": 75,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "push"
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "SURIYA · 3 HITS IN 2026",
+   "question": [
+    {
+     "text": "BEST OF",
+     "size": 130
+    },
+    {
+     "text": "THE THREE?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Karuppu, Vishwanath or Scene?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Suriya's 2026: Karuppu beat Kanguva and Retro's lifetime totals in 3 days (The Week).",
+   "Karuppu, Vishwanath & Sons and Scene together gross over ₹770 Cr worldwide (Sacnilk).",
+   "Which of the three was best? Tell us below.",
+   "Send this to the Suriya fan."
+  ],
+  "cover": "SURIYA · 3 HITS IN 2026",
+  "slot": "18:00",
+  "first_comment": "Karuppu, Vishwanath & Sons or Scene: which one?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Suriya is today's biggest news-watch story outside O.M; evening slot, a draft that Refresh may replace.",
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 7,
+  "original": 5,
+  "total_100": 67
+ }
+}

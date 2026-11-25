@@ -1,0 +1,232 @@
+{
+ "id": "2026-11-25-update-friday-three-films",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 25 NOV 2026",
+ "lead": {
+  "film": "friday-27nov",
+  "new_event": "Three Tamil films open on Friday 27 Nov: Delivery Boy, Mouna Mozhigal, Minnum Oar Iravu",
+  "topic": "This Friday: Delivery Boy, Mouna Mozhigal, Minnum Oar Iravu",
+  "facts": [
+   "Delivery Boy: release date 27 Nov (NewsBytes, Telangana Today)",
+   "Mouna Mozhigal: 27 Nov (IANS via Newkerala, Prokerala)",
+   "Minnum Oar Iravu: 27 Nov (listing sites)"
+  ],
+  "sources": [
+   "https://www.newsbytesapp.com/news/entertainment/delivery-boy-release-date-announced/story",
+   "https://telanganatoday.com/nani-directed-delivery-boy-starring-leo-sivakumar-gets-november-27-release-date",
+   "https://www.91mobiles.com/entertainment/upcoming-tamil-movies"
+  ],
+  "note": "Reserve for Wed or Thu; the dates come from the release calendar (checked). Cosmic Samson is left out: its Tamil date is not confirmed in 2 sources."
+ },
+ "worth_it": {
+  "fan_opens_because": "Which Tamil films open this Friday?",
+  "spoilers": "None.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "vintage_arjun",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxres2.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres2.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres2.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres2"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "FRIDAY 27 NOV",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "3 NEW TAMIL FILMS",
+     "size": 95,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "DELIVERY BOY",
+     "size": 150,
+     "y": 1290
+    },
+    {
+     "text": "RADIKAA SARATHKUMAR",
+     "size": 80,
+     "y": 1440,
+     "color": "#F07850"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "whip"
+  },
+  {
+   "kind": "title",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "MOUNA MOZHIGAL",
+     "size": 120,
+     "y": 1290
+    },
+    {
+     "text": "+ MINNUM OAR IRAVU",
+     "size": 110,
+     "y": 1440,
+     "color": "#F8C028"
+    },
+    {
+     "text": "SMALL FILMS, THIS WEEK",
+     "size": 65,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "push"
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "FRIDAY 27 NOV · 3 NEW FILMS",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 130
+    },
+    {
+     "text": "FIRST?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Pick your Friday film",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "This Friday, 27 Nov: Delivery Boy, Mouna Mozhigal and Minnum Oar Iravu.",
+   "Dates: NewsBytes, Telangana Today, IANS via Newkerala and listing sites.",
+   "Which one are you watching? Tell us below.",
+   "Send this to your Friday-plan friend."
+  ],
+  "cover": "FRIDAY 27 NOV · 3 NEW FILMS",
+  "slot": "reserve",
+  "first_comment": "Which of the three are you picking?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: a this-week list built from the release calendar; usable today or tomorrow.",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 7,
+  "original": 5,
+  "total_100": 64
+ },
+ "reserve": true
+}

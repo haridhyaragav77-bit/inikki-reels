@@ -8,7 +8,7 @@ releases:
   - { film: "Sathyavan Savithiri", date: "2026-11-20", where: theatres, status: confirmed, note: "in theatres" }
   - { film: "Minnum Oar Iravu", date: "2026-11-27", where: theatres, status: confirmed, note: "District + 91mobiles listings" }
   - { film: "Mouna Mozhigal", date: "2026-11-27", where: theatres, status: confirmed, note: "Shakir Mano; IANS via Newkerala + Prokerala" }
-  - { film: "Cosmic Samson", date: "2026-11-27", where: theatres, status: confirmed, note: "Tamil version; District + 91mobiles listings" }
+  - { film: "Cosmic Samson", date: "2026-11-27", where: theatres, status: tentative, note: "Tamil version; District + 91mobiles listings only; search on 25 Nov found conflicting dates for this Malayalam film, so no reel uses it" }
   - { film: "Delivery Boy", date: "2026-11-27", where: theatres, status: confirmed, note: "Radikaa Sarathkumar; Times of India + Wikipedia list (checked 23 Nov)" }
   - { film: "Un Varugaikkaga Anandhi", date: "2026-12-01", where: theatres, status: tentative, note: "Filmibeat calendar only" }
   - { film: "Benz", date: "2026-12-01", where: theatres, status: tentative, note: "Raghava Lawrence, Nivin Pauly; Filmibeat calendar only" }

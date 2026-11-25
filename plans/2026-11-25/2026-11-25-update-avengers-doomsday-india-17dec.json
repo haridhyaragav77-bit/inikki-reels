@@ -1,0 +1,231 @@
+{
+ "id": "2026-11-25-update-avengers-doomsday-india-17dec",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 25 NOV 2026",
+ "lead": {
+  "film": "avengers-doomsday",
+  "new_event": "Avengers: Doomsday opens in India on 17 Dec, a day before the US; advance booking has begun",
+  "topic": "Avengers: Doomsday reaches India a day early, on 17 Dec",
+  "facts": [
+   "India release Thursday 17 Dec, one day before the US on 18 Dec",
+   "Advance booking opened in India on 16-17 Nov",
+   "Reports say over 2 lakh tickets sold in about a day"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/news/avengers-doomsday-india-release-date-preponed-to-december-17-one-day-before-the-us",
+   "https://www.khaleejtimes.com/entertainment/avengers-doomsday-india-release-date-before-us-premiere",
+   "https://t2online.in/screen/hollywood/avengers-doomsday--india-sells-2-lakh-tickets-in-24-hours-as-rdj-fever-takes-over-midnight-shows/2009329"
+  ],
+  "note": "Hollywood release in India, outside the Tamil top films. Date from Sacnilk and Khaleej Times; the ticket count is a report (T2 Online)."
+ },
+ "worth_it": {
+  "fan_opens_because": "When can I see Avengers: Doomsday in India, and is booking open?",
+  "spoilers": "None.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "giant_emerges",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/avengers-doomsday/Wb8Tq_HD4E8_maxres2.jpg",
+   "fetch": {
+    "youtube": "Wb8Tq_HD4E8",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/avengers-doomsday/Wb8Tq_HD4E8_maxres1.jpg",
+   "fetch": {
+    "youtube": "Wb8Tq_HD4E8",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/avengers-doomsday/Wb8Tq_HD4E8_maxres3.jpg",
+   "fetch": {
+    "youtube": "Wb8Tq_HD4E8",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/avengers-doomsday/Wb8Tq_HD4E8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Wb8Tq_HD4E8",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "AVENGERS: DOOMSDAY",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "INDIA RELEASE · 17 DEC",
+     "size": 85,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "A DAY EARLY",
+     "size": 180,
+     "y": 1290
+    },
+    {
+     "text": "INDIA 17 DEC · US 18 DEC",
+     "size": 85,
+     "y": 1440,
+     "color": "#F07850"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "whip"
+  },
+  {
+   "kind": "title",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "2 LAKH+ TICKETS",
+     "size": 130,
+     "y": 1290
+    },
+    {
+     "text": "SOLD IN ABOUT A DAY",
+     "size": 80,
+     "y": 1440,
+     "color": "#F8C028"
+    },
+    {
+     "text": "PER REPORTS",
+     "size": 65,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "push"
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "AVENGERS: DOOMSDAY · 17 DEC",
+   "question": [
+    {
+     "text": "FIRST DAY,",
+     "size": 130
+    },
+    {
+     "text": "FIRST SHOW?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Booking already?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Avengers: Doomsday reaches Indian cinemas on 17 Dec, a day before the US (Sacnilk, Khaleej Times).",
+   "Advance booking is open; reports say over 2 lakh tickets sold in about a day (T2 Online).",
+   "Which show are you booking? Tell us below.",
+   "Send this to your Marvel friend."
+  ],
+  "cover": "AVENGERS: DOOMSDAY · 17 DEC",
+  "slot": "11:00",
+  "first_comment": "First day first show, or wait for the crowd to calm down?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Hollywood release in India: the update from outside the Tamil top films that the brief asks for; late-morning slot because the date is 3 weeks away.",
+ "virality": {
+  "value": 6,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 7,
+  "original": 6,
+  "total_100": 67
+ }
+}

@@ -1,0 +1,232 @@
+{
+ "id": "2026-11-25-update-dune-3-imax-vs-avengers",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 25 NOV 2026",
+ "lead": {
+  "film": "dune-part-three",
+  "new_event": "Reports: Dune: Part Three holds an exclusive IMAX window of about 3 weeks from 18 Dec; Avengers: Doomsday plans Dolby, D-Box and 4DX",
+  "topic": "Dune 3 vs Avengers: Doomsday: who gets IMAX",
+  "facts": [
+   "Dune: Part Three reportedly holds IMAX for about 3 weeks from 18 Dec",
+   "Avengers: Doomsday is India-released 17 Dec",
+   "Avengers is reportedly planning a Dolby, D-Box and 4DX release"
+  ],
+  "sources": [
+   "https://www.aol.com/articles/dune-part-three-play-imax-211240313.html",
+   "https://tribune.com.pk/story/2594682/dune-3-secures-major-imax-advantage-ahead-of-avengers-doomsday-box-office-showdown",
+   "https://www.sacnilk.com/news/avengers-doomsday-india-release-date-preponed-to-december-17-one-day-before-the-us"
+  ],
+  "note": "Reserve. The IMAX window is a report; whether India's IMAX screens are all Dune's is not confirmed, so the reel does not say it. Ties to the Dune breakdown of 23 Nov."
+ },
+ "worth_it": {
+  "fan_opens_because": "Which film do I watch first in December and in which format?",
+  "spoilers": "None.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "giant_emerges",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/dune-part-three/NdvqHc56lE0_maxres2.jpg",
+   "fetch": {
+    "youtube": "NdvqHc56lE0",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/dune-part-three/NdvqHc56lE0_maxres1.jpg",
+   "fetch": {
+    "youtube": "NdvqHc56lE0",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/dune-part-three/NdvqHc56lE0_maxres3.jpg",
+   "fetch": {
+    "youtube": "NdvqHc56lE0",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/dune-part-three/NdvqHc56lE0_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "NdvqHc56lE0",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "DUNE: PART THREE",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "18 DEC · IMAX FIRST",
+     "size": 85,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "IMAX",
+     "size": 230,
+     "y": 1290
+    },
+    {
+     "text": "REPORTED: DUNE GETS ABOUT 3 WEEKS",
+     "size": 70,
+     "y": 1440,
+     "color": "#F07850"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "whip"
+  },
+  {
+   "kind": "title",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "AVENGERS GOES",
+     "size": 110,
+     "y": 1290
+    },
+    {
+     "text": "DOLBY · 4DX",
+     "size": 120,
+     "y": 1440,
+     "color": "#F8C028"
+    },
+    {
+     "text": "REPORTED PLAN",
+     "size": 65,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "push"
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "DUNE 3 vs AVENGERS · IMAX",
+   "question": [
+    {
+     "text": "IMAX OR",
+     "size": 130
+    },
+    {
+     "text": "DOLBY?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Which one first?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Dune: Part Three reportedly holds an exclusive IMAX window of about 3 weeks from 18 Dec (AOL, Tribune).",
+   "Avengers: Doomsday reaches India on 17 Dec (Sacnilk) and is reportedly going to Dolby, D-Box and 4DX.",
+   "IMAX or Dolby? Tell us below.",
+   "Send this to your film-nerd friend."
+  ],
+  "cover": "DUNE 3 vs AVENGERS · IMAX",
+  "slot": "reserve",
+  "first_comment": "Dune in IMAX first or Avengers on day one?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve for any slot: a Hollywood story that ties to the Dune breakdown.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 6,
+  "original": 6,
+  "total_100": 63
+ },
+ "reserve": true
+}

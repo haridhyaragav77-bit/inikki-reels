@@ -1,0 +1,231 @@
+{
+ "id": "2026-11-25-update-mookuthi-amman-2-two-weeks",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 25 NOV 2026",
+ "lead": {
+  "film": "mookuthi-amman-2",
+  "new_event": "Mookuthi Amman 2 has run two weeks (opened 6 Nov): about ₹26 Cr worldwide gross reported, past Sardar 2's lifetime",
+  "topic": "Mookuthi Amman 2 after 2 weeks: about ₹26 Cr worldwide",
+  "facts": [
+   "Opened 6 Nov; India net about ₹21.2 Cr by day 14 (Sacnilk)",
+   "Worldwide gross about ₹26 Cr by day 9 (Filmibeat)",
+   "Koimoi: has passed Sardar 2's lifetime total"
+  ],
+  "sources": [
+   "https://www.sacnilk.com/quicknews/Mookuthi_Amman_2_2026_Box_Office_Collection_Day_14",
+   "https://www.filmibeat.com/tamil/news/2026/mookuthi-amman-2-tamil-nadu-box-office-collection-day-9-nears-26-crore-worldwide-gross-538109.html",
+   "https://www.koimoi.com/box-office/mookuthi-amman-2-box-office-where-does-it-stand-among-kollywood-sequels-of-2026/"
+  ],
+  "note": "A film outside the top films. Trackers differ and mix net and gross, so the reel says 'reported' and 'trackers differ'."
+ },
+ "worth_it": {
+  "fan_opens_because": "How did Nayanthara's Mookuthi Amman 2 do after two weeks?",
+  "spoilers": "None.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "whats_cookin",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/mookuthi-amman-2/tbnwnLatH1g_maxres2.jpg",
+   "fetch": {
+    "youtube": "tbnwnLatH1g",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/mookuthi-amman-2/tbnwnLatH1g_maxres1.jpg",
+   "fetch": {
+    "youtube": "tbnwnLatH1g",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/mookuthi-amman-2/tbnwnLatH1g_maxres3.jpg",
+   "fetch": {
+    "youtube": "tbnwnLatH1g",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/mookuthi-amman-2/tbnwnLatH1g_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "tbnwnLatH1g",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.0,
+   "lines": [
+    {
+     "text": "MOOKUTHI AMMAN 2",
+     "size": 150,
+     "y": 1310
+    },
+    {
+     "text": "2 WEEKS IN THEATRES",
+     "size": 85,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "stamp"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "title",
+   "image": "poster",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "₹26 CR+",
+     "size": 200,
+     "y": 1290
+    },
+    {
+     "text": "WORLDWIDE GROSS · REPORTED",
+     "size": 70,
+     "y": 1440,
+     "color": "#F07850"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "whip"
+  },
+  {
+   "kind": "title",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "lines": [
+    {
+     "text": "BEATS SARDAR 2",
+     "size": 120,
+     "y": 1290
+    },
+    {
+     "text": "LIFETIME TOTAL",
+     "size": 90,
+     "y": 1440,
+     "color": "#F8C028"
+    },
+    {
+     "text": "TRACKERS DIFFER",
+     "size": 65,
+     "y": 1590,
+     "color": "#78E0D0"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    }
+   ],
+   "in": "push"
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "dur": 3.8,
+   "echo": "MOOKUTHI AMMAN 2 · 2 WEEKS",
+   "question": [
+    {
+     "text": "HIT OR",
+     "size": 130
+    },
+    {
+     "text": "MISS?",
+     "size": 150,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Did you watch it?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Mookuthi Amman 2, two weeks in: about ₹26 Cr worldwide gross reported (Filmibeat), India net about ₹21 Cr (Sacnilk).",
+   "Koimoi says it has passed Sardar 2's lifetime total. Trackers differ, so these are reported numbers.",
+   "Hit or miss? Tell us below.",
+   "Send this to the Nayanthara fan."
+  ],
+  "cover": "MOOKUTHI AMMAN 2 · 2 WEEKS",
+  "slot": "12:30",
+  "first_comment": "Did you watch Mookuthi Amman 2 in the theatre?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Lower-ranked box-office story from a film outside the top films; midday slot.",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 6,
+  "original": 7,
+  "total_100": 63
+ }
+}

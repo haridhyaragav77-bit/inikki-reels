@@ -1,0 +1,448 @@
+{
+ "id": "2026-11-25-breakdown-maharaja-order",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "paper",
+ "length_s": [
+  40,
+  70
+ ],
+ "length_reason": "One point (the order hides the twist): hook, the missing dustbin drawn as a scene, the director's words, how the order hides it, the named technique: about 55 s.",
+ "lead": {
+  "topic": "Maharaja: a missing dustbin and the order of the scenes",
+  "angle": "screenplay",
+  "insight": "Maharaja is Vijay Sethupathi's 50th film. A barber reports a missing dustbin called Lakshmi. Director Nithilan has said he wrote the film in the exact order the scenes appear, so the non-linear order is the design, and every odd detail is a clue in plain sight.",
+  "why_now": "A Netflix favourite people still argue about; a screenplay breakdown that tells no spoilers. Fills the 21:30 slot.",
+  "technique": "Non-linear screenplay",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Maharaja_(2024_film) (Sethupathi's 50th film; a barber reports his dustbin 'Lakshmi' missing)",
+   "https://www.dtnext.in/amp/story/entertainment/cinema/ciff-2024-certain-actors-are-not-explored-to-their-full-potential-says-nithilan-815522 (Nithilan at CIFF 2024: the non-linear structure is a tool to engage; he wrote the film in the exact order the scenes appear)",
+   "https://filmcompanion.in/reviews/tamil-review/maharaja-review-a-gripping-flawed-human-drama-in-which-writing-is-the-hero-vijay-sethupathi-anurag-kashyap (critics: the writing is the hero)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia and Nithilan's CIFF 2024 interview)",
+  "point": "Maharaja hides its twist in the order of its scenes: a missing dustbin looks silly until the pieces click.",
+  "spoilers": "None: the twist is never told; only how the order hides it."
+ },
+ "worth_it": {
+  "learn": "A non-linear screenplay shows scenes out of time order, so small odd details turn into clues.",
+  "stop": "A stolen dustbin that someone takes very seriously.",
+  "why_now": "People still argue about the twist; this tells how the order hides it without spoiling.",
+  "send_to": "The friend who says they guessed the twist.",
+  "best_angle": "Yes: the order is the secret of this film."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 2.0,
+    "screen": 0,
+    "mood": "noir intrigue"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "pieces moving"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres2.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres1.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres3.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "ஒரு குப்பைத் தொட்டி காணாம போச்சு. ஏன் இவ்ளோ கோபம்?",
+   "voice_tg": "Oru kuppai thotti kaanaama pochu. Yen ivlo kobam?",
+   "image": "key",
+   "film": "MAHARAJA",
+   "type": "A STOLEN DUSTBIN?",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0
+   ],
+   "voice": "மகாராஜா ஒரு சலூன்காரர். போலீஸ் ஸ்டேஷன்ல ஒரு புகார். லட்சுமியைக் காணோம். லட்சுமி, ஒரு குப்பைத் தொட்டி.",
+   "voice_tg": "Maharaja oru saloonkaarar. Police station-la oru pugaar. Lakshmiya kaanom. Lakshmi, oru kuppai thotti.",
+   "heading": "THE MISSING LAKSHMI",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "barber",
+     "icon": "person",
+     "x": 0.15,
+     "y": 0.745,
+     "size": 1.2,
+     "cue": {
+      "word": "சலூன்காரர்."
+     },
+     "label": "MAHARAJA",
+     "label_at": "above"
+    },
+    {
+     "id": "station",
+     "icon": "building",
+     "x": 0.82,
+     "y": 0.7,
+     "size": 1.5,
+     "cue": {
+      "word": "ஸ்டேஷன்ல"
+     },
+     "label": "POLICE STATION",
+     "label_at": "above"
+    },
+    {
+     "id": "note",
+     "icon": "letter",
+     "x": 0.15,
+     "y": 0.5,
+     "size": 0.7,
+     "cue": {
+      "word": "புகார்."
+     },
+     "path": [
+      [
+       0.15,
+       0.5
+      ],
+      [
+       0.5,
+       0.45
+      ],
+      [
+       0.82,
+       0.5
+      ]
+     ],
+     "move": 2.2,
+     "move_cue": {
+      "word": "புகார்."
+     },
+     "label": "COMPLAINT",
+     "label_at": "below"
+    },
+    {
+     "id": "q",
+     "icon": "question",
+     "x": 0.5,
+     "y": 0.2,
+     "size": 1.2,
+     "color": "red",
+     "cue": {
+      "word": "லட்சுமியைக்"
+     },
+     "label": "WHO IS LAKSHMI?",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "swap",
+       "icon": "exclaim",
+       "cue": {
+        "word": "தொட்டி."
+       }
+      }
+     ]
+    }
+   ],
+   "slam_text": "MISSING: ONE DUSTBIN",
+   "slam_cue": {
+    "word": "தொட்டி."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "புகார்."
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "தொட்டி."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "whip",
+   "src": 1,
+   "voice": "இயக்குநர் நித்திலன் சொல்றார், படத்தை இதே வரிசையில தான் எழுதினேன். வரிசை தான் இந்த படத்தோட பலம்.",
+   "voice_tg": "Director Nithilan solraar, padatha idhe varisaiyila thaan ezhudhinen. Varisai thaan indha padathoda balam.",
+   "name": "NITHILAN SAMINATHAN",
+   "role": "DIRECTOR",
+   "phrase": "WRITTEN IN THIS EXACT ORDER",
+   "source": "DT NEXT · CIFF 2024",
+   "cues": {
+    "name": {
+     "word": "நித்திலன்"
+    },
+    "phrase": {
+     "word": "வரிசையில"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வரிசையில"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "timeline",
+   "in": "push",
+   "src": "analysis",
+   "voice": "நாம பார்க்கிற வரிசை ஒண்ணு. நடந்த வரிசை வேற. ஒவ்வொரு சின்ன விஷயமும் ஒரு துண்டு. எல்லாம் சேர்ந்தா, அடி விழுது.",
+   "voice_tg": "Naama paarkkira varisai onnu. Nadandha varisai vera. Ovvoru chinna vishayamum oru thundu. Ellam serndhaa, adi vizhudhu.",
+   "heading": "HOW THE ORDER HIDES IT",
+   "events": [
+    {
+     "label": "WHAT WE SEE",
+     "sub": "one order",
+     "cue": {
+      "word": "பார்க்கிற"
+     }
+    },
+    {
+     "label": "WHAT HAPPENED",
+     "sub": "another order",
+     "cue": {
+      "word": "நடந்த"
+     }
+    },
+    {
+     "label": "SMALL PIECES",
+     "sub": "odd details",
+     "cue": {
+      "word": "துண்டு."
+     }
+    },
+    {
+     "label": "THEY CLICK",
+     "sub": "the hit lands",
+     "cue": {
+      "word": "விழுது."
+     }
+    }
+   ],
+   "links": [
+    [
+     0,
+     3
+    ]
+   ],
+   "footer": "THE ORDER IS THE SECRET",
+   "sfx": [
+    {
+     "at": {
+      "word": "விழுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": "analysis",
+   "voice": "இதுக்கு பேரு நான்-லீனியர் திரைக்கதை. காட்சிகள் நடந்த வரிசையில வராது. அதனால, குப்பைத் தொட்டி கூட ஒரு துப்பு.",
+   "voice_tg": "Idhukku peru non-linear thiraikkadhai. Kaatchigal nadandha varisaiyila varaadhu. Adhanaala, kuppai thotti kooda oru thuppu.",
+   "heading": "NON-LINEAR SCREENPLAY",
+   "ground": "none",
+   "props": [
+    {
+     "id": "reel",
+     "icon": "film",
+     "x": 0.5,
+     "y": 0.3,
+     "size": 1.0,
+     "count": 3,
+     "gap": 0.4,
+     "cue": {
+      "word": "திரைக்கதை."
+     },
+     "label": "OUT OF ORDER",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "வராது."
+       }
+      }
+     ]
+    },
+    {
+     "id": "key",
+     "icon": "key",
+     "x": 0.3,
+     "y": 0.7,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "துப்பு."
+     },
+     "label": "A CLUE",
+     "label_at": "below"
+    },
+    {
+     "id": "bin",
+     "icon": "dot",
+     "x": 0.7,
+     "y": 0.7,
+     "size": 1.1,
+     "cue": {
+      "word": "தொட்டி"
+     },
+     "label": "THE DUSTBIN",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "துப்பு."
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "bin",
+     "to": "key",
+     "cue": {
+      "word": "துப்பு."
+     },
+     "style": "string"
+    }
+   ],
+   "slam_text": "OUT OF ORDER. ON PURPOSE.",
+   "slam_cue": {
+    "word": "வராது."
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "முதல் தடவை நீங்க miss பண்ண க்ளூ எது? கமெண்ட்ல சொல்லுங்க, ஆனா ட்விஸ்டை சொல்லாதீங்க. ஏன்னா, மகாராஜா படத்துல,",
+   "voice_tg": "Mudhal thadavai neenga miss panna clue edhu? Comment-la sollunga, aana twist-a sollaadheenga. Yennaa, Maharaja padathula,",
+   "echo": "MAHARAJA · A STOLEN DUSTBIN?",
+   "question": [
+    {
+     "text": "THE CLUE YOU",
+     "size": 120
+    },
+    {
+     "text": "MISSED?",
+     "size": 160,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "எந்த க்ளூ miss ஆச்சு?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key",
+   "recap": "TECHNIQUE: NON-LINEAR SCREENPLAY",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Maharaja: a barber reports a missing dustbin. Why does it feel so big?",
+   "Director Nithilan has said he wrote the film in the exact order the scenes appear (CIFF 2024, DT Next). That order hides the twist and turns small odd details into clues. The technique: a non-linear screenplay. No spoilers here.",
+   "Which clue did you miss the first time? Name the clue, not the twist.",
+   "Send this to the friend who says they guessed it."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "MAHARAJA · SCREENPLAY BREAKDOWN",
+  "slot": "21:30",
+  "first_comment": "No spoilers: name the clue, not the twist."
+ },
+ "slot_reason": "Evergreen breakdown for the late-night slot, when people have time to watch.",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 6,
+  "total_100": 73
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}
