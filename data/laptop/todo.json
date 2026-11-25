@@ -1,72 +1,13 @@
 {
- "updated": "2026-11-24 23:42 IST",
+ "updated": "2026-11-25 23:42 IST",
  "drop_folder": "from-laptop",
  "trailers": [],
  "topup": [
-  "The Prestige",
   "No Country for Old Men",
   "Mad Max: Fury Road",
   "Spider-Man: Across the Spider-Verse"
  ],
- "study": [
-  "https://www.youtube.com/shorts/IelnSLeZ5SE",
-  "https://www.youtube.com/shorts/ZtBrVoc69yk",
-  "https://www.youtube.com/shorts/kaubk26oJ6c",
-  "https://www.youtube.com/shorts/_TQ3AgzWavE",
-  "https://www.youtube.com/shorts/o3ps8l-7SVA",
-  "https://www.youtube.com/shorts/wHMpBSsUxgk",
-  "https://www.youtube.com/shorts/ZvSRDy_dt5c"
- ],
- "songs": [
-  {
-   "key": "song_veezha_veera",
-   "song": "Veezha Veera",
-   "film": "O.M: Operation Mole",
-   "search": "Veezha Veera O.M Operation Mole official lyric video",
-   "link": null
-  },
-  {
-   "key": "song_god_mode",
-   "song": "God Mode",
-   "film": "Karuppu",
-   "search": "God Mode Karuppu Suriya official video song",
-   "link": null
-  },
-  {
-   "key": "song_pattampoochi",
-   "song": "Pattampoochi",
-   "film": "Vishwanath & Sons",
-   "search": "Pattampoochi Vishwanath and Sons official song",
-   "link": null
-  },
-  {
-   "key": "song_mutta_kalakki",
-   "song": "Mutta Kalakki",
-   "film": "Youth",
-   "search": "Mutta Kalakki Youth official video song",
-   "link": null
-  },
-  {
-   "key": "song_raga_of_revenge",
-   "song": "Raga of Revenge",
-   "film": "DC",
-   "search": "Raga of Revenge DC official audio",
-   "link": null
-  },
-  {
-   "key": "song_oorum_blood",
-   "song": "Oorum Blood",
-   "film": "Dude",
-   "search": "Oorum Blood Dude official video song",
-   "link": null
-  },
-  {
-   "key": "song_monica",
-   "song": "Monica",
-   "film": "Coolie",
-   "search": "Monica Coolie official video song Anirudh",
-   "link": null
-  }
- ],
+ "study": [],
+ "songs": [],
  "note": "Read by tools/clip_helper.py on Harish's laptop (AGENT.md 16.6). Film names, public links and song names only."
 }
