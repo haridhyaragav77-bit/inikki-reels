@@ -1,6 +1,6 @@
-**Tue 24 Nov** · 1 reel posted, 18:00 now Hello Kadhal trailer
-**Best:** O.M weekend update, 1830 views yesterday
-**Weak:** Delivery Boy update, 79% skipped it
-**Tomorrow:** O.M day 4 numbers, about ₹93 Cr worldwide
-**Changed:** 18:00 reel is the Hello Kadhal trailer
-**Needs you:** 20:00 and 21:30 breakdowns unplanned; 7 shorts to study
+**Wed 25 Nov** · 3 posted, 2 breakdowns held, Suriya reel ready
+**Best:** Mookuthi Amman 2 update, 420 views in two hours
+**Weak:** Hello Kadhal update, 69% skipped it
+**Tomorrow:** O.M first-week numbers, once trackers agree
+**Changed:** Whiplash breakdown added to the bank
+**Needs you:** 7 shorts to study, command in Drive requests/study_to_get.md

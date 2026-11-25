@@ -1,0 +1,387 @@
+{
+ "id": "2026-11-25-breakdown-whiplash-short-first",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "blueprint",
+ "length_s": [
+  40,
+  70
+ ],
+ "length_reason": "One point (a short film that sold the feature): hook, the 15 pages drawn as a scene, short versus feature, the named technique: about 52 s.",
+ "lead": {
+  "topic": "Whiplash: the 18-minute short film that paid for the feature",
+  "angle": "making",
+  "insight": "Damien Chazelle turned 15 pages of his Whiplash script into an 18-minute short film. It won the Short Film Jury Prize at Sundance in January 2013, and the buzz brought investors for the full film, which won Sundance's two top prizes a year later.",
+  "why_now": "Bank breakdown for a day when a back-up is needed: evergreen, no spoilers, and a Hollywood film Tamil fans already know.",
+  "technique": "Proof-of-concept short",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Whiplash_(2013_film) (18-minute short, premiered at Sundance on 18 Jan 2013, won the Short Film Jury Prize; its acclaim attracted investors for the full version)",
+   "https://en.wikipedia.org/wiki/Whiplash_(2014_film) (Chazelle turned 15 pages of the script into the short; the feature was financed by Bold Films for $3.3 million; at Sundance 2014 it won the Grand Jury Prize and the Audience Award, U.S. Dramatic)",
+   "https://www.sundance.org/blogs/the-long-and-the-short-of-it-sundance-shorts-that-transformed-into-features/ (Sundance's own list of shorts that became features)",
+   "https://www.rollingstone.com/tv-movies/tv-movie-news/watch-the-short-that-inspired-whiplash-80930/ (the short film that inspired the feature)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Sundance and Rolling Stone)",
+  "point": "Whiplash first existed as an 18-minute short film: its Sundance prize brought the money for the full film.",
+  "spoilers": "None: the story of the film is not told, only how it got made."
+ },
+ "worth_it": {
+  "learn": "A short film made to prove a bigger idea can win the money for the full film.",
+  "stop": "An Oscar-winning film that started as 18 minutes.",
+  "why_now": "A true making-of fact many fans do not know; no spoilers.",
+  "send_to": "The friend who wants to make a film.",
+  "best_angle": "Yes: the short film is the secret of how this film exists."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "lone_wolf",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "cool, moody"
+   },
+   {
+    "track": "plan_is_on",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "things falling into place"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/whiplash/zIP_gtjDtfE_maxres2.jpg",
+   "fetch": {
+    "youtube": "zIP_gtjDtfE",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/whiplash/zIP_gtjDtfE_maxres1.jpg",
+   "fetch": {
+    "youtube": "zIP_gtjDtfE",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/whiplash/zIP_gtjDtfE_maxres3.jpg",
+   "fetch": {
+    "youtube": "zIP_gtjDtfE",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "ஆஸ்கர் வாங்கின படம், முதல்ல வெறும் 18 நிமிஷ குறும்படம். ஏன்?",
+   "voice_tg": "Oscar vaangina padam, mudhal-la verum 18 nimisha kurumpadam. Yen?",
+   "image": "key",
+   "film": "WHIPLASH",
+   "type": "FIRST, A SHORT FILM?",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "டேமியன் சசெல் தன் திரைக்கதையோட 15 பக்கம் எடுத்தார். அதை 18 நிமிஷ குறும்படமா எடுத்தார். சன்டான்ஸ் விழாவுல ஜூரி பரிசு கிடைச்சுது.",
+   "voice_tg": "Damien Chazelle than thiraikkadhaiyoda 15 pakkam edutthaar. Adhai 18 nimisha kurumpadamaa edutthaar. Sundance vizhaavula jury parisu kidaichudhu.",
+   "heading": "15 PAGES, 18 MINUTES",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "pages",
+     "icon": "book",
+     "x": 0.15,
+     "y": 0.7,
+     "size": 1.2,
+     "cue": {
+      "word": "திரைக்கதையோட"
+     },
+     "label": "15 PAGES",
+     "label_at": "below"
+    },
+    {
+     "id": "short",
+     "icon": "film",
+     "x": 0.5,
+     "y": 0.45,
+     "size": 1.2,
+     "cue": {
+      "word": "குறும்படமா"
+     },
+     "label": "18 MIN SHORT",
+     "label_at": "below",
+     "enter": "pop"
+    },
+    {
+     "id": "prize",
+     "icon": "trophy",
+     "x": 0.85,
+     "y": 0.7,
+     "size": 1.3,
+     "cue": {
+      "word": "பரிசு"
+     },
+     "label": "SUNDANCE 2013",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "கிடைச்சுது."
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "pages",
+     "to": "short",
+     "cue": {
+      "word": "குறும்படமா"
+     },
+     "style": "arrow"
+    },
+    {
+     "from": "short",
+     "to": "prize",
+     "cue": {
+      "word": "பரிசு"
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "SHORT FILM JURY PRIZE",
+   "slam_cue": {
+    "word": "கிடைச்சுது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "குறும்படமா"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "கிடைச்சுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "whip",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "அந்த குறும்படத்தால, முதலீட்டாளர்கள் முழு படத்துக்கு பணம் போட்டாங்க. அடுத்த வருஷம், அதே விழாவுல ரெண்டு பெரிய பரிசு.",
+   "voice_tg": "Andha kurumpadathaala, mudhaleettaalargal muzhu padathukku panam pottaanga. Adutha varusham, adhe vizhaavula rendu periya parisu.",
+   "left": {
+    "image": "s1",
+    "label": "SHORT · 2013",
+    "sub": "18 MIN · JURY PRIZE",
+    "cue": {
+     "word": "குறும்படத்தால,"
+    }
+   },
+   "right": {
+    "image": "s3",
+    "label": "FEATURE · 2014",
+    "sub": "TWO TOP PRIZES",
+    "cue": {
+     "word": "வருஷம்,"
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "வருஷம்,"
+   },
+   "slam_text": "THE SHORT PAID FOR THE FILM",
+   "slam_cue": {
+    "word": "பரிசு."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வருஷம்,"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": "analysis",
+   "voice": "இதுக்கு பேரு, ப்ரூஃப் ஆஃப் கான்செப்ட் குறும்படம். சின்ன படம், பெரிய படத்துக்கு சான்று. பல படங்கள் இந்த வழியில தான் வந்திருக்கு.",
+   "voice_tg": "Idhukku peru, proof of concept kurumpadam. Chinna padam, periya padathukku saandru. Pala padangal indha vazhiyila thaan vandhirukku.",
+   "heading": "PROOF-OF-CONCEPT SHORT",
+   "ground": "none",
+   "props": [
+    {
+     "id": "small",
+     "icon": "film",
+     "x": 0.25,
+     "y": 0.7,
+     "size": 0.8,
+     "cue": {
+      "word": "சின்ன"
+     },
+     "label": "SMALL FILM",
+     "label_at": "below"
+    },
+    {
+     "id": "big",
+     "icon": "film",
+     "x": 0.75,
+     "y": 0.35,
+     "size": 1.4,
+     "cue": {
+      "word": "பெரிய"
+     },
+     "label": "BIG FILM",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "grow",
+       "to": 1.6,
+       "cue": {
+        "word": "சான்று."
+       }
+      }
+     ]
+    },
+    {
+     "id": "proof",
+     "icon": "check",
+     "x": 0.5,
+     "y": 0.55,
+     "size": 0.9,
+     "cue": {
+      "word": "சான்று."
+     },
+     "label": "THE PROOF",
+     "label_at": "above"
+    }
+   ],
+   "links": [
+    {
+     "from": "small",
+     "to": "big",
+     "cue": {
+      "word": "சான்று."
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "SMALL FILM. BIG PROOF.",
+   "slam_cue": {
+    "word": "வந்திருக்கு."
+   },
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "எந்த குறும்படம் பெரிய படமா மாறணும்? கமெண்ட்ல சொல்லுங்க. இதுதான் விப்லாஷ்.",
+   "voice_tg": "Endha kurumpadam periya padamaa maaranum? Comment-la sollunga. Idhudhaan Whiplash.",
+   "echo": "WHIPLASH · FIRST, A SHORT FILM?",
+   "question": [
+    {
+     "text": "A SHORT THAT",
+     "size": 120
+    },
+    {
+     "text": "BECOMES A FILM?",
+     "size": 150,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "எந்த குறும்படம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key",
+   "recap": "TECHNIQUE: PROOF-OF-CONCEPT SHORT",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "Whiplash won Oscars, but it began as an 18-minute short film.",
+   "Damien Chazelle turned 15 pages of his script into the short. It won the Short Film Jury Prize at Sundance 2013 (Wikipedia, Sundance), and its acclaim attracted investors for the full film (Wikipedia). A year later the feature won Sundance's two top prizes. The technique: a proof-of-concept short. No spoilers here.",
+   "Which short film should become a full film? Tell us below.",
+   "Send this to the friend who wants to make a film."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "WHIPLASH · THE SHORT THAT SOLD IT",
+  "slot": "21:30",
+  "first_comment": "Which short film deserves a full version?"
+ },
+ "slot_reason": "Back-up breakdown for the bank: evergreen, no spoilers, a verified making-of fact.",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 6,
+  "total_100": 72
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}
