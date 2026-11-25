@@ -85,7 +85,7 @@ def render_look(plan_path, plan, to_drive=None, drive=None, snap=None, local=Fal
     if tl.get("voice_note"):
         notes.append(tl["voice_note"])
     title = tl["screens"][0]                                # the cover: the title screen once everything has landed
-    cover_t = round(title["start"] + (title["end"] - title["start"]) * 0.86, 2)
+    cover_t = round(max(title["start"], min(title["start"] + (title["end"] - title["start"]) * 0.86, title["end"] - 0.35)), 2)   # clear of the next screen's transition
     subprocess.run([_ffmpeg(), "-y", "-v", "error", "-ss", str(cover_t), "-i", str(final), "-frames:v", "1", "-q:v", "2",
                     str(outdir / "cover.jpg")], check=True)
     total = float(tl["duration"])
@@ -407,7 +407,7 @@ def render(plan_path, local=False, to_drive=None, snap=None, debug_safe=False, d
         # cover frame
         cs = res.get("cover", {}).get("screen", 1)
         scr = info["screens"][min(max(int(cs) - 1, 0), len(info["screens"]) - 1)]
-        ct = scr["start"] + (scr["end"] - scr["start"]) * 0.86          # late in the screen, when every part has landed
+        ct = max(scr["start"], min(scr["start"] + (scr["end"] - scr["start"]) * 0.86, scr["end"] - 0.35))   # landed, clear of the transition
         with open(outdir / "cover.jpg", "wb") as f:
             f.write(fr.frame(ct, "jpeg"))
         _sheet(fr, info, total, outdir)

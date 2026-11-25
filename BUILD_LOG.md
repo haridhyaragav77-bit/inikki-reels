@@ -1,5 +1,14 @@
 # Build log (plain words, newest first)
 
+## 26 Nov 2026 — Motion back, Trial Reels for every reel, safer covers (Harish)
+Root cause of the quality drop: on 23 Nov the Plan and Refresh runs moved from Opus to Sonnet to save tokens. Same story,
+two plans: 21 Nov (Opus) Suriya ₹643 Cr had two animated bar charts; 25 Nov (Sonnet) Suriya ₹770 Cr was three plain text
+cards with the numbers typed on. All 6 updates of 25 Nov were text cards only; sound hits fell from 7 to 5 a reel. Fixes:
+Plan and Refresh back on Opus (`thinking_models`), and a model-proof `motion_floor` in the plan check (`check_motion_floor`,
+series cards). Every reel now posts as a Trial Reel, non-followers first (`post.trial_reels`, falls back to a normal post if
+Instagram refuses). Cover frame kept clear of transitions; no cover time = 2.6 s, not 1 s. Report:
+`lab/results/2026-11-26-quality-drop-root-cause.md`.
+
 ## 25 Nov 2026, night — Breakdown length eased (Harish)
 Aim about 50 s (`length_s` [50, 90]); the plan check refuses under 48 s (`plan_min_s`); 45 s is the hard floor
 (`strict_length.floor_s`): inspection holds a made breakdown under it and the post job never uses a back-up under it.

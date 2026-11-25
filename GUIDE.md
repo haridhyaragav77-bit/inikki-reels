@@ -265,7 +265,7 @@ Every change gets a number, a reason and an Undo in the change log.
 6. **Do not ask for drawings** unless you want one. The page already has the cards.
 7. **Keep your Claude account lean.** Every new session first loads every plugin and connector you have switched on: about 60,000 tokens before it does anything (measured 13 Nov). Switch off the ones this agent does not use at claude.ai → Customize (plugins and connectors). The agent needs only GitHub, Google Drive and the Claude Code session tools.
 9. **A chat manager tidies your chats every night at 03:17.** It makes a fresh dispatcher, then archives finished thinking runs, old helper chats and your own chats that finished 2+ days ago (7 days if they wait on you). It never deletes, and never touches THE CONTROL ROOM or "Movie review reels improvements". To keep another chat, add its title to `runs/renew/chats.json` (or ask a Workshop session). Archived chats are still readable: Unarchive brings one back.
-10. **Quality vs cost of the thinking runs:** Plan and Refresh use Sonnet at high effort; Weekly and Monthly use Opus. If the plans feel weaker, say in the Control Room chat `plan on opus` (or `refresh on opus`); `plan on sonnet` goes back. It counts from the next run.
+10. **Quality vs cost of the thinking runs:** All runs use Opus at high effort (since 26 Nov: on Sonnet the reels lost their motion graphics). To save tokens you can say `plan on sonnet` in the Control Room chat, but the plan check will then refuse more plans for too little motion; `plan on opus` goes back. It counts from the next run.
 8. **AGENT.md is never read whole** (about 30,000 tokens). Sessions read its map and one section; a project hook enforces it.
 
 ## 11. Files and clean-up

@@ -106,9 +106,46 @@ def _post_cfg():
     return ENGINE.get("post") or {}
 
 
+def trial_of(r):
+    """Trial Reels (Harish, 26 Nov): every reel goes to non-followers first (config post.trial_reels). A plan can still
+    say trial: false. Instagram's own test then shares it with followers only if non-followers liked it (SS_PERFORMANCE)."""
+    if r.get("trial") is False:
+        return None
+    if r.get("trial"):
+        return r["trial"]
+    tc = _post_cfg().get("trial_reels") or {}
+    ser = tc.get("series", "all")
+    if tc.get("on") and (ser == "all" or r.get("series") in (ser or [])):
+        return tc.get("graduation") or "SS_PERFORMANCE"
+    return None
+
+
+def thumb_ms(r):
+    """The cover frame for Instagram, in ms. A missing cover time falls back to late in a 3-second title screen, never 1 s
+    (at 1 s the title is still flying in)."""
+    ct = r.get("cover_t")
+    try:
+        return int(float(ct) * 1000) if ct not in (None, "") and float(ct) > 0 else int(float(_post_cfg().get("cover_fallback_s", 2.6)) * 1000)
+    except (TypeError, ValueError):
+        return int(float(_post_cfg().get("cover_fallback_s", 2.6)) * 1000)
+
+
+def create(ig, local, r):
+    """Upload one reel container. If Instagram refuses it as a Trial Reel, it is uploaded once more as a normal reel
+    (fail soft: the slot still posts) and the reel record says so. Returns (container id, trial used)."""
+    tr = trial_of(r)
+    try:
+        return ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=thumb_ms(r), trial=tr), tr
+    except Exception as e:
+        if not tr:
+            raise
+        print(f"[{r.get('reel_id')}] Instagram refused it as a Trial Reel ({str(e)[:120]}); uploading as a normal reel", file=sys.stderr)
+        return ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=thumb_ms(r), trial=None), None
+
+
 def prep_key(r):
     """What an early upload was made from. Any change to the reel (made again, new words, new cover) changes the key."""
-    parts = [r.get("drive_reel"), r.get("made_at"), r.get("caption") or "", int(float(r.get("cover_t") or 1) * 1000), r.get("trial")]
+    parts = [r.get("drive_reel"), r.get("made_at"), r.get("caption") or "", thumb_ms(r), trial_of(r)]
     return hashlib.sha1(json.dumps(parts, ensure_ascii=False, sort_keys=True, default=str).encode("utf-8")).hexdigest()[:16]
 
 
@@ -138,8 +175,8 @@ def prepare(drive, ledger, rid, local=None, now=None):
         from .instagram import Instagram
         if not (local and os.path.exists(local)):
             local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
-        cid = Instagram().create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
-        ledger.upsert(rid, ig_prepared={"id": cid, "at": now.isoformat(timespec="seconds"), "key": prep_key(r)})
+        cid, tr = create(Instagram(), local, r)
+        ledger.upsert(rid, ig_prepared={"id": cid, "at": now.isoformat(timespec="seconds"), "key": prep_key(r), "trial": tr})
         print(f"[{rid}] uploaded to Instagram ahead of its slot (unpublished)")
         return cid
     except Exception as e:
@@ -155,6 +192,7 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
         ig = Instagram()
         ig.me()
         cid = None if dry else prep_usable(r, status.now())
+        used_trial = (r.get("ig_prepared") or {}).get("trial", trial_of(r)) if cid else None
         if cid:                                 # uploaded when it was made: check it is still good, else upload afresh
             try:
                 st = ig.get(cid, fields="status_code").get("status_code")
@@ -172,7 +210,7 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
             local = drive.download(r["drive_reel"], str(OUT / "post" / f"{rid}.mp4"))
             for attempt in (1, 2):                      # Instagram's "ProcessingFailedError" often clears on a fresh upload
                 try:
-                    cid = ig.create_reel(local, r.get("caption") or "", thumb_offset_ms=int(float(r.get("cover_t") or 1) * 1000), trial=r.get("trial"))
+                    cid, used_trial = create(ig, local, r)
                     ig.wait_ready(cid)
                     break
                 except Exception as e:
@@ -213,10 +251,10 @@ def publish(drive, day, r, ctl, dry=False, forced=False):
             except InstagramError as e:
                 note = f"Posted, but the first comment was not added: {str(e)[:120]}"
         when = status.now().isoformat(timespec="seconds")
-        day.upsert(rid, state="posted", media_id=mid, permalink=info.get("permalink"), posted_at=when, reason=note)
+        day.upsert(rid, state="posted", media_id=mid, permalink=info.get("permalink"), posted_at=when, reason=note, trial_used=bool(used_trial))
         _append_line(drive, "status", "posted.jsonl", {"reel_id": rid, "media_id": mid, "series": r.get("series"), "posted_at": when,
                                                         "permalink": info.get("permalink"), "seconds": r.get("seconds"), "hook": r.get("hook"),
-                                                        "virality": r.get("virality"), "music": r.get("music"), "trial": bool(r.get("trial"))})
+                                                        "virality": r.get("virality"), "music": r.get("music"), "trial": bool(used_trial)})
         print(f"Posted {rid}: {info.get('permalink')}")
         return True
     except Exception as e:

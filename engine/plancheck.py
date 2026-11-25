@@ -554,6 +554,33 @@ def check_cooldown(plan, series, screens):
     return E
 
 
+def check_motion_floor(plan, series, screens):
+    """The least motion a reel may have (series card 'motion_floor', AGENT.md 5.8). Added 26 Nov after plans made on a
+    lighter model turned numbers into plain text cards: the floor holds whatever model writes the plan."""
+    mf = series.get("motion_floor") or {}
+    rid = str(plan.get("id") or plan.get("reel_id") or "")
+    if not mf or plan.get("reference") or not DATED_ID.match(rid) or rid[:10] < str(mf.get("since", "0000")):
+        return []
+    E, mid = [], screens[1:-1]
+    kinds = set(mf.get("graphic_kinds") or [])
+    need = int(mf.get("graphic_screens") or 0)
+    got = sum(1 for s in mid if s.get("kind") in kinds)
+    if need and got < need:
+        E.append(f"Too little motion: {got} animated graphic screen{'s' if got != 1 else ''} ({', '.join(sorted(kinds))}); "
+                 f"this series needs at least {need}. Show the number or date as a count-up ('number', unit e.g. ' CR', ' NOV', ' DAYS'), "
+                 f"a comparison as 'bars', a climb as 'ladder' (AGENT.md 5.8).")
+    if mf.get("money_on_title") is False:
+        for n, s in enumerate(mid, 2):
+            text = " ".join(str(l.get("text", "")) if isinstance(l, dict) else str(l) for l in (s.get("lines") or []))
+            if s.get("kind") == "title" and re.search(r"₹|\d\s*(CR|CRORE|LAKH)\b", text, re.I):
+                E.append(f"Screen {n}: a money figure typed on a title card ('{text[:40]}'). Make it a 'number' (count-up) or 'bars' screen.")
+    sfx = sum(len(s.get("sfx") or []) for s in screens)
+    lo = int(mf.get("sfx_min") or 0) or (len(screens) + int(mf.get("sfx_over_screens") or 0) if mf.get("sfx_over_screens") is not None else 0)
+    if lo and sfx < lo:
+        E.append(f"Too few hits: {sfx} sound hits for {len(screens)} screens; at least {lo}. Big moments get a hit (whoosh, impact, stamp, pop) on the beat (AGENT.md 5.8).")
+    return E
+
+
 def check_look(plan, series):
     """A plan in an approved look, against the standard for every reel (AGENT.md 5.10). Returns (errors, notes)."""
     E, W = [], []
@@ -622,6 +649,7 @@ def check_look(plan, series):
     E += check_new_graphics(plan, screens)
     E += check_spine(plan, series, screens)
     E += check_point(plan, series, screens)
+    E += check_motion_floor(plan, series, screens)
     if not plan.get("reference"):                    # a reference plan is an example, not a reel in the day's sequence
         E += check_cooldown(plan, series, screens)
         E += check_variety(plan, series)

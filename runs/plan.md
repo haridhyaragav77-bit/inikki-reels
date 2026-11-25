@@ -41,6 +41,9 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
   for the approved looks; for the older looks, trailer moments from the shot list in `data/trailers.json`.
 - "Ideas from Harish" in the brief are leads: use one if it passes the worth-it test (5.7).
 - Check every plan: `for f in plans/$TODAY/*.json; do python -m engine.plancheck "$f" | tail -n 3; done`. Fix what it reports.
+- **Motion first (26 Nov).** Copy the build of the series' reference plan, not the last few days: an update shows its
+  number or date as a count-up (`number`), a comparison as `bars`, a climb as `ladder`, with a sound hit on each arrival;
+  plain title cards are only for the opening. The plan check refuses too little motion (`motion_floor`, AGENT.md 5.8).
 - For each film under "Trailers to get" in the brief, find its official YouTube trailer and add "Film = link" to
   `data/notes/trailer_links.md`.
 - **Fill the day (Harish, 24 Nov).** Plan every slot in the brief's table. Never stop at "no fresh news": for an update
