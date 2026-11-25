@@ -32,8 +32,8 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
   rest of the lineup around them, and do not use their films or sources again today.
 - Every reel follows the standard (AGENT.md 5.10) and copies its series' reference plan (`plans/reference/`).
 - Breakdowns: one point in lead.point, facts line by line (src), one hero visual drawn for the film, best a scene (5.7, 5.8).
-  **60 to 90 seconds, never shorter (Harish, 25 Nov):** about 800 to 1,150 Tamil letters of voice; the plan check works the
-  length out and refuses a shorter one, so add a real detail, the why or the payoff until it passes. Recommendations: 5.12.
+  **About 50 seconds or more (Harish, 25 Nov):** about 660 to 1,150 Tamil letters of voice; the plan check works the
+  length out and refuses one under 48 s, so add a real detail, the why or the payoff until it passes. Recommendations: 5.12.
   Trailer breakdowns: 5.13.
 - **Fresh first (Harish, 25 Nov):** write a new reel for every slot today. A breakdown slot gets a breakdown written today,
   never a bank plan re-used and never a film posted in the last 21 days. The bank and reserves are back-ups only.

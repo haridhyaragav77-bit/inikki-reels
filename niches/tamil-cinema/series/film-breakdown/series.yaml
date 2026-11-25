@@ -15,9 +15,9 @@ voice: true
 voice_cfg: { speed: 1.2 }   # Harish, 19 Nov: quicker (1.2 is ElevenLabs' fastest); screens keep tail 0.12 s
 captions: tamil_tanglish_subtitles   # two lines synced to the voice, spoken word lit (change #7)
 instagram_safe: { right_px: 160, bottom_px: 420, subtitle_band: [1335, 1500] }   # words and key visuals stay clear of Instagram's buttons
-length_s: [60, 90]      # Harish, 19 Nov: 60-90 s; 25 Nov: never shorter (the plan check refuses under 60 s)
-strict_length: { since: "2026-11-26" }   # plans from this day on: a length outside length_s is an error, not a warning
-length_estimate: { sec_per_letter: 0.076, margin_s: 4 }   # plans aim at 64 s or more, so a made reel never lands under 60   # measured on the breakdowns posted 20-23 Nov (voice speed 1.2): seconds per Tamil letter spoken
+length_s: [50, 90]      # Harish, 25 Nov (evening): about 50 s or more; 48 s still fine; 45 s is the hard floor
+strict_length: { since: "2026-11-26", floor_s: 45 }   # from this day on; a made reel under floor_s is held, a back-up under it is never posted
+length_estimate: { sec_per_letter: 0.076, plan_min_s: 48 }   # the plan check refuses a plan estimated under 48 s; measured on the breakdowns posted 20-23 Nov (voice speed 1.2): seconds per Tamil letter spoken
 length_max_s: 90        # the plan writes down why in length_reason
 image_cap_per_reel: 0
 bank_target: 4          # keep 3-4 finished breakdowns ready

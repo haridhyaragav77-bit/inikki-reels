@@ -673,8 +673,9 @@ def check_look(plan, series):
     top = series.get("length_max_s", hi)
     pl = plan.get("length_s") or [lo, hi]
     st = series.get("strict_length")
-    if isinstance(st, dict) and rid[:10] >= str(st.get("since", "")) and pl[0] < lo:
-        E.append(f"The plan aims at {pl[0]}-{pl[1]} s; this series runs {lo}-{hi} s and never shorter (Harish, 25 Nov). Set length_s to start at {lo}.")
+    pmin = float((series.get("length_estimate") or {}).get("plan_min_s") or lo)
+    if isinstance(st, dict) and rid[:10] >= str(st.get("since", "")) and pl[0] < pmin:
+        E.append(f"The plan aims at {pl[0]}-{pl[1]} s; this series aims at {lo}-{hi} s, at least {pmin:g} s (Harish, 25 Nov). Set length_s to start at {lo}.")
     if pl[1] > top:
         E.append(f"The plan allows {pl[1]} s; this series allows {top} s at most.")
     if pl[1] > 45 and not plan.get("length_reason"):
@@ -687,9 +688,9 @@ def check_look(plan, series):
     if voiced and rate and isinstance(st, dict) and rid[:10] >= str(st.get("since", "")):
         letters = sum(len(str(s.get("voice") or "").replace(" ", "")) for s in screens)
         est = round(letters * rate)       # measured on posted reels (AGENT.md 5.9)
-        aim = lo + float((series.get("length_estimate") or {}).get("margin_s") or 0)   # the estimate is good to a few seconds
+        aim = float((series.get("length_estimate") or {}).get("plan_min_s") or lo)   # the plan's own floor (a little under the target)
         if est < aim:
-            E.append(f"The reel will run about {est} s (its voice has {letters} letters); this series runs {lo}-{hi} s and never shorter "
+            E.append(f"The reel will run about {est} s (its voice has {letters} letters); this series aims at {lo}-{hi} s, and at least {aim:g} s "
                      f"(Harish, 25 Nov). Add about {round((aim - est) / rate) + 20} more letters of voice: one more real detail, the why or "
                      "the payoff (a new screen or fuller lines), never padding.")
         elif est > top + 3:

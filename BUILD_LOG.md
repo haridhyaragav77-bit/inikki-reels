@@ -1,5 +1,9 @@
 # Build log (plain words, newest first)
 
+## 25 Nov 2026, night — Breakdown length eased (Harish)
+Aim about 50 s (`length_s` [50, 90]); the plan check refuses under 48 s (`plan_min_s`); 45 s is the hard floor
+(`strict_length.floor_s`): inspection holds a made breakdown under it and the post job never uses a back-up under it.
+
 ## 25 Nov 2026, evening — Laptop run only as a rare fallback
 The Manual work tab shows the laptop run only after the cloud fetch failed 3 nights in a row (`manual.fetch_fails`,
 `autofetch` counts `fails_in_a_row`); one alert when that happens. Tab text and GUIDE.md say so.
