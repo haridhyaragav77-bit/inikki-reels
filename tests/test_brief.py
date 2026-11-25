@@ -94,10 +94,10 @@ def fresh_first():
     check(kind == "reserve" and x["series"] == "film-breakdown", "with no missed fresh reel, a reserve of the same series comes next")
     d = FakeDrive()
     day, bank = Day(d, now.date().isoformat()), Bank(d)
-    bank.upsert("bank-short", series="film-breakdown", state="ready", drive_reel="b1", seconds=44.6)
-    bank.upsert("bank-long", series="film-breakdown", state="ready", drive_reel="b2", seconds=61.0)
+    bank.upsert("bank-short", series="film-breakdown", state="ready", drive_reel="b1", seconds=43.0)
+    bank.upsert("bank-long", series="film-breakdown", state="ready", drive_reel="b2", seconds=47.0)
     kind, x = post.pick_filler(day, bank, "20:00", series="film-breakdown", now=now)
-    check(x and x["reel_id"] == "bank-long", "a saved breakdown under 60 s is never used")
+    check(x and x["reel_id"] == "bank-long", "a saved breakdown under the 45 s floor is never used")
 
 
 if __name__ == "__main__":

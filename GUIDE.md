@@ -141,8 +141,8 @@ month's trending songs.
 - **Where to see it:** Next tab → Reviews (each recent film: Quick and Trusted) and Release calendar.
 
 ### Breakdowns since 22 Nov: one clear point, a visual made for each film
-- **60 to 90 seconds, never shorter (since 25 Nov).** The plan check works out each breakdown's length from its voice and
-  refuses one under 60 seconds, so the agent adds a real detail before it is made.
+- **About 50 seconds or more (since 25 Nov).** The plan check works out each breakdown's length from its voice and
+  refuses one under 48 seconds; a made breakdown under 45 seconds is held and never posted.
 - **Fresh first (since 25 Nov).** The reels made for today post first. A reserve or a bank reel posts only when today's
   reel for that slot could not be made, and a breakdown slot gets a breakdown, not an update.
 - **No fixed structure any more.** A breakdown has a strong hook, then tells one point in the order that works best for
@@ -158,7 +158,7 @@ month's trending songs.
   trending song are posted normally and never boosted as ads.
 
 ### Breakdowns, the channel study and YouTube (19 Nov)
-- **Breakdowns lead with a detail now.** The hook is one specific thing in the film you probably missed, or a true story from someone who was there. The technique name comes in the middle as the reason it works. Breakdowns run 60 to 90 seconds; a strong film can get up to 3 parts in a week (PART 1/3 on screen). Hollywood films are welcome.
+- **Breakdowns lead with a detail now.** The hook is one specific thing in the film you probably missed, or a true story from someone who was there. The technique name comes in the middle as the reason it works. Breakdowns run about 50 to 90 seconds; a strong film can get up to 3 parts in a week (PART 1/3 on screen). Hollywood films are welcome.
 - **We study two YouTube channels, for free:** Expert FX and World Filmology (the list is `competitors` in the niche file). Every night the Engine reads their newest shorts and views, and turns the speech of the best ones into text with a free program. The Weekly run writes what works, in our own words, to `lab/study/patterns.md`. We never copy their videos or words.
 - **Your only job there:** nothing extra. The shorts to study are part of the laptop run (Manual work, every 15 to 20 days). You can still drop any short's audio into Drive `study-audio/` yourself.
 - **YouTube Shorts:** once you add the YouTube sign-in (AGENT.md 19.2, 5 minutes), every reel that posts on Instagram also goes to your YouTube channel. They upload as **private** until Google approves the free audit form; then change `youtube.privacy` to `public` (or ask the Workshop to).

@@ -32,8 +32,8 @@ def check(final_mp4, res, series, template_flags, cover_path):
     lo, hi = (series.get("length_s") or [3, 90])[:2]
     if total < 3 or total > 90:
         problems.append(f"length {total:.1f} s is outside what Instagram accepts for this kind of reel")
-    elif series.get("strict_length") and total < lo - 2:      # Harish, 25 Nov: a breakdown is never shorter (AGENT.md 5.9)
-        problems.append(f"length {total:.1f} s is under this series' minimum of {lo} s (never shorter); the plan needs more voice")
+    elif isinstance(series.get("strict_length"), dict) and total < float(series["strict_length"].get("floor_s") or lo - 2):   # Harish, 25 Nov (AGENT.md 5.9)
+        problems.append(f"length {total:.1f} s is under this series' floor of {series['strict_length'].get('floor_s')} s; the plan needs more voice")
     elif total < lo - 2 or total > hi + 3:
         warnings.append(f"length {total:.1f} s is outside the series range {lo}-{hi} s")
 

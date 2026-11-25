@@ -306,12 +306,13 @@ def _slot_series(ctl, date, times):
 
 
 def long_enough(x):
-    """A made reel of a strict-length series (breakdowns) under its minimum is never used as a stand-in (Harish, 25 Nov)."""
+    """A made reel of a strict-length series (breakdowns) under its floor is never used as a stand-in (Harish, 25 Nov)."""
     try:
         from .render import series_for
         card = series_for(x)
-        lo = (card.get("length_s") or [0])[0]
-        return not (card.get("strict_length") and x.get("seconds") and float(x["seconds"]) < float(lo) - 2)
+        st = card.get("strict_length")
+        floor = float(st.get("floor_s") or 0) if isinstance(st, dict) else 0
+        return not (floor and x.get("seconds") and float(x["seconds"]) < floor)
     except Exception:
         return True
 
