@@ -1,0 +1,111 @@
+{
+ "updated": "2026-11-25 10:29 UTC",
+ "note": "Trending songs from the laptop run (AGENT.md 5.4). Music-only reels; organic posts only, never boosted.",
+ "tracks": [
+  {
+   "key": "song_veezha_veera",
+   "title": "Veezha Veera (O.M  Operation Mole)",
+   "film": "O.M  Operation Mole",
+   "drive_id": "1FtVbBSxz1h8hpr5VnD5UikHvD1dWeXLM",
+   "seconds": 238.4,
+   "best": [
+    "confident_mid",
+    "upbeat_percussive"
+   ],
+   "hook_at": 154.1,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_raga_of_revenge",
+   "title": "Raga of Revenge (DC)",
+   "film": "DC",
+   "drive_id": "1EZ_Kq4LgRtU3gFVm8smBKZ0m8p7xo07_",
+   "seconds": 133.4,
+   "best": [
+    "confident_mid",
+    "upbeat_percussive"
+   ],
+   "hook_at": 87.8,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_pattampoochi",
+   "title": "Pattampoochi (Vishwanath & Sons)",
+   "film": "Vishwanath & Sons",
+   "drive_id": "1rAgSxhZm0pdfyDCyidR6R5ZD2rbgKTun",
+   "seconds": 245.3,
+   "best": [
+    "upbeat_percussive",
+    "stinger"
+   ],
+   "hook_at": 161.5,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_oorum_blood",
+   "title": "Oorum Blood (Dude)",
+   "film": "Dude",
+   "drive_id": "18_27txUaOkRBdCD0HhRjwglIY-XY1tq0",
+   "seconds": 239.7,
+   "best": [
+    "confident_mid",
+    "tension_pulse"
+   ],
+   "hook_at": 94.2,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_mutta_kalakki",
+   "title": "Mutta Kalakki (Youth)",
+   "film": "Youth",
+   "drive_id": "1RxHdr1O1UIrNJBFxe-d40mkMjmruGgT5",
+   "seconds": 166.1,
+   "best": [
+    "confident_mid",
+    "tension_pulse"
+   ],
+   "hook_at": 95.7,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_monica",
+   "title": "Monica (Coolie)",
+   "film": "Coolie",
+   "drive_id": "1ULYy_s92IXuK6hgj9ksfaW1prufGMptI",
+   "seconds": 214.5,
+   "best": [
+    "upbeat_percussive",
+    "confident_mid"
+   ],
+   "hook_at": 74.9,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  },
+  {
+   "key": "song_god_mode",
+   "title": "God Mode (Karuppu)",
+   "film": "Karuppu",
+   "drive_id": "1oKeuGVuOCtm4xv4HGHRezBcYhVHt-Fu6",
+   "seconds": 250.4,
+   "best": [
+    "confident_mid",
+    "stinger"
+   ],
+   "hook_at": 44.9,
+   "added": "2026-11-25",
+   "fresh": true,
+   "uses": 0
+  }
+ ]
+}
