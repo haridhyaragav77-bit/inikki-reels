@@ -66,6 +66,7 @@ laptop:                       # the laptop run's list (engine/laptop.py, AGENT.m
 autofetch:                    # cloud first (Harish, 25 Nov; engine/autofetch.py, AGENT.md 16.6): the cloud tries the laptop list each night
   max_files: 25               # cost guard: files a night
   max_minutes: 40             # cost guard: runner minutes a night
+  fallback_after: 3           # failed nights in a row before the Manual work tab asks for the laptop run
 # Channel study (AGENT.md 10.3): free. The channel list is the niche's `competitors` with study: true.
 study:
   enabled: true

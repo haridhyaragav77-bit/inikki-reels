@@ -23,7 +23,7 @@ import time
 from .settings import ENGINE, ROOT
 from . import laptop, status
 
-CFG = {"max_files": 25, "max_minutes": 40, **(ENGINE.get("autofetch") or {})}
+CFG = {"max_files": 25, "max_minutes": 40, "fallback_after": 3, **(ENGINE.get("autofetch") or {})}
 REFUSED = ("sign in to confirm", "not a bot", "http error 429", "too many requests", "login required",
            "this video is unavailable in your country", "use --cookies")
 
@@ -144,6 +144,16 @@ def main():
     except Exception as e:                       # fail soft: the laptop list stays as it is
         res = {"state": "failed", "note": str(e)[:200]}
     if not a.show:
+        try:
+            prev = drive.read_json("status", "autofetch.json") or {}
+        except Exception:
+            prev = {}
+        bad = res.get("state") == "failed" or "refused" in str(res.get("note")) or (res.get("tried") and not res.get("got"))
+        res["fails_in_a_row"] = int(prev.get("fails_in_a_row") or 0) + 1 if bad else 0      # the Manual work card reads this
+        if bad and res["fails_in_a_row"] == int(CFG["fallback_after"]):
+            status.alert(drive, f"Cloud downloads failed {res['fails_in_a_row']} nights in a row",
+                         "The trailers, shorts and songs could not be fetched by the cloud, so the laptop run is needed this time.",
+                         "Reels keep posting with their fallbacks meanwhile.", "Control Room › Manual work: the laptop run card.", level="warn")
         status.write(drive, "autofetch.json", {**res, "at": status.stamp()})
         if res.get("signed_in") and "expired" in str(res.get("note")):
             status.alert(drive, "YouTube sign-in for the cloud fetch has expired",

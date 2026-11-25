@@ -428,7 +428,7 @@ function mwCard(j) {
 }
 function vManual() {
   const js = MW(), sent = ((P.manual || {}).jobs || []).filter(j => askedFor("mw:" + j.id).length);
-  let h = banners() + `<div><h2>Manual work</h2><div class="sub">One laptop run every 15 to 20 days: <b>py clip_helper.py</b> gets the trailers, the competitor shorts to study and this month's trending songs in one go (YouTube and Instagram do not let the cloud computers download these). It shows when it is due and what waits if you skip it. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before it turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
+  let h = banners() + `<div><h2>Manual work</h2><div class="sub">The cloud downloads the trailers, competitor shorts and trending songs by itself every night at 11:05 PM. A laptop run appears here only as a rare fallback: when the cloud has failed 3 nights in a row and something is still waiting. You get a notice ${esc((P.manual || {}).warn_days ?? 2)} days before it turns urgent. Nothing stops while you wait: the Engine uses its fallback.</div></div>`;
   h += `<details class="blk"${js.length ? "" : " open"}><summary><span class="t">How to do the laptop run</span><span class="peek">Set up once, then double-click every 15 to 20 days</span></summary><div class="blkbody">
     <h3>Set up once (about 10 minutes)</h3>
     <ol class="plain" style="color:var(--fg)">
