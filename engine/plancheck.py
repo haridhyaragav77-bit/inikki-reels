@@ -687,9 +687,10 @@ def check_look(plan, series):
     if voiced and rate and isinstance(st, dict) and rid[:10] >= str(st.get("since", "")):
         letters = sum(len(str(s.get("voice") or "").replace(" ", "")) for s in screens)
         est = round(letters * rate)       # measured on posted reels (AGENT.md 5.9)
-        if est < lo:
+        aim = lo + float((series.get("length_estimate") or {}).get("margin_s") or 0)   # the estimate is good to a few seconds
+        if est < aim:
             E.append(f"The reel will run about {est} s (its voice has {letters} letters); this series runs {lo}-{hi} s and never shorter "
-                     f"(Harish, 25 Nov). Add about {round((lo - est) / rate) + 20} more letters of voice: one more real detail, the why or "
+                     f"(Harish, 25 Nov). Add about {round((aim - est) / rate) + 20} more letters of voice: one more real detail, the why or "
                      "the payoff (a new screen or fuller lines), never padding.")
         elif est > top + 3:
             W.append(f"The reel will run about {est} s (its voice has {letters} letters); this series allows {top} s at most. Tighten a line or two.")

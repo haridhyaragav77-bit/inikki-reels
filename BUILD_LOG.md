@@ -1,5 +1,9 @@
 # Build log (plain words, newest first)
 
+## 25 Nov 2026, later — No short breakdown by any route
+Plans aim at 64 s or more (`margin_s`), inspection holds a made breakdown under 58 s, and a saved reserve or bank breakdown
+under 60 s is never posted (`post.long_enough`). Cloud fetch tested live: 15 of 18 items fetched with the YouTube sign-in.
+
 ## 25 Nov 2026 — Breakdowns never short; fresh reels first; three trusted critics; cloud fetch with yt-dlp; clearer notes
 Breakdowns came out 40-50 s because plans asked for 40-70 s and the plan check could not measure a voiced stage reel. Now
 `length_estimate` (0.076 s a Tamil letter, measured on 20-23 Nov reels) and `strict_length` refuse a breakdown under 60 s

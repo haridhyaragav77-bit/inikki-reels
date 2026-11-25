@@ -305,12 +305,23 @@ def _slot_series(ctl, date, times):
     return lineup_times(ctl, date, with_series=True) if times is None else {}
 
 
+def long_enough(x):
+    """A made reel of a strict-length series (breakdowns) under its minimum is never used as a stand-in (Harish, 25 Nov)."""
+    try:
+        from .render import series_for
+        card = series_for(x)
+        lo = (card.get("length_s") or [0])[0]
+        return not (card.get("strict_length") and x.get("seconds") and float(x["seconds"]) < float(lo) - 2)
+    except Exception:
+        return True
+
+
 def pick_filler(day, bank, t, skip=(), series=None, now=None, for_id=None):
     """Who fills a slot at time t whose own reel is held, failed or missing. Fresh first (Harish, 25 Nov; AGENT.md 12.3):
     (1) a reel made today that missed its own time (same series first), (2) a reserve meant for this slot or of this
     series, (3) a bank reel, (4) any other reserve. The post job and the Control Room's preview both use this, so the
     page shows what will really post."""
-    ready = [x for x in day.reels("ready") if not x.get("manual") and x.get("drive_reel") and x["reel_id"] not in skip]
+    ready = [x for x in day.reels("ready") if not x.get("manual") and x.get("drive_reel") and x["reel_id"] not in skip and long_enough(x)]
     fresh = []
     if now is not None:                       # missed: its time passed more than 3 hours ago (sooner, choose() still posts it late)
         for x in ready:
@@ -328,7 +339,7 @@ def pick_filler(day, bank, t, skip=(), series=None, now=None, for_id=None):
         next((x for x in reserves if x.get("series") == series or not series), None)     # slot's series unknown: any reserve (made today)
     if mine:
         return "reserve", mine
-    b = next((x for x in bank.reels("ready") if x.get("drive_reel") and x["reel_id"] not in skip), None)
+    b = next((x for x in bank.reels("ready") if x.get("drive_reel") and x["reel_id"] not in skip and long_enough(x)), None)
     if b:
         return "bank", b
     return ("reserve", reserves[0]) if reserves else (None, None)
