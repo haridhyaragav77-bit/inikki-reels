@@ -672,6 +672,9 @@ def check_look(plan, series):
     lo, hi = series.get("length_s") or [10, 75]
     top = series.get("length_max_s", hi)
     pl = plan.get("length_s") or [lo, hi]
+    st = series.get("strict_length")
+    if isinstance(st, dict) and rid[:10] >= str(st.get("since", "")) and pl[0] < lo:
+        E.append(f"The plan aims at {pl[0]}-{pl[1]} s; this series runs {lo}-{hi} s and never shorter (Harish, 25 Nov). Set length_s to start at {lo}.")
     if pl[1] > top:
         E.append(f"The plan allows {pl[1]} s; this series allows {top} s at most.")
     if pl[1] > 45 and not plan.get("length_reason"):
@@ -680,6 +683,16 @@ def check_look(plan, series):
         est = sum(float(s.get("dur") or 0) for s in screens)
         if est and not pl[0] - 1 <= est <= pl[1] + 1:
             W.append(f"The screens add up to about {est:.1f} s; the plan allows {pl[0]} to {pl[1]} s.")
+    rate = float((series.get("length_estimate") or {}).get("sec_per_letter") or 0)
+    if voiced and rate and isinstance(st, dict) and rid[:10] >= str(st.get("since", "")):
+        letters = sum(len(str(s.get("voice") or "").replace(" ", "")) for s in screens)
+        est = round(letters * rate)       # measured on posted reels (AGENT.md 5.9)
+        if est < lo:
+            E.append(f"The reel will run about {est} s (its voice has {letters} letters); this series runs {lo}-{hi} s and never shorter "
+                     f"(Harish, 25 Nov). Add about {round((lo - est) / rate) + 20} more letters of voice: one more real detail, the why or "
+                     "the payoff (a new screen or fuller lines), never padding.")
+        elif est > top + 3:
+            W.append(f"The reel will run about {est} s (its voice has {letters} letters); this series allows {top} s at most. Tighten a line or two.")
 
     # series rules that code can check
     if sid == "film-breakdown":
@@ -917,14 +930,26 @@ def check(plan):
 
     lo_hi = series.get("length_s") or []
     if len(lo_hi) == 2 and screens:
-        if template == "card" and voiced:      # measured on the runner: about 2.5 s per spoken screen, about 11.5 Tamil letters a second
+        rate = float((series.get("length_estimate") or {}).get("sec_per_letter") or 0)
+        letters = sum(len(str(s.get("voice") or s.get("voice_line") or "").replace(" ", "")) for s in screens)
+        if voiced and rate and letters:          # measured on posted reels (series file `length_estimate`, AGENT.md 5.9)
+            est = round(letters * rate)
+        elif template == "card" and voiced:      # measured on the runner: about 2.5 s per spoken screen, about 11.5 Tamil letters a second
             chars = sum(len(str(s.get("voice_line") or "").replace(" ", "")) for s in screens)
             est = round(0.5 * chars / 11.5 + 0.5 * 2.5 * len(screens))
         else:
             est = round(sum(float(s.get("dur") or 0) for s in screens))
         lo, hi = float(lo_hi[0]), float(lo_hi[1])
-        L = E if series.get("strict_length") else W
-        if est and est < lo * 0.9:
+        strict = series.get("strict_length")
+        rid = str(plan.get("id") or plan.get("reel_id") or "")
+        if isinstance(strict, dict):             # strict from a day on (older plans and the golden set stay as they were)
+            strict = rid[:10] >= str(strict.get("since", ""))
+        L = E if strict else W
+        if strict and rate and est and est < lo:     # Harish, 25 Nov: breakdowns never shorter than the series' minimum
+            need = round((lo - est) / rate) + 20
+            L.append(f"The reel will run about {est} s (its voice has {letters} letters); this series runs {lo:g}-{hi:g} s and never shorter. "
+                     f"Add about {need} more letters of voice: one more real detail, the why or the payoff (a new screen or fuller lines), never padding.")
+        elif est and est < lo * 0.9:
             L.append(f"The reel will run about {est} s; this series runs {lo:g}-{hi:g} s. Add about {max(1, round((lo - est) / 2.5))} "
                      "more spoken screens (each is about 2.5 s), or say more in each line.")
         elif est > hi * 1.15:

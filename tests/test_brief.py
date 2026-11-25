@@ -68,8 +68,35 @@ def empty_slot_fill():
     check("SLOTS WITH NO PLAN" in t and "bank-b" in t and "nothing to fill it" in t, "the panel text shows the empty slots and the bank reels")
 
 
+def fresh_first():
+    """Harish, 25 Nov: reels made today post before reserves and the bank; a reserve of another series comes last."""
+    d = FakeDrive()
+    ctl = Control(d)
+    now = status.now().replace(hour=20, minute=1, second=0, microsecond=0)
+    at = lambda h, m=0: now.replace(hour=h, minute=m).isoformat()
+    day, bank = Day(d, now.date().isoformat()), Bank(d)
+    day.upsert("bd-2000", series="film-breakdown", slot="20:00", post_at=at(20), state="failed")
+    day.upsert("res-upd", series="movie-updates", reserve=True, state="ready", drive_reel="r1")
+    bank.upsert("bank-old", series="film-breakdown", state="ready", drive_reel="b1")
+    r = post.choose(day, bank, now, ctl)
+    check(r and r["reel_id"] == "bank-old", "a failed breakdown's slot goes to a breakdown (bank), not an update reserve")
+    d = FakeDrive()
+    day, bank = Day(d, now.date().isoformat()), Bank(d)
+    day.upsert("bd-2000", series="film-breakdown", slot="20:00", post_at=at(20), state="held")
+    day.upsert("bd-1230", series="film-breakdown", slot="12:30", post_at=at(12, 30), state="ready", drive_reel="f1")
+    day.upsert("res-bd", series="film-breakdown", reserve=True, state="ready", drive_reel="r2")
+    bank.upsert("bank-old", series="film-breakdown", state="ready", drive_reel="b1")
+    r = post.choose(day, bank, now, ctl)
+    check(r and r["reel_id"] == "bd-1230", "a reel made today that missed its time beats the reserve and the bank")
+    check(day.get("bd-2000")["state"] == "skipped", "the held reel's slot is taken, and it is marked skipped")
+    day.upsert("res-bd2", series="film-breakdown", reserve=True, state="ready", drive_reel="r3")
+    kind, x = post.pick_filler(day, bank, "21:30", series="film-breakdown", now=now)
+    check(kind == "reserve" and x["series"] == "film-breakdown", "with no missed fresh reel, a reserve of the same series comes next")
+
+
 if __name__ == "__main__":
     brief_runs()
     empty_slot_fill()
+    fresh_first()
     print("all ok" if not check.failed else f"{check.failed} failed")
     sys.exit(1 if check.failed else 0)

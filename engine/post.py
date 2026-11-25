@@ -258,8 +258,8 @@ def breaking_now(drive, day, rid, ctl):
 
 # ---------------------------------------------------------------- what is due
 def choose(day, bank, now, ctl, early_min=5):
-    """The planned reel whose time has come (up to 3 hours late), one per run. If it is held or failed:
-    a ready reserve (same slot, then same series, then any), then a ready bank reel takes its place.
+    """The planned reel whose time has come (up to 3 hours late), one per run. If it is held or failed, pick_filler finds
+    its stand-in, fresh first (Harish, 25 Nov).
     early_min=0: only reels whose time has passed (a run that leaves a coming slot to the clock must not post it early)."""
     due = []
     for r in day.reels():
@@ -272,15 +272,14 @@ def choose(day, bank, now, ctl, early_min=5):
     for r in sorted(due, key=lambda x: x["post_at"]):
         if r.get("state") == "ready":
             return r
-        reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual")]   # a new version waits for "post now"
-        sub = (next((x for x in reserves if x.get("for_slot") in (r.get("slot"), r["reel_id"])), None)
-               or next((x for x in reserves if x.get("series") == r.get("series")), None) or (reserves[0] if reserves else None))
-        if sub:
+        kind, sub = pick_filler(day, bank, r.get("slot"), skip=(r["reel_id"],), series=r.get("series"), now=now, for_id=r["reel_id"])
+        if kind in ("fresh", "reserve"):
             day.upsert(sub["reel_id"], post_at=r["post_at"], slot=r.get("slot"), reserve=False, reason=f"Took the slot of {r['reel_id']}.")
-            day.upsert(r["reel_id"], state="skipped", reason=(r.get("reason") or "") + " A reserve took its slot.")
+            day.upsert(r["reel_id"], state="skipped", reason=(r.get("reason") or "") + (" A reel made today that missed its time took its slot."
+                                                                                          if kind == "fresh" else " A reserve took its slot."))
             return day.get(sub["reel_id"])
-        b = next(iter(bank.reels("ready")), None)
-        if b:
+        if kind == "bank":
+            b = sub
             if ctl.can_post:                  # rehearsal does not use up the bank
                 bank.upsert(b["reel_id"], state="used", used_for=r["reel_id"], used_at=status.now().isoformat(timespec="seconds"))
             fields = {k: v for k, v in b.items() if k not in ("reel_id", "state", "updated", "reason")}
@@ -290,37 +289,61 @@ def choose(day, bank, now, ctl, early_min=5):
     return fill_empty_slot(day, bank, now, ctl, early_min)
 
 
-def lineup_times(ctl, date):
-    """Today's slot times from the lineup (the same rows the brief gives the Plan run)."""
+def lineup_times(ctl, date, with_series=False):
+    """Today's slot times from the lineup (the same rows the brief gives the Plan run); with_series: {time: series}."""
     try:
         from .brief import lineup_today
-        return sorted({r[0] for r in lineup_today(ctl, date)[0] if r[0] and r[0] != "-"})
+        rows = [r for r in lineup_today(ctl, date)[0] if r[0] and r[0] != "-"]
+        return {r[0]: r[1] for r in rows} if with_series else sorted({r[0] for r in rows})
     except Exception as e:                    # fail soft: no lineup, no filling
         print(f"lineup not readable: {str(e)[:120]}", file=sys.stderr)
-        return []
+        return {} if with_series else []
 
 
-def pick_filler(day, bank, t, skip=()):
-    """Who fills an empty slot at time t: a ready reserve meant for it, else any ready reserve, else the first ready
-    bank reel. The post job and the Control Room's preview both use this, so the page shows what will really post."""
-    reserves = [x for x in day.reels("ready") if x.get("reserve") and not x.get("manual") and x.get("drive_reel") and x["reel_id"] not in skip]
-    sub = next((x for x in reserves if x.get("for_slot") == t), None) or (reserves[0] if reserves else None)
-    if sub:
-        return "reserve", sub
+def _slot_series(ctl, date, times):
+    """The series each slot belongs to (only when the times come from the lineup; tests pass their own times)."""
+    return lineup_times(ctl, date, with_series=True) if times is None else {}
+
+
+def pick_filler(day, bank, t, skip=(), series=None, now=None, for_id=None):
+    """Who fills a slot at time t whose own reel is held, failed or missing. Fresh first (Harish, 25 Nov; AGENT.md 12.3):
+    (1) a reel made today that missed its own time (same series first), (2) a reserve meant for this slot or of this
+    series, (3) a bank reel, (4) any other reserve. The post job and the Control Room's preview both use this, so the
+    page shows what will really post."""
+    ready = [x for x in day.reels("ready") if not x.get("manual") and x.get("drive_reel") and x["reel_id"] not in skip]
+    fresh = []
+    if now is not None:                       # missed: its time passed more than 3 hours ago (sooner, choose() still posts it late)
+        for x in ready:
+            try:
+                late = not x.get("reserve") and x.get("post_at") and dt.datetime.fromisoformat(x["post_at"]) < now - dt.timedelta(hours=3)
+            except ValueError:
+                late = False
+            if late:
+                fresh.append(x)
+    fresh.sort(key=lambda x: (x.get("series") != series, x.get("post_at") or ""))
+    if fresh:
+        return "fresh", fresh[0]
+    reserves = [x for x in ready if x.get("reserve")]
+    mine = next((x for x in reserves if x.get("for_slot") in (t, for_id)), None) or \
+        next((x for x in reserves if x.get("series") == series or not series), None)     # slot's series unknown: any reserve (made today)
+    if mine:
+        return "reserve", mine
     b = next((x for x in bank.reels("ready") if x.get("drive_reel") and x["reel_id"] not in skip), None)
-    return ("bank", b) if b else (None, None)
+    if b:
+        return "bank", b
+    return ("reserve", reserves[0]) if reserves else (None, None)
 
 
 def fill_preview(day, bank, ctl, now, times=None, late_min=60):
     """Today's lineup slots that have no reel and are still to come (or under an hour late), each with the reel that
     will fill it at post time (one reel per slot, in slot order)."""
     taken = {r.get("slot") for r in day.reels() if r.get("slot") and not r.get("reserve")}
-    out, used = [], set()
+    out, used, ser = [], set(), _slot_series(ctl, day.date, times)
     for t in (times if times is not None else lineup_times(ctl, day.date)):
         h, m = (int(x) for x in t.split(":"))
         if t in taken or now.replace(hour=h, minute=m, second=0, microsecond=0) < now - dt.timedelta(minutes=late_min):
             continue
-        kind, x = pick_filler(day, bank, t, used)
+        kind, x = pick_filler(day, bank, t, used, series=ser.get(t), now=now)
         if x:
             used.add(x["reel_id"])
         out.append({"time": t, "from": kind, "id": (x or {}).get("reel_id"), "series": (x or {}).get("series"), "hook": (x or {}).get("hook"),
@@ -333,14 +356,15 @@ def fill_empty_slot(day, bank, now, ctl, early_min=5, late_min=60, times=None):
     lineup): a ready reserve takes it, else a ready bank reel (AGENT.md 20, "A slot has no reel at all"). Fail soft:
     a day never goes quiet because a plan is missing."""
     taken = {r.get("slot") for r in day.reels() if r.get("slot") and not r.get("reserve")}
+    ser = _slot_series(ctl, day.date, times)
     for t in (times if times is not None else lineup_times(ctl, day.date)):
         h, m = (int(x) for x in t.split(":"))
         at = now.replace(hour=h, minute=m, second=0, microsecond=0)
         if t in taken or not (now - dt.timedelta(minutes=late_min) <= at <= now + dt.timedelta(minutes=early_min)):
             continue
         why = f"The {t} slot had no plan, so this reel filled it."
-        kind, x = pick_filler(day, bank, t)
-        if kind == "reserve":
+        kind, x = pick_filler(day, bank, t, series=ser.get(t), now=now)
+        if kind in ("fresh", "reserve"):
             day.upsert(x["reel_id"], post_at=at.isoformat(), slot=t, reserve=False, reason=why)
             return day.get(x["reel_id"])
         b = x if kind == "bank" else None

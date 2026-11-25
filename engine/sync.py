@@ -23,6 +23,12 @@ PROTECTED = {"series.yaml": ["per_day", "per_day_max", "template", "paused", "re
 MAX_BYTES = 200_000
 
 
+
+def new_notes(old, new):
+    """The note lines ("- ...") a thinking run added to data/out/alerts.md, in order; lines already there are left out."""
+    had = {ln.strip() for ln in (old or "").splitlines()}
+    return [ln.strip() for ln in (new or "").splitlines() if ln.strip().startswith("- ") and ln.strip() not in had]
+
 def git(*args, check=True):
     r = subprocess.run(["git", *args], capture_output=True, text=True)
     if check and r.returncode:
@@ -80,10 +86,11 @@ def run(branch, dry=False):
     head_msg = git("log", "-1", "--format=%s", f"origin/{branch}").strip()
     changed = [l.split("\t") for l in git("diff", "--name-status", "--no-renames", base, f"origin/{branch}").splitlines() if l.strip()]
     git("checkout", "-q", "-B", "main", "origin/main")
-    taken, refused = [], []
+    taken, refused, before = [], [], {}
     for st, path in changed:
         new = None if st == "D" else git("show", f"origin/{branch}:{path}", check=False)
         old = git("show", f"origin/main:{path}", check=False) or None
+        before[path] = old or ""
         why = verdict(path, new, old)
         if why:
             refused.append(f"{path}: {why}")
@@ -114,9 +121,11 @@ def run(branch, dry=False):
         drive = Drive()
         for p in notes:
             drive.write_text("status", os.path.basename(p), open(p, encoding="utf-8").read(), "text/markdown")
-        if any(os.path.basename(p) == "alerts.md" for p in notes):
-            status.alert(drive, "A note from the thinking run", open("data/out/alerts.md", encoding="utf-8").read()[:300],
-                         "Saved in Drive status/alerts.md.", "Read it when convenient.", level="info")
+        fresh = new_notes(before.get("data/out/alerts.md", ""), open("data/out/alerts.md", encoding="utf-8").read()) \
+            if "data/out/alerts.md" in notes else []
+        if fresh:                       # only the lines this run added, newest last (25 Nov: it used to show the oldest lines)
+            status.alert(drive, "A note from the thinking run", "\n".join(fresh)[-400:],
+                         "All notes: Drive status/alerts.md.", "Read it when convenient.", level="info")
         if refused:
             status.alert(drive, "Some Brain changes were not applied", "; ".join(refused)[:400],
                          "Everything else from that run was applied.", "Nothing, unless you want one of them: say so in the Control Room.", level="info")

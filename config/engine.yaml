@@ -63,6 +63,9 @@ manual:                       # Control Room › Manual work (AGENT.md 16.6, eng
   laptop_first_days: 3        # the first run of the one-command helper is due within this many days
 laptop:                       # the laptop run's list (engine/laptop.py, AGENT.md 16.6)
   songs_max: 15               # trending songs fetched per run
+autofetch:                    # cloud first (Harish, 25 Nov; engine/autofetch.py, AGENT.md 16.6): the cloud tries the laptop list each night
+  max_files: 25               # cost guard: files a night
+  max_minutes: 40             # cost guard: runner minutes a night
 # Channel study (AGENT.md 10.3): free. The channel list is the niche's `competitors` with study: true.
 study:
   enabled: true
