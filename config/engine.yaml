@@ -40,7 +40,9 @@ guard:
 post:
   early_upload: true          # a made reel is uploaded to Instagram at once, unpublished; its slot's run only publishes it
   early_upload_max_hours: 20  # Instagram keeps an unpublished upload for 24 hours; older ones are uploaded again at the slot
-  watch_gap_minutes: 50       # a Post run this soon after the last news watch does not read the same feeds again
+  watch_gap_minutes: 50
+  trial_reels: { on: true, series: all, graduation: SS_PERFORMANCE }   # Harish, 26 Nov: every reel shown to non-followers first; Instagram shares it with followers only if non-followers liked it. on: false turns it off
+  cover_fallback_s: 2.6       # cover frame when a reel has no cover time (late in the title screen, never mid-entrance)       # a Post run this soon after the last news watch does not read the same feeds again
 # YouTube Shorts (AGENT.md 5.15): each reel Instagram posted also goes to YouTube in the same Post run. Free.
 youtube:
   enabled: true               # needs the secret YOUTUBE_OAUTH_REFRESH_TOKEN; without it nothing is tried
