@@ -456,7 +456,7 @@ function fillsCard() {
   const watch = v => v ? `<a class="btn" href="${esc(v)}" target="_blank" rel="noopener">Watch</a>` : "";
   let h = "";
   if (f.length) h += `<div class="card"><h3>Slots with no plan: what posts there</h3><div class="sub">No reel was planned for these times. At each time the Engine posts the reel shown: a reserve first, else a bank reel.</div><div class="list">` +
-    f.map(x => `<div class="row"><div><b>${esc(x.time)}</b> · ${x.id ? `${x.from === "bank" ? "Bank" : "Reserve"} · ${esc(x.series || "")} · “${esc(x.hook || x.id)}”` : "Nothing to post: no reserve and the bank is empty"}</div><div class="acts">${watch(x.video)}</div></div>`).join("") + `</div></div>`;
+    f.map(x => `<div class="row"><div><b>${esc(x.time)}</b> · ${x.id ? `${x.from === "bank" ? "Bank" : x.from === "fresh" ? "Made today, missed its time" : "Reserve"} · ${esc(x.series || "")} · “${esc(x.hook || x.id)}”` : "Nothing to post: no reserve and the bank is empty"}</div><div class="acts">${watch(x.video)}</div></div>`).join("") + `</div></div>`;
   if (bk.length) h += `<div class="card"><h3>Bank reels ready (${bk.length})</h3><div class="sub">Finished reels kept for empty or failed slots, used from the top.</div><div class="list">` +
     bk.map((x, i) => `<div class="row"><div>${i + 1}. ${esc(x.series || "")} · “${esc(x.hook || x.id)}”</div><div class="acts">${watch(x.video)}</div></div>`).join("") + `</div></div>`;
   return h;

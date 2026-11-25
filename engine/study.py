@@ -92,7 +92,7 @@ def save_cards(new):
 
 
 def try_download(url, dest_dir):
-    """One plain audio download. YouTube usually refuses cloud computers; that is accepted, never worked around."""
+    """One plain audio download. YouTube usually refuses cloud computers; the nightly cloud fetch (engine/autofetch.py) tries again signed in."""
     try:
         r = subprocess.run([sys.executable, "-m", "yt_dlp", "-q", "--no-warnings", "--no-playlist", "-f", "bestaudio[ext=m4a]/bestaudio",
                             "-o", os.path.join(dest_dir, "%(id)s.%(ext)s"), url], capture_output=True, text=True, timeout=120)

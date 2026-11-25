@@ -135,22 +135,22 @@
    "heading": "THE TRUSTED CRITICS",
    "cards": [
     {
-     "outlet": "THE TIMES OF INDIA",
-     "critic": "M. Suganth",
-     "quote": "starts getting into the groove",
-     "rating": "4/5"
-    },
-    {
-     "outlet": "CINEMA EXPRESS",
-     "critic": "Avinash Ramachandran",
-     "quote": "Suriya in terrific form",
-     "rating": "4/5"
-    },
-    {
      "outlet": "GALATTA PLUS",
      "critic": "Baradwaj Rangan",
      "quote": "ends up working only in parts",
      "rating": "MIXED"
+    },
+    {
+     "outlet": "YOUTUBE",
+     "critic": "Prashanth Rangaswamy",
+     "quote": "EXAMPLE: his own words",
+     "rating": "POSITIVE"
+    },
+    {
+     "outlet": "YOUTUBE · LONG REVIEW",
+     "critic": "Sudhir Srinivasan",
+     "quote": "EXAMPLE: his own words",
+     "rating": "POSITIVE"
     }
    ],
    "sfx": [
@@ -291,28 +291,29 @@
   "kind": "trusted",
   "critics": [
    {
-    "name": "M. Suganth",
-    "outlet": "The Times of India",
-    "stars": 4,
-    "quote": "starts getting into the groove",
-    "src": 0
-   },
-   {
-    "name": "Avinash Ramachandran",
-    "outlet": "Cinema Express",
-    "stars": 4,
-    "quote": "Suriya in terrific form",
-    "src": 0
-   },
-   {
     "name": "Baradwaj Rangan",
     "outlet": "Galatta Plus",
     "verbal": "mixed",
     "quote": "ends up working only in parts",
     "src": 0
+   },
+   {
+    "name": "Prashanth Rangaswamy",
+    "outlet": "YouTube",
+    "verbal": "positive",
+    "quote": "EXAMPLE: his own words, word for word",
+    "src": 0
+   },
+   {
+    "name": "Sudhir Srinivasan",
+    "outlet": "YouTube (long review)",
+    "verbal": "positive",
+    "quote": "EXAMPLE: his own words, word for word",
+    "src": 0
    }
   ],
   "score": 3.7,
   "verdict": "GO"
- }
+ },
+ "_note": "Reference for the form only (Harish, 25 Nov: trusted = Baradwaj Rangan, Prashanth Rangaswamy, Sudhir Srinivasan). Quotes marked EXAMPLE are placeholders: a real plan quotes each critic word for word from the linked review."
 }

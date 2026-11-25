@@ -1,5 +1,16 @@
 # Build log (plain words, newest first)
 
+## 25 Nov 2026 — Breakdowns never short; fresh reels first; three trusted critics; cloud fetch with yt-dlp; clearer notes
+Breakdowns came out 40-50 s because plans asked for 40-70 s and the plan check could not measure a voiced stage reel. Now
+`length_estimate` (0.076 s a Tamil letter, measured on 20-23 Nov reels) and `strict_length` refuse a breakdown under 60 s
+from 26 Nov (`plancheck.check_look`). Posting is fresh first: a held or failed reel's slot goes to a reel made today that
+missed its time, then a same-series reserve, then the bank, and any other reserve last (`post.pick_filler`; 23 Nov an
+update reserve had taken a breakdown slot); the Plan run writes new breakdowns instead of re-using bank plans. Trusted
+critics: Baradwaj Rangan, Prashanth Rangaswamy, Sudhir Srinivasan only; O.M and Sathyavan Savithiri reviews skipped
+(`critics.yaml` `skip_reviews`); a late review is "skipped", not "missed". "A note from the thinking run" showed the
+oldest 13 Nov lines every time; it now shows only the new lines (`sync.new_notes`). New nightly cloud fetch
+(`engine/autofetch.py`, `fetch.yml`, 23:05 IST): yt-dlp tries the laptop list, signed in with the secret YOUTUBE_COOKIES.
+
 ## 24 Nov 2026 — Only 1 of 6 reels: empty slots filled from the bank; every push runs all tests
 The Plan run planned 1 reel and stopped (thin news), and the post job left the 5 empty slots silent while 4 bank reels were
 ready. Root cause of repeat failures: only the Guard's test ran on push, so bugs like the 23 Nov brief crash reached main.

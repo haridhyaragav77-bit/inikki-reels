@@ -11,7 +11,7 @@ from .settings import OPTIONAL_SECRETS, SECRET_NAMES
 HIDDEN = "[hidden]"
 # Real keys (a copy in public means: replace it). Account ids and folder ids are not keys and are not searched for.
 KEY_NAMES = ["OPENAI_API_KEY", "IG_ACCESS_TOKEN", "META_APP_SECRET", "GDRIVE_SERVICE_ACCOUNT_JSON", "GDRIVE_OAUTH_REFRESH_TOKEN",
-             "BRAIN_FIRE_URL", "BRAIN_FIRE_TOKEN", "PEXELS_API_KEY", "PIXABAY_API_KEY", "ELEVENLABS_API_KEY", "GITHUB_TOKEN", "GH_TOKEN"]
+             "BRAIN_FIRE_URL", "BRAIN_FIRE_TOKEN", "PEXELS_API_KEY", "PIXABAY_API_KEY", "ELEVENLABS_API_KEY", "YOUTUBE_COOKIES", "GITHUB_TOKEN", "GH_TOKEN"]
 INNER = ("private_key", "private_key_id", "client_secret", "refresh_token")
 PATTERNS = [
     ("an OpenAI key", r"\bsk-(?:proj-|svcacct-|admin-)?[A-Za-z0-9_-]{32,}"),

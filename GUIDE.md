@@ -70,6 +70,17 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 ## 5. Everyday controls
 
 ### Manual work: one laptop run every 15 to 20 days (since 22 Nov)
+**Cloud first (since 25 Nov).** Every night at 11:05 PM the cloud tries the whole list itself with yt-dlp (the same
+downloader the laptop uses): trailers, older film trailers, the shorts to study and the trending songs. Whatever it gets
+leaves the list by itself, so the laptop run gets shorter or disappears. YouTube usually blocks cloud computers that
+are not signed in, so it needs one thing from you, once:
+- **Set up once (10 minutes):** make a spare Google account (never your main one: YouTube may block an account used this
+  way). In Chrome, sign in to youtube.com with it, install the extension "Get cookies.txt LOCALLY", open youtube.com and
+  export the cookies. On GitHub: the repository → Settings → Secrets and variables → Actions → New secret, name
+  `YOUTUBE_COOKIES`, paste the whole file, Save. Delete the file from your computer.
+- **If it stops working** (the sign-in lasts weeks to months): an alert says so; export the cookies again and replace the
+  secret. Until then nothing breaks: the list simply waits for the laptop run below.
+- Instagram song links still need the laptop.
 YouTube and Instagram do not let the cloud computers download some things, so your laptop does them, all in one go:
 the trailers the coming reels need, older film trailers for the library, the competitor shorts to study, and this
 month's trending songs.
@@ -116,8 +127,11 @@ month's trending songs.
 - **A straight answer.** Each review shows stars out of 5 and **GO** (watch it in theatres, 3.5 and above), **WAIT** (for
   OTT, 2.5 to 3.4) or **SKIP**. The number is worked out by code from the reviews, never guessed: a critic's own stars count
   as given, a review without stars counts by a fixed word scale (positive 4, mixed 3, negative 2...).
-- **Your trusted reviewers:** Baradwaj Rangan (Galatta Plus), Prashanth Rangaswamy, Sudhir Srinivasan, The Hindu, Cinema
-  Express, The Times of India. To add or drop one, ask the Workshop (`niches/tamil-cinema/knowledge/critics.yaml`).
+- **Your trusted reviewers (since 25 Nov, all three needed):** Baradwaj Rangan (Galatta Plus), Prashanth Rangaswamy (his
+  YouTube channel) and Sudhir Srinivasan (his long review on YouTube). The Quick Review uses the earliest credible reviews
+  (The Hindu, Cinema Express, The Times of India and other named critics) and posts on release day. A review that is too
+  late is skipped, not chased. O.M and Sathyavan Savithiri are skipped. To change any of this, ask the Workshop
+  (`niches/tamil-cinema/knowledge/critics.yaml`).
 - **The calendar:** every Sunday the agent lists every Tamil release for the next 8 weeks; every day it checks the next
   14 days. A moved date is recorded by code and marked on the **Next** tab. News that sounds like a date change is
   flagged for checking.
@@ -125,6 +139,10 @@ month's trending songs.
 - **Where to see it:** Next tab → Reviews (each recent film: Quick and Trusted) and Release calendar.
 
 ### Breakdowns since 22 Nov: one clear point, a visual made for each film
+- **60 to 90 seconds, never shorter (since 25 Nov).** The plan check works out each breakdown's length from its voice and
+  refuses one under 60 seconds, so the agent adds a real detail before it is made.
+- **Fresh first (since 25 Nov).** The reels made for today post first. A reserve or a bank reel posts only when today's
+  reel for that slot could not be made, and a breakdown slot gets a breakdown, not an update.
 - **No fixed structure any more.** A breakdown has a strong hook, then tells one point in the order that works best for
   that film, then loops back to the start. The agent writes the point first in one sentence; if it does not fit in one
   sentence, the film is not ready. No "3 secrets" formulas.

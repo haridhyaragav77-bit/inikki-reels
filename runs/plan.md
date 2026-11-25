@@ -25,14 +25,18 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
   reels. Reviews go at 17:00 or later, once critics have spoken. A planned reel may move to another series' slot when
   urgency says so; write why in its plan ("slot_reason"). Check the brief's Insights for which hours work best.
 - The brief's "Releases and reviews" lines: leave 17:00 for a Quick Review on release day; plan any TRUSTED REVIEW that is
-  due (3 trusted reviewers in); make a "releases tomorrow" reel; check the next 14 days' dates (2 sources) and fix
+  due (all 3 trusted reviewers in: Baradwaj Rangan, Prashanth Rangaswamy, Sudhir Srinivasan); skip a review the brief says is too late; make a "releases tomorrow" reel; check the next 14 days' dates (2 sources) and fix
   `niches/<niche>/knowledge/releases.yaml`. A release on its own day is never breaking news.
 - Movie updates for slots from 17:00 are drafts: the Refresh run rewrites them with the day's fresh news.
 - Plans already in `plans/$TODAY/` with `"booked": true` (approved by Harish in the Workshop) keep their slots: plan the
   rest of the lineup around them, and do not use their films or sources again today.
 - Every reel follows the standard (AGENT.md 5.10) and copies its series' reference plan (`plans/reference/`).
 - Breakdowns: one point in lead.point, facts line by line (src), one hero visual drawn for the film, best a scene (5.7, 5.8).
-  Recommendations: 5.12. Trailer breakdowns: 5.13.
+  **60 to 90 seconds, never shorter (Harish, 25 Nov):** about 800 to 1,150 Tamil letters of voice; the plan check works the
+  length out and refuses a shorter one, so add a real detail, the why or the payoff until it passes. Recommendations: 5.12.
+  Trailer breakdowns: 5.13.
+- **Fresh first (Harish, 25 Nov):** write a new reel for every slot today. A breakdown slot gets a breakdown written today,
+  never a bank plan re-used and never a film posted in the last 21 days. The bank and reserves are back-ups only.
 - Pictures are the film's own official stills, posters and trailer frames (5.11): official YouTube frames and posters
   for the approved looks; for the older looks, trailer moments from the shot list in `data/trailers.json`.
 - "Ideas from Harish" in the brief are leads: use one if it passes the worth-it test (5.7).
@@ -42,8 +46,7 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
 - **Fill the day (Harish, 24 Nov).** Plan every slot in the brief's table. Never stop at "no fresh news": for an update
   slot with no new story in 2 sources, use in this order (1) a lower-ranked story from the news watch, (2) an update built
   from the brief's "Releases and reviews" calendar (this week's releases, a moved date; the calendar is already checked),
-  (3) another live series' evergreen reel (a breakdown or Watch This Next) with "slot_reason". A bank breakdown that fails
-  today's check is fixed (new design kit, a scene, no cooling graphic), not dropped. Search in batches (all queries in
+  (3) another live series' evergreen reel (a breakdown or Watch This Next, written today) with "slot_reason". Search in batches (all queries in
   one step), and keep going until the slots are full. Fewer plans than slots is the last resort only: then the post job
   fills each empty slot from a reserve or the bank, so say how many and why in one line in `data/out/alerts.md`.
 - Make the number of reserves the brief asks for (`"reserve": true`); none when it says reserves are off. Write plans to `plans/$TODAY/`.

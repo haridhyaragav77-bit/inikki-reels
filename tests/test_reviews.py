@@ -34,7 +34,7 @@ def main():
     cfg = PC.critics_cfg()
     check(PC.verdict_for(3.5, cfg)["word"] == "GO" and PC.verdict_for(3.4, cfg)["word"] == "WAIT" and PC.verdict_for(2.4, cfg)["word"] == "SKIP",
           "3.5+ GO, 2.5-3.4 WAIT, below SKIP")
-    check(PC.trusted_match("Bharadwaj Rangan", cfg) == "Baradwaj Rangan" and PC.trusted_match("TOI", cfg) == "The Times of India",
+    check(PC.trusted_match("Bharadwaj Rangan", cfg) == "Baradwaj Rangan" and PC.trusted_match("Sudhir", cfg) == "Sudhir Srinivasan" and PC.trusted_match("TOI", cfg) is None,
           "other spellings of a trusted reviewer are recognised")
 
     # the calendar: date changes recorded by code, reviews due and missed

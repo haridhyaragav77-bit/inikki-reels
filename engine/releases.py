@@ -110,10 +110,11 @@ def status_of(cal, today, plans=None):
     """Each film released in the last 7 days (and today): what is planned and what is due or missed."""
     plans = review_plans() if plans is None else plans
     t0, (w0, w1) = dt.date.fromisoformat(today), window()
+    skip = {norm(f) for f in critics().get("skip_reviews") or []}      # Harish, 25 Nov: no review, no missed alert
     out = []
     for r in cal:
         age = (t0 - dt.date.fromisoformat(r["date"])).days
-        if not 0 <= age <= 7 or str(r.get("status", "confirmed")) not in ("confirmed", "released"):
+        if not 0 <= age <= 7 or str(r.get("status", "confirmed")) not in ("confirmed", "released") or norm(r["film"]) in skip:
             continue
         got = reviews_for(r["film"], plans)
         q, tr = got[QUICK], got[TRUSTED]
@@ -176,8 +177,8 @@ def brief_lines(date, run, stories=None, drive=None):
     for r in st:
         if r.get("quick_state") == "due today":
             due.append(f"- QUICK REVIEW (movie-review) for {r['film']}: "
-                       + ("Refresh run writes it for 17:00 from the first reviews (at least "
-                          f"{cr.get('min_quick', 2)} named critics or outlets). " if run == "refresh" else "Plan run: keep 17:00 free; the Refresh run writes it. ")
+                       + ("Refresh run writes it for 17:00 from the earliest credible reviews (at least "
+                          f"{cr.get('min_quick', 2)} named critics or outlets; first {', '.join(c['name'] for c in cr.get('early') or []) or 'the big outlets'}). It must post today. " if run == "refresh" else "Plan run: keep 17:00 free; the Refresh run writes it. ")
                        + "A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).")
         if r.get("trusted_state") == "due":
             due.append(f"- TRUSTED REVIEW (trusted-review) for {r['film']} (out {r['age']} day(s) ago, window ends on day {window()[1]})")
@@ -189,7 +190,8 @@ def brief_lines(date, run, stories=None, drive=None):
     missed = [f"{r['film']} ({'Quick' if r.get('quick_state') == 'missed' else ''}{' and ' if r.get('quick_state') == 'missed' and r.get('trusted_state') == 'missed' else ''}"
               f"{'Trusted' if r.get('trusted_state') == 'missed' else ''})" for r in st if "missed" in (r.get("quick_state"), r.get("trusted_state"))]
     if missed:
-        L.append("Missed reviews: " + ", ".join(missed) + ". A Trusted Review can still go out today if the reviews are in; say so in the digest.")
+        L.append("Too late, skipped (do not plan them): " + ", ".join(missed) + ". A Quick Review posts on release day only; a Trusted "
+                 "Review only inside its window.")
     if drive is not None:
         alert_missed(drive, st, seen, date)
         save(seen)
@@ -210,8 +212,8 @@ def alert_missed(drive, st, seen, today):
                 continue
             al[aid] = today
             try:
-                status.alert(drive, f"{kind} missed: {r['film']}", f"{r['film']} came out on {r['date']} and its {kind} was not planned in time.",
-                             "The next thinking run is told to make it if the reviews are in.", "nothing, unless you want it skipped", level="warn")
+                status.alert(drive, f"{kind} skipped: {r['film']}", f"{r['film']} came out on {r['date']} and its {kind} was not made in time, "
+                             "so it is skipped (a late review helps no one).", "Nothing more is planned for it.", "Nothing to do.", level="info")
             except Exception as e:
                 print("missed-review alert not saved:", str(e)[:120])
 

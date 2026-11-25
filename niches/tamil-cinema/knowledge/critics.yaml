@@ -1,14 +1,18 @@
 # Reviewers people trust (Harish, 22 Nov; AGENT.md 10.5). Read by the plan check and the brief. Harish owns this list:
 # the thinking runs cannot change it. To add or drop a reviewer, edit this file (Workshop) or ask the Control Room chat.
 # A Trusted Review uses only these reviewers, at least `min_trusted` of them. `match` lists other spellings a plan may use.
-trusted:
+trusted:     # Harish, 25 Nov: these three only, all three needed
   - { name: "Baradwaj Rangan", outlet: "Galatta Plus", rates: verbal, match: ["baradwaj rangan", "bharadwaj rangan", "galatta plus"] }
   - { name: "Prashanth Rangaswamy", outlet: "YouTube", rates: verbal, match: ["prashanth rangaswamy", "prashanth"] }
-  - { name: "Sudhir Srinivasan", outlet: "Cinema Express", rates: stars, match: ["sudhir srinivasan", "sudhir"] }
-  - { name: "The Hindu", outlet: "The Hindu", rates: verbal, match: ["the hindu"] }
-  - { name: "Cinema Express", outlet: "The New Indian Express", rates: stars, match: ["cinema express", "new indian express"] }
-  - { name: "The Times of India", outlet: "The Times of India", rates: stars, match: ["times of india", "toi"] }
-min_trusted: 3          # a Trusted Review waits until this many have reviewed
+  - { name: "Sudhir Srinivasan", outlet: "YouTube (long review)", rates: verbal, match: ["sudhir srinivasan", "sudhir"] }
+# The Quick Review on release day: the earliest credible reviews (any named critic or outlet counts; these come first)
+early:
+  - { name: "The Hindu", outlet: "The Hindu", rates: verbal }
+  - { name: "Cinema Express", outlet: "The New Indian Express", rates: stars }
+  - { name: "The Times of India", outlet: "The Times of India", rates: stars }
+# Films whose reviews are skipped: no review reel, no "missed" alert (Harish, 25 Nov: these two are too late now)
+skip_reviews: ["O.M: Operation Mole", "Sathyavan Savithiri"]
+min_trusted: 3          # a Trusted Review waits until all three have reviewed
 min_quick: 2            # a Quick Review needs at least this many early reviews (any named critic or outlet)
 window_days: [1, 4]     # the Trusted Review goes out 1 to 4 days after release, as soon as min_trusted are in
 # A review without stars is read as one of these words, each worth a fixed score out of 5 (code, not a guess)
