@@ -21,7 +21,6 @@ hook_examples:
   - "Alien-aiyum kalaaippaaraa?"
   - "Old team. New chapter."
 music: { default: bold_poppy_mass, box_office: loud_triumphant }   # a hook, never subtle (change #6)
-motion_floor: { since: "2026-11-26", graphic_kinds: [number, bars, ladder], graphic_screens: 1, money_on_title: false, sfx_min: 6 }   # plan check (AGENT.md 5.8)
 motion_presets: [counter_rollup, bar_race, milestone_ladder, calendar_flip, map_pins, still_reframe, light_sweep]
 proof_required: 2       # trusted sources that must agree
 meme_use: ending_only

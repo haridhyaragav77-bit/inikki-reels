@@ -1,5 +1,10 @@
 # Build log (plain words, newest first)
 
+## 26 Nov 2026, later — Opus medium, no animation floor (Harish)
+Plan and Refresh on Opus at medium effort, not high (cheaper; Opus was what made the good reels). The motion floor is
+removed from the plan check: a hard minimum could push plans to over-animate. The Plan run builds each reel like its
+series' reference plan, not less, not more. Trial Reels and the cover fix stay.
+
 ## 26 Nov 2026 — Motion back, Trial Reels for every reel, safer covers (Harish)
 Root cause of the quality drop: on 23 Nov the Plan and Refresh runs moved from Opus to Sonnet to save tokens. Same story,
 two plans: 21 Nov (Opus) Suriya ₹643 Cr had two animated bar charts; 25 Nov (Sonnet) Suriya ₹770 Cr was three plain text

@@ -25,5 +25,5 @@ unique_designs: { enabled: true }    # a breakdown may not repeat the last reels
 saver: { enabled: false }            # fewer runner minutes: no reserves, no bank reels (AGENT.md 15.3)
 respect: { allow_series: [breaking-news, artwork-quote, film-breakdown] }   # what may post on a respect day
 thinking_runs: { plan: "05:37", refresh: "16:37", weekly: "sun 22:37", monthly: "1 23:07" }   # IST; the Brain's clock (AGENT.md 4.2)
-thinking_models: { plan: "opus high", refresh: "opus high", weekly: "opus high", monthly: "opus high", selftest: "haiku low" }   # model and effort per run; Plan and Refresh back on Opus 26 Nov: Sonnet plans had far less motion (AGENT.md 15.1)
+thinking_models: { plan: "opus medium", refresh: "opus medium", weekly: "opus high", monthly: "opus high", selftest: "haiku low" }   # model and effort per run; Plan and Refresh on Opus medium (Harish, 26 Nov: Sonnet plans had far less motion; medium is enough and cheaper) (AGENT.md 15.1)
 catch_up: { make_minutes: 75, refresh_until: "22:45", weekly_days: 2, monthly_days: 2 }   # missed runs run late (AGENT.md 4.2, tools/run_due.py)

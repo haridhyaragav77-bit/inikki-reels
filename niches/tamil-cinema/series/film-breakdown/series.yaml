@@ -40,7 +40,6 @@ hook_examples:
 one_point: { since: "2026-11-23", point_words: 25, min_sources: 2 }
 shape: "Hook (the title screen, 6-10 words: one specific, surprising claim about something on screen) > the point, told in 2-6 screens in the order that lands best (each screen one idea, 8-18 words, its own picture of the thing itself; a tease or a twist only where it truly keeps people watching) > end (one easy question + 1-3 words that run into the hook, so the reel loops)."
 avoid_phrases: ["மூணு ரகசியம்", "ரெண்டாவது ரகசியம்", "மூணாவது ரகசியம்", "3 secrets", "three secrets", "secret 1", "secret 2", "secret 3", "moonu ragasiyam"]
-motion_floor: { since: "2026-11-26", sfx_over_screens: 2 }   # at least 2 more sound hits than screens (plan check, AGENT.md 5.8)
 hero_kinds: [scene, board, climb, track, layers, detail]   # one per breakdown, drawn for this film (AGENT.md 5.8)
 graphics_cooldown: { meter: 10, timeline: 1, versus: 1, cards: 1, pins: 1, moral: 1, web: 1, loop: 1, standoff: 1, technique: 1 }   # not in the last N breakdowns
 source_rotation: 1   # days: a breakdown may not draw on the same source (lead.inspired_by) as another breakdown of today or the day before (plan check)
