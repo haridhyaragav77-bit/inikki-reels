@@ -69,7 +69,7 @@ Open the page's **Insights** tab any day: it says which series earn their slot, 
 
 ## 5. Everyday controls
 
-### Manual work: one laptop run every 15 to 20 days (since 22 Nov)
+### Manual work: the laptop run, now only a rare fallback (since 25 Nov)
 **Cloud first (since 25 Nov).** Every night at 11:05 PM the cloud tries the whole list itself with yt-dlp (the same
 downloader the laptop uses): trailers, older film trailers, the shorts to study and the trending songs. Whatever it gets
 leaves the list by itself, so the laptop run gets shorter or disappears. YouTube usually blocks cloud computers that
@@ -81,6 +81,8 @@ are not signed in, so it needs one thing from you, once:
 - **If it stops working** (the sign-in lasts weeks to months): an alert says so; export the cookies again and replace the
   secret. Until then nothing breaks: the list simply waits for the laptop run below.
 - Instagram song links still need the laptop.
+- **The laptop run is now only a fallback:** the Manual work tab shows it only when the cloud has failed 3 nights in a
+  row and something is still waiting (an alert tells you). Everything below applies only then.
 YouTube and Instagram do not let the cloud computers download some things, so your laptop does them, all in one go:
 the trailers the coming reels need, older film trailers for the library, the competitor shorts to study, and this
 month's trending songs.

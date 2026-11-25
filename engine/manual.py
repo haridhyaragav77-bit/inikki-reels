@@ -21,7 +21,7 @@ from .settings import ENGINE
 from . import status
 
 CFG = {"urgent_hours": 24, "warn_days": 2, "make_hours": 3, "news_hours": 24, "other_days": 3, "topup_days": 14,
-       "done_hold_hours": 48, "laptop_every_days": 15, "laptop_late_days": 20, "laptop_first_days": 3, **(ENGINE.get("manual") or {})}
+       "done_hold_hours": 48, "laptop_every_days": 15, "fallback_after": 3, "laptop_late_days": 20, "laptop_first_days": 3, **(ENGINE.get("manual") or {})}
 ORDER = {"overdue": 0, "urgent": 1, "soon": 2, "later": 3}
 
 
@@ -50,9 +50,20 @@ def due_text(due, now):
     return f"by {when} (in {h // 24} d {h % 24} h)" if h >= 24 else f"by {when} (in {h} h {int(left.total_seconds() % 3600 // 60)} min)"
 
 
+def fetch_fails(drive):
+    """Nights in a row the cloud fetch (engine/autofetch.py) failed; 0 when it works or has not run yet."""
+    try:
+        return int((drive.read_json("status", "autofetch.json") or {}).get("fails_in_a_row") or 0)
+    except Exception:
+        return 0
+
+
 def laptop_jobs(drive, now, seen, done):
     """The laptop run (Harish, 22 Nov): one job every 15-20 days for every download the cloud cannot do."""
     from . import laptop
+    fails = fetch_fails(drive)
+    if fails < int(CFG["fallback_after"]):          # cloud first (Harish, 25 Nov): the laptop is the rare fallback
+        return []
     t = laptop.todo(drive)
     c = laptop.counts(t)
     if not any(c.values()):
@@ -83,7 +94,7 @@ def laptop_jobs(drive, now, seen, done):
              "what": since + "Every 15 to 20 days: double-click 'iNiKKi Laptop Run' in the iNiKKi folder on your Desktop (set-up steps: "
                      "'How to do the laptop run' above). Keep the window open about 30 to 60 minutes. If Google Drive for desktop is on "
                      "the laptop the files go straight into Drive; otherwise drag every file in for_drive into Google Drive › iNiKKi Reels › from-laptop.",
-             "why": "YouTube and Instagram do not let the cloud computers download these: " + "; ".join(parts) + ".",
+             "why": f"The cloud downloads failed {fails} nights in a row, so the laptop is needed this time: " + "; ".join(parts) + ".",
              "suffers": suffers[:4], "due": due, "command": "Double-click: Desktop › iNiKKi › iNiKKi Laptop Run",
              "after": "The Engine sorts the files, makes the trailer shot grids, studies the shorts and tags the songs at once."}]
 

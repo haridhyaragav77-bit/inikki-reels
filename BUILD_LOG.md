@@ -1,5 +1,9 @@
 # Build log (plain words, newest first)
 
+## 25 Nov 2026, evening — Laptop run only as a rare fallback
+The Manual work tab shows the laptop run only after the cloud fetch failed 3 nights in a row (`manual.fetch_fails`,
+`autofetch` counts `fails_in_a_row`); one alert when that happens. Tab text and GUIDE.md say so.
+
 ## 25 Nov 2026, later — No short breakdown by any route
 Plans aim at 64 s or more (`margin_s`), inspection holds a made breakdown under 58 s, and a saved reserve or bank breakdown
 under 60 s is never posted (`post.long_enough`). Cloud fetch tested live: 15 of 18 items fetched with the YouTube sign-in.

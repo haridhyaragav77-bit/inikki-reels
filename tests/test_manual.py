@@ -23,6 +23,10 @@ def main():
     check(c["trailers"] == 2 and c["study"] == 2 and c["songs"] == 1, f"the laptop list has the trailers, shorts and songs: {c}")
     check(all(u.startswith("https://") for u in t["study"]) and "@" not in str(t), "the list holds public links and names only")
 
+    check(not manual.build(d, now, warn=False)["jobs"], "cloud first: while the cloud fetch works, no laptop card")
+    d.write_json("status", "autofetch.json", {"fails_in_a_row": 2})
+    check(not manual.build(d, now, warn=False)["jobs"], "2 failed nights: still no laptop card")
+    d.write_json("status", "autofetch.json", {"fails_in_a_row": 3})
     M = manual.build(d, now)
     lap = [j for j in M["jobs"] if j["kind"] == "laptop"]
     check(len(lap) == 1 and len(M["jobs"]) == 1, f"one job for every download (was three commands): {[j['kind'] for j in M['jobs']]}")

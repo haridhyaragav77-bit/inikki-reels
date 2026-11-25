@@ -1078,7 +1078,7 @@ refuses most cloud computers unless they are signed in, so the fetch uses the Gi
 spare Google account, exported once; never Harish's main account). What it gets goes into Drive `from-laptop/` and is sorted and
 taken in as if the laptop had sent it, so the laptop list shrinks by itself. If YouTube refuses even then (no secret, or the
 cookies expired), the fetch stops after the first refusal, writes one line in status, and everything waits for the laptop run as
-before. Instagram links still need the laptop. Caps: 25 files and 40 minutes a night.
+before. Instagram links still need the laptop. Caps: 25 files and 40 minutes a night. **The laptop run is a rare fallback (Harish, 25 Nov):** the Manual work tab shows it only after the cloud fetch has failed 3 nights in a row (`autofetch.fallback_after`; `fails_in_a_row` in Drive `status/autofetch.json`) with something still waiting, and an alert says so once.
 
 Some jobs only Harish's laptop can do when the cloud fetch is refused: YouTube and Instagram refuse downloads from cloud computers. Since 22 Nov they are one
 job, **the laptop run**: one command, `py clip_helper.py`, every 15 to 20 days. It reads its own to-do list from the public
