@@ -17,7 +17,7 @@ You are the Brain of iNiKKi Reels for this one run. Rules: CLAUDE.md and AGENT.m
   earliest credible reviews, it must post today; a Trusted Review once all 3 trusted reviewers are in; AGENT.md 10.5) and a "releases tomorrow" reel. Researcher: check the
   next 14 days' dates and any "News that may move a date" (2 sources); fix `niches/<niche>/knowledge/releases.yaml`.
 - Script Writer: when the brief says "Fresh evening updates", rewrite tonight's movie-updates plans with today's news
-  (skill `plan-reel`, the variety rule, 2 sources each); keep a morning plan only if it is still the strongest story.
+  (skill `plan-reel` and its movie-updates build, the same as the morning plans; the variety rule, 2 sources each); keep a morning plan only if it is still the strongest story.
 - Analyst (light): flag rising reels and red metrics from the brief; add one follow-up lead for tomorrow.
 - Script Writer: one breakdown plan for the bank (`plans/bank/`) if the brief says the bank is short. Skill `plan-reel`,
   and it must pass `python -m engine.plancheck`.

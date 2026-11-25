@@ -42,7 +42,7 @@ Branding Expert → Virality Advisor. Plan the lineup the brief asks for, with s
 - "Ideas from Harish" in the brief are leads: use one if it passes the worth-it test (5.7).
 - Check every plan: `for f in plans/$TODAY/*.json; do python -m engine.plancheck "$f" | tail -n 3; done`. Fix what it reports.
 - **Same build as the reference (26 Nov).** Build each reel like its series' reference plan: an update shows its number or
-  date as a count-up (`number`), a comparison as `bars`; plain title cards only for the opening. Not less, not more.
+  date as a count-up (`number`), a comparison as `bars`; plain title cards only for the opening. Not less, not more (the build is in skill `plan-reel`).
 - For each film under "Trailers to get" in the brief, find its official YouTube trailer and add "Film = link" to
   `data/notes/trailer_links.md`.
 - **Fill the day (Harish, 24 Nov).** Plan every slot in the brief's table. Never stop at "no fresh news": for an update
