@@ -1,0 +1,535 @@
+{
+ "id": "2026-11-26-breakdown-se7en-wrong-draft",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "noir",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (the ending survived by a mix-up), told as the first draft, the wrong envelope, the director, the star's contract, the studio's one win: about 60 s.",
+ "lead": {
+  "topic": "Se7en: the ending that survived because of a mistake",
+  "angle": "behind_the_scenes",
+  "insight": "Andrew Kevin Walker's first draft of Se7en ended with the box in the desert. The studio wanted a softer ending. New Line then sent David Fincher the original draft by mistake; he loved it and, when the 'correct' draft came, said he was not interested in that one. Brad Pitt made it a condition in his contract that the ending stays. The studio's one win: a closing Hemingway line spoken by Morgan Freeman.",
+  "why_now": "Late-night slot: a dark thriller and a story people send. Not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Seven_(1995_film) (Walker's script; the ending; Fincher's involvement)",
+   "https://www.hollywoodreporter.com/heat-vision/se7en-screenwriter-how-a-mixup-david-fincher-led-gutsy-ending-963957 (Walker: the original draft was sent to Fincher by mistake)",
+   "https://nofilmschool.com/mistake-in-se7en (clerical error; Fincher turned down the rewritten draft)",
+   "https://www.joblo.com/se7en-what-happened/ (studio wanted another ending; Pitt: the ending written into his contract; the Hemingway coda was the studio's request)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, The Hollywood Reporter, No Film School, JoBlo; checked 26 Nov by web search)",
+  "point": "Se7en's box ending survived because the studio mailed Fincher the wrong draft, and Brad Pitt wrote 'the ending stays' into his contract.",
+  "spoilers": "None: the reel never says what is in the box."
+ },
+ "worth_it": {
+  "learn": "How one of cinema's darkest endings nearly got cut, and who saved it.",
+  "stop": "A famous ending saved by a mailing mistake.",
+  "why_now": "Late night, thriller mood.",
+  "send_to": "The friend who loves Fincher films.",
+  "best_angle": "Yes: the mistake is the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "threat_north",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "ominous"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "investigation"
+   },
+   {
+    "track": "villains_strategy",
+    "from": 0.0,
+    "screen": 5,
+    "mood": "tension"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/se7en/u5pP9dWGCu8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "u5pP9dWGCu8",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/se7en/u5pP9dWGCu8_maxres1.jpg",
+   "fetch": {
+    "youtube": "u5pP9dWGCu8",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/se7en/u5pP9dWGCu8_maxres2.jpg",
+   "fetch": {
+    "youtube": "u5pP9dWGCu8",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/se7en/u5pP9dWGCu8_maxres3.jpg",
+   "fetch": {
+    "youtube": "u5pP9dWGCu8",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "செவன் படத்தோட க்ளைமாக்ஸ், ஒரு தப்பால தான் தப்பிச்சது.",
+   "voice_tg": "Seven padathoda climax, oru thappaala thaan thappichadhu.",
+   "image": "key",
+   "film": "SE7EN",
+   "type": "SAVED BY A MISTAKE",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    1,
+    2
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    3
+   ],
+   "voice": "ரைட்டர் ஆண்ட்ரூ கெவின் வாக்கர் எழுதின முதல் ஸ்கிரிப்ட், பாலைவனத்துல ஒரு பெட்டியோட முடியும். ஸ்டுடியோவுக்கு அது பிடிக்கல. சந்தோஷமா முடிக்கணும்னு மாத்த சொன்னாங்க.",
+   "voice_tg": "Writer Andrew Kevin Walker ezhudhina mudhal script, paalaivanathula oru pettiyoda mudiyum. Studio-vukku adhu pidikkala. Sandhoshama mudikkanum-nu maattha sonnaanga.",
+   "heading": "THE FIRST DRAFT",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "script",
+     "icon": "book",
+     "x": 0.18,
+     "y": 0.55,
+     "size": 1.1,
+     "color": "white",
+     "cue": {
+      "word": "ஸ்கிரிப்ட்,"
+     },
+     "label": "WALKER'S SCRIPT",
+     "label_at": "below"
+    },
+    {
+     "id": "sun",
+     "icon": "sun",
+     "x": 0.5,
+     "y": 0.16,
+     "size": 0.9,
+     "cue": {
+      "word": "பாலைவனத்துல"
+     }
+    },
+    {
+     "id": "box",
+     "icon": "question",
+     "x": 0.5,
+     "y": 0.62,
+     "size": 1.1,
+     "color": "accent",
+     "cue": {
+      "word": "பெட்டியோட"
+     },
+     "label": "THE BOX",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "முடியும்."
+       }
+      }
+     ]
+    },
+    {
+     "id": "studio",
+     "icon": "building",
+     "x": 0.82,
+     "y": 0.6,
+     "size": 1.3,
+     "cue": {
+      "word": "ஸ்டுடியோவுக்கு"
+     },
+     "label": "THE STUDIO",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "பிடிக்கல."
+       }
+      }
+     ]
+    },
+    {
+     "id": "x",
+     "icon": "cross",
+     "x": 0.5,
+     "y": 0.38,
+     "size": 0.8,
+     "color": "red",
+     "cue": {
+      "word": "மாத்த"
+     }
+    }
+   ],
+   "slam_text": "CHANGE THE ENDING",
+   "slam_cue": {
+    "word": "சொன்னாங்க."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பெட்டியோட"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "சொன்னாங்க."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "அப்புறம் ஒரு தப்பு நடந்துச்சு. ஸ்டுடியோ, இயக்குநர் டேவிட் ஃபின்ச்சருக்கு தவறுதலா அந்த பழைய ஸ்கிரிப்ட்டையே அனுப்பிட்டாங்க.",
+   "voice_tg": "Appuram oru thappu nadanduchu. Studio, iyakkunar David Fincher-ukku thavarudhalaa andha pazhaya script-aiye anuppittaanga.",
+   "heading": "THE WRONG ENVELOPE",
+   "ground": "city",
+   "props": [
+    {
+     "id": "office",
+     "icon": "building",
+     "x": 0.16,
+     "y": 0.6,
+     "size": 1.3,
+     "cue": {
+      "word": "ஸ்டுடியோ,"
+     },
+     "label": "NEW LINE",
+     "label_at": "above"
+    },
+    {
+     "id": "oops",
+     "icon": "exclaim",
+     "x": 0.5,
+     "y": 0.18,
+     "size": 0.9,
+     "color": "red",
+     "cue": {
+      "word": "தப்பு"
+     }
+    },
+    {
+     "id": "fincher",
+     "icon": "person",
+     "x": 0.84,
+     "y": 0.7,
+     "size": 1.1,
+     "color": "white",
+     "cue": {
+      "word": "ஃபின்ச்சருக்கு"
+     },
+     "label": "FINCHER",
+     "label_at": "below"
+    },
+    {
+     "id": "env",
+     "icon": "letter",
+     "x": 0.2,
+     "y": 0.45,
+     "size": 0.9,
+     "color": "red",
+     "cue": {
+      "word": "பழைய"
+     },
+     "label": "WRONG DRAFT",
+     "label_at": "above",
+     "path": [
+      [
+       0.2,
+       0.45
+      ],
+      [
+       0.5,
+       0.38
+      ],
+      [
+       0.8,
+       0.5
+      ]
+     ],
+     "move": 1.6,
+     "move_cue": {
+      "word": "அனுப்பிட்டாங்க."
+     }
+    }
+   ],
+   "slam_text": "THE WRONG DRAFT",
+   "slam_cue": {
+    "word": "அனுப்பிட்டாங்க."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "அனுப்பிட்டாங்க."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "push",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "ஃபின்ச்சருக்கு அந்த முடிவு ரொம்ப பிடிச்சுது. பிறகு சரியான ஸ்கிரிப்ட் வந்தப்போ, இது வேண்டாம், முதல் ஸ்கிரிப்ட் தான் வேணும்னு சொன்னார்.",
+   "voice_tg": "Fincher-ukku andha mudivu romba pidichudhu. Piragu sariyaana script vandhappo, idhu vendaam, mudhal script thaan venum-nu sonnaar.",
+   "image": "s1",
+   "name": "DAVID FINCHER",
+   "role": "DIRECTOR",
+   "phrase": "ONLY THE FIRST DRAFT",
+   "source": "THE HOLLYWOOD REPORTER",
+   "cues": {
+    "name": {
+     "word": "ஃபின்ச்சருக்கு"
+    },
+    "phrase": {
+     "word": "வேணும்னு"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வேணும்னு"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "whip",
+   "src": 3,
+   "voice": "பிராட் பிட் ஒரு கண்டிஷன் போட்டார். அந்த பெட்டி முடிவு மாறவே கூடாது. அதை காண்ட்ராக்ட்லயே எழுதி வச்சார்.",
+   "voice_tg": "Brad Pitt oru condition pottaar. Andha petti mudivu maarave koodaadhu. Adhai contract-laye ezhudhi vachaar.",
+   "image": "s2",
+   "name": "BRAD PITT",
+   "role": "PLAYS DETECTIVE MILLS",
+   "phrase": "THE ENDING STAYS. IN WRITING.",
+   "source": "JOBLO · PITT INTERVIEW",
+   "cues": {
+    "name": {
+     "word": "பிராட்"
+    },
+    "phrase": {
+     "word": "காண்ட்ராக்ட்லயே"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "காண்ட்ராக்ட்லயே"
+     },
+     "type": "stamp"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "layers",
+   "in": "push",
+   "src": 3,
+   "voice": "ஸ்டுடியோவுக்கு கிடைச்சது ஒண்ணே ஒண்ணு. கடைசியில மார்கன் ஃப்ரீமேன் சொல்ற, ஹெமிங்வேயோட ஒரு வரி.",
+   "voice_tg": "Studio-vukku kidaichadhu onne onnu. Kadaisiyila Morgan Freeman solra, Hemingway-yoda oru vari.",
+   "heading": "THE STUDIO'S ONE WIN",
+   "layers": [
+    {
+     "label": "THE BOX ENDING",
+     "sub": "KEPT AS WRITTEN",
+     "cue": {
+      "word": "ஒண்ணே"
+     }
+    },
+    {
+     "label": "A HEMINGWAY LINE",
+     "sub": "SPOKEN BY MORGAN FREEMAN",
+     "cue": {
+      "word": "ஹெமிங்வேயோட"
+     }
+    }
+   ],
+   "split_cue": {
+    "word": "வரி."
+   },
+   "slam_text": "ONE LINE. NOTHING ELSE.",
+   "slam_cue": {
+    "word": "வரி."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வரி."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "chain",
+   "in": "whip",
+   "src": "analysis",
+   "voice": "ஒரு தப்பான ஸ்கிரிப்ட். பிடிச்சுப்போன இயக்குநர். பிடிவாதமான ஹீரோ. அதனால தான், சினிமாவோட பெரிய அதிர்ச்சி முடிவுகள்ல ஒண்ணு இன்னும் அப்படியே இருக்கு.",
+   "voice_tg": "Oru thappaana script. Pidichuppona iyakkunar. Pidivaadhamaana hero. Adhanaala thaan, cinemavoda periya adhirchi mudivugalla onnu innum appadiye irukku.",
+   "heading": "WHY IT SURVIVED",
+   "steps": [
+    {
+     "label": "WRONG DRAFT",
+     "cue": {
+      "word": "ஸ்கிரிப்ட்."
+     }
+    },
+    {
+     "label": "FINCHER SAYS YES",
+     "cue": {
+      "word": "இயக்குநர்."
+     }
+    },
+    {
+     "label": "PITT'S CONTRACT",
+     "cue": {
+      "word": "ஹீரோ."
+     }
+    },
+    {
+     "label": "THE ENDING SURVIVES",
+     "cue": {
+      "word": "இருக்கு."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "இருக்கு."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "பெட்டியில என்ன இருக்குனு உங்களுக்கு தெரியுமா? ஸ்பாய்லர் இல்லாம கமெண்ட்ல சொல்லுங்க. நம்புங்க, இது நிஜக் கதை.",
+   "voice_tg": "Pettiyila enna irukku-nu ungalukku theriyumaa? Spoiler illaama comment-la sollunga. Nambunga, idhu nija kadhai.",
+   "echo": "SE7EN · SAVED BY A MISTAKE",
+   "question": [
+    {
+     "text": "WHAT'S IN",
+     "size": 130
+    },
+    {
+     "text": "THE BOX?",
+     "size": 150,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "ஸ்பாய்லர் இல்லாம சொல்லுங்க",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "s3"
+  }
+ ],
+ "package": {
+  "caption": [
+   "Se7en's ending was saved by a mistake.",
+   "The studio wanted a softer ending. Then New Line sent David Fincher the original draft by mistake; he wanted only that one. Brad Pitt made the ending a condition of his contract. The studio got one thing: a Hemingway line at the very end.",
+   "What's in the box? No spoilers in the comments.",
+   "Send this to your Fincher friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "SE7EN · SAVED BY A MISTAKE",
+  "slot": "21:30",
+  "first_comment": "Which film ending would you never change?"
+ },
+ "slot_reason": "Dark, longer evergreen breakdown for the late-night slot.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 4,
+  "original": 7,
+  "total_100": 68
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

@@ -1,0 +1,260 @@
+{
+ "id": "2026-11-26-update-dec-4-train-hello-kadhal",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 26 NOV 2026",
+ "lead": {
+  "film": "dec-4-friday",
+  "new_event": "Next Friday, 4 Dec: Train (Mysskin, Vijay Sethupathi) and Hello Kadhal (Arya, Nikhila Vimal) both open; Hello Kadhal's date now has 2 sources",
+  "topic": "4 December: Train and Hello Kadhal open on the same Friday",
+  "facts": [
+   "Train, Mysskin with Vijay Sethupathi, releases 4 Dec 2026 (Hollywood Reporter India, Pinkvilla)",
+   "Hello Kadhal, Arya and Nikhila Vimal, releases 4 Dec; Telugu as Hello Prema (AP7AM, NewKerala)",
+   "8 days to go from today"
+  ],
+  "sources": [
+   "https://www.hollywoodreporterindia.com/amp/story/features/insight/train-mysskin-vijay-sethupathi-action-thriller-locks-december-2026-release",
+   "https://www.pinkvilla.com/entertainment/south/train-release-date-vijay-sethupathis-action-thriller-with-director-mysskin-to-hit-big-screens-on-december-4-2026-1405872",
+   "https://www.ap7am.com/en/137639/aryas-romantic-entertainer-hello-kaadhal-to-hit-screens-on-december-4",
+   "https://www.newkerala.com/news/a/aryas-romantic-entertainer-hello-kaadhal-hit-screens-december-332.htm"
+  ],
+  "note": "Fill-the-day step 2: no fresh 2-source story for a third film today, so this is built from the checked release calendar (next Friday's clash)."
+ },
+ "worth_it": {
+  "fan_opens_because": "What's on next Friday? Two films, one date.",
+  "spoilers": "None: dates and names only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_pattampoochi",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxresdefault"
+   }
+  },
+  "t1": {
+   "src": "engine/.cache/stills/train/Q_hIBHgIDK8_maxres2.jpg",
+   "fetch": {
+    "youtube": "Q_hIBHgIDK8",
+    "frame": "maxres2"
+   }
+  },
+  "h1": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres2.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres2"
+   }
+  },
+  "h2": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres1.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres1"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "NEXT FRIDAY",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "TWO FILMS. ONE DATE.",
+     "size": 95,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "t1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "TRAIN · MYSSKIN × VIJAY SETHUPATHI",
+   "value": 4,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "IN THEATRES",
+    "HOLLYWOOD REPORTER INDIA"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "h1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "HELLO KADHAL · ARYA × NIKHILA VIMAL",
+   "value": 4,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "ALSO IN TELUGU",
+    "AP7AM · NEWKERALA"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "h2",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.0,
+   "kicker": "THE COUNTDOWN",
+   "value": 8,
+   "unit": " DAYS",
+   "land": 1.7,
+   "tag": [
+    "FROM TODAY",
+    "26 NOV"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "4 DEC · TRAIN VS HELLO KADHAL",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 130
+    },
+    {
+     "text": "FIRST?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Thriller or romance?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Next Friday, 4 December: two films, one date.",
+   "Mysskin's Train with Vijay Sethupathi, and Arya and Nikhila Vimal's Hello Kadhal (Hello Prema in Telugu).",
+   "Which one are you booking first?",
+   "Send this to the friend you go to the movies with."
+  ],
+  "cover": "4 DEC · TRAIN VS HELLO KADHAL",
+  "slot": "12:30",
+  "first_comment": "Train or Hello Kadhal: which first?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Week-ahead plan for the lunch slot (fill-the-day step 2, from the checked calendar); not time-critical, so after the morning news.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 5,
+  "total_100": 66
+ }
+}

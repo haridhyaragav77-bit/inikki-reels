@@ -1,0 +1,505 @@
+{
+ "id": "2026-11-26-breakdown-jai-bhim-real-case",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "forest",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (the case was real), told as the arrest, the wife, the lawyer's petition, the judge he became, and what came after: about 55 s.",
+ "lead": {
+  "topic": "Jai Bhim: the real 1993 case behind the film",
+  "angle": "true_story",
+  "insight": "Jai Bhim retells a real case: in 1993 in Cuddalore district, Rajakannu was arrested and went missing from police custody. His wife Parvathi (Sengeni in the film) fought for him; lawyer K. Chandru filed a habeas corpus petition and won in 1994, and later became a Madras High Court judge. Suriya plays him. After the film, Suriya's 2D Entertainment put ₹10 lakh in a deposit in Parvathi's name.",
+  "why_now": "Thursday evening, weekend watch plans; a true-story angle like the Soorarai Pottru reel. Not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jai_Bhim_(film) (based on the 1993 case; Suriya as Chandru; Lijomol Jose as Sengeni)",
+   "https://telanganatoday.com/k-chandru-and-the-real-story-behind-jai-bhim (Cuddalore district 1993; Rajakannu arrested 21 March 1993 and went missing from the police station; Chandru's habeas corpus petition won in 1994)",
+   "https://www.thenewsminute.com/amp/story/flix/suriya-donates-rs-10-lakh-parvati-ammal-real-life-inspiration-jai-bhim-157622 (Sengeni is based on Parvathi; Rs 10 lakh fixed deposit by 2D Entertainment, Nov 2021)",
+   "https://en.wikipedia.org/wiki/K._Chandru (lawyer, later judge of the Madras High Court)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Telangana Today, The News Minute; checked 26 Nov by web search)",
+  "point": "Jai Bhim is a real 1993 case: Rajakannu vanished from police custody, and lawyer Chandru, later a judge, fought it for his wife Parvathi.",
+  "spoilers": "Only the public record of the real case, which the film's own posters and press told."
+ },
+ "worth_it": {
+  "learn": "The people and the court case behind Jai Bhim, and what a habeas corpus petition is.",
+  "stop": "The case in Jai Bhim really happened, in 1993.",
+  "why_now": "Weekend watch plans; true stories travel.",
+  "send_to": "The friend who cried at Jai Bhim.",
+  "best_angle": "Yes: the real people are the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "investigation"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 5,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/jai-bhim/Gc6dEDnL8JA_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Gc6dEDnL8JA",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/jai-bhim/Gc6dEDnL8JA_maxres1.jpg",
+   "fetch": {
+    "youtube": "Gc6dEDnL8JA",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/jai-bhim/Gc6dEDnL8JA_maxres2.jpg",
+   "fetch": {
+    "youtube": "Gc6dEDnL8JA",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/jai-bhim/Gc6dEDnL8JA_maxres3.jpg",
+   "fetch": {
+    "youtube": "Gc6dEDnL8JA",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "ஜெய் பீம் படத்துல வர்ற கேஸ், கற்பனை இல்ல. 1993-ல நிஜமா நடந்தது.",
+   "voice_tg": "Jai Bhim padathula varra case, karpanai illa. 1993-la nijama nadandhadhu.",
+   "image": "key",
+   "film": "JAI BHIM",
+   "type": "A REAL 1993 CASE",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": 1,
+   "voice": "1993, கடலூர் மாவட்டம். போலீஸ் ராஜாகண்ணுவை கைது பண்றாங்க. அப்புறம், ஸ்டேஷன்ல இருந்து அவர் காணாம போயிட்டார்னு சொல்றாங்க. அவர் திரும்ப வரவே இல்ல.",
+   "voice_tg": "1993, Cuddalore maavattam. Police Rajakannu-vai kaidhu pandraanga. Appuram, station-la irundhu avar kaanaama poyittaar-nu solraanga. Avar thirumba varave illa.",
+   "heading": "CUDDALORE, 1993",
+   "ground": "road",
+   "props": [
+    {
+     "id": "station",
+     "icon": "building",
+     "x": 0.72,
+     "y": 0.62,
+     "size": 1.4,
+     "cue": {
+      "word": "மாவட்டம்."
+     },
+     "label": "POLICE STATION",
+     "label_at": "above"
+    },
+    {
+     "id": "man",
+     "icon": "person",
+     "x": 0.2,
+     "y": 0.72,
+     "size": 1.1,
+     "color": "white",
+     "cue": {
+      "word": "ராஜாகண்ணுவை"
+     },
+     "label": "RAJAKANNU",
+     "label_at": "below",
+     "enter": "fade",
+     "path": [
+      [
+       0.2,
+       0.72
+      ],
+      [
+       0.62,
+       0.72
+      ]
+     ],
+     "move": 1.6,
+     "move_cue": {
+      "word": "கைது"
+     },
+     "acts": [
+      {
+       "do": "fade",
+       "cue": {
+        "word": "காணாம"
+       }
+      }
+     ]
+    },
+    {
+     "id": "q",
+     "icon": "question",
+     "x": 0.5,
+     "y": 0.3,
+     "size": 1.0,
+     "color": "red",
+     "cue": {
+      "word": "சொல்றாங்க."
+     },
+     "label": "MISSING?",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "இல்ல."
+       }
+      }
+     ]
+    }
+   ],
+   "slam_text": "HE NEVER CAME BACK",
+   "slam_cue": {
+    "word": "இல்ல."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கைது"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "இல்ல."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "whip",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "படத்துல வர்ற செங்கேணி, ராஜாகண்ணுவோட மனைவி பார்வதி. கணவனுக்கு என்ன ஆச்சுனு தெரிஞ்சுக்க, அவங்க நீதிமன்றம் வரைக்கும் போராடினாங்க.",
+   "voice_tg": "Padathula varra Sengeni, Rajakannu-voda manaivi Parvathi. Kanavanukku enna aachu-nu therinjukka, avanga needhimandram varaikkum poraadinaanga.",
+   "image": "s1",
+   "name": "PARVATHI",
+   "role": "RAJAKANNU'S WIFE · SENGENI IN THE FILM",
+   "phrase": "SHE TOOK IT TO COURT",
+   "source": "THE NEWS MINUTE · 2021",
+   "cues": {
+    "name": {
+     "word": "பார்வதி."
+    },
+    "phrase": {
+     "word": "நீதிமன்றம்"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "நீதிமன்றம்"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "board",
+   "in": "push",
+   "src": [
+    1,
+    3
+   ],
+   "voice": "அவங்க பக்கம் நின்னவர், வழக்கறிஞர் சந்துரு. அவர் போட்டது ஹேபியஸ் கார்பஸ் மனு. அதாவது, காணாம போனவரை கோர்ட் முன்னாடி கொண்டு வாங்க. 1994-ல அந்த வழக்கு ஜெயிச்சுது.",
+   "voice_tg": "Avanga pakkam ninnavar, vazhakkarignar Chandru. Avar pottadhu habeas corpus manu. Adhaavadhu, kaanaama ponavarai court munnaadi kondu vaanga. 1994-la andha vazhakku jeyichudhu.",
+   "heading": "PARVATHI'S CASE",
+   "center": {
+    "label": "HABEAS CORPUS",
+    "sub": "BRING THE PERSON TO COURT",
+    "image": "s2"
+   },
+   "clues": [
+    {
+     "label": "LAWYER CHANDRU",
+     "sub": "TOOK HER CASE",
+     "cue": {
+      "word": "சந்துரு."
+     }
+    },
+    {
+     "label": "THE PETITION",
+     "sub": "HABEAS CORPUS",
+     "cue": {
+      "word": "கார்பஸ்"
+     }
+    },
+    {
+     "label": "BRING HIM",
+     "sub": "BEFORE THE COURT",
+     "cue": {
+      "word": "கோர்ட்"
+     }
+    },
+    {
+     "label": "1994",
+     "sub": "THE CASE IS WON",
+     "cue": {
+      "word": "ஜெயிச்சுது."
+     }
+    }
+   ],
+   "slam_text": "THE CASE WAS WON",
+   "slam_cue": {
+    "word": "ஜெயிச்சுது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கார்பஸ்"
+     },
+     "type": "tick"
+    },
+    {
+     "at": {
+      "word": "ஜெயிச்சுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "whip",
+   "src": [
+    0,
+    3
+   ],
+   "voice": "அந்த வழக்கறிஞர் சந்துரு, பின்னாடி மெட்ராஸ் ஹைகோர்ட் நீதிபதி ஆனார். படத்துல சூர்யா நடிச்சது அவரோட கேரக்டர் தான்.",
+   "voice_tg": "Andha vazhakkarignar Chandru, pinnaadi Madras Highcourt needhibadhi aanaar. Padathula Suriya nadichadhu avaroda character thaan.",
+   "image": "s3",
+   "name": "K. CHANDRU",
+   "role": "LAWYER, LATER HIGH COURT JUDGE",
+   "phrase": "SURIYA PLAYS HIM",
+   "source": "WIKIPEDIA · K. CHANDRU",
+   "cues": {
+    "name": {
+     "word": "சந்துரு,"
+    },
+    "phrase": {
+     "word": "சூர்யா"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சூர்யா"
+     },
+     "type": "pop"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": 2,
+   "voice": "படம் வந்த பிறகு, சூர்யா பார்வதி அம்மா பேர்ல பத்து லட்சம் ரூபாய் டெபாசிட் போட்டார். திரையில முடிஞ்சது கதை. அவங்களுக்கு அது வாழ்க்கை.",
+   "voice_tg": "Padam vandha piragu, Suriya Parvathi amma perla patthu latcham roobaai deposit pottaar. Thiraiyila mudinjadhu kadhai. Avangalukku adhu vaazhkkai.",
+   "heading": "AFTER THE FILM",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "scr",
+     "icon": "screen",
+     "x": 0.22,
+     "y": 0.6,
+     "size": 1.3,
+     "cue": {
+      "word": "படம்"
+     },
+     "label": "THE FILM",
+     "label_at": "below"
+    },
+    {
+     "id": "home",
+     "icon": "house",
+     "x": 0.78,
+     "y": 0.6,
+     "size": 1.3,
+     "cue": {
+      "word": "அம்மா"
+     },
+     "label": "PARVATHI",
+     "label_at": "below"
+    },
+    {
+     "id": "heart",
+     "icon": "heart",
+     "x": 0.5,
+     "y": 0.2,
+     "size": 0.9,
+     "color": "red",
+     "cue": {
+      "word": "திரையில"
+     },
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "வாழ்க்கை."
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "scr",
+     "to": "home",
+     "cue": {
+      "word": "டெபாசிட்"
+     },
+     "style": "arrow",
+     "label": "FIXED DEPOSIT"
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 10,
+    "unit": " LAKH",
+    "cue": {
+     "word": "லட்சம்"
+    },
+    "d": 1.2,
+    "x": 0.5,
+    "y": 0.4
+   },
+   "slam_text": "A STORY ON SCREEN. HER LIFE.",
+   "slam_cue": {
+    "word": "வாழ்க்கை."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "லட்சம்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "இன்னொரு உண்மைக் கதை படம் வேணுமா? கமெண்ட்ல சொல்லுங்க. ஏன்னா இதுவரை சொன்னது எல்லாமே நிஜம்.",
+   "voice_tg": "Innoru unmai kadhai padam venumaa? Comment-la sollunga. Yennaa idhuvarai sonnadhu ellaame nijam.",
+   "echo": "JAI BHIM · A REAL 1993 CASE",
+   "question": [
+    {
+     "text": "NEXT",
+     "size": 130
+    },
+    {
+     "text": "TRUE STORY?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "அடுத்த உண்மைக் கதை?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key"
+  }
+ ],
+ "package": {
+  "caption": [
+   "The case in Jai Bhim really happened, in 1993.",
+   "In Cuddalore district, Rajakannu was arrested and went missing from police custody. His wife Parvathi (Sengeni in the film) fought for him; lawyer K. Chandru filed a habeas corpus petition and won in 1994, and later became a Madras High Court judge. Suriya plays him.",
+   "Which true story should we break down next?",
+   "Send this to the friend who cried at Jai Bhim."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "JAI BHIM · THE REAL CASE",
+  "slot": "20:00",
+  "first_comment": "Which Tamil film based on a true story hit you hardest?"
+ },
+ "slot_reason": "Evergreen breakdown for the evening slot, when people watch longer reels.",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 7,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 7,
+  "total_100": 71
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

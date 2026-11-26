@@ -1,0 +1,252 @@
+{
+ "id": "2026-11-26-update-minnum-oar-iravu-one-night",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 26 NOV 2026",
+ "lead": {
+  "film": "minnum-oar-iravu",
+  "new_event": "Minnum Oar Iravu opens tomorrow, 27 Nov: a one-night crime thriller with Inigo Prabhakaran",
+  "topic": "Minnum Oar Iravu: the one-night thriller out tomorrow",
+  "facts": [
+   "In theatres worldwide on 27 Nov (Moviegalleri, District listing)",
+   "Inigo Prabhakaran stars; five friends take gold from a car crash and are hunted through one night (the makers' synopsis)"
+  ],
+  "sources": [
+   "https://moviegalleri.net/2026/11/minnum-oar-iravu-the-intriguing-story-behind-inigo-prabhakars-next-film/",
+   "https://www.district.in/movies/minnum-oar-iravu-movie-tickets-MV239787",
+   "https://moviewingz.com/one-night-countless-secrets-no-escape-from-the-truth-minnum-oar-iravu/"
+  ],
+  "note": "Reserve, today only (stale tomorrow). The premise is the makers' own synopsis, no spoilers."
+ },
+ "worth_it": {
+  "fan_opens_because": "A thriller set in one night, out tomorrow.",
+  "spoilers": "None: only the makers' synopsis.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_oorum_blood",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres2.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres1.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres3.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "MINNUM OAR IRAVU",
+     "size": 170,
+     "y": 1310
+    },
+    {
+     "text": "OUT TOMORROW",
+     "size": 110,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "IN THEATRES",
+   "value": 27,
+   "unit": " NOV",
+   "land": 1.7,
+   "tag": [
+    "WORLDWIDE",
+    "DISTRICT · MOVIEGALLERI"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "GOLD FROM A CAR CRASH",
+   "value": 5,
+   "unit": " FRIENDS",
+   "land": 1.7,
+   "tag": [
+    "THE MAKERS' STORY",
+    "NO SPOILERS"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.0,
+   "kicker": "AND NO WAY OUT",
+   "value": 1,
+   "unit": " NIGHT",
+   "land": 1.7,
+   "tag": [
+    "CRIME THRILLER",
+    "INIGO PRABHAKARAN"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ],
+   "money": false
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "MINNUM OAR IRAVU · TOMORROW",
+   "question": [
+    {
+     "text": "WATCHING",
+     "size": 130
+    },
+    {
+     "text": "TOMORROW?",
+     "size": 140,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "One night. Five friends.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Minnum Oar Iravu is in theatres tomorrow, 27 Nov.",
+   "Inigo Prabhakaran leads a crime thriller set in one night: five friends, gold from a car crash, and a manhunt.",
+   "Watching it tomorrow?",
+   "Send this to your thriller friend."
+  ],
+  "cover": "MINNUM OAR IRAVU · TOMORROW",
+  "slot": "reserve",
+  "first_comment": "One-night thrillers: which is your favourite?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: fills any slot whose reel is held today; stale tomorrow.",
+ "reserve": true,
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 6,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 5,
+  "total_100": 61
+ }
+}

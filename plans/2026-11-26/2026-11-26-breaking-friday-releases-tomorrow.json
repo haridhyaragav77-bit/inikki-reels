@@ -1,0 +1,253 @@
+{
+ "id": "2026-11-26-breaking-friday-releases-tomorrow",
+ "series": "breaking-news",
+ "template": "flash",
+ "fps": 30,
+ "length_s": [
+  15,
+  25
+ ],
+ "badge": "TOMORROW",
+ "when": "26 NOV",
+ "ticker": "FRIDAY 27 NOV · MINNUM OAR IRAVU · DELIVERY BOY · MOUNA MOZHIGAL · IN THEATRES",
+ "lead": {
+  "topic": "Releases tomorrow, Friday 27 Nov: Minnum Oar Iravu, Delivery Boy, Mouna Mozhigal",
+  "facts": [
+   "Minnum Oar Iravu (Inigo Prabhakaran, crime thriller) in theatres 27 Nov (Moviegalleri, District)",
+   "Delivery Boy (Leo Sivakumar) in theatres 27 Nov (Telangana Today, NewsBytes)",
+   "Mouna Mozhigal (comedy romance) 27 Nov (releases.yaml: IANS via NewKerala, Prokerala; Filmibeat calendar)"
+  ],
+  "sources": [
+   "https://moviegalleri.net/2026/11/minnum-oar-iravu-the-intriguing-story-behind-inigo-prabhakars-next-film/",
+   "https://www.district.in/movies/minnum-oar-iravu-movie-tickets-MV239787",
+   "https://telanganatoday.com/nani-directed-delivery-boy-starring-leo-sivakumar-gets-november-27-release-date",
+   "https://www.newsbytesapp.com/news/entertainment/delivery-boy-release-date-announced/story",
+   "https://www.filmibeat.com/tamil/upcoming-movies.html"
+  ],
+  "note": "The brief's one 'releases tomorrow' reel. Cosmic Samson is left out (tentative). Yesterday's three-film update did poorly, so this one uses the Flash look with the date first."
+ },
+ "worth_it": {
+  "confirmed": "Yes: each date in 2 sources (release calendar, checked again 26 Nov).",
+  "today": "Tomorrow's releases: people plan the weekend tonight.",
+  "stills": "Official trailer frames for each film."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "under_attack",
+    "from": 2.0,
+    "screen": 0,
+    "mood": "urgent stinger"
+   },
+   {
+    "track": "song_raga_of_revenge",
+    "from": 87.8,
+    "screen": 1,
+    "mood": "confident"
+   }
+  ],
+  "level_db": -12.5,
+  "xfade": 0.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxres2.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxres2"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/minnum-oar-iravu/wL3v1rvh1z4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "wL3v1rvh1z4",
+    "frame": "maxresdefault"
+   }
+  },
+  "db": {
+   "src": "engine/.cache/stills/delivery-boy/b77NFLgDXio_maxres2.jpg",
+   "fetch": {
+    "youtube": "b77NFLgDXio",
+    "frame": "maxres2"
+   }
+  },
+  "mm": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres2.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.45,
+   "fy": 0.35,
+   "dur": 3.2,
+   "film": "FRIDAY RELEASES",
+   "what": "IN THEATRES TOMORROW",
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.8,
+     "type": "glitch"
+    }
+   ],
+   "poster": "poster",
+   "poster_tag": "OFFICIAL STILL"
+  },
+  {
+   "kind": "date",
+   "in": "glitch",
+   "image": "db",
+   "fx": 0.5,
+   "dur": 3.8,
+   "month": "NOVEMBER",
+   "day": 27,
+   "year": "2026",
+   "land": 1.0,
+   "line": "FRIDAY · IN THEATRES",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "riser"
+    },
+    {
+     "at": 1.0,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "team",
+   "in": "glitch",
+   "image": "mm",
+   "fx": 0.5,
+   "dur": 4.2,
+   "heading": "TOMORROW'S FILMS",
+   "gap": 0.6,
+   "people": [
+    {
+     "name": "MINNUM OAR IRAVU",
+     "role": "INIGO PRABHAKARAN · THRILLER"
+    },
+    {
+     "name": "DELIVERY BOY",
+     "role": "LEO SIVAKUMAR"
+    },
+    {
+     "name": "MOUNA MOZHIGAL",
+     "role": "COMEDY · ROMANCE"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.9,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.5,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "fact",
+   "in": "glitch",
+   "image": "key",
+   "fx": 0.6,
+   "fy": 0.4,
+   "zoom": 1.3,
+   "dur": 3.4,
+   "lines": [
+    "ONE NIGHT. FIVE FRIENDS.",
+    "GOLD FROM A CAR CRASH."
+   ],
+   "source": "Minnum Oar Iravu · the makers' synopsis",
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.55,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.6,
+   "echo": "TOMORROW · FRIDAY RELEASES",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 130
+    },
+    {
+     "text": "FIRST?",
+     "size": 150,
+     "color": "#E5484D"
+    }
+   ],
+   "cta": "SEND TO THAT FRIEND",
+   "sub": "Plan your weekend",
+   "sfx": [
+    {
+     "at": 1.15,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "In theatres tomorrow, Friday 27 Nov.",
+   "Minnum Oar Iravu (Inigo Prabhakaran's one-night thriller), Delivery Boy (Leo Sivakumar) and Mouna Mozhigal.",
+   "Which one are you watching first?",
+   "Send this to your weekend movie friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "TOMORROW · FRIDAY RELEASES",
+  "slot": "18:00",
+  "first_comment": "Which Friday film are you booking?"
+ },
+ "slot_reason": "The brief asks for one 'releases tomorrow' reel in an evening slot: it takes the 18:00 movie-updates slot, when people plan the weekend.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 8,
+  "original": 5,
+  "total_100": 64
+ }
+}

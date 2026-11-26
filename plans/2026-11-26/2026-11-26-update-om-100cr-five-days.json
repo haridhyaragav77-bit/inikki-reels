@@ -1,0 +1,254 @@
+{
+ "id": "2026-11-26-update-om-100cr-five-days",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 26 NOV 2026",
+ "lead": {
+  "film": "om-100cr",
+  "new_event": "O.M crossed ₹100 Cr worldwide on day 5 (24 Nov): ₹100.75 Cr gross, ₹61.45 Cr India net; Dhanush's fastest ₹100 Cr (Kuberaa took 6 days)",
+  "topic": "O.M: Operation Mole crosses ₹100 Cr worldwide in 5 days",
+  "facts": [
+   "₹100.75 Cr worldwide gross after day 5 (India.com, Filmibeat)",
+   "₹61.45 Cr India net after day 5; ₹5.40 Cr on Tuesday 24 Nov (India.com)",
+   "Dhanush's fastest to ₹100 Cr worldwide: Kuberaa (2025) took 6 days (India.com)"
+  ],
+  "sources": [
+   "https://www.india.com/entertainment/regional/om-box-office-collection-day-5-dhanush-mammootty-spy-thriller-crosses-rs-100-crore-worldwide-8547758/",
+   "https://www.filmibeat.com/tamil/news/2026/om-box-office-collection-day-5-mammootty-dhanush-film-crosses-100-crore-worldwide-61-crore-india-net-539177.html"
+  ],
+  "note": "Top story of the news watch (4 trusted publishers for the ₹100 Cr line). Earlier O.M reels told the weekend and the OTT news; this one is the milestone."
+ },
+ "worth_it": {
+  "fan_opens_because": "Is O.M a hit? ₹100 Cr in 5 days answers it.",
+  "spoilers": "None: numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_veezha_veera",
+    "from": 0.3,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "A CENTURY THIS WEEK",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "WORLDWIDE · 5 DAYS",
+   "value": 100,
+   "unit": " CR+",
+   "land": 1.7,
+   "tag": [
+    "REPORTED",
+    "INDIA.COM · FILMIBEAT"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.38,
+   "dur": 4.6,
+   "kicker": "DAYS TO ₹100 CR WORLDWIDE",
+   "items": [
+    {
+     "label": "O.M",
+     "value": 5,
+     "color": "#F8C028"
+    },
+    {
+     "label": "KUBERAA",
+     "value": 6,
+     "color": "#78E0D0"
+    }
+   ],
+   "note": "Dhanush's fastest · India.com",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.0,
+   "kicker": "INDIA NET · 5 DAYS",
+   "value": 61,
+   "unit": " CR+",
+   "land": 1.7,
+   "tag": [
+    "FILMIBEAT",
+    "DAY 5: ₹5.4 CR"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "O.M · ₹100 CR IN 5 DAYS",
+   "question": [
+    {
+     "text": "SEEN IT",
+     "size": 140
+    },
+    {
+     "text": "YET?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Theatre this weekend?",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole crosses ₹100 Cr worldwide in 5 days (India.com, Filmibeat).",
+   "₹61.45 Cr India net so far. Dhanush's fastest ₹100 Cr: Kuberaa took 6 days.",
+   "Seen it yet? Tell us below.",
+   "Send this to your Dhanush friend."
+  ],
+  "cover": "O.M · ₹100 CR IN 5 DAYS",
+  "slot": "08:30",
+  "first_comment": "Dhanush or Mammootty: who carried O.M for you?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "The day's most time-critical news (a fresh milestone, top of the news watch): first morning slot.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 8,
+  "original": 6,
+  "total_100": 68
+ }
+}
