@@ -1,6 +1,6 @@
-**Wed 25 Nov** · 3 posted, 2 breakdowns held, Suriya reel ready
-**Best:** Mookuthi Amman 2 update, 420 views in two hours
-**Weak:** Hello Kadhal update, 69% skipped it
-**Tomorrow:** O.M first-week numbers, once trackers agree
-**Changed:** Whiplash breakdown added to the bank
-**Needs you:** 7 shorts to study, command in Drive requests/study_to_get.md
+**Thu 26 Nov** · 4 posted, Jai Bhim and Se7en breakdowns ready tonight
+**Best:** Mookuthi Amman 2 update, 688 views yesterday
+**Weak:** Friday releases reel, 84% skipped in two hours
+**Tomorrow:** Quick Review for Delivery Boy on release day
+**Changed:** The Prestige breakdown added to the bank
+**Needs you:** 1 short to study, command in Drive requests/study_to_get.md

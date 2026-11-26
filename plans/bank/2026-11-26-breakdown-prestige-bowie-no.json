@@ -1,0 +1,454 @@
+{
+ "id": "2026-11-26-breakdown-prestige-bowie-no",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "royal",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (Nolan's first casting refusal): hook, who Tesla and Bowie are, the no and the second ask, Nolan's reason, the real rivalry behind the role, end: about 52 s.",
+ "lead": {
+  "topic": "The Prestige: David Bowie was the first actor to say no to Christopher Nolan",
+  "angle": "making",
+  "insight": "Nolan wanted singer David Bowie to play the real inventor Nikola Tesla. Bowie turned it down, the first actor ever to refuse Nolan. Nolan asked again for a chance to explain why only Bowie fit, and Bowie said yes.",
+  "why_now": "Bank breakdown for a day when a back-up is needed: evergreen, no spoilers, The Prestige trailer is new in our library.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Prestige_(film) (Bowie plays Nikola Tesla; Nolan on Bowie's initial refusal and why he wanted him: a larger-than-life presence)",
+   "https://www.loudersound.com/features/christopher-nolan-on-working-with-david-bowie (Nolan: Bowie was the first actor to turn him down; he petitioned to explain why Bowie was right; 'a level of charisma beyond what you normally experience')",
+   "https://www.slashfilm.com/906586/christopher-nolan-had-no-plan-b-for-david-bowie-turning-down-the-prestige (Nolan had no back-up choice for Tesla)",
+   "https://www.yahoo.com/entertainment/prestige-10-years-later-why-141500570.html (why Nolan had to have Bowie in the film)",
+   "https://theconversation.com/the-prestige-the-real-life-warring-victorian-magicians-who-inspired-the-film-165707 (the film sets the magicians' feud beside the real Edison and Tesla battle over electricity)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Louder and Slashfilm, Nolan's own interviews)",
+  "point": "In The Prestige, David Bowie first refused to play Tesla, the first actor to tell Nolan no, until Nolan asked again.",
+  "spoilers": "None: the twist and the ending are not told, only how one role was cast."
+ },
+ "worth_it": {
+  "learn": "Even Nolan hears no, and one second ask got him his Tesla.",
+  "stop": "A rock star said no to Christopher Nolan.",
+  "why_now": "A true casting story many fans do not know; no spoilers.",
+  "send_to": "The Nolan fan friend.",
+  "best_angle": "Yes: the refusal is the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "lone_wolf",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "cool, moody"
+   },
+   {
+    "track": "plan_is_on",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "the second ask"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/the-prestige/G8ozbqgdIjY_maxres2.jpg",
+   "fetch": {
+    "youtube": "G8ozbqgdIjY",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/the-prestige/G8ozbqgdIjY_maxres1.jpg",
+   "fetch": {
+    "youtube": "G8ozbqgdIjY",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/the-prestige/G8ozbqgdIjY_maxres3.jpg",
+   "fetch": {
+    "youtube": "G8ozbqgdIjY",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "நோலனுக்கு முதல் முறை நோ சொன்ன நடிகர், டேவிட் போவி. ஏன்?",
+   "voice_tg": "Nolan-ukku mudhal murai no sonna nadigar, David Bowie. Yen?",
+   "image": "key",
+   "film": "THE PRESTIGE",
+   "type": "NOLAN'S FIRST NO",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 1
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0
+   ],
+   "voice": "தி பிரஸ்டீஜ் படத்துல நிகோலா டெஸ்லா ஒரு ரோல். டெஸ்லா, மின்சாரத்துல புரட்சி பண்ணின நிஜ விஞ்ஞானி. அந்த ரோலுக்கு நோலன் கேட்டது பாடகர் டேவிட் போவியை.",
+   "voice_tg": "The Prestige padathula Nikola Tesla oru role. Tesla, minsaaratthula puratchi pannina nija vinjaani. Andha role-ukku Nolan kettadhu paadagar David Bowie-ai.",
+   "heading": "A REAL INVENTOR, A ROCK STAR",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "tesla",
+     "icon": "person",
+     "x": 0.22,
+     "y": 0.6,
+     "size": 1.2,
+     "cue": {
+      "word": "விஞ்ஞானி."
+     },
+     "label": "NIKOLA TESLA",
+     "label_at": "below",
+     "enter": "rise"
+    },
+    {
+     "id": "bulb",
+     "icon": "star",
+     "x": 0.22,
+     "y": 0.3,
+     "size": 0.6,
+     "color": "accent",
+     "cue": {
+      "word": "மின்சாரத்துல"
+     },
+     "label": "REAL INVENTOR",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "புரட்சி"
+       }
+      }
+     ]
+    },
+    {
+     "id": "bowie",
+     "icon": "mic",
+     "x": 0.78,
+     "y": 0.6,
+     "size": 1.2,
+     "cue": {
+      "word": "பாடகர்"
+     },
+     "label": "DAVID BOWIE",
+     "label_at": "below",
+     "enter": "pop"
+    }
+   ],
+   "links": [
+    {
+     "from": "tesla",
+     "to": "bowie",
+     "cue": {
+      "word": "போவியை."
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "BOWIE AS TESLA",
+   "slam_cue": {
+    "word": "போவியை."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "விஞ்ஞானி."
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "போவியை."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "போவி முடியாதுன்னு சொல்லிட்டார். நோலன் விடலை. அவர் கிட்ட வேற பிளான் பி கூட இல்ல. ஏன் நீங்க தான் சரின்னு விளக்க ஒரு வாய்ப்பு கேட்டார். கடைசில போவி சரின்னு சொன்னார்.",
+   "voice_tg": "Bowie mudiyaadhunnu sollittaar. Nolan vidalai. Avar kitta vera plan B kooda illa. Yen neenga thaan sarinnu vilakka oru vaaippu kettaar. Kadaisila Bowie sarinnu sonnaar.",
+   "heading": "NO, THEN ONE MORE ASK",
+   "ground": "none",
+   "props": [
+    {
+     "id": "no",
+     "icon": "cross",
+     "x": 0.18,
+     "y": 0.55,
+     "size": 1.1,
+     "color": "red",
+     "cue": {
+      "word": "முடியாதுன்னு"
+     },
+     "label": "BOWIE: NO",
+     "label_at": "below",
+     "enter": "drop"
+    },
+    {
+     "id": "ask",
+     "icon": "phone",
+     "x": 0.5,
+     "y": 0.55,
+     "size": 1.1,
+     "cue": {
+      "word": "வாய்ப்பு"
+     },
+     "label": "NOLAN ASKS AGAIN",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "கேட்டார்."
+       }
+      }
+     ]
+    },
+    {
+     "id": "yes",
+     "icon": "check",
+     "x": 0.82,
+     "y": 0.55,
+     "size": 1.2,
+     "cue": {
+      "word": "சரின்னு"
+     },
+     "label": "BOWIE: YES",
+     "label_at": "below",
+     "enter": "pop",
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "சொன்னார்."
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "no",
+     "to": "ask",
+     "cue": {
+      "word": "வாய்ப்பு"
+     },
+     "style": "arrow"
+    },
+    {
+     "from": "ask",
+     "to": "yes",
+     "cue": {
+      "word": "சரின்னு"
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "THE ONLY TIME NOLAN ASKED TWICE",
+   "slam_cue": {
+    "word": "சொன்னார்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "முடியாதுன்னு"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "சரின்னு"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "quote",
+   "in": "push",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "ஏன் போவி? படத்துல டெஸ்லா ஒரு அதிசய மெஷின் கட்டுவார். அதை நாம நம்பணும்னா, போவி மாதிரி பெரிய ஆளுமை வேணும்னு நோலன் சொன்னார்.",
+   "voice_tg": "Yen Bowie? Padathula Tesla oru adhisaya machine kattuvaar. Adhai naama nambanumnaa, Bowie maadhiri periya aalumai venumnu Nolan sonnaar.",
+   "image": "s3",
+   "name": "CHRISTOPHER NOLAN",
+   "role": "DIRECTOR, ON BOWIE",
+   "phrase": "CHARISMA BEYOND WHAT YOU NORMALLY EXPERIENCE",
+   "source": "LOUDER · NOLAN",
+   "cues": {
+    "name": {
+     "word": "நோலன்"
+    },
+    "phrase": {
+     "word": "ஆளுமை"
+    }
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஆளுமை"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "whip",
+   "src": [
+    0,
+    4
+   ],
+   "voice": "இன்னொரு விஷயம். நிஜ வாழ்க்கையில டெஸ்லாவுக்கும் எடிசனுக்கும் மின்சாரத்துக்காக பெரிய சண்டை. படத்துல ரெண்டு மேஜிஷியன்களுக்கு நடுவுல அதே மாதிரி சண்டை. ஒரு போட்டிக்குள்ள, இன்னொரு போட்டி.",
+   "voice_tg": "Innoru vishayam. Nija vaazhkkaiyila Tesla-vukkum Edison-ukkum minsaaratthukkaaga periya sandai. Padathula rendu magician-galukku naduvula adhe maadhiri sandai. Oru pottikkulla, innoru potti.",
+   "left": {
+    "image": "s1",
+    "label": "REAL LIFE",
+    "sub": "TESLA VS EDISON",
+    "cue": {
+     "word": "எடிசனுக்கும்"
+    }
+   },
+   "right": {
+    "image": "key",
+    "label": "IN THE FILM",
+    "sub": "MAGICIAN VS MAGICIAN",
+    "cue": {
+     "word": "மேஜிஷியன்களுக்கு"
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "மேஜிஷியன்களுக்கு"
+   },
+   "slam_text": "A RIVALRY INSIDE A RIVALRY",
+   "slam_cue": {
+    "word": "போட்டிக்குள்ள,"
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "எடிசனுக்கும்"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "போட்டிக்குள்ள,"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "உங்க ஃபேவரைட் நோலன் படம் எது? கமெண்ட்ல சொல்லுங்க. இந்த கதையோட ஆரம்பம், ஒரு நோ.",
+   "voice_tg": "Unga favourite Nolan padam edhu? Comment-la sollunga. Indha kadhaiyoda aarambam, oru no.",
+   "echo": "THE PRESTIGE · NOLAN'S FIRST NO",
+   "question": [
+    {
+     "text": "YOUR FAVOURITE",
+     "size": 120
+    },
+    {
+     "text": "NOLAN FILM?",
+     "size": 150,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "எந்த நோலன் படம்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "David Bowie was the first actor to say no to Christopher Nolan.",
+   "Nolan wanted Bowie to play Nikola Tesla, the real inventor, in The Prestige. Bowie turned it down. Nolan asked for a chance to explain why only Bowie fit, and Bowie said yes (Wikipedia, Louder). Nolan called it a charisma beyond what you normally experience. No spoilers here. In real life Tesla fought Edison over electricity; in the film two magicians fight the same way (The Conversation).",
+   "Which Nolan film is your favourite? Tell us below.",
+   "Send this to the Nolan fan in your group."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "THE PRESTIGE · NOLAN'S FIRST NO",
+  "slot": "21:30",
+  "first_comment": "Which Nolan film would you watch again tonight?"
+ },
+ "slot_reason": "Back-up breakdown for the bank: evergreen, no spoilers, a verified casting story.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 7,
+  "total_100": 70
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}
