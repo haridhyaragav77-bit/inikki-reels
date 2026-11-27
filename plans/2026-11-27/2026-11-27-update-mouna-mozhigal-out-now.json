@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-27-update-mouna-mozhigal-out-now",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "mouna-mozhigal",
+  "new_event": "Mouna Mozhigal, the first film of singer Mano's son Shakir Mano as hero, is out in theatres today, 27 Nov.",
+  "topic": "Mouna Mozhigal: singer Mano's son debuts today",
+  "facts": [
+   "Releases worldwide 27 Nov; trailer launched 13 Nov (NewKerala, IANS)",
+   "Shakir Mano, son of singer Mano, is the hero; Archana is the heroine; directed by A C Soundar (NewKerala)",
+   "Release date also on the calendar from IANS via NewKerala + Prokerala (releases.yaml)"
+  ],
+  "sources": [
+   "https://www.newkerala.com/news/a/shakir-mano-starrer-mouna-mozhigals-trailer-released-751.htm",
+   "https://www.district.in/movies/upcoming-tamil-movies"
+  ],
+  "note": "Reserve for today only (release day). Pictures: the official trailer (Loud Line)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Mano's son is a hero now?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_monica",
+    "from": 74.9,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres2.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres1.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres3.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "MOUNA MOZHIGAL",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "OUT IN THEATRES TODAY",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "IN THEATRES",
+   "value": 27,
+   "unit": " NOV",
+   "land": 1.7,
+   "tag": [
+    "TODAY",
+    "NEWKERALA · IANS"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "SINGER MANO'S SON AS HERO",
+   "value": 1,
+   "unit": "ST FILM",
+   "land": 1.7,
+   "tag": [
+    "SHAKIR MANO",
+    "DIR. A C SOUNDAR"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "MOUNA MOZHIGAL · OUT TODAY",
+   "question": [
+    {
+     "text": "WATCHING",
+     "size": 140
+    },
+    {
+     "text": "IT?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "A romantic comedy for Friday night.",
+   "cta": "SEND TO A MANO FAN",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Mouna Mozhigal is out today: Shakir Mano, singer Mano's son, makes his debut as hero.",
+   "Directed by A C Soundar, with Archana.",
+   "Watching it this weekend?",
+   "Send this to a Mano fan."
+  ],
+  "cover": "MOUNA MOZHIGAL · OUT TODAY",
+  "slot": "11:00",
+  "first_comment": "Mano's best song of all time?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: the post job uses it only if a slot's reel fails.",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 6,
+  "save_value": 3,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 6,
+  "total_100": 59
+ },
+ "reserve": true
+}

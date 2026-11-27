@@ -1,0 +1,249 @@
+{
+ "id": "2026-11-27-update-vjs-emmys-first-indian",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "vijay-sethupathi-emmys",
+  "new_event": "Vijay Sethupathi was the first Indian to present an award at the International Emmys (54th, New York, 23 Nov); his Train releases 4 Dec.",
+  "topic": "Vijay Sethupathi: first Indian to present at the International Emmys",
+  "facts": [
+   "First Indian presenter at the International Emmy Awards (The Hollywood Reporter India, ThePrint, Gulf News)",
+   "54th International Emmys, New York, 23 Nov 2026 (Gulf News, Malay Mail)",
+   "His next release, Train (Mysskin), is in theatres 4 Dec (releases.yaml, 2 sources)"
+  ],
+  "sources": [
+   "https://www.hollywoodreporterindia.com/features/insight/exclusive-baththa-actor-vijay-sethupathi-will-become-the-first-indian-to-present-at-the-54th-international-emmy-awards",
+   "https://theprint.in/entertainment/vijay-sethupathi-creates-history-as-first-indian-presenter-at-the-international-emmys/3092108/",
+   "https://gulfnews.com/entertainment/vijay-sethupathi-becomes-first-indian-presenter-at-the-54th-international-emmy-awards-1.500737993"
+  ],
+  "note": "The day's story from outside the top films (industry, news watch #5, 3 trusted publishers). Pictures: Maharaja's official trailer frames (Netflix India)."
+ },
+ "worth_it": {
+  "fan_opens_because": "A Tamil actor on the Emmys stage, a first for India.",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_raga_of_revenge",
+    "from": 87.8,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres2.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres1.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxres3.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/maharaja/Otcr-vRuaQs_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "Otcr-vRuaQs",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "VIJAY SETHUPATHI",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "ON THE EMMYS STAGE",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "TO PRESENT AN INTERNATIONAL EMMY",
+   "value": 1,
+   "unit": "ST INDIAN",
+   "land": 1.7,
+   "tag": [
+    "A FIRST",
+    "HOLLYWOOD REPORTER INDIA · THEPRINT"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "INTERNATIONAL EMMYS · NEW YORK",
+   "value": 54,
+   "unit": "TH EMMYS",
+   "land": 1.7,
+   "tag": [
+    "23 NOV 2026",
+    "GULF NEWS"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "NEXT IN THEATRES: TRAIN",
+   "value": 4,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "DIR. MYSSKIN",
+    "NEXT FRIDAY"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "VJS · FIRST INDIAN AT THE EMMYS",
+   "question": [
+    {
+     "text": "PROUD",
+     "size": 140
+    },
+    {
+     "text": "MOMENT?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Makkal Selvan, world stage.",
+   "cta": "SEND TO A VJS FAN",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Vijay Sethupathi is the first Indian to present an award at the International Emmys (54th edition, New York, 23 Nov).",
+   "Next for him: Train, with Mysskin, in theatres 4 Dec.",
+   "Proud moment? Tell us below.",
+   "Send this to a VJS fan."
+  ],
+  "cover": "VJS · FIRST INDIAN AT THE EMMYS",
+  "slot": "11:00",
+  "first_comment": "Which Vijay Sethupathi role should the world see first?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Same-day pride story outside the top films: late morning, after the 'out now' reel.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 7,
+  "total_100": 66
+ }
+}

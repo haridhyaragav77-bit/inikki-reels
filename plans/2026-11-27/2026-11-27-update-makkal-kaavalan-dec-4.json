@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-27-update-makkal-kaavalan-dec-4",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "makkal-kaavalan",
+  "new_event": "Makkal Kaavalan (Manikandan's first action lead; Neelam Studios with Birla Studios) is confirmed for 4 Dec, the same day as Hello Kadhal and Train.",
+  "topic": "Makkal Kaavalan: Manikandan's cop drama, 4 Dec",
+  "facts": [
+   "In theatres 4 Dec 2026, announced 29 Sep (The Hollywood Reporter India, NewKerala)",
+   "Manikandan's first action drama as lead; debut director Santosh Kumar (NewKerala)",
+   "Produced by Neelam Studios (Pa. Ranjith) and Birla Studios (The Hollywood Reporter India)"
+  ],
+  "sources": [
+   "https://www.hollywoodreporterindia.com/features/insight/makkal-kaavalan-manikandans-cop-drama-set-to-release-this-december",
+   "https://www.newkerala.com/news/a/makkal-kaavalan-starring-manikandan-release-december-753.htm"
+  ],
+  "note": "Reserve. Smaller film for the 'outside the top films' rule. Pictures: the official 'Ignore' song video (Think Music, says In Cinemas Dec 4th)."
+ },
+ "worth_it": {
+  "fan_opens_because": "Manikandan as a cop: when can I see it?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_oorum_blood",
+    "from": 94.2,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/makkal-kaavalan/_74gonZ2-UI_maxres2.jpg",
+   "fetch": {
+    "youtube": "_74gonZ2-UI",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/makkal-kaavalan/_74gonZ2-UI_maxres1.jpg",
+   "fetch": {
+    "youtube": "_74gonZ2-UI",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/makkal-kaavalan/_74gonZ2-UI_maxres3.jpg",
+   "fetch": {
+    "youtube": "_74gonZ2-UI",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/makkal-kaavalan/_74gonZ2-UI_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "_74gonZ2-UI",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "MAKKAL KAAVALAN",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "MANIKANDAN TURNS COP",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "IN THEATRES",
+   "value": 4,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "NEXT FRIDAY",
+    "HOLLYWOOD REPORTER INDIA"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "MANIKANDAN'S FIRST",
+   "value": 1,
+   "unit": "ST ACTION LEAD",
+   "land": 1.7,
+   "tag": [
+    "DIR. SANTOSH KUMAR",
+    "NEELAM STUDIOS"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "MAKKAL KAAVALAN · 4 DEC",
+   "question": [
+    {
+     "text": "ON YOUR",
+     "size": 140
+    },
+    {
+     "text": "LIST?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Next Friday: Train, Hello Kadhal, Makkal Kaavalan.",
+   "cta": "SEND TO A MANIKANDAN FAN",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Makkal Kaavalan, Manikandan's first action drama as lead, is in theatres 4 Dec.",
+   "Produced by Pa. Ranjith's Neelam Studios with Birla Studios.",
+   "On your list?",
+   "Send this to a Manikandan fan."
+  ],
+  "cover": "MAKKAL KAAVALAN · 4 DEC",
+  "slot": "12:30",
+  "first_comment": "Manikandan's best performance so far?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: the post job uses it only if a slot's reel fails.",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 6,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 6,
+  "original": 6,
+  "total_100": 59
+ },
+ "reserve": true
+}

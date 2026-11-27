@@ -1,0 +1,489 @@
+{
+ "id": "2026-11-27-breakdown-master-theatres-back",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "spotlight",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (Master waited out the lockdown and reopened theatres), told as the shut halls, the 9-month wait, the half-seat Pongal release and the 16-day OTT record: about 55 s.",
+ "lead": {
+  "topic": "Master: the film that brought Tamil theatres back after the lockdown",
+  "angle": "true_story",
+  "insight": "Master was due on 9 April 2020; the lockdown shut theatres and it waited. It opened on 13 Jan 2021 (Pongal) as the first big Tamil film since the pandemic began, with halls allowed only 50% of seats, and fans still queued outside. Then it reached Amazon Prime Video on 29 Jan, 16 days later, the shortest theatre-to-streaming gap for a Tamil film at the time.",
+  "why_now": "Friday, new releases in theatres, Chennai rains: a story about why theatres matter. Master not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Master_(2021_film) (due 9 April 2020, postponed for COVID-19; released 13 Jan 2021; Prime Video 16 days after, shortest gap for a Tamil film)",
+   "https://www.screendaily.com/features/india-charts-path-to-post-covid-theatrical-recovery/5157365.article (first big Tamil film since the pandemic, 50 per cent occupancy)",
+   "https://www.thequint.com/entertainment/indian-cinema/master-vijay-vijay-sethupathi-fever-grips-chennai-as-fans-queue-up-outside-theatres (fans queue outside Chennai theatres)",
+   "https://udayavani.com/english-news/master-to-release-on-amazon-prime-video-on-january-29 (Prime Video on 29 Jan)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Screen Daily, The Quint, Udayavani; checked 27 Nov by web search)",
+  "point": "Master waited 9 months through the lockdown, then reopened Tamil theatres at half seats on Pongal 2021, and reached Prime just 16 days later.",
+  "spoilers": "None: release history only, nothing from the story."
+ },
+ "worth_it": {
+  "learn": "How Master became the first big film back in theatres after the lockdown, and its OTT record.",
+  "stop": "Master was ready in April 2020 but sat in a box for 9 months.",
+  "why_now": "Friday new releases; a theatre story on a theatre day.",
+  "send_to": "The friend who watched Master first day first show.",
+  "best_angle": "Yes: the real-world story is bigger than any scene."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "plan_is_on",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "build"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/master/1_iUFT3nWHk_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "1_iUFT3nWHk",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/master/1_iUFT3nWHk_maxres1.jpg",
+   "fetch": {
+    "youtube": "1_iUFT3nWHk",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/master/1_iUFT3nWHk_maxres2.jpg",
+   "fetch": {
+    "youtube": "1_iUFT3nWHk",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/master/1_iUFT3nWHk_maxres3.jpg",
+   "fetch": {
+    "youtube": "1_iUFT3nWHk",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "விஜய்யோட மாஸ்டர் படம், ரெடியா இருந்தும் ஒன்பது மாசம் பெட்டிக்குள்ளயே காத்திருந்தது. அப்புறம் தமிழ்நாட்டு தியேட்டர்களையே திறந்து வச்சது.",
+   "voice_tg": "Vijay-oda Master padam, ready-aa irundhum onbadhu maasam pettikkulleye kaathirundhadhu. Appuram TamilNaattu theatre-galaiye thirandhu vachadhu.",
+   "image": "key",
+   "film": "MASTER",
+   "type": "THE FILM THAT REOPENED THEATRES",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": 0,
+   "voice": "மாஸ்டர் ரிலீஸ் தேதி, 2020 ஏப்ரல் 9. ஆனா அதுக்கு முன்னாடியே லாக்டவுன் வந்துச்சு. எல்லா தியேட்டரும் மூடியாச்சு. படம் வெளிய வர வழியே இல்ல.",
+   "voice_tg": "Master release thedhi, 2020 April 9. Aanaa adhukku munnaadiye lockdown vandhuchu. Ellaa theatre-um moodiyaachu. Padam veliya vara vazhiye illa.",
+   "heading": "APRIL 2020",
+   "ground": "city",
+   "props": [
+    {
+     "id": "hall",
+     "icon": "building",
+     "x": 0.3,
+     "y": 0.62,
+     "size": 1.5,
+     "cue": {
+      "word": "தேதி,"
+     },
+     "label": "THEATRE",
+     "label_at": "above",
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "மூடியாச்சு."
+       }
+      }
+     ]
+    },
+    {
+     "id": "cal",
+     "icon": "clock",
+     "x": 0.75,
+     "y": 0.35,
+     "size": 0.9,
+     "color": "accent",
+     "cue": {
+      "word": "ஏப்ரல்"
+     },
+     "label": "9 APRIL",
+     "label_at": "below"
+    },
+    {
+     "id": "lock",
+     "icon": "lock",
+     "x": 0.3,
+     "y": 0.62,
+     "size": 0.8,
+     "color": "red",
+     "cue": {
+      "word": "லாக்டவுன்"
+     },
+     "enter": "drop",
+     "label": "LOCKDOWN",
+     "label_at": "below"
+    },
+    {
+     "id": "reel",
+     "icon": "film",
+     "x": 0.75,
+     "y": 0.68,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "படம்"
+     },
+     "label": "MASTER",
+     "label_at": "below",
+     "acts": [
+      {
+       "do": "fade",
+       "cue": {
+        "word": "இல்ல."
+       }
+      }
+     ]
+    }
+   ],
+   "slam_text": "THEATRES SHUT. FILM WAITS.",
+   "slam_cue": {
+    "word": "இல்ல."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "லாக்டவுன்"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "மூடியாச்சு."
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "timeline",
+   "in": "push",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "ஒன்பது மாசம் காத்திருப்பு. OTT-ல விக்கலாம்னு பேச்சு வந்தப்பவும், தியேட்டருக்காக காத்திருந்தாங்க. கடைசியா, 2021 பொங்கல், ஜனவரி 13. லாக்டவுனுக்கு பிறகு வந்த முதல் பெரிய தமிழ் படம், மாஸ்டர்.",
+   "voice_tg": "Onbadhu maasam kaathiruppu. OTT-la vikkalaam-nu pechu vandhappavum, theatre-ukkaaga kaathirundhaanga. Kadaisiyaa, 2021 Pongal, January 13. Lockdown-ukku piragu vandha mudhal periya Tamil padam, Master.",
+   "heading": "THE LONG WAIT",
+   "events": [
+    {
+     "label": "APR 2020",
+     "sub": "DATE MISSED",
+     "cue": {
+      "word": "ஒன்பது"
+     }
+    },
+    {
+     "label": "9 MONTHS",
+     "sub": "WAITING FOR THEATRES",
+     "cue": {
+      "word": "தியேட்டருக்காக"
+     }
+    },
+    {
+     "label": "13 JAN 2021",
+     "sub": "PONGAL RELEASE",
+     "cue": {
+      "word": "பொங்கல்,"
+     }
+    },
+    {
+     "label": "FIRST BIG FILM",
+     "sub": "BACK IN THEATRES",
+     "cue": {
+      "word": "முதல்"
+     }
+    }
+   ],
+   "links": [
+    [
+     0,
+     2
+    ]
+   ],
+   "footer": "SCREEN DAILY · WIKIPEDIA",
+   "sfx": [
+    {
+     "at": {
+      "word": "பொங்கல்,"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "ஆனா ஒரு கண்டிஷன். தியேட்டர்ல பாதி சீட் மட்டும் தான், ஐம்பது சதவீதம். அப்பவும் முதல் ஷோவுக்கே ரசிகர்கள் தியேட்டர் வாசல்ல வரிசையா நின்னாங்க.",
+   "voice_tg": "Aanaa oru condition. Theatre-la paadhi seat mattum thaan, aimbadhu sadhaveedham. Appavum mudhal show-vukke rasigargal theatre vaasalla varisaiyaa ninnaanga.",
+   "heading": "PONGAL 2021",
+   "ground": "road",
+   "props": [
+    {
+     "id": "hall",
+     "icon": "building",
+     "x": 0.72,
+     "y": 0.6,
+     "size": 1.5,
+     "cue": {
+      "word": "தியேட்டர்ல"
+     },
+     "label": "THEATRE",
+     "label_at": "above"
+    },
+    {
+     "id": "seats",
+     "icon": "person",
+     "count": 6,
+     "gap": 0.07,
+     "x": 0.12,
+     "y": 0.35,
+     "size": 0.5,
+     "color": "white",
+     "cue": {
+      "word": "சீட்"
+     },
+     "label": "HALF THE SEATS",
+     "label_at": "above"
+    },
+    {
+     "id": "fans",
+     "icon": "crowd",
+     "x": 0.12,
+     "y": 0.72,
+     "size": 1.2,
+     "color": "accent",
+     "cue": {
+      "word": "ரசிகர்கள்"
+     },
+     "label": "FANS",
+     "label_at": "below",
+     "path": [
+      [
+       0.12,
+       0.72
+      ],
+      [
+       0.5,
+       0.72
+      ]
+     ],
+     "move": 1.6,
+     "move_cue": {
+      "word": "வரிசையா"
+     }
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 50,
+    "unit": "%",
+    "cue": {
+     "word": "சதவீதம்."
+    },
+    "d": 1.2,
+    "x": 0.5,
+    "y": 0.18
+   },
+   "slam_text": "HALF THE SEATS. FANS STILL CAME.",
+   "slam_cue": {
+    "word": "நின்னாங்க."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சதவீதம்."
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "வரிசையா"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "zoom",
+   "src": [
+    0,
+    3
+   ],
+   "voice": "அப்புறம் இன்னொரு சாதனை. ரிலீஸ் ஆகி பதினாறே நாள்ல, ஜனவரி 29 அன்னிக்கு, அமேசான் ப்ரைம்ல வந்துடுச்சு. அப்போ அவ்ளோ சீக்கிரம் OTT வந்த பெரிய தமிழ் படம் வேற இல்ல.",
+   "voice_tg": "Appuram innoru saadhanai. Release aagi padhinaare naalla, January 29 annikku, Amazon Prime-la vandhuduchu. Appo avlo seekkiram OTT vandha periya Tamil padam vera illa.",
+   "left": {
+    "image": "s2",
+    "label": "THEATRES",
+    "sub": "13 JAN 2021",
+    "cue": {
+     "word": "ரிலீஸ்"
+    }
+   },
+   "right": {
+    "image": "s3",
+    "label": "PRIME VIDEO",
+    "sub": "29 JAN 2021",
+    "cue": {
+     "word": "ப்ரைம்ல"
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "பதினாறே"
+   },
+   "slam_text": "16 DAYS: A TAMIL RECORD THEN",
+   "slam_cue": {
+    "word": "இல்ல."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பதினாறே"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "ப்ரைம்ல"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "நீங்க மாஸ்டர முதல் நாளே தியேட்டர்ல பார்த்தீங்களா? கமெண்ட்ல சொல்லுங்க. இன்னிக்கும் வெள்ளிக்கிழமை, புது படங்கள் தியேட்டர்ல.",
+   "voice_tg": "Neenga Master-a mudhal naale theatre-la paartheengalaa? Comment-la sollunga. Innikkum vellikkizhamai, pudhu padangal theatre-la.",
+   "echo": "MASTER · REOPENED THEATRES",
+   "question": [
+    {
+     "text": "FIRST DAY",
+     "size": 130
+    },
+    {
+     "text": "FIRST SHOW?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "முதல் நாள் முதல் ஷோ?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key"
+  }
+ ],
+ "package": {
+  "caption": [
+   "Master was ready in April 2020, then the lockdown shut every theatre.",
+   "It waited 9 months, opened on Pongal 2021 at half seats as the first big Tamil film back, and fans still queued. 16 days later it was on Prime Video.",
+   "Did you watch it first day first show?",
+   "Send this to your Thalapathy friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "MASTER · REOPENED THEATRES",
+  "slot": "20:00",
+  "first_comment": "Which film did you watch first after the lockdown?"
+ },
+ "slot_reason": "Evergreen breakdown for the evening slot; a theatre story on a Friday release night.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 5,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 6,
+  "original": 7,
+  "total_100": 70
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

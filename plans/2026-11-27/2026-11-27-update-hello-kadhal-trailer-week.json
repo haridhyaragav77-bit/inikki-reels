@@ -1,0 +1,248 @@
+{
+ "id": "2026-11-27-update-hello-kadhal-trailer-week",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "hello-kadhal",
+  "new_event": "Hello Kadhal's trailer is out on Think Music India's YouTube (announced for today); the film is 7 days away, 4 Dec.",
+  "topic": "Hello Kadhal: trailer out, one week to go",
+  "facts": [
+   "Trailer on Think Music India's YouTube channel (w_xelqOAdRk); the brief's trailer watch said it drops today",
+   "In theatres 4 Dec 2026 (NewKerala, AP7AM)",
+   "Arya's 40th film as lead; also in Telugu as Hello Prema (NewKerala, AP7AM)"
+  ],
+  "sources": [
+   "https://www.newkerala.com/news/a/aryas-romantic-entertainer-hello-kaadhal-hit-screens-december-332.htm",
+   "https://www.ap7am.com/en/137639/aryas-romantic-entertainer-hello-kaadhal-to-hit-screens-on-december-4"
+  ],
+  "note": "Hello Kadhal was covered on 26 Nov (release date); the trailer is the new event. Its upload day is not confirmed by a news site yet: Refresh checks it and may rewrite."
+ },
+ "worth_it": {
+  "fan_opens_because": "The trailer is out: is Hello Kadhal worth a Friday next week?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_mutta_kalakki",
+    "from": 95.7,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres2.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres1.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxres3.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/hello-kadhal/w_xelqOAdRk_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "w_xelqOAdRk",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "HELLO KADHAL",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "THE TRAILER IS OUT",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "IN THEATRES 4 DEC",
+   "value": 7,
+   "unit": " DAYS",
+   "land": 1.7,
+   "tag": [
+    "TO GO",
+    "NEWKERALA · AP7AM"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "ARYA AS LEAD",
+   "value": 40,
+   "unit": "TH FILM",
+   "land": 1.7,
+   "tag": [
+    "DIR. NIKHIL MURALY",
+    "NIKHILA VIMAL · VAISHNAVI CHAITANYA"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "TAMIL + TELUGU (HELLO PREMA)",
+   "value": 2,
+   "unit": " LANGUAGES",
+   "land": 1.7,
+   "tag": [
+    "4 DEC",
+    "AP7AM"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "HELLO KADHAL · 4 DEC",
+   "question": [
+    {
+     "text": "DATE NIGHT",
+     "size": 140
+    },
+    {
+     "text": "PICK?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Watched the trailer? Tell us below.",
+   "cta": "SEND TO YOUR PLUS ONE",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Hello Kadhal's trailer is out. Arya's 40th film as lead, with Nikhila Vimal and Vaishnavi Chaitanya.",
+   "In theatres 4 Dec, also in Telugu as Hello Prema.",
+   "Date-night pick for next Friday?",
+   "Send this to your plus one."
+  ],
+  "cover": "HELLO KADHAL · TRAILER OUT",
+  "slot": "12:30",
+  "first_comment": "Trailer verdict: in or out for 4 Dec?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "A new trailer is same-day news but less urgent than today's releases: the afternoon slot.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 6,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 8,
+  "original": 5,
+  "total_100": 62
+ }
+}

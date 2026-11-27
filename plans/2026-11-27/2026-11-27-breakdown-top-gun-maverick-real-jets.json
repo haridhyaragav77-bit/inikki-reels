@@ -1,0 +1,469 @@
+{
+ "id": "2026-11-27-breakdown-top-gun-maverick-real-jets",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "neon",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (the actors really rode in the jets), told as the training ladder, who flew, the cockpit cameras and the real G on their faces: about 55 s.",
+ "lead": {
+  "topic": "Top Gun: Maverick: the actors really went up in F/A-18 jets",
+  "angle": "true_story",
+  "insight": "The jet scenes in Top Gun: Maverick were shot in real F/A-18 Super Hornets. Tom Cruise built a flight course for the cast: a Cessna 172, then aerobatic planes, then a jet trainer, then the F/A-18. Navy pilots flew in the front seat; the actors sat behind. Six IMAX-quality Sony Venice cameras were fitted in the cockpit (four on the actor, two over the pilot's shoulder), and the actors took up to 8 G in some moves.",
+  "why_now": "Friday late night, big-screen mood; a true making-of story like the F1 reel. Not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://variety.com/2022/artisans/news/top-gun-maverick-cast-training-fighter-jets-1235279793 (the cast's flight training; actors went up in the F/A-18)",
+   "https://nofilmschool.com/top-gunmaverick-flight-training-program (Cruise's training program: Cessna 172, aerobatic planes, then jets; up to 8 G)",
+   "https://www.filmindependent.org/?p=166006 (six 6K Sony Venice IMAX-quality cameras in the F/A-18 cockpit)",
+   "https://www.navair.navy.mil/news/FRCSW-Goes-Movies-Top-Gun-Maverick/Tue-05312022-0924 (Navy: a real Top Gun pilot flew the aircraft, not Cruise)"
+  ],
+  "inspired_by": "own idea (facts from Variety, No Film School, Film Independent, NAVAIR; checked 27 Nov by web search)",
+  "point": "Top Gun: Maverick actors really rode in F/A-18 jets: Navy pilots flew, six cameras filmed them, and their strain is real G-force.",
+  "spoilers": "None: how it was filmed, nothing from the story."
+ },
+ "worth_it": {
+  "learn": "How the jet scenes were really shot, and who flew the planes.",
+  "stop": "No green screen: the actors were really up in fighter jets.",
+  "why_now": "Friday night big-screen mood.",
+  "send_to": "The friend who loves aircraft or Tom Cruise stunts.",
+  "best_angle": "Yes: the real flying is the reason the film works."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "hunt_begins",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "confident"
+   },
+   {
+    "track": "under_attack",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "tension"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/top-gun-maverick/giXco2jaZ_4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "giXco2jaZ_4",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/top-gun-maverick/giXco2jaZ_4_maxres1.jpg",
+   "fetch": {
+    "youtube": "giXco2jaZ_4",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/top-gun-maverick/giXco2jaZ_4_maxres2.jpg",
+   "fetch": {
+    "youtube": "giXco2jaZ_4",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/top-gun-maverick/giXco2jaZ_4_maxres3.jpg",
+   "fetch": {
+    "youtube": "giXco2jaZ_4",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "டாப் கன் மேவரிக் படத்துல வர்ற ஜெட் சீன்ஸ், கிரீன் ஸ்கிரீன் இல்ல. நடிகர்கள் நிஜமாவே ஃபைட்டர் ஜெட்ல பறந்தாங்க.",
+   "voice_tg": "Top Gun Maverick padathula varra jet scenes, green screen illa. Nadigargal nijamaave fighter jet-la parandhaanga.",
+   "image": "key",
+   "film": "TOP GUN: MAVERICK",
+   "type": "THEY REALLY FLEW",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "chain",
+   "in": "push",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "டாம் க்ரூஸ் அவங்களுக்காக ஒரு பயிற்சி திட்டமே போட்டார். முதல்ல சின்ன செஸ்னா விமானம். அடுத்து தலைகீழா பறக்கற சாகச விமானம். அப்புறம் ஒரு பயிற்சி ஜெட். கடைசியா, நேவியோட சூப்பர் ஹார்னெட்.",
+   "voice_tg": "Tom Cruise avangalukkaaga oru payirchi thittame pottaar. Mudhalla chinna Cessna vimaanam. Aduthu thalaikeezhaa parakkara saagasa vimaanam. Appuram oru payirchi jet. Kadaisiyaa, Navy-yoda Super Hornet.",
+   "heading": "CRUISE'S FLIGHT SCHOOL",
+   "steps": [
+    {
+     "label": "CESSNA 172",
+     "cue": {
+      "word": "செஸ்னா"
+     }
+    },
+    {
+     "label": "AEROBATIC PLANE",
+     "cue": {
+      "word": "சாகச"
+     }
+    },
+    {
+     "label": "JET TRAINER",
+     "cue": {
+      "word": "ஜெட்."
+     }
+    },
+    {
+     "label": "F/A-18 SUPER HORNET",
+     "cue": {
+      "word": "ஹார்னெட்."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "செஸ்னா"
+     },
+     "type": "tick"
+    },
+    {
+     "at": {
+      "word": "ஹார்னெட்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    1,
+    3
+   ],
+   "voice": "ஆனா ஜெட்டை ஓட்டினது நடிகர்கள் இல்ல. முன் சீட்ல நிஜ நேவி பைலட். பின் சீட்ல நடிகர். சில மூவ்ல, எட்டு G வரைக்கும் உடம்பு தாங்கணும்.",
+   "voice_tg": "Aanaa jet-ai ottinadhu nadigargal illa. Mun seat-la nija Navy pilot. Pin seat-la nadigar. Sila move-la, ettu G varaikkum udambu thaanganum.",
+   "heading": "WHO FLEW THE JET",
+   "ground": "sky",
+   "props": [
+    {
+     "id": "jet",
+     "icon": "plane",
+     "x": 0.15,
+     "y": 0.5,
+     "size": 1.8,
+     "color": "white",
+     "cue": {
+      "word": "ஜெட்டை"
+     },
+     "enter": "slide",
+     "path": [
+      [
+       0.15,
+       0.5
+      ],
+      [
+       0.5,
+       0.42
+      ],
+      [
+       0.85,
+       0.5
+      ]
+     ],
+     "move": 2.0,
+     "move_cue": {
+      "word": "மூவ்ல,"
+     },
+     "face": true,
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "எட்டு"
+       }
+      }
+     ]
+    },
+    {
+     "id": "pilot",
+     "icon": "person",
+     "x": 0.35,
+     "y": 0.78,
+     "size": 0.8,
+     "color": "accent",
+     "cue": {
+      "word": "பைலட்."
+     },
+     "label": "NAVY PILOT",
+     "label_at": "below"
+    },
+    {
+     "id": "actor",
+     "icon": "person",
+     "x": 0.65,
+     "y": 0.78,
+     "size": 0.8,
+     "color": "second",
+     "cue": {
+      "word": "நடிகர்."
+     },
+     "label": "ACTOR",
+     "label_at": "below"
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 8,
+    "unit": " G",
+    "cue": {
+     "word": "எட்டு"
+    },
+    "d": 1.0,
+    "x": 0.5,
+    "y": 0.16
+   },
+   "slam_text": "PILOT IN FRONT. ACTOR BEHIND.",
+   "slam_cue": {
+    "word": "தாங்கணும்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஜெட்டை"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "எட்டு"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "detail",
+   "in": "whip",
+   "src": 2,
+   "voice": "அந்த காக்பிட்டுக்குள்ள, ஆறு IMAX தரமான கேமராக்கள். நாலு கேமரா நடிகர் முகத்தை பார்க்கும். ரெண்டு, பைலட் தோள் வழியா வானத்தை.",
+   "voice_tg": "Andha cockpit-ukkulla, aaru IMAX tharamaana camera-kkal. Naalu camera nadigar mugatthai paarkkum. Rendu, pilot thol vazhiyaa vaanatthai.",
+   "heading": "INSIDE THE COCKPIT",
+   "image": "s2",
+   "spot": {
+    "x": 0.5,
+    "y": 0.45
+   },
+   "zoom": 1.6,
+   "cue": {
+    "word": "காக்பிட்டுக்குள்ள,"
+   },
+   "label": "SIX CAMERAS",
+   "label_cue": {
+    "word": "கேமராக்கள்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "காக்பிட்டுக்குள்ள,"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "கேமராக்கள்."
+     },
+     "type": "tick"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": "analysis",
+   "voice": "அதனால தான், திரையில அவங்க முகத்துல தெரியுற வலி நடிப்பு இல்ல. அது நிஜமான G ஃபோர்ஸ். கேமரா அதை அப்படியே பிடிச்சுது.",
+   "voice_tg": "Adhanaala thaan, thiraiyila avanga mugatthula theriyura vali nadippu illa. Adhu nijamaana G force. Camera adhai appadiye pidichudhu.",
+   "heading": "WHY IT FEELS REAL",
+   "ground": "none",
+   "props": [
+    {
+     "id": "scr",
+     "icon": "screen",
+     "x": 0.5,
+     "y": 0.55,
+     "size": 1.8,
+     "cue": {
+      "word": "திரையில"
+     },
+     "label": "THE FILM",
+     "label_at": "below"
+    },
+    {
+     "id": "face",
+     "icon": "person",
+     "x": 0.5,
+     "y": 0.5,
+     "size": 0.9,
+     "color": "white",
+     "cue": {
+      "word": "முகத்துல"
+     },
+     "acts": [
+      {
+       "do": "shake",
+       "cue": {
+        "word": "ஃபோர்ஸ்."
+       }
+      }
+     ]
+    },
+    {
+     "id": "cam",
+     "icon": "camera",
+     "x": 0.15,
+     "y": 0.3,
+     "size": 0.9,
+     "color": "accent",
+     "cue": {
+      "word": "கேமரா"
+     },
+     "flip": false
+    }
+   ],
+   "links": [
+    {
+     "from": "cam",
+     "to": "face",
+     "cue": {
+      "word": "பிடிச்சுது."
+     },
+     "style": "beam"
+    }
+   ],
+   "focus": {
+    "on": "face",
+    "to": 1.4,
+    "cue": {
+     "word": "வலி"
+    },
+    "d": 1.0
+   },
+   "slam_text": "NOT ACTING. REAL G-FORCE.",
+   "slam_cue": {
+    "word": "ஃபோர்ஸ்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஃபோர்ஸ்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "இது மாதிரி நிஜமாவே எடுத்த சீன், வேற எந்த படத்துல பார்த்திருக்கீங்க? கமெண்ட்ல சொல்லுங்க, அடுத்த ரீல் அதுதான்.",
+   "voice_tg": "Idhu maadhiri nijamaave eduttha scene, vera endha padatthula paartthirukkeenga? Comment-la sollunga, adutha reel adhudhaan.",
+   "echo": "TOP GUN: MAVERICK · THEY REALLY FLEW",
+   "question": [
+    {
+     "text": "NEXT",
+     "size": 130
+    },
+    {
+     "text": "REAL STUNT?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "அடுத்த நிஜ ஸ்டண்ட்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "key"
+  }
+ ],
+ "package": {
+  "caption": [
+   "No green screen: the Top Gun: Maverick cast really went up in F/A-18 jets.",
+   "Tom Cruise built their flight course (Cessna, aerobatic plane, jet trainer, F/A-18). Navy pilots flew in front, the actors sat behind, and six IMAX-quality cameras filmed them, up to 8 G.",
+   "Which real stunt should we break down next?",
+   "Send this to your aviation-crazy friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "TOP GUN: MAVERICK · REAL JETS",
+  "slot": "21:30",
+  "first_comment": "Would you sit in the back seat at 8 G?"
+ },
+ "slot_reason": "Evergreen breakdown for the late-night slot, when people watch longer reels.",
+ "virality": {
+  "value": 8,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 7,
+  "total_100": 70
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

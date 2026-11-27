@@ -11,12 +11,12 @@ releases:
   - { film: "Cosmic Samson", date: "2026-11-27", where: theatres, status: tentative, note: "Tamil version; District + 91mobiles listings only; search on 25 Nov found conflicting dates for this Malayalam film, so no reel uses it" }
   - { film: "Delivery Boy", date: "2026-11-27", where: theatres, status: confirmed, note: "Radikaa Sarathkumar; Times of India + Wikipedia list (checked 23 Nov)" }
   - { film: "Un Varugaikkaga Anandhi", date: "2026-12-01", where: theatres, status: tentative, note: "Filmibeat calendar only" }
-  - { film: "Benz", date: "2026-12-01", where: theatres, status: tentative, note: "Raghava Lawrence, Nivin Pauly; Filmibeat calendar only" }
+  - { film: "Benz", date: "2026-12-01", where: theatres, status: tentative, note: "Raghava Lawrence, Nivin Pauly; Filmibeat calendar only; search on 27 Nov found no December date (Filmibeat page shows 1 Aug), so no reel uses it" }
   - { film: "Valli Mayil", date: "2026-12-01", where: theatres, status: tentative, note: "91mobiles expected date only" }
   - { film: "Mental Manadhil", date: "2026-12-01", where: theatres, status: tentative, note: "91mobiles expected date only" }
   - { film: "The Proof", date: "2026-12-03", where: theatres, status: tentative, note: "Filmibeat calendar only" }
   - { film: "Hide And Silk", date: "2026-12-04", where: theatres, status: tentative, note: "Filmibeat calendar only" }
-  - { film: "Makkal Kaavalan", date: "2026-12-04", where: theatres, status: tentative, note: "Manikandan, Divya Sripada; Filmibeat calendar only" }
+  - { film: "Makkal Kaavalan", date: "2026-12-04", where: theatres, status: confirmed, note: "Manikandan; makers' announcement 29 Sep via The Hollywood Reporter India + NewKerala, song video says In Cinemas Dec 4th (checked 27 Nov)" }
   - { film: "Train", date: "2026-12-04", where: theatres, status: confirmed, note: "Mysskin, Vijay Sethupathi; makers' announcement via The Hollywood Reporter India + Pinkvilla (checked 23 Nov)" }
   - { film: "Hello Kadhal", date: "2026-12-04", where: theatres, status: confirmed, note: "Arya, Nikhila Vimal; AP7AM + NewKerala, 2 sources (checked 26 Nov); Telugu as Hello Prema" }
   - { film: "Dhruva Natchathiram: Chapter One - Yuddha Kaandam", date: "2026-12-15", where: theatres, status: tentative, note: "sources disagree: Filmibeat 15 Dec, 91mobiles 1 Dec" }

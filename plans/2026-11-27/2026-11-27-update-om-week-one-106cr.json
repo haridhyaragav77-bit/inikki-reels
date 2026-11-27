@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-27-update-om-week-one-106cr",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "om-week-one",
+  "new_event": "O.M ends its first week: about ₹106 Cr worldwide after day 6 (25 Nov), with a 24% weekday drop.",
+  "topic": "O.M week one: ₹106 Cr worldwide",
+  "facts": [
+   "About ₹106.25 Cr worldwide gross after 6 days (Newsgolive, Mamaraazzi; trade estimates)",
+   "Day 6 (Wednesday) about ₹4.1 Cr, a 24.1% drop (Newsgolive)",
+   "Crossed ₹100 Cr worldwide on day 5 (India.com)"
+  ],
+  "sources": [
+   "https://newsgolive.com/o-m-operation-mole-box-office-collection-day-6-dhanush-mammoottys-film-records-rs-106-crore-worldwide-earns-rs-4-10-crore-on-wednesday-film-witnesses-a-24-1-drop-tamil-movie-news/",
+   "https://mamaraazzi.com/2026/11/26/om-chapter-1-box-office-collection-day-6-dhanush-mammootty-sai-pallavi/",
+   "https://www.india.com/entertainment/regional/om-box-office-collection-day-5-dhanush-mammootty-spy-thriller-crosses-rs-100-crore-worldwide-8547758/"
+  ],
+  "note": "DRAFT for 18:00: the Refresh run rewrites it with the day's fresh news (week-one total from a trusted tracker, or a better story). Day-6 figures are trade estimates."
+ },
+ "worth_it": {
+  "fan_opens_because": "Is O.M still running strong after week one?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_veezha_veera",
+    "from": 154.1,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/om/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "WEEK ONE REPORT",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "WORLDWIDE · 6 DAYS",
+   "value": 106,
+   "unit": " CR+",
+   "land": 1.7,
+   "tag": [
+    "REPORTED",
+    "TRADE ESTIMATES"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "WEDNESDAY VS TUESDAY",
+   "value": 24,
+   "unit": "% DROP",
+   "land": 1.7,
+   "tag": [
+    "DAY 6: ~₹4.1 CR",
+    "NEWSGOLIVE"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "O.M · WEEK ONE",
+   "question": [
+    {
+     "text": "STILL IN",
+     "size": 140
+    },
+    {
+     "text": "THEATRES?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Second weekend starts tonight.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole ends week one at about ₹106 Cr worldwide (trade estimates).",
+   "Second weekend starts tonight.",
+   "Seen it yet?",
+   "Send this to your Dhanush friend."
+  ],
+  "cover": "O.M · WEEK ONE",
+  "slot": "18:00",
+  "first_comment": "Second weekend: will O.M hold or drop?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Evening update; a draft the Refresh run rewrites with the day's fresh news.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 5,
+  "total_100": 61
+ }
+}

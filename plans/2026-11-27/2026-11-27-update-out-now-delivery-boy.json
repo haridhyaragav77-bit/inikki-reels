@@ -1,0 +1,256 @@
+{
+ "id": "2026-11-27-update-out-now-delivery-boy",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 27 NOV 2026",
+ "lead": {
+  "film": "delivery-boy",
+  "new_event": "Delivery Boy (Leo Sivakumar, Radhika Sarathkumar; Nani's first film as director) is out in theatres worldwide today, 27 Nov, with Mouna Mozhigal and Minnum Oar Iravu.",
+  "topic": "Out now: Delivery Boy leads today's 3 new Tamil films",
+  "facts": [
+   "Delivery Boy releases worldwide on 27 Nov (Telangana Today, NewsBytes)",
+   "Directed by Nani, his debut; Leo Sivakumar and Radhika Sarathkumar star (Telangana Today)",
+   "Mouna Mozhigal (Shakir Mano, singer Mano's son) and Minnum Oar Iravu also release today (NewKerala; releases.yaml)"
+  ],
+  "sources": [
+   "https://telanganatoday.com/nani-directed-delivery-boy-starring-leo-sivakumar-gets-november-27-release-date",
+   "https://www.newsbytesapp.com/news/entertainment/delivery-boy-release-date-announced/story",
+   "https://www.newkerala.com/news/a/shakir-mano-starrer-mouna-mozhigals-trailer-released-751.htm"
+  ],
+  "note": "Release day, so it is an update, never breaking. Friday-release lists were skipped 79-84%: this one opens on a face from the film (Radhika Sarathkumar), not a list. Minnum Oar Iravu had its own reel yesterday, so it is only named here."
+ },
+ "worth_it": {
+  "fan_opens_because": "What's new in theatres today? Answered in the first frame.",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_pattampoochi",
+    "from": 161.5,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres2.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres1.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres3.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxresdefault"
+   }
+  },
+  "mm": {
+   "src": "engine/.cache/stills/mouna-mozhigal/eKrtzavwx94_maxres2.jpg",
+   "fetch": {
+    "youtube": "eKrtzavwx94",
+    "frame": "maxres2"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "DELIVERY BOY",
+     "size": 220,
+     "y": 1310
+    },
+    {
+     "text": "OUT IN THEATRES TODAY",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "WORLDWIDE RELEASE · FRIDAY",
+   "value": 27,
+   "unit": " NOV",
+   "land": 1.7,
+   "tag": [
+    "TODAY",
+    "TELANGANA TODAY · NEWSBYTES"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "mm",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "NEW TAMIL FILMS TODAY",
+   "value": 3,
+   "unit": " FILMS",
+   "land": 1.7,
+   "tag": [
+    "DELIVERY BOY",
+    "MOUNA MOZHIGAL · MINNUM OAR IRAVU"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "NANI'S FIRST FILM AS DIRECTOR",
+   "value": 1,
+   "unit": "ST FILM",
+   "land": 1.7,
+   "tag": [
+    "LEO SIVAKUMAR",
+    "RADHIKA SARATHKUMAR"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "DELIVERY BOY · OUT TODAY",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 140
+    },
+    {
+     "text": "TONIGHT?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Delivery Boy, Mouna Mozhigal or Minnum Oar Iravu?",
+   "cta": "TAG YOUR MOVIE BUDDY",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Out in theatres today: Delivery Boy, Nani's first film as director, with Leo Sivakumar and Radhika Sarathkumar.",
+   "Also out today: Mouna Mozhigal (Shakir Mano) and Minnum Oar Iravu.",
+   "Which one are you watching this weekend?",
+   "Tag your Friday movie buddy."
+  ],
+  "cover": "DELIVERY BOY · OUT TODAY",
+  "slot": "08:30",
+  "first_comment": "Delivery Boy, Mouna Mozhigal or Minnum Oar Iravu: which one first?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Films out today ('out now'): the most time-critical news takes the first morning slot.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 9,
+  "original": 6,
+  "total_100": 66
+ }
+}
