@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26 23:43 IST",
+ "updated": "2026-11-27 23:43 IST",
  "drop_folder": "from-laptop",
  "trailers": [],
  "topup": [
@@ -7,9 +7,7 @@
   "Mad Max: Fury Road",
   "Spider-Man: Across the Spider-Verse"
  ],
- "study": [
-  "https://www.youtube.com/shorts/_eNqKOIe9d4"
- ],
+ "study": [],
  "songs": [],
  "note": "Read by tools/clip_helper.py on Harish's laptop (AGENT.md 16.6). Film names, public links and song names only."
 }
