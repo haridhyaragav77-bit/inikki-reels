@@ -1,7 +1,18 @@
 {
- "updated": "2026-11-27 23:43 IST",
+ "updated": "2026-11-28 05:12 IST",
  "drop_folder": "from-laptop",
- "trailers": [],
+ "trailers": [
+  {
+   "film": "Moonwalk",
+   "url": null,
+   "why": "news: a new trailer, teaser or glimpse was reported"
+  },
+  {
+   "film": "Train",
+   "url": null,
+   "why": "news: a new trailer, teaser or glimpse was reported"
+  }
+ ],
  "topup": [
   "No Country for Old Men",
   "Mad Max: Fury Road",
