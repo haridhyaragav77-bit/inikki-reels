@@ -1,6 +1,6 @@
-**Thu 26 Nov** · 4 posted, Jai Bhim and Se7en breakdowns ready tonight
-**Best:** Mookuthi Amman 2 update, 688 views yesterday
-**Weak:** Friday releases reel, 84% skipped in two hours
-**Tomorrow:** Quick Review for Delivery Boy on release day
-**Changed:** The Prestige breakdown added to the bank
-**Needs you:** 1 short to study, command in Drive requests/study_to_get.md
+**Fri 27 Nov** · 4 posted, Delivery Boy review 17:00, O.M 18:00
+**Best:** Vijay Sethupathi Emmys update, lowest skip today at 43%
+**Weak:** Hello Kadhal trailer update, 75% skipped, no shares yet
+**Tomorrow:** O.M second weekend numbers; Delivery Boy Trusted Review watch
+**Changed:** 18:00 O.M now ₹111 Cr worldwide; Parasite breakdown banked
+**Needs you:** Nothing today

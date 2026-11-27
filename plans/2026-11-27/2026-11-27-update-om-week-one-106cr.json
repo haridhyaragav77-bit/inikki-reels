@@ -10,19 +10,19 @@
  "dateline": "MOVIE UPDATE · 27 NOV 2026",
  "lead": {
   "film": "om-week-one",
-  "new_event": "O.M ends its first week: about ₹106 Cr worldwide after day 6 (25 Nov), with a 24% weekday drop.",
-  "topic": "O.M week one: ₹106 Cr worldwide",
+  "new_event": "O.M day 8: about ₹111 Cr worldwide (The Week, 27 Nov); week one closed near ₹69 Cr India net (Sacnilk).",
+  "topic": "O.M: ₹111 Cr worldwide, week one done",
   "facts": [
-   "About ₹106.25 Cr worldwide gross after 6 days (Newsgolive, Mamaraazzi; trade estimates)",
-   "Day 6 (Wednesday) about ₹4.1 Cr, a 24.1% drop (Newsgolive)",
-   "Crossed ₹100 Cr worldwide on day 5 (India.com)"
+   "Worldwide gross about ₹111.10 Cr after 8 days, India net ₹69.65 Cr with Friday morning shows (The Week, 27 Nov)",
+   "First week India net about ₹69.30 Cr from 43,901 shows (Sacnilk); another report says ₹66.27 Cr",
+   "Opening weekend ₹85 Cr worldwide was Dhanush's career best (Sacnilk)"
   ],
   "sources": [
-   "https://newsgolive.com/o-m-operation-mole-box-office-collection-day-6-dhanush-mammoottys-film-records-rs-106-crore-worldwide-earns-rs-4-10-crore-on-wednesday-film-witnesses-a-24-1-drop-tamil-movie-news/",
-   "https://mamaraazzi.com/2026/11/26/om-chapter-1-box-office-collection-day-6-dhanush-mammootty-sai-pallavi/",
-   "https://www.india.com/entertainment/regional/om-box-office-collection-day-5-dhanush-mammootty-spy-thriller-crosses-rs-100-crore-worldwide-8547758/"
+   "https://www.theweek.in/news/entertainment/2026/11/27/om-operation-mole-box-office-collection-day-8-mammootty-dhanush-gross-indian-rupee11110-crore.html",
+   "https://www.sacnilk.com/quicknews/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_7",
+   "https://www.sacnilk.com/news/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_Wise_Worldwide"
   ],
-  "note": "DRAFT for 18:00: the Refresh run rewrites it with the day's fresh news (week-one total from a trusted tracker, or a better story). Day-6 figures are trade estimates."
+  "note": "Refresh 27 Nov: rewritten with today's figures (The Week day 8, Sacnilk week one). Trade estimates; the India net figures differ by tracker, so the reel shows the worldwide total and 'about 69'."
  },
  "worth_it": {
   "fan_opens_because": "Is O.M still running strong after week one?",
@@ -117,13 +117,13 @@
    "fx": 0.5,
    "fy": 0.4,
    "dur": 4.2,
-   "kicker": "WORLDWIDE · 6 DAYS",
-   "value": 106,
+   "kicker": "WORLDWIDE · 8 DAYS",
+   "value": 111,
    "unit": " CR+",
    "land": 1.7,
    "tag": [
     "REPORTED",
-    "TRADE ESTIMATES"
+    "THE WEEK · 27 NOV"
    ],
    "sfx": [
     {
@@ -143,13 +143,13 @@
    "fx": 0.5,
    "fy": 0.4,
    "dur": 4.2,
-   "kicker": "WEDNESDAY VS TUESDAY",
-   "value": 24,
-   "unit": "% DROP",
+   "kicker": "WEEK ONE · INDIA NET",
+   "value": 69,
+   "unit": " CR",
    "land": 1.7,
    "tag": [
-    "DAY 6: ~₹4.1 CR",
-    "NEWSGOLIVE"
+    "ABOUT ₹69 CR",
+    "SACNILK"
    ],
    "sfx": [
     {
@@ -191,7 +191,7 @@
  ],
  "package": {
   "caption": [
-   "O.M: Operation Mole ends week one at about ₹106 Cr worldwide (trade estimates).",
+   "O.M: Operation Mole crosses about ₹111 Cr worldwide in 8 days (trade estimates); week one near ₹69 Cr India net.",
    "Second weekend starts tonight.",
    "Seen it yet?",
    "Send this to your Dhanush friend."
@@ -207,7 +207,7 @@
    "#reels"
   ]
  },
- "slot_reason": "Evening update; a draft the Refresh run rewrites with the day's fresh news.",
+ "slot_reason": "Evening update; rewritten by Refresh with today's day-8 numbers, today's top news-watch film.",
  "virality": {
   "value": 6,
   "hook": 7,

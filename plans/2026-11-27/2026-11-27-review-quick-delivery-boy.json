@@ -1,0 +1,287 @@
+{
+ "id": "2026-11-27-review-quick-delivery-boy",
+ "series": "movie-review",
+ "template": "verdict",
+ "fps": 30,
+ "length_s": [
+  20,
+  45
+ ],
+ "lead": {
+  "film": "Delivery Boy",
+  "topic": "Delivery Boy (Leo Sivakumar, dir. Nani): what the first critics say",
+  "critics": [
+   {
+    "outlet": "Only Kollywood",
+    "critic": "Only Kollywood",
+    "rating": "3/5",
+    "quote": "a decent action thriller"
+   },
+   {
+    "outlet": "CinemaSpeak",
+    "critic": "CinemaSpeak",
+    "quote": "compelling, entertaining and gripping"
+   }
+  ],
+  "sources": [
+   "https://www.onlykollywood.com/delivery-boy-movie-review/",
+   "https://www.cinemaspeak.in/2026/11/movie-review-delivery-boy.html",
+   "https://en.wikipedia.org/wiki/Delivery_Boy_(film)"
+  ],
+  "note": "Release day. Only 2 early reviews found by 16:50 (no Times of India, Cinema Express or The Hindu yet). Common points: action and second half praised; predictable plot and logic gaps."
+ },
+ "worth_it": {
+  "deciding_this_week": "Yes: out today, Friday night tickets.",
+  "quotes": "Real, short, named; the 3/5 one carries the doubts.",
+  "spoilers": "None. Only 'an action thriller with twists'."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_raga_of_revenge",
+    "from": 87.8,
+    "screen": 0,
+    "mood": "confident action thriller"
+   }
+  ],
+  "level_db": -15,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "cast": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres2.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres1.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxres3.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/delivery-boy/xXp9ZwsUSWU_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "xXp9ZwsUSWU",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "cast",
+   "fx": 0.45,
+   "fy": 0.35,
+   "dur": 2.9,
+   "film": "DELIVERY BOY",
+   "type": "MOVIE REVIEW",
+   "sfx": [
+    {
+     "at": 0.12,
+     "type": "impact"
+    },
+    {
+     "at": 0.6,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "stars",
+   "in": "flash",
+   "image": "s1",
+   "dur": 4.6,
+   "heading": "EARLY RATING",
+   "score": 3.5,
+   "out_of": 5,
+   "verdict": "GO",
+   "line": "WATCH IT IN THEATRES",
+   "basis": "2 EARLY REVIEWS",
+   "sfx": [
+    {
+     "at": 1.9,
+     "type": "stamp"
+    }
+   ]
+  },
+  {
+   "kind": "scale",
+   "in": "whip",
+   "image": "s3",
+   "dur": 5.4,
+   "works_label": "WORKS",
+   "not_label": "DOESN'T",
+   "works": [
+    "ACTION SCENES",
+    "SECOND HALF",
+    "LEO SIVAKUMAR"
+   ],
+   "not": [
+    "PREDICTABLE PLOT",
+    "LOGIC GAPS"
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.95,
+     "type": "pop"
+    },
+    {
+     "at": 1.4,
+     "type": "pop"
+    },
+    {
+     "at": 1.85,
+     "type": "tick"
+    },
+    {
+     "at": 2.3,
+     "type": "tick"
+    }
+   ]
+  },
+  {
+   "kind": "critics",
+   "in": "push",
+   "image": "cast",
+   "dur": 4.6,
+   "heading": "WHAT CRITICS SAY",
+   "cards": [
+    {
+     "outlet": "ONLY KOLLYWOOD",
+     "critic": "Review desk",
+     "quote": "a decent action thriller",
+     "rating": "3/5"
+    },
+    {
+     "outlet": "CINEMASPEAK",
+     "critic": "Review desk",
+     "quote": "compelling, entertaining and gripping",
+     "rating": "POSITIVE"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.25,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "who",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.4,
+   "fy": 0.35,
+   "dur": 3.6,
+   "heading": "WATCH IT IF YOU LOVE",
+   "chips": [
+    [
+     "ACTION THRILLER",
+     "TWISTS"
+    ],
+    [
+     "MASS ENTERTAINERS",
+     "FRIDAY NIGHT"
+    ]
+   ],
+   "sfx": [
+    {
+     "at": 0.5,
+     "type": "pop"
+    },
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "DELIVERY BOY · MOVIE REVIEW",
+   "question": [
+    {
+     "text": "SEEN IT TONIGHT?",
+     "size": 110
+    },
+    {
+     "text": "YOUR VERDICT?",
+     "size": 120,
+     "color": "#F8C028"
+    }
+   ],
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 1.15,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Delivery Boy movie review: the first critics say go, if you want an action night.",
+   "Leo Sivakumar's action thriller, directed by Nani. Only Kollywood 3/5, CinemaSpeak positive; action and the second half work, the plot is predictable in places.",
+   "Early rating from 2 reviews. Seen it tonight? Your verdict?",
+   "Send this to the friend you're going with.",
+   "டெலிவரி பாய் — பார்க்கலாமா? விமர்சகர்கள் சொல்றது."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "DELIVERY BOY · MOVIE REVIEW",
+  "slot": "17:00",
+  "first_comment": "Watched it? Action or story, which won?"
+ },
+ "rating": {
+  "kind": "quick",
+  "critics": [
+   {
+    "name": "Only Kollywood",
+    "outlet": "Only Kollywood",
+    "stars": 3,
+    "quote": "a decent action thriller",
+    "src": 0
+   },
+   {
+    "name": "CinemaSpeak",
+    "outlet": "CinemaSpeak",
+    "verbal": "positive",
+    "quote": "compelling, entertaining and gripping",
+    "src": 1
+   }
+  ],
+  "score": 3.5,
+  "verdict": "GO"
+ },
+ "slot_reason": "Release-day Quick Review (AGENT.md 10.5), 17:00 flex slot."
+}

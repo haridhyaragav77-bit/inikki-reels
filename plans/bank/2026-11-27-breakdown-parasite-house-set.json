@@ -1,0 +1,451 @@
+{
+ "id": "2026-11-27-breakdown-parasite-house-set",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "blueprint",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (the Park house was a set): hook, the set, the sun and glass wall, the poor home from the designer's own past, what the two homes say, end: about 50-55 s.",
+ "lead": {
+  "topic": "Parasite: the rich family's house never existed, it was built as a set",
+  "angle": "making",
+  "insight": "The Park house in Parasite is not a real home. Production designer Lee Ha-jun built it, the Kims' semi-basement and the street as sets, planning the glass wall around where the sun falls. The semi-basement came from one he lived in at college.",
+  "why_now": "Bank breakdown for a back-up day: evergreen, no spoilers, Parasite trailer is in our library.",
+  "technique": "",
+  "sources": [
+   "https://www.dezeen.com/2020/04/16/parasite-film-set-design-interview-lee-ha-jun-bong-joon-ho/ (Lee Ha-jun: the Park house, the Kims' semi-basement and the neighbourhood were all sets built for the film)",
+   "https://mymodernmet.com/parasite-production-design-home/ (the house was built from scratch; the wall of glass made the sun's direction key to the design)",
+   "https://www.yahoo.com/entertainment/production-designer-lee-jun-breaks-191716717.html (Lee Ha-jun on the sets; the semi-basement drew on one he lived in during college)",
+   "https://www.koreatimes.co.kr/amp/entertainment/films/20190605/settings-in-parasite-highlight-sharp-contrast-between-rich-poor (the settings set rich against poor)",
+   "https://scmp.com/magazines/style/tech-design/article/3051568/parasite-how-director-bong-joon-ho-used-staircases (Bong Joon-ho used staircases to show the climb between rich and poor)"
+  ],
+  "inspired_by": "own idea (facts from Lee Ha-jun's interviews in Dezeen and IndieWire, My Modern Met, Korea Times)",
+  "point": "In Parasite, the rich family's house was never real: it was a set, its glass wall planned around the sun.",
+  "spoilers": "None: no plot beyond the two families' homes."
+ },
+ "worth_it": {
+  "learn": "A house you believed in was built only for the camera, around the sun.",
+  "stop": "That Parasite house does not exist.",
+  "why_now": "A true making story; fans of the film share it.",
+  "send_to": "The friend who wanted to live in that house.",
+  "best_angle": "Yes: the fake house is the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue, builds"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "rich vs poor"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/parasite/isOGD_7hNIY_maxres2.jpg",
+   "fetch": {
+    "youtube": "isOGD_7hNIY",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/parasite/isOGD_7hNIY_maxres1.jpg",
+   "fetch": {
+    "youtube": "isOGD_7hNIY",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/parasite/isOGD_7hNIY_maxres3.jpg",
+   "fetch": {
+    "youtube": "isOGD_7hNIY",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/parasite/isOGD_7hNIY_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "isOGD_7hNIY",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "பாரசைட் படத்துல வர்ற அந்த பணக்கார வீடு, உண்மையில இல்லவே இல்ல.",
+   "voice_tg": "Parasite padathula varra andha panakkaara veedu, unmaiyila illave illa.",
+   "image": "key",
+   "film": "PARASITE",
+   "type": "THE HOUSE THAT WASN'T",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "படத்துல அந்த வீட்டை ஒரு பெரிய ஆர்கிடெக்ட் கட்டினார்னு சொல்வாங்க. நிஜத்துல, அது படத்துக்காகவே போட்ட செட். வீடு, தோட்டம், சுத்தி இருக்கற தெரு, எல்லாமே.",
+   "voice_tg": "Padathula andha veettai oru periya architect kattinaarnu solvaanga. Nijatthula, adhu padatthukkaagave potta set. Veedu, thottam, sutthi irukkara theru, ellaame.",
+   "heading": "A HOUSE BUILT FOR THE CAMERA",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "house",
+     "icon": "house",
+     "x": 0.5,
+     "y": 0.55,
+     "size": 1.4,
+     "cue": {
+      "word": "வீட்டை"
+     },
+     "label": "THE PARK HOUSE",
+     "label_at": "below",
+     "enter": "rise"
+    },
+    {
+     "id": "arch",
+     "icon": "person",
+     "x": 0.18,
+     "y": 0.6,
+     "size": 1.0,
+     "cue": {
+      "word": "ஆர்கிடெக்ட்"
+     },
+     "label": "STORY: ARCHITECT",
+     "label_at": "below",
+     "enter": "pop"
+    },
+    {
+     "id": "set",
+     "icon": "clapper",
+     "x": 0.82,
+     "y": 0.6,
+     "size": 1.0,
+     "color": "accent",
+     "cue": {
+      "word": "செட்."
+     },
+     "label": "REALLY: SET",
+     "label_at": "below",
+     "enter": "drop"
+    }
+   ],
+   "links": [
+    {
+     "from": "house",
+     "to": "set",
+     "cue": {
+      "word": "செட்."
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "IT WAS A SET",
+   "slam_cue": {
+    "word": "எல்லாமே."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "வீட்டை"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "செட்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": [
+    1,
+    0
+   ],
+   "voice": "படத்தோட ஆர்ட் டைரக்டர் லீ ஹா-ஜுன், ஒரு முழு சுவரை கண்ணாடியா வெச்சார். சூரிய வெளிச்சம் எந்த பக்கம் வரும்னு பார்த்து தான் டிசைன் பண்ணினார்.",
+   "voice_tg": "Padatthoda art director Lee Ha-jun, oru muzhu suvarai kannaadiyaa vecchaar. Sooriya velicham endha pakkam varumnu paarthu thaan design panninaar.",
+   "heading": "DESIGNED AROUND THE SUN",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "lee",
+     "icon": "person",
+     "x": 0.16,
+     "y": 0.62,
+     "size": 1.0,
+     "cue": {
+      "word": "லீ"
+     },
+     "label": "LEE HA-JUN",
+     "label_at": "below",
+     "enter": "pop"
+    },
+    {
+     "id": "glass",
+     "icon": "building",
+     "x": 0.56,
+     "y": 0.58,
+     "size": 1.3,
+     "cue": {
+      "word": "கண்ணாடியா"
+     },
+     "label": "GLASS WALL",
+     "label_at": "below",
+     "enter": "rise"
+    },
+    {
+     "id": "sun",
+     "icon": "sun",
+     "x": 0.84,
+     "y": 0.24,
+     "size": 0.9,
+     "color": "accent",
+     "cue": {
+      "word": "சூரிய"
+     },
+     "label": "SUN'S PATH",
+     "label_at": "below",
+     "enter": "rise",
+     "acts": [
+      {
+       "do": "light",
+       "cue": {
+        "word": "டிசைன்"
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "sun",
+     "to": "glass",
+     "cue": {
+      "word": "வெளிச்சம்"
+     },
+     "style": "arrow"
+    }
+   ],
+   "slam_text": "THE SUN PICKED THE WALL",
+   "slam_cue": {
+    "word": "பண்ணினார்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கண்ணாடியா"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "பண்ணினார்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "push",
+   "src": [
+    0,
+    2
+   ],
+   "voice": "ஏழை குடும்பத்தோட பாதி அடித்தள வீடும் செட் தான். அதை, லீ காலேஜ்ல வாழ்ந்த ஒரு அடித்தள வீட்டை நினைச்சு கட்டினார். கதவு, ஜன்னல், டைல்ஸ் எல்லாம் பழைய வீடுகள்ல இருந்து எடுத்தது.",
+   "voice_tg": "Ezhai kudumbatthoda paadhi aditthala veedum set thaan. Adhai, Lee college-la vaazhndha oru aditthala veettai ninaichu kattinaar. Kadhavu, jannal, tiles ellaam pazhaiya veedugalla irundhu edutthadhu.",
+   "left": {
+    "image": "key",
+    "label": "THE RICH HOME",
+    "sub": "GLASS, GARDEN, SUN",
+    "cue": {
+     "word": "ஏழை"
+    }
+   },
+   "right": {
+    "image": "s1",
+    "label": "THE POOR HOME",
+    "sub": "FROM LEE'S COLLEGE DAYS",
+    "cue": {
+     "word": "காலேஜ்ல"
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "காலேஜ்ல"
+   },
+   "slam_text": "BOTH HOMES WERE SETS",
+   "slam_cue": {
+    "word": "எடுத்தது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "ஏழை"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "எடுத்தது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "layers",
+   "in": "whip",
+   "src": [
+    4
+   ],
+   "voice": "மேல சூரிய வெளிச்சம். கீழ, தரைக்கு பாதி கீழ ஒரு வாழ்க்கை. படம் முழுக்க, ஏழை குடும்பம் படிக்கட்டுல இறங்கிட்டே இருப்பாங்க. அந்த ரெண்டு வீடுகளே படத்தோட கதையை சொல்லுது.",
+   "voice_tg": "Mela sooriya velicham. Keezha, tharaikku paadhi keezh oru vaazhkkai. Padam muzhukka, ezhai kudumbam padikkattula irangitte iruppaanga. Andha rendu veedugale padatthoda kadhaiyai solludhu.",
+   "heading": "TWO HOMES, ONE STORY",
+   "layers": [
+    {
+     "label": "UP: SUNLIGHT",
+     "sub": "THE PARKS",
+     "cue": {
+      "word": "மேல"
+     }
+    },
+    {
+     "label": "DOWN: HALF UNDERGROUND",
+     "sub": "THE KIMS",
+     "cue": {
+      "word": "தரைக்கு"
+     }
+    },
+    {
+     "label": "THE STAIRS",
+     "sub": "ALWAYS GOING DOWN",
+     "cue": {
+      "word": "படிக்கட்டுல"
+     }
+    }
+   ],
+   "split_cue": {
+    "word": "வாழ்க்கை."
+   },
+   "slam_text": "THE SETS TELL THE STORY",
+   "slam_cue": {
+    "word": "சொல்லுது."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "சொல்லுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "whip",
+   "voice": "நீங்க வாழ ஆசைப்பட்ட சினிமா வீடு எது? கமெண்ட்ல சொல்லுங்க. இந்த கதை ஒரு வீட்டுல ஆரம்பிக்குது.",
+   "voice_tg": "Neenga vaazha aasaippatta cinema veedu edhu? Comment-la sollunga. Indha kadhai oru veettula aarambikkudhu.",
+   "echo": "PARASITE · THE HOUSE THAT WASN'T",
+   "question": [
+    {
+     "text": "WHICH FILM HOUSE",
+     "size": 120
+    },
+    {
+     "text": "WOULD YOU LIVE IN?",
+     "size": 130,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "எந்த சினிமா வீடு?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ],
+   "bg": "poster",
+   "lead": 0.05
+  }
+ ],
+ "package": {
+  "caption": [
+   "The rich family's house in Parasite never existed.",
+   "Production designer Lee Ha-jun built the Park house, the Kims' semi-basement and the street as sets, and planned the glass wall around where the sun falls (Dezeen, My Modern Met). The semi-basement drew on one he lived in during college (IndieWire). No spoilers here.",
+   "Which film house would you live in? Tell us below.",
+   "Send this to the friend who wanted that house."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "PARASITE · THE HOUSE THAT WASN'T",
+  "slot": "21:30",
+  "first_comment": "Park house or the Jailer house: which would you pick?"
+ },
+ "slot_reason": "Back-up breakdown for the bank: evergreen, no spoilers, a verified making story.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 4,
+  "original": 7,
+  "total_100": 68
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}
