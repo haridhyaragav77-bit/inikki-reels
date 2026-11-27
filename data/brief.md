@@ -1,10 +1,14 @@
-# Brief · plan run · 2026-11-27 (written 2026-11-27 05:12 IST)
+# Brief · refresh run · 2026-11-27 (written 2026-11-27 16:12 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-27 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-27/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below.
+2. Fresh evening updates (Harish, 19 Nov): rewrite the movie-updates plans for 18:00 in plans/2026-11-27/ with news from today (since the morning run): new films, new numbers, new announcements, checked in 2 sources, variety rule. Keep a morning plan only if it is still the day's strongest story. Same file name per slot, so Make renders the new one.
+3. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
+4. Feedback: nothing new.
+5. Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -30,27 +34,26 @@ Title angles for today (fill {N} and {FILM}; a film in today's news makes the st
 - trailer-breakdown: status = "live"
 
 ## Releases and reviews (knowledge/releases.yaml: every Tamil release in the next 8 weeks; AGENT.md 10.5)
-Calendar: 15 film(s) in the next 21 days: Cosmic Samson 11-27 (tentative), Delivery Boy 11-27, Minnum Oar Iravu 11-27, Mouna Mozhigal 11-27, Benz 12-01 (tentative), Mental Manadhil 12-01 (tentative), Un Varugaikkaga Anandhi 12-01 (tentative), Valli Mayil 12-01 (tentative), The Proof 12-03 (tentative), Hello Kadhal 12-04, Hide And Silk 12-04 (tentative), Makkal Kaavalan 12-04 (tentative).
+Calendar: 15 film(s) in the next 21 days: Cosmic Samson 11-27 (tentative), Delivery Boy 11-27, Minnum Oar Iravu 11-27, Mouna Mozhigal 11-27, Benz 12-01 (tentative), Mental Manadhil 12-01 (tentative), Un Varugaikkaga Anandhi 12-01 (tentative), Valli Mayil 12-01 (tentative), The Proof 12-03 (tentative), Hello Kadhal 12-04, Hide And Silk 12-04 (tentative), Makkal Kaavalan 12-04.
 Releasing TODAY: Cosmic Samson, Delivery Boy, Minnum Oar Iravu, Mouna Mozhigal. Its 'out now' update takes the first morning slot (08:30, else the next open one). A release on its day is never breaking news.
 REVIEWS DUE (they stay on even when extras are off):
-- QUICK REVIEW (movie-review) for Delivery Boy: Plan run: keep 17:00 free; the Refresh run writes it. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
-- QUICK REVIEW (movie-review) for Minnum Oar Iravu: Plan run: keep 17:00 free; the Refresh run writes it. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
-- QUICK REVIEW (movie-review) for Mouna Mozhigal: Plan run: keep 17:00 free; the Refresh run writes it. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
+- QUICK REVIEW (movie-review) for Delivery Boy: Refresh run writes it for 17:00 from the earliest credible reviews (at least 2 named critics or outlets; first The Hindu, Cinema Express, The Times of India). It must post today. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
+- QUICK REVIEW (movie-review) for Minnum Oar Iravu: Refresh run writes it for 17:00 from the earliest credible reviews (at least 2 named critics or outlets; first The Hindu, Cinema Express, The Times of India). It must post today. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
+- QUICK REVIEW (movie-review) for Mouna Mozhigal: Refresh run writes it for 17:00 from the earliest credible reviews (at least 2 named critics or outlets; first The Hindu, Cinema Express, The Times of India). It must post today. A 'rating' block, the 'stars' screen and the answer GO / WAIT / SKIP (templates/README.md, Verdict).
 Too late, skipped (do not plan them): Appa Kutty (Quick). A Quick Review posts on release day only; a Trusted Review only inside its window.
 
 ## What the channels we study teach (AGENT.md 10.3)
 Breakdowns lead with one specific detail or a true story (AGENT.md 5.7). Patterns, in our words: lab/study/patterns.md. Their best recent shorts: data/study/channels.md. Never copy their wording or order; check any story in 2 trusted sources and credit the original interview.
 
 ## Films the updates covered in the last 3 days (pick other films unless there is real new news; lead.film, lead.new_event)
-- avengers-doomsday · dec-4-friday · dune-part-three · friday-27nov · hello-kadhal · jailer-2 · minnum-oar-iravu · mookuthi-amman-2 · om-100cr · om-ott · raawadi · suriya-2026
+- avengers-doomsday · dec-4-friday · delivery-boy · dune-part-three · friday-27nov · hello-kadhal · jailer-2 · makkal-kaavalan · minnum-oar-iravu · mookuthi-amman-2 · mouna-mozhigal · om-100cr · om-ott · om-week-one · raawadi · suriya-2026 · vijay-sethupathi-emmys
 Today: at least 3 different films, and one update from outside the top films (smaller film, OTT drop, another-language or Hollywood release in Tamil Nadu, industry story). Use the news watch's lower-ranked stories too.
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-27-breakdown-top-gun-maverick-real-jets: kit neon · chain → scene → detail → scene
+- 2026-11-27-breakdown-master-theatres-back: kit spotlight · scene → timeline → scene → versus
 - 2026-11-26-breakdown-se7en-wrong-draft: kit noir · scene → scene → quote → quote → layers → chain
 - 2026-11-26-breakdown-prestige-bowie-no: kit royal · scene → scene → quote → versus
-- 2026-11-26-breakdown-jai-bhim-real-case: kit forest · scene → quote → board → quote → scene
-- 2026-11-25-breakdown-whiplash-short-first: kit blueprint · scene → versus → scene
-- Cooling now (refused in the next breakdown): meter (used in 2026-11-22-breakdown-viduthalai-long-take)
 - Hero visual drawn for the film: scene (the scene builder, templates/README.md), or board, climb, track, layers, detail.
 
 ## Trending songs (data/music/trending.json; first choice for music when the mood fits: track = key, from = hook_at; AGENT.md 5.4)
@@ -61,6 +64,9 @@ Today: at least 3 different films, and one update from outside the top films (sm
 - song_mutta_kalakki · Mutta Kalakki (Youth) (Youth) · mood confident_mid, tension_pulse · hook_at 95.7 s · used 0x
 - song_monica · Monica (Coolie) (Coolie) · mood upbeat_percussive, confident_mid · hook_at 74.9 s · used 0x
 - song_god_mode · God Mode (Karuppu) (Karuppu) · mood confident_mid, stinger · hook_at 44.9 s · used 0x
+
+## Ideas from Harish (leads, not orders: use one if it passes the worth-it test, AGENT.md 5.7)
+- From the insights: Study what gets film-breakdown sent to friends (it is shared 0.6% of the time, the page 0.0%)
 
 ## Today's slots (2026-11-27)
 | time | series | template | notes |
@@ -137,10 +143,30 @@ Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>},
 Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review (Quick Review) on release days, trusted-review 1-4 days after a release. Turned off by Harish: artwork-quote.
 
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 08:30 | 2026-11-27-update-out-now-delivery-boy | movie-updates | posted |  |
+| 11:00 | 2026-11-27-update-vjs-emmys-first-indian | movie-updates | posted |  |
+| 12:30 | 2026-11-27-update-hello-kadhal-trailer-week | movie-updates | posted |  |
+| 12:30 | 2026-11-27-update-makkal-kaavalan-dec-4 | movie-updates | ready |  |
+| 11:00 | 2026-11-27-update-mouna-mozhigal-out-now | movie-updates | posted |  |
+| 18:00 | 2026-11-27-update-om-week-one-106cr | movie-updates | ready |  |
+| 20:00 | 2026-11-27-breakdown-master-theatres-back | film-breakdown | ready |  |
+| 21:30 | 2026-11-27-breakdown-top-gun-maverick-real-jets | film-breakdown | held | Inspection: length outside the series range |
+
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-11-26-breakdown-se7en-wrong-draft | film-breakdown | 99 | 64.7% amber | 18.8% amber | 17.7% green | - grey |
+
+## Early numbers (2 hours after posting)
+- 2026-11-26-update-dec-4-train-hello-kadhal: 120 views, share 0.0%, skip 70.6%
+- 2026-11-26-breakdown-se7en-wrong-draft: 129 views, share 13.1%, skip 67.3%
+- 2026-11-27-update-out-now-delivery-boy: 9 views, share 0.0%, skip 62.5%
+- 2026-11-27-update-vjs-emmys-first-indian: 61 views, share 0.0%, skip 42.6%
+- 2026-11-27-update-mouna-mozhigal-out-now: 120 views, share 0.0%, skip 68.2%
+- 2026-11-27-update-hello-kadhal-trailer-week: 211 views, share 0.0%, skip 75.4%
 
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [14.0] OM box office collection Day 2: Dhanush-Mammootty film sees 14.9% drop, earns Rs 60 crore · 34 publishers (9 trusted)
@@ -157,11 +183,14 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must u
 
 ## Open alerts
+- 2026-11-27 06:38 IST: YouTube sign-in for the cloud fetch has expired
+- 2026-11-27 06:04 IST: 1 reel(s) held for 2026-11-27
+- 2026-11-27 05:45 IST: A note from the thinking run
 - 2026-11-26 16:42 IST: A note from the thinking run
 
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 6495 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Runner minutes: 7968 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
 - Storage: 7.95 GB of 15 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
