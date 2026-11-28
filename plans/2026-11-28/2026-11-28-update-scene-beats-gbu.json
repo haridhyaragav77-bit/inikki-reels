@@ -10,20 +10,23 @@
  "dateline": "MOVIE UPDATE · 28 NOV 2026",
  "lead": {
   "film": "scene",
-  "new_event": "Scene reached about ₹256.5 Cr worldwide in 13 days, past Good Bad Ugly's ₹248.25 Cr lifetime.",
-  "topic": "Scene beats Good Bad Ugly worldwide",
+  "new_event": "Scene is at about ₹267 Cr worldwide after 22-23 days, and Netflix is reported for 4 Dec.",
+  "topic": "Scene ₹267 Cr worldwide, Netflix next week",
   "facts": [
-   "Scene worldwide ₹256.50 Cr, India net ₹145.05 Cr after 13 days; Good Bad Ugly lifetime ₹248.25 Cr (Jay-Ho)",
-   "Suriya's third ₹200 Cr grosser in one year (Koimoi)"
+   "Scene worldwide ₹267.38 Cr after 22 days; India net about ₹153 Cr (Sacnilk; The Week, 28 Nov)",
+   "Third ₹200 Cr+ grosser of the year after Karuppu and Vishwanath & Sons (The Week, 28 Nov)",
+   "Netflix premiere reported for 4 Dec, not yet confirmed by Netflix or the makers (Cinejosh; Jay-Ho)"
   ],
   "sources": [
-   "https://jay-ho.com/scene-box-office-collection-day-13/",
-   "https://www.koimoi.com/box-office/box-office-suriya-registers-new-record-with-three-200-crore-grossers-worldwide-in-a-single-year/"
+   "https://www.theweek.in/news/entertainment/2026/11/28/scene-movie-worldwide-box-office-day-23-ott-release.html",
+   "https://www.sacnilk.com/news/Scene_2026_Box_Office_Collection_Day_Wise_Worldwide",
+   "https://www.cinejosh.com/news/3/131526/suriya-scene-heads-to-netflix.html",
+   "https://jay-ho.com/scene-ott-release-date-netflix/"
   ],
-  "note": "DRAFT for 18:00: the Refresh run rewrites it with the day's fresh news (e.g. O.M day 9). Figures are a week old trade estimates."
+  "note": "Refresh 28 Nov: rewritten with today's numbers. Box office figures are trade estimates; the Netflix date is reported, not official."
  },
  "worth_it": {
-  "fan_opens_because": "Did Suriya's Scene really beat Ajith's Good Bad Ugly?",
+  "fan_opens_because": "Last chance in theatres: Scene hits Netflix next week?",
   "spoilers": "None: dates, names and numbers only.",
   "voice": "Off: updates are music-only."
  },
@@ -86,7 +89,7 @@
      "y": 1310
     },
     {
-     "text": "BEATS GOOD BAD UGLY",
+     "text": "LAST WEEK IN THEATRES?",
      "size": 90,
      "y": 1470,
      "color": "#F8C028",
@@ -109,34 +112,28 @@
    ]
   },
   {
-   "kind": "bars",
+   "kind": "number",
    "in": "push",
    "image": "s1",
    "fx": 0.5,
    "fy": 0.4,
-   "dur": 4.4,
-   "kicker": "WORLDWIDE GROSS (₹ CR)",
-   "items": [
-    {
-     "label": "SCENE · 13 DAYS",
-     "value": 256,
-     "color": "#F8C028"
-    },
-    {
-     "label": "GOOD BAD UGLY · LIFETIME",
-     "value": 248,
-     "color": "#78E0D0"
-    }
+   "dur": 4.0,
+   "kicker": "WORLDWIDE GROSS",
+   "value": 267,
+   "unit": " CR",
+   "land": 1.6,
+   "tag": [
+    "IN 22 DAYS",
+    "SACNILK · THE WEEK"
    ],
-   "note": "Trade estimates · Jay-Ho",
    "sfx": [
     {
-     "at": 0.35,
+     "at": 0.3,
      "type": "whoosh"
     },
     {
-     "at": 0.7,
-     "type": "whoosh"
+     "at": 1.6,
+     "type": "impact"
     }
    ]
   },
@@ -146,14 +143,14 @@
    "image": "s3",
    "fx": 0.5,
    "fy": 0.4,
-   "dur": 4.2,
+   "dur": 3.8,
    "kicker": "SURIYA THIS YEAR",
    "value": 3,
    "unit": " FILMS",
    "land": 1.7,
    "tag": [
-    "OVER ₹200 CR EACH",
-    "KOIMOI"
+    "OVER ₹200 CR THIS YEAR",
+    "THE WEEK"
    ],
    "sfx": [
     {
@@ -167,19 +164,45 @@
    ]
   },
   {
+   "kind": "number",
+   "in": "whip",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 3.8,
+   "kicker": "ON NETFLIX (REPORTED)",
+   "value": 4,
+   "unit": " DEC",
+   "land": 1.5,
+   "tag": [
+    "NOT YET OFFICIAL",
+    "CINEJOSH · JAY-HO"
+   ],
+   "sfx": [
+    {
+     "at": 0.25,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.5,
+     "type": "impact"
+    }
+   ]
+  },
+  {
    "kind": "end",
    "in": "zoom",
    "bg": "poster",
-   "dur": 3.8,
-   "echo": "SCENE · ₹256 CR",
+   "dur": 3.4,
+   "echo": "SCENE · ₹267 CR",
    "question": [
     {
-     "text": "SURIYA",
-     "size": 140
+     "text": "THEATRE",
+     "size": 150
     },
     {
-     "text": "IS BACK?",
-     "size": 160,
+     "text": "OR NETFLIX?",
+     "size": 150,
      "color": "#F8C028"
     }
    ],
@@ -195,14 +218,14 @@
  ],
  "package": {
   "caption": [
-   "Scene is about ₹256.5 Cr worldwide in 13 days, past Good Bad Ugly's lifetime (trade estimates).",
-   "Suriya's third ₹200 Cr film in one year.",
-   "Seen it yet?",
-   "Send this to your Suriya fan friend."
+   "Scene is at about ₹267 Cr worldwide (trade estimates).",
+   "Suriya's third ₹200 Cr film this year.",
+   "Netflix is reported for 4 Dec, not official yet.",
+   "Theatre tonight or wait for Netflix?"
   ],
-  "cover": "SCENE · BEATS GBU",
+  "cover": "SCENE · ₹267 CR · NETFLIX 4 DEC?",
   "slot": "18:00",
-  "first_comment": "Suriya vs Ajith: who has the bigger 2026?",
+  "first_comment": "Theatre or Netflix: where are you watching Scene?",
   "hashtags": [
    "#fyp",
    "#trending",
@@ -211,7 +234,7 @@
    "#reels"
   ]
  },
- "slot_reason": "Evening update draft: the Refresh run rewrites it with the day's freshest news.",
+ "slot_reason": "Evening update, rewritten by the Refresh run with today's Scene numbers and the reported Netflix date.",
  "virality": {
   "value": 6,
   "hook": 7,
@@ -220,8 +243,8 @@
   "save_value": 4,
   "pacing": 7,
   "loop": 6,
-  "timely": 5,
+  "timely": 8,
   "original": 5,
-  "total_100": 61
+  "total_100": 65
  }
 }

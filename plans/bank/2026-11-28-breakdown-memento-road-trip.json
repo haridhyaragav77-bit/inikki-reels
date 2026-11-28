@@ -1,0 +1,502 @@
+{
+ "id": "2026-11-28-breakdown-memento-road-trip",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "noir",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (Memento's idea was born on a road trip and the film beat the story to print): hook, the drive, the idea, two brothers writing, the dates, end: about 50-55 s.",
+ "lead": {
+  "topic": "Memento: the idea came from a road trip, and the film came out before the story",
+  "angle": "making",
+  "insight": "In 1996 Jonathan Nolan told his brother Christopher the idea for Memento on a drive from Chicago to Los Angeles. Jonathan wrote it as a short story, Christopher as a screenplay, swapping drafts. The film was shot in about 25 days and premiered in 2000; the story, Memento Mori, was published in Esquire only in 2001.",
+  "why_now": "Bank breakdown for a back-up day: evergreen, no spoilers, the Memento trailer is in our library.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Memento_(film) (1996 Chicago to Los Angeles road trip; short story and screenplay; principal photography in 25 days; premiered 2000)",
+   "https://www.mentalfloss.com/article/64298/15-things-you-might-not-know-about-memento (Jonathan pitched it on the drive; drafts swapped; Memento Mori in Esquire, March 2001; Latin for 'remember that you must die')",
+   "https://screenrant.com/behind-scenes-facts-about-making-christopher-nolan-memento/ (the road trip pitch and the short shoot)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia's production section, Mental Floss and Screen Rant)",
+  "point": "Memento began as an idea Jonathan Nolan told his brother on a 1996 road trip, and the film came out before his story did.",
+  "spoilers": "None: only the premise from the trailer, no twist or ending."
+ },
+ "worth_it": {
+  "learn": "A Nolan classic started as a chat in a car, and the film beat the story to print.",
+  "stop": "Memento was born on a road trip.",
+  "why_now": "A true making story; Nolan fans share it.",
+  "send_to": "The friend you go on road trips with.",
+  "best_angle": "Yes: the car ride is the story."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue, builds"
+   },
+   {
+    "track": "lone_wolf",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "cool, moody"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/memento/xpmSH3nx6Sw_maxres2.jpg",
+   "fetch": {
+    "youtube": "xpmSH3nx6Sw",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/memento/xpmSH3nx6Sw_maxres1.jpg",
+   "fetch": {
+    "youtube": "xpmSH3nx6Sw",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/memento/xpmSH3nx6Sw_maxres3.jpg",
+   "fetch": {
+    "youtube": "xpmSH3nx6Sw",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/memento/xpmSH3nx6Sw_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "xpmSH3nx6Sw",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "voice": "மெமென்டோ கதை பிறந்தது, ஒரு கார் பயணத்துல.",
+   "voice_tg": "Memento kadhai pirandhadhu, oru car payanatthula.",
+   "image": "key",
+   "film": "MEMENTO",
+   "type": "BORN ON A ROAD TRIP",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": 0
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "1996-ல, கிறிஸ்டோபர் நோலனும் அவரோட தம்பி ஜோனதனும், சிகாகோவுல இருந்து லாஸ் ஏஞ்சலஸுக்கு காரில் போனாங்க. வழியில, ஜோனதன் ஒரு யோசனை சொன்னார்.",
+   "voice_tg": "1996-la, Christopher Nolan-um avaroda thambi Jonathan-um, Chicago-vula irundhu Los Angeles-ukku car-il ponaanga. Vazhiyila, Jonathan oru yosanai sonnaar.",
+   "heading": "TWO BROTHERS, ONE DRIVE",
+   "ground": "road",
+   "scroll": 120,
+   "props": [
+    {
+     "id": "chi",
+     "icon": "pin",
+     "x": 0.12,
+     "y": 0.5,
+     "size": 0.8,
+     "cue": {
+      "word": "சிகாகோவுல"
+     },
+     "label": "CHICAGO",
+     "label_at": "above",
+     "enter": "drop"
+    },
+    {
+     "id": "la",
+     "icon": "pin",
+     "x": 0.88,
+     "y": 0.5,
+     "size": 0.8,
+     "color": "accent",
+     "cue": {
+      "word": "ஏஞ்சலஸுக்கு"
+     },
+     "label": "LOS ANGELES",
+     "label_at": "above",
+     "enter": "drop"
+    },
+    {
+     "id": "car",
+     "icon": "car",
+     "x": 0.15,
+     "y": 0.62,
+     "size": 1.2,
+     "cue": {
+      "word": "காரில்"
+     },
+     "label": "THE NOLANS",
+     "label_at": "below",
+     "enter": "slide",
+     "path": [
+      [
+       0.15,
+       0.62
+      ],
+      [
+       0.5,
+       0.62
+      ],
+      [
+       0.8,
+       0.62
+      ]
+     ],
+     "move": 4.0,
+     "move_cue": {
+      "word": "காரில்"
+     }
+    },
+    {
+     "id": "idea",
+     "icon": "note",
+     "x": 0.5,
+     "y": 0.3,
+     "size": 0.9,
+     "color": "accent",
+     "cue": {
+      "word": "யோசனை"
+     },
+     "label": "JONATHAN'S IDEA",
+     "label_at": "above",
+     "enter": "pop"
+    }
+   ],
+   "links": [
+    {
+     "from": "chi",
+     "to": "la",
+     "cue": {
+      "word": "காரில்"
+     },
+     "style": "line"
+    }
+   ],
+   "slam_text": "THE IDEA CAME IN A CAR",
+   "slam_cue": {
+    "word": "சொன்னார்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "காரில்"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "சொன்னார்."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "scene",
+   "in": "whip",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "புது ஞாபகம் நிக்காத ஒருத்தன், தன் மனைவியை கொன்னவனைத் தேடுறான். நோட்டு, போட்டோ, உடம்புல டாட்டூ. இது மட்டும் தான் அவனுக்கு துணை.",
+   "voice_tg": "Pudhu nyaabagam nikkaadha oruthan, than manaiviyai konnavanai theduraan. Nottu, photo, udambula tattoo. Idhu mattum thaan avanukku thunai.",
+   "heading": "A MAN WHO CAN'T REMEMBER",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "man",
+     "icon": "person",
+     "x": 0.5,
+     "y": 0.6,
+     "size": 1.3,
+     "cue": {
+      "word": "ஒருத்தன்,"
+     },
+     "label": "LEONARD",
+     "label_at": "below",
+     "enter": "rise"
+    },
+    {
+     "id": "note",
+     "icon": "note",
+     "x": 0.18,
+     "y": 0.4,
+     "size": 0.9,
+     "cue": {
+      "word": "நோட்டு,"
+     },
+     "label": "NOTES",
+     "label_at": "above",
+     "enter": "pop"
+    },
+    {
+     "id": "cam",
+     "icon": "camera",
+     "x": 0.5,
+     "y": 0.25,
+     "size": 0.9,
+     "cue": {
+      "word": "போட்டோ,"
+     },
+     "label": "PHOTOS",
+     "label_at": "above",
+     "enter": "pop"
+    },
+    {
+     "id": "tat",
+     "icon": "mask",
+     "x": 0.82,
+     "y": 0.4,
+     "size": 0.9,
+     "color": "accent",
+     "cue": {
+      "word": "டாட்டூ."
+     },
+     "label": "TATTOOS",
+     "label_at": "above",
+     "enter": "pop"
+    }
+   ],
+   "links": [
+    {
+     "from": "note",
+     "to": "man",
+     "cue": {
+      "word": "நோட்டு,"
+     },
+     "style": "string"
+    },
+    {
+     "from": "cam",
+     "to": "man",
+     "cue": {
+      "word": "போட்டோ,"
+     },
+     "style": "string"
+    },
+    {
+     "from": "tat",
+     "to": "man",
+     "cue": {
+      "word": "டாட்டூ."
+     },
+     "style": "string"
+    }
+   ],
+   "slam_text": "NOTES, PHOTOS, TATTOOS",
+   "slam_cue": {
+    "word": "துணை."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "நோட்டு,"
+     },
+     "type": "whoosh"
+    },
+    {
+     "at": {
+      "word": "துணை."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "chain",
+   "in": "push",
+   "src": [
+    1,
+    2
+   ],
+   "voice": "ஜோனதன் அதை ஒரு சிறுகதையா எழுதினார். கிறிஸ்டோபர் அதையே திரைக்கதையா எழுதினார். ரெண்டு பேரும் ஒருத்தருக்கொருத்தர் டிராஃப்ட் அனுப்பிக்கிட்டாங்க.",
+   "voice_tg": "Jonathan adhai oru sirukadhaiyaa ezhudhinaar. Christopher adhaiye thiraikkadhaiyaa ezhudhinaar. Rendu perum orutharukkoruthar draft anuppikkittaanga.",
+   "heading": "ONE IDEA, TWO WRITERS",
+   "steps": [
+    {
+     "label": "JONATHAN: SHORT STORY",
+     "cue": {
+      "word": "சிறுகதையா"
+     }
+    },
+    {
+     "label": "CHRISTOPHER: SCREENPLAY",
+     "cue": {
+      "word": "திரைக்கதையா"
+     }
+    },
+    {
+     "label": "DRAFTS SWAPPED",
+     "cue": {
+      "word": "டிராஃப்ட்"
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "டிராஃப்ட்"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "timeline",
+   "in": "whip",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "படம் சுமார் 25 நாள்ல ஷூட் ஆச்சு. 2000-ல படம் வெளியாச்சு. ஆனா ஜோனதனோட கதை மெமென்டோ மோரி, 2001-ல தான் எஸ்குவயர் பத்திரிகைல வந்துச்சு. அந்த லத்தீன் பேருக்கு அர்த்தம், சாவை ஞாபகம் வெச்சுக்கோ.",
+   "voice_tg": "Padam sumaar 25 naalla shoot aachu. 2000-la padam veliyaachu. Aanaa Jonathan-oda kadhai Memento Mori, 2001-la thaan Esquire pathirikaila vandhuchu. Andha Latin perukku artham, saavai nyaabagam vecchukko.",
+   "heading": "THE FILM CAME FIRST",
+   "events": [
+    {
+     "label": "1996",
+     "sub": "THE ROAD TRIP",
+     "cue": {
+      "word": "படம்"
+     }
+    },
+    {
+     "label": "25 DAYS",
+     "sub": "THE SHOOT",
+     "cue": {
+      "word": "25"
+     }
+    },
+    {
+     "label": "2000",
+     "sub": "FILM PREMIERES",
+     "cue": {
+      "word": "2000-ல"
+     }
+    },
+    {
+     "label": "2001",
+     "sub": "STORY IN ESQUIRE",
+     "cue": {
+      "word": "2001-ல"
+     }
+    }
+   ],
+   "links": [
+    [
+     2,
+     3
+    ]
+   ],
+   "footer": "WIKIPEDIA · MENTAL FLOSS",
+   "sfx": [
+    {
+     "at": {
+      "word": "2001-ல"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "voice": "கதை புத்தகத்துல வர்றதுக்கு முன்னாடியே, படம் தியேட்டர்ல வந்துடுச்சு. உங்க அடுத்த ரோடு ட்ரிப்ல, என்ன கதை பிறக்கும்? கமெண்ட்ல சொல்லுங்க.",
+   "voice_tg": "Kadhai puthagatthula varradhukku munnaadiye, padam theatre-la vandhuduchu. Unga adutha road trip-la, enna kadhai pirakkum? Comment-la sollunga.",
+   "echo": "MEMENTO · BORN ON A ROAD TRIP",
+   "question": [
+    {
+     "text": "YOUR NEXT ROAD TRIP:",
+     "size": 110
+    },
+    {
+     "text": "WHAT STORY?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "என்ன கதை பிறக்கும்?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Memento was born on a road trip.",
+   "In 1996 Jonathan Nolan told his brother Christopher the idea on a drive from Chicago to Los Angeles. Jonathan wrote it as a short story, Christopher as a screenplay. The film was shot in about 25 days and premiered in 2000; the story, Memento Mori, came out in Esquire only in 2001 (Wikipedia, Mental Floss). No spoilers here.",
+   "What story would your next road trip start?",
+   "Send this to your road-trip friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "MEMENTO · BORN ON A ROAD TRIP",
+  "slot": "21:30",
+  "first_comment": "Memento or Inception: which Nolan film did you watch twice?"
+ },
+ "slot_reason": "Back-up breakdown for the bank: evergreen, no spoilers, a verified making story.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 4,
+  "original": 7,
+  "total_100": 68
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

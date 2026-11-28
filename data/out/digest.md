@@ -1,6 +1,6 @@
-**Fri 27 Nov** · 4 posted, Delivery Boy review 17:00, O.M 18:00
-**Best:** Vijay Sethupathi Emmys update, lowest skip today at 43%
-**Weak:** Hello Kadhal trailer update, 75% skipped, no shares yet
-**Tomorrow:** O.M second weekend numbers; Delivery Boy Trusted Review watch
-**Changed:** 18:00 O.M now ₹111 Cr worldwide; Parasite breakdown banked
-**Needs you:** Nothing today
+**Sat 28 Nov** · 3 posted; Scene 18:00, Vikram Vedha 20:00, Shawshank 21:30
+**Best:** Master breakdown: 1,445 views, 43% skipped, the only shares
+**Weak:** Delivery Boy review: only 16% watched, weakest yesterday
+**Tomorrow:** Check Scene's Netflix date; Trusted Reviews wait, critics not in
+**Changed:** 18:00 now Scene ₹267 Cr, Netflix 4 Dec reported; Memento banked
+**Needs you:** 4 trailers, 1 short to study: commands in Drive requests/
