@@ -1,0 +1,39 @@
+{
+ "film": "Train",
+ "kind": "stills",
+ "folder": "clip-library/stills/Train",
+ "sheet": "Train - stills.jpg",
+ "stills": [
+  {
+   "n": 1,
+   "file": "01.jpg",
+   "account": "actorvijaysethupathi",
+   "post": "https://www.instagram.com/p/DZudoh6p-Q-/",
+   "date": "2026-06-18",
+   "kind": "picture",
+   "caption": "We’re proud to announce vijaytelevision as our Official Satellite Partner of #Train"
+  },
+  {
+   "n": 2,
+   "file": "02.jpg",
+   "account": "actorvijaysethupathi",
+   "post": "https://www.instagram.com/p/DE4xUTUp8nG/",
+   "date": "2025-01-16",
+   "kind": "picture",
+   "caption": "#Train - Glimpse is here for you all ❤ "
+  },
+  {
+   "n": 3,
+   "file": "03.jpg",
+   "account": "actorvijaysethupathi",
+   "post": "https://www.instagram.com/p/C0RgTUWphV6/",
+   "date": "2023-11-30",
+   "kind": "picture",
+   "caption": "directormysskin ‘s #Train first look."
+  }
+ ],
+ "accounts": [
+  "actorvijaysethupathi"
+ ],
+ "fetched": "2026-11-28 10:18 IST"
+}

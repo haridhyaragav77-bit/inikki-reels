@@ -1,0 +1,52 @@
+{
+ "adopted": [],
+ "fetched": [
+  "Train: 3 official stills (Meta gave no video)"
+ ],
+ "failed": {
+  "Moonwalk@arrahman": "no official trailer for Moonwalk on the studio accounts (add it with the laptop helper); stills: no official stills for Moonwalk on arrahman",
+  "Train@actorvijaysethupathi": "no official trailer for Train on the studio accounts (add it with the laptop helper)"
+ },
+ "history_search": "4 pages read, filed: []",
+ "instagram_calls": 20,
+ "accounts": {
+  "Moonwalk@arrahman": {
+   "arrahman": "0 posts of Moonwalk in 300"
+  },
+  "Train@actorvijaysethupathi": {
+   "actorvijaysethupathi": "3 posts of Train in 300"
+  }
+ },
+ "meta_meters": {
+  "x-business-use-case-usage": "{\"1370357339500354\":[{\"type\":\"instagram\",\"call_count\":1,\"total_cputime\":1,\"total_time\":1,\"estimated_time_to_regain_access\":0}]}",
+  "x-app-usage": "{\"call_count\":8,\"total_cputime\":0,\"total_time\":55}"
+ },
+ "to_get": [
+  "Moonwalk",
+  "Train"
+ ],
+ "seconds_per_call": [
+  0.31,
+  1.58,
+  2.35,
+  2.55,
+  2.54,
+  3.45,
+  4.0,
+  2.66,
+  2.63,
+  3.37,
+  4.35,
+  5.1,
+  5.43,
+  2.08,
+  3.34,
+  4.95,
+  6.6,
+  10.59,
+  8.0,
+  30.12
+ ],
+ "at": "2026-11-28 10:19 IST",
+ "meta_usage_percent": 55
+}
