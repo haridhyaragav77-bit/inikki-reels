@@ -1,10 +1,14 @@
-# Brief · plan run · 2026-11-28 (written 2026-11-28 05:12 IST)
+# Brief · refresh run · 2026-11-28 (written 2026-11-28 16:12 IST)
 
 Switch: **run** · Phase: **live** · Respect mode: **off** · Approval: autopilot
 Control Room settings copied to data/control/: switch.json, overrides.yaml, feedback.jsonl, commands.jsonl
 
 ## To do
-1. Plan 6 reel(s) for 2026-11-28 at the slots below, plus 2 reserve(s) ("reserve": true). Save each to plans/2026-11-28/<reel_id>.json and check it with: python -m engine.plancheck <file>.
+1. Breaking check: the top stories are below.
+2. Fresh evening updates (Harish, 19 Nov): rewrite the movie-updates plans for 18:00 in plans/2026-11-28/ with news from today (since the morning run): new films, new numbers, new announcements, checked in 2 sources, variety rule. Keep a morning plan only if it is still the day's strongest story. Same file name per slot, so Make renders the new one.
+3. Breakdown bank: 1 of 4 ready. Add 1 breakdown plan to plans/bank/.
+4. Feedback: nothing new.
+5. Write the daily digest (6 lines, each one fact in 12 words at most, AGENT.md 16.4) to data/out/digest.md.
 
 ## Harish's standing rules (set in the Control Room; follow them in every plan, AGENT.md 8.4)
 - every series: When posting always use "#" captions as #fyp #trending #viral #explorepage #reels (2026-11-13)
@@ -40,16 +44,18 @@ Too late, skipped (do not plan them): Minnum Oar Iravu (Quick), Mouna Mozhigal (
 
 ## What the channels we study teach (AGENT.md 10.3)
 Breakdowns lead with one specific detail or a true story (AGENT.md 5.7). Patterns, in our words: lab/study/patterns.md. Their best recent shorts: data/study/channels.md. Never copy their wording or order; check any story in 2 trusted sources and credit the original interview.
+Digest 'Needs you' line: 1 short(s) to study, command in Drive requests/study_to_get.md (same laptop helper).
 
 ## Films the updates covered in the last 3 days (pick other films unless there is real new news; lead.film, lead.new_event)
-- avengers-doomsday · dec-4-friday · delivery-boy · dune-part-three · friday-27nov · hello-kadhal · jailer-2 · makkal-kaavalan · minnum-oar-iravu · mookuthi-amman-2 · mouna-mozhigal · om-100cr · om-week-one · raawadi · suriya-2026 · vijay-sethupathi-emmys
+- avengers-doomsday · dec-4-friday · delivery-boy · dune-part-three · friday-27nov · hello-kadhal · jailer-2 · makkal-kaavalan · minnum-oar-iravu · mookuthi-amman-2 · moonwalk · moonwalk-yogi-babu · mouna-mozhigal · om-100cr · om-second-weekend · om-week-one · raawadi · scene · suriya-2026 · suriya-three-200cr · train · vijay-sethupathi-emmys
 Today: at least 3 different films, and one update from outside the top films (smaller film, OTT drop, another-language or Hollywood release in Tamil Nadu, industry story). Use the news watch's lower-ranked stories too.
 
 ## Breakdown designs used lately (the next breakdown names another kit in "design" and a different build; AGENT.md 5.8)
+- 2026-11-28-breakdown-vikram-vedha-vetal-tale: kit royal · scene → source → versus
+- 2026-11-28-breakdown-shawshank-flop-to-favourite: kit paper · scene → chain → timeline
 - 2026-11-27-breakdown-top-gun-maverick-real-jets: kit neon · chain → scene → detail → scene
 - 2026-11-27-breakdown-parasite-house-set: kit blueprint · scene → scene → versus → layers
-- 2026-11-27-breakdown-master-theatres-back: kit spotlight · scene → timeline → scene → versus
-- 2026-11-26-breakdown-se7en-wrong-draft: kit noir · scene → scene → quote → quote → layers → chain
+- Cooling now (refused in the next breakdown): versus (used in 2026-11-28-breakdown-vikram-vedha-vetal-tale)
 - Hero visual drawn for the film: scene (the scene builder, templates/README.md), or board, climb, track, layers, detail.
 
 ## Trending songs (data/music/trending.json; first choice for music when the mood fits: track = key, from = hook_at; AGENT.md 5.4)
@@ -129,11 +135,13 @@ For an older look, open a film's grid (Google Drive) and pick the shot whose pic
 - O.M: 11 stills, grid: clip-library/sheets/O.M - stills.jpg
 - Jail Mates: 4 stills, grid: clip-library/sheets/Jail Mates - youtube.jpg
 - Manikanda: 34 stills, grid: clip-library/sheets/Manikanda - youtube.jpg
+- Train: 3 stills, grid: clip-library/sheets/Train - stills.jpg
 Older-look visual: {type: image, still: {film: <film>, n: <number on the grid>}, ai: false, label: <2-word tag>}. Pick the still that shows what the line says; skip stills that are mostly text.
 
 ## Trailers to get (Harish runs the laptop helper; the command is in Drive requests/trailers_to_get.md)
-Waiting: Moonwalk, Train. Plans for these wait until they arrive.
+Waiting: Moonwalk, Train, Arasan, Dharman. Plans for these wait until they arrive.
 Researcher: for each, find the official YouTube trailer (studio or music label channel) and add a line 'Film = link' to data/notes/trailer_links.md, so the command has the exact video.
+Digest 'Needs you' line: 4 trailer(s) to get, command in Drive requests/trailers_to_get.md.
 
 ## Trailers expected (announced dates)
 - Hello Kadhal: To Drop Today (Hello Kadhal Trailer Release Time: Arya, Nikhila Vimal & Vaishnavi Chaitanya's F)
@@ -143,6 +151,18 @@ Researcher: for each, find the official YouTube trailer (studio or music label c
 - The Prestige (trailer, grid: clip-library/sheets/The Prestige - trailer [G8ozbqgdIjY].jpg)
 Flex slot: plan one trailer-breakdown (AGENT.md 5.13) for the newest of these that is a new release.
 Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-review (Quick Review) on release days, trusted-review 1-4 days after a release. Turned off by Harish: artwork-quote.
+
+## Today's reels
+| slot | reel | series | state | note |
+| --- | --- | --- | --- | --- |
+| 08:30 | 2026-11-28-update-train-trailer-out | movie-updates | posted |  |
+| 11:00 | 2026-11-28-update-moonwalk-trailer-dec-24 | movie-updates | posted |  |
+| 12:30 | 2026-11-28-update-om-second-saturday | movie-updates | posted |  |
+| 18:00 | 2026-11-28-update-scene-beats-gbu | movie-updates | ready |  |
+| 20:00 | 2026-11-28-breakdown-vikram-vedha-vetal-tale | film-breakdown | ready |  |
+| 21:30 | 2026-11-28-breakdown-shawshank-flop-to-favourite | film-breakdown | ready |  |
+| - | 2026-11-28-update-moonwalk-yogi-babu-16 | movie-updates | ready |  |
+| - | 2026-11-28-update-suriya-three-200cr | movie-updates | ready |  |
 
 ## Yesterday's numbers (per reach; colour against the series median)
 | reel | series | views | skip | watch | share | follow |
@@ -154,6 +174,14 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 | 2026-11-27-update-om-week-one-106cr | movie-updates | 128 | 63.2% amber | 30.9% amber | 0.0% grey | - grey |
 | 2026-11-27-breakdown-master-theatres-back | film-breakdown | 1445 | 43.2% green | 22.4% green | 0.2% green | - grey |
 | 2026-11-26-breakdown-prestige-bowie-no | film-breakdown | 26 | 46.7% green | 42.6% green | 0.0% red | - grey |
+
+## Early numbers (2 hours after posting)
+- 2026-11-27-update-om-week-one-106cr: 114 views, share 0.0%, skip 66.0%
+- 2026-11-27-breakdown-master-theatres-back: 985 views, share 0.0%, skip 34.3%
+- 2026-11-26-breakdown-prestige-bowie-no: 32 views, share 0.0%, skip 57.1%
+- 2026-11-28-update-train-trailer-out: 180 views, share 0.0%, skip 61.5%
+- 2026-11-28-update-moonwalk-trailer-dec-24: 178 views, share 0.0%, skip 59.6%
+- 2026-11-28-update-om-second-saturday: 9 views, share 0.0%, skip 44.4%
 
 ## Trends from the news watch (top 5, no AI; verify before use)
 - [14.0] OM box office collection Day 2: Dhanush-Mammootty film sees 14.9% drop, earns Rs 60 crore · 34 publishers (9 trusted)
@@ -170,15 +198,15 @@ Flex slots 11:00, 17:00: trailer-breakdown when a new trailer lands, movie-revie
 - #13 · 14 Nov 2026 · rule (all series) · hooks and titles were timeless → every brief opens with Today (day, hour, season, festivals, title angles); Watch This Next must u
 
 ## Open alerts
-- 2026-11-27 16:42 IST: A note from the thinking run
-- 2026-11-27 06:38 IST: YouTube sign-in for the cloud fetch has expired
-- 2026-11-27 06:04 IST: 1 reel(s) held for 2026-11-27
-- 2026-11-27 05:45 IST: A note from the thinking run
-- 2026-11-26 16:42 IST: A note from the thinking run
+- 2026-11-28 06:10 IST: YouTube sign-in for the cloud fetch has expired
+- 2026-11-28 06:10 IST: Cloud downloads failed 3 nights in a row
+- 2026-11-28 05:46 IST: A note from the thinking run
+- 2026-11-28 05:12 IST: Quick Review skipped: Mouna Mozhigal
+- 2026-11-28 05:12 IST: Quick Review skipped: Minnum Oar Iravu
 
 ## Money and limits
 - Images ₹26 of ₹500 this month
-- Runner minutes: 7968 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
+- Runner minutes: 9452 used this month. No limit (the repository is public): plan the full day, reserves included, nothing held back for minutes.
 - Storage: 8.12 GB of 15 GB
 
 Plan forms: templates/<template>/plan_form.json · motion library: rules/motion.md · check: python -m engine.plancheck <file>
