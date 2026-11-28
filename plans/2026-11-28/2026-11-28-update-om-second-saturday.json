@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-28-update-om-second-saturday",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "om-second-weekend",
+  "new_event": "O.M day 8 (second Friday): about ₹71.5 Cr India net (Sacnilk); worldwide past ₹111 Cr (The Week).",
+  "topic": "O.M: second weekend, ₹111 Cr worldwide",
+  "facts": [
+   "Worldwide gross ₹111.10 Cr after 8 days (The Week, 27 Nov)",
+   "Day 8 about ₹2.2 Cr net; India net about ₹71.5 Cr after 8 days (Sacnilk)",
+   "Mammootty's first ₹100 Cr theatrical hit (The Week, 25 Nov)"
+  ],
+  "sources": [
+   "https://www.theweek.in/news/entertainment/2026/11/27/om-operation-mole-box-office-collection-day-8-mammootty-dhanush-gross-indian-rupee11110-crore.html",
+   "https://www.sacnilk.com/quicknews/OM_Chapter_1_Udhiram_2026_Box_Office_Collection_Day_8",
+   "https://www.theweek.in/news/entertainment/2026/11/25/om-box-office-collection-day-6-starts-bright-after-tamil-blockbuster-becomes-mammoottys-first-indian-rupee100-crore-hit.html"
+  ],
+  "note": "Trade estimates; trackers differ, so the reel says 'about'. Real new news (second weekend) though O.M was covered in the last 3 days."
+ },
+ "worth_it": {
+  "fan_opens_because": "Is O.M holding up in its second weekend?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_veezha_veera",
+    "from": 154.1,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/om-second-weekend/aGSOpb_6kv8_maxres2.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/om-second-weekend/aGSOpb_6kv8_maxres1.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/om-second-weekend/aGSOpb_6kv8_maxres3.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/om-second-weekend/aGSOpb_6kv8_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "aGSOpb_6kv8",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "O.M",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "SECOND WEEKEND",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "WORLDWIDE · 8 DAYS",
+   "value": 111,
+   "unit": " CR+",
+   "land": 1.7,
+   "tag": [
+    "REPORTED",
+    "THE WEEK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "INDIA NET · 8 DAYS",
+   "value": 71,
+   "unit": " CR",
+   "land": 1.7,
+   "tag": [
+    "ABOUT ₹71.5 CR",
+    "SACNILK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "O.M · SECOND WEEKEND",
+   "question": [
+    {
+     "text": "SEEN IT",
+     "size": 140
+    },
+    {
+     "text": "YET?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Second Saturday shows today.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "O.M: Operation Mole is past ₹111 Cr worldwide in 8 days and about ₹71.5 Cr India net (trade estimates).",
+   "Mammootty's first ₹100 Cr hit. Second Saturday today.",
+   "Seen it yet?",
+   "Send this to your Dhanush friend."
+  ],
+  "cover": "O.M · SECOND WEEKEND",
+  "slot": "12:30",
+  "first_comment": "Will O.M cross ₹150 Cr?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Afternoon update: box office numbers, less time-critical than the two trailers.",
+ "virality": {
+  "value": 6,
+  "hook": 6,
+  "send_trigger": 6,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 5,
+  "total_100": 60
+ }
+}

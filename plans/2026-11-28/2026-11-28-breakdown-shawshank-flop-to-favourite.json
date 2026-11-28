@@ -1,0 +1,406 @@
+{
+ "id": "2026-11-28-breakdown-shawshank-flop-to-favourite",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "paper",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (Shawshank flopped, then home video and TV made it a favourite), told as the empty theatre, the title and Oscar misses, and the video-TV-IMDb climb: about 52 s.",
+ "lead": {
+  "topic": "The Shawshank Redemption: the flop that became the world's favourite film",
+  "angle": "true_story",
+  "insight": "Shawshank cost about $25 million and earned only about $16 million in its first theatre run in 1994, against Forrest Gump and Pulp Fiction; people could not even remember its title. It got 7 Oscar nominations and won none. Then it became one of the most rented videos of 1995, TNT played it again and again on TV, and it has topped IMDb's Top 250 since 2008.",
+  "why_now": "Late Saturday night, rainy binge night: a film people found at home, not in theatres. Shawshank not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Shawshank_Redemption (about $25M budget, about $16M first run; 7 Oscar nominations, no wins; top of IMDb Top 250 since 2008)",
+   "https://www.mentalfloss.com/entertainment/movies/the-shawshank-redemption-box-office-bomb-to-hit (flop against Pulp Fiction and Forrest Gump; the confusing title; over 320,000 rental copies shipped; top video rental of 1995)",
+   "https://www.bfi.org.uk/features/shawshank-redemption-greatest-film-frank-darabont (how it became the favourite film)",
+   "https://longreads.com/2014/05/23/how-shawshank-redemption-keeps-paying-20-years-later/ (TNT took the TV rights and aired it often)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Mental Floss, BFI, Longreads; checked 28 Nov by web search)",
+  "point": "Shawshank flopped in theatres in 1994 and won none of its 7 Oscar nominations; video rentals and TV repeats made it a favourite.",
+  "spoilers": "None: release history only, nothing from the story."
+ },
+ "worth_it": {
+  "learn": "How a flop became the top film on IMDb, through video shops and TV.",
+  "stop": "The world's favourite film: nobody watched it in theatres.",
+  "why_now": "Late-night binge at home: the way Shawshank itself was found.",
+  "send_to": "The friend who says Shawshank is the best film ever.",
+  "best_angle": "Yes: the comeback story is the film's own theme of hope."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "lone_wolf",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "moody"
+   },
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "build"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 3,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/shawshank/NmzuHjWmXOc_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "NmzuHjWmXOc",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/shawshank/NmzuHjWmXOc_maxres1.jpg",
+   "fetch": {
+    "youtube": "NmzuHjWmXOc",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/shawshank/NmzuHjWmXOc_maxres2.jpg",
+   "fetch": {
+    "youtube": "NmzuHjWmXOc",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/shawshank/NmzuHjWmXOc_maxres3.jpg",
+   "fetch": {
+    "youtube": "NmzuHjWmXOc",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "film": "THE SHAWSHANK REDEMPTION",
+   "type": "THE FLOP THE WORLD FELL FOR",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "voice": "உலகத்துல நிறைய பேருக்கு பிடிச்ச படம், ஷஷாங்க் ரிடெம்ப்ஷன். ஆனா தியேட்டர்ல அத கிட்டத்தட்ட யாருமே பார்க்கல.",
+   "voice_tg": "Ulagathula niraiya perukku pidicha padam, Shawshank Redemption. Aanaa theatre-la adha kittathatta yaarume paarkkala.",
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "1994-ல ரிலீஸ் ஆச்சு. செலவு, இருபத்தஞ்சு மில்லியன் டாலர். ஆனா முதல் ரிலீஸ்ல வசூல், வெறும் பதினாறு மில்லியன். அதே வருஷம், ஃபாரஸ்ட் கம்ப், பல்ப் ஃபிக்ஷன் ரெண்டும் கூட்டத்த அள்ளிச்சு.",
+   "voice_tg": "1994-la release aachu. Selavu, irubathanju million dollar. Aanaa mudhal release-la vasool, verum padhinaaru million. Adhe varusham, Forrest Gump, Pulp Fiction rendum koottatha allichu.",
+   "heading": "1994: EMPTY SEATS",
+   "ground": "city",
+   "props": [
+    {
+     "id": "hall",
+     "icon": "building",
+     "x": 0.3,
+     "y": 0.62,
+     "size": 1.5,
+     "cue": {
+      "word": "ரிலீஸ்"
+     },
+     "label": "SHAWSHANK",
+     "label_at": "above"
+    },
+    {
+     "id": "seat",
+     "icon": "person",
+     "count": 2,
+     "gap": 0.08,
+     "x": 0.22,
+     "y": 0.72,
+     "size": 0.45,
+     "color": "white",
+     "cue": {
+      "word": "வெறும்"
+     },
+     "label": "A FEW SEATS",
+     "label_at": "below"
+    },
+    {
+     "id": "rival1",
+     "icon": "ticket",
+     "x": 0.72,
+     "y": 0.45,
+     "size": 0.8,
+     "color": "accent",
+     "cue": {
+      "word": "கம்ப்,"
+     },
+     "label": "FORREST GUMP",
+     "label_at": "below"
+    },
+    {
+     "id": "rival2",
+     "icon": "ticket",
+     "x": 0.72,
+     "y": 0.72,
+     "size": 0.8,
+     "color": "second",
+     "cue": {
+      "word": "ஃபிக்ஷன்"
+     },
+     "label": "PULP FICTION",
+     "label_at": "below"
+    },
+    {
+     "id": "crowd",
+     "icon": "crowd",
+     "x": 0.5,
+     "y": 0.75,
+     "size": 1.0,
+     "color": "white",
+     "cue": {
+      "word": "கூட்டத்த"
+     },
+     "path": [
+      [
+       0.5,
+       0.75
+      ],
+      [
+       0.85,
+       0.6
+      ]
+     ],
+     "move": 1.2,
+     "move_cue": {
+      "word": "அள்ளிச்சு."
+     }
+    }
+   ],
+   "counter": {
+    "from": 0,
+    "to": 16,
+    "unit": "M $",
+    "cue": {
+     "word": "பதினாறு"
+    },
+    "d": 1.2,
+    "x": 0.5,
+    "y": 0.18
+   },
+   "slam_text": "COST $25M. EARNED $16M.",
+   "slam_cue": {
+    "word": "மில்லியன்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "பதினாறு"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "அள்ளிச்சு."
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "chain",
+   "in": "push",
+   "src": [
+    0,
+    1
+   ],
+   "voice": "பெயரும் ஒரு பிரச்சனை. ஷஷாங்க்னா என்னன்னு மக்களுக்கு புரியல, ஞாபகமும் இல்ல. அப்புறம் ஏழு ஆஸ்கார் நாமினேஷன் வந்துச்சு. ஒன்னு கூட ஜெயிக்கல.",
+   "voice_tg": "Peyarum oru prachanai. Shawshank-naa ennannu makkalukku puriyala, nyaabagamum illa. Appuram ezhu Oscar nomination vandhuchu. Onnu kooda jeyikkala.",
+   "heading": "IT GOT WORSE",
+   "steps": [
+    {
+     "label": "A CONFUSING TITLE",
+     "cue": {
+      "word": "பெயரும்"
+     }
+    },
+    {
+     "label": "7 OSCAR NOMINATIONS",
+     "cue": {
+      "word": "ஏழு"
+     }
+    },
+    {
+     "label": "0 WINS",
+     "cue": {
+      "word": "ஜெயிக்கல."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "ஜெயிக்கல."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "timeline",
+   "in": "whip",
+   "src": [
+    0,
+    1,
+    3
+   ],
+   "voice": "ஆனா கதை அங்க முடியல. மூணு லட்சத்துக்கு மேல வாடகை கேசட்டுகள் கடைகளுக்கு போச்சு. 1995-ல, வீடியோ கடைகள்ல அதிகமா வாடகைக்கு போன படம் இது. அப்புறம் TNT சேனல் டிவில பலமுறை போட்டுச்சு. 2008 முதல், IMDb டாப் லிஸ்ட்ல முதல் இடம்.",
+   "voice_tg": "Aanaa kadhai anga mudiyala. Moonu latchathukku mela vaadagai cassette-gal kadaigalukku pochu. 1995-la, video kadaigalla adhigamaa vaadagaikku pona padam idhu. Appuram TNT channel TV-la palamurai pottuchu. 2008 mudhal, IMDb top list-la mudhal idam.",
+   "heading": "FOUND AT HOME",
+   "events": [
+    {
+     "label": "1994",
+     "sub": "THEATRE FLOP",
+     "cue": {
+      "word": "முடியல."
+     }
+    },
+    {
+     "label": "1995",
+     "sub": "TOP VIDEO RENTAL",
+     "cue": {
+      "word": "வீடியோ"
+     }
+    },
+    {
+     "label": "TNT",
+     "sub": "ON TV AGAIN AND AGAIN",
+     "cue": {
+      "word": "TNT"
+     }
+    },
+    {
+     "label": "2008 →",
+     "sub": "IMDb #1",
+     "cue": {
+      "word": "IMDb"
+     }
+    }
+   ],
+   "links": [
+    [
+     0,
+     3
+    ]
+   ],
+   "footer": "WIKIPEDIA · MENTAL FLOSS",
+   "sfx": [
+    {
+     "at": {
+      "word": "IMDb"
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "voice": "தியேட்டர்ல தோத்த படம், வீட்டுல ஜெயிச்சுது. நீங்க இத முதல்ல எங்க பார்த்தீங்க? டிவியிலா, போன்லயா? கமெண்ட்ல சொல்லுங்க.",
+   "voice_tg": "Theatre-la thotha padam, veettula jeyichudhu. Neenga idha mudhalla enga paartheenga? TV-yilaa, phone-layaa? Comment-la sollunga.",
+   "echo": "SHAWSHANK · FLOP TO FAVOURITE",
+   "question": [
+    {
+     "text": "WHERE DID",
+     "size": 120
+    },
+    {
+     "text": "YOU WATCH?",
+     "size": 140,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "முதல்ல எங்க பார்த்தீங்க?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "The Shawshank Redemption flopped in 1994: about $16M from theatres against a $25M cost, and 0 wins from 7 Oscar nominations.",
+   "Then video shops and TV repeats found it an audience. Since 2008 it has been #1 on IMDb's Top 250.",
+   "Where did you first watch it?",
+   "Send this to the friend who calls it the best film ever."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "SHAWSHANK · FLOP TO FAVOURITE",
+  "slot": "21:30",
+  "first_comment": "TV, DVD or phone: where did you first see Shawshank?"
+ },
+ "slot_reason": "Late-night evergreen breakdown: a film the world found at home, for a rainy Saturday night in.",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 5,
+  "original": 7,
+  "total_100": 70
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

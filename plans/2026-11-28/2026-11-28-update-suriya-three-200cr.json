@@ -1,0 +1,222 @@
+{
+ "id": "2026-11-28-update-suriya-three-200cr",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "suriya-three-200cr",
+  "new_event": "Koimoi: Suriya is the first with three ₹200 Cr worldwide grossers in a single year; Scene at about ₹256 Cr.",
+  "topic": "Suriya: three ₹200 Cr films in one year",
+  "facts": [
+   "Three ₹200 Cr worldwide grossers in a single year (Koimoi)",
+   "Scene about ₹256.5 Cr worldwide in 13 days (Jay-Ho)"
+  ],
+  "sources": [
+   "https://www.koimoi.com/box-office/box-office-suriya-registers-new-record-with-three-200-crore-grossers-worldwide-in-a-single-year/",
+   "https://jay-ho.com/scene-box-office-collection-day-13/"
+  ],
+  "note": "Reserve. Trade estimates."
+ },
+ "worth_it": {
+  "fan_opens_because": "Has any Tamil star done three ₹200 Cr films in one year?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_raga_of_revenge",
+    "from": 87.8,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/suriya-three-200cr/LM4ByXufv2w_maxres2.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/suriya-three-200cr/LM4ByXufv2w_maxres1.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/suriya-three-200cr/LM4ByXufv2w_maxres3.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/suriya-three-200cr/LM4ByXufv2w_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "SURIYA",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "A RECORD YEAR",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "₹200 CR+ FILMS · 2026",
+   "value": 3,
+   "unit": " FILMS",
+   "land": 1.7,
+   "tag": [
+    "IN ONE YEAR",
+    "KOIMOI"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "SCENE · 13 DAYS",
+   "value": 256,
+   "unit": " CR",
+   "land": 1.7,
+   "tag": [
+    "WORLDWIDE",
+    "JAY-HO"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "SURIYA · 3 IN A YEAR",
+   "question": [
+    {
+     "text": "WHICH ONE",
+     "size": 140
+    },
+    {
+     "text": "IS BEST?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Comment your pick.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Suriya: three ₹200 Cr worldwide grossers in one year (Koimoi).",
+   "Scene is about ₹256.5 Cr in 13 days.",
+   "Which one is your favourite?",
+   "Send this to your Suriya fan friend."
+  ],
+  "cover": "SURIYA · 3 IN A YEAR",
+  "slot": "reserve",
+  "first_comment": "Your favourite Suriya film of 2026?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: fills an update slot if a planned reel is held.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 5,
+  "original": 5,
+  "total_100": 61
+ },
+ "reserve": true
+}

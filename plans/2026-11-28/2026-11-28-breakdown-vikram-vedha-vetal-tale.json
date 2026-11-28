@@ -1,0 +1,454 @@
+{
+ "id": "2026-11-28-breakdown-vikram-vedha-vetal-tale",
+ "series": "film-breakdown",
+ "template": "stage",
+ "fps": 30,
+ "design": "royal",
+ "length_s": [
+  50,
+  90
+ ],
+ "length_reason": "One point (the film is the Vikram-Vetal folktale retold), told as the old tale and its rule, the same pieces in the film, and what the questions do to Vikram: about 55 s.",
+ "lead": {
+  "topic": "Vikram Vedha: the old Vikramaditya-Vetal tale hidden inside a cop-gangster film",
+  "angle": "true_story",
+  "insight": "Pushkar-Gayathri built Vikram Vedha on Baital Pachisi, the Vikramaditya and Vetal folktale they grew up with. In the tale the Vetal tells the king a story that ends in a question; in the film the gangster Vedha gives himself up and tells the cop Vikram stories that end in questions, and each answer breaks Vikram's good-versus-bad rule.",
+  "why_now": "Saturday binge night; Vijay Sethupathi's Train trailer came out yesterday. Vikram Vedha not covered in the last 21 days.",
+  "technique": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vikram_Vedha (Pushkar-Gayathri; inspired by Baital Pachisi; Madhavan as Vikram, Vijay Sethupathi as Vedha)",
+   "https://www.bollywoodhungama.com/news/features/vikram-vedha-fascinated-dynamics-shared-vikram-betaal-reveal-directors-pushkar-gayatri-inspiration-behind-story/ (directors grew up with the Vikram-Betaal stories)",
+   "https://www.cinestaan.com/articles/2022/sep/13/35672/we-were-fascinated-by-the-folklore-vikram-betaal-reveal-directors-pushkar-and-gayathri (the folklore's cop-and-gangster retelling)",
+   "https://en.wikipedia.org/wiki/Vetala_Panchavimshati (the king carries the Vetal; each story ends in a question; answer and the Vetal flies back)"
+  ],
+  "inspired_by": "own idea (facts from Wikipedia, Bollywood Hungama and Cinestaan interviews; checked 28 Nov by web search)",
+  "point": "Vikram Vedha retells the Vikram-Vetal folktale: Vedha tells the cop stories that end in a question, and each answer cracks Vikram's good-versus-bad rule.",
+  "spoilers": "None: the set-up only, no story's answer and no ending."
+ },
+ "worth_it": {
+  "learn": "Where Vikram Vedha's story shape comes from: the Vikramaditya-Vetal folktale.",
+  "stop": "The film you watched is a story your grandmother told you.",
+  "why_now": "Saturday binge night; VJS is in the news with Train.",
+  "send_to": "The friend who has watched Vikram Vedha five times.",
+  "best_angle": "Yes: the folktale link explains the whole film's shape."
+ },
+ "voice": {
+  "on": true,
+  "voice": "ta-IN-ValluvarNeural",
+  "rate": "+40%",
+  "pitch": "-2Hz"
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "the_story",
+    "from": 0.0,
+    "screen": 0,
+    "mood": "intrigue"
+   },
+   {
+    "track": "suspects",
+    "from": 0.0,
+    "screen": 2,
+    "mood": "build"
+   },
+   {
+    "track": "climax_theme",
+    "from": 0.0,
+    "screen": 4,
+    "mood": "release"
+   }
+  ],
+  "duck": 0.32,
+  "level_db": -20,
+  "xfade": 0.8,
+  "fade_out": 1.2,
+  "note": "Harish 13 Nov: music under the voice, never over it."
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/vikram-vedha/eLucCWmf6V4_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "eLucCWmf6V4",
+    "frame": "maxresdefault"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/vikram-vedha/eLucCWmf6V4_maxres1.jpg",
+   "fetch": {
+    "youtube": "eLucCWmf6V4",
+    "frame": "maxres1"
+   }
+  },
+  "s2": {
+   "src": "engine/.cache/stills/vikram-vedha/eLucCWmf6V4_maxres2.jpg",
+   "fetch": {
+    "youtube": "eLucCWmf6V4",
+    "frame": "maxres2"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/vikram-vedha/eLucCWmf6V4_maxres3.jpg",
+   "fetch": {
+    "youtube": "eLucCWmf6V4",
+    "frame": "maxres3"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "film": "VIKRAM VEDHA",
+   "type": "THE FOLKTALE INSIDE THE FILM",
+   "fy": 0.4,
+   "slam_at": 0.1,
+   "voice": "விக்ரம் வேதா, ஒரு போலீஸ் கேங்ஸ்டர் கதை மட்டும் இல்ல. அது நம்ம பாட்டி சொன்ன விக்ரமாதித்யன் வேதாளம் கதை.",
+   "voice_tg": "Vikram Vedha, oru police gangster kadhai mattum illa. Adhu namma paatti sonna Vikramaadhithyan Vedhaalam kadhai.",
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    }
+   ],
+   "src": [
+    0,
+    1
+   ]
+  },
+  {
+   "kind": "scene",
+   "in": "zoom",
+   "src": 3,
+   "voice": "பழைய கதையில, ராஜா விக்ரமாதித்யன் மரத்துல தொங்குற வேதாளத்த தோள்ல தூக்கிட்டு நடக்கிறார். வழியில வேதாளம் ஒரு கதை சொல்லி, கடைசியில ஒரு கேள்வி கேக்கும். ராஜா பதில் சொன்னா, வேதாளம் திரும்ப மரத்துக்கே பறந்து போயிடும்.",
+   "voice_tg": "Pazhaya kadhaiyila, Raja Vikramaadhithyan marathula thongura vedhaalatha thol-la thookittu nadakkiraar. Vazhiyila vedhaalam oru kadhai solli, kadaisiyila oru kelvi kekkum. Raja badhil sonnaa, vedhaalam thirumba marathukke parandhu poyidum.",
+   "heading": "THE OLD TALE",
+   "ground": "floor",
+   "props": [
+    {
+     "id": "tree",
+     "icon": "tree",
+     "x": 0.78,
+     "y": 0.62,
+     "size": 1.6,
+     "cue": {
+      "word": "மரத்துல"
+     },
+     "label": "THE TREE",
+     "label_at": "above"
+    },
+    {
+     "id": "king",
+     "icon": "person",
+     "x": 0.25,
+     "y": 0.66,
+     "size": 1.3,
+     "color": "accent",
+     "cue": {
+      "word": "ராஜா"
+     },
+     "label": "KING VIKRAM",
+     "label_at": "below"
+    },
+    {
+     "id": "crown",
+     "icon": "crown",
+     "x": 0.25,
+     "y": 0.4,
+     "size": 0.6,
+     "color": "accent",
+     "cue": {
+      "word": "விக்ரமாதித்யன்"
+     },
+     "enter": "drop"
+    },
+    {
+     "id": "vetal",
+     "icon": "mask",
+     "x": 0.78,
+     "y": 0.42,
+     "size": 0.8,
+     "color": "white",
+     "cue": {
+      "word": "வேதாளத்த"
+     },
+     "label": "VETAL",
+     "label_at": "above",
+     "path": [
+      [
+       0.78,
+       0.42
+      ],
+      [
+       0.33,
+       0.45
+      ]
+     ],
+     "move": 1.4,
+     "move_cue": {
+      "word": "தூக்கிட்டு"
+     },
+     "acts": [
+      {
+       "do": "spin",
+       "cue": {
+        "word": "பறந்து"
+       }
+      }
+     ]
+    },
+    {
+     "id": "q",
+     "icon": "question",
+     "x": 0.52,
+     "y": 0.25,
+     "size": 0.8,
+     "color": "red",
+     "cue": {
+      "word": "கேள்வி"
+     },
+     "enter": "pop",
+     "acts": [
+      {
+       "do": "pulse",
+       "cue": {
+        "word": "பதில்"
+       }
+      }
+     ]
+    }
+   ],
+   "links": [
+    {
+     "from": "vetal",
+     "to": "tree",
+     "cue": {
+      "word": "திரும்ப"
+     },
+     "style": "arrow",
+     "label": "BACK"
+    }
+   ],
+   "slam_text": "A STORY. A QUESTION. AN ANSWER.",
+   "slam_cue": {
+    "word": "போயிடும்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "கேள்வி"
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "பறந்து"
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "source",
+   "in": "push",
+   "src": [
+    0,
+    2
+   ],
+   "voice": "படத்துல, விக்ரம் ஒரு நேர்மையான போலீஸ், மாதவன். வேதா ஒரு கேங்ஸ்டர், விஜய் சேதுபதி. வேதா தானா வந்து சரண் அடைஞ்சு, விக்ரமுக்கு கதை சொல்றான். ஒவ்வொரு கதையும் ஒரு கேள்வியில முடியுது.",
+   "voice_tg": "Padathula, Vikram oru nermaiyaana police, Madhavan. Vedha oru gangster, Vijay Sethupathi. Vedha thaanaa vandhu saran adainju, Vikram-ukku kadhai solraan. Ovvoru kadhaiyum oru kelviyila mudiyudhu.",
+   "heading": "SAME TALE. NEW CITY.",
+   "left": {
+    "title": "THE FOLKTALE",
+    "beats": [
+     {
+      "label": "KING VIKRAM",
+      "cue": {
+       "word": "விக்ரம்"
+      }
+     },
+     {
+      "label": "THE VETAL",
+      "cue": {
+       "word": "வேதா"
+      }
+     },
+     {
+      "label": "STORY, THEN A QUESTION",
+      "cue": {
+       "word": "கதை"
+      }
+     }
+    ]
+   },
+   "right": {
+    "title": "THE FILM",
+    "beats": [
+     {
+      "label": "COP VIKRAM",
+      "cue": {
+       "word": "மாதவன்."
+      }
+     },
+     {
+      "label": "GANGSTER VEDHA",
+      "cue": {
+       "word": "சேதுபதி."
+      }
+     },
+     {
+      "label": "STORY, THEN A QUESTION",
+      "cue": {
+       "word": "கேள்வியில"
+      }
+     }
+    ]
+   },
+   "links": [
+    {
+     "from": 0,
+     "to": 0,
+     "cue": {
+      "word": "மாதவன்."
+     }
+    },
+    {
+     "from": 1,
+     "to": 1,
+     "cue": {
+      "word": "சேதுபதி."
+     }
+    },
+    {
+     "from": 2,
+     "to": 2,
+     "cue": {
+      "word": "முடியுது."
+     }
+    }
+   ],
+   "sfx": [
+    {
+     "at": {
+      "word": "சேதுபதி."
+     },
+     "type": "impact"
+    },
+    {
+     "at": {
+      "word": "முடியுது."
+     },
+     "type": "whoosh"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "versus",
+   "in": "whip",
+   "src": 0,
+   "voice": "விக்ரமுக்கு ஒரே விதி தான். நல்லவன் ஒரு பக்கம், கெட்டவன் இன்னொரு பக்கம். ஆனா வேதாவோட கேள்விக்கு பதில் சொல்லும் போதெல்லாம், அந்த கோடு மெதுவா அழியுது. அது தான் படத்தோட மையம்.",
+   "voice_tg": "Vikram-ukku ore vidhi thaan. Nallavan oru pakkam, kettavan innoru pakkam. Aanaa Vedha-voda kelvikku badhil sollum podhellaam, andha kodu medhuvaa azhiyudhu. Adhu thaan padathoda maiyam.",
+   "left": {
+    "image": "s2",
+    "label": "GOOD",
+    "sub": "VIKRAM'S RULE",
+    "cue": {
+     "word": "நல்லவன்"
+    }
+   },
+   "right": {
+    "image": "s3",
+    "label": "BAD",
+    "sub": "OR IS IT?",
+    "cue": {
+     "word": "கெட்டவன்"
+    }
+   },
+   "tilt": 1,
+   "tilt_cue": {
+    "word": "அழியுது."
+   },
+   "slam_text": "EVERY ANSWER BLURS THE LINE",
+   "slam_cue": {
+    "word": "மையம்."
+   },
+   "sfx": [
+    {
+     "at": {
+      "word": "அழியுது."
+     },
+     "type": "impact"
+    }
+   ],
+   "tail": 0.12,
+   "lead": 0.05
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "key",
+   "voice": "இந்த சனிக்கிழமை ராத்திரி, மழையோட திரும்ப பாருங்க. வேதாவோட கேள்விக்கு உங்க பதில் என்ன? கமெண்ட்ல சொல்லுங்க.",
+   "voice_tg": "Indha Sanikkizhamai raathiri, mazhaiyoda thirumba paarunga. Vedha-voda kelvikku unga badhil enna? Comment-la sollunga.",
+   "echo": "VIKRAM VEDHA · THE VETAL TALE",
+   "question": [
+    {
+     "text": "YOUR",
+     "size": 130
+    },
+    {
+     "text": "ANSWER?",
+     "size": 150,
+     "color": "#F8C868"
+    }
+   ],
+   "sub": "உங்க பதில் என்ன?",
+   "subFamily": "Noto Sans Tamil",
+   "tail": 0.35,
+   "lead": 0.05,
+   "sfx": [
+    {
+     "at": 0.8,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Vikram Vedha is the old Vikramaditya and Vetal tale, told again in Chennai.",
+   "In the folktale the Vetal tells the king a story that ends in a question. In the film, Vedha tells Vikram stories that end in questions, and every answer blurs Vikram's good-and-bad line.",
+   "What was your answer?",
+   "Send this to your Vikram Vedha friend."
+  ],
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ],
+  "cover": "VIKRAM VEDHA · THE VETAL TALE",
+  "slot": "20:00",
+  "first_comment": "Which of Vedha's questions stuck with you?"
+ },
+ "slot_reason": "Evergreen breakdown for the evening slot; VJS is in today's news (Train trailer).",
+ "virality": {
+  "value": 7,
+  "hook": 8,
+  "send_trigger": 8,
+  "comment_trigger": 8,
+  "save_value": 6,
+  "pacing": 7,
+  "loop": 7,
+  "timely": 6,
+  "original": 7,
+  "total_100": 71
+ },
+ "subtitles": true,
+ "captions": "tamil_tanglish_subtitles",
+ "drive_folder": "finished"
+}

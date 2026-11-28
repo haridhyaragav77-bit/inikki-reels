@@ -1,0 +1,224 @@
+{
+ "id": "2026-11-28-update-train-trailer-out",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "train",
+  "new_event": "Train's official trailer came out in Chennai on Friday 27 Nov (Saregama Tamil); the film is U/A and opens 4 Dec.",
+  "topic": "Train trailer out: 6 days to release",
+  "facts": [
+   "Trailer released in Chennai on Friday 27 Nov 2026; film cleared U/A, in theatres 4 Dec (NewKerala, Nationpress)",
+   "Official trailer on the Saregama Tamil YouTube channel",
+   "Mysskin's first film with Vijay Sethupathi; Mysskin also composed the music (Only Kollywood, NewsBytes)"
+  ],
+  "sources": [
+   "https://www.newkerala.com/news/a/vijay-sethupathi-starrer-trains-trailer-promises-exciting-edge-of-the-seat-264.htm",
+   "https://www.nationpress.com/entertainment/vijay-sethupathis-train-trailer-races-to-dec-4",
+   "https://www.onlykollywood.com/train-trailer-vijay-sethupathi-headlines-mysskins-intriguing-crime-thriller/",
+   "https://www.youtube.com/watch?v=RpjvbsqyUUQ"
+  ],
+  "note": "Trailer is from yesterday; news sites are tier 3 but the upload is on the official label channel (Saregama), which counts as official."
+ },
+ "worth_it": {
+  "fan_opens_because": "Is the Train trailer out, and when can I watch it?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_god_mode",
+    "from": 44.9,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/train/RpjvbsqyUUQ_maxres2.jpg",
+   "fetch": {
+    "youtube": "RpjvbsqyUUQ",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/train/RpjvbsqyUUQ_maxres1.jpg",
+   "fetch": {
+    "youtube": "RpjvbsqyUUQ",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/train/RpjvbsqyUUQ_maxres3.jpg",
+   "fetch": {
+    "youtube": "RpjvbsqyUUQ",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/train/RpjvbsqyUUQ_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "RpjvbsqyUUQ",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "TRAIN",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "TRAILER OUT",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "IN THEATRES · 4 DEC",
+   "value": 6,
+   "unit": " DAYS",
+   "land": 1.7,
+   "tag": [
+    "TO GO",
+    "CERTIFIED U/A"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "MYSSKIN × VIJAY SETHUPATHI",
+   "value": 1,
+   "unit": "ST",
+   "land": 1.7,
+   "tag": [
+    "FIRST FILM TOGETHER",
+    "MUSIC BY MYSSKIN TOO"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "TRAIN · 4 DEC",
+   "question": [
+    {
+     "text": "TICKET",
+     "size": 140
+    },
+    {
+     "text": "BOOKED?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Trailer out now. In theatres 4 Dec.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Train trailer is out: Vijay Sethupathi in Mysskin's runaway-train thriller.",
+   "Certified U/A, in theatres this Friday, 4 Dec. 6 days to go.",
+   "Watched the trailer yet?",
+   "Send this to your VJS friend."
+  ],
+  "cover": "TRAIN · TRAILER OUT",
+  "slot": "08:30",
+  "first_comment": "Mysskin + VJS: first day first show?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "First morning slot: the most time-critical news today (trailer out yesterday, release in 6 days).",
+ "virality": {
+  "value": 7,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 6,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 8,
+  "original": 6,
+  "total_100": 64
+ }
+}

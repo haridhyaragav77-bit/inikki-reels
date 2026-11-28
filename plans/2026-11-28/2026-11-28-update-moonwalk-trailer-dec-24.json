@@ -1,0 +1,224 @@
+{
+ "id": "2026-11-28-update-moonwalk-trailer-dec-24",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "moonwalk",
+  "new_event": "Moonwalk's trailer came out on 27 Nov; Prabhudeva and A.R. Rahman reunite after about 30 years; in theatres 24 Dec in Tamil, Telugu and Hindi.",
+  "topic": "Moonwalk trailer: Prabhudeva and Rahman, 24 Dec",
+  "facts": [
+   "Trailer out; Prabhudeva and A.R. Rahman reunite after 30 years (DT Next)",
+   "Release moved from Deepavali to Christmas, 24 Dec, in Tamil, Telugu and Hindi (Telangana Today, DT Next)",
+   "Rahman's acting debut, as an angry film director; he also scores the music (Nationpress)"
+  ],
+  "sources": [
+   "https://www.dtnext.in/entertainment/cinema/prabhudeva-and-ar-rahman-reunite-after-30-years-in-moonwalk-trailer",
+   "https://telanganatoday.com/prabhudeva-ar-rahmans-moonwalk-to-hit-screens-on-december-24",
+   "https://www.dtnext.in/entertainment/cinema/prabhudeva-a-r-rahmans-moonwalk-to-now-hit-screens-on-december-24-this-year",
+   "https://www.nationpress.com/entertainment/rahman-turns-angry-director-in-moonwalk-trailer"
+  ],
+  "note": "Today's update from outside the top films (a smaller musical comedy). Trailer on Behindwoods TV, the producer's own channel."
+ },
+ "worth_it": {
+  "fan_opens_because": "Rahman acting? What is Moonwalk and when is it out?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_pattampoochi",
+    "from": 161.5,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/moonwalk/c1YVm3jHwGI_maxres2.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/moonwalk/c1YVm3jHwGI_maxres1.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/moonwalk/c1YVm3jHwGI_maxres3.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/moonwalk/c1YVm3jHwGI_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "MOONWALK",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "TRAILER OUT",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "PRABHUDEVA × A.R. RAHMAN",
+   "value": 30,
+   "unit": " YEARS",
+   "land": 1.7,
+   "tag": [
+    "REUNITED",
+    "DT NEXT"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "CHRISTMAS RELEASE",
+   "value": 24,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "TAMIL · TELUGU · HINDI",
+    "TELANGANA TODAY"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "MOONWALK · 24 DEC",
+   "question": [
+    {
+     "text": "RAHMAN",
+     "size": 140
+    },
+    {
+     "text": "ACTING?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "His debut: an angry film director.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Moonwalk trailer is out: Prabhudeva and A.R. Rahman together again after 30 years.",
+   "Rahman acts for the first time, as an angry director. In theatres 24 Dec.",
+   "Will you watch it?",
+   "Send this to your Prabhudeva fan friend."
+  ],
+  "cover": "MOONWALK · 24 DEC",
+  "slot": "11:00",
+  "first_comment": "Rahman as an actor: yes or no?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Trailer from yesterday, release almost a month away: second morning slot, after Train.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 7,
+  "original": 7,
+  "total_100": 64
+ }
+}

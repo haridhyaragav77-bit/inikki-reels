@@ -17,10 +17,11 @@ releases:
   - { film: "The Proof", date: "2026-12-03", where: theatres, status: tentative, note: "Filmibeat calendar only" }
   - { film: "Hide And Silk", date: "2026-12-04", where: theatres, status: tentative, note: "Filmibeat calendar only" }
   - { film: "Makkal Kaavalan", date: "2026-12-04", where: theatres, status: confirmed, note: "Manikandan; makers' announcement 29 Sep via The Hollywood Reporter India + NewKerala, song video says In Cinemas Dec 4th (checked 27 Nov)" }
-  - { film: "Train", date: "2026-12-04", where: theatres, status: confirmed, note: "Mysskin, Vijay Sethupathi; makers' announcement via The Hollywood Reporter India + Pinkvilla (checked 23 Nov)" }
+  - { film: "Train", date: "2026-12-04", where: theatres, status: confirmed, note: "Mysskin, Vijay Sethupathi; makers' announcement via The Hollywood Reporter India + Pinkvilla; trailer 27 Nov says 4 Dec, U/A (NewKerala + Nationpress, checked 28 Nov)" }
   - { film: "Hello Kadhal", date: "2026-12-04", where: theatres, status: confirmed, note: "Arya, Nikhila Vimal; AP7AM + NewKerala, 2 sources (checked 26 Nov); Telugu as Hello Prema" }
   - { film: "Dhruva Natchathiram: Chapter One - Yuddha Kaandam", date: "2026-12-15", where: theatres, status: tentative, note: "sources disagree: Filmibeat 15 Dec, 91mobiles 1 Dec" }
   - { film: "Mr. Bhaarath", date: "2026-12-11", where: theatres, status: tentative, note: "Wikipedia list only" }
   - { film: "Kannamoochi", date: "2026-12-21", where: theatres, status: tentative, note: "Filmibeat calendar only" }
+  - { film: "Moonwalk", date: "2026-12-24", where: theatres, status: confirmed, note: "Prabhudeva, A.R. Rahman; moved from Deepavali; DT Next + Telangana Today, trailer 27 Nov (checked 28 Nov)" }
   - { film: "Raawadi", date: "2026-12-24", where: theatres, status: confirmed, note: "Basil Joseph; Daily Thanthi + official date video (checked 23 Nov)" }
   - { film: "Genie", date: "2026-12-25", where: theatres, status: tentative, note: "Ravi Mohan, Krithi Shetty; Filmibeat calendar only" }

@@ -1,0 +1,227 @@
+{
+ "id": "2026-11-28-update-scene-beats-gbu",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "scene",
+  "new_event": "Scene reached about ₹256.5 Cr worldwide in 13 days, past Good Bad Ugly's ₹248.25 Cr lifetime.",
+  "topic": "Scene beats Good Bad Ugly worldwide",
+  "facts": [
+   "Scene worldwide ₹256.50 Cr, India net ₹145.05 Cr after 13 days; Good Bad Ugly lifetime ₹248.25 Cr (Jay-Ho)",
+   "Suriya's third ₹200 Cr grosser in one year (Koimoi)"
+  ],
+  "sources": [
+   "https://jay-ho.com/scene-box-office-collection-day-13/",
+   "https://www.koimoi.com/box-office/box-office-suriya-registers-new-record-with-three-200-crore-grossers-worldwide-in-a-single-year/"
+  ],
+  "note": "DRAFT for 18:00: the Refresh run rewrites it with the day's fresh news (e.g. O.M day 9). Figures are a week old trade estimates."
+ },
+ "worth_it": {
+  "fan_opens_because": "Did Suriya's Scene really beat Ajith's Good Bad Ugly?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_monica",
+    "from": 74.9,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres2.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres1.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxres3.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/scene/LM4ByXufv2w_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "LM4ByXufv2w",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "SCENE",
+     "size": 260,
+     "y": 1310
+    },
+    {
+     "text": "BEATS GOOD BAD UGLY",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "bars",
+   "in": "push",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.4,
+   "kicker": "WORLDWIDE GROSS (₹ CR)",
+   "items": [
+    {
+     "label": "SCENE · 13 DAYS",
+     "value": 256,
+     "color": "#F8C028"
+    },
+    {
+     "label": "GOOD BAD UGLY · LIFETIME",
+     "value": 248,
+     "color": "#78E0D0"
+    }
+   ],
+   "note": "Trade estimates · Jay-Ho",
+   "sfx": [
+    {
+     "at": 0.35,
+     "type": "whoosh"
+    },
+    {
+     "at": 0.7,
+     "type": "whoosh"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "SURIYA THIS YEAR",
+   "value": 3,
+   "unit": " FILMS",
+   "land": 1.7,
+   "tag": [
+    "OVER ₹200 CR EACH",
+    "KOIMOI"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "SCENE · ₹256 CR",
+   "question": [
+    {
+     "text": "SURIYA",
+     "size": 140
+    },
+    {
+     "text": "IS BACK?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Tonight: still in theatres.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Scene is about ₹256.5 Cr worldwide in 13 days, past Good Bad Ugly's lifetime (trade estimates).",
+   "Suriya's third ₹200 Cr film in one year.",
+   "Seen it yet?",
+   "Send this to your Suriya fan friend."
+  ],
+  "cover": "SCENE · BEATS GBU",
+  "slot": "18:00",
+  "first_comment": "Suriya vs Ajith: who has the bigger 2026?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Evening update draft: the Refresh run rewrites it with the day's freshest news.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 8,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 5,
+  "original": 5,
+  "total_100": 61
+ }
+}

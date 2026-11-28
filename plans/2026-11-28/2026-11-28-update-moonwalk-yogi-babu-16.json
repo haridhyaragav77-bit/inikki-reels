@@ -1,0 +1,223 @@
+{
+ "id": "2026-11-28-update-moonwalk-yogi-babu-16",
+ "series": "movie-updates",
+ "template": "bulletin",
+ "fps": 30,
+ "length_s": [
+  15,
+  30
+ ],
+ "dateline": "MOVIE UPDATE · 28 NOV 2026",
+ "lead": {
+  "film": "moonwalk-yogi-babu",
+  "new_event": "Moonwalk: Yogi Babu is reported in 16 roles; Rahman debuts as an actor; release 24 Dec.",
+  "topic": "Moonwalk: Yogi Babu in 16 roles",
+  "facts": [
+   "Yogi Babu reportedly plays 16 roles, mother-in-law and father-in-law among them (OTTweek, Nationpress)",
+   "In theatres 24 Dec (Telangana Today)"
+  ],
+  "sources": [
+   "https://ottweek.com/news/moonwalk-trailer-prabhudeva-ar-rahman-acting-debut-december-24-release",
+   "https://www.nationpress.com/entertainment/rahman-turns-angry-director-in-moonwalk-trailer",
+   "https://telanganatoday.com/prabhudeva-ar-rahmans-moonwalk-to-hit-screens-on-december-24"
+  ],
+  "note": "Reserve. '16 roles' is the production house's claim: the reel says REPORTED."
+ },
+ "worth_it": {
+  "fan_opens_because": "Yogi Babu in 16 roles?",
+  "spoilers": "None: dates, names and numbers only.",
+  "voice": "Off: updates are music-only."
+ },
+ "voice": {
+  "on": false
+ },
+ "music": {
+  "sections": [
+   {
+    "track": "song_mutta_kalakki",
+    "from": 95.7,
+    "screen": 0,
+    "mood": "bold"
+   }
+  ],
+  "level_db": -12.5,
+  "fade_out": 1.0
+ },
+ "assets": {
+  "key": {
+   "src": "engine/.cache/stills/moonwalk-yogi-babu/c1YVm3jHwGI_maxres2.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres2"
+   }
+  },
+  "s1": {
+   "src": "engine/.cache/stills/moonwalk-yogi-babu/c1YVm3jHwGI_maxres1.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres1"
+   }
+  },
+  "s3": {
+   "src": "engine/.cache/stills/moonwalk-yogi-babu/c1YVm3jHwGI_maxres3.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxres3"
+   }
+  },
+  "poster": {
+   "src": "engine/.cache/stills/moonwalk-yogi-babu/c1YVm3jHwGI_maxresdefault.jpg",
+   "fetch": {
+    "youtube": "c1YVm3jHwGI",
+    "frame": "maxresdefault"
+   }
+  }
+ },
+ "screens": [
+  {
+   "kind": "title",
+   "image": "key",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 2.8,
+   "lines": [
+    {
+     "text": "MOONWALK",
+     "size": 230,
+     "y": 1310
+    },
+    {
+     "text": "YOGI BABU X 16",
+     "size": 90,
+     "y": 1470,
+     "color": "#F8C028",
+     "glow": "rgba(248,192,40,.5)"
+    }
+   ],
+   "sfx": [
+    {
+     "at": 0.1,
+     "type": "impact"
+    },
+    {
+     "at": 0.45,
+     "type": "whoosh"
+    }
+   ],
+   "band": [
+    330,
+    640
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "whip",
+   "image": "s1",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "YOGI BABU · ROLES",
+   "value": 16,
+   "unit": " ROLES",
+   "land": 1.7,
+   "tag": [
+    "REPORTED",
+    "OTTWEEK"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "number",
+   "in": "push",
+   "image": "s3",
+   "fx": 0.5,
+   "fy": 0.4,
+   "dur": 4.2,
+   "kicker": "IN THEATRES",
+   "value": 24,
+   "unit": " DEC",
+   "land": 1.7,
+   "tag": [
+    "CHRISTMAS",
+    "TELANGANA TODAY"
+   ],
+   "sfx": [
+    {
+     "at": 0.3,
+     "type": "whoosh"
+    },
+    {
+     "at": 1.7,
+     "type": "impact"
+    }
+   ]
+  },
+  {
+   "kind": "end",
+   "in": "zoom",
+   "bg": "poster",
+   "dur": 3.8,
+   "echo": "MOONWALK · YOGI BABU",
+   "question": [
+    {
+     "text": "16 ROLES",
+     "size": 140
+    },
+    {
+     "text": "TOO MANY?",
+     "size": 160,
+     "color": "#F8C028"
+    }
+   ],
+   "sub": "Tag the Yogi Babu fan.",
+   "cta": "SEND TO THAT FRIEND",
+   "sfx": [
+    {
+     "at": 0.95,
+     "type": "pop"
+    }
+   ]
+  }
+ ],
+ "package": {
+  "caption": [
+   "Moonwalk: Yogi Babu reportedly plays 16 roles.",
+   "Prabhudeva leads, Rahman acts for the first time. In theatres 24 Dec.",
+   "Which role do you want to see?",
+   "Send this to your comedy friend."
+  ],
+  "cover": "MOONWALK · YOGI BABU 16",
+  "slot": "reserve",
+  "first_comment": "Yogi Babu as the mother-in-law: ready?",
+  "hashtags": [
+   "#fyp",
+   "#trending",
+   "#viral",
+   "#explorepage",
+   "#reels"
+  ]
+ },
+ "slot_reason": "Reserve: fills an update slot if a planned reel is held.",
+ "virality": {
+  "value": 6,
+  "hook": 7,
+  "send_trigger": 7,
+  "comment_trigger": 7,
+  "save_value": 4,
+  "pacing": 7,
+  "loop": 6,
+  "timely": 6,
+  "original": 7,
+  "total_100": 63
+ },
+ "reserve": true
+}
