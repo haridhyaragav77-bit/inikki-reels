@@ -1,14 +1,24 @@
 {
- "updated": "2026-11-28 05:12 IST",
+ "updated": "2026-11-28 23:42 IST",
  "drop_folder": "from-laptop",
  "trailers": [
   {
    "film": "Moonwalk",
-   "url": null,
+   "url": "https://www.youtube.com/watch?v=c1YVm3jHwGI",
    "why": "news: a new trailer, teaser or glimpse was reported"
   },
   {
    "film": "Train",
+   "url": "https://www.youtube.com/watch?v=RpjvbsqyUUQ",
+   "why": "news: a new trailer, teaser or glimpse was reported"
+  },
+  {
+   "film": "Arasan",
+   "url": null,
+   "why": "news: a new trailer, teaser or glimpse was reported"
+  },
+  {
+   "film": "Dharman",
    "url": null,
    "why": "news: a new trailer, teaser or glimpse was reported"
   }
@@ -18,7 +28,9 @@
   "Mad Max: Fury Road",
   "Spider-Man: Across the Spider-Verse"
  ],
- "study": [],
+ "study": [
+  "https://www.youtube.com/shorts/Db5dhZjFvdo"
+ ],
  "songs": [],
  "note": "Read by tools/clip_helper.py on Harish's laptop (AGENT.md 16.6). Film names, public links and song names only."
 }
